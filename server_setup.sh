@@ -23,19 +23,7 @@ export CDO_USER=$2
 export DEBIAN_FRONTEND=noninteractive
 aptitude update
 
-# Production service dependencies.
-aptitude -y install \
-  build-essential \
-  git \
-  mysql-client \
-  libssl-dev \
-  mysql-server \
-  libmysqlclient-dev \
-  libreadline-dev \
-  libncurses-dev \
-  nginx \
-  libmagickcore-dev \
-  libmagickwand-dev
+source $DASH_ROOT/build_deps.sh
 
 # Native dependencies for builds with Node.js.
 if [[ $CDO_DEV ]]; then
