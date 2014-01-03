@@ -2,7 +2,7 @@ require 'bundler/capistrano'
 
 set :application, "dashboard"
 set :user, "ubuntu"
-set :stages, ["staging", "production"]
+set :stages, ["staging", "production", "private"]
 #set :default_stage, "staging"
 
 set :scm, "git"
