@@ -21,10 +21,22 @@
   native: "العربية"
   dir: 'rtl'
 
+"as": "as-IN"
+"as-IN":
+  english: "Assamese"
+  native: "অসমীয়া Ôxômiya"
+  debug: true
+
 "az": "az-AZ"
 "az-AZ":
   english: "Azerbaijani"
   native: "Azərbaycan dili"
+
+"bg": "bg-BG"
+"bg-BG":
+  english: "Bulgarian"
+  native: "български език"
+  debug: true
 
 "bn": "bn-BD"
 "bn-BD":
@@ -41,6 +53,12 @@
 "cs-CZ":
   english: "Czech"
   native: "čeština"
+  debug: true
+
+"cy": "cy-GB"
+"cy-GB":
+  english: "Welsh"
+  native: "Cymraeg"
   debug: true
 
 "da": "da-DK"
@@ -69,10 +87,22 @@
   native: "Pseudoloc"
   debug: true
 
+"eo": "eo-UY"
+"eo-UY":
+  english: "Esperanto"
+  native: "Esperanto"
+  debug: true
+
 "es": "es-ES"
 "es-ES":
   english: "Spanish"
   native: "español"
+
+"eu": "eu-ES"
+"eu-ES":
+  english: "Basque"
+  native: "Euskara"
+  debug: true
 
 "fa": "fa-IR"
 "fa-IR":
@@ -114,7 +144,7 @@
   english: "Croatian"
   native: "Hrvatska"
   debug: true
-  
+
 "hu": "hu-HU"
 "hu-HU":
   english: "Hungarian"
@@ -146,6 +176,12 @@
   english: "Korean"
   native: "한국어"
 
+"lt": "lt-LT"
+"lt-LT":
+  english: "Lithuanian"
+  native: "lietuvių kalba"
+  debug: true
+
 "ms": "ms-MY"
 "ms-MY":
   english: "Malay"
@@ -156,6 +192,12 @@
 "my-MM":
   english: "Burmese"
   native: "ဗမာစာ"
+  debug: true
+
+"ne": "ne-NP"
+"ne-NP":
+  english: "Nepali"
+  native: "नेपाली"
   debug: true
 
 "nl-NL":
@@ -192,6 +234,24 @@
 "ru-RU":
   english: "Russian"
   native: "русский язык"
+
+"si": "si-LK"
+"si-LK":
+  english: "Sinhala"
+  native: "සිංහල"
+  debug: true
+
+"sk": "sk-SK"
+"sk-SK":
+  english: "Slovak"
+  native: "slovenský jazyk"
+  debug: true
+
+"sl": "sl-SI"
+"sl-SI":
+  english: "Slovenian"
+  native: "slovenski jezik"
+  debug: true
 
 "sq": "sq-AL"
 "sq-AL":
