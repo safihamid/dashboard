@@ -34,6 +34,7 @@ namespace :deploy do
     run "export RAILS_ENV=#{rails_env}"
     sudo "#{current_path}/server_setup.sh #{current_path} #{user}"
   end
+  before "deploy:restart", "deploy:setup_config"
 
   desc "Make sure local git is in sync with remote."
   task :check_revision, roles: :web do
