@@ -6,10 +6,7 @@ set -e
 if [[ $1 = "-d" ]]; then
   echo "DEV MODE"
   export CDO_DEV=1
-  export RAILS_ENV=development
   shift
-else
-  export RAILS_ENV=production
 fi
 
 # Parse positional arguments.
