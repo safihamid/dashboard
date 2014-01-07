@@ -34,15 +34,6 @@ namespace :deploy do
     run "export RAILS_ENV=#{rails_env}"
     sudo "#{current_path}/server_setup.sh #{current_path} #{user}"
   end
-  after "deploy:symlink_config", "deploy:setup_config"
-
-  task :symlink_config, roles: :app do
-    #run "ln -nfs #{shared_path}/config/database.yml #{release_path}/config/database.yml"
-    run "ln -nfs #{shared_path}/config/application.yml #{release_path}/config/application.yml"
-    run "ln -nfs #{shared_path}/config/unicorn.rb #{release_path}/config/unicorn.rb"
-  end
-
-  after "deploy:finalize_update", "deploy:symlink_config"
 
   desc "Make sure local git is in sync with remote."
   task :check_revision, roles: :web do
@@ -72,7 +63,7 @@ namespace :deploy do
   end
 
   after "deploy:finalize_update", "deploy:perms"
-  after "deploy:create_symlink", "deploy:post_deploy"
+  after "deploy", "deploy:post_deploy"
   before "deploy", "deploy:check_revision"
   after "deploy:update", "deploy:cleanup"
 end
