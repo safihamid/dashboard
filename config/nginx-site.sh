@@ -40,6 +40,7 @@ cat <<EOF
     if (\$test = AB) {
       rewrite /?(.*) http://learn.code.org/\$1 permanent;
     }
+    #test
 EOF
 fi
 
