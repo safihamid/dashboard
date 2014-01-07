@@ -15,12 +15,13 @@
 
 = form_tag(add_to_section_path) do
   - if add_section_ui
-    %p{class: "manage_section_area", style: "display:none;"}
-      Assign checked students to section:
-      - options_select = options_from_collection_for_select(current_user.sections, :id, :name)
-      - options_select += '<option value="NULL">(None)</option'.html_safe
-      = select_tag('section_id', options_select, style: 'margin: 0')
-      = submit_tag 'Go'
+    %div{style: "min-height: 40px;"}
+      .manage_section_area{style: "display:none;"}
+        Assign checked students to section:
+        - options_select = options_from_collection_for_select(current_user.sections, :id, :name)
+        - options_select += '<option value="NULL">(None)</option'.html_safe
+        = select_tag('section_id', options_select, style: 'margin: 0')
+        = submit_tag 'Go'
 
   %fieldset
     %table{ style: "width:775px; table-layout:fixed;"}
@@ -37,7 +38,7 @@
         %th.manage-th Section
 
       - @followers.each do |followed|
-        %tr
+        %tr.manage-tr
           %td.manage-td= add_section_ui ? check_box_tag('follower_ids[]', followed.id) : ''
           %td.manage-td{ class: 'fixed_width_cell' }= link_to followed.student_user.name || followed.student_user.username, user_stats_path(followed.student_user)
           %td.manage-td= followed.student_user.email.blank? ? link_to("Edit", student_edit_password_path(followed.student_user)) : ''
