@@ -2,12 +2,12 @@ require 'bundler/capistrano'
 
 set :application, "dashboard"
 set :user, "ubuntu"
-set :stages, ["staging", "production"]
+set :stages, ["staging", "production", "private"]
 #set :default_stage, "staging"
 
 set :scm, "git"
 set :branch, "master"
-set :repository,  "git@github.com:code-dot-org/dashboard.git"
+set :repository,  "https://github.com/code-dot-org/dashboard.git"
 #set :git_enable_submodules, 1
 
 set :keep_releases, 10
@@ -33,7 +33,7 @@ namespace :deploy do
   task :setup_config, roles: :app do
     sudo "#{current_path}/server_setup.sh #{current_path} #{user}"
   end
-  after "deploy:setup", "deploy:setup_config"
+  before "deploy:restart", "deploy:setup_config"
 
   task :symlink_config, roles: :app do
     #run "ln -nfs #{shared_path}/config/database.yml #{release_path}/config/database.yml"
@@ -62,10 +62,18 @@ namespace :deploy do
     CMD
   end
 
+  task :directory_structure do
+    run "mkdir -p ~/apps/dashboard/releases"
+  end
+
+  task :install_git do
+    run "which git ; if [ $? -eq 1] ; then run sudo aptitude -y install git ; fi"
+  end
+
   after "deploy:finalize_update", "deploy:perms"
   after "deploy:create_symlink", "deploy:post_deploy"
   before "deploy", "deploy:check_revision"
-  before "deploy", "deploy:cleanup"
+  after "deploy:update", "deploy:cleanup"
 end
 
 require './config/boot'
