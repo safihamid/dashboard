@@ -34,7 +34,7 @@ namespace :deploy do
     run "export RAILS_ENV=#{rails_env}"
     sudo "#{current_path}/server_setup.sh #{current_path} #{user}"
   end
-  before "deploy:restart", "deploy:setup_config"
+  after "deploy:symlink_config", "deploy:setup_config"
 
   task :symlink_config, roles: :app do
     #run "ln -nfs #{shared_path}/config/database.yml #{release_path}/config/database.yml"
