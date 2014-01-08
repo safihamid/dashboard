@@ -6,9 +6,7 @@
 %h1= @page_title
 
 %br/
-= link_to 'Add students', new_follower_path
-%br/
-= link_to 'Add section', new_section_path
+= link_to 'Add students', manage_followers_url + '#add_students'
 
 %br/
 %br/
@@ -24,7 +22,7 @@
         = submit_tag 'Go'
 
   %fieldset
-    %table{ style: "width:775px; table-layout:fixed;"}
+    %table{ style: "width:800px; table-layout:fixed;"}
       %colgroup
         %col{ width: 50 }
         %col{ width: 250 }
@@ -45,6 +43,34 @@
           %td.manage-td
             = followed.section.try(:name)
             = link_to("(remove student)", remove_from_section_path(follower_id: followed.student_user_id, section_id: followed.section_id), method: :post) if followed.section.present?
+
+
+%br/
+
+%h4{ id:'add_students' } Ask your students to register themselves
+
+%p
+  Instead of making you spend a lot of time individually importing student data, you can set up your class quickly
+  by asking them to signup. Your students will need to choose usernames and passwords, but they WON'T be required to
+  provide an email address. If a student forgets their password, you will be able to reset it for them.
+%p
+  Ask your students to visit
+  %b= link_to 'code.org/join', 'http://code.org/join'
+  and enter their section-code:
+  %br/
+  - if current_user.sections.empty?
+    First, please #{link_to 'add a section', new_section_path}
+  - else
+    - current_user.sections.each do |section|
+      For
+      %b= section.name
+      enter:
+      %b= section.code
+      = link_to '(Send in email)', build_invite_mailto(section, current_user), target: :_blank
+      %br/
+    %br/
+    = link_to 'Add section', new_section_path
+
 
 :javascript
   $(function () {

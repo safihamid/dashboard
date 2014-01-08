@@ -48,6 +48,7 @@ Dashboard::Application.routes.draw do
   get '/followers/:teacher_user_id/accept', to: 'followers#accept', as: 'follower_accept'
   post '/followers/create_student', to: 'followers#create_student', as: 'create_student'
   get '/followers/manage', to: 'followers#manage', as: 'manage_followers'
+  get '/followers/sections', to: 'followers#sections', as: 'sections_followers'
 
   # change student password
   get '/followers/change_password/:user_id', to: 'followers#student_edit_password', as: 'student_edit_password'
