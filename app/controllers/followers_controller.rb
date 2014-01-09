@@ -74,6 +74,11 @@ class FollowersController < ApplicationController
 
   def manage
     @followers = current_user.followers.order('users.name').includes([:student_user, :section])
+    @sections = current_user.sections.order('name')
+  end
+
+  def sections
+    @sections = current_user.sections.order('name')
   end
 
   def create_student

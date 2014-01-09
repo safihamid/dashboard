@@ -19,7 +19,7 @@ class SectionsController < ApplicationController
 
     respond_to do |format|
       if @section.save
-        format.html { redirect_to manage_followers_path, notice: I18n.t('crud.created', model: Section.model_name.human) }
+        format.html { redirect_to sections_followers_path, notice: I18n.t('crud.created', model: Section.model_name.human) }
       else
         format.html { render action: 'new' }
       end
@@ -29,7 +29,7 @@ class SectionsController < ApplicationController
   def update
     respond_to do |format|
       if @section.update(section_params)
-        format.html { redirect_to manage_followers_path, notice: I18n.t('crud.updated', model: Section.model_name.human) }
+        format.html { redirect_to sections_followers_path, notice: I18n.t('crud.updated', model: Section.model_name.human) }
       else
         format.html { render action: 'edit' }
       end
@@ -37,16 +37,28 @@ class SectionsController < ApplicationController
   end
 
   def destroy
+    Follower.where(:section_id => @section.id).update_all(:section_id => nil)
+
     @section.destroy
+    
     respond_to do |format|
-      format.html { redirect_to sections_url }
+      format.html { redirect_to sections_followers_path, notice: I18n.t('crud.destroyed', model: Section.model_name.human) }
     end
   end
 
   private
   # Use callbacks to share common setup or constraints between actions.
   def set_section
-    @section = Game.find(params[:id])
+    @section = Section.find(params[:id])
+
+    if @section.present?
+      user = User.find_by_id(@section.user_id)
+      if !current_user.admin? && (!user || (user.id != current_user.id))
+        flash[:alert] = I18n.t('crud.access_denied', model: Section.model_name.human)
+        redirect_to sections_followers_path
+        return
+      end
+    end
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.

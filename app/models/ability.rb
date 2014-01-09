@@ -16,7 +16,7 @@ class Ability
       can :manage, user
       # don't want to run this for every request:
       # can :manage, user.students.where("email = ''")
-      can :create, Section
+      can :manage, Section
       can :create, Activity
       can :create, UserLevel
       can :create, Follower

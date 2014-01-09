@@ -1,0 +1,37 @@
+- @page_title = "Manage sections"
+
+= render partial: 'shared/teacher_nav', locals: { current: 'sections' }
+
+%h1= @page_title
+
+%br/
+= link_to 'Add section', new_section_path
+
+%br/
+%br/
+
+%table{ style: "width:775px; table-layout:fixed;"}
+  %colgroup
+    %col{ width: 350 }
+    %col{ width: 125 }
+    %col{ width: 300 }
+
+  %tr
+    %th.manage-th Section
+    %th.manage-th Students
+    %th.manage-th Add Students Section-Code
+
+  - @sections.each do |section|
+    %tr.manage-tr
+      %td.manage-td
+        = section.try(:name)
+        (
+        = link_to("rename", edit_section_path(section.id))
+        ,
+        = link_to("delete", section_path(section.id), method: :delete)
+        )
+      %td.manage-td
+        = section.students.count
+      %td.manage-td
+        = section.code
+        = link_to '(Send in email)', build_invite_mailto(section, current_user), target: :_blank
