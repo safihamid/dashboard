@@ -44,7 +44,7 @@ Dashboard::Application.routes.draw do
   resources :prize_providers
   get '/prize_providers/:id/claim_prize', to: 'prize_providers#claim_prize', as: 'prize_provider_claim_prize'
 
-  resources :followers, only: [:new, :create, :index]
+  resources :followers, only: [:create, :index]
   get '/followers/:teacher_user_id/accept', to: 'followers#accept', as: 'follower_accept'
   post '/followers/create_student', to: 'followers#create_student', as: 'create_student'
   get '/followers/manage', to: 'followers#manage', as: 'manage_followers'
