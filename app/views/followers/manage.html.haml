@@ -1,5 +1,5 @@
 - @page_title = "Manage students"
-- add_section_ui = !current_user.sections.blank?
+- add_section_ui = !@sections.blank?
 
 = render partial: 'shared/teacher_nav', locals: { current: 'manage' }
 
@@ -16,7 +16,7 @@
     %div{style: "min-height: 40px;"}
       .manage_section_area{style: "display:none;"}
         Assign checked students to section:
-        - options_select = options_from_collection_for_select(current_user.sections, :id, :name)
+        - options_select = options_from_collection_for_select(@sections, :id, :name)
         - options_select += '<option value="NULL">(None)</option'.html_safe
         = select_tag('section_id', options_select, style: 'margin: 0')
         = submit_tag 'Go'
@@ -58,10 +58,10 @@
   %b= link_to 'code.org/join', 'http://code.org/join'
   and enter their section-code:
   %br/
-  - if current_user.sections.empty?
+  - if @sections.empty?
     First, please #{link_to 'add a section', new_section_path}
   - else
-    - current_user.sections.each do |section|
+    - @sections.each do |section|
       For
       %b= section.name
       enter:

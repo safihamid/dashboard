@@ -21,7 +21,7 @@
     %th.manage-th Students
     %th.manage-th Add Students Section-Code
 
-  - current_user.sections.each do |section|
+  - @sections.each do |section|
     %tr.manage-tr
       %td.manage-td
         = section.try(:name)
