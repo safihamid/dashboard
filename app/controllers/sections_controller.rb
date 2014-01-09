@@ -37,9 +37,12 @@ class SectionsController < ApplicationController
   end
 
   def destroy
+    Follower.where(:section_id => @section.id).update_all(:section_id => nil)
+
     @section.destroy
+    
     respond_to do |format|
-      format.html { redirect_to sections_followers_path, notice: I18n.t('crud.destroyed') }
+      format.html { redirect_to sections_followers_path, notice: I18n.t('crud.destroyed', model: Section.model_name.human) }
     end
   end
 
