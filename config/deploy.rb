@@ -2,7 +2,6 @@ require 'bundler/capistrano'
 
 set :application, "dashboard"
 set :user, "ubuntu"
-set :use_sudo, false
 set :stages, ["staging", "production", "private"]
 #set :default_stage, "staging"
 
