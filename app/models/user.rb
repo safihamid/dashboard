@@ -185,7 +185,7 @@ SQL
     total_students = self.students.length
     if total_students >= STUDENTS_COMPLETED_FOR_PRIZE
       self.students.each do |student|
-        if student.prize_earned
+        if student.prize_earned && student.teachers.first.id == self.id
           completed_students += 1
           if student.gender == "f"
             completed_female_students += 1
