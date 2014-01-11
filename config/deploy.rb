@@ -32,7 +32,7 @@ namespace :deploy do
 
   task :setup_config, roles: :app do
     run "export RAILS_ENV=#{rails_env}"
-    sudo "#{current_path}/server_setup.sh #{current_path} #{user}"
+    sudo "#{current_path}/server_setup.sh #{current_path} #{user} #{rails_env}"
   end
   before "deploy:restart", "deploy:setup_config"
 
