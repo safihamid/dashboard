@@ -10,12 +10,13 @@ if [[ $1 = "-d" ]]; then
 fi
 
 # Parse positional arguments.
-if [[ $# -lt 2 ]]; then
-  echo 'Usage: server_setup.sh [options] <dash_root> <cdo_user>'
+if [[ $# -lt 3 ]]; then
+  echo 'Usage: server_setup.sh [options] <dash_root> <cdo_user> <rails_env>'
   exit 1
 fi
 export DASH_ROOT=$1
 export CDO_USER=$2
+export RAILS_ENV=$3
 
 export DEBIAN_FRONTEND=noninteractive
 aptitude update
