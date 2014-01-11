@@ -41,7 +41,9 @@ sed -e "s|%DASH_ROOT%|$DASH_ROOT|g" \
     -e "s|%RAILS_ENV%|$RAILS_ENV|g" \
     $DASH_ROOT/config/unicorn_init.sh > $unicorn_cfg
 chmod +x $unicorn_cfg
-$DASH_ROOT/config/unicorn.rb.sh > $DASH_ROOT/config/unicorn.rb
+echo "Dash root $DASH_ROOT"
+mkdir -p $DASH_ROOT/shared/config
+$DASH_ROOT/config/unicorn.rb.sh > $DASH_ROOT/shared/config/unicorn.rb
 mkdir -p /var/log/unicorn
 chown $CDO_USER /var/log/unicorn
 /usr/sbin/update-rc.d -f unicorn defaults
