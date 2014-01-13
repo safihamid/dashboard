@@ -72,10 +72,15 @@ namespace :deploy do
     run "which git ; if [ $? -eq 1] ; then run sudo aptitude -y install git ; fi"
   end
 
+  task :shared_config do
+    run "mkdir -p #{shared_path}/config"
+  end
+
   after "deploy:finalize_update", "deploy:perms"
   after "deploy:create_symlink", "deploy:post_deploy"
   before "deploy", "deploy:check_revision"
   after "deploy:update", "deploy:cleanup"
+  after "deploy:setup", "deploy:shared_config"
 end
 
 require './config/boot'
