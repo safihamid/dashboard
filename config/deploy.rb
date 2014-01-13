@@ -10,6 +10,7 @@ set :scm, "git"
 set :branch, "master"
 set :repository,  "https://github.com/code-dot-org/dashboard.git"
 #set :git_enable_submodules, 1
+set :secrets, "../../../cdo-secrets"
 
 set :keep_releases, 10
 set :deploy_to, "/home/#{user}/apps/#{application}"
@@ -36,6 +37,11 @@ namespace :deploy do
     sudo "#{current_path}/server_setup.sh #{current_path} #{user} #{rails_env}"
   end
   before "deploy:restart", "deploy:setup_config"
+
+  task :symlink_config, roles: :app do
+    run "ln -nfs #{shared_path}/config/application.yml #{release_path}/config/application.yml"
+  end
+  after "deploy:secrets", "deploy:symlink_config"
 
   desc "Make sure local git is in sync with remote."
   task :check_revision, roles: :web do
@@ -64,8 +70,18 @@ namespace :deploy do
     run "which git ; if [ $? -eq 1] ; then run sudo aptitude -y install git ; fi"
   end
 
+  task :secrets do
+    upload(File.expand_path(secrets, "application.yml"), File.expand_path(shared_path, "config"))
+  end
+  after "deploy:finalize_update", "deploy:secrets"
+  after "deploy:secrets", "deploy:post_deploy"
+
+  task :setup_shared do
+    run "mkdir -p #{shared_path}/config"
+  end
+  after "deploy:setup", "deploy:setup_shared"
+
   after "deploy:finalize_update", "deploy:perms"
-  after "deploy", "deploy:post_deploy"
   before "deploy", "deploy:check_revision"
   after "deploy:update", "deploy:cleanup"
 end
