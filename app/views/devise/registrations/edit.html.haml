@@ -36,6 +36,13 @@
   .field
     = f.label :gender
     = f.select :gender, gender_options
+  - if resource.students.length > 0
+    .field
+      = f.label :school
+      = f.text_field :school, class: 'input-xlarge'
+    .field
+      = f.label :full_address
+      = f.text_area :full_address, class: 'input-xxlarge', rows: 4
   %div= f.submit t('crud.update')
 -#%h3= t('user.cancel.title')
 -#%p
