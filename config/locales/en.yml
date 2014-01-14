@@ -151,6 +151,7 @@ en:
     error_not_earned: 'You have not yet earned this prize.'
     error_already_redeemed: 'Your prize has already been redeemed.'
     no_prizes_available: "We're sorry, but we currently have no prizes available."
+    teacher_info_required: "Teacher prizes require school name and address information:"
     confirm:
       title: 'Please Confirm'
       'no': 'No'
