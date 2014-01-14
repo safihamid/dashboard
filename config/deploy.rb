@@ -28,7 +28,9 @@ namespace :deploy do
     rake = fetch(:rake, 'rake')
     rails_env = fetch(:rails_env, 'development')
 
-    top.upload(File.expand_path("#{blockly}/build/package"), "/public/blockly")
+    run "mkdir -p #{release_path}/public/blockly"
+    top.upload(File.expand_path("#{blockly}/dist/blockly-mooc.tgz"), "#{release_path}/public/blockly/blockly-mooc.tgz")
+    run "tar -xvf #{release_path}/public/blockly/blockly-mooc.tgz"
     run "cd '#{current_path}' && #{rake} pseudolocalize RAILS_ENV=#{rails_env}"
   end
 
