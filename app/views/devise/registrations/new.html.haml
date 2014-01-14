@@ -30,6 +30,8 @@
       - if eligible_for_prize?
         %h4= sanitize(t('signup_form.teacher_prize_header').html_safe, tags: %w(a), attributes: %w(href target))
         = sanitize(t('signup_form.teacher_prize_message').html_safe, tags: %w(a), attributes: %w(href target))
+        %br/
+        = sanitize(t('signup_form.teacher_prize_limits').html_safe, tags: %w(a), attributes: %w(href target))
 
       %h2= t('signup_form.teacher_title')
 
