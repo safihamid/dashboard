@@ -72,7 +72,7 @@ namespace :deploy do
 
   task :setup_secrets do
     run "mkdir -p #{shared_path}/config"
-    top.upload(File.expand_path(secrets, "application.yml"), File.expand_path(shared_path, "config"))
+    top.upload(File.join(secrets, "application.yml"), File.join(shared_path, "config"))
   end
   after "deploy:setup", "deploy:setup_secrets"
 
