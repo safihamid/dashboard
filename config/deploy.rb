@@ -28,14 +28,15 @@ namespace :deploy do
     rake = fetch(:rake, 'rake')
     rails_env = fetch(:rails_env, 'development')
 
-    run "cd '#{current_path}' && #{rake} blockly:latest pseudolocalize RAILS_ENV=#{rails_env}"
+    top.upload(File.expand_path("#{blockly}/build/package"), "/public/blockly")
+    run "cd '#{current_path}' && #{rake} pseudolocalize RAILS_ENV=#{rails_env}"
   end
 
   task :setup_config, roles: :app do
     run "export RAILS_ENV=#{rails_env}"
     sudo "#{current_path}/server_setup.sh #{current_path} #{user} #{rails_env}"
   end
-  before "deploy:restart", "deploy:setup_config"
+  before "deploy:restart", "deploy:setup_config
 
   desc "Make sure local git is in sync with remote."
   task :check_revision, roles: :web do
@@ -68,11 +69,11 @@ namespace :deploy do
     run "ln -nfs #{shared_path}/config/application.yml #{release_path}/config/application.yml"
   end
   after "deploy:finalize_update", "deploy:upload_secrets"
-  after "deploy:upload_secrets", "deploy:post_deploy"
+  after "deploy", "deploy:post_deploy"
 
   task :setup_secrets do
     run "mkdir -p #{shared_path}/config"
-    top.upload(File.join(secrets, "application.yml"), File.join(shared_path, "config"))
+    top.upload(File.expand_path("#{secrets}/application.yml"), File.join(shared_path, "config/application.yml"))
   end
   after "deploy:setup", "deploy:setup_secrets"
 
