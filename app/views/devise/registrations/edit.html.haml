@@ -36,7 +36,7 @@
   .field
     = f.label :gender
     = f.select :gender, gender_options
-  - if resource.students.length > 0
+  - if resource.teacher? || resource.students.length > 0
     .field
       = f.label :school
       = f.text_field :school, class: 'input-xlarge'
