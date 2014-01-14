@@ -10,7 +10,6 @@ set :scm, "git"
 set :branch, "master"
 set :repository,  "https://github.com/code-dot-org/dashboard.git"
 #set :git_enable_submodules, 1
-set :secrets, "../../../cdo-secrets"
 
 set :keep_releases, 10
 set :deploy_to, "/home/#{user}/apps/#{application}"
@@ -67,7 +66,7 @@ namespace :deploy do
 
   task :upload_secrets do
     run "mkdir -p #{shared_path}/config"
-    upload(File.expand_path(secrets, "application.yml"), File.expand_path(shared_path, "config"))
+    top.upload(File.expand_path(secrets, "application.yml"), File.expand_path(shared_path, "config"))
     run "ln -nfs #{shared_path}/config/application.yml #{release_path}/config/application.yml"
   end
   after "deploy:finalize_update", "deploy:upload_secrets"
