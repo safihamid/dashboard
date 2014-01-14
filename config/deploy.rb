@@ -30,7 +30,7 @@ namespace :deploy do
 
     run "mkdir -p #{release_path}/public/blockly"
     top.upload(File.expand_path("#{blockly}/dist/blockly-mooc.tgz"), "#{release_path}/public/blockly/blockly-mooc.tgz")
-    run "tar -xvf #{release_path}/public/blockly/blockly-mooc.tgz"
+    run "tar -xvf #{release_path}/public/blockly/blockly-mooc.tgz && mv #{current_path}/package/* #{release_path}/public/blockly/"
     run "cd '#{current_path}' && #{rake} pseudolocalize RAILS_ENV=#{rails_env}"
   end
 
