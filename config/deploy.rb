@@ -38,11 +38,6 @@ namespace :deploy do
   end
   before "deploy:restart", "deploy:setup_config"
 
-  task :symlink_config, roles: :app do
-    run "ln -nfs #{shared_path}/config/application.yml #{release_path}/config/application.yml"
-  end
-  after "deploy:secrets", "deploy:symlink_config"
-
   desc "Make sure local git is in sync with remote."
   task :check_revision, roles: :web do
     unless `git rev-parse HEAD` == `git rev-parse origin/master`
@@ -70,16 +65,14 @@ namespace :deploy do
     run "which git ; if [ $? -eq 1] ; then run sudo aptitude -y install git ; fi"
   end
 
-  task :secrets do
-    upload(File.expand_path(secrets, "application.yml"), File.expand_path(shared_path, "config"))
-  end
-  after "deploy:finalize_update", "deploy:secrets"
-  after "deploy:secrets", "deploy:post_deploy"
-
-  task :setup_shared do
+  task :upload_secrets do
     run "mkdir -p #{shared_path}/config"
+    upload(File.expand_path(secrets, "application.yml"), File.expand_path(shared_path, "config"))
+    run "ln -nfs #{shared_path}/config/application.yml #{release_path}/config/application.yml"
   end
-  after "deploy:setup", "deploy:setup_shared"
+  after "deploy:finalize_update", "deploy:upload_secrets"
+  after "deploy:upload_secrets", "deploy:post_deploy"
+
 
   after "deploy:finalize_update", "deploy:perms"
   before "deploy", "deploy:check_revision"
