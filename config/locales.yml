@@ -53,7 +53,6 @@
 "cs-CZ":
   english: "Czech"
   native: "čeština"
-  debug: true
 
 "cy": "cy-GB"
 "cy-GB":
@@ -65,7 +64,6 @@
 "da-DK":
   english: "Danish"
   native: "dansk"
-  debug: true
 
 "de": "de-DE"
 "de-DE":
@@ -114,7 +112,6 @@
 "fi-FI":
   english: "Finnish"
   native: "suomi"
-  debug: true
 
 "fil": "fil-PH"
 "fil-PH":
@@ -130,7 +127,6 @@
 "he-IL":
   english: "Hebrew"
   native: "עברית"
-  debug: true
   dir: 'rtl'
 
 "hi": "hi-IN"
@@ -149,7 +145,6 @@
 "hu-HU":
   english: "Hungarian"
   native: "magyar"
-  debug: true
 
 "id": "id-ID"
 "id-ID":
@@ -169,7 +164,6 @@
 "ja-JP":
   english: "Japanese"
   native: "日本語"
-  debug: true
 
 "ko": "ko-KR"
 "ko-KR":
@@ -223,7 +217,6 @@
 "pt-PT":
   english: "Portuguese"
   native: "Português"
-  debug: true
 
 "ro": "ro-RO"
 "ro-RO":
@@ -308,7 +301,6 @@
 "zh-TW":
   english: "Chinese (Traditional)"
   native: "繁體字"
-  debug: true
 
 "zh": "zh-CN"
 "zh-CN":
