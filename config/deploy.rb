@@ -24,7 +24,7 @@ namespace :deploy do
     end
   end
 
-  task :post_deploy do
+  task :blockly do
     rake = fetch(:rake, 'rake')
     rails_env = fetch(:rails_env, 'development')
 
@@ -35,7 +35,7 @@ namespace :deploy do
     run "chmod +x #{tar_ball}"
     run "tar -xvf #{tar_ball} && mv /home/#{user}/package/* #{release_path}/public/blockly/"
     run "rm #{release_path}/public/blockly/blockly-mooc.tgz"
-    run "cd '#{current_path}' && #{rake} pseudolocalize RAILS_ENV=#{rails_env}"
+    run "cd '#{current_path}' && #{rake} youtube:thumbnails pseudolocalize RAILS_ENV=#{rails_env}"
   end
 
   task :setup_config, roles: :app do
@@ -53,16 +53,6 @@ namespace :deploy do
     end
   end
 
-  task :perms do
-    csrc = "#{shared_path}/c"
-    cdst = "#{latest_release}/public/c"
-
-    run <<-CMD
-     if [ ! -d #{csrc} ] ; then mkdir -p #{csrc} ; fi &&
-     if [ ! -e #{cdst} ] ; then ln -s #{csrc} #{cdst} ; fi
-    CMD
-  end
-
   task :directory_structure do
     run "mkdir -p ~/apps/dashboard/releases"
   end
@@ -75,7 +65,7 @@ namespace :deploy do
     run "ln -nfs #{shared_path}/config/application.yml #{release_path}/config/application.yml"
   end
   after "deploy:finalize_update", "deploy:upload_secrets"
-  after "deploy", "deploy:post_deploy"
+  after "deploy:finalize_update", "deploy:blockly"
 
   task :setup_secrets do
     run "mkdir -p #{shared_path}/config"
@@ -84,7 +74,6 @@ namespace :deploy do
   after "deploy:setup", "deploy:setup_secrets"
 
 
-  after "deploy:finalize_update", "deploy:perms"
   before "deploy", "deploy:check_revision"
   after "deploy:update", "deploy:cleanup"
 end
