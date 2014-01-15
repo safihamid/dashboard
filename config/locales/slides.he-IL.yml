@@ -2,226 +2,283 @@
   slides:
     maze_intro:
       1:
-        image: "notes/hoc1_1.jpg"
-        text: "ברוכים הבאים אל שעת הקוד הראשונה שלכם! בואו נצלול אל תוך הטעימה הראשונה שלכם בתכנות."
+        image: notes/hoc1_1.jpg
+        text: ברוכים הבאים אל שעת הקוד הראשונה שלכם! בואו נצלול אל תוך הטעימה הראשונה
+          שלכם בתכנות.
       2:
-        image: "notes/hoc1_2.jpg"
-        text: "אנחנו נשתמש בבלוקלי, שפת תכנות חזותית בה קוד נכתב על ידי גרירה ושחרור של בלוקים."
+        image: notes/hoc1_2.jpg
+        text: אנחנו נשתמש בבלוקלי, שפת תכנות חזותית בה קוד נכתב על ידי גרירה ושחרור
+          של בלוקים.
       3:
-        image: "notes/hoc1_3.jpg"
-        text: 'רוב תוכניות המחשב נכתבות, אבל בלוקלי הינה שפה חזותית. כל בלוק מקביל לשורת קוד "אמיתית" אחת.'
+        image: notes/hoc1_3.jpg
+        text: רוב תוכניות המחשב נכתבות, אבל בלוקלי הינה שפה חזותית. כל בלוק מקביל
+          לשורת קוד "אמיתית" אחת.
       4:
-        image: "notes/hoc1_4.jpg"
-        text: "כאן תלמד את יסודות מדעי המחשב, מושגים אשר משמשים בכל מקום מיצירת אפליקציות ועד שליטה על רכב החלל במאדים."
+        image: notes/hoc1_4.jpg
+        text: כאן תלמד את יסודות מדעי המחשב, מושגים אשר משמשים בכל מקום מיצירת אפליקציות
+          ועד שליטה על רכב החלל במאדים.
       5:
-        image: "notes/hoc1_5.jpg"
-        text: "תוכנית היא אוסף של הוראות אשר על המחשב שלך לבצע."
+        image: notes/hoc1_5.jpg
+        text: תוכנית היא אוסף של הוראות אשר על המחשב שלך לבצע.
       6:
-        image: "notes/hoc1_6.jpg"
-        text: "המטרה של התוכנית הראשונה שלך היא להעביר את הציפור הכועסת דרך מבוך ולהכות חזיר ירוק."
+        image: notes/hoc1_6.jpg
+        text: המטרה של התוכנית הראשונה שלך היא להעביר את הציפור הכועסת דרך מבוך ולהכות
+          חזיר ירוק.
       7:
-        image: "notes/hoc1_7.jpg"
-        text: "הצד השמאלי הוא המבוך בו התוכנית שלך מופעלת. ההוראות עבור כל פאזל נמצאות מתחת למבוך."
+        image: notes/hoc1_7.jpg
+        text: הצד השמאלי הוא המבוך בו התוכנית שלך מופעלת. ההוראות עבור כל פאזל נמצאות
+          מתחת למבוך.
       8:
-        image: "notes/hoc1_8.jpg"
-        text: "ההוראות עבור הציפור הכועסת נמצאות בארגז הכלים האמצעי. השתמש בהן כדי לבנות את הקוד שלך."
+        image: notes/hoc1_8.jpg
+        text: ההוראות עבור הציפור הכועסת נמצאות בארגז הכלים האמצעי. השתמש בהן כדי
+          לבנות את הקוד שלך.
       9:
-        image: "notes/hoc1_9.jpg"
-        text: "מצד ימין נמצאת סביבת העבודה, אליה תגרור בלוקים מארגז הכלים כדי לבנות את התוכנית שלך. כדי למחוק בלוק, גרור אותו אל פח האשפה שבפינה."
+        image: notes/hoc1_9.jpg
+        text: מצד ימין נמצאת סביבת העבודה, אליה תגרור בלוקים מארגז הכלים כדי לבנות
+          את התוכנית שלך. כדי למחוק בלוק, גרור אותו אל פח האשפה שבפינה.
       10:
-        image: "notes/hoc1_10.jpg"
-        text: 'כל בלוק הוא הוראה אחת. אם תגרור בלוק "התקדם" אל סביבת העבודה שלך ותלחץ על "הפעל תוכנית", הציפור תנוע צעד אחד על המבוך.'
+        image: notes/hoc1_10.jpg
+        text: כל בלוק הוא הוראה אחת. אם תגרור בלוק "התקדם" אל סביבת העבודה שלך ותלחץ
+          על "הפעל תוכנית", הציפור תנוע צעד אחד על המבוך.
       11:
-        image: "notes/hoc1_11.jpg"
-        text: "כדי לבצע יותר מפעולה אחת, ניתן לגרור בלוקים רבים אל סביבת העבודה שלך ולחבר אותם יחדיו. הציפור תבצע את הפקודות מלמעלה כלפי מטה."
+        image: notes/hoc1_11.jpg
+        text: כדי לבצע יותר מפעולה אחת, ניתן לגרור בלוקים רבים אל סביבת העבודה שלך
+          ולחבר אותם יחדיו. הציפור תבצע את הפקודות מלמעלה כלפי מטה.
       12:
-        image: "notes/hoc1_12.jpg"
-        text: 'אם אתה מפעיל תוכנית ורוצה לתקן אותה ולנסות שוב, לחץ על לחצן "איפוס".'
+        image: notes/hoc1_12.jpg
+        text: אם אתה מפעיל תוכנית ורוצה לתקן אותה ולנסות שוב, לחץ על לחצן "איפוס".
       13:
-        image: "notes/hoc1_13.jpg"
-        text: ". בואו נתפוס את החזירים האלה!"
+        image: notes/hoc1_13.jpg
+        text: . בואו נתפוס את החזירים האלה!
     artist_intro:
       1:
-        image: "notes/stage5_1.jpg"
-        text: "הי, אני ג'וניור! כל צוות מכוניות מירוץ צריך מדעני מחשב כדי לנצח. הם מנתחים נתונים מהמכונית כדי לגרום לה לנסוע מהר יותר."
+        image: notes/stage5_1.jpg
+        text: הי, אני ג'וניור! כל צוות מכוניות מירוץ צריך מדעני מחשב כדי לנצח. הם
+          מנתחים נתונים מהמכונית כדי לגרום לה לנסוע מהר יותר.
       2:
-        image: "notes/stage5_2.jpg"
-        text: "במהלך החידות הבאות תהיה אמן המשרטט קו מאחוריו בכל מקום אליו הוא הולך."
+        image: notes/stage5_2.jpg
+        text: במהלך החידות הבאות תהיה אמן המשרטט קו מאחוריו בכל מקום אליו הוא הולך.
       3:
-        image: "notes/stage5_3.jpg"
-        text: 'בלוק זה אומר "התקדם כ- 100 פיקסלים". פיקסלים הם נקודות ממש זעירות על המסך.'
+        image: notes/stage5_3.jpg
+        text: בלוק זה אומר "התקדם כ- 100 פיקסלים". פיקסלים הם נקודות ממש זעירות על
+          המסך.
       4:
-        image: "notes/stage5_4.jpg"
-        text: 'בלוק זה אומר "פנה ימינה ב- 90 מעלות". האמן שלך יפנה באותה צורה כמו בבלוקי ״פנה״ שבפאזלי המבוך.'
+        image: notes/stage5_4.jpg
+        text: בלוק זה אומר "פנה ימינה ב- 90 מעלות". האמן שלך יפנה באותה צורה כמו בבלוקי
+          ״פנה״ שבפאזלי המבוך.
       5:
-        image: "notes/stage5_5.jpg"
-        text: "לחץ על החץ באחד מבלוקים אלו כדי לשנות את הכמות שבה האמן ינוע קדימה או יפנה. שחק מעט כדי להכיר את בלוקים חדשים אלו."
+        image: notes/stage5_5.jpg
+        text: לחץ על החץ באחד מבלוקים אלו כדי לשנות את הכמות שבה האמן ינוע קדימה או
+          יפנה. שחק מעט כדי להכיר את בלוקים חדשים אלו.
     farmer_intro:
       1:
-        image: "notes/stage9_1.jpg"
-        text: "היי, אני פאולה! בחידות אלו אתה איכר הצריך לשטח את השדה שלו לחלוטין לשם שתילת יבולים."
+        image: notes/stage9_1.jpg
+        text: היי, אני פאולה! בחידות אלו אתה איכר הצריך לשטח את השדה שלו לחלוטין לשם
+          שתילת יבולים.
       2:
-        image: "notes/stage9_2.jpg"
-        text: "עליך לעזור לה להסיר את כל ערמות העפר ולמלא את כל החורים."
+        image: notes/stage9_2.jpg
+        text: עליך לעזור לה להסיר את כל ערמות העפר ולמלא את כל החורים.
       3:
-        image: "notes/stage9_3.jpg"
-        text: "The new blocks remove 1 shovelful of dirt from a pile and fill in 1 shovelful of dirt to a hole."
+        image: notes/stage9_3.jpg
+        text: The new blocks remove 1 shovelful of dirt from a pile and fill in 1
+          shovelful of dirt to a hole.
       4:
-        image: "notes/stage9_4.jpg"
-        text: "הערימות והחורים הם בגדלים שונים, כך שעליך לספר לאיכר בכמה דליים עליו להשתמש."
+        image: notes/stage9_4.jpg
+        text: הערימות והחורים הם בגדלים שונים, כך שעליך לספר לאיכר בכמה דליים עליו
+          להשתמש.
     loop_times:
       1:
-        image: "notes/hoc2_1.jpg"
-        text: ". היי, אני מארק! בואו ללמוד על לולאות. באמצעות לולאות אתה יכול להגיד למחשב לחזור על כל סדרת פעולות שוב ושוב, אלפי או אפילו מיליארדי פעמים."
+        image: notes/hoc2_1.jpg
+        text: . היי, אני מארק! בואו ללמוד על לולאות. באמצעות לולאות אתה יכול להגיד
+          למחשב לחזור על כל סדרת פעולות שוב ושוב, אלפי או אפילו מיליארדי פעמים.
       2:
-        image: "notes/hoc2_2.jpg"
-        text: "בחידה הזו, אנחנו רוצים לגרום לציפור לזוז קדימה 5 מקומות כדי להגיע לחזיר."
+        image: notes/hoc2_2.jpg
+        text: בחידה הזו, אנחנו רוצים לגרום לציפור לזוז קדימה 5 מקומות כדי להגיע לחזיר.
       3:
-        image: "notes/hoc2_3.jpg"
-        text: 'אנחנו יכולים להיעזר בבלוק "חזור" החדש.'
+        image: notes/hoc2_3.jpg
+        text: אנחנו יכולים להיעזר בבלוק "חזור" החדש.
       4:
-        image: "notes/hoc2_4.jpg"
-        text: 'במקום לגרור 5 בלוקי ״התקדם" ...'
+        image: notes/hoc2_4.jpg
+        text: במקום לגרור 5 בלוקי ״התקדם" ...
       5:
-        image: "notes/hoc2_5.jpg"
-        text: 'אנו יכולים למקם את הבלוק "התקדם" בתוך בלוק "חזור", ולכתוב בבלוק מספר שאומר לו כמה פעמים לחזור.'
+        image: notes/hoc2_5.jpg
+        text: אנו יכולים למקם את הבלוק "התקדם" בתוך בלוק "חזור", ולכתוב בבלוק מספר
+          שאומר לו כמה פעמים לחזור.
       6:
-        image: "notes/hoc2_6.jpg"
+        image: notes/hoc2_6.jpg
         text: 'וזה חשוב: אפשר לשים יותר מפקודה אחת בתוך בלוק "חזור".'
       7:
-        image: "notes/hoc2_7.jpg"
-        text: 'תיהנה מבלוק "חזור" החדש שלך!'
+        image: notes/hoc2_7.jpg
+        text: תיהנה מבלוק "חזור" החדש שלך!
     loop_until:
       1:
-        image: "notes/hoc3_1.jpg"
-        text: |-
-          הי, אני כריס. לפני שהצטרפתי לקבוצת המיאמי היט, למדתי מדעי המחשב במכללת ג'ורג'יה טק. בואו ננסה בלוק חדש, בלוק "חזור עד".
+        image: notes/hoc3_1.jpg
+        text: הי, אני כריס. לפני שהצטרפתי לקבוצת המיאמי היט, למדתי מדעי המחשב במכללת
+          ג'ורג'יה טק. בואו ננסה בלוק חדש, בלוק "חזור עד".
       2:
-        image: "notes/hoc3_2.jpg"
-        text: "מה אם אנחנו לא יודעים כמה רחוק הציפור צריכה לעבור כדי להגיע לחזיר?"
+        image: notes/hoc3_2.jpg
+        text: מה אם אנחנו לא יודעים כמה רחוק הציפור צריכה לעבור כדי להגיע לחזיר?
       3:
-        image: "notes/hoc3_3.jpg"
-        text: 'אם נשים בלוק "התקדם" בתוך הבלוק "חזור עד", הציפור תזוז קדימה עד שתגיע אל החזיר (או שתתרסק לתוך קיר).'
+        image: notes/hoc3_3.jpg
+        text: אם נשים בלוק "התקדם" בתוך הבלוק "חזור עד", הציפור תזוז קדימה עד שתגיע
+          אל החזיר (או שתתרסק לתוך קיר).
       4:
-        image: "notes/hoc3_4.jpg"
-        text: 'וזה חשוב: בדיוק כמו מקודם, אנחנו יכולים לשים מספר בלוקים בתוך הבלוק "חזור עד", כך שכולם יתבצעו שוב ושוב.'
+        image: notes/hoc3_4.jpg
+        text: 'וזה חשוב: בדיוק כמו מקודם, אנחנו יכולים לשים מספר בלוקים בתוך הבלוק
+          "חזור עד", כך שכולם יתבצעו שוב ושוב.'
     if:
       1:
-        image: "notes/hoc4_1.jpg"
-        text: 'הי, אני ביל! בואו ונלמד מושג יסוד חדש: הצהרות "אם". כך מחשבים מקבלים החלטות.'
+        image: notes/hoc4_1.jpg
+        text: 'הי, אני ביל! בואו ונלמד מושג יסוד חדש: הצהרות "אם". כך מחשבים מקבלים
+          החלטות.'
       2:
-        image: "notes/hoc4_2.jpg"
-        text: "אתה משתמש במשפטי ״אם״ יום יום בעצמך. לפני שאתה יוצא החוצה בכל בוקר, אתה אומר - אם יורד גשם בחוץ, אני צריך ללבוש מעיל."
+        image: notes/hoc4_2.jpg
+        text: אתה משתמש במשפטי ״אם״ יום יום בעצמך. לפני שאתה יוצא החוצה בכל בוקר,
+          אתה אומר - אם יורד גשם בחוץ, אני צריך ללבוש מעיל.
       3:
-        image: "notes/hoc4_3.jpg"
-        text: "אנחנו יכולים להגיד לזומבי לבדוק אם יש שביל שמאלה, ואם אכן הוא ימצא נתיב לשמאל, נוכל לגרום לו להסתובב לכיוון זה."
+        image: notes/hoc4_3.jpg
+        text: אנחנו יכולים להגיד לזומבי לבדוק אם יש שביל שמאלה, ואם אכן הוא ימצא נתיב
+          לשמאל, נוכל לגרום לו להסתובב לכיוון זה.
       4:
-        image: "notes/hoc4_4.jpg"
-        text: 'כדי לכתוב את הקוד לזה, בואו נגרור בלוק "אם" ונשים בלוק "פנה שמאלה" בתוכו.'
+        image: notes/hoc4_4.jpg
+        text: כדי לכתוב את הקוד לזה, בואו נגרור בלוק "אם" ונשים בלוק "פנה שמאלה" בתוכו.
       5:
-        image: "notes/hoc4_5.jpg"
-        text: 'עכשיו, אם נשים בלוק "התקדם" מעליו ובלוק "חזור" סביב הכל, בכל פעם שהזומבי זז, הוא יבדוק אם ישנו שביל שמאלה ויפנה אליו. הפקודה "חזור" היא קריטית, כדי לבדוק בכל צעד האם ניתן לפנות.'
+        image: notes/hoc4_5.jpg
+        text: עכשיו, אם נשים בלוק "התקדם" מעליו ובלוק "חזור" סביב הכל, בכל פעם שהזומבי
+          זז, הוא יבדוק אם ישנו שביל שמאלה ויפנה אליו. הפקודה "חזור" היא קריטית, כדי
+          לבדוק בכל צעד האם ניתן לפנות.
       6:
-        image: "notes/hoc4_6.jpg"
-        text: "הצהרות ״אם״ מאד חשובות במדעי המחשב. אחת התוכניות הראשונות שכתבתי היתה משחק איקס-עיגול, והיה בה משפט ״אם״ שאמר - אם השחקן האחר עומד לנצח, חסום את המקום שמאפשר לו לנצח."
+        image: notes/hoc4_6.jpg
+        text: הצהרות ״אם״ מאד חשובות במדעי המחשב. אחת התוכניות הראשונות שכתבתי היתה
+          משחק איקס-עיגול, והיה בה משפט ״אם״ שאמר - אם השחקן האחר עומד לנצח, חסום
+          את המקום שמאפשר לו לנצח.
       7:
-        image: "notes/hoc4_7.jpg"
-        text: 'תהנה בשימוש בבלוק "אם"!'
+        image: notes/hoc4_7.jpg
+        text: תהנה בשימוש בבלוק "אם"!
     if_else:
       1:
-        image: "notes/hoc5_1.jpg"
-        text: 'הי, שמי סלוני. אני משתמשת במדעי המחשב כדי לפתור בעיות בריאות ורפואה. בואו נלמד על בלוק ״אם-אחרת". הוא נראה דומה לבלוק "אם", אבל בסופו יש חלק נוסף האומר "אחרת".'
+        image: notes/hoc5_1.jpg
+        text: הי, שמי סלוני. אני משתמשת במדעי המחשב כדי לפתור בעיות בריאות ורפואה.
+          בואו נלמד על בלוק ״אם-אחרת". הוא נראה דומה לבלוק "אם", אבל בסופו יש חלק
+          נוסף האומר "אחרת".
       2:
-        image: "notes/hoc5_2.jpg"
-        text: 'אם אשים בלוק "התקדם" היכן שכתוב "עשה", ובלוק "פנה שמאלה" היכן שכתוב "אחרת", הזומבי יבחר בין שתי אפשרויות. אם קיימת דרך לפנים, הזומבי יתקדם הלאה, אחרת (אין דרך לפנים), הזומבי יפנה שמאלה.'
+        image: notes/hoc5_2.jpg
+        text: אם אשים בלוק "התקדם" היכן שכתוב "עשה", ובלוק "פנה שמאלה" היכן שכתוב
+          "אחרת", הזומבי יבחר בין שתי אפשרויות. אם קיימת דרך לפנים, הזומבי יתקדם הלאה,
+          אחרת (אין דרך לפנים), הזומבי יפנה שמאלה.
       3:
-        image: "notes/hoc5_3.jpg"
-        text: 'בדיוק כמו בבלוק "אם", נוכל לשים בלוקי ״אם-אחרת" בתוך בלוקי "חזור",  כך שהזומבי יצעד ובלוק ה- "אם-אחרת" ימשיך לבדוק אם יש מקום בו ניתן לפנות.'
+        image: notes/hoc5_3.jpg
+        text: בדיוק כמו בבלוק "אם", נוכל לשים בלוקי ״אם-אחרת" בתוך בלוקי "חזור",  כך
+          שהזומבי יצעד ובלוק ה- "אם-אחרת" ימשיך לבדוק אם יש מקום בו ניתן לפנות.
       4:
-        image: "notes/hoc5_4.jpg"
-        text: "עכשיו, הצעידו את הזומבים למקום אליו הם שייכים!"
+        image: notes/hoc5_4.jpg
+        text: עכשיו, הצעידו את הזומבים למקום אליו הם שייכים!
     function:
       1:
-        image: "notes/stage13_1.jpg"
-        text: "הי, שמי ברינה, מהנדסת באינסטגרם. פונקציה היא קבוצת שורות קוד שברצוננו להשתמש בהן שוב ושוב, כך שבמקום לכתוב את הקוד מחדש בכל פעם, נוכל להשתמש בבלוק אחד בלבד."
+        image: notes/stage13_1.jpg
+        text: הי, שמי ברינה, מהנדסת באינסטגרם. פונקציה היא קבוצת שורות קוד שברצוננו
+          להשתמש בהן שוב ושוב, כך שבמקום לכתוב את הקוד מחדש בכל פעם, נוכל להשתמש בבלוק
+          אחד בלבד.
       2:
-        image: "notes/stage13_2.jpg"
-        text: "כעת נלמד איך להגדיר פונקציות. להגדרות פונקציה יש כוכב בפינה. שמה של הפונקציה כתוב בשורה העליונה."
+        image: notes/stage13_2.jpg
+        text: כעת נלמד איך להגדיר פונקציות. להגדרות פונקציה יש כוכב בפינה. שמה של
+          הפונקציה כתוב בשורה העליונה.
       3:
-        image: "notes/stage13_3.jpg"
-        text: |-
-          The blocks that go inside the definition tell us what it does. So this function definition is called "fill 5" and it's made up of a "repeat" block and a "fill" block.
+        image: notes/stage13_3.jpg
+        text: The blocks that go inside the definition tell us what it does. So this
+          function definition is called "fill 5" and it's made up of a "repeat" block
+          and a "fill" block.
       4:
-        image: "notes/stage13_4.jpg"
-        text: |-
-          The definition sits on the workspace, but our farmer won't run the function until we drag out our "fill 5" function block from functions category.
+        image: notes/stage13_4.jpg
+        text: The definition sits on the workspace, but our farmer won't run the function
+          until we drag out our "fill 5" function block from functions category.
       5:
-        image: "notes/stage13_5.jpg"
-        text: "פונקציות הן כיף!"
+        image: notes/stage13_5.jpg
+        text: פונקציות הן כיף!
     loop_while:
       1:
-        image: "notes/stage9_5.jpg"
-        text: |-
-          Hi, I'm Makinde! Let's learn about the "while block."
+        image: notes/stage9_5.jpg
+        text: Hi, I'm Makinde! Let's learn about the "while block."
       2:
-        image: "notes/stage9_6.jpg"
-        text: 'בלוק ה״כל עוד" יבצע את מה שהכנסתם לתוכו כל עוד ההצהרה הרשומה בראשו הינה אמת.'
+        image: notes/stage9_6.jpg
+        text: בלוק ה״כל עוד" יבצע את מה שהכנסתם לתוכו כל עוד ההצהרה הרשומה בראשו הינה
+          אמת.
       3:
-        image: "notes/stage9_7.jpg"
-        text: "For example, if the farmer is standing on a pile, she will continue to remove 1 shovelful WHILE there is still a pile beneath her."
+        image: notes/stage9_7.jpg
+        text: For example, if the farmer is standing on a pile, she will continue
+          to remove 1 shovelful WHILE there is still a pile beneath her.
     loop_for:
       1:
-        image: "notes/stage11_1.jpg"
-        text: "הי, אני טרינה ואני עובדת עבור פיקסאר. עבדתי במספר סרטים וביניהם שרק."
+        image: notes/stage11_1.jpg
+        text: הי, אני טרינה ואני עובדת עבור פיקסאר. עבדתי במספר סרטים וביניהם שרק.
       2:
-        image: "notes/stage11_2.jpg"
-        text: 'זוהי לולאת ה-"מונה" החדשה שלנו. היא תבצע פעולות שוב ושוב, כך שבאפשרותך לשנות אותן מעט בכל פעם.'
+        image: notes/stage11_2.jpg
+        text: זוהי לולאת ה-"מונה" החדשה שלנו. היא תבצע פעולות שוב ושוב, כך שבאפשרותך
+          לשנות אותן מעט בכל פעם.
       3:
-        image: "notes/stage11_3.jpg"
-        text: 'בדוגמה זו, לולאת ה-"מונה" שלנו אומרת ״מנה מ-50 עד 90 בצעדים של 10", ובתוכה ימצא בלוק "צייר ריבוע". גרור את בלוק ה-״מונה" מאיזור ה-"משתנים" אל מקום ה- "אורך".'
+        image: notes/stage11_3.jpg
+        text: בדוגמה זו, לולאת ה-"מונה" שלנו אומרת ״מנה מ-50 עד 90 בצעדים של 10",
+          ובתוכה ימצא בלוק "צייר ריבוע". גרור את בלוק ה-״מונה" מאיזור ה-"משתנים" אל
+          מקום ה- "אורך".
       4:
-        image: "notes/stage11_4.jpg"
-        text: "This means our artist is going to draw a square that has 50 pixel length sides, then it will add 10 to that and draw a square with 60 pixel length sides. Then it will keep adding 10 and drawing squares until it reaches 90. So we'll have squares of 50, 60, 70, 80, and 90."
+        image: notes/stage11_4.jpg
+        text: This means our artist is going to draw a square that has 50 pixel length
+          sides, then it will add 10 to that and draw a square with 60 pixel length
+          sides. Then it will keep adding 10 and drawing squares until it reaches
+          90. So we'll have squares of 50, 60, 70, 80, and 90.
     parameters:
       1:
-        image: "notes/stage15_1.jpg"
-        text: ". היי, אני ג'אנט, אני מהנדסת ב-זינגה."
+        image: notes/stage15_1.jpg
+        text: . היי, אני ג'אנט, אני מהנדסת ב-זינגה.
       2:
-        image: "notes/stage15_2.jpg"
-        text: "What if we want to draw a bunch of triangles and have their lengths be different sizes?"
+        image: notes/stage15_2.jpg
+        text: What if we want to draw a bunch of triangles and have their lengths
+          be different sizes?
       3:
-        image: "notes/stage15_3.jpg"
-        text: "We could write all that code out by hand or we can use a function with parameters."
+        image: notes/stage15_3.jpg
+        text: We could write all that code out by hand or we can use a function with
+          parameters.
       4:
-        image: "notes/stage15_4.jpg"
-        text: 'To do this, click the blue star on the "draw a triangle" function definition. Then drag "input name" into the "input" block.'
+        image: notes/stage15_4.jpg
+        text: To do this, click the blue star on the "draw a triangle" function definition.
+          Then drag "input name" into the "input" block.
       5:
-        image: "notes/stage15_5.jpg"
-        text: |-
-          Then if you write "length" in the spot where it says "x" and press "Enter" you'll create a length input for your function.
+        image: notes/stage15_5.jpg
+        text: Then if you write "length" in the spot where it says "x" and press "Enter"
+          you'll create a length input for your function.
       6:
-        image: "notes/stage15_6.jpg"
-        text: 'Then click on the star. Now, you want to click on the variables category and drag the "length" block into the "move forward" block of your function definition. And drag away the old number block.'
+        image: notes/stage15_6.jpg
+        text: Then click on the star. Now, you want to click on the variables category
+          and drag the "length" block into the "move forward" block of your function
+          definition. And drag away the old number block.
       7:
-        image: "notes/stage15_7.jpg"
-        text: 'To use your function with parameters, click on the functions category and drag out your "draw a triangle with length" function.'
+        image: notes/stage15_7.jpg
+        text: To use your function with parameters, click on the functions category
+          and drag out your "draw a triangle with length" function.
       8:
-        image: "notes/stage15_8.jpg"
-        text: "Now you can use the math block to input different numbers to draw triangles of different sizes."
+        image: notes/stage15_8.jpg
+        text: Now you can use the math block to input different numbers to draw triangles
+          of different sizes.
     hoc_wrapup:
       1:
-        image: "notes/hoc6_1.jpg"
-        text: "מזל טוב! עם הפאזל האחרון שפתרת, כתבת קוד שיכול לומר לכל רובוט (בין אם זה זומבי, ציפור, מארס-רובר או אפילו מכונית שנוהגת מעצמה) איך למצוא את הדרך מבוך או מנהרה באורך כלשהו, ."
+        image: notes/hoc6_1.jpg
+        text: מזל טוב! עם הפאזל האחרון שפתרת, כתבת קוד שיכול לומר לכל רובוט (בין אם
+          זה זומבי, ציפור, מארס-רובר או אפילו מכונית שנוהגת מעצמה) איך למצוא את הדרך
+          מבוך או מנהרה באורך כלשהו, .
       2:
-        image: "notes/hoc6_2.jpg"
-        text: "המושגים הבסיסיים בהם השתמשת הם בליבה של כל תוכנית או אפליקציה שאי פעם תנסה. למדנו על לולאות ״חזור״, הצהרות ״חזור-עד״,  הצהרות ״אם״ והצהרות ״אם-אחרת״."
+        image: notes/hoc6_2.jpg
+        text: המושגים הבסיסיים בהם השתמשת הם בליבה של כל תוכנית או אפליקציה שאי פעם
+          תנסה. למדנו על לולאות ״חזור״, הצהרות ״חזור-עד״,  הצהרות ״אם״ והצהרות ״אם-אחרת״.
       3:
-        image: "notes/hoc6_3.jpg"
-        text: "אם אהבת את השעה הראשונה של קוד שלך, בקר ב- code.org כדי להמשיך בלימוד מדעי המחשב! לאחר השלמת הקורס בן 20 השעות שלנו, תשלוט ביסודות התכנות, ותוכל ללמוד כיצד לכתוב אפליקציות לטלפון, הוראות הפעלה לרובוט, משחקים ומה שתרצה."
+        image: notes/hoc6_3.jpg
+        text: אם אהבת את השעה הראשונה של קוד שלך, בקר ב- code.org כדי להמשיך בלימוד
+          מדעי המחשב! לאחר השלמת הקורס בן 20 השעות שלנו, תשלוט ביסודות התכנות, ותוכל
+          ללמוד כיצד לכתוב אפליקציות לטלפון, הוראות הפעלה לרובוט, משחקים ומה שתרצה.
       4:
-        image: "notes/hoc6_4.jpg"
-        text: "הטכנולוגיה משנה את כל מה שאנו עושים ולא משנה אם אתה צעיר או זקן: תכנות זה כיף, זה יצירתי וכל אחד יכול ללמוד!"
+        image: notes/hoc6_4.jpg
+        text: 'הטכנולוגיה משנה את כל מה שאנו עושים ולא משנה אם אתה צעיר או זקן: תכנות
+          זה כיף, זה יצירתי וכל אחד יכול ללמוד!'
     20_wrapup:
       1:
-        image: "notes/bird.png"
-        text: "הצגת הערות תגיע בקרוב!"
+        image: notes/bird.png
+        text: הצגת הערות תגיע בקרוב!
