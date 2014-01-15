@@ -65,7 +65,7 @@ namespace :deploy do
     run "ln -nfs #{shared_path}/config/application.yml #{release_path}/config/application.yml"
   end
   after "deploy:finalize_update", "deploy:upload_secrets"
-  after "deploy:finalize_update", "deploy:blockly"
+  after "deploy:update_code", "deploy:blockly"
 
   task :setup_secrets do
     run "mkdir -p #{shared_path}/config"
