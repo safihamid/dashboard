@@ -28,13 +28,13 @@ namespace :deploy do
     rake = fetch(:rake, 'rake')
     rails_env = fetch(:rails_env, 'development')
 
-    tar_ball = "#{release_path}/public/blockly/blockly-mooc.tgz"
+    tar_ball = "#{release_path}/public/blockly/blockly-mooc-v0.0.158.tgz"
 
     run "mkdir -p #{release_path}/public/blockly"
-    top.upload(File.expand_path("#{blockly}/dist/blockly-mooc.tgz"), tar_ball)
+    top.upload(File.expand_path("#{blockly}/dist/blockly-mooc-v0.0.158.tgz"), tar_ball)
     run "chmod +x #{tar_ball}"
     run "tar -xvf #{tar_ball} && mv /home/#{user}/package/* #{release_path}/public/blockly/"
-    run "rm #{release_path}/public/blockly/blockly-mooc.tgz"
+    run "rm #{release_path}/public/blockly/blockly-mooc-v0.0.158.tgz"
     run "cd '#{current_path}' && #{rake} pseudolocalize RAILS_ENV=#{rails_env}"
   end
 
