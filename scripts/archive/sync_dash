@@ -25,7 +25,7 @@ there_can_be_only_one_pid("sync_dash")
 
 DIR = '/mnt/backups/'
 
-servers = [5,6,7,8,9,13].map {|i| "dash#{i}" }
+servers = [29,30,31,32,33,34].map {|i| "dash#{i}" }
 servers.each do |m|
   `rsync -avz -e "ssh -i /home/ubuntu/.ssh/production-code-org.pem" #{m}.code.org:/home/ubuntu/apps/dashboard/shared/log/*.gz #{DIR}#{m}/log`
 
