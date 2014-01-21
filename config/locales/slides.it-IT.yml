@@ -2,235 +2,318 @@
   slides:
     maze_intro:
       1:
-        image: "notes/hoc1_1.jpg"
-        text: "Benvenuti alla vostra prima ora di programmazione! Tuffiamoci subito in un tuo primo assaggio della programmazione."
+        image: notes/hoc1_1.jpg
+        text: Benvenuti alla vostra prima ora di programmazione! Tuffiamoci subito
+          in un tuo primo assaggio della programmazione.
       2:
-        image: "notes/hoc1_2.jpg"
-        text: "Useremo il Blockly, un linguaggio di programmazione visivo dove trascini e rilasci i blocchi per scrivere codice."
+        image: notes/hoc1_2.jpg
+        text: Useremo il Blockly, un linguaggio di programmazione visivo dove trascini
+          e rilasci i blocchi per scrivere codice.
       3:
-        image: "notes/hoc1_3.jpg"
-        text: 'Gran parte del codice è digitato, ma Blockly è visivo. Ciascun blocchi corrisponde ad una riga di codice "reale".'
+        image: notes/hoc1_3.jpg
+        text: Gran parte del codice è digitato, ma Blockly è visivo. Ciascun blocchi
+          corrisponde ad una riga di codice "reale".
       4:
-        image: "notes/hoc1_4.jpg"
-        text: "Imparerai i fondamenti dell'informatica, concetti che sono utilizzati per creare app e controllare il rover marziano."
+        image: notes/hoc1_4.jpg
+        text: Imparerai i fondamenti dell'informatica, concetti che sono utilizzati
+          per creare app e controllare il rover marziano.
       5:
-        image: "notes/hoc1_5.jpg"
-        text: "Un programma è un insieme di istruzioni per il tuo computer da seguire."
+        image: notes/hoc1_5.jpg
+        text: Un programma è un insieme di istruzioni per il tuo computer da seguire.
       6:
-        image: "notes/hoc1_6.jpg"
-        text: "L'obiettivo del tuo primo programma è quello di ottenere un Uccello Arrabbiato attraverso un labirinto per colpire un maiale verde."
+        image: notes/hoc1_6.jpg
+        text: L'obiettivo del tuo primo programma è quello di ottenere un Uccello
+          Arrabbiato attraverso un labirinto per colpire un maiale verde.
       7:
-        image: "notes/hoc1_7.jpg"
-        text: "Il lato sinistro è il labirinto nel quale viene eseguito il tuo programma. Le istruzioni per ciascun puzzle sono al di sotto del labirinto."
+        image: notes/hoc1_7.jpg
+        text: Il lato sinistro è il labirinto nel quale viene eseguito il tuo programma.
+          Le istruzioni per ciascun puzzle sono al di sotto del labirinto.
       8:
-        image: "notes/hoc1_8.jpg"
-        text: "La casella degli strumenti in mezzo ha i comandi per l'uccello arrabbiato. Li Userai per costruire il tuo codice."
+        image: notes/hoc1_8.jpg
+        text: La casella degli strumenti in mezzo ha i comandi per l'uccello arrabbiato.
+          Li Userai per costruire il tuo codice.
       9:
-        image: "notes/hoc1_9.jpg"
-        text: "Sulla destra è la tua area di lavoro dove trascinerai bloochi dalla casella degli strumenti per costruire il tuo programma. Per eliminare un blocco, trascinarlo nel cestino nell'angolo."
+        image: notes/hoc1_9.jpg
+        text: Sulla destra è la tua area di lavoro dove trascinerai bloochi dalla
+          casella degli strumenti per costruire il tuo programma. Per eliminare un
+          blocco, trascinarlo nel cestino nell'angolo.
       10:
-        image: "notes/hoc1_10.jpg"
-        text: |-
-          Ciascun blocco è un istruzione. Se trascini un blocco "andare avanti" nell'area di lavoro e premi "Esegui programma", l'uccello si muove uno spazio sul labirinto.
+        image: notes/hoc1_10.jpg
+        text: Ciascun blocco è un istruzione. Se trascini un blocco "andare avanti"
+          nell'area di lavoro e premi "Esegui programma", l'uccello si muove uno spazio
+          sul labirinto.
       11:
-        image: "notes/hoc1_11.jpg"
-        text: "Per fare più di una azione, è possibile trascinare molti blocco nell'area di lavoro e collegarli insieme. L'uccello farà i comandi dall'alto verso il basso."
+        image: notes/hoc1_11.jpg
+        text: Per fare più di una azione, è possibile trascinare molti blocco nell'area
+          di lavoro e collegarli insieme. L'uccello farà i comandi dall'alto verso
+          il basso.
       12:
-        image: "notes/hoc1_12.jpg"
-        text: 'Se esegui un programma e vuoi risolverlo e provare di nuovo, premere il pulsante "Reimposta".'
+        image: notes/hoc1_12.jpg
+        text: Se esegui un programma e vuoi risolverlo e provare di nuovo, premere
+          il pulsante "Reimposta".
       13:
-        image: "notes/hoc1_13.jpg"
-        text: "Andiamo a prendere quei maiali!"
+        image: notes/hoc1_13.jpg
+        text: Andiamo a prendere quei maiali!
     artist_intro:
       1:
-        image: "notes/stage5_1.jpg"
-        text: "Ciao, sono JR! Ogni squadra di auto corsa ha bisogno degli informatici per vincere. Analizzano i dati dalla macchina per farlo andare più velocemente."
+        image: notes/stage5_1.jpg
+        text: Ciao, sono JR! Ogni squadra di auto corsa ha bisogno degli informatici
+          per vincere. Analizzano i dati dalla macchina per farlo andare più velocemente.
       2:
-        image: "notes/stage5_2.jpg"
-        text: "In questi puzzle, sarai un artista che disegna una linea dietro di loro ovunque che vadano."
+        image: notes/stage5_2.jpg
+        text: In questi puzzle, sarai un artista che disegna una linea dietro di loro
+          ovunque che vadano.
       3:
-        image: "notes/stage5_3.jpg"
-        text: 'Questo blocco dice "andare avanti di 100 pixel". I pixel sono minuscoli puntini sul tuo schermo.'
+        image: notes/stage5_3.jpg
+        text: Questo blocco dice "andare avanti di 100 pixel". I pixel sono minuscoli
+          puntini sul tuo schermo.
       4:
-        image: "notes/stage5_4.jpg"
-        text: 'Questo blocco dice "girare a destra di 90 gradi". Questo trasformerà il vostro artista della stessa quantità come il blocco "gira" nel puzzle di labirinto.'
+        image: notes/stage5_4.jpg
+        text: Questo blocco dice "girare a destra di 90 gradi". Questo trasformerà
+          il vostro artista della stessa quantità come il blocco "gira" nel puzzle
+          di labirinto.
       5:
-        image: "notes/stage5_5.jpg"
-        text: "Fare clic sulla freccia in uno di questi blocchi, per cambiare la quantità dello spostamento in Avanti, o lo svoltamento dell'artista. Giocare per prendere confidenza con questi nuovi blocchi."
+        image: notes/stage5_5.jpg
+        text: Fare clic sulla freccia in uno di questi blocchi, per cambiare la quantità
+          dello spostamento in Avanti, o lo svoltamento dell'artista. Giocare per
+          prendere confidenza con questi nuovi blocchi.
     farmer_intro:
       1:
-        image: "notes/stage9_1.jpg"
-        text: "Ciao, sono Paola! In questi puzzle, sei un agricoltore che deve mettere il suo campo completamente piatto per iniziare l'impianto delle colture."
+        image: notes/stage9_1.jpg
+        text: Ciao, sono Paola! In questi puzzle, sei un agricoltore che deve mettere
+          il suo campo completamente piatto per iniziare l'impianto delle colture.
       2:
-        image: "notes/stage9_2.jpg"
-        text: "Devi aiutarla a rimuovere tutti i mucchi di sporcizia e riempire tutti i buchi."
+        image: notes/stage9_2.jpg
+        text: Devi aiutarla a rimuovere tutti i mucchi di sporcizia e riempire tutti
+          i buchi.
       3:
-        image: "notes/stage9_3.jpg"
-        text: "The new blocks remove 1 shovelful of dirt from a pile and fill in 1 shovelful of dirt to a hole."
+        image: notes/stage9_3.jpg
+        text: The new blocks remove 1 shovelful of dirt from a pile and fill in 1
+          shovelful of dirt to a hole.
       4:
-        image: "notes/stage9_4.jpg"
-        text: "I mucchi e i fori sono di diemensioni differenti, quindi devi dire l'agricoltore quante badilate deve  utilizzare."
+        image: notes/stage9_4.jpg
+        text: I mucchi e i fori sono di diemensioni differenti, quindi devi dire l'agricoltore
+          quante badilate deve  utilizzare.
     loop_times:
       1:
-        image: "notes/hoc2_1.jpg"
-        text: "Ciao, sono Mark! Impariamo dei cicli. Utilizzando i cicli puoi dire a un computer di ripetere qualsiasi serie di azioni più e più volte, migliaia o addirittura miliardi di volte."
+        image: notes/hoc2_1.jpg
+        text: Ciao, sono Mark! Impariamo dei cicli. Utilizzando i cicli puoi dire
+          a un computer di ripetere qualsiasi serie di azioni più e più volte, migliaia
+          o addirittura miliardi di volte.
       2:
-        image: "notes/hoc2_2.jpg"
-        text: "In questo puzzle, vogliamo fare in mdo che l'uccello si sposti avanti 5 spazi per raggiungere il maiale."
+        image: notes/hoc2_2.jpg
+        text: In questo puzzle, vogliamo fare in mdo che l'uccello si sposti avanti
+          5 spazi per raggiungere il maiale.
       3:
-        image: "notes/hoc2_3.jpg"
-        text: 'Possiamo usare il nuovo blocco "Ripeti" per aiutarci.'
+        image: notes/hoc2_3.jpg
+        text: Possiamo usare il nuovo blocco "Ripeti" per aiutarci.
       4:
-        image: "notes/hoc2_4.jpg"
-        text: 'Invece di trascinare fuori 5 blocchi "andare avanti" ...'
+        image: notes/hoc2_4.jpg
+        text: Invece di trascinare fuori 5 blocchi "andare avanti" ...
       5:
-        image: "notes/hoc2_5.jpg"
-        text: |-
-          Possiamo mettere il blocco "andare avanti" all'interno del blocco "ripetizione" e scrivere un numero nel blocco per dirlo quante volte ripetere.
+        image: notes/hoc2_5.jpg
+        text: Possiamo mettere il blocco "andare avanti" all'interno del blocco "ripetizione"
+          e scrivere un numero nel blocco per dirlo quante volte ripetere.
       6:
-        image: "notes/hoc2_6.jpg"
-        text: |-
-          E questo è importante: è possibile inserire più di un comando all'interno di un blocco "ripetizione".
+        image: notes/hoc2_6.jpg
+        text: 'E questo è importante: è possibile inserire più di un comando all''interno
+          di un blocco "ripetizione".'
       7:
-        image: "notes/hoc2_7.jpg"
-        text: 'Divertiti usando il nuovo blocco "ripetere"!'
+        image: notes/hoc2_7.jpg
+        text: Divertiti usando il nuovo blocco "ripetere"!
     loop_until:
       1:
-        image: "notes/hoc3_1.jpg"
-        text: 'Ciao, sono Chris. Prima di entrare al Miami Heat, sono andato al Georgia Tech a studiare Informatica. Proviamo il nostro nuovo blocco, il blocco "ripetere fino a".'
+        image: notes/hoc3_1.jpg
+        text: Ciao, sono Chris. Prima di entrare al Miami Heat, sono andato al Georgia
+          Tech a studiare Informatica. Proviamo il nostro nuovo blocco, il blocco
+          "ripetere fino a".
       2:
-        image: "notes/hoc3_2.jpg"
-        text: "Cosa succede se non sapevamo quanto l'uccello a dovuto spostarsi per raggiungere il maiale?"
+        image: notes/hoc3_2.jpg
+        text: Cosa succede se non sapevamo quanto l'uccello a dovuto spostarsi per
+          raggiungere il maiale?
       3:
-        image: "notes/hoc3_3.jpg"
-        text: |-
-          Se mettiamo un blocco "andare avanti" all'interno del blocco "ripetizione fino a", l'uccello si sposta in avanti FINO A che raggiunge il maiale (o si schianta contro un muro).
+        image: notes/hoc3_3.jpg
+        text: Se mettiamo un blocco "andare avanti" all'interno del blocco "ripetizione
+          fino a", l'uccello si sposta in avanti FINO A che raggiunge il maiale (o
+          si schianta contro un muro).
       4:
-        image: "notes/hoc3_4.jpg"
-        text: |-
-          E questo è importante: proprio come prima, possiamo mettere più blocchi all'interno del blocco "ripetere fino al", ed essi saranno tutti essere ripetuto.
+        image: notes/hoc3_4.jpg
+        text: 'E questo è importante: proprio come prima, possiamo mettere più blocchi
+          all''interno del blocco "ripetere fino al", ed essi saranno tutti essere
+          ripetuto.'
     if:
       1:
-        image: "notes/hoc4_1.jpg"
-        text: 'Ciao, sono Bill! Impariamo un nuovo concetto fondamentale: istruzioni "If". Questo è come i computer prendono decisioni.'
+        image: notes/hoc4_1.jpg
+        text: 'Ciao, sono Bill! Impariamo un nuovo concetto fondamentale: istruzioni
+          "If". Questo è come i computer prendono decisioni.'
       2:
-        image: "notes/hoc4_2.jpg"
-        text: 'Tu stesso usi istruzioni "If" ogni giorno. Prima di andare fuori al mattino, dici SE fuori piove, ho bisogno di indossare la mia giacca.'
+        image: notes/hoc4_2.jpg
+        text: Tu stesso usi istruzioni "If" ogni giorno. Prima di andare fuori al
+          mattino, dici SE fuori piove, ho bisogno di indossare la mia giacca.
       3:
-        image: "notes/hoc4_3.jpg"
-        text: "Possiamo dire al zombie di verificare se c'è un sentiero a sinistra, e se trova un sentiero a sinistra, possiamo farlo girare in quella direzione."
+        image: notes/hoc4_3.jpg
+        text: Possiamo dire al zombie di verificare se c'è un sentiero a sinistra,
+          e se trova un sentiero a sinistra, possiamo farlo girare in quella direzione.
       4:
-        image: "notes/hoc4_4.jpg"
-        text: |-
-          Per scrivere il codice per questo, trasciniamo fuori il nostro blocco "se" e mettiamo un blocco "gira a sinistra" all'interno di esso.
+        image: notes/hoc4_4.jpg
+        text: Per scrivere il codice per questo, trasciniamo fuori il nostro blocco
+          "se" e mettiamo un blocco "gira a sinistra" all'interno di esso.
       5:
-        image: "notes/hoc4_5.jpg"
-        text: |-
-          Ora, se mettiamo un blocco "andare avanti" al di sopra di esso e un blocco "ripetizione" intorno a tutto, ogni volta che lo zombie si muove, controllerà se c'è un sentiero a sinistra e girerà. Il comando "repeat" è fondamentale, per verificare una curva ad ogni passo.
+        image: notes/hoc4_5.jpg
+        text: Ora, se mettiamo un blocco "andare avanti" al di sopra di esso e un
+          blocco "ripetizione" intorno a tutto, ogni volta che lo zombie si muove,
+          controllerà se c'è un sentiero a sinistra e girerà. Il comando "repeat"
+          è fondamentale, per verificare una curva ad ogni passo.
       6:
-        image: "notes/hoc4_6.jpg"
-        text: "Le dichiarazioni se sono davvero importanti in informatica. Uno dei primi programmi che ho scritto era un gioco di tic-tac-toe, e c'era una dichiarazione se che diceva se l'altra persona sta per vincere, bloccare il posto che consente loro di vincere."
+        image: notes/hoc4_6.jpg
+        text: Le dichiarazioni se sono davvero importanti in informatica. Uno dei
+          primi programmi che ho scritto era un gioco di tic-tac-toe, e c'era una
+          dichiarazione se che diceva se l'altra persona sta per vincere, bloccare
+          il posto che consente loro di vincere.
       7:
-        image: "notes/hoc4_7.jpg"
-        text: 'Divertiti utilizzando il blocco "se"!'
+        image: notes/hoc4_7.jpg
+        text: Divertiti utilizzando il blocco "se"!
     if_else:
       1:
-        image: "notes/hoc5_1.jpg"
-        text: |-
-          Ciao, mi chiamo Saloni. Uso l'informatica per aiutare a risolvere i problemi nella salute e in medicina. Impariamo riguardo il blocco "se atrimenti". Sembra che il blocco "se", ma ha una parte supplementare alla fine che dice "altrimenti".
+        image: notes/hoc5_1.jpg
+        text: Ciao, mi chiamo Saloni. Uso l'informatica per aiutare a risolvere i
+          problemi nella salute e in medicina. Impariamo riguardo il blocco "se atrimenti".
+          Sembra che il blocco "se", ma ha una parte supplementare alla fine che dice
+          "altrimenti".
       2:
-        image: "notes/hoc5_2.jpg"
-        text: |-
-          Se metto un blocco "andare avanti" nel posto dove dice "fare" e un blocco "sinistra" dove dice "altrimenti" ciò significa che lo zombie sceglierà tra 2 opzioni. SE c'è un percorso avanti, lo zombie si muoverà in avanti e IN CASO CONTRARIO (non c'è un percorso davanti), lo zombie svolterà a sinistra.
+        image: notes/hoc5_2.jpg
+        text: Se metto un blocco "andare avanti" nel posto dove dice "fare" e un blocco
+          "sinistra" dove dice "altrimenti" ciò significa che lo zombie sceglierà
+          tra 2 opzioni. SE c'è un percorso avanti, lo zombie si muoverà in avanti
+          e IN CASO CONTRARIO (non c'è un percorso davanti), lo zombie svolterà a
+          sinistra.
       3:
-        image: "notes/hoc5_3.jpg"
-        text: |-
-          Proprio come il blocco "se", possiamo mettere blocchi "se altrimenti" all'interno un blocco "ripetizione" in modo che lo zombie continua a muoversi e il blocco "se altrimenti" manterrà a controllare se esiste un posto dove girare.
+        image: notes/hoc5_3.jpg
+        text: Proprio come il blocco "se", possiamo mettere blocchi "se altrimenti"
+          all'interno un blocco "ripetizione" in modo che lo zombie continua a muoversi
+          e il blocco "se altrimenti" manterrà a controllare se esiste un posto dove
+          girare.
       4:
-        image: "notes/hoc5_4.jpg"
-        text: "Ora, prendi quei zombie laddove appartengono!"
+        image: notes/hoc5_4.jpg
+        text: Ora, prendi quei zombie laddove appartengono!
     function:
       1:
-        image: "notes/stage13_1.jpg"
-        text: "Ciao, sono Brina, un ingegnere di Instagram. Una funzione è alcune righe di codice che vorresti utilizzare più e più volte, così che, invece di scrivere quel codice ogni volta, puoi utilizzare solo un blocco."
+        image: notes/stage13_1.jpg
+        text: Ciao, sono Brina, un ingegnere di Instagram. Una funzione è alcune righe
+          di codice che vorresti utilizzare più e più volte, così che, invece di scrivere
+          quel codice ogni volta, puoi utilizzare solo un blocco.
       2:
-        image: "notes/stage13_2.jpg"
-        text: "Stiamo andando ad imparare a definire le funzioni. Definizioni di funzioni hanno una stella nell'angolo. Il nome della funzione è scritto sulla linea superiore."
+        image: notes/stage13_2.jpg
+        text: Stiamo andando ad imparare a definire le funzioni. Definizioni di funzioni
+          hanno una stella nell'angolo. Il nome della funzione è scritto sulla linea
+          superiore.
       3:
-        image: "notes/stage13_3.jpg"
-        text: |-
-          I blocchi che vanno all'interno della definizione ci dicono che cosa fanno. Così questa definizione di funzione è chiamata "riempire 5" e si compone di un blocco "ripetizione" e un blocco "riempire".
+        image: notes/stage13_3.jpg
+        text: I blocchi che vanno all'interno della definizione ci dicono che cosa
+          fanno. Così questa definizione di funzione è chiamata "riempire 5" e si
+          compone di un blocco "ripetizione" e un blocco "riempire".
       4:
-        image: "notes/stage13_4.jpg"
-        text: |-
-          The definition sits on the workspace, but our farmer won't run the function until we drag out our "fill 5" function block from functions category.
+        image: notes/stage13_4.jpg
+        text: The definition sits on the workspace, but our farmer won't run the function
+          until we drag out our "fill 5" function block from functions category.
       5:
-        image: "notes/stage13_5.jpg"
-        text: 'Mettiamo il "divertimento" in "FUNzione!" '
+        image: notes/stage13_5.jpg
+        text: Mettiamo il "divertimento" in "FUNzione!" 
     loop_while:
       1:
-        image: "notes/stage9_5.jpg"
-        text: 'Ciao, sono Makinde! Impariamo il blocco "mentre" '
+        image: notes/stage9_5.jpg
+        text: Ciao, sono Makinde! Impariamo il blocco "mentre" 
       2:
-        image: "notes/stage9_6.jpg"
-        text: |-
-          Il blocco "mentre" farà qualunque cosa si inserisce all'interno di esso FINO A CHE l'istruzione riportata sopra è VERA.
+        image: notes/stage9_6.jpg
+        text: Il blocco "mentre" farà qualunque cosa si inserisce all'interno di esso
+          FINO A CHE l'istruzione riportata sopra è VERA.
       3:
-        image: "notes/stage9_7.jpg"
-        text: "For example, if the farmer is standing on a pile, she will continue to remove 1 shovelful WHILE there is still a pile beneath her."
+        image: notes/stage9_7.jpg
+        text: For example, if the farmer is standing on a pile, she will continue
+          to remove 1 shovelful WHILE there is still a pile beneath her.
     loop_for:
       1:
-        image: "notes/stage11_1.jpg"
-        text: "Ciao, sono Trina, e lavoro per Pixar. Ho lavorato su un mucchio di film, tra cui Shrek."
+        image: notes/stage11_1.jpg
+        text: Ciao, sono Trina, e lavoro per Pixar. Ho lavorato su un mucchio di film,
+          tra cui Shrek.
       2:
-        image: "notes/stage11_2.jpg"
-        text: 'Questo è il nostro nuovo ciclo "contatore". Eseguirà le azioni più e più volte e si possono fare in modo che le azioni cambino leggermente ogni volta.'
+        image: notes/stage11_2.jpg
+        text: Questo è il nostro nuovo ciclo "contatore". Eseguirà le azioni più e
+          più volte e si possono fare in modo che le azioni cambino leggermente ogni
+          volta.
       3:
-        image: "notes/stage11_3.jpg"
-        text: |-
-          In questo esempio, il nostro ciclo "contatore" dice "contare con contatore da 50 a 90 di 10" e all'interno di esso, abbiamo il nostro blocco "disegnare un quadrato". Trascinare il blocco "contatore" dalla sezione "Variabili" verso il posto di "lunghezza".
+        image: notes/stage11_3.jpg
+        text: In questo esempio, il nostro ciclo "contatore" dice "contare con contatore
+          da 50 a 90 di 10" e all'interno di esso, abbiamo il nostro blocco "disegnare
+          un quadrato". Trascinare il blocco "contatore" dalla sezione "Variabili"
+          verso il posto di "lunghezza".
       4:
-        image: "notes/stage11_4.jpg"
-        text: "Questo significa che il nostro artista sta per disegnare un quadrato con lati di lunghezza 50 pixel, poi aggiungerà 10 a quello e disegnerà un quadrato con lati di lunghezza 60 pixel. Poi continuerà ad aggiungere 10 e disegnare quadrati fino a quando raggiungerà 90. Così avremo quadrati di 50, 60, 70, 80 e 90."
+        image: notes/stage11_4.jpg
+        text: Questo significa che il nostro artista sta per disegnare un quadrato
+          con lati di lunghezza 50 pixel, poi aggiungerà 10 a quello e disegnerà un
+          quadrato con lati di lunghezza 60 pixel. Poi continuerà ad aggiungere 10
+          e disegnare quadrati fino a quando raggiungerà 90. Così avremo quadrati
+          di 50, 60, 70, 80 e 90.
     parameters:
       1:
-        image: "notes/stage15_1.jpg"
-        text: "Ciao, sono Janete, e sono un ingegnere a Zynga."
+        image: notes/stage15_1.jpg
+        text: Ciao, sono Janete, e sono un ingegnere a Zynga.
       2:
-        image: "notes/stage15_2.jpg"
-        text: "E se vogliamo disegnare un mucchio di triangoli che hanno le loro lunghezze di dimensioni differenti?"
+        image: notes/stage15_2.jpg
+        text: E se vogliamo disegnare un mucchio di triangoli che hanno le loro lunghezze
+          di dimensioni differenti?
       3:
-        image: "notes/stage15_3.jpg"
-        text: "Possiamo scrivere tutto quel codice a mano o possiamo utilizzare una funzione con parametri."
+        image: notes/stage15_3.jpg
+        text: Possiamo scrivere tutto quel codice a mano o possiamo utilizzare una
+          funzione con parametri.
       4:
-        image: "notes/stage15_4.jpg"
-        text: 'Per fare ciò, clicca la stella blu sulla definizione della funzione "disegna un triangolo". Poi trascinare il "nome di input" nel blocco "input".'
+        image: notes/stage15_4.jpg
+        text: Per fare ciò, clicca la stella blu sulla definizione della funzione
+          "disegna un triangolo". Poi trascinare il "nome di input" nel blocco "input".
       5:
-        image: "notes/stage15_5.jpg"
-        text: 'Poi se scrivi "lunghezza" nel punto dove dice "x" e premi "Invio", si creerai un Input lunghezza per la tua funzione.'
+        image: notes/stage15_5.jpg
+        text: Poi se scrivi "lunghezza" nel punto dove dice "x" e premi "Invio", si
+          creerai un Input lunghezza per la tua funzione.
       6:
-        image: "notes/stage15_6.jpg"
-        text: 'Poi fare clic sulla stella. Ora, vorrai fare clic sulla categoria di variabili e trascinare il blocco "lunghezza" nel blocco "andare avanti" della tua definizione di funzione. E trascinare via il vecchio blocco numero.'
+        image: notes/stage15_6.jpg
+        text: Poi fare clic sulla stella. Ora, vorrai fare clic sulla categoria di
+          variabili e trascinare il blocco "lunghezza" nel blocco "andare avanti"
+          della tua definizione di funzione. E trascinare via il vecchio blocco numero.
       7:
-        image: "notes/stage15_7.jpg"
-        text: 'Per utilizzare la tua funzione con parametri, fare clic sulla categoria di funzioni e trascinare fuori la tua funzione "disegnare un triangolo con lunghezza".'
+        image: notes/stage15_7.jpg
+        text: Per utilizzare la tua funzione con parametri, fare clic sulla categoria
+          di funzioni e trascinare fuori la tua funzione "disegnare un triangolo con
+          lunghezza".
       8:
-        image: "notes/stage15_8.jpg"
-        text: "Ora puoi utilizzare il blocco di matematica per immettere numeri diversi per disegnare triangoli di diverse dimensioni."
+        image: notes/stage15_8.jpg
+        text: Ora puoi utilizzare il blocco di matematica per immettere numeri diversi
+          per disegnare triangoli di diverse dimensioni.
     hoc_wrapup:
       1:
-        image: "notes/hoc6_1.jpg"
-        text: "Complimenti! Con l'ultimo puzzle che hai risolto, hai appena scritto il codice che dice QUALUNQUE robot come trovare la sua strada attraverso un labirinto privo di ramificazione o tunnel di qualsiasi lunghezza, che si tratti di uno zombie, un uccello, un rover marziano o anche una macchina auto-guida."
+        image: notes/hoc6_1.jpg
+        text: Complimenti! Con l'ultimo puzzle che hai risolto, hai appena scritto
+          il codice che dice QUALUNQUE robot come trovare la sua strada attraverso
+          un labirinto privo di ramificazione o tunnel di qualsiasi lunghezza, che
+          si tratti di uno zombie, un uccello, un rover marziano o anche una macchina
+          auto-guida.
       2:
-        image: "notes/hoc6_2.jpg"
-        text: "I concetti di base che hai utilizzato sono al centro di ogni programma o applicazione che proverai.  Abbiamo imparato dei cicli di ripetizione, dichiarazioni ripetere fino a, dichiarazioni se, ed istruzioni se altrimenti."
+        image: notes/hoc6_2.jpg
+        text: I concetti di base che hai utilizzato sono al centro di ogni programma
+          o applicazione che proverai.  Abbiamo imparato dei cicli di ripetizione,
+          dichiarazioni ripetere fino a, dichiarazioni se, ed istruzioni se altrimenti.
       3:
-        image: "notes/hoc6_3.jpg"
-        text: "Se ti è piaciuto la tua prima ora di programmazione, visitare code.org per continuare la vostra formazione sull'informatica! Dopo che hai completato il nostro corso di 20 ore, avrai imparato le basi della programmazione e puoi iniziare ad imparare come scrivere applicazioni per telefoni, istruzioni per robot, giochi, e molto altro."
+        image: notes/hoc6_3.jpg
+        text: Se ti è piaciuto la tua prima ora di programmazione, visitare code.org
+          per continuare la vostra formazione sull'informatica! Dopo che hai completato
+          il nostro corso di 20 ore, avrai imparato le basi della programmazione e
+          puoi iniziare ad imparare come scrivere applicazioni per telefoni, istruzioni
+          per robot, giochi, e molto altro.
       4:
-        image: "notes/hoc6_4.jpg"
-        text: "La tecnologia sta cambiando tutto ciò che facciamo e non importa se sei giovane o anziano: la programmazione è divertente, è creativo, e chiunque può imparare!"
+        image: notes/hoc6_4.jpg
+        text: 'La tecnologia sta cambiando tutto ciò che facciamo e non importa se
+          sei giovane o anziano: la programmazione è divertente, è creativo, e chiunque
+          può imparare!'
     20_wrapup:
       1:
-        image: "notes/bird.png"
-        text: "Visualizza note in arrivo!"
+        image: notes/bird.png
+        text: Visualizza note in arrivo!

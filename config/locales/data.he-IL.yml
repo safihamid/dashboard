@@ -3,206 +3,319 @@
     script:
       name:
         20-hour:
-          desc: "K-8 הקדמה לקורס מדעי המחשב"
-          Unplug1: "שלב 1"
-          Maze: "שלב 2"
-          Unplug2: "שלב 3"
-          Unplug3: "שלב 4"
-          Artist: "שלב 5"
-          Unplug4: "שלב 6"
-          Artist2: "שלב 7"
-          Unplug5: "שלב 8"
-          Farmer: "שלב 9"
-          Unplug6: "שלב 10"
-          Artist3: "שלב 11"
-          Unplug7: "שלב 12"
-          Farmer2: "שלב 13"
-          Unplug8: "שלב 14"
-          Artist4: "שלב 15"
-          Unplug9: "שלב 16"
-          Farmer3: "שלב 17"
-          Unplug10: "שלב 18"
-          Artist5: "שלב 19"
-          Unplug11: "שלב 20"
+          desc: K-8 הקדמה לקורס מדעי המחשב
+          Unplug1: שלב 1
+          Maze: שלב 2
+          Unplug2: שלב 3
+          Unplug3: שלב 4
+          Artist: שלב 5
+          Unplug4: שלב 6
+          Artist2: שלב 7
+          Unplug5: שלב 8
+          Farmer: שלב 9
+          Unplug6: שלב 10
+          Artist3: שלב 11
+          Unplug7: שלב 12
+          Farmer2: שלב 13
+          Unplug8: שלב 14
+          Artist4: שלב 15
+          Unplug9: שלב 16
+          Farmer3: שלב 17
+          Unplug10: שלב 18
+          Artist5: שלב 19
+          Unplug11: שלב 20
         Hour of Code:
-          desc: "שעה של קוד"
-          Maze: "שלב 1"
+          desc: שעה של קוד
+          Maze: שלב 1
         Edit Code:
-          desc: "עריכת קוד"
-          MazeEC: "שלב 1"
+          desc: עריכת קוד
+          MazeEC: שלב 1
     game:
       name:
-        Unplug1: "מבוא למדעי המחשב"
-        Maze: "המבוך"
-        Unplug2: "חשיבה חישובית"
-        Unplug3: "Graph Paper Programming"
-        Artist: "האמן"
-        Unplug4: "אלגוריתמים"
-        Artist2: "האומן 2"
-        Unplug5: "פונקציות"
-        Farmer: "האיכר"
-        Unplug6: "תנאים"
-        Artist3: "האומן 3"
-        Unplug7: "כתיבת שיר"
-        Farmer2: "האיכר 2"
-        Unplug8: "הפשטה"
-        Artist4: "האמן 4"
-        Unplug9: "הרץ פעולה בשנית"
-        Farmer3: "האיכר 3"
-        Unplug10: "האינטרנט"
-        Artist5: "האומן 5"
-        Unplug11: "סיום"
-        MazeEC: "המבוך"
+        Unplug1: מבוא למדעי המחשב
+        Maze: המבוך
+        Unplug2: חשיבה חישובית
+        Unplug3: Graph Paper Programming
+        Artist: האמן
+        Unplug4: אלגוריתמים
+        Artist2: האומן 2
+        Unplug5: פונקציות
+        Farmer: האיכר
+        Unplug6: תנאים
+        Artist3: האומן 3
+        Unplug7: כתיבת שיר
+        Farmer2: האיכר 2
+        Unplug8: הפשטה
+        Artist4: האמן 4
+        Unplug9: הרץ פעולה בשנית
+        Farmer3: האיכר 3
+        Unplug10: האינטרנט
+        Artist5: האומן 5
+        Unplug11: סיום
+        MazeEC: המבוך
     trophy:
       name:
-        Bronze: "ארד"
-        Silver: "כסף"
-        Gold: "זהב"
+        Bronze: ארד
+        Silver: כסף
+        Gold: זהב
     concept:
       description:
-        sequence: "רצף"
-        if: "בלוק ״אם״"
-        if_else: "בלוק ״אם-אחרת״"
-        loop_times: "בלוק ״חזור פעמים״"
-        loop_until: "בלוק ״חזור עד״"
-        loop_while: "בלוק ״כל עוד״"
-        loop_for: "בלוק ״מונה״"
-        function: "פונקציות"
-        parameters: "פונקציות עם פרמטרים"
+        sequence: רצף
+        if: בלוק ״אם״
+        if_else: בלוק ״אם-אחרת״
+        loop_times: בלוק ״חזור פעמים״
+        loop_until: בלוק ״חזור עד״
+        loop_while: בלוק ״כל עוד״
+        loop_for: בלוק ״מונה״
+        function: פונקציות
+        parameters: פונקציות עם פרמטרים
     level:
       instructions:
-        maze_2_2: 'תוכל לעזור לי לתפוס את החזיר השובב? חבר כמה בלוקים של "לך קדימה" יחד ותלחץ על "הפעל תוכנית" כדי לעזור לי להגיע אליו. '
-        maze_2_1: "החזיר הזה מבלגן לי את הנוצות. תעזור לי למצוא אותו!"
-        maze_2_2_5: "תשרטטו את השביל ותובילו אותי אל החזיר המטופש הזה. תזהרו מדנמיט או הנוצות שלי יעופו!"
-        maze_2_3: "תוביל אותי לרוע הירוק!(תיזהר מדינמיט)"
-        maze_2_4: "תהיו רגועים ותעזרו לי למצוא את החזיר הרע. אחרת אני עלול להתעצבן!"
-        maze_2_5: "יש דרך בה אני אוכל להגיע לחזיר הטפשי כשאני אשתמש רק ב2 בלוקים. אתם יכולים למצוא אותה?"
-        maze_2_6: "נסה להביא אותי לפולש הירוק תוך שימוש רק בשלושה בלוקים."
-        maze_2_7: 'עזור לי לגרש את החזרזיר הרע באמצעות כמה שפחות בלוקים. נסה להשתמש בבלוק "חזור על הפקודה" יותר מפעם אחת.'
-        maze_2_8: 'על מנת לפתור את המקרה הזה, השתמש בבלוק "חזור שוב" עם שלושה בלוקים בתוכו: קדימה, קדימה, הסתובב.'
-        maze_2_9: 'נסה להשתמש בבלוק החדש: "חזור עד ש" -  הוא יחזור על עצמו עד שאגיע לחזרזיר המעצבן.'
-        maze_2_10: "טוב, בפעם האחרונה לאימון - האם אתה יכול לפתור זאת באמצעות רק 4 בלוקים?"
-        maze_2_11: "איש יקר. אני זומבי. אני רעב. חייב... להגיע.... אל החמנית... אתה יכול להוביל אותי לשם באמצעות 5 בלוקים בלבד?"
-        maze_2_12: ". בסדר, זה דומה, אבל שונה במקצת. האם אתה יכול לעשות זאת רק בעזרת 5 בלוקים?"
-        maze_2_13: 'השתמש בבלוק החדש "אם" על מנת לעזור לי לחהליט מתי לפנות. רמז: אתה צריך רק עוד בלוק אחד נוסף, אבל תלמד איך ליישם זאת על מנת שתוכל בפעם הבאה לעשות בעצמך.'
-        maze_2_14: 'טוב, זה בדיוק כמו החידה האחרונה, אבל עליך לזכור איך להשתמש בבלוק "אם" ובבלוק "חזור שוב" יחד.'
-        maze_2_15: 'אני רוצה חמניות! השתמש בבלוק "אם" על מנת להביא אותי לשם תוך שימוש בכמה שפחות בלוקים.'
-        maze_2_16: "טוב, בו נעשה זאת שוב על מנת להתאמן - זה לא מאוד קשה, אבל תיזהר מהצ'ומפרים!"
-        maze_2_17: 'הבלוק "אם - אז" בודק את המצב, ועושה פעולה אחת או אחרת. על מנת להביא אותי לחמניות השתדל להשתמש בבלוק החדש.'
-        maze_2_18: 'עוד תרגול אחד של הבלוק "אם - אז", האם אתה יכול להצליח בנסיון הראשון?'
-        maze_2_19: "האם אתה יכול להוסיף רק 3 בלוקים על מנת לעזור לי לפתור מבוך מסובך יותר? אם תעשה זאת נכון, אני אוכל ללכת  בכל דרך מפותלת לא משנה מה אורכה."
-        turtle_1_1: "שלום, אני אמן. באפשרותך לכתוב קוד על מנת לעזור לי לצייר כמעט כל דבר. השתמש בכמה בלוקים על מנת לגרום לי לצייר על הקוים האפורים בתמונה."
-        turtle_1_2: 'עכשיו צייר ריבוע. הערה: השתמש בצבע האהוב עלייך ע"י בחירתו בבלוק החדש "הגדר צבע".'
-        turtle_1_3: "צור ריבוע באמצעות 3 בלוקים בלבד."
-        turtle_1_4: 'צייר משולש שכל אחת מהפאות שלו בצבע שונה ע"י שימוש באפשרות "צבע אקראי" שבוחר צבע שונה בכל פעם. רמז: עליך להפעיל ע"י לחיצה על המספר בבלוק הסיבוב.'
-        turtle_1_5: "עכשיו לאימון, צייר משולש ואז מרובע על מנת לצייר מעטפה."
-        turtle_1_6: "האם אתה יכול לצייר את המשולש והריבוע הזה? רמז: צייר את המשולש קודם, ואז מצא כמה צריך להסתובב בטרם תצייר את הריבוע."
-        turtle_1_7: "בסדר, בוא ננסה רמה קצת יותר קשה -בוא נראה אם אתה יכול לצייר משקפיים ירוקים. והריבועים צריכים 100 פיקסלים בכל צד, ובנפרד - 50 פיקסלים. אל תשכח לצייר בצבע ירוק!"
-        turtle_1_8: 'בסדר, נסה להבין מה קורה אם תפעיל קוד זה (או לחץ "הפעל" על מנת לנסות). עכשיו חזור על כך מספיק פעמים על מנת להשלים את הציור. הצבעים יהיו שונים בכל פעם.'
-        turtle_1_9: "Can you figure out what number to replace the question marks with to draw a circle?"
-        turtle_1_10: 'עשית זאת! עכשיו צייר מה שאתה רוצה. כמה רעיונות כיפיים: מר קו, פתית שלג או ספירלה. כמו כן נסה את הבלוק החדש "קבע עובי". תהנה!'
-        turtle_4_1: 'האם אתה יכול לצייר משולש (עם קצוות של 100 פיקסלים) בעזרת 3 בלוקים בלבד? רמז: השתמש בבלוק "חזור".'
-        turtle_4_2: |-
-          Try adding one block to complete this puzzle. Hint: we've provided blocks to draw 2 identical triangles, you need to put a "turn" in between, and decide out how far to turn.
-        turtle_4_3: |-
-          Ok, here's the code you wrote to draw a single triangle. Can you add a "repeat" and "turn" block to make a pretty flower?
-        turtle_4_4: "Here's the same code from the previous puzzle, but turning only 36 degrees after drawing each triangle. How many times does this need to repeat? (Hint: after 360 degrees of turning the drawing will come full circle)"
-        turtle_4_5: "Here's the same code from the previous puzzle, but repeating the turns 36 times. How many degrees should the turns be? (Hint: after 360 degrees of turning the drawing will come full circle)"
-        turtle_4_6: "Using only 3 blocks, can you draw a square with edges of 20 pixels?"
-        turtle_4_7: "Here's the code for drawing the square from last puzzle. Can you repeat it to draw 10 adjacent squares like a ladder? Hint: you only need 2 more blocks."
-        turtle_4_8: "Here's the solution to the previous puzzle. Can you add just 2 more blocks to complete the drawing?"
-        turtle_4_9: "Here's the solution to the previous puzzle. How many degrees should you turn to complete the drawing? (You probably need to guess a few times)"
-        turtle_4_10: "Here's the solution to the previous puzzle. How many times should you repeat to complete the drawing?"
-        turtle_4_11: 'Try changing the numbers in the "turn" and "repeat" blocks to make different patterns. Or, experiment changing the rest of the code to draw anything you want.'
-        maze_karel_1_1: '. היי, אני חקלאי. אני זקוק לעזרתך כדי לשטח את השדה בחווה שלי על מנת להכין אותו לנטיעה. תקדם אותי אל ערימת העפר ותשתמש בבלוק "הסר" כדי להסיר אותו.'
-        maze_karel_1_2: 'Next, move me to the hole and fill it with TWO shovelfuls of dirt, using the "fill" block.'
-        maze_karel_1_3: "Move me to the pile of dirt and tell me how many shovelfuls to remove using as few blocks as possible."
-        maze_karel_1_4: "Can you help me remove all four piles of dirt? Hint: use a repeat block if you can."
-        maze_karel_1_5: 'Help me fill in all these holes with 5 shovelfuls of dirt. Hint: you can put a "repeat" block inside the "while" block.'
-        maze_karel_1_6: |-
-          Remove all the piles of dirt, using as few blocks as possible. The new options in the dropdown menu on the "while" block tell me if I'm standing on a pile or a hole.
-        maze_karel_1_7: "Wow, I found a really deep hole! I don't know how many shovelfuls of dirt it needs. Can you write a program that fills it until the ground is even?"
-        maze_karel_1_8: "Help me fill in the hole at the end of the field, using as few blocks as possible."
-        maze_karel_1_9: 'Make me remove all these piles of dirt. Try to use as few blocks as possible. Hint: try using a "while" block.'
-        maze_karel_1_10: "I'm working late, so it's dark out, and I can't tell how large the piles are. Now I don't have all the options I used to have on the while block. Move me along the field, and if there is a pile, remove it."
-        maze_karel_1_11: |-
-          It's still dark outside. Move me along the field. If there is a pile, remove it, and if there is a hole, fill it in. Hint: use the dropdown menu of options on the "if" block.
-        turtle_2_1: "Hello. Me zombie artist. Me love drawing! Help me draw a square in a special color. Important note: you have all the same blocks but they've now been arranged in categories."
-        turtle_2_2: 'Welcome to using functions, which let you define new blocks! Try the new "draw a square" block, found in the "Functions" category, to draw a small 50x50 green square.'
-        turtle_2_3: 'Use the "repeat" block (in the "Loops" category) to draw 3 squares of size 100, each 120 degrees apart. And do it in 3 different, random colors.'
-        turtle_2_4: "Now we're going to get fancy. Change the code to draw 36 squares, 100 pixels wide, and each 10 degrees apart. Hint: you may want to use the slider to make me go faster."
-        turtle_2_5: |-
-          Draw squares with sides of 50, 60, 70, 80, and 90 pixels.  You'll need to use the "draw a square" function five times.
-        turtle_2_6: |-
-          Ok, this program will use a counter, to draw the same squares as last time. You want the square to be the same size as the counter, so use the "counter" block. Hint: It's in the Variables category.
-        turtle_2_7: |-
-          Here's a program to draw a spiral, but the blocks are disabled so they won't run. Make a new program using a "count with" block (in the Loops category) and "counter" block (in the Variables category) to draw the same spiral.
-        turtle_2_7_5: |-
-          There's a new "draw a snowman" function (in the Functions category). Draw two snowmen, of height 250 and 100.
-        turtle_2_8: |-
-          This one's a bit tricky. Use the "draw a snowman" function and the new "jump forward" block (in the Actions category). Draw 3 snowmen in different colors, 100 pixels apart.
-        turtle_2_9: 'Use a "count with" loop to draw a family of snowmen with heights of 110, 100, 90, 80, and 70. The snowmen should all be 60 pixels apart.'
-        turtle_2_10: "Here's some code to try experimenting with different spirals.  What happens if you change the turn amount? Or set a random color in the loop?  Draw anything you like."
-        maze_karel_2_1: "Try using the blocks to help me remove all the piles and fill in all the holes on the ground. Try to use loops instead of using too many blocks. Hint: you can put a loop inside another loop."
-        maze_karel_2_2: |-
-          We've defined our own block called "fill 5", which is now in the Functions category. Use it to help me fill in this hole.
-        maze_karel_2_3: |-
-          Use the new "fill 5" function block to make me fill in all the holes. You'll have to drag out the "fill 5" block out from the Functions category.
-        maze_karel_2_4: "Define a new function that removes 7 shovelfuls. Then use it to write a program that helps me remove all the piles."
-        maze_karel_2_5: "Create a new function that removes 6 shovelfuls from a pile, and use it to help me level out all the piles."
-        maze_karel_2_6: 'Use two new functions, "fill 8" and "remove 8", to help me level out the pile and fill in the hole.'
-        maze_karel_2_7: "There's a cow in my field! Write a new function that helps me avoid the cow and remove the pile. Put all your blocks inside the new function."
-        maze_karel_2_8: 'Use this new function, "avoid the cow and remove 1", to help me remove all the piles.'
-        maze_karel_2_9: "Ok, here's a function that removes 4 different piles of dirt in a vertical column. Try putting this function inside a loop, so that you remove all the piles of dirt using only a few new blocks."
-        maze_karel_2_10: "Move me across the field, and use these two functions to help me remove all the piles and fill all the holes."
-        turtle_3_1: 'חידה זו מראה לך איך פונקציות "צייר ריבוע" ו- "צייר עיגול" מוגדרות. הגדרת פונקציה אינה מפעילה את הבלוקים שלה. עליך למשוך את הבלוק "צייר ריבוע" כדי באמת לצייר ריבוע.'
-        turtle_3_2: 'תוך שימוש בפונקציה "צייר ריבוע" כדוגמה, צור פונקציה של "צייר משולש" והשתמש בה.'
-        turtle_3_3: "צייר גדרות משולשות סביב החתולים וגדר מרובעת סביב הפרה. עצה: בדוק את התוכנית במהלך הכתיבה."
-        turtle_3_4: 'בוא נראה אם אתה יכול להשתמש ב- "צייר ריבוע" ו- "צייר משולש" (וגם מספר בלוקים אחרים) כדי לצייר בית מסביב לאריה.'
-        turtle_3_5: 'Now create a new "draw a house" function and use it to house two cats. Hint: create a new function using the "do something" block, and type your own text to name the block.'
-        turtle_3_6: 'Using "draw a square" as an example, add an input named "length" to "draw a triangle". Then, draw triangles in different sizes. (Hint: click the star to add an input to a function)'
-        turtle_3_7: 'Add an input named "length" to "draw a house" and build a big house for the elephant (with edges 150 pixels long)'
-        turtle_3_8: 'להלן כל הבלוקים של החידה הקודמת.  שנה את "צייר בית" כך שאני אסיים בפינה הימנית התחתונה לאחר ציור בית חדש. השתמש בפונקציה ששונתה כדי לצייר שלושה בתים.'
-        turtle_3_9: 'האם תוכל ליצור מחדש את פונקציית "צייר בית" ללא עזרה? נסה את זה ולאחר מכן צייר שורת בתים.'
-        turtle_3_10: "למדת הרבה! עתה השתמש בזה כדי לצייר את מה שאתה רוצה. נסה לצייר כוכב, או ספירלה, או פתית שלג מהודר."
-        maze_karel_debug_seq_1: "Welcome to debugging! My code doesn't work right. Can you spot the problem and fix it so that I can get my field flat and ready for planting?"
-        maze_karel_debug_seq_2: "מה שגוי בתוכנית הזאת? כיצד הוכל לתקן ובכך אני הוכל להסיר את העירמה?"
-        maze_karel_debug_repeat: "De-bug this program for me so my field will be nice and flat."
-        maze_karel_debug_while: "כיצד תוכל לשנות את התוכנית בשביל שתוכל לעזור לי למלא את החור?"
-        maze_karel_debug_if: "עזרה! תקן את התוכנית בשביל שהחלקה שלי תהיה ישרה לחלוטין."
-        maze_karel_debug_if_else: "De-bug this program so I can fill in the holes and remove all the piles."
-        maze_karel_debug_function_1: "מה אתה צריך לשנות בתוכנית הזאת בשביל לעזור לי להסיר את כל הערימות?"
-        maze_karel_debug_function_2: "Can you de-bug this program for me so I can make my field flat?"
-        maze_karel_debug_function_3: "Edit this program so I'll remove all the piles on my field. "
-        turtle_5_1: "נסה להפעיל תוכנית זו ולבצע שינויים כדי לראות מה מתרחש. האם אתה יכול להבין איך התוכנית עובדת? (או למחוק אותה ולהחליף אותה במשהו שונה לגמרי)"
-        turtle_5_2: "נסה להפעיל תוכנית זו ולבצע שינויים כדי לראות מה מתרחש. האם אתה יכול להבין איך התוכנית עובדת? (או למחוק אותה ולהחליף אותה במשהו שונה לגמרי)"
-        turtle_5_3: "נסה להפעיל תוכנית זו ולבצע שינויים כדי לראות מה מתרחש. האם אתה יכול להבין איך התוכנית עובדת? (או למחוק אותה ולהחליף אותה במשהו שונה לגמרי)"
-        turtle_5_4: "נסה להפעיל תוכנית זו ולבצע שינויים כדי לראות מה מתרחש. האם אתה יכול להבין איך התוכנית עובדת? (או למחוק אותה ולהחליף אותה במשהו שונה לגמרי)"
-        turtle_5_5: "נסה להפעיל תוכנית זו ולבצע שינויים כדי לראות מה מתרחש. האם אתה יכול להבין איך התוכנית עובדת? (או למחוק אותה ולהחליף אותה במשהו שונה לגמרי)"
-        turtle_5_6: "נסה להפעיל תוכנית זו ולבצע שינויים כדי לראות מה מתרחש. האם אתה יכול להבין איך התוכנית עובדת? (או למחוק אותה ולהחליף אותה במשהו שונה לגמרי)"
-        maze_3_1: "I need to get to that pig! Type in a couple of calls to move(); so I can get my eggs back."
-        maze_3_2: "Write me a program, so I can make it all the way to the pig."
-        maze_3_3: "How should I get to the pig? Make sure I don't run into the box of TNT!"
-        maze_3_4: "Argh! Write me a program that gets me around the TNT and to the pig."
+        maze_2_2: 'תוכל לעזור לי לתפוס את החזיר השובב? חבר כמה בלוקים של "לך קדימה"
+          יחד ותלחץ על "הפעל תוכנית" כדי לעזור לי להגיע אליו. '
+        maze_2_1: החזיר הזה מבלגן לי את הנוצות. תעזור לי למצוא אותו!
+        maze_2_2_5: תשרטטו את השביל ותובילו אותי אל החזיר המטופש הזה. תזהרו מדנמיט
+          או הנוצות שלי יעופו!
+        maze_2_3: תוביל אותי לרוע הירוק!(תיזהר מדינמיט)
+        maze_2_4: תהיו רגועים ותעזרו לי למצוא את החזיר הרע. אחרת אני עלול להתעצבן!
+        maze_2_5: יש דרך בה אני אוכל להגיע לחזיר הטפשי כשאני אשתמש רק ב2 בלוקים. אתם
+          יכולים למצוא אותה?
+        maze_2_6: נסה להביא אותי לפולש הירוק תוך שימוש רק בשלושה בלוקים.
+        maze_2_7: עזור לי לגרש את החזרזיר הרע באמצעות כמה שפחות בלוקים. נסה להשתמש
+          בבלוק "חזור על הפקודה" יותר מפעם אחת.
+        maze_2_8: 'על מנת לפתור את המקרה הזה, השתמש בבלוק "חזור שוב" עם שלושה בלוקים
+          בתוכו: קדימה, קדימה, הסתובב.'
+        maze_2_9: 'נסה להשתמש בבלוק החדש: "חזור עד ש" -  הוא יחזור על עצמו עד שאגיע
+          לחזרזיר המעצבן.'
+        maze_2_10: טוב, בפעם האחרונה לאימון - האם אתה יכול לפתור זאת באמצעות רק 4
+          בלוקים?
+        maze_2_11: איש יקר. אני זומבי. אני רעב. חייב... להגיע.... אל החמנית... אתה
+          יכול להוביל אותי לשם באמצעות 5 בלוקים בלבד?
+        maze_2_12: . בסדר, זה דומה, אבל שונה במקצת. האם אתה יכול לעשות זאת רק בעזרת
+          5 בלוקים?
+        maze_2_13: 'השתמש בבלוק החדש "אם" על מנת לעזור לי לחהליט מתי לפנות. רמז: אתה
+          צריך רק עוד בלוק אחד נוסף, אבל תלמד איך ליישם זאת על מנת שתוכל בפעם הבאה
+          לעשות בעצמך.'
+        maze_2_14: טוב, זה בדיוק כמו החידה האחרונה, אבל עליך לזכור איך להשתמש בבלוק
+          "אם" ובבלוק "חזור שוב" יחד.
+        maze_2_15: אני רוצה חמניות! השתמש בבלוק "אם" על מנת להביא אותי לשם תוך שימוש
+          בכמה שפחות בלוקים.
+        maze_2_16: טוב, בו נעשה זאת שוב על מנת להתאמן - זה לא מאוד קשה, אבל תיזהר
+          מהצ'ומפרים!
+        maze_2_17: הבלוק "אם - אז" בודק את המצב, ועושה פעולה אחת או אחרת. על מנת להביא
+          אותי לחמניות השתדל להשתמש בבלוק החדש.
+        maze_2_18: עוד תרגול אחד של הבלוק "אם - אז", האם אתה יכול להצליח בנסיון הראשון?
+        maze_2_19: האם אתה יכול להוסיף רק 3 בלוקים על מנת לעזור לי לפתור מבוך מסובך
+          יותר? אם תעשה זאת נכון, אני אוכל ללכת  בכל דרך מפותלת לא משנה מה אורכה.
+        turtle_1_1: שלום, אני אמן. באפשרותך לכתוב קוד על מנת לעזור לי לצייר כמעט כל
+          דבר. השתמש בכמה בלוקים על מנת לגרום לי לצייר על הקוים האפורים בתמונה.
+        turtle_1_2: 'עכשיו צייר ריבוע. הערה: השתמש בצבע האהוב עלייך ע"י בחירתו בבלוק
+          החדש "הגדר צבע".'
+        turtle_1_3: צור ריבוע באמצעות 3 בלוקים בלבד.
+        turtle_1_4: 'צייר משולש שכל אחת מהפאות שלו בצבע שונה ע"י שימוש באפשרות "צבע
+          אקראי" שבוחר צבע שונה בכל פעם. רמז: עליך להפעיל ע"י לחיצה על המספר בבלוק
+          הסיבוב.'
+        turtle_1_5: עכשיו לאימון, צייר משולש ואז מרובע על מנת לצייר מעטפה.
+        turtle_1_6: 'האם אתה יכול לצייר את המשולש והריבוע הזה? רמז: צייר את המשולש
+          קודם, ואז מצא כמה צריך להסתובב בטרם תצייר את הריבוע.'
+        turtle_1_7: בסדר, בוא ננסה רמה קצת יותר קשה -בוא נראה אם אתה יכול לצייר משקפיים
+          ירוקים. והריבועים צריכים 100 פיקסלים בכל צד, ובנפרד - 50 פיקסלים. אל תשכח
+          לצייר בצבע ירוק!
+        turtle_1_8: בסדר, נסה להבין מה קורה אם תפעיל קוד זה (או לחץ "הפעל" על מנת
+          לנסות). עכשיו חזור על כך מספיק פעמים על מנת להשלים את הציור. הצבעים יהיו
+          שונים בכל פעם.
+        turtle_1_9: Can you figure out what number to replace the question marks with
+          to draw a circle?
+        turtle_1_10: 'עשית זאת! עכשיו צייר מה שאתה רוצה. כמה רעיונות כיפיים: מר קו,
+          פתית שלג או ספירלה. כמו כן נסה את הבלוק החדש "קבע עובי". תהנה!'
+        turtle_4_1: 'האם אתה יכול לצייר משולש (עם קצוות של 100 פיקסלים) בעזרת 3 בלוקים
+          בלבד? רמז: השתמש בבלוק "חזור".'
+        turtle_4_2: 'נסה להוסיף בלוק אחד נוסף על מנת להשלים את החידה. רמז: אנחנו מספקים
+          בלוקים על מנת לצייר 2 משולשים זהים, עליך "לסובב" ביניהם, ולהחליט בכמה לסובב.'
+        turtle_4_3: בסדר, הנה הקוד שכתבת על מנת לצייר משולש. האם אתה יכול להוסיף בלוקים
+          של "חזור שוב" ו"סובב" על מנת לצייר פרח יפה?
+        turtle_4_4: 'הנה אותו קוד מהחידה הקודמת, אך מסובבת  ב36 מעלות אחרי ציור של
+          כל משולש. כמה פעמים יהיה צורך לחזור? (רמז: אחרי 360 מעלות של סיבוב הציור
+          יצור מעגל שלם)'
+        turtle_4_5: 'הנה אותו קוד מהחידה הקודמת. אבל חוזרת 36 פעמים. בכמה מעלות הסיבוב
+          אמור להיות? (רמז: אחרי 360 מעלות של סיבוב  הציור יהפוך לעיגול שלם)'
+        turtle_4_6: על ידי שימוש ב-3 בלוקים, האם אתה יכול לצייר ריבוע עם קצוות של
+          20 פיקסלים?
+        turtle_4_7: 'Here''s the code for drawing the square from last puzzle. Can
+          you repeat it to draw 10 adjacent squares like a ladder? Hint: you only
+          need 2 more blocks.'
+        turtle_4_8: Here's the solution to the previous puzzle. Can you add just 2
+          more blocks to complete the drawing?
+        turtle_4_9: Here's the solution to the previous puzzle. How many degrees should
+          you turn to complete the drawing? (You probably need to guess a few times)
+        turtle_4_10: Here's the solution to the previous puzzle. How many times should
+          you repeat to complete the drawing?
+        turtle_4_11: Try changing the numbers in the "turn" and "repeat" blocks to
+          make different patterns. Or, experiment changing the rest of the code to
+          draw anything you want.
+        maze_karel_1_1: . היי, אני חקלאי. אני זקוק לעזרתך כדי לשטח את השדה בחווה שלי
+          על מנת להכין אותו לנטיעה. תקדם אותי אל ערימת העפר ותשתמש בבלוק "הסר" כדי
+          להסיר אותו.
+        maze_karel_1_2: עכשיו, תביא אותי לבור ותמלא אותו עם שני דליים של עפר, תוך
+          שימוש בבלוק "למלא".
+        maze_karel_1_3: Move me to the pile of dirt and tell me how many shovelfuls
+          to remove using as few blocks as possible.
+        maze_karel_1_4: 'Can you help me remove all four piles of dirt? Hint: use
+          a repeat block if you can.'
+        maze_karel_1_5: 'Help me fill in all these holes with 5 shovelfuls of dirt.
+          Hint: you can put a "repeat" block inside the "while" block.'
+        maze_karel_1_6: Remove all the piles of dirt, using as few blocks as possible.
+          The new options in the dropdown menu on the "while" block tell me if I'm
+          standing on a pile or a hole.
+        maze_karel_1_7: וואו, מצאתי בור ממש עמוק! איני יודע כמה דליים של עפר אני צריך.
+          האם אתה יכול לכתוב תוכנית תמלא את הבור עד שהאדמה תהיה מאוזנת?
+        maze_karel_1_8: Help me fill in the hole at the end of the field, using as
+          few blocks as possible.
+        maze_karel_1_9: 'Make me remove all these piles of dirt. Try to use as few
+          blocks as possible. Hint: try using a "while" block.'
+        maze_karel_1_10: I'm working late, so it's dark out, and I can't tell how
+          large the piles are. Now I don't have all the options I used to have on
+          the while block. Move me along the field, and if there is a pile, remove
+          it.
+        maze_karel_1_11: 'It''s still dark outside. Move me along the field. If there
+          is a pile, remove it, and if there is a hole, fill it in. Hint: use the
+          dropdown menu of options on the "if" block.'
+        turtle_2_1: 'Hello. Me zombie artist. Me love drawing! Help me draw a square
+          in a special color. Important note: you have all the same blocks but they''ve
+          now been arranged in categories.'
+        turtle_2_2: Welcome to using functions, which let you define new blocks! Try
+          the new "draw a square" block, found in the "Functions" category, to draw
+          a small 50x50 green square.
+        turtle_2_3: תשתמש בבלוק "חזור שוב" (בקטגוריית חזרות) על מנת לצייר 3 מרובעים
+          בגודל 100, כל אחד במרחק 120 מעלות מהשני. עשה זאת בשלושה צבעים אקראיים.
+        turtle_2_4: 'Now we''re going to get fancy. Change the code to draw 36 squares,
+          100 pixels wide, and each 10 degrees apart. Hint: you may want to use the
+          slider to make me go faster.'
+        turtle_2_5: Draw squares with sides of 50, 60, 70, 80, and 90 pixels.  You'll
+          need to use the "draw a square" function five times.
+        turtle_2_6: 'Ok, this program will use a counter, to draw the same squares
+          as last time. You want the square to be the same size as the counter, so
+          use the "counter" block. Hint: It''s in the Variables category.'
+        turtle_2_7: Here's a program to draw a spiral, but the blocks are disabled
+          so they won't run. Make a new program using a "count with" block (in the
+          Loops category) and "counter" block (in the Variables category) to draw
+          the same spiral.
+        turtle_2_7_5: There's a new "draw a snowman" function (in the Functions category).
+          Draw two snowmen, of height 250 and 100.
+        turtle_2_8: This one's a bit tricky. Use the "draw a snowman" function and
+          the new "jump forward" block (in the Actions category). Draw 3 snowmen in
+          different colors, 100 pixels apart.
+        turtle_2_9: Use a "count with" loop to draw a family of snowmen with heights
+          of 110, 100, 90, 80, and 70. The snowmen should all be 60 pixels apart.
+        turtle_2_10: Here's some code to try experimenting with different spirals.  What
+          happens if you change the turn amount? Or set a random color in the loop?  Draw
+          anything you like.
+        maze_karel_2_1: 'Try using the blocks to help me remove all the piles and
+          fill in all the holes on the ground. Try to use loops instead of using too
+          many blocks. Hint: you can put a loop inside another loop.'
+        maze_karel_2_2: We've defined our own block called "fill 5", which is now
+          in the Functions category. Use it to help me fill in this hole.
+        maze_karel_2_3: Use the new "fill 5" function block to make me fill in all
+          the holes. You'll have to drag out the "fill 5" block out from the Functions
+          category.
+        maze_karel_2_4: Define a new function that removes 7 shovelfuls. Then use
+          it to write a program that helps me remove all the piles.
+        maze_karel_2_5: Create a new function that removes 6 shovelfuls from a pile,
+          and use it to help me level out all the piles.
+        maze_karel_2_6: Use two new functions, "fill 8" and "remove 8", to help me
+          level out the pile and fill in the hole.
+        maze_karel_2_7: There's a cow in my field! Write a new function that helps
+          me avoid the cow and remove the pile. Put all your blocks inside the new
+          function.
+        maze_karel_2_8: Use this new function, "avoid the cow and remove 1", to help
+          me remove all the piles.
+        maze_karel_2_9: Ok, here's a function that removes 4 different piles of dirt
+          in a vertical column. Try putting this function inside a loop, so that you
+          remove all the piles of dirt using only a few new blocks.
+        maze_karel_2_10: Move me across the field, and use these two functions to
+          help me remove all the piles and fill all the holes.
+        turtle_3_1: חידה זו מראה לך איך פונקציות "צייר ריבוע" ו- "צייר עיגול" מוגדרות.
+          הגדרת פונקציה אינה מפעילה את הבלוקים שלה. עליך למשוך את הבלוק "צייר ריבוע"
+          כדי באמת לצייר ריבוע.
+        turtle_3_2: תוך שימוש בפונקציה "צייר ריבוע" כדוגמה, צור פונקציה של "צייר משולש"
+          והשתמש בה.
+        turtle_3_3: 'צייר גדרות משולשות סביב החתולים וגדר מרובעת סביב הפרה. עצה: בדוק
+          את התוכנית במהלך הכתיבה.'
+        turtle_3_4: בוא נראה אם אתה יכול להשתמש ב- "צייר ריבוע" ו- "צייר משולש" (וגם
+          מספר בלוקים אחרים) כדי לצייר בית מסביב לאריה.
+        turtle_3_5: 'Now create a new "draw a house" function and use it to house
+          two cats. Hint: create a new function using the "do something" block, and
+          type your own text to name the block.'
+        turtle_3_6: 'Using "draw a square" as an example, add an input named "length"
+          to "draw a triangle". Then, draw triangles in different sizes. (Hint: click
+          the star to add an input to a function)'
+        turtle_3_7: Add an input named "length" to "draw a house" and build a big
+          house for the elephant (with edges 150 pixels long)
+        turtle_3_8: להלן כל הבלוקים של החידה הקודמת.  שנה את "צייר בית" כך שאני אסיים
+          בפינה הימנית התחתונה לאחר ציור בית חדש. השתמש בפונקציה ששונתה כדי לצייר
+          שלושה בתים.
+        turtle_3_9: האם תוכל ליצור מחדש את פונקציית "צייר בית" ללא עזרה? נסה את זה
+          ולאחר מכן צייר שורת בתים.
+        turtle_3_10: למדת הרבה! עתה השתמש בזה כדי לצייר את מה שאתה רוצה. נסה לצייר
+          כוכב, או ספירלה, או פתית שלג מהודר.
+        maze_karel_debug_seq_1: Welcome to debugging! My code doesn't work right.
+          Can you spot the problem and fix it so that I can get my field flat and
+          ready for planting?
+        maze_karel_debug_seq_2: מה שגוי בתוכנית הזאת? כיצד הוכל לתקן ובכך אני הוכל
+          להסיר את העירמה?
+        maze_karel_debug_repeat: De-bug this program for me so my field will be nice
+          and flat.
+        maze_karel_debug_while: כיצד תוכל לשנות את התוכנית בשביל שתוכל לעזור לי למלא
+          את החור?
+        maze_karel_debug_if: עזרה! תקן את התוכנית בשביל שהחלקה שלי תהיה ישרה לחלוטין.
+        maze_karel_debug_if_else: De-bug this program so I can fill in the holes and
+          remove all the piles.
+        maze_karel_debug_function_1: מה אתה צריך לשנות בתוכנית הזאת בשביל לעזור לי
+          להסיר את כל הערימות?
+        maze_karel_debug_function_2: Can you de-bug this program for me so I can make
+          my field flat?
+        maze_karel_debug_function_3: 'Edit this program so I''ll remove all the piles
+          on my field. '
+        turtle_5_1: נסה להפעיל תוכנית זו ולבצע שינויים כדי לראות מה מתרחש. האם אתה
+          יכול להבין איך התוכנית עובדת? (או למחוק אותה ולהחליף אותה במשהו שונה לגמרי)
+        turtle_5_2: נסה להפעיל תוכנית זו ולבצע שינויים כדי לראות מה מתרחש. האם אתה
+          יכול להבין איך התוכנית עובדת? (או למחוק אותה ולהחליף אותה במשהו שונה לגמרי)
+        turtle_5_3: נסה להפעיל תוכנית זו ולבצע שינויים כדי לראות מה מתרחש. האם אתה
+          יכול להבין איך התוכנית עובדת? (או למחוק אותה ולהחליף אותה במשהו שונה לגמרי)
+        turtle_5_4: נסה להפעיל תוכנית זו ולבצע שינויים כדי לראות מה מתרחש. האם אתה
+          יכול להבין איך התוכנית עובדת? (או למחוק אותה ולהחליף אותה במשהו שונה לגמרי)
+        turtle_5_5: נסה להפעיל תוכנית זו ולבצע שינויים כדי לראות מה מתרחש. האם אתה
+          יכול להבין איך התוכנית עובדת? (או למחוק אותה ולהחליף אותה במשהו שונה לגמרי)
+        turtle_5_6: נסה להפעיל תוכנית זו ולבצע שינויים כדי לראות מה מתרחש. האם אתה
+          יכול להבין איך התוכנית עובדת? (או למחוק אותה ולהחליף אותה במשהו שונה לגמרי)
+        maze_3_1: I need to get to that pig! Type in a couple of calls to move();
+          so I can get my eggs back.
+        maze_3_2: Write me a program, so I can make it all the way to the pig.
+        maze_3_3: How should I get to the pig? Make sure I don't run into the box
+          of TNT!
+        maze_3_4: Argh! Write me a program that gets me around the TNT and to the
+          pig.
       levelIncompleteError:
-        maze_2_8: 'To solve this, find the pattern that repeats. Use a "repeat" block with these 3 blocks inside it: move, move, turn right.'
+        maze_2_8: 'To solve this, find the pattern that repeats. Use a "repeat" block
+          with these 3 blocks inside it: move, move, turn right.'
       other1StarError:
-        maze_2_14: |-
-          You need an "if" block inside a "repeat" block. If you're having trouble, try the previous level again to see how it worked.
+        maze_2_14: You need an "if" block inside a "repeat" block. If you're having
+          trouble, try the previous level again to see how it worked.
       tooFewBlocksMsg:
-        maze_2_8: 'To solve this, find the pattern that repeats. Use a "repeat" block with these 3 blocks inside it: move, move, turn right.'
+        maze_2_8: 'To solve this, find the pattern that repeats. Use a "repeat" block
+          with these 3 blocks inside it: move, move, turn right.'
     video:
       name:
-        maze_intro: "מבוא למבוך"
-        artist_intro: "מבוא לאמן"
-        farmer_intro: "Farmer Intro"
-        loop_times: "Repeat Times Block"
-        loop_until: "Repeat Until Block"
-        if: 'בלוק "אם"'
-        if_else: "בלוק אם/אחרת"
-        function: "פונקציות"
-        loop_while: "בלוק בעת"
-        loop_for: "Counter Block"
-        parameters: "פונקציות ופרמטרים"
-        hoc_wrapup: "Hour of Code Wrapup"
-        20_wrapup: "20-Hour Wrapup"
+        maze_intro: מבוא למבוך
+        artist_intro: מבוא לאמן
+        farmer_intro: Farmer Intro
+        loop_times: Repeat Times Block
+        loop_until: Repeat Until Block
+        if: בלוק "אם"
+        if_else: בלוק אם/אחרת
+        function: פונקציות
+        loop_while: בלוק בעת
+        loop_for: Counter Block
+        parameters: פונקציות ופרמטרים
+        hoc_wrapup: Hour of Code Wrapup
+        20_wrapup: 20-Hour Wrapup

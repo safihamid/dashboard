@@ -6,6 +6,10 @@ class RegistrationsController < Devise::RegistrationsController
     @user = User.find(current_user.id)
     params.permit!
 
+    # If email has changed for a non-teacher: clear confirmed_at but don't send notification email
+    @user.skip_reconfirmation! if params[:user][:email].present? && !@user.confirmation_required?
+    @user.confirmed_at = nil if params[:user][:email].present? && !@user.confirmation_required?
+
     successfully_updated = if needs_password?(@user, params)
       @user.update_with_password(params[:user])
     else
@@ -16,7 +20,7 @@ class RegistrationsController < Devise::RegistrationsController
     end
 
     if successfully_updated
-      set_flash_message :notice, :updated
+      set_flash_message :notice, @user.pending_reconfirmation? ? :update_needs_confirmation : :updated
       cookies[:language_] = @user.locale
       # Sign in the user bypassing validation in case his password changed
       sign_in @user, :bypass => true

@@ -2,7 +2,7 @@ class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable
-  devise :database_authenticatable, :registerable, :omniauthable,
+  devise :database_authenticatable, :registerable, :omniauthable, :confirmable,
          :recoverable, :rememberable, :trackable, :validatable, :authentication_keys => [:login]
 
   PROVIDER_MANUAL = 'manual'
@@ -237,5 +237,9 @@ SQL
     return true if other_user.admin?
     return true if self.email.blank? && self.teachers.include?(other_user)
     false
+  end
+
+  def confirmation_required?
+    (self.teacher? || self.students.length > 0) && !self.confirmed?
   end
 end
