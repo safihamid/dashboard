@@ -145,6 +145,7 @@ en:
     provider: 'Provider:'
     code: 'Code:'
     redeem_header: 'To redeem:'
+    donorschoose_how_to: 'How to use your code'
     success: 'Your prize was succesfully redeemed, see code below.'
     error: 'Your prize could not be redeemed, please try again.'
     error_us_only: 'The prize offer is only valid for U.S. users.'
