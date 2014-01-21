@@ -139,6 +139,7 @@
     provider: 'Tilbyder:'
     code: 'Kode:'
     redeem_header: 'To redeem:'
+    donorschoose_how_to: How to use your code
     success: Premien din ble innløst, se koden nedenfor.
     error: Premien din kunne ikke løses inn, prøv igjen.
     error_us_only: Tilbudet om premier gjelder bare for amerikanske brukere.
@@ -146,6 +147,7 @@
     error_already_redeemed: Premien din har allerede blitt innløst.
     no_prizes_available: Beklager, men vi har ingen premiene tilgjengelig.
     teacher_info_required: 'Teacher prizes require school name and address information:'
+    teacher_email_required: 'Teacher prizes require a confirmed email address:'
     confirm:
       title: Vennligst bekreft
       'no': Nei
@@ -250,6 +252,8 @@
     rollup: Fremdriftsoversikt
     activity: Nylig klasseaktivitet
   user:
+    email_confirm_needed: 'Email address has not been confirmed:'
+    email_resend_confirm: Resend confirmation instructions
     new_password_hint: (la stå tomt hvis du ikke vil endre det)
     current_password_hint: (vi trenger ditt gjeldende passord for å bekrefte dine
       endringer)

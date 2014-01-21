@@ -24,8 +24,8 @@
       unlock_instructions:
         subject: הוראות לפתיחת נעילה
     omniauth_callbacks:
-      failure: Could not authenticate you from %{kind} because "%{reason}".
-      success: Successfully authenticated from %{kind} account.
+      failure: לא הצליח לאמת אותך מ%{kind} בגלל %{reason}.
+      success: המשתמש מסוג %{kind} אומת בהצלחה.
     passwords:
       no_token: אין אפשרות לגשת לדף זה שלא דרך הגעה מדוא״ל איפוס סיסמה. אם אכן הגעת
         מדוא״ל איפוס סיסמה, אנא ודא כי השתמשת בכתובת המלאה שסופקה בדוא״ל.
@@ -65,5 +65,5 @@
       not_found: לא נמצא
       not_locked: לא היה נעול
       not_saved:
-        one: '1 error prohibited this %{resource} from being saved:'
-        other: '%{count} errors prohibited this %{resource} from being saved:'
+        one: 'שגיאה 1 עצרה את תהליך השמירה עבור %{resource}:'
+        other: '%{count} שגיאות עצרו את תהליך השמירה עבור %{resource}:'

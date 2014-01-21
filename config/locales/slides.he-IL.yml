@@ -49,7 +49,7 @@
         text: אם אתה מפעיל תוכנית ורוצה לתקן אותה ולנסות שוב, לחץ על לחצן "איפוס".
       13:
         image: notes/hoc1_13.jpg
-        text: . בואו נתפוס את החזירים האלה!
+        text: בואו נתפוס את החזירים האלה!
     artist_intro:
       1:
         image: notes/stage5_1.jpg
@@ -205,8 +205,8 @@
           אמת.
       3:
         image: notes/stage9_7.jpg
-        text: For example, if the farmer is standing on a pile, she will continue
-          to remove 1 shovelful WHILE there is still a pile beneath her.
+        text: לדוגמה, אם האיכר עומד על ערימה, הוא ימשיך להסיר דלי אחר דלי כל עוד עדיין
+          נמצאת ערימה תחתיו.
     loop_for:
       1:
         image: notes/stage11_1.jpg
@@ -232,12 +232,10 @@
         text: . היי, אני ג'אנט, אני מהנדסת ב-זינגה.
       2:
         image: notes/stage15_2.jpg
-        text: What if we want to draw a bunch of triangles and have their lengths
-          be different sizes?
+        text: מה אם אנחנו רוצים לצייר כמה משולשים עם אורכים בגדלים שונים?
       3:
         image: notes/stage15_3.jpg
-        text: We could write all that code out by hand or we can use a function with
-          parameters.
+        text: היינו יכולים לכתוב את כל הקוד בעצמנו או שנוכל להשתמש בפונקציה עם פרמטרים.
       4:
         image: notes/stage15_4.jpg
         text: To do this, click the blue star on the "draw a triangle" function definition.

@@ -56,17 +56,17 @@
       hogy hol tartassz.
     prizes_header: The first students to complete the course win prizes! (U.S. students
       only)
-    prizes_message: U.S. students who earn all %{num_trophies} concept trophies can
-      select a variety of prizes including free Dropbox space, Skype credits, and
-      downloadable games from Electronic Arts.
+    prizes_message: Azok az U.S. diákok, akik megszereztek minden %{num_trophies}
+      trófeát választhatnak számos jutalom közül, mint pl.  Dropbox tárhely, Skype
+      használat és letölthető Electronic Arts and Valve játékok.
     teacher_educator_guide: Lásd a tanító segítségét
     teacher_prize_header: Nyerj $1,000-t <a target="_blank" href="http://DonorsChoose.org">DonorsChoose.org</a>
     teacher_prize_message: 'Együttműködve a <a target="_blank" href="http://DonorsChoose.org">
       DonorsChoose.org</a> Code.org kínál akár $1,000-t  csoportot szervező USA állami
       iskolában  tanító tanárokak, akik legalább 15 diákok végigsegítenek a kurzuson.
       <a href="http://code.org/educate/20hr"> lásd a pedagógus útmutató további info.</a> '
-    teacher_prize_limits: '(Limit: $1,000 per teacher. <a target="_blank" href="http://help.donorschoose.org/app/answers/detail/a_id/454/kw/code.org">See
-      FAQ for more limits</a>)'
+    teacher_prize_limits: '(Limit: 1.000 $ / tanár. <a target="_blank" href="http://help.donorschoose.org/app/answers/detail/a_id/454/kw/code.org">
+      Lásd a GYIK-ban a további korlátozások</a>)'
     teacher_pitch: Tanítsd az általános iskolás Bevezetés a Számítógépes Tudományba
       anyagot a tanteremben
     teacher_title: Tanár regisztrálás
@@ -129,8 +129,7 @@
       invite_student:
         subject: Csatlakozz egy osztályhoz %{teacher_name} a Code.org-on belül!
       student_disassociated:
-        subject: 'Code.org notification: %{student_name} is no longer associated as
-          your student.'
+        subject: 'Code.org megjegyzés: %{student_name}  már nem az Ön a hallgatója.'
   reports:
     error:
       access_denied: Nincs jogosultságod megtekinteni ennek a személyesnek a statisztikáját
@@ -139,13 +138,15 @@
     provider: 'Provider:'
     code: 'Code:'
     redeem_header: 'To redeem:'
+    donorschoose_how_to: How to use your code
     success: Your prize was succesfully redeemed, see code below.
     error: Your prize could not be redeemed, please try again.
     error_us_only: A díjat csak amerikai felhasználók nyerhetik.
     error_not_earned: Ezt a díjat még nem szerezted meg.
     error_already_redeemed: A díjadat már megkaptad.
     no_prizes_available: Sajnáljuk, jelenleg nincsenek elérhető díjak.
-    teacher_info_required: 'Teacher prizes require school name and address information:'
+    teacher_info_required: 'a tanári díjakhoz adja meg az iskola nevét és címét:'
+    teacher_email_required: 'Teacher prizes require a confirmed email address:'
     confirm:
       title: Please Confirm
       'no': false
@@ -213,8 +214,8 @@
     confirm: Biztos benne?
     created: '%{model} sikeresen létrehozva.'
     updated: '%{model} sikeresen frissítve.'
-    destroyed: '%{model} was successfully deleted.'
-    access_denied: You do not have access to this %{model}.
+    destroyed: A %{model} sikeresen törölve.
+    access_denied: Nincs jogosultsága a %{model}-hez.
   nav:
     header:
       finished_hoc: Befejeztem a Kód Óráját
@@ -243,7 +244,7 @@
     title:
       one: A te tanárod %{name}
       other: 'A tanáraid:'
-    remove: (remove teacher)
+    remove: (tanár eltávolítása)
     tools: Tanári eszközök
     students:
       manage: Diákok kezelése
@@ -251,6 +252,8 @@
     rollup: Fejlődés tájékoztató
     activity: Mostanában osztály aktivitás
   user:
+    email_confirm_needed: 'Email address has not been confirmed:'
+    email_resend_confirm: Resend confirmation instructions
     new_password_hint: (hagyja üresen, ha nem akarja megváltoztatni)
     current_password_hint: (szükségünk van a jelszavára  módosításainak jóváhagyásához)
     cancel:

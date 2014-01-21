@@ -54,16 +54,16 @@
       בחידות והשלבים השונים</a>, אבל אתה צריך להירשם על-מנת לשמור את התהליך שאתה עובר.
     prizes_header: The first students to complete the course win prizes! (U.S. students
       only)
-    prizes_message: U.S. students who earn all %{num_trophies} concept trophies can
-      select a variety of prizes including free Dropbox space, Skype credits, and
-      downloadable games from Electronic Arts.
+    prizes_message: תלמידים מארה"ב שזוכים בכל %{num_trophies} גביעי המושגים יכולים
+      לבחור מסוגי פרסים רבים כגון מקום דרופבוקס בחינם, אשראי Skype, ומשחקים להורדה
+      מבית Electronic Arts.
     teacher_educator_guide: ראה מדריך למחנך
     teacher_prize_header: זכה בפרס בשווי 1,000 דולר ב-<a target="_blank" href="http://DonorsChoose.org">DonorsChoose.org</a>
     teacher_prize_message: |
       בשותפות עם <a target="_blank" href="http://DonorsChoose.org"> DonorsChoose.org </a>
       Code.org מציע לך מימון של עד 1000 דולר למימון כיתת למידה בארצות הברית למורים שמלמדים לפחות 15 תלמידים בקורס <a href="http://code.org/educate/20hr"> הסתכל מדריך למורה לעוד מידע </a>
-    teacher_prize_limits: '(Limit: $1,000 per teacher. <a target="_blank" href="http://help.donorschoose.org/app/answers/detail/a_id/454/kw/code.org">See
-      FAQ for more limits</a>)'
+    teacher_prize_limits: '(הגבלה: $1,000 לכל מורה. <a target="_blank" href="http://help.donorschoose.org/app/answers/detail/a_id/454/kw/code.org">
+      עוד הגבלות  בFAQ</a>)'
     teacher_pitch: למד את כיתות ח׳ הקדמה למדעי המחשב בכיתה שלך
     teacher_title: מורה, הרשם
     student_pitch: 'אחרי שעה: נסה את ההקדמה שלנו למדעי המחשב לכיתות ח׳'
@@ -128,8 +128,7 @@
       invite_student:
         subject: הצטרף לכיתה עם %{teacher_name} ב-Code.org!
       student_disassociated:
-        subject: 'Code.org notification: %{student_name} is no longer associated as
-          your student.'
+        subject: 'הודעה מCode.org: %{student_name} כבר לא רשום כתלמיד שלך.'
   reports:
     error:
       access_denied: אין לך גישה לסטטיסטיקות של האדם הזה
@@ -138,13 +137,15 @@
     provider: 'ספק:'
     code: 'קוד:'
     redeem_header: 'To redeem:'
+    donorschoose_how_to: How to use your code
     success: Your prize was succesfully redeemed, see code below.
     error: Your prize could not be redeemed, please try again.
     error_us_only: הפרס הזה תקף אך ורק לתושבי ארצות הברית.
     error_not_earned: עדיין לא השגת את הפרס הזה.
-    error_already_redeemed: Your prize has already been redeemed.
+    error_already_redeemed: הפרס שלך כבר נפדה.
     no_prizes_available: אנו מצטערים, אך כרגע אין לנו אף פרס זמין.
-    teacher_info_required: 'Teacher prizes require school name and address information:'
+    teacher_info_required: 'פרסים של מורים מחייבים שם בי"ס וכתובת:'
+    teacher_email_required: 'Teacher prizes require a confirmed email address:'
     confirm:
       title: Please Confirm
       'no': לא
@@ -169,33 +170,31 @@
       choose_teacher: 'Click on the logo below to claim your prize:'
       earned: זכית בפרס! (לתושבי ארצות הברית בלבד)
       not_earned_title: Finish the tutorial, earn rewards (U.S. students only)
-      not_earned: 'Learn all the computer science concepts, collect all %{num_trophies}
-        trophies, and earn real-world prizes. You can choose between 10GB of free
-        Dropbox space, $10 in Skype credits, and free game downloads. NOTE: offer
-        only valid to U.S. students, and only as long as supplies last.'
+      not_earned: 'למד את כל המושגים של מדעי המחשב, אסוף את כל ה%{num_trophies} גביעים,
+        וזכה בפרסים אמיתיים. אתה יכול לבחור בין 10GB של מקום בדרופבוקס חינם, $10 בקרדיטים
+        של Skype, והורדות של משחקים בחינם. הערה: הצעה זו תקפה רק לתושבי ארה"ב, ורק
+        כל עוד נשאר במלאי.'
       teacher:
-        earned: 10 or more students collected all %{num_trophies} trophies. You have
-          won a teacher prize! (U.S. teachers only)
+        earned: 10 או יותר תלמידים אספו את כל ה%{num_trophies} גביעים. אתה זכית בפרס
+          למורים (רק למורים בארה"ב)
         not_earned_title: Teach the class, earn up to $1,000 in <a target="_blank"
           href="http://DonorsChoose.org">DonorsChoose.org</a> credits (U.S. teachers
           only)
-        not_earned: To reward first-time computer science teachers, you can earn up
-          to $1,000 in <a href="http://DonorsChoose.org">DonorsChoose.org</a> credits
-          for guiding a classroom through the K-8 intro course. To qualify, you need
-          to successfully host a classroom of at least 15 students through the entire
-          K-8 intro course, with all 15 students (or more) completing all tutorials
-          and earning all %{num_trophies} trophies. If 7 or more of the students who
-          earn all of the trophies are girls, your reward is $1,000 in <a target="_blank"
-          href="http://DonorsChoose.org">DonorsChoose.org</a> credits. Otherwise,
-          your reward is $750 in <a target="_blank" href="http://DonorsChoose.org">DonorsChoose.org</a>
-          credits.  <a target="_blank" href="http://DonorsChoose.org">DonorsChoose.org</a>
-          credits can only be used by teachers in U.S. public schools.
+        not_earned: 'רק למורים בבי"ס ציבוריים בארה"ב: כדי לתגמל מורים המלמדים בפעם
+          הראשונה מדעי-המחשב, את/ה יכול/ה להרוויח עד $1000 ב<a href="http://DonorsChoose.org">
+          קרדיטים על הנחיית כיתה בכל קורס המבוא (K-8). כדי להיות רשאיים לקבל את הפרס,
+          עליכם להנחות בהצלחה כיתה של לפחות 15 תלמידים בכל קורס המבוא, שכל 15 התלמידים
+          גומרים את שיעורי ההדרכה, ומקבלים את כל ה%{num_trophies} גביעים. אם יותר
+          מ7 מהתלמידים המקבלים את כל הגביעים הם בנות, הפרס שלך הוא $1000 ב<a target="_blank"
+          href="http://DonorsChoose.org"> קרדיטים. אחרת, הפרס שלך הוא $750 ב<a target="_blank"
+          href="http://DonorsChoose.org"> קרדיטים.  בקרדיטים של <a target="_blank"
+          href="http://DonorsChoose.org"> רק מורים בבי"ס ציבוריים בארה"ב יכולים להשתמש.'
         bonus:
           not_earned_title: You can still earn an additional $250 in <a target="_blank"
             href="http://DonorsChoose.org">DonorsChoose.org</a> credits (U.S. teachers
             only)
-          earned: 7 or more of the students who collected all %{num_trophies} trophies
-            are girls. You have won a bonus prize! (U.S. teachers only)
+          earned: 7 או יותר מהתלמידים שקיבלו את כל ה%{num_trophies} גביעים הם בנות.
+            קיבלת פרס בונוס! (רק למורים מארה"ב.)
           not_earned: If at least 7 of your students who earn all %{num_trophies}
             trophies are girls, your reward is an additional $250 in <a target="_blank"
             href="http://DonorsChoose.org">DonorsChoose.org</a> credits. <a target="_blank"
@@ -212,8 +211,8 @@
     confirm: אתה בטוח?
     created: '%{model} נוצר בהצלחה.'
     updated: '%{model} עודכן בהצלחה.'
-    destroyed: '%{model} was successfully deleted.'
-    access_denied: You do not have access to this %{model}.
+    destroyed: '%{model} נמחק בהצלחה.'
+    access_denied: אין לך גישה ל%{model}.
   nav:
     header:
       finished_hoc: סיימתי את שעת הקוד שלי
@@ -241,7 +240,7 @@
     title:
       one: המורה שלך הוא %{name}
       other: 'המורים שלך:'
-    remove: (remove teacher)
+    remove: (מחק מורה)
     tools: כלים למורה
     students:
       manage: נהל תלמידים
@@ -249,6 +248,8 @@
     rollup: לוח התקדמות
     activity: פעילות אחרונה בכיתה
   user:
+    email_confirm_needed: 'Email address has not been confirmed:'
+    email_resend_confirm: Resend confirmation instructions
     new_password_hint: (השאר ריק אם אין ברצונך לשנות)
     current_password_hint: (אנחנו צריכים את הסיסמה הנוכחית שלך כדי לאשר את השינויים
       שלך)
@@ -277,8 +278,8 @@
     student_left_off: 'היכן שהפסקתם:'
     student_finished_prize: השלמת את כל המדריכים הרווחת את %{prize_link} ותוכל לקחת
       שיעור אחר %{online_link} או %{local_school_link}
-    student_finished: You've completed all tutorials, pick another class %{online_link}
-      or at a %{local_school_link}
+    student_finished: את/ה גמרת את כל שיעורי ההדרכה. בחר כיתה אחרת %{online_link}
+      או ב%{local_school_link}
     local_school: בה"ס מקומי
     online: באינטרנט
     see_details: ראה פרטים

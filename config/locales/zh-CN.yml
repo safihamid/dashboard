@@ -128,6 +128,7 @@
     provider: 提供者
     code: 代码：
     redeem_header: 'To redeem:'
+    donorschoose_how_to: How to use your code
     success: 你的奖金已经成功兑现，请参见下面的代码。
     error: 你的奖品无法兑现，请重新尝试。
     error_us_only: 奖项仅向美国用户提供。
@@ -135,6 +136,7 @@
     error_already_redeemed: 您获得的奖项已经被兑现。
     no_prizes_available: 我们很抱歉，但我们目前有没有可用的奖品。
     teacher_info_required: 'Teacher prizes require school name and address information:'
+    teacher_email_required: 'Teacher prizes require a confirmed email address:'
     confirm:
       title: 请确认
       'no': 否
@@ -228,6 +230,8 @@
     rollup: 进度板
     activity: 最近的课程活动
   user:
+    email_confirm_needed: 'Email address has not been confirmed:'
+    email_resend_confirm: Resend confirmation instructions
     new_password_hint: （如果你不想改变它，留空白）
     current_password_hint: （我们需要您的当前密码以确认您的更改）
     cancel:

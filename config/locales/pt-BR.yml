@@ -66,8 +66,8 @@
       de escolas públicas dos EUA que conduzirem pelo menos 15 alunos através deste
       curso. <a href="http://code.org/educate/20hr">Ver guia do educador para obter
       mais informações.</a> '
-    teacher_prize_limits: '(Limit: $1,000 per teacher. <a target="_blank" href="http://help.donorschoose.org/app/answers/detail/a_id/454/kw/code.org">See
-      FAQ for more limits</a>)'
+    teacher_prize_limits: '(Limite: US $1.000 por professor. <a target="_blank" href="http://help.donorschoose.org/app/answers/detail/a_id/454/kw/code.org">
+      Consulte o FAQ para mais limites</a>)'
     teacher_pitch: Ensinar Introdução à Ciência da Computação para o Ensino Fundamental
       em sua sala de aula
     teacher_title: Professor inscreva-se
@@ -132,8 +132,8 @@
       invite_student:
         subject: Junte-se a uma aula com %{teacher_name} em Code.org!
       student_disassociated:
-        subject: 'Code.org notification: %{student_name} is no longer associated as
-          your student.'
+        subject: 'Code.org notificação: %{student_name} não é mais associado como
+          seu aluno.'
   reports:
     error:
       access_denied: Você não tem acesso a estatísticas desta pessoa
@@ -142,13 +142,16 @@
     provider: 'Fornecedor:'
     code: 'Código:'
     redeem_header: 'To redeem:'
+    donorschoose_how_to: How to use your code
     success: Seu prêmio foi resgatado com êxito, veja o código abaixo.
     error: O prêmio não pode ser resgatado, por favor tente novamente.
     error_us_only: A oferta do prêmio só é válida para usuários nos Estados Unidos.
     error_not_earned: Você ainda não ganhou esse prêmio.
     error_already_redeemed: Seu prêmio já foi reivindicado.
     no_prizes_available: Pedimos desculpas, mas atualmente não temos prêmios disponíveis.
-    teacher_info_required: 'Teacher prizes require school name and address information:'
+    teacher_info_required: 'Premiações para professor exigem informações de nome e
+      endereço de escola:'
+    teacher_email_required: 'Teacher prizes require a confirmed email address:'
     confirm:
       title: Por favor, confirme
       'no': Não
@@ -223,8 +226,8 @@
     confirm: Tem certeza?
     created: '%{model} foi criado com sucesso.'
     updated: '%{model} foi atualizado com sucesso.'
-    destroyed: '%{model} was successfully deleted.'
-    access_denied: You do not have access to this %{model}.
+    destroyed: '%{model} foi excluído com êxito.'
+    access_denied: Você não tem acesso a este %{model}.
   nav:
     header:
       finished_hoc: Eu terminei a minha Hora de Código
@@ -252,7 +255,7 @@
     title:
       one: Seu professor é %{name}
       other: 'Seus professores:'
-    remove: (remove teacher)
+    remove: (remover professor)
     tools: Ferramentas do professor
     students:
       manage: Gerenciar alunos
@@ -260,6 +263,8 @@
     rollup: Painel de controle do progresso
     activity: Atividade recente de classe
   user:
+    email_confirm_needed: 'Email address has not been confirmed:'
+    email_resend_confirm: Resend confirmation instructions
     new_password_hint: (deixe em branco se não quiser alterá-lo)
     current_password_hint: (precisamos de sua senha atual para confirmar suas alterações)
     cancel:

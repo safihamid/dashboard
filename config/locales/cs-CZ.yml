@@ -138,6 +138,7 @@
     provider: 'Poskytovatel:'
     code: 'Kód:'
     redeem_header: 'To redeem:'
+    donorschoose_how_to: How to use your code
     success: Your prize was succesfully redeemed, see code below.
     error: Your prize could not be redeemed, please try again.
     error_us_only: Nabízená odměna platí pouze pro uživatele z USA.
@@ -145,6 +146,7 @@
     error_already_redeemed: Tvá cena již byla vybrána.
     no_prizes_available: Je nám líto, ale momentálně nejsou k dispozici žádné ceny.
     teacher_info_required: 'Teacher prizes require school name and address information:'
+    teacher_email_required: 'Teacher prizes require a confirmed email address:'
     confirm:
       title: Prosím, potvrď
       'no': Ne
@@ -248,6 +250,8 @@
     rollup: Panel pokroku
     activity: Nedávné aktivity třídy
   user:
+    email_confirm_needed: 'Email address has not been confirmed:'
+    email_resend_confirm: Resend confirmation instructions
     new_password_hint: (zanech prázdné, pokud nechceš provést změnu)
     current_password_hint: (potřebujeme tvé aktuální heslo pro potvrzení změny)
     cancel:

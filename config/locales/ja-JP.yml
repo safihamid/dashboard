@@ -130,6 +130,7 @@
     provider: 'プロバイダー:'
     code: 'コード:'
     redeem_header: 'To redeem:'
+    donorschoose_how_to: How to use your code
     success: あなたの賞金は獲得できました。下のコードを参照してください。
     error: あなたの賞金は償還できませんでした、もう一度やり直してください。
     error_us_only: 賞金提供をされるのは米国内のユーザーのみに限られています。
@@ -137,6 +138,7 @@
     error_already_redeemed: あなたの賞金は既に換金されています。
     no_prizes_available: 申し訳ありませんが、ただ今賞品がありません。
     teacher_info_required: 'Teacher prizes require school name and address information:'
+    teacher_email_required: 'Teacher prizes require a confirmed email address:'
     confirm:
       title: 確認してください
       'no': いいえ
@@ -232,6 +234,8 @@
     rollup: プログレスダッシュ ボード
     activity: 最近のクラスの活動
   user:
+    email_confirm_needed: 'Email address has not been confirmed:'
+    email_resend_confirm: Resend confirmation instructions
     new_password_hint: （変更したくない場合は空白のままにしてください）
     current_password_hint: (変更を確認するためにあなたの現在のパスワードが必要です)
     cancel:

@@ -143,6 +143,7 @@
     provider: 'Təminatçı:'
     code: 'Kod:'
     redeem_header: 'To redeem:'
+    donorschoose_how_to: How to use your code
     success: Mükafatınızı müvəffəqiyyətlə xərclədiniz, aşağıdakı koda baxın.
     error: Mükafatınızı xərcləmək mümkün olmadı, lütfən bir də cəhd edin.
     error_us_only: Mükafat almaq imkanı ancaq ABŞ-dan olan istifadəçilər üçün etibarlıdır.
@@ -150,6 +151,7 @@
     error_already_redeemed: Mükafatınız artıq xərclənib.
     no_prizes_available: Üzr istəyirik, hazırda mükafatlar qalmayıb.
     teacher_info_required: 'Teacher prizes require school name and address information:'
+    teacher_email_required: 'Teacher prizes require a confirmed email address:'
     confirm:
       title: Zəhmət olmazsa, təsdiq edin
       'no': Xeyr
@@ -258,6 +260,8 @@
     rollup: Gedişat paneli
     activity: Ən son sinif işləri
   user:
+    email_confirm_needed: 'Email address has not been confirmed:'
+    email_resend_confirm: Resend confirmation instructions
     new_password_hint: (dəyişmək istəmirsinizsə, boş buraxın)
     current_password_hint: (dəyişikliklərinizi təsdiq etmək üçün cari parolunuz lazımdır)
     cancel:

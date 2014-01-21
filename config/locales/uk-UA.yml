@@ -138,6 +138,7 @@
     provider: 'Постачальник:'
     code: 'Код:'
     redeem_header: 'To redeem:'
+    donorschoose_how_to: How to use your code
     success: Ви успішно отримали приз, дивіться код нижче.
     error: Ваш виграш не може бути отримано, спробуйте ще раз.
     error_us_only: Винагорода дійсна лише для користувачів зі США.
@@ -145,6 +146,7 @@
     error_already_redeemed: Ваш приз вже отриманий.
     no_prizes_available: Нам дуже шкода, але в даний час немає доступних призів.
     teacher_info_required: 'Teacher prizes require school name and address information:'
+    teacher_email_required: 'Teacher prizes require a confirmed email address:'
     confirm:
       title: Будь ласка, підтвердіть
       'no': Ні
@@ -251,6 +253,8 @@
     rollup: Панель досягнень
     activity: Остання діяльність класу
   user:
+    email_confirm_needed: 'Email address has not been confirmed:'
+    email_resend_confirm: Resend confirmation instructions
     new_password_hint: (залишіть порожнім, якщо ви не хочете змінювати)
     current_password_hint: (нам потрібний ваш поточний пароль, щоб підтвердити зміни)
     cancel:

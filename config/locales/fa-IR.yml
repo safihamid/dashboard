@@ -137,6 +137,7 @@
     provider: 'فراهم کننده:'
     code: 'کد:'
     redeem_header: 'To redeem:'
+    donorschoose_how_to: How to use your code
     success: جایزه شما با موفقیت آزاد شد، کد زیر را مشاهده کنید.
     error: جایزه شما قابل آزاد شدن نیست, لطفا دوباره سعی کنید.
     error_us_only: پیشنهاد جایزه فقط برای کاربران ایالات متحده اعتبار دارد.
@@ -144,6 +145,7 @@
     error_already_redeemed: جایزه تان را قبلا استفاده کرده اید.
     no_prizes_available: متاسفیم، اما در حال حاضر هیچ جایزه ای موجود نیست.
     teacher_info_required: 'Teacher prizes require school name and address information:'
+    teacher_email_required: 'Teacher prizes require a confirmed email address:'
     confirm:
       title: لطفا تایید کنید
       'no': نه
@@ -249,6 +251,8 @@
     rollup: داشبورد پیشرفت
     activity: آخرین فعالیت های کلاس
   user:
+    email_confirm_needed: 'Email address has not been confirmed:'
+    email_resend_confirm: Resend confirmation instructions
     new_password_hint: (اگر نمی خواهید تغییر بدهید خالی بگذارید)
     current_password_hint: (کلمه عبور برای ذخیره تغییرات لازم است)
     cancel:

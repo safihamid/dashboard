@@ -142,6 +142,7 @@
     provider: 'Proveedor:'
     code: 'Código:'
     redeem_header: 'Para canjear:'
+    donorschoose_how_to: How to use your code
     success: Su premio fue exitosamente compensado, vea el código más abajo.
     error: El premio no puede ser canjeado, inténtelo nuevamente.
     error_us_only: La oferta del premio es válida únicamente para los usuarios de
@@ -150,6 +151,7 @@
     error_already_redeemed: Tu premio ya ha sido canjeado.
     no_prizes_available: Lo sentimos, pero actualmente no tenemos premios disponibles.
     teacher_info_required: 'Teacher prizes require school name and address information:'
+    teacher_email_required: 'Teacher prizes require a confirmed email address:'
     confirm:
       title: Confirme por favor
       'no': false
@@ -260,6 +262,8 @@
     rollup: Panel de progreso
     activity: Actividad reciente de la clase
   user:
+    email_confirm_needed: 'Email address has not been confirmed:'
+    email_resend_confirm: Resend confirmation instructions
     new_password_hint: (déjalo en blanco si no quieres cambiarlo)
     current_password_hint: (necesitamos tu contraseña actual para confirmar los cambios)
     cancel:
