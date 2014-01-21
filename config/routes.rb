@@ -11,6 +11,9 @@ Dashboard::Application.routes.draw do
   get '/share/:id', to: redirect('/sh/%{id}')
   get '/sh/:id/generate_image', to: 'level_sources#generate_image'
 
+  resources :level_source_hints
+  post '/hint/:level_source_id', :to => 'level_source_hints#create'
+
   devise_for :users, controllers: {
     omniauth_callbacks: 'omniauth_callbacks',
     registrations: 'registrations',
