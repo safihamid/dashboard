@@ -225,7 +225,7 @@ en:
       prizes_link: 'more info'
   teacher:
     title:
-      one: 'Your teacher is %{name}'
+      one: 'Your teacher:'
       other: 'Your teachers:'
     remove: '(remove teacher)'
     tools: 'Teacher Tools'
