@@ -56,7 +56,9 @@ class FollowersController < ApplicationController
       target_section = Section.find_by_code(params[:teacher_email_or_code])
       target_user = target_section.try(:user) || User.find_by_email(params[:teacher_email_or_code])
 
-      if target_user
+      if target_user && target_user.email.present?
+        # if the teacher has not confirmed their email, they should be sent email confirmation instrutions
+        target_user.send_confirmation_instructions if !target_user.confirmed?
         begin
           Follower.create!(user: target_user, student_user: current_user, section: target_section)
         rescue ActiveRecord::RecordNotUnique => e
