@@ -22,7 +22,7 @@ Dir.glob(DIR + 'dash*/log/milestone.log') do |i|
 end
 
 results[:today] = today_sum
-results[:all] = today_sum + archive_sum
+results[:all] = today_sum + archive_sum + 595212613  # Append existing count.
 
 puts results.to_json
 
