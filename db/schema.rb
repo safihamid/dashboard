@@ -256,7 +256,7 @@ ActiveRecord::Schema.define(version: 20140123194957) do
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string   "unconfirmed_email"
-    t.integer  "first_teacher_id"
+    t.integer  "prize_teacher_id"
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree

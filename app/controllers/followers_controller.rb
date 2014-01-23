@@ -165,10 +165,9 @@ SQL
       redirect_to(redirect_url, notice: t('teacher.user_not_found'))
     else
       # if this was the student's first teacher, store that teacher id in the student's record
-      @user.update_attributes(:first_teacher_id => @teacher.id) if @user.teachers.first.try(:id) == @teacher.id && @user.first_teacher_id.blank?
+      @user.update_attributes(:prize_teacher_id => @teacher.id) if @user.teachers.first.try(:id) == @teacher.id && @user.prize_teacher_id.blank?
       
       f.delete
-      # todo: prevent teacher fraud - store original first teacher per student
       FollowerMailer.student_dissasociated_notify_teacher(@teacher, @user).deliver if removed_by_student
       FollowerMailer.teacher_dissasociated_notify_student(@teacher, @user).deliver if !removed_by_student
       redirect_to redirect_url, notice: t('teacher.student_teacher_disassociated', teacher_name: @teacher.name, student_name: @user.name)

@@ -1,5 +1,5 @@
 class AddFirstTeacherToUsers < ActiveRecord::Migration
   def change
-    add_reference :users, :first_teacher
+    add_reference :users, :prize_teacher
   end
 end
