@@ -14,6 +14,10 @@ class ApplicationController < ActionController::Base
 
   around_filter :with_locale
 
+  def code_org_root_path
+    Rails.env.production? ? "http://www.code.org" : Rails.env.development? ? "http://localhost:3000" : "http://staging.code.org"
+  end
+
   protected
 
   PERMITTED_USER_FIELDS = [:name, :username, :email, :password, :password_confirmation, :locale, :gender, :login,
@@ -110,7 +114,7 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_out_path_for(resource_or_scope)
-    Rails.env.production? ? "http://www.code.org" : "http://dev-code.org"
+    code_org_root_path
   end
 
 end
