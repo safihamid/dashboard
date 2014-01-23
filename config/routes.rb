@@ -13,6 +13,7 @@ Dashboard::Application.routes.draw do
 
   resources :level_source_hints
   get '/add_hint/:level_source_id', :to => 'level_source_hints#add_hint', as: 'add_hint'
+  get '/show_hints/:level_source_id', :to => 'level_source_hints#show_hints', as: 'show_hints'
 
   devise_for :users, controllers: {
     omniauth_callbacks: 'omniauth_callbacks',

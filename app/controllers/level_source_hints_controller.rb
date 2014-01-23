@@ -1,18 +1,19 @@
 class LevelSourceHintsController < ApplicationController
+  before_filter :authenticate_user!
 
   def add_hint
-    @level_source = LevelSource.find(params[:level_source_id])
-    @start_blocks = @level_source.data
-    @level = @level_source.level
-    @game = @level.game
-    @full_width = true
-    @hide_source = false
-    @share = true
-
+    raise "unauthorized" if !current_user.admin?
+    common
     render 'level_source_hints/new'
   end
 
-  def index
+  def show_hints
+    raise "unauthorized" if !current_user.admin?
+
+    @hints = LevelSourceHint.where( "level_source_id = ?", params[:level_source_id]).sort_by { |hint| -hint.times_proposed}
+    common
+
+    render 'level_source_hints/show'
   end
 
   def create
@@ -27,5 +28,16 @@ class LevelSourceHintsController < ApplicationController
     # Redirecting to the level stats page
     redirect_url = params[:redirect]
     redirect_to redirect_url, notice: I18n.t('add_hint_form.submit')
+  end
+
+  protected
+  def common
+    @level_source = LevelSource.find(params[:level_source_id])
+    @start_blocks = @level_source.data
+    @level = @level_source.level
+    @game = @level.game
+    @full_width = true
+    @hide_source = false
+    @share = true
   end
 end

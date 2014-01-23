@@ -1,5 +1,5 @@
 %div
-  %h1 Which hint would you like to give to this incorrect program?
+  %h1 Which hint would you like to give in order to improve this program?
   = form_for([LevelSourceHint.new]) do |f|
     .field
       = text_field_tag :hint_content, nil, class: 'input-xxlarge', placeholder: t('add_hint_form.placeholder'), :required => true
