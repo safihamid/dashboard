@@ -4,7 +4,11 @@
     %tr
       %th Count
       %th Code
+      %th Add Code-Specific Hint
+      %th Show Existing Hints
     - code_summaries.each do |result|
       %tr
-        %td= result[1]
-        %td= render partial: 'shared/solution', locals: { level_source_id: result[0], level: level }
+        %td= result[:count]
+        %td= render partial: 'shared/solution', locals: { level_source_id: result[:level_source_id], level: level }
+        %td= link_to 'Add Hint', add_hint_path(result[:level_source_id]) if result[:popular]
+        %td= link_to 'Show Hints', show_hints_path(result[:level_source_id]) if result[:popular]
