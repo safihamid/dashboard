@@ -4,7 +4,6 @@ class LevelSourceHintsController < ApplicationController
   def add_hint
     raise "unauthorized" if !current_user.admin?
     common
-    render 'level_source_hints/new'
   end
 
   def show_hints
@@ -12,17 +11,14 @@ class LevelSourceHintsController < ApplicationController
 
     @hints = LevelSourceHint.where( "level_source_id = ?", params[:level_source_id]).sort_by { |hint| -hint.times_proposed}
     common
-
-    render 'level_source_hints/show'
   end
 
   def create
     # Find or create the hint data
     level_source_hint =
-        LevelSourceHint.where("level_source_id = ? AND hint = ?", params[:level_source_id], params[:hint_content])
-        .first_or_create(:level_source_id => params[:level_source_id], :hint => params[:hint_content])
+        LevelSourceHint.where(level_source_id: params[:level_source_id], hint:  params[:hint_content]).first_or_create
     # Update the times this hint has been proposed
-    level_source_hint.times_proposed = level_source_hint.times_proposed.nil? ? 1 : level_source_hint.times_proposed + 1
+    level_source_hint.times_proposed = (level_source_hint.times_proposed || 0) + 1
     level_source_hint.save!
 
     # Redirecting to the level stats page
