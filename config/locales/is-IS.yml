@@ -139,6 +139,7 @@
     provider: 'Veitandi:'
     code: 'Kóði:'
     redeem_header: 'Til að innleysa:'
+    donorschoose_how_to: How to use your code
     success: Verðlaunin voru innleyst, sjá kóða fyrir neðan.
     error: Ekki tókst að innleysa verðlaunin, vinsamlegast reyndu aftur.
     error_us_only: Boðið um verðlaun gildir aðeins fyrir notendur í Bandaríkjunum.
@@ -146,6 +147,7 @@
     error_already_redeemed: Verðlaunin þín hafa þegar verið innleyst.
     no_prizes_available: Því miður, en þessa stundina eru engin verðlaun í boði.
     teacher_info_required: 'Teacher prizes require school name and address information:'
+    teacher_email_required: 'Teacher prizes require a confirmed email address:'
     confirm:
       title: Vinsamlegast staðfestu
       'no': Nei
@@ -254,6 +256,8 @@
     rollup: Mælaborð árangurs
     activity: Nýleg virkni bekkjar
   user:
+    email_confirm_needed: 'Email address has not been confirmed:'
+    email_resend_confirm: Resend confirmation instructions
     new_password_hint: (hafðu autt ef þú vilt ekki breyta því)
     current_password_hint: (við þurfum að fá núverandi lykilorð þitt til að staðfesta
       breytingarnar)

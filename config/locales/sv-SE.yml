@@ -144,6 +144,7 @@
     provider: 'Leverantör:'
     code: 'Kod:'
     redeem_header: 'To redeem:'
+    donorschoose_how_to: How to use your code
     success: Ditt pris har lösts in, se nedan.
     error: Ditt pris kunde inte lösas in, försök igen.
     error_us_only: Priserbjudandet gäller endast för amerikanska användare.
@@ -152,6 +153,7 @@
     no_prizes_available: Vi beklagar, men vi har för närvarande inga tillgängliga
       priser.
     teacher_info_required: 'Teacher prizes require school name and address information:'
+    teacher_email_required: 'Teacher prizes require a confirmed email address:'
     confirm:
       title: Vänligen bekräfta
       'no': Nej
@@ -251,6 +253,8 @@
     rollup: Framstegsmeny
     activity: Senaste klasshändelserna
   user:
+    email_confirm_needed: 'Email address has not been confirmed:'
+    email_resend_confirm: Resend confirmation instructions
     new_password_hint: (lämna tomt om du inte vill ändra det)
     current_password_hint: (vi behöver ditt nuvarande lösenord att bekräfta dina ändringar)
     cancel:

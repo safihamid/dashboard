@@ -143,6 +143,7 @@
     provider: 'Πάροχος:'
     code: 'Κωδικός:'
     redeem_header: 'To redeem:'
+    donorschoose_how_to: How to use your code
     success: Το βραβείο σας εξαργυρώθηκε με επιτυχία, δες τον παρακάτω κωδικό.
     error: Το βραβείο σας δεν ήταν δυνατόν να εξαργυρωθεί, παρακαλώ προσπαθήστε ξανά.
     error_us_only: Το βραβείο ισχύει μόνο για χρήστες από τις ΗΠΑ.
@@ -150,6 +151,7 @@
     error_already_redeemed: Your prize has already been redeemed.
     no_prizes_available: We're sorry, but we currently have no prizes available.
     teacher_info_required: 'Teacher prizes require school name and address information:'
+    teacher_email_required: 'Teacher prizes require a confirmed email address:'
     confirm:
       title: Παρακαλώ Επιβεβαιώστε
       'no': Όχι
@@ -260,6 +262,8 @@
     rollup: Σύνοψη Προόδου
     activity: Πρόσφατη δραστηριότητα τμήματος
   user:
+    email_confirm_needed: 'Email address has not been confirmed:'
+    email_resend_confirm: Resend confirmation instructions
     new_password_hint: (άστο κενό εάν δεν θέλεις να τον αλλάξεις)
     current_password_hint: (χρειαζόμαστε τον τωρινό κωδικό σου για να επιβαιβεωθούν
       οι αλλαγές)

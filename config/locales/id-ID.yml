@@ -140,6 +140,7 @@
     provider: 'Penyedia:'
     code: 'Kode:'
     redeem_header: 'Untuk menebus:'
+    donorschoose_how_to: How to use your code
     success: Hadiah Anda telah berhasil ditebus, silahkan lihat kode di bawah ini.
     error: Hadiah Anda tidak bisa ditebus, silakan coba lagi.
     error_us_only: Tawaran hadiah hanya berlaku untuk pengguna yang berdomisili di
@@ -148,6 +149,7 @@
     error_already_redeemed: Hadiah Anda sudah ditebus.
     no_prizes_available: Mohon maaf, tetapi saat ini hadiah tidak tersedia.
     teacher_info_required: 'Teacher prizes require school name and address information:'
+    teacher_email_required: 'Teacher prizes require a confirmed email address:'
     confirm:
       title: Silakan konfirmasi
       'no': Tidak
@@ -257,6 +259,8 @@
     rollup: 'Dashboard Kemajuan '
     activity: Aktivitas kelas
   user:
+    email_confirm_needed: 'Email address has not been confirmed:'
+    email_resend_confirm: Resend confirmation instructions
     new_password_hint: (Kosongkan jika Anda tidak ingin mengubahnya)
     current_password_hint: (kita perlu password Anda saat ini untuk mengkonfirmasi
       perubahan Anda)

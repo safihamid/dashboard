@@ -141,6 +141,7 @@
     provider: 'Aanbieder:'
     code: 'Code:'
     redeem_header: 'To redeem:'
+    donorschoose_how_to: How to use your code
     success: Je prijs is vrijgegeven, gebruik de code hieronder.
     error: Je prijs kon niet worden vrijgegeven, probeer het opnieuw.
     error_us_only: Prijzen zijn alleen geldig voor gebruikers in de Verenigde Staten.
@@ -148,6 +149,7 @@
     error_already_redeemed: Your prize has already been redeemed.
     no_prizes_available: We're sorry, but we currently have no prizes available.
     teacher_info_required: 'Teacher prizes require school name and address information:'
+    teacher_email_required: 'Teacher prizes require a confirmed email address:'
     confirm:
       title: Bevestigen
       'no': Nee
@@ -257,6 +259,8 @@
     rollup: Overzicht vooruitgang
     activity: Recente klasactiviteiten
   user:
+    email_confirm_needed: 'Email address has not been confirmed:'
+    email_resend_confirm: Resend confirmation instructions
     new_password_hint: (laat leeg als je het niet wilt veranderen)
     current_password_hint: (we hebben je huidige wachtwoord nodig om je veranderingen
       te bevestigen)

@@ -139,6 +139,7 @@
     provider: 'Пружаоц услуга:'
     code: 'Код:'
     redeem_header: 'To redeem:'
+    donorschoose_how_to: How to use your code
     success: Ваша је награда успешно откуплјена, погледајте код испод.
     error: Ваша награда није могла бити откуплјена, молимо покушајте поновно.
     error_us_only: Понуда награде важи само за кориснике Уједињених држава (САД).
@@ -146,6 +147,7 @@
     error_already_redeemed: Your prize has already been redeemed.
     no_prizes_available: We're sorry, but we currently have no prizes available.
     teacher_info_required: 'Teacher prizes require school name and address information:'
+    teacher_email_required: 'Teacher prizes require a confirmed email address:'
     confirm:
       title: Молимо потврдите
       'no': Не
@@ -250,6 +252,8 @@
     rollup: Плоча напретка
     activity: Скорашнје активности разреда
   user:
+    email_confirm_needed: 'Email address has not been confirmed:'
+    email_resend_confirm: Resend confirmation instructions
     new_password_hint: (остави празно ако не желиш промијенити)
     current_password_hint: (потребна нам је твоја тренутна лозинка како би потврдили
       твоје промјене)

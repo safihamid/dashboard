@@ -136,6 +136,7 @@
     provider: 'Provider:'
     code: 'Code:'
     redeem_header: 'To redeem:'
+    donorschoose_how_to: How to use your code
     success: Your prize was succesfully redeemed, see code below.
     error: Your prize could not be redeemed, please try again.
     error_us_only: Предложение приза действительно только для пользователей в США.
@@ -143,6 +144,7 @@
     error_already_redeemed: Ваш приз уже получен.
     no_prizes_available: Извините, но сейчас у нас нет призов.
     teacher_info_required: 'Teacher prizes require school name and address information:'
+    teacher_email_required: 'Teacher prizes require a confirmed email address:'
     confirm:
       title: Please Confirm
       'no': false
@@ -240,6 +242,8 @@
     rollup: Панель контроля хода выполнения
     activity: Последние данные по работе класса
   user:
+    email_confirm_needed: 'Email address has not been confirmed:'
+    email_resend_confirm: Resend confirmation instructions
     new_password_hint: (оставьте пустым, если не хотите ничего менять)
     current_password_hint: (нам нужен Ваш текущий пароль для подтверждения изменений)
     cancel:

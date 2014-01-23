@@ -142,6 +142,7 @@
     provider: 'Provider:'
     code: 'Code:'
     redeem_header: 'To redeem:'
+    donorschoose_how_to: How to use your code
     success: Your prize was succesfully redeemed, see code below.
     error: Your prize could not be redeemed, please try again.
     error_us_only: Prisen er kun mulig for gyldige amerikanske brugere.
@@ -149,6 +150,7 @@
     error_already_redeemed: Din præmie er allerede blevet indløst.
     no_prizes_available: Vi beklager, men vi har i øjeblikket ingen tilgængelige præmier.
     teacher_info_required: 'Teacher prizes require school name and address information:'
+    teacher_email_required: 'Teacher prizes require a confirmed email address:'
     confirm:
       title: Please Confirm
       'no': false
@@ -255,6 +257,8 @@
     rollup: Fremskridts oversigt
     activity: Senest klasse aktivitet
   user:
+    email_confirm_needed: 'Email address has not been confirmed:'
+    email_resend_confirm: Resend confirmation instructions
     new_password_hint: (Efterlad blank hvis du ikke ønsker at ændre det)
     current_password_hint: (vi har brug for din nuværende adgangskode til at bekræfte
       dine ændringer)

@@ -137,6 +137,7 @@
     provider: 'Provider:'
     code: 'Code:'
     redeem_header: 'To redeem:'
+    donorschoose_how_to: How to use your code
     success: Your prize was succesfully redeemed, see code below.
     error: Your prize could not be redeemed, please try again.
     error_us_only: Giải thưởng chỉ được trao cho người sử dụng ở Mỹ.
@@ -144,6 +145,7 @@
     error_already_redeemed: Your prize has already been redeemed.
     no_prizes_available: We're sorry, but we currently have no prizes available.
     teacher_info_required: 'Teacher prizes require school name and address information:'
+    teacher_email_required: 'Teacher prizes require a confirmed email address:'
     confirm:
       title: Please Confirm
       'no': false
@@ -248,6 +250,8 @@
     rollup: Bảng tiến trình
     activity: Hoạt động gần đây của lớp
   user:
+    email_confirm_needed: 'Email address has not been confirmed:'
+    email_resend_confirm: Resend confirmation instructions
     new_password_hint: (để trống nếu bạn không muốn thay đổi nó)
     current_password_hint: (chúng tôi cần mật khẩu của bạn để xác nhận thay đổi)
     cancel:

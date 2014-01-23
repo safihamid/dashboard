@@ -136,6 +136,7 @@
     provider: 'Fornitore:'
     code: 'Codice:'
     redeem_header: 'Per redimere:'
+    donorschoose_how_to: How to use your code
     success: Il premio è stato succesfully redento, vedere il codice riportato di
       seguito.
     error: Il premio non poteva essere redento, riprovare.
@@ -144,6 +145,7 @@
     error_already_redeemed: Your prize has already been redeemed.
     no_prizes_available: We're sorry, but we currently have no prizes available.
     teacher_info_required: 'Teacher prizes require school name and address information:'
+    teacher_email_required: 'Teacher prizes require a confirmed email address:'
     confirm:
       title: Si prega di confermare
       'no': false
@@ -252,6 +254,8 @@
     rollup: Dashboard di avanzamento
     activity: Attività recenti della classe
   user:
+    email_confirm_needed: 'Email address has not been confirmed:'
+    email_resend_confirm: Resend confirmation instructions
     new_password_hint: (lascia vuoto se non vuoi cambiarlo)
     current_password_hint: (inserisci la tua password corrente per confermare i cambiamenti)
     cancel:

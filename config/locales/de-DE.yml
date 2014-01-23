@@ -146,6 +146,7 @@
     provider: 'Anbieter:'
     code: 'Code:'
     redeem_header: 'To redeem:'
+    donorschoose_how_to: How to use your code
     success: Dein Preis wurde erfolgreich eingelöst, siehe Code unten.
     error: Dein Preis konnte nicht eingelöst werden, bitte versuche es erneut.
     error_us_only: Die Preise sind nur für amerikanische Nutzer.
@@ -154,6 +155,7 @@
     no_prizes_available: Es tut uns leid, aber es stehen zur Zeit keine Preise zur
       Verfügung.
     teacher_info_required: 'Teacher prizes require school name and address information:'
+    teacher_email_required: 'Teacher prizes require a confirmed email address:'
     confirm:
       title: Bitte bestätigen
       'no': Nein
@@ -260,6 +262,8 @@
     rollup: Fortschrittsanzeige
     activity: Letzte Aktivitäten der Klasse
   user:
+    email_confirm_needed: 'Email address has not been confirmed:'
+    email_resend_confirm: Resend confirmation instructions
     new_password_hint: (freilassen, wenn Sie es nicht verändern möchten)
     current_password_hint: (wir benötigen Ihr aktuelle Kennwort, um Ihre Änderungen
       zu bestätigen)

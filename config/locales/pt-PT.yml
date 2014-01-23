@@ -139,6 +139,7 @@
     provider: 'Fornecedor:'
     code: 'Código:'
     redeem_header: 'To redeem:'
+    donorschoose_how_to: How to use your code
     success: O teu prémio foi recolhido com êxito, vê o código abaixo.
     error: O teu prémio não pôde ser recolhido, por favor tenta novamente.
     error_us_only: A oferta do prémio só é válida para utilizadores nos EUA.
@@ -146,6 +147,7 @@
     error_already_redeemed: O seu prémio já fora resgatado.
     no_prizes_available: Pedimos desculpa, mas atualmente não há prémios disponíveis.
     teacher_info_required: 'Teacher prizes require school name and address information:'
+    teacher_email_required: 'Teacher prizes require a confirmed email address:'
     confirm:
       title: Confirma por favor
       'no': Não
@@ -254,6 +256,8 @@
     rollup: Painel de controlo do Progresso
     activity: Atividade recente da turma
   user:
+    email_confirm_needed: 'Email address has not been confirmed:'
+    email_resend_confirm: Resend confirmation instructions
     new_password_hint: (deixa em branco se não quiseres alterá-lo)
     current_password_hint: (precisamos da tua palavra-passe para confirmar as tuas
       alterações)

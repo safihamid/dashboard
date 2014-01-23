@@ -67,8 +67,9 @@
       tym nauczycielom ze szkół publicznych w USA , którzy poprowadzą co najmniej
       15 uczniów przez ten kurs. <a href="http://code.org/educate/20hr"> Zobacz przewodnik
       dla nauczyciela po więcej informacji.</a> '
-    teacher_prize_limits: '(Limit: $1,000 per teacher. <a target="_blank" href="http://help.donorschoose.org/app/answers/detail/a_id/454/kw/code.org">See
-      FAQ for more limits</a>)'
+    teacher_prize_limits: '(Limit: 1.000 dolarów dla nauczyciela. <a target="_blank"
+      href="http://help.donorschoose.org/app/answers/detail/a_id/454/kw/code.org">
+      Zobacz FAQ dotyczące innych ograniczeń</a>)'
     teacher_pitch: Ucz na swoich zajęciach Kursu wprowadzającego do informatyki
     teacher_title: Rejestracja nauczyciela
     student_pitch: 'Poza 1 godziną:  skorzystaj z naszego K-8 Wstępu do Informatyki'
@@ -131,8 +132,8 @@
       invite_student:
         subject: Dołącz do klasy z %{teacher_name} na Code.org!
       student_disassociated:
-        subject: 'Code.org notification: %{student_name} is no longer associated as
-          your student.'
+        subject: 'Code.org powiadomienie: %{student_name} nie jest już powiązany z
+          Tobą jako Twój student.'
   reports:
     error:
       access_denied: Nie masz dostępu do statystyk tej osoby
@@ -141,13 +142,15 @@
     provider: 'Dostawca:'
     code: 'Kod:'
     redeem_header: 'Do pobrania:'
+    donorschoose_how_to: How to use your code
     success: Twoja nagroda została z powodzeniem odebrana, zobacz poniższy kod.
     error: Twoja nagroda nie może być odebrana, spróbuj ponownie.
     error_us_only: Oferta nagrody dotyczy tylko użytkowników w USA.
     error_not_earned: Nie zdobyłeś jeszcze tej nagrody.
     error_already_redeemed: Twoja nagroda została już przyznana.
     no_prizes_available: Przykro nam, ale obecnie nie mamy żadnej nagrody do zaoferowania.
-    teacher_info_required: 'Teacher prizes require school name and address information:'
+    teacher_info_required: 'Nagrody dla nauczyciela wymagają nazwy i adresu szkoły:'
+    teacher_email_required: 'Teacher prizes require a confirmed email address:'
     confirm:
       title: Prosimy o potwierdzenie
       'no': Nie
@@ -250,7 +253,7 @@
     title:
       one: Twój nauczyciel to %{name}
       other: 'Twoi nauczyciele:'
-    remove: (remove teacher)
+    remove: (usuń nauczyciela)
     tools: Narzędzia Nauczyciela
     students:
       manage: Zarządzaj uczniami
@@ -258,6 +261,8 @@
     rollup: Tablica Postępów
     activity: Ostatnia aktywność klasy
   user:
+    email_confirm_needed: 'Email address has not been confirmed:'
+    email_resend_confirm: Resend confirmation instructions
     new_password_hint: (zostaw puste, jeśli nie chcesz tego zmienić)
     current_password_hint: (potrzebujemy Twojego aktualnego hasła, aby potwierdzić
       Twoje zmiany)

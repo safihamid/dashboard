@@ -2,12 +2,12 @@
   activerecord:
     attributes:
       user:
-        name: 名稱
+        name: 你的名字
         email: 電子郵件
         username: '使用者名稱 '
         password: 密碼
         password_confirmation: 密碼確認
-        current_password: 已注册的密碼：
+        current_password: 目前的密碼：
         locale: 語言
         gender: 性別
         edit_header: 編輯帳戶的詳細資訊
@@ -15,21 +15,21 @@
   welcome_back: 歡迎回來，%{name}
   add_teacher_form:
     code_or_email:
-      label: 通過代碼或電郵地址添加一個老師：
-      placeholder: 代碼 (ABCDEF) 或電郵地址 (teacher@school.edu)
-    submit: 添加老師
+      label: 通過代碼或電子郵件指定一個教師：
+      placeholder: 代碼 (ABCDEF) 或電子郵件 (teacher@school.edu)
+    submit: 指定教師
   appname: Code.org
-  stage: 關
-  puzzle: 謎題
+  stage: 階段
+  puzzle: 關卡
   trophies: 獎盃
   courses: 課程
   of: 的
   more: 更多
   less: 更少
-  try_hoc: 試試看一小時的程式碼，請按一下這裡 >>
+  try_hoc: 試試看一小時的程式設計課程，請按一下這裡 >>
   try_k8intro: 或試試我們提供給 K-8 的電腦科學簡介課程 (15-25 小時)
   already_started: 已經開始了嗎？從這裡繼續 >>
-  demos: 管理者：示範
+  demos: 管理者：範例展示
   continue: '繼續 '
   prize: prize
   more_info: 更多的資訊
@@ -46,19 +46,19 @@
     need_confirmation: 沒有收到確認的說明嗎？
     need_unlock: 沒收到解鎖說明嗎？
   signup_form:
-    overview: 這 20 小時課程將介紹核心電腦科學和程式設計的概念。本課程是設計給 K-8 年級的學生在教室內使用，但對所有年齡的人來說，也能以有趣的方式透過本課程來進行學習。
+    overview: 這 20 小時課程將介紹電腦科學和程式設計的核心概念。本課程是設計給 K-8 年級的學生在教室內使用，但對所有年齡的人來說，也能把本課程當成興趣來學習。
     no_signup_header: 不想註冊嗎？
-    no_signup_message: 您可以 <a target="_blank"href="HTTP://learn.code.org"> 流覽各個階段和關卡</a>，但您需要註冊以保存您的進度。
+    no_signup_message: 您可以從 <a target="_blank"href="HTTP://learn.code.org"> 瀏覽各個階段和關卡</a>，但您需要註冊一個帳號來保存您的進度。
     prizes_header: The first students to complete the course win prizes! (U.S. students
       only)
     prizes_message: 贏得所有 %{num_trophies} 個概念獎盃的美國學生，可以以下項目中選取獎品，包括免費的DropBox空間、Skype點數及EA所提供的遊戲下載。
     teacher_educator_guide: 請參閱教育者指南
-    teacher_prize_header: ' 在 <a target="_blank" href="http://DonorsChoose.org">DonorsChoose.org</a>贏得
+    teacher_prize_header: ' 贏取由<a target="_blank" href="http://DonorsChoose.org">DonorsChoose.org</a>所提供的
       $1,000 獎勵'
     teacher_prize_message: 透過與 <a target="_blank" href="http://DonorsChoose.org">DonorsChoose.org</a>合作。
-      Code.org 將為帶領至少15位學生參加本次課程的全美公立學校提供$1000的教學基金。 <a href="http://code.org/educate/20hr">更詳細的訊息請參閱教師指南。</a> 
-    teacher_prize_limits: '(Limit: $1,000 per teacher. <a target="_blank" href="http://help.donorschoose.org/app/answers/detail/a_id/454/kw/code.org">See
-      FAQ for more limits</a>)'
+      Code.org 將為帶領15位以上學生參加本次課程的全美公立學校教師提供高達$1000的教學基金。 <a href="http://code.org/educate/20hr">更詳細的訊息請參閱教師指南。</a> 
+    teacher_prize_limits: (每個教師獎金上限為 $1,000 。<a target="_blank"href="HTTP://help.donorschoose.org/app/answers/detail/a_id/454/kw/code.org">
+      請參閱常見問題</a>)
     teacher_pitch: 在您的班上進行K-8電腦科學簡介課程。
     teacher_title: 教師註冊
     student_pitch: 在一小時之後：試試我們的K-8電腦科學簡介課程
@@ -70,13 +70,13 @@
     birthday: 生日 （選填）
     submit: 註冊
     teacher: 你是老師嗎？
-    valid_username: 可使用!
-    invalid_username: 使用者名稱必須至少 5 個字元
+    valid_username: 可以使用!
+    invalid_username: 使用者名稱須 5 個字元以上
     taken_username: 使用者名稱已被使用
     valid_password: 有效的密碼 ！
-    invalid_password: 密碼必須至少要 6 個字元
+    invalid_password: 密碼必須要 6 個字元以上
     mismatch_password: 您輸入的兩次密碼不一樣
-    student_terms: 我同意遵手Code.org的服務條款。如果我的年齡小於13歲，當我確認送出此表單的同時，我已經取得父母或法定監護人的允許，來使用
+    student_terms: 我同意遵守Code.org的服務條款。如果我的年齡小於13歲，當我按下確認鈕送出此表單的同時，表示我已經取得父母或法定監護人的允許來使用
       Code.org 的服務。
     teacher_terms: 我同意接受 Code.org服務條款的約束。
   signin_form:
@@ -110,17 +110,16 @@
     added_teacher: '%{name} 已新增為你的老師'
     registered: 你已經用 %{section_name}註冊。
     error:
-      signed_in: 請在繼續之前登出
-      username_not_found: 找不到使用者 %{username}
+      signed_in: 請在登出後在進行操作
+      username_not_found: 使用者名稱 %{username}找不到
       username_in_use: '%{username} 已經被使用了，請重新挑選一個。'
       no_teacher: 找不到以 %{teacher_email_or_code}註冊的使用者。請邀請他們到這註冊，然後再嘗試新增他們。
-      blank_code: 請輸入代碼或著是你的老師的電子郵件地址
+      blank_code: 請輸入教師代碼或是電子信箱
     mail:
       invite_student:
         subject: 加入%{teacher_name}老師在Code.org的班級。
       student_disassociated:
-        subject: 'Code.org notification: %{student_name} is no longer associated as
-          your student.'
+        subject: Code.org 通知： %{student_name} 將你從教師名單中移除。
   reports:
     error:
       access_denied: 您不能讀取此人的統計資訊
@@ -129,13 +128,15 @@
     provider: 'Provider:'
     code: 'Code:'
     redeem_header: 'To redeem:'
+    donorschoose_how_to: How to use your code
     success: Your prize was succesfully redeemed, see code below.
     error: Your prize could not be redeemed, please try again.
     error_us_only: 這個獎項只提供給美國使用者。
     error_not_earned: 你還沒有獲得這一個獎項。
-    error_already_redeemed: 您獲得的獎金已經兌現。
+    error_already_redeemed: 您獲得的獎項已經兌現。
     no_prizes_available: 很抱歉，目前我們無法提供獎品。
-    teacher_info_required: 'Teacher prizes require school name and address information:'
+    teacher_info_required: '教師的獎勵需要學校名稱跟地址:'
+    teacher_email_required: 'Teacher prizes require a confirmed email address:'
     confirm:
       title: Please Confirm
       'no': false
@@ -192,24 +193,24 @@
     access_denied: 你沒有使用 %{model}的權限。
   nav:
     header:
-      finished_hoc: 我已經完成我的"一小時程式碼"課程。
+      finished_hoc: 我已經完成我的"一小時程式設計"課程。
       sign_in_to_save: 登入以儲存進度
     user:
       classroom: 我的學生
       label: 嗨 %{username}
       stats: 我的進度
-      settings: 我的帳戶
-      prizes: 獎品
+      settings: 我的帳號
+      prizes: 獎項
       logout: 登出
       signin: 登入
-      signup: 登記
+      signup: 登錄
     popup:
       progress: 您的進度
       lines: '全部程式碼行數: %{lines}'
       close: 關閉
       mastery: 觀念
       puzzle_map: 階段
-      prizes: 收集所有 %{total_trophies} 的獎盃，並贏取獎品 ！
+      prizes: 收集所有 %{total_trophies} 個獎盃，並贏取獎品 ！
       prize_earned: 所有%{total_trophies}個獎盃都收集完成。恭喜你贏得獎品！（僅限美國公立學校學生）
       prize_us_only: （僅適用于美國學生）
       prizes_link: '更多資訊 '
@@ -217,7 +218,7 @@
     title:
       one: 你的老師是 %{名字}
       other: 你的老師：
-    remove: (remove teacher)
+    remove: （將教師移除）
     tools: 教師工具
     students:
       manage: 學生管理
@@ -225,6 +226,8 @@
     rollup: 進度表
     activity: 最近的班級活動
   user:
+    email_confirm_needed: 'Email address has not been confirmed:'
+    email_resend_confirm: Resend confirmation instructions
     new_password_hint: （如果你不想變更它就保留空白）
     current_password_hint: （我們需要您現在的密碼以確認您的更改）
     cancel:
@@ -249,9 +252,10 @@
     student_progress: 您的學習進度
     student_stats: 你已經獲得 %{trophy_count}/%{trophy_max} "概念通達"獎盃
     student_left_off: 你離開的地方：
-    student_finished_prize: 你已經完成所有練習課程，換取你的 %{prize_link}，挑戰另外的 %{online_link} 或
-      {local_school_link} %
-    student_finished: '你已經完成所有練習課程，挑戰另外的 %{online_link} 或到% {local_school_link} '
+    student_finished_prize: 你已經完成所有練習課程，換取你的 %{prize_link}，並挑選另外的 %{online_link} 或到
+      {local_school_link} %學習
+    student_finished: 你已經完成所有練習課程，換取你的 %{prize_link}，並挑選另外的 %{online_link} 或到 {local_school_link}
+      %學習
     local_school: 當地的學校
     online: 在線上
     see_details: 查看詳細資訊
@@ -260,8 +264,8 @@
     female: 女性
     none: 不願回答
   footer:
-    help_from_html: 來自 <a href="http://www.google.com">谷歌(Google)</a>, <a href="http://www.microsoft.com">微軟(Microsoft)</a>,
-      <a href="http://www.facebook.com">臉書(Facebook)</a>, 和 <a href="http://www.twitter.com">推特(Twitter)</a>的工程師協助完成本課程。.
+    help_from_html: 本課程由來自 <a href="http://www.google.com">Google</a>, <a href="http://www.microsoft.com">Microsoft</a>,
+      <a href="http://www.facebook.com">Facebook</a>, 和 <a href="http://www.twitter.com">Twitter</a>的工程師共同建立。.
     art_from_html: Angry Birds&trade; & &copy; 2009 - 2013 <a href="http://www.rovio.com">Rovio
       Entertainment Ltd</a>. 版權所有.<br/> Plants vs. Zombies&trade; & &copy; 2013 <a
       href="http://www.ea.com">Electronic Arts Inc.</a>.版權所有.
@@ -283,11 +287,11 @@
     auth_error: 您無權查看該解決方案。
   video:
     tab: 影片
-    notes: 沒有視頻嗎？顯示注釋。
+    notes: 看不到影片嗎？顯示文字說明。
     autoplay_option: 自動播放影片
     download: 下載影片
   compatability:
-    working: 我們正在支援您的瀏覽器。
+    working: 我們正在設法支援您的瀏覽器。
     upgrade: 請升級您的瀏覽器。
   slow_loading: 請在等等，這次讀取的時間比較久一點.......
   try_reloading: 請嘗試重新載入網頁

@@ -134,6 +134,7 @@
     provider: '제공:'
     code: 'Redeem 코드:'
     redeem_header: 'To redeem:'
+    donorschoose_how_to: How to use your code
     success: 상품을 Redeem 코드로 교환하였습니다. 코드를 확인하세요.
     error: 상품을 Redeem 코드로 교환할 수 없습니다. 다시 시도해 보세요.
     error_us_only: 미국 사용자에게만 상품이 주어집니다.
@@ -141,6 +142,7 @@
     error_already_redeemed: 이미 상품으로 교환 되었습니다.
     no_prizes_available: 죄송합니다. 현재 가능한 상품이 없습니다.
     teacher_info_required: 'Teacher prizes require school name and address information:'
+    teacher_email_required: 'Teacher prizes require a confirmed email address:'
     confirm:
       title: Redeem 코드 확인
       'no': 아니요
@@ -233,6 +235,8 @@
     rollup: 학습 현황
     activity: 최근 학습 활동
   user:
+    email_confirm_needed: 'Email address has not been confirmed:'
+    email_resend_confirm: Resend confirmation instructions
     new_password_hint: (바꾸고 싶지 않으면, 비워 두세요)
     current_password_hint: (수정하기 위해 비밀번호를 한 번 더 입력해 주세요.)
     cancel:
