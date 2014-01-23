@@ -20,6 +20,7 @@ class Ability
       can :create, Activity
       can :create, UserLevel
       can :create, Follower
+      can :delete, Follower
     end
 
     #
