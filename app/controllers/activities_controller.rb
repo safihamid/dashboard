@@ -205,7 +205,7 @@ class ActivitiesController < ApplicationController
       end
 
       # for awarding prizes, we only honor the first (primary) teacher
-      teacher = user.teachers.first
+      teacher = user.prize_teacher
 
       if teacher && (!teacher.teacher_prize_earned || !teacher.teacher_bonus_prize_earned)
         t_prize, t_bonus = teacher.check_teacher_prize_eligibility

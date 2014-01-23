@@ -185,7 +185,7 @@ SQL
     total_students = self.students.length
     if total_students >= STUDENTS_COMPLETED_FOR_PRIZE
       self.students.each do |student|
-        if student.prize_earned && student.teachers.first.id == self.id
+        if student.prize_earned && student.prize_teacher.try(:id) == self.id
           completed_students += 1
           if student.gender == "f"
             completed_female_students += 1
@@ -241,5 +241,11 @@ SQL
 
   def confirmation_required?
     (self.teacher? || self.students.length > 0) && !self.confirmed?
+  end
+
+  # return first teacher unless the first_teacher_id doesn't match (meaning that teacher was later removed)
+  def prize_teacher
+    return self.teachers.first if self.first_teacher_id.blank? || self.teachers.first.try(:id) == self.first_teacher_id
+    nil
   end
 end
