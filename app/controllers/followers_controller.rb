@@ -147,6 +147,32 @@ SQL
 
     redirect_to manage_followers_path, notice: "Updated class assignments"
   end
+  
+  def remove
+    @user = User.find(params[:student_user_id])
+    @teacher = User.find(params[:teacher_user_id])
+
+    raise "not found" if !@user || !@teacher
+    raise "not authorized" if @user.id != current_user.id && @teacher.id != current_user.id
+    
+    removed_by_student = @user.id == current_user.id
+
+    redirect_url = removed_by_student ? root_path : manage_followers_path
+
+    f = Follower.find_by_user_id_and_student_user_id(@teacher, @user)
+    
+    if !f.present?
+      redirect_to(redirect_url, notice: t('teacher.user_not_found'))
+    else
+      # if this was the student's first teacher, store that teacher id in the student's record
+      @user.update_attributes(:prize_teacher_id => @teacher.id) if @user.teachers.first.try(:id) == @teacher.id && @user.prize_teacher_id.blank?
+      
+      f.delete
+      FollowerMailer.student_dissasociated_notify_teacher(@teacher, @user).deliver if removed_by_student
+      FollowerMailer.teacher_dissasociated_notify_student(@teacher, @user).deliver if !removed_by_student
+      redirect_to redirect_url, notice: t('teacher.student_teacher_disassociated', teacher_name: @teacher.name, student_name: @user.name)
+    end
+  end
 
   def student_user_new
     @section = Section.find_by_code(params[:section_code])

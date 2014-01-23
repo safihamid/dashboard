@@ -12,4 +12,11 @@ class FollowerMailer < ActionMailer::Base
 
     mail to: student_email, subject: I18n.t('follower.mail.invite_student.subject')
   end
+
+  def student_dissasociated_notify_teacher(teacher, student)
+    @teacher = teacher
+    @student = student
+    
+    mail to: teacher.email, subject: I18n.t('follower.mail.student_disassociated.subject')
+  end
 end
