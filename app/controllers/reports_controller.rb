@@ -98,46 +98,45 @@ SQL
 
     @level = Level.find(params[:level_id])
 
-    # [k, 0, false] means for code k, it has appeared 0 times, and it is not a popular code
-    best_code_map = Hash.new{|h,k| h[k] = [k, 0, false] }
-    passing_code_map = Hash.new{|h,k| h[k] = [k, 0, false] }
-    finished_code_map = Hash.new{|h,k| h[k] = [k, 0, false] }
-    unsuccessful_code_map = Hash.new{|h,k| h[k] = [k, 0, false] }
-    all_but_best_code_map = Hash.new{|h,k| h[k] = [k, 0, false] }
+    best_code_map = Hash.new{|h,k| h[k] = {:level_source_id => k, :count => 0, :popular => false} }
+    passing_code_map = Hash.new{|h,k| h[k] = {:level_source_id => k, :count => 0, :popular => false} }
+    finished_code_map = Hash.new{|h,k| h[k] = {:level_source_id => k, :count => 0, :popular => false} }
+    unsuccessful_code_map = Hash.new{|h,k| h[k] = {:level_source_id => k, :count => 0, :popular => false} }
+    all_but_best_code_map = Hash.new{|h,k| h[k] = {:level_source_id => k, :count => 0, :popular => false} }
 
     Activity.all.where(['level_id = ?', @level.id]).order('id desc').limit(10000).each do |activity|
       if activity.best?
-        best_code_map[activity.level_source_id][1] += 1
+        best_code_map[activity.level_source_id][:count] += 1
       elsif activity.passing?
-        passing_code_map[activity.level_source_id][1] += 1
+        passing_code_map[activity.level_source_id][:count] += 1
       elsif activity.finished?
-        finished_code_map[activity.level_source_id][1] += 1
+        finished_code_map[activity.level_source_id][:count] += 1
       else
-        unsuccessful_code_map[activity.level_source_id][1] += 1
+        unsuccessful_code_map[activity.level_source_id][:count] += 1
       end
 
       if !activity.best?
-        all_but_best_code_map[activity.level_source_id][1] += 1
+        all_but_best_code_map[activity.level_source_id][:count] += 1
       end
     end
 
     # Setting up the popular incorrect code
-    sorted_all_but_best_code = all_but_best_code_map.values.sort_by {|v| -v[1] }
+    sorted_all_but_best_code = all_but_best_code_map.values.sort_by {|v| -v[:count] }
     for idx in 0..[sorted_all_but_best_code.length - 1, 9].min
-      pop_level_source_id = sorted_all_but_best_code[idx][0]
+      pop_level_source_id = sorted_all_but_best_code[idx][:level_source_id]
       if passing_code_map.has_key?(pop_level_source_id)
-        passing_code_map[pop_level_source_id][2] = true
+        passing_code_map[pop_level_source_id][:popular] = true
       elsif finished_code_map.has_key?(pop_level_source_id)
-        finished_code_map[pop_level_source_id][2] = true
+        finished_code_map[pop_level_source_id][:popular] = true
       elsif unsuccessful_code_map.has_key?(pop_level_source_id)
-        unsuccessful_code_map[pop_level_source_id][2] = true
+        unsuccessful_code_map[pop_level_source_id][:popular] = true
       end
     end
 
-    @best_code = best_code_map.values.sort_by {|v| -v[1] }
-    @passing_code = passing_code_map.values.sort_by {|v| -v[1] }
-    @finished_code = finished_code_map.values.sort_by {|v| -v[1] }
-    @unsuccessful_code = unsuccessful_code_map.values.sort_by {|v| -v[1] }
+    @best_code = best_code_map.values.sort_by {|v| -v[:count] }
+    @passing_code = passing_code_map.values.sort_by {|v| -v[:count] }
+    @finished_code = finished_code_map.values.sort_by {|v| -v[:count] }
+    @unsuccessful_code = unsuccessful_code_map.values.sort_by {|v| -v[:count] }
 
   end
 
