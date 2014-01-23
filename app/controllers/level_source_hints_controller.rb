@@ -12,6 +12,9 @@ class LevelSourceHintsController < ApplicationController
     render 'level_source_hints/new'
   end
 
+  def index
+  end
+
   def create
     # Find or create the hint data
     level_source_hint =

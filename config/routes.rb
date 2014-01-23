@@ -12,7 +12,7 @@ Dashboard::Application.routes.draw do
   get '/sh/:id/generate_image', to: 'level_sources#generate_image'
 
   resources :level_source_hints
-  get '/add_hint/:level_source_id', :to => 'level_source_hints#add_hint'
+  get '/add_hint/:level_source_id', :to => 'level_source_hints#add_hint', as: 'add_hint'
 
   devise_for :users, controllers: {
     omniauth_callbacks: 'omniauth_callbacks',
