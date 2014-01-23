@@ -81,6 +81,7 @@ ActiveRecord::Schema.define(version: 20140121190423) do
   create_table "level_source_hints", force: true do |t|
     t.integer  "level_source_id"
     t.text     "hint"
+    t.integer  "times_proposed"
     t.float    "priority"
     t.datetime "created_at"
     t.datetime "updated_at"

@@ -39,6 +39,9 @@ en:
       label: 'Add a teacher by code or email address:'
       placeholder: "Code (ABCDEF) or email (teacher@school.edu)"
     submit: 'Add teacher'
+  add_hint_form:
+    placeholder: 'Please enter your hint here'
+    submit: 'Add hint'
   appname: "Code.org"
   stage: "Stage"
   puzzle: "Puzzle"
