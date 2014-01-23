@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140123194957) do
+ActiveRecord::Schema.define(version: 20140124190423) do
 
   create_table "activities", force: true do |t|
     t.integer  "user_id"
@@ -77,6 +77,15 @@ ActiveRecord::Schema.define(version: 20140123194957) do
   end
 
   add_index "games", ["intro_video_id"], name: "index_games_on_intro_video_id", using: :btree
+
+  create_table "level_source_hints", force: true do |t|
+    t.integer  "level_source_id"
+    t.text     "hint"
+    t.integer  "times_proposed"
+    t.float    "priority"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "level_source_images", force: true do |t|
     t.integer  "level_source_id"
