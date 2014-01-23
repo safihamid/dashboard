@@ -228,7 +228,7 @@ en:
       prizes_link: 'more info'
   teacher:
     title:
-      one: 'Your teacher is %{name}'
+      one: 'Your teacher:'
       other: 'Your teachers:'
     remove: '(remove teacher)'
     tools: 'Teacher Tools'
@@ -237,6 +237,8 @@ en:
       add: 'Add students'
     rollup: 'Progress Dashboard'
     activity: 'Recent class activity'
+    user_not_found: 'The teacher or student could not be found'
+    student_teacher_disassociated: '%{teacher_name} has been removed as a teacher for %{student_name}'
   user:
     email_confirm_needed: 'Email address has not been confirmed:'
     email_resend_confirm: 'Resend confirmation instructions'

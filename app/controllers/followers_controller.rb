@@ -57,13 +57,14 @@ class FollowersController < ApplicationController
       target_user = target_section.try(:user) || User.find_by_email(params[:teacher_email_or_code])
 
       if target_user && target_user.email.present?
-        # if the teacher has not confirmed their email, they should be sent email confirmation instrutions
-        target_user.send_confirmation_instructions if !target_user.confirmed?
         begin
           Follower.create!(user: target_user, student_user: current_user, section: target_section)
         rescue ActiveRecord::RecordNotUnique => e
           Rails.logger.error("attempt to create duplicate follower from #{current_user.id} => #{target_user.id}")
         end
+
+        # if the teacher has not confirmed their email, they should be sent email confirmation instrutions
+        target_user.send_confirmation_instructions if !target_user.confirmed?
 
         redirect_to redirect_url, notice: I18n.t('follower.added_teacher', name: target_user.name)
       else
@@ -145,6 +146,32 @@ SQL
     follower.update_attributes!(:section_id => nil)
 
     redirect_to manage_followers_path, notice: "Updated class assignments"
+  end
+  
+  def remove
+    @user = User.find(params[:student_user_id])
+    @teacher = User.find(params[:teacher_user_id])
+
+    raise "not found" if !@user || !@teacher
+    raise "not authorized" if @user.id != current_user.id && @teacher.id != current_user.id
+    
+    removed_by_student = @user.id == current_user.id
+
+    redirect_url = removed_by_student ? root_path : manage_followers_path
+
+    f = Follower.find_by_user_id_and_student_user_id(@teacher, @user)
+    
+    if !f.present?
+      redirect_to(redirect_url, notice: t('teacher.user_not_found'))
+    else
+      # if this was the student's first teacher, store that teacher id in the student's record
+      @user.update_attributes(:prize_teacher_id => @teacher.id) if @user.teachers.first.try(:id) == @teacher.id && @user.prize_teacher_id.blank?
+      
+      f.delete
+      FollowerMailer.student_dissasociated_notify_teacher(@teacher, @user).deliver if removed_by_student
+      FollowerMailer.teacher_dissasociated_notify_student(@teacher, @user).deliver if !removed_by_student
+      redirect_to redirect_url, notice: t('teacher.student_teacher_disassociated', teacher_name: @teacher.name, student_name: @user.name)
+    end
   end
 
   def student_user_new
