@@ -48,7 +48,7 @@
 %br/
 - if current_user && !current_user.teacher?
   - if current_user.teachers.length >= 1
-    = t('teacher.title', count: current_user.teachers.length)
+    = t('teacher.title', count: current_user.teachers.length, name: '')
     = raw current_user.teachers.map{|t| t[:name] + ' ' + link_to(t('teacher.remove'), remove_follower_path(teacher_user_id: t[:id], student_user_id: current_user.id), confirm: t('teacher.confirm.remove'), method: :post)}.join(', ')
   - else
     %h4= t('add_teacher_form.code_or_email.label')
