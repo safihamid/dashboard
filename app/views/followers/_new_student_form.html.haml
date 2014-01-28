@@ -11,6 +11,7 @@
 %br/
 = f.text_field(:username, class: 'input-xlarge', placeholder: "Student's username")
 %br/
+%h4 Student's password
 = f.password_field(:password, class: 'input-xlarge', placeholder: "Student's password")
 %br/
 = f.select(:gender, options_for_select([["Student's gender (optional)", '', {disabled: true, selected: true}], ['Male', 'm'], ['Female', 'f']], :selected => user.gender))

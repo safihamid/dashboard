@@ -50,6 +50,7 @@
       %span#username_message
       %br/
       - if f.object.password_required?
+        %h4= t('activerecord.attributes.user.password')
         = f.password_field :password, class: 'input-xlarge', placeholder: t('activerecord.attributes.user.password')
         = f.password_field :password_confirmation, class: 'input-xlarge', placeholder: t('activerecord.attributes.user.password_confirmation')
         %br/
