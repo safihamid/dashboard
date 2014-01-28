@@ -30,6 +30,7 @@
     %br/
     = f.text_field(:username, placeholder: "Username")
     %br/
+    %h4 Password
     = f.password_field(:password, placeholder: "Password")
     %br/
     = f.select(:gender, options_for_select([["Gender (optional)", '', {disabled: true, selected: true}], ['Male', 'm'], ['Female', 'f']], :selected => @user.gender))
