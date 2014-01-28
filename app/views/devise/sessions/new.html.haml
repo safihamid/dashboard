@@ -12,3 +12,6 @@
       = f.submit t('signin_form.submit'), class: "btn btn-primary"
   .span4
     %div{ style: 'padding-left: 20px;  border-left: 1px solid black;' }= render "devise/shared/links"
+
+:javascript
+  $( "#user_login" ).placeholder();
