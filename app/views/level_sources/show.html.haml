@@ -9,7 +9,7 @@ fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));
 </script>
 - content_for :head do
-  - if @game.app == "turtle"
+  - if @game.app == "turtle" && params[:controller] == "level_sources"
     = tag('meta', :property => 'og:image', :content => show_image)
     = tag('meta', :name => 'twitter:card', :content => "photo")
     = tag('meta', :name => 'twitter:image', :content => show_image)
