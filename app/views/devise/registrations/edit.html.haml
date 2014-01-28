@@ -76,3 +76,6 @@
 -#  = t('user.cancel.hint')
 -#  = button_to t('user.cancel.button'), registration_path(resource_name), :data => { :confirm => t('crud.confirm') }, :method => :delete
 = link_to t('crud.back'), :back
+
+:javascript
+  $( "#user_birthday" ).placeholder();
