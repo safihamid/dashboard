@@ -56,6 +56,9 @@ SQL
       @student_count = @user_count - @teacher_count
       @users_with_teachers = Follower.distinct.count(:student_user_id)
       @users_with_email = User.where('email <> ""').count
+      @users_with_confirmed_email = User.where('confirmed_at IS NOT NULL').count
+      @girls = User.where(:gender => 'f').count
+      @boys = User.where(:gender => 'm').count
  
       @prizes_redeemed = Prize.where('user_id IS NOT NULL').group(:prize_provider).count
       @prizes_available = Prize.where('user_id IS NULL').group(:prize_provider).count
