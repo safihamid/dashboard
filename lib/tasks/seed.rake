@@ -138,6 +138,19 @@ namespace :seed do
     PrizeProvider.create!(name: 'Skype', description_token: 'skype', url: 'http://www.skype.com/', image_name: 'skype_card.jpg')
   end
 
+  task ideal_solutions: :environment do
+    Level.all.map do |level|
+      level_source_id_count_map = Hash.new{|h,k| h[k] = {:level_source_id => k, :count => 0} }
+
+      Activity.all.where(['level_id = ?', level.id]).order('id desc').limit(10000).each do |activity|
+        level_source_id_count_map[activity.level_source_id][:count] += 1 if activity.best?
+      end
+      sorted_activities = level_source_id_count_map.values.sort_by {|v| -v[:count] }
+      best = sorted_activities[0] if sorted_activities && sorted_activities.length > 0
+      level.update_attributes(ideal_level_source_id: best[:level_source_id]) if best && best[:level_source_id]
+    end
+  end
+
   task dummy_prizes: :environment do
     # placeholder data
     Prize.connection.execute('truncate table prizes')
