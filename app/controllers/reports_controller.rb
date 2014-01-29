@@ -3,6 +3,7 @@ class ReportsController < ApplicationController
   check_authorization except: [:all_usage, :level_stats, :students, :header_stats, :admin_stats, :admin_progress]
 
   before_action :set_script
+  include LevelSourceHintsHelper
 
   def user_stats
     @user = User.find_by_id(params[:user_id])
@@ -121,15 +122,23 @@ SQL
     end
 
     # Setting up the popular incorrect code
-    sorted_all_but_best_code = all_but_best_code_map.values.sort_by {|v| -v[:count] }
-    for idx in 0..[sorted_all_but_best_code.length - 1, 9].min
-      pop_level_source_id = sorted_all_but_best_code[idx][:level_source_id]
-      if passing_code_map.has_key?(pop_level_source_id)
-        passing_code_map[pop_level_source_id][:popular] = true
-      elsif finished_code_map.has_key?(pop_level_source_id)
-        finished_code_map[pop_level_source_id][:popular] = true
-      elsif unsuccessful_code_map.has_key?(pop_level_source_id)
-        unsuccessful_code_map[pop_level_source_id][:popular] = true
+    if !all_but_best_code_map.empty?
+      sorted_all_but_best_code = all_but_best_code_map.values.sort_by {|v| -v[:count] }
+      pop_level_source_ids = Array.new([sorted_all_but_best_code.length - 1, 9].min)
+      for idx in 0..[sorted_all_but_best_code.length - 1, 9].min
+        pop_level_source_id = sorted_all_but_best_code[idx][:level_source_id]
+        puts pop_level_source_ids
+        pop_level_source_ids[idx] = pop_level_source_id
+        if passing_code_map.has_key?(pop_level_source_id)
+          passing_code_map[pop_level_source_id][:popular] = true
+          passing_code_map[pop_level_source_id][:pop_level_source_idx] = idx
+        elsif finished_code_map.has_key?(pop_level_source_id)
+          finished_code_map[pop_level_source_id][:popular] = true
+          finished_code_map[pop_level_source_id][:pop_level_source_idx] = idx
+        elsif unsuccessful_code_map.has_key?(pop_level_source_id)
+          unsuccessful_code_map[pop_level_source_id][:popular] = true
+          unsuccessful_code_map[pop_level_source_id][:pop_level_source_idx] = idx
+        end
       end
     end
 
@@ -137,6 +146,7 @@ SQL
     @passing_code = passing_code_map.values.sort_by {|v| -v[:count] }
     @finished_code = finished_code_map.values.sort_by {|v| -v[:count] }
     @unsuccessful_code = unsuccessful_code_map.values.sort_by {|v| -v[:count] }
+    @pop_level_source_ids = pop_level_source_ids
 
   end
 
