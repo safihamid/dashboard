@@ -127,7 +127,6 @@ SQL
       pop_level_source_ids = Array.new([sorted_all_but_best_code.length - 1, 9].min)
       for idx in 0..[sorted_all_but_best_code.length - 1, 9].min
         pop_level_source_id = sorted_all_but_best_code[idx][:level_source_id]
-        puts pop_level_source_ids
         pop_level_source_ids[idx] = pop_level_source_id
         if passing_code_map.has_key?(pop_level_source_id)
           passing_code_map[pop_level_source_id][:popular] = true
