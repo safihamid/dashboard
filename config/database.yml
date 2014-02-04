@@ -16,13 +16,13 @@ prod_mysql_defaults: &prod_mysql_defaults
   pool_adapter: mysql2
   encoding: utf8
   username: db
-  password: Az3GjKlP
+  password: <%= ENV['DATABASE_PASSWORD'] %>
   pool: 4
   master:
-    host: drupal-east-1d.ceidnfhvpbck.us-east-1.rds.amazonaws.com
+    host: <%= ENV['DATABASE_MACHINE'] %>
     pool_weight: 1
   read_pool:
-    - host: drupal-east-1d.ceidnfhvpbck.us-east-1.rds.amazonaws.com
+    - host: <%= ENV['DATABASE_MACHINE'] %>
       pool_weight: 2
 
 development:
@@ -44,10 +44,10 @@ test:
 staging:
   <<: *prod_mysql_defaults
   master:
-    host: drupal-east-1d.ceidnfhvpbck.us-east-1.rds.amazonaws.com
+    host: <%= ENV['DATABASE_MACHINE'] %>
     pool_weight: 1
   read_pool:
-    - host: drupal-east-1d.ceidnfhvpbck.us-east-1.rds.amazonaws.com
+    - host: <%= ENV['DATABASE_MACHINE'] %>
       pool_weight: 2
   database: dashboard_staging
 
