@@ -151,6 +151,24 @@ namespace :seed do
     end
   end
 
+  task :frequent_level_sources, [:freq_cutoff] => :environment do |t, args|
+    # Among all the level_sources, find the ones that are submitted more than freq_cutoff times.
+    puts args[:freq_cutoff]
+    FrequentUnsuccessfulLevelSource.update_all('active = false')
+    Activity.connection.execute('select level_source_id, level_id, count(*) as num_of_attempts from activities where test_result < 100 group by level_source_id order by num_of_attempts DESC').each do |level_source|
+      if level_source[2] >= args[:freq_cutoff].to_i
+        unsuccessful_level_source = FrequentUnsuccessfulLevelSource.where(
+            level_source_id: level_source[0],
+            level_id: level_source[1],
+            num_of_attempts: level_source[2]).first_or_create;
+        unsuccessful_level_source.active = true;
+        unsuccessful_level_source.save!
+      else
+        break;
+      end
+    end
+  end
+
   task dummy_prizes: :environment do
     # placeholder data
     Prize.connection.execute('truncate table prizes')

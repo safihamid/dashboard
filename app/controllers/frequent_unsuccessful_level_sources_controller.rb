@@ -1,0 +1,2 @@
+class FrequentUnsuccessfulLevelSourcesController < ApplicationController
+end
