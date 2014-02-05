@@ -18,12 +18,15 @@
       label: 'Добавете учител по код или имейл адрес:'
       placeholder: Код (ABCDEF) или имейл (teacher@school.edu)
     submit: Добавяне на учител
+  add_hint_form:
+    placeholder: Please enter your hint here
+    submit: Add hint
   appname: Code.org
   stage: Етап
   puzzle: Пъзел
   trophies: Трофеи
   courses: Курсове
-  of: of
+  of: на
   more: ПОВЕЧЕ
   less: ПО-МАЛКО
   try_hoc: 'Опитайте ''Часът на Кодирането'', натиснете тук >> '
@@ -37,8 +40,8 @@
   auth:
     sign_in_with: Влезте чрез %{provider}
     signed_in: Влез !
-    already_signedup: Вече се регистрирали?
-    notyet_signedup: Не са се присъединили още?
+    already_signedup: Вече сте се регистрирали?
+    notyet_signedup: Не сте се присъединили още?
     google_oauth2: Google +
     twitter: Twitter
     facebook: Facebook
@@ -68,47 +71,47 @@
       финансиране на учителите от САЩ, които успешно преведат минимум 15 студенти
       през този курс. Вижте <a href="http://code.org/educate/20hr"> ръководството
       за възпитатели </a> за повече информация.
-    teacher_prize_limits: '(Limit: $1,000 per teacher. <a target="_blank" href="http://help.donorschoose.org/app/answers/detail/a_id/454/kw/code.org">See
-      FAQ for more limits</a>)'
-    teacher_pitch: Teach the K-8 Intro to Computer Science in your classroom
+    teacher_prize_limits: '(Лимит: $1000 на учител. <a target="_blank" href="http://help.donorschoose.org/app/answers/detail/a_id/454/kw/code.org">
+      Вижте ЧЗВ за повече ограничения</a>)'
+    teacher_pitch: Научи въведението K-8 за компютърни науки в класната ти стая
     teacher_title: Регистрация за Учители/Възпитатели
     student_pitch: 'Beyond 1 hour: try our K-8 Intro to Computer Science'
     student_title: Регистрирайте се
-    school_name: School Name (optional)
-    school_address: School Address (optional)
-    address_placeholder: address, city, state, zip
-    gender: Gender (optional)
-    birthday: Birthday (optional)
-    submit: Sign up
-    teacher: Are you a teacher?
-    valid_username: Available!
-    invalid_username: Username must be at least 5 characters
-    taken_username: Username is already taken
-    valid_password: Valid password!
-    invalid_password: Password must be at least 6 characters
-    mismatch_password: The two passwords you entered do not match
-    student_terms: I agree to be bound by the Code.org terms of service. If I am under
-      13 years of age, I confirm by submitting this form that I have my parent or
-      legal guardian's permission to use the Code.org services.
-    teacher_terms: I agree to be bound by the Code.org terms of service.
+    school_name: Име на училище (по желание)
+    school_address: Адрес на училището (по избор)
+    address_placeholder: адрес, град, държава, пощенски код
+    gender: Пол (по избор)
+    birthday: Рождена дата (по избор)
+    submit: Регистрирайте се
+    teacher: Учител ли сте?
+    valid_username: Налично!
+    invalid_username: Потребителското име трябва да бъде най-малко 5 знака
+    taken_username: Потребителско име вече е заето
+    valid_password: Валидна парола!
+    invalid_password: Паролата трябва да бъде поне 6 символа
+    mismatch_password: Двете пароли, които въведохте не съвпадат
+    student_terms: Съгласен съм с условията на Code.org  за ползване. Ако аз съм на
+      възраст под 13 години, аз потвърждавам с подаването на този формуляр, че моя
+      родител или законен настойник разрешава да използвам услугите на Code.org .
+    teacher_terms: Съгласен съм с условията на Code.org  за ползване.
   signin_form:
-    title: Sign in
-    login: Email or username
-    password: Password
-    remember: Remember me
-    submit: Sign in
+    title: Вход
+    login: Имейл или потребителско име
+    password: Парола
+    remember: Запомни ме
+    submit: Вход
   password:
     reset_form:
-      title: Forgot your password?
-      email: Email address
-      submit: Send me reset password instructions
+      title: Забравена парола?
+      email: Имейл адрес
+      submit: Изпрати ми инструкции за смяна на парола
     change_form:
-      title: Change your password
-      new_password: New password
-      confirm_password: Confirm new password
-      submit: Change my password
+      title: Смяна на паролата
+      new_password: Нова парола
+      confirm_password: Потвърдете новата парола
+      submit: Смяна на паролата ми
   welcome_email:
-    subject: Join my class (on Code.org)
+    subject: Присъединете се към моя клас (на Code.org)
     body: |
       Click the link below to sign up for computer science tutorials on Code.org (with me as your "teacher"):
 
@@ -118,15 +121,15 @@
 
       %{name}
   follower:
-    invite_sent: Invite sent
-    added_teacher: '%{name} added as your teacher'
-    registered: You've registered for %{section_name}.
+    invite_sent: Поканата изпратена
+    added_teacher: '%{name}, добавен като ваш учител'
+    registered: Регистрирахте се за %{section_name}.
     error:
-      signed_in: Please signout before proceeding
-      username_not_found: Username %{username} not found
-      username_in_use: '%{username} is already taken, please pick another'
-      no_teacher: Could not find anyone signed in with '%{teacher_email_or_code}'.
-        Please ask them to sign up here and then try adding them again
+      signed_in: Моля излезте преди да продължите
+      username_not_found: Името %{username} не е намерено
+      username_in_use: Името %{username} вече е заето, моля изберете друго
+      no_teacher: Не е намерен никой регистриран с '%{teacher_email_or_code}'. Моля
+        помолете ги да се регистрират тук и тогава се опитайте да ги добавите отново
       blank_code: Please enter a code or your teacher's email address
     mail:
       invite_student:
@@ -134,6 +137,9 @@
       student_disassociated:
         subject: 'Code.org notification: %{student_name} is no longer associated as
           your student.'
+      teacher_disassociated:
+        subject: 'Code.org notification: %{teacher_name} is no longer associated as
+          your teacher.'
   reports:
     error:
       access_denied: You don't have access to this person's stats
@@ -248,12 +254,17 @@
       one: Вашият учител е %{name}
       other: 'Вашите учители:'
     remove: (remove teacher)
+    confirm:
+      remove: Are you sure you want to remove this teacher?
     tools: Учителски инструменти
     students:
       manage: Управление на ученици
       add: Добавяне на ученици
     rollup: Табло на прогреса
     activity: Последните дейности на класа
+    user_not_found: The teacher or student could not be found
+    student_teacher_disassociated: '%{teacher_name} has been removed as a teacher
+      for %{student_name}'
   user:
     email_confirm_needed: 'Email address has not been confirmed:'
     email_resend_confirm: Resend confirmation instructions
@@ -271,42 +282,42 @@
     recent_activity: Скорошна активност
     show_more: Show more
   home:
-    signin_message: Or if you're already registered, %{link}
-    student_reg_link: Student
-    teacher_reg_link: Teacher
+    signin_message: Или ако вече сте регистрирани, %{link}
+    student_reg_link: Ученик
+    teacher_reg_link: Учител
     teacher_dashboard: See progress dashboard
-    teacher_student_count_one: You have %{count} student.
-    teacher_student_count: You have %{count} students.
-    teacher_averages: On average your students have earned %{trophy_average} out of
-      %{trophy_max} "Concept Mastery" trophies.
-    classroom: Your classroom
-    student_progress: Your learning progress
-    student_stats: You've earned %{trophy_count} out of %{trophy_max} "Concept Mastery"
-      trophies.
-    student_left_off: 'Where you left off:'
+    teacher_student_count_one: Вие имате %{count} ученици.
+    teacher_student_count: Вие имате %{count} ученици.
+    teacher_averages: Средно вашите ученици са спечелили %{trophy_average} от %{trophy_max}
+      "Концепция майсторство" трофеи.
+    classroom: Вашата класна стая
+    student_progress: Вашият учебен прогрес
+    student_stats: Вие сте спечелил %{trophy_count} от %{trophy_max} "Концепция майсторство"
+      трофеи.
+    student_left_off: 'Където сте спрели:'
     student_finished_prize: You've completed all tutorials, claim your %{prize_link}
       and pick another class %{online_link} or at a %{local_school_link}
     student_finished: You've completed all tutorials, pick another class %{online_link}
       or at a %{local_school_link}
-    local_school: local school
-    online: online
-    see_details: See details
+    local_school: местно училище
+    online: онлайн
+    see_details: Вижте детайли
   gender:
-    male: Male
-    female: Female
-    none: Prefer not to answer
+    male: Мъж
+    female: Жена
+    none: Предпочитам да не отговоря
   footer:
-    help_from_html: Engineers from <a href="http://www.google.com">Google</a>, <a
-      href="http://www.microsoft.com">Microsoft</a>, <a href="http://www.facebook.com">Facebook</a>,
-      and <a href="http://www.twitter.com">Twitter</a> helped create this tutorial.
+    help_from_html: Инженери от <a href="http://www.google.com"> Google</a>, <a href="http://www.microsoft.com">
+      Microsoft</a>, <a href="http://www.facebook.com"> Facebook</a> и <a href="http://www.twitter.com">
+      Twitter</a> помогнаха за създаването на този урок.
     art_from_html: Angry Birds&trade; & &copy; 2009 - 2013 <a href="http://www.rovio.com">Rovio
-      Entertainment Ltd</a>. All Rights Reserved.<br/> Plants vs. Zombies&trade; &
-      &copy; 2013 <a href="http://www.ea.com">Electronic Arts Inc.</a>. All Rights
-      Reserved.
-    feedback: Provide feedback
-    translate: Help us translate to your language
-    tos: Terms of service
-    privacy: Privacy Policy
+      Entertainment Ltd</a>. Всички права запазени.<br/> Plants vs. Zombies&trade;
+      & &copy; 2013 <a href="http://www.ea.com">Electronic Arts Inc.</a>. Всички права
+      запазени.
+    feedback: Обратна връзка
+    translate: Помогнете ни да преведем на вашия език
+    tos: Условия за ползване
+    privacy: Защита на личните данни
   prize_mail:
     prize_earned:
       subject: Redeem your prize at Code.org!
@@ -315,21 +326,21 @@
     teacher_bonus_prize_earned:
       subject: Redeem your bonus prize at Code.org!
   reference_area:
-    title: Need help?
-    subtitle: See these videos and hints
-    teacher: See the solution
-    auth_error: You are not authorized to see the solution.
+    title: Нужда от помощ?
+    subtitle: Вижте тези клипове и съвети
+    teacher: Вижте решението
+    auth_error: Не сте упълномощени да видите решението.
   video:
-    tab: Video.
-    notes: No video? Show notes.
-    autoplay_option: Autoplay videos
-    download: Download Video
+    tab: Видео.
+    notes: Няма видео? Показване на бележките.
+    autoplay_option: Автоматично изпълнение на видеата
+    download: Изтегляне на видео
   compatability:
     working: We are working on support for your browser.
-    upgrade: Please upgrade your browser.
-  slow_loading: This is taking longer than usual...
-  try_reloading: Try reloading the page
-  next_stage: Finished! Continue to next stage
+    upgrade: Моля, надстройте браузъра си.
+  slow_loading: Това отнема повече време от обичайното...
+  try_reloading: Опитайте да презаредите страницата
+  next_stage: Завършено! Продължете към следващия етап
   download_pdf: Open Lesson Plan
   share_code:
-    title: Click 'Run program' to see my program in action
+    title: Натиснете върху "Изпълни програмата" за да видите програмата си в действие

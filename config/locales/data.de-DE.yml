@@ -30,6 +30,9 @@
         Edit Code:
           desc: Code bearbeiten
           MazeEC: Teil 1
+        2014 Levels:
+          desc: 2014 Puzzles (beta)
+          MazeEC: Stage 1
     game:
       name:
         Unplug1: Einführung in die Informatik
@@ -53,6 +56,7 @@
         Artist5: Der Künstler 5
         Unplug11: Zusammenfassung
         MazeEC: Das Labyrinth
+        Bounce: Bounce
     trophy:
       name:
         Bronze: Bronze
@@ -343,6 +347,16 @@
           laufe!
         maze_3_4: Argh! Schreibe mir ein Programm das mich um den TNT-Sprengstoff
           zum Schwein bringt.
+        bounce_1: Attach a block to the "when left arrow" block, then run and move
+          the paddle with the left arrow key to the finish target.
+        bounce_2: Attach a block to the "when right arrow" and "when left arrow" blocks,
+          then run and move the paddle with the both arrow key to both finish targets.
+        bounce_3: TBD
+        bounce_4: TBD
+        bounce_5: Attach a blocks to the "when right arrow", "when left arrow", "when
+          ball hits wall", and "when ball hits paddle" blocks.
+        bounce_6: Try again with more balls.
+        bounce_7: Now it is getting crazy!
       levelIncompleteError:
         maze_2_8: 'Um dieses Problem zu lösen, suche nach einem Muster, dass sich
           wiederholt. Benutze dann den "wiederhole"-Baustein mit diesen drei Bausteinen

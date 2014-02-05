@@ -18,6 +18,9 @@
       label: 'voeg een leraar toe door code of e-mail adres:'
       placeholder: code (ABCDEF) of email (teacher@school.edu)
     submit: voeg leraar toe
+  add_hint_form:
+    placeholder: Please enter your hint here
+    submit: Add hint
   appname: Code.org
   stage: niveau
   puzzle: puzzel
@@ -133,6 +136,9 @@
       student_disassociated:
         subject: 'Code.org notification: %{student_name} is no longer associated as
           your student.'
+      teacher_disassociated:
+        subject: 'Code.org notification: %{teacher_name} is no longer associated as
+          your teacher.'
   reports:
     error:
       access_denied: Je hebt geen toegang tot de statistieken van deze persoon
@@ -252,12 +258,17 @@
       one: Je leraar is %{name}
       other: 'Je leraren:'
     remove: (remove teacher)
+    confirm:
+      remove: Are you sure you want to remove this teacher?
     tools: Hulpmiddelen voor Leraren
     students:
       manage: Beheer student
       add: voeg leerling toe
     rollup: Overzicht vooruitgang
     activity: Recente klasactiviteiten
+    user_not_found: The teacher or student could not be found
+    student_teacher_disassociated: '%{teacher_name} has been removed as a teacher
+      for %{student_name}'
   user:
     email_confirm_needed: 'Email address has not been confirmed:'
     email_resend_confirm: Resend confirmation instructions

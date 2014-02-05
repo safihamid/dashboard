@@ -18,6 +18,9 @@
       label: 'إضف معلم عن طريق الرمز أو البريد الإلكتروني:'
       placeholder: الرمز (ABCDEF) أو البريد الإلكتروني (teacher@school.edu)
     submit: إضف معلم
+  add_hint_form:
+    placeholder: Please enter your hint here
+    submit: Add hint
   appname: Code.org
   stage: المرحلة
   puzzle: لغز
@@ -131,6 +134,9 @@
       student_disassociated:
         subject: 'Code.org notification: %{student_name} is no longer associated as
           your student.'
+      teacher_disassociated:
+        subject: 'Code.org notification: %{teacher_name} is no longer associated as
+          your teacher.'
   reports:
     error:
       access_denied: لا يوجد لديك الصلاحيات للوصول إلى إحصائيات الخاصة بهذا المستخدم
@@ -244,12 +250,17 @@
       one: معلمك هو %{name}
       other: 'معلميك:'
     remove: (إحذف المعلم)
+    confirm:
+      remove: Are you sure you want to remove this teacher?
     tools: أدوات المعلم
     students:
       manage: إدارة الطلاب
       add: إضف الطلاب
     rollup: لوحة معلومات التقدم
     activity: آخر نشاطات الصف
+    user_not_found: The teacher or student could not be found
+    student_teacher_disassociated: '%{teacher_name} has been removed as a teacher
+      for %{student_name}'
   user:
     email_confirm_needed: 'Email address has not been confirmed:'
     email_resend_confirm: Resend confirmation instructions

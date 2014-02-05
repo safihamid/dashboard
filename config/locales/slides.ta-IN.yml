@@ -211,7 +211,7 @@
     loop_while:
       1:
         image: notes/stage9_5.jpg
-        text: Hi, I'm Makinde! Let's learn about the "while block."
+        text: 'வணக்கம், நான் மகின்டே! தற்போது "while தொகுதி" பற்றி கற்போம். '
       2:
         image: notes/stage9_6.jpg
         text: The "while block" will do whatever you put inside it AS LONG AS the

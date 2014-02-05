@@ -18,6 +18,9 @@
       label: 'Додати вчителя, по коду чи адресі електронної пошти:'
       placeholder: Код (ABCDEF) або електронною поштою (teacher@school.edu)
     submit: Додати викладача
+  add_hint_form:
+    placeholder: Будь ласка, введіть підказку сюди
+    submit: Додати підказку
   appname: Code.org
   stage: Етап
   puzzle: Завдання
@@ -53,9 +56,9 @@
     no_signup_message: Ви можете <a target="_blank" href="http://learn.code.org">переглянути
       різні рівні та завдання</a>, але для збереження результатів потрібно реєструватись.
     prizes_header: Перші учні, які завершать курс, можуть виграти призи! (лише США)
-    prizes_message: U.S. students who earn all %{num_trophies} concept trophies can
-      select a variety of prizes including free Dropbox space, Skype credits, and
-      downloadable games from Electronic Arts.
+    prizes_message: 'Учні зі США, котрі вибороли всі %{num_trophies} трофеїв, можуть
+      вибрати низку призів, таких як: безкоштовний файловий простір Dropbox, кредити
+      Skype та ігри від Electronic Arts.'
     teacher_educator_guide: Переглянути посібник для вчителя
     teacher_prize_header: Виграйте 1000$ у  <a target="_blank" href="http://DonorsChoose.org">DonorsChoose.org</a>
     teacher_prize_message: "У партнерстві з <a target=\"_blank\" href=\"http://DonorsChoose.org\">
@@ -63,8 +66,8 @@
       Сполучених Штат Америки, які навчатимуть принаймні 15 учнів через цей курс.\n<a
       href=\"http://code.org/educate/20hr\">Перегляньте вказівник для вчителів для
       детальнішої інформації</a> \n"
-    teacher_prize_limits: '(Limit: $1,000 per teacher. <a target="_blank" href="http://help.donorschoose.org/app/answers/detail/a_id/454/kw/code.org">See
-      FAQ for more limits</a>)'
+    teacher_prize_limits: '(Обмеження: $1,000 на вчителя. <a target="_blank" href="http://help.donorschoose.org/app/answers/detail/a_id/454/kw/code.org">Ознайомтеся
+      із ЧаПи для детальнішої інформації</a>)'
     teacher_pitch: Навчати вступ до інформатики у вашому класі
     teacher_title: Реєстрація вчителя
     student_pitch: 'Більше 1 години: спробуйте вступ до інформатики'
@@ -128,8 +131,9 @@
       invite_student:
         subject: Приєднуйтеся до класу з %{teacher_name} на Code.org!
       student_disassociated:
-        subject: 'Code.org notification: %{student_name} is no longer associated as
-          your student.'
+        subject: 'Повідомлення Code.org: %{student_name} відтепер не є вашим учнем.'
+      teacher_disassociated:
+        subject: 'Повідомлення Code.org: %{teacher_name} відтепер не є вашим вчителем.'
   reports:
     error:
       access_denied: Ви не маєте доступу до статистики цієї людини
@@ -138,15 +142,17 @@
     provider: 'Постачальник:'
     code: 'Код:'
     redeem_header: 'To redeem:'
-    donorschoose_how_to: How to use your code
+    donorschoose_how_to: Як використовується код
     success: Ви успішно отримали приз, дивіться код нижче.
     error: Ваш виграш не може бути отримано, спробуйте ще раз.
     error_us_only: Винагорода дійсна лише для користувачів зі США.
     error_not_earned: Ви ще не отримали цей приз.
     error_already_redeemed: Ваш приз вже отриманий.
     no_prizes_available: Нам дуже шкода, але в даний час немає доступних призів.
-    teacher_info_required: 'Teacher prizes require school name and address information:'
-    teacher_email_required: 'Teacher prizes require a confirmed email address:'
+    teacher_info_required: 'Введіть назву школи та адресу для отримання вчительських
+      призів:'
+    teacher_email_required: 'Вчительські призи вимагають підтвердження адреси електронної
+      пошти:'
     confirm:
       title: Будь ласка, підтвердіть
       'no': Ні
@@ -216,8 +222,8 @@
     confirm: Справді?
     created: '%{model} успішно створено.'
     updated: '%{model} успішно оновлено.'
-    destroyed: '%{model} was successfully deleted.'
-    access_denied: You do not have access to this %{model}.
+    destroyed: '%{model} успішно вилучено.'
+    access_denied: Ви не маєте доступу до %{model}.
   nav:
     header:
       finished_hoc: Я вже завершив мою Годину коду
@@ -243,18 +249,22 @@
       prizes_link: Детальніше
   teacher:
     title:
-      one: Ваш вчитель - %{name}
+      one: 'Ваш вчитель:'
       other: 'Ваші вчителі:'
-    remove: (remove teacher)
+    remove: (вилучити вчителя)
+    confirm:
+      remove: Ви впевнені, що хочете вилучити цього вчителя?
     tools: Інструменти вчителя
     students:
       manage: Керування учнями
       add: Додати учнів
     rollup: Панель досягнень
     activity: Остання діяльність класу
+    user_not_found: Не вдається знайти вчителя чи учня
+    student_teacher_disassociated: '%{teacher_name} вилучений як вчитель для %{student_name}'
   user:
-    email_confirm_needed: 'Email address has not been confirmed:'
-    email_resend_confirm: Resend confirmation instructions
+    email_confirm_needed: 'Адресу електронної пошти не підтверджено:'
+    email_resend_confirm: Надіслати повідомлення з підтвердженням повторно
     new_password_hint: (залишіть порожнім, якщо ви не хочете змінювати)
     current_password_hint: (нам потрібний ваш поточний пароль, щоб підтвердити зміни)
     cancel:

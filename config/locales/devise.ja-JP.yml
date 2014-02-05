@@ -1,7 +1,7 @@
 "ja":
   devise:
     confirmations:
-      confirmed: あなたのアカウントを確認しました。今サインインしています。
+      confirmed: あなたのメール アドレスを確認しました。
       send_instructions: 数分であなたのアカウントを確認する方法が書かれたメールが届きます。
       send_paranoid_instructions: 当社のデータベースにあなたのメールアドレスが存在する場合、数分であなたのアカウントを確認する方法について書かれたメールが届きます。
     failure:
@@ -16,9 +16,9 @@
       unconfirmed: 続ける前にあなたのアカウントを確認してください。
     mailer:
       confirmation_instructions:
-        subject: 確認方法
+        subject: Code.org 確認手順
       reset_password_instructions:
-        subject: パスワードをリセットする方法
+        subject: Code.org パスワードのリセット手順
       unlock_instructions:
         subject: ロックを解除する方法
     omniauth_callbacks:

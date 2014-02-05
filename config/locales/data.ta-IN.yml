@@ -4,60 +4,64 @@
       name:
         20-hour:
           desc: K-8 Intro to Computer Science Course
-          Unplug1: Stage 1
-          Maze: Stage 2
-          Unplug2: Stage 3
-          Unplug3: Stage 4
-          Artist: Stage 5
-          Unplug4: Stage 6
-          Artist2: Stage 7
-          Unplug5: Stage 8
-          Farmer: Stage 9
-          Unplug6: Stage 10
-          Artist3: Stage 11
-          Unplug7: Stage 12
-          Farmer2: Stage 13
-          Unplug8: Stage 14
-          Artist4: Stage 15
-          Unplug9: Stage 16
-          Farmer3: Stage 17
-          Unplug10: Stage 18
-          Artist5: Stage 19
-          Unplug11: Stage 20
+          Unplug1: நிலை 1
+          Maze: நிலை 2
+          Unplug2: நிலை 3
+          Unplug3: நிலை 4
+          Artist: நிலை 5
+          Unplug4: நிலை 6
+          Artist2: நிலை 7
+          Unplug5: நிலை 8
+          Farmer: நிலை 9
+          Unplug6: நிலை 10
+          Artist3: நிலை 11
+          Unplug7: நிலை 12
+          Farmer2: நிலை 13
+          Unplug8: நிலை 14
+          Artist4: நிலை 15
+          Unplug9: நிலை 16
+          Farmer3: நிலை 17
+          Unplug10: நிலை 18
+          Artist5: நிலை 19
+          Unplug11: நிலை 20
         Hour of Code:
           desc: Hour of Code
-          Maze: Stage 1
+          Maze: நிலை 1
         Edit Code:
-          desc: Edit Code
+          desc: குறியீட்டை திருத்து
+          MazeEC: நிலை 1
+        2014 Levels:
+          desc: 2014 Puzzles (beta)
           MazeEC: Stage 1
     game:
       name:
-        Unplug1: Introduction to Computer Science
+        Unplug1: கணினி அறிவியலின் அறிமுகம்
         Maze: The Maze
         Unplug2: Computational Thinking
-        Unplug3: Graph Paper Programming
-        Artist: The Artist
-        Unplug4: Algorithms
-        Artist2: The Artist 2
-        Unplug5: Functions
-        Farmer: The Farmer
+        Unplug3: வரைதாள் செய்நிரல்
+        Artist: கலைஞர்
+        Unplug4: வழிமுறைகள்
+        Artist2: கலைஞர் 2
+        Unplug5: செயல்பாடுகள்
+        Farmer: விவசாயி
         Unplug6: Conditionals
-        Artist3: The Artist 3
-        Unplug7: Song Writing
-        Farmer2: The Farmer 2
+        Artist3: கலைஞர் 3
+        Unplug7: பாடல் எழுதுதல்
+        Farmer2: விவசாயி 2
         Unplug8: Abstraction
-        Artist4: The Artist 4
+        Artist4: கலைஞர் 4
         Unplug9: Relay Programming
-        Farmer3: The Farmer 3
-        Unplug10: The Internet
-        Artist5: The Artist 5
+        Farmer3: விவசாயி 3
+        Unplug10: இணையம்
+        Artist5: கலைஞர் 5
         Unplug11: Wrap-up
         MazeEC: The Maze
+        Bounce: Bounce
     trophy:
       name:
         Bronze: Bronze
-        Silver: Silver
-        Gold: Gold
+        Silver: வெள்ளி
+        Gold: தங்கம்
     concept:
       description:
         sequence: Sequence
@@ -67,7 +71,7 @@
         loop_until: Repeat until block
         loop_while: While block
         loop_for: Counter block
-        function: Functions
+        function: செயல்பாடுகள்
         parameters: Functions with parameters
     level:
       instructions:
@@ -113,13 +117,12 @@
           Use a few blocks to make me draw over the gray lines in the picture.
         turtle_1_2: 'Now, draw a square. NOTE: use your favorite color by picking
           it in the new "set color" block.'
-        turtle_1_3: Make a square using only 3 blocks.
+        turtle_1_3: 3 தொகுதிகளை மட்டும் பயன்படுத்தி ஒரு சதுரத்தை அமைக்குக.
         turtle_1_4: 'Draw a triangle whose sides are all in different colors, using
           the "random color" option that picks a different color each time. Hint:
           you''ll have to figure out how far to turn by clicking on the number in
           the turn block.'
-        turtle_1_5: Now, for practice, draw a triangle and then a square to draw an
-          envelope.
+        turtle_1_5: இப்போது, பயிற்சிக்காக, மேலுறைக்கு முக்கோணம் மற்றும் சதுரத்தை வரையவும்.
         turtle_1_6: 'Can you figure out how draw this triangle and square? Hint: Do
           the triangle first, then figure out how much to turn before drawing the
           square.'
@@ -134,8 +137,9 @@
         turtle_1_10: 'You made it! Now, draw anything you want. Some fun ideas: a
           stick figure, snowflake, or spiral. Also try the new "set width" block.
           Have fun!'
-        turtle_4_1: 'Can you draw a triangle (with edges of 100 pixels) with only
-          3 blocks? Hint: use a "repeat" block.'
+        turtle_4_1: 'உங்களால் ஒரு முக்கோணியை (100 படவுருக்கள் உள்ள விளிம்புகளுடன்)
+          3 தொகுதிகளை மட்டும் வைத்து வரைய முடியுமா? குறிப்பு: ஒரு "மீளும்" தொகுதியை
+          பயன்படுத்துக.'
         turtle_4_2: 'Try adding one block to complete this puzzle. Hint: we''ve provided
           blocks to draw 2 identical triangles, you need to put a "turn" in between,
           and decide out how far to turn.'
@@ -310,6 +314,16 @@
           of TNT!
         maze_3_4: Argh! Write me a program that gets me around the TNT and to the
           pig.
+        bounce_1: Attach a block to the "when left arrow" block, then run and move
+          the paddle with the left arrow key to the finish target.
+        bounce_2: Attach a block to the "when right arrow" and "when left arrow" blocks,
+          then run and move the paddle with the both arrow key to both finish targets.
+        bounce_3: TBD
+        bounce_4: TBD
+        bounce_5: Attach a blocks to the "when right arrow", "when left arrow", "when
+          ball hits wall", and "when ball hits paddle" blocks.
+        bounce_6: Try again with more balls.
+        bounce_7: Now it is getting crazy!
       levelIncompleteError:
         maze_2_8: 'To solve this, find the pattern that repeats. Use a "repeat" block
           with these 3 blocks inside it: move, move, turn right.'
@@ -328,7 +342,7 @@
         loop_until: Repeat Until Block
         if: If Block
         if_else: If/else Block
-        function: Functions
+        function: செயல்பாடுகள்
         loop_while: While Block
         loop_for: Counter Block
         parameters: Functions with Parameters

@@ -18,6 +18,9 @@
       label: 'Legg til en lærer med kode eller e-postadresse:'
       placeholder: Kode (ABCDEF) eller e-post (navn@skole.no)
     submit: Legg til lærer
+  add_hint_form:
+    placeholder: Please enter your hint here
+    submit: Add hint
   appname: Code.org
   stage: Scene
   puzzle: Oppgave
@@ -131,6 +134,9 @@
       student_disassociated:
         subject: 'Code.org notification: %{student_name} is no longer associated as
           your student.'
+      teacher_disassociated:
+        subject: 'Code.org notification: %{teacher_name} is no longer associated as
+          your teacher.'
   reports:
     error:
       access_denied: Du har ikke tilgang til denne personens statistikk
@@ -245,12 +251,17 @@
       one: '%{name} er læreren din'
       other: 'Dine lærere:'
     remove: (remove teacher)
+    confirm:
+      remove: Are you sure you want to remove this teacher?
     tools: Lærerverktøy
     students:
       manage: Administrer elever
       add: Legg til elever
     rollup: Fremdriftsoversikt
     activity: Nylig klasseaktivitet
+    user_not_found: The teacher or student could not be found
+    student_teacher_disassociated: '%{teacher_name} has been removed as a teacher
+      for %{student_name}'
   user:
     email_confirm_needed: 'Email address has not been confirmed:'
     email_resend_confirm: Resend confirmation instructions

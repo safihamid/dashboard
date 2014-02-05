@@ -30,6 +30,9 @@
         Edit Code:
           desc: Muokkaa koodia
           MazeEC: Vaihe 1
+        2014 Levels:
+          desc: 2014 Puzzles (beta)
+          MazeEC: Stage 1
     game:
       name:
         Unplug1: Johdanto tietojenkäsittelyyn
@@ -53,6 +56,7 @@
         Artist5: Taiteilija 5
         Unplug11: Yhteenveto
         MazeEC: Sokkelo
+        Bounce: Bounce
     trophy:
       name:
         Bronze: Pronssi
@@ -314,6 +318,16 @@
         maze_3_3: Miten pääsisin possun luo? Varmistathan, etten törmää TNT-laatikoihin!
         maze_3_4: Argh! Kirjoita minulle ohjelma, jolla pääsen TNT-laatikoiden ohi
           possun luo.
+        bounce_1: Attach a block to the "when left arrow" block, then run and move
+          the paddle with the left arrow key to the finish target.
+        bounce_2: Attach a block to the "when right arrow" and "when left arrow" blocks,
+          then run and move the paddle with the both arrow key to both finish targets.
+        bounce_3: TBD
+        bounce_4: TBD
+        bounce_5: Attach a blocks to the "when right arrow", "when left arrow", "when
+          ball hits wall", and "when ball hits paddle" blocks.
+        bounce_6: Try again with more balls.
+        bounce_7: Now it is getting crazy!
       levelIncompleteError:
         maze_2_8: 'Tätä tehtävää varten sinun tulee ensin löytää toistuva kaava. Käytä
           sitten "toista"-lohkoa näiden 3 lohkon kanssa: siirry, siirry, käänny oikeaan.'

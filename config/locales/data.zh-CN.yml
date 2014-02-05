@@ -30,6 +30,9 @@
         Edit Code:
           desc: 编辑代码
           MazeEC: 第一阶段
+        2014 Levels:
+          desc: 2014 Puzzles (beta)
+          MazeEC: Stage 1
     game:
       name:
         Unplug1: 计算机科学导论
@@ -53,6 +56,7 @@
         Artist5: 艺术家 5
         Unplug11: 总结
         MazeEC: 迷宫
+        Bounce: Bounce
     trophy:
       name:
         Bronze: 铜色
@@ -176,6 +180,16 @@
         maze_3_2: 给我写一个程序，让我能够到达那只猪。
         maze_3_3: 我怎样才能抓住那只猪？小心别让我撞上TNT炸弹！
         maze_3_4: 写个程序，让我绕过那些TNT炸药，抓住那只猪。
+        bounce_1: Attach a block to the "when left arrow" block, then run and move
+          the paddle with the left arrow key to the finish target.
+        bounce_2: Attach a block to the "when right arrow" and "when left arrow" blocks,
+          then run and move the paddle with the both arrow key to both finish targets.
+        bounce_3: TBD
+        bounce_4: TBD
+        bounce_5: Attach a blocks to the "when right arrow", "when left arrow", "when
+          ball hits wall", and "when ball hits paddle" blocks.
+        bounce_6: Try again with more balls.
+        bounce_7: Now it is getting crazy!
       levelIncompleteError:
         maze_2_8: 要解决这个谜题，试试找找其中重复的部分。用一个”重复“块，并在里面里面放上三个块：向前，向前，右转。
       other1StarError:

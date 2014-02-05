@@ -18,6 +18,9 @@
       label: 'Shto mesues me ane te nje kodi ose me anen e nje adrese email:'
       placeholder: Kodi (ABCDEF) ose email (teacher@school.edu)
     submit: Shto mesues
+  add_hint_form:
+    placeholder: Please enter your hint here
+    submit: Add hint
   appname: Code.org
   stage: Faza
   puzzle: Enigme
@@ -130,6 +133,9 @@
       student_disassociated:
         subject: 'Code.org notification: %{student_name} is no longer associated as
           your student.'
+      teacher_disassociated:
+        subject: 'Code.org notification: %{teacher_name} is no longer associated as
+          your teacher.'
   reports:
     error:
       access_denied: You don't have access to this person's stats
@@ -244,12 +250,17 @@
       one: Your teacher is %{name}
       other: 'Your teachers:'
     remove: (remove teacher)
+    confirm:
+      remove: Are you sure you want to remove this teacher?
     tools: Teacher Tools
     students:
       manage: Manage students
       add: Add students
     rollup: Progress Dashboard
     activity: Recent class activity
+    user_not_found: The teacher or student could not be found
+    student_teacher_disassociated: '%{teacher_name} has been removed as a teacher
+      for %{student_name}'
   user:
     email_confirm_needed: 'Email address has not been confirmed:'
     email_resend_confirm: Resend confirmation instructions

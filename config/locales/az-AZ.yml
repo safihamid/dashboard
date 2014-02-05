@@ -18,6 +18,9 @@
       label: 'Kod və ya e-poçt ünvanına görə bir müəllim əlavə edin:'
       placeholder: Kod (ABCDEF) və ya e-poçt (muellim@mekteb.edu.az)
     submit: Müəllim əlavə edin
+  add_hint_form:
+    placeholder: Please enter your hint here
+    submit: Add hint
   appname: Code.org
   stage: Mərhələ
   puzzle: Tapmaca
@@ -135,6 +138,9 @@
       student_disassociated:
         subject: 'Code.org notification: %{student_name} is no longer associated as
           your student.'
+      teacher_disassociated:
+        subject: 'Code.org notification: %{teacher_name} is no longer associated as
+          your teacher.'
   reports:
     error:
       access_denied: Bu şəxsin statistikasına icazəniz yoxdur
@@ -253,12 +259,17 @@
       one: '%{name} sizin müəlliminizdir'
       other: 'Müəllimləriniz:'
     remove: (remove teacher)
+    confirm:
+      remove: Are you sure you want to remove this teacher?
     tools: Müəllim üçün alətlər
     students:
       manage: Tələbələri idarə edin
       add: Tələbələri əlavə edin
     rollup: Gedişat paneli
     activity: Ən son sinif işləri
+    user_not_found: The teacher or student could not be found
+    student_teacher_disassociated: '%{teacher_name} has been removed as a teacher
+      for %{student_name}'
   user:
     email_confirm_needed: 'Email address has not been confirmed:'
     email_resend_confirm: Resend confirmation instructions

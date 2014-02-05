@@ -18,6 +18,9 @@
       label: 通過代碼或電子郵件指定一個教師：
       placeholder: 代碼 (ABCDEF) 或電子郵件 (teacher@school.edu)
     submit: 指定教師
+  add_hint_form:
+    placeholder: Please enter your hint here
+    submit: Add hint
   appname: Code.org
   stage: 階段
   puzzle: 關卡
@@ -120,6 +123,9 @@
         subject: 加入%{teacher_name}老師在Code.org的班級。
       student_disassociated:
         subject: Code.org 通知： %{student_name} 將你從教師名單中移除。
+      teacher_disassociated:
+        subject: 'Code.org notification: %{teacher_name} is no longer associated as
+          your teacher.'
   reports:
     error:
       access_denied: 您不能讀取此人的統計資訊
@@ -219,12 +225,17 @@
       one: 你的老師是 %{名字}
       other: 你的老師：
     remove: （將教師移除）
+    confirm:
+      remove: Are you sure you want to remove this teacher?
     tools: 教師工具
     students:
       manage: 學生管理
       add: 新增學生
     rollup: 進度表
     activity: 最近的班級活動
+    user_not_found: The teacher or student could not be found
+    student_teacher_disassociated: '%{teacher_name} has been removed as a teacher
+      for %{student_name}'
   user:
     email_confirm_needed: 'Email address has not been confirmed:'
     email_resend_confirm: Resend confirmation instructions

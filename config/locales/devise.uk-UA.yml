@@ -1,7 +1,7 @@
 "uk":
   devise:
     confirmations:
-      confirmed: Ваш обліковий запис успішно підтверджено. Ви зараз увійшли.
+      confirmed: Вашу адресу електронної пошти успішно підтверджено.
       send_instructions: Ви отримаєте лист із вказівками про те, як підтвердити ваш
         профіль за лічені хвилини.
       send_paranoid_instructions: Якщо ваша адреса електронної пошти існує в нашій
@@ -19,9 +19,9 @@
       unconfirmed: Ви повинні підтвердити свій обліковий запис, перш ніж продовжити.
     mailer:
       confirmation_instructions:
-        subject: Вказівки підтвердження
+        subject: Підтвердження електронної пошти Code.org
       reset_password_instructions:
-        subject: Вказівки для відновлення пароля
+        subject: Скидання паролю Code.org
       unlock_instructions:
         subject: Вказівки розблокування
     omniauth_callbacks:

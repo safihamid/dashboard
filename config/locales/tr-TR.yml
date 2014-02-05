@@ -18,6 +18,9 @@
       label: 'Koda veya e-posta adresine göre bir öğretmen ekleyin:'
       placeholder: Kod (ABCDEF) veya e-posta (teacher@school.edu)
     submit: Öğretmen Ekle
+  add_hint_form:
+    placeholder: Please enter your hint here
+    submit: Add hint
   appname: Code.org
   stage: Kademe
   puzzle: Bulmaca
@@ -128,6 +131,9 @@
       student_disassociated:
         subject: 'Code.org notification: %{student_name} is no longer associated as
           your student.'
+      teacher_disassociated:
+        subject: 'Code.org notification: %{teacher_name} is no longer associated as
+          your teacher.'
   reports:
     error:
       access_denied: Bu kişinin istatistiklerine erişemezsiniz
@@ -245,12 +251,17 @@
       one: '%{name} sizin öğretmeninizdir'
       other: 'Öğretmeniniz:'
     remove: (remove teacher)
+    confirm:
+      remove: Are you sure you want to remove this teacher?
     tools: Öğretmen Araçları
     students:
       manage: Öğrencileri yönet
       add: Öğrenciler Ekle
     rollup: İlerleme Kontrol Paneli
     activity: Son sınıf etkinlikleri
+    user_not_found: The teacher or student could not be found
+    student_teacher_disassociated: '%{teacher_name} has been removed as a teacher
+      for %{student_name}'
   user:
     email_confirm_needed: 'Email address has not been confirmed:'
     email_resend_confirm: Resend confirmation instructions

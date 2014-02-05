@@ -30,6 +30,9 @@
         Edit Code:
           desc: Editar el código
           MazeEC: Etapa 1
+        2014 Levels:
+          desc: 2014 Puzzles (beta)
+          MazeEC: Stage 1
     game:
       name:
         Unplug1: Introducción a la ciencia en computación
@@ -53,6 +56,7 @@
         Artist5: El artista 5
         Unplug11: Cierre
         MazeEC: El laberinto
+        Bounce: Bounce
     trophy:
       name:
         Bronze: Bronce
@@ -327,6 +331,16 @@
         maze_3_3: ¿Cómo llego al cerdo? Asegúrate de que no pasar por la caja de TNT!
         maze_3_4: ¡Argh! Escríbeme un programa que me haga esquivar el TNT y llegue
           hasta el cerdo.
+        bounce_1: Attach a block to the "when left arrow" block, then run and move
+          the paddle with the left arrow key to the finish target.
+        bounce_2: Attach a block to the "when right arrow" and "when left arrow" blocks,
+          then run and move the paddle with the both arrow key to both finish targets.
+        bounce_3: TBD
+        bounce_4: TBD
+        bounce_5: Attach a blocks to the "when right arrow", "when left arrow", "when
+          ball hits wall", and "when ball hits paddle" blocks.
+        bounce_6: Try again with more balls.
+        bounce_7: Now it is getting crazy!
       levelIncompleteError:
         maze_2_8: 'Para resolver este, encuentra el bloque que repite. Usa un bloque
           "repetir" con estos 3 bloques en su interior: avanzar, avanzar, girar a

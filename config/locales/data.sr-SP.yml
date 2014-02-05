@@ -30,6 +30,9 @@
         Edit Code:
           desc: Измени Код
           MazeEC: Фаза 1
+        2014 Levels:
+          desc: 2014 Puzzles (beta)
+          MazeEC: Stage 1
     game:
       name:
         Unplug1: Увод у Компјутерске Науке
@@ -53,6 +56,7 @@
         Artist5: Уметник 5
         Unplug11: Замотај-Умотај
         MazeEC: Лавиринт
+        Bounce: Bounce
     trophy:
       name:
         Bronze: Бронза
@@ -315,6 +319,16 @@
         maze_3_3: Како да дођем до прасета? Постарај се да не натрчим на кутију са
           експлозивом!
         maze_3_4: АРГХ! Напиши ми програм који ме води око експлозива па до прасета.
+        bounce_1: Attach a block to the "when left arrow" block, then run and move
+          the paddle with the left arrow key to the finish target.
+        bounce_2: Attach a block to the "when right arrow" and "when left arrow" blocks,
+          then run and move the paddle with the both arrow key to both finish targets.
+        bounce_3: TBD
+        bounce_4: TBD
+        bounce_5: Attach a blocks to the "when right arrow", "when left arrow", "when
+          ball hits wall", and "when ball hits paddle" blocks.
+        bounce_6: Try again with more balls.
+        bounce_7: Now it is getting crazy!
       levelIncompleteError:
         maze_2_8: 'Како бих сте решили ово, пронађите сличност која се понавља. Користите
           "понови" блок са ова 3 блока унутар: крени, крени, скрени десно.'

@@ -30,6 +30,9 @@
         Edit Code:
           desc: Editează Codul
           MazeEC: Etapa 1
+        2014 Levels:
+          desc: 2014 Puzzles (beta)
+          MazeEC: Stage 1
     game:
       name:
         Unplug1: Introducere în Informatică
@@ -53,6 +56,7 @@
         Artist5: Artistul 5
         Unplug11: Încheiere
         MazeEC: Labirintul
+        Bounce: Bounce
     trophy:
       name:
         Bronze: Bronz
@@ -329,6 +333,16 @@
         maze_3_3: Cum să ajung la porcușor? Asigură-te că nu intru în cutia cu TNT!
         maze_3_4: Argh! Scrie-mi un program care mă duce de jur împrejurul minelor
           de TNT şi până la porcușor.
+        bounce_1: Attach a block to the "when left arrow" block, then run and move
+          the paddle with the left arrow key to the finish target.
+        bounce_2: Attach a block to the "when right arrow" and "when left arrow" blocks,
+          then run and move the paddle with the both arrow key to both finish targets.
+        bounce_3: TBD
+        bounce_4: TBD
+        bounce_5: Attach a blocks to the "when right arrow", "when left arrow", "when
+          ball hits wall", and "when ball hits paddle" blocks.
+        bounce_6: Try again with more balls.
+        bounce_7: Now it is getting crazy!
       levelIncompleteError:
         maze_2_8: 'Pentru a rezolva acesta, găsește modelul care repetă. Folosește
           un bloc "repetă" care să conțină următoarele 3 blocuri în el: mută, mută,

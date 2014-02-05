@@ -19,6 +19,9 @@
       label: 'הוספת מורה על-ידי קוד או כתובת האימייל שלך:'
       placeholder: קוד (ABCDEF) או תשלחו אימייל ל (teacher@school.edu)
     submit: הוספת מורה
+  add_hint_form:
+    placeholder: Please enter your hint here
+    submit: Add hint
   appname: Code.org
   stage: שלב
   puzzle: חידה
@@ -44,7 +47,7 @@
     facebook: פייסבוק
     windowslive: Windows Live
     forgot_password: שכחת את הסיסמא שלך?
-    need_confirmation: לא קיבלת את אישור ההוראות?
+    need_confirmation: לא קיבלת את  ההוראות האישור?
     need_unlock: לא קיבלת את ההוראות הפתוחות?
   signup_form:
     overview: קורס בן 20 שעות זה, מציג בפניך בסיס במדעי המחשב וברעיון של קוד-מחשב.
@@ -129,6 +132,9 @@
         subject: הצטרף לכיתה עם %{teacher_name} ב-Code.org!
       student_disassociated:
         subject: 'הודעה מCode.org: %{student_name} כבר לא רשום כתלמיד שלך.'
+      teacher_disassociated:
+        subject: 'Code.org notification: %{teacher_name} is no longer associated as
+          your teacher.'
   reports:
     error:
       access_denied: אין לך גישה לסטטיסטיקות של האדם הזה
@@ -137,7 +143,7 @@
     provider: 'ספק:'
     code: 'קוד:'
     redeem_header: 'To redeem:'
-    donorschoose_how_to: How to use your code
+    donorschoose_how_to: איך להשתמש בקוד שלך
     success: Your prize was succesfully redeemed, see code below.
     error: Your prize could not be redeemed, please try again.
     error_us_only: הפרס הזה תקף אך ורק לתושבי ארצות הברית.
@@ -145,7 +151,7 @@
     error_already_redeemed: הפרס שלך כבר נפדה.
     no_prizes_available: אנו מצטערים, אך כרגע אין לנו אף פרס זמין.
     teacher_info_required: 'פרסים של מורים מחייבים שם בי"ס וכתובת:'
-    teacher_email_required: 'Teacher prizes require a confirmed email address:'
+    teacher_email_required: 'פרסי מורים דורשים כתובת דוא"ל מאושרת:'
     confirm:
       title: Please Confirm
       'no': לא
@@ -195,11 +201,10 @@
             only)
           earned: 7 או יותר מהתלמידים שקיבלו את כל ה%{num_trophies} גביעים הם בנות.
             קיבלת פרס בונוס! (רק למורים מארה"ב.)
-          not_earned: If at least 7 of your students who earn all %{num_trophies}
-            trophies are girls, your reward is an additional $250 in <a target="_blank"
-            href="http://DonorsChoose.org">DonorsChoose.org</a> credits. <a target="_blank"
-            href="http://DonorsChoose.org">DonorsChoose.org</a> credits can only be
-            used by teachers in U.S. public schools.
+          not_earned: אם לפחות 7 מהתלמידים שלך שקיבלו את כל ה%{num_trophies} גביעים
+            הם בנות, הפרס שלך הוא $250 בונוס ב<a target="_blank" href="http://DonorsChoose.org">
+            קרדיטים. רק מורים בבי"ס ציבוריים בארה"ב יכולים להשתמש בקרדיטים של <a target="_blank"
+            href="http://DonorsChoose.org">.
   crud:
     new_model: חדש %{model}
     show: הצג
@@ -238,18 +243,23 @@
       prizes_link: מידע נוסף
   teacher:
     title:
-      one: המורה שלך הוא %{name}
+      one: 'המורה שלך :'
       other: 'המורים שלך:'
     remove: (מחק מורה)
+    confirm:
+      remove: האם אתה בטוח שברצונך להסיר את המורה הזה?
     tools: כלים למורה
     students:
       manage: נהל תלמידים
       add: הוסף תלמיד
     rollup: לוח התקדמות
     activity: פעילות אחרונה בכיתה
+    user_not_found: The teacher or student could not be found
+    student_teacher_disassociated: '%{teacher_name} has been removed as a teacher
+      for %{student_name}'
   user:
-    email_confirm_needed: 'Email address has not been confirmed:'
-    email_resend_confirm: Resend confirmation instructions
+    email_confirm_needed: 'כתובת הדוא"ל עוד לא אושרה:'
+    email_resend_confirm: שלח מחדש הוראות אישור דוא"ל
     new_password_hint: (השאר ריק אם אין ברצונך לשנות)
     current_password_hint: (אנחנו צריכים את הסיסמה הנוכחית שלך כדי לאשר את השינויים
       שלך)
@@ -291,10 +301,9 @@
     help_from_html: המהנדסים של <a href="http://www.google.com"> גוגל</a>, <a href="http://www.microsoft.com">
       מיקרוסופט</a>, <a href="http://www.facebook.com"> פייסבוק</a>, <a href="http://www.twitter.com">
       טוויטר</a> עזרו ליצור ערכת לימוד זו.
-    art_from_html: Angry Birds&trade; & &copy; 2009 - 2013 <a href="http://www.rovio.com">Rovio
-      Entertainment Ltd</a>. All Rights Reserved.<br/> Plants vs. Zombies&trade; &
-      &copy; 2013 <a href="http://www.ea.com">Electronic Arts Inc.</a>. All Rights
-      Reserved.
+    art_from_html: Angry Birds&trade; ו&copy; 2009-2013 <a href="http://www.rovio.com">Rovio
+      Entertainment Ltd</a>כל הזכויות שמורות.<br/>Plants vs. Zombies&trade; ו&copy;
+      2013<a href="http://www.ea.com">Electronic Arts Inc.</a>. כל הזכויות שמורות.
     feedback: משוב
     translate: עזרו לנו לתרגם לשפתך
     tos: תנאי השירות

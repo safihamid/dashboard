@@ -18,6 +18,9 @@
       label: 'Adj meg egy tanárt kóddal, vagy e-mail címmel:'
       placeholder: Kód (ABCDEF) vagy email (tanar@iskola.hu)
     submit: Tanár hozzáadása
+  add_hint_form:
+    placeholder: Kérjük, írja ide a véleményét
+    submit: Írja le a véleményét
   appname: Code.org
   stage: Szakasz
   puzzle: Rejtvény
@@ -130,6 +133,9 @@
         subject: Csatlakozz egy osztályhoz %{teacher_name} a Code.org-on belül!
       student_disassociated:
         subject: 'Code.org megjegyzés: %{student_name}  már nem az Ön a hallgatója.'
+      teacher_disassociated:
+        subject: 'Code.org megjegyzése: %{teacher_name} már nem szerepel, mint az
+          Ön tanára.'
   reports:
     error:
       access_denied: Nincs jogosultságod megtekinteni ennek a személyesnek a statisztikáját
@@ -138,7 +144,7 @@
     provider: 'Provider:'
     code: 'Code:'
     redeem_header: 'To redeem:'
-    donorschoose_how_to: How to use your code
+    donorschoose_how_to: Hogyan használhatja a kódját
     success: Your prize was succesfully redeemed, see code below.
     error: Your prize could not be redeemed, please try again.
     error_us_only: A díjat csak amerikai felhasználók nyerhetik.
@@ -146,7 +152,7 @@
     error_already_redeemed: A díjadat már megkaptad.
     no_prizes_available: Sajnáljuk, jelenleg nincsenek elérhető díjak.
     teacher_info_required: 'a tanári díjakhoz adja meg az iskola nevét és címét:'
-    teacher_email_required: 'Teacher prizes require a confirmed email address:'
+    teacher_email_required: 'Tanár díjazásához szükséges egy megerősített e-mail cím:'
     confirm:
       title: Please Confirm
       'no': false
@@ -242,18 +248,23 @@
       prizes_link: további információk
   teacher:
     title:
-      one: A te tanárod %{name}
+      one: 'A tanára:'
       other: 'A tanáraid:'
     remove: (tanár eltávolítása)
+    confirm:
+      remove: Biztosan el szeretné bocsátani ezt a tanárt?
     tools: Tanári eszközök
     students:
       manage: Diákok kezelése
       add: Diákok hozzáadása
     rollup: Fejlődés tájékoztató
     activity: Mostanában osztály aktivitás
+    user_not_found: A tanár, vagy a diák nem ismert
+    student_teacher_disassociated: '%{teacher_name}, mint a %{student_name} tanáraként
+      el lett bocsátva'
   user:
-    email_confirm_needed: 'Email address has not been confirmed:'
-    email_resend_confirm: Resend confirmation instructions
+    email_confirm_needed: 'Az e-mail címét nem erősítette meg:'
+    email_resend_confirm: Újra elküldtük a megerősítés módját
     new_password_hint: (hagyja üresen, ha nem akarja megváltoztatni)
     current_password_hint: (szükségünk van a jelszavára  módosításainak jóváhagyásához)
     cancel:

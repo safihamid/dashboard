@@ -88,8 +88,8 @@
           i buchi.
       3:
         image: notes/stage9_3.jpg
-        text: The new blocks remove 1 shovelful of dirt from a pile and fill in 1
-          shovelful of dirt to a hole.
+        text: I nuovi blocchi rimuovono 1 badilata di sporco da una pila e riempiono
+          con 1 badilata di sporco un buco.
       4:
         image: notes/stage9_4.jpg
         text: I mucchi e i fori sono di diemensioni differenti, quindi devi dire l'agricoltore
@@ -214,8 +214,9 @@
           compone di un blocco "ripetizione" e un blocco "riempire".
       4:
         image: notes/stage13_4.jpg
-        text: The definition sits on the workspace, but our farmer won't run the function
-          until we drag out our "fill 5" function block from functions category.
+        text: La definizione si trova nell'area di lavoro, ma il nostro agricoltore
+          non eseguirà la funzione fino a quando trascineremo fuori il nostro blocco
+          funzione "riempimento 5" dalla categoria di funzioni.
       5:
         image: notes/stage13_5.jpg
         text: Mettiamo il "divertimento" in "FUNzione!" 
@@ -229,8 +230,8 @@
           FINO A CHE l'istruzione riportata sopra è VERA.
       3:
         image: notes/stage9_7.jpg
-        text: For example, if the farmer is standing on a pile, she will continue
-          to remove 1 shovelful WHILE there is still a pile beneath her.
+        text: Ad esempio, se l'agricoltore è in piedi su un mucchio, continuerà a
+          rimuovere 1 palata MENTRE c'è ancora un mucchio sotto di lei.
     loop_for:
       1:
         image: notes/stage11_1.jpg

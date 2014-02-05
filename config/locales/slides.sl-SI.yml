@@ -3,39 +3,39 @@
     maze_intro:
       1:
         image: notes/hoc1_1.jpg
-        text: Welcome to your first hour of code! Let's dive right into your first
-          taste of programming.
+        text: Dobrodošel/a na tvoji prvi uri programiranja! Dajmo kar malo okusiti,
+          kakšno je.
       2:
         image: notes/hoc1_2.jpg
-        text: We'll be using Blockly, a visual programming language where you drag
-          and drop blocks to write code.
+        text: Uporabljali bomo Blockly, vizualni programerski jezik, kjer potegneš
+          in izpustiš bloke, da zapišeš kodo.
       3:
         image: notes/hoc1_3.jpg
-        text: Most code is typed, but Blockly is visual. Each blocks corresponds to
-          a line of "real" code.
+        text: Večina kode je natipkana, ampak Blockly je vizualen. Vsak od blokov
+          ustreza 'pravi' kodi.
       4:
         image: notes/hoc1_4.jpg
-        text: You'll learn the foundations of computer science, concepts which are
-          used anywhere from making apps to controlling the Mars rover.
+        text: Naučil/a se boš temeljev računalništva, konceptov, ki so uporabljeni
+          od ustvarjanja aplikacij do nadzorovanja robota na Marsu.
       5:
         image: notes/hoc1_5.jpg
-        text: A program is a set of instructions for your computer to follow.
+        text: Program je zbirka navodil, ki jim sledi tvoj računalnik.
       6:
         image: notes/hoc1_6.jpg
-        text: The goal of your first program is to get an Angry Bird through a maze
-          to hit a Green Pig.
+        text: Cilj tvojega prvega programa je peljati 'jeznega ptiča' skozi labirint,
+          da zadene 'zeleno svinjo'.
       7:
         image: notes/hoc1_7.jpg
-        text: The left side is the maze where your program is run. The instructions
-          for each puzzle are below the maze.
+        text: Na levi strani labirinta bo tekel tvoj program. Navodila za vsako uganko
+          so pod labirintom.
       8:
         image: notes/hoc1_8.jpg
-        text: The middle toolbox has the commands for the Angry Bird. You'll use these
-          to build your code.
+        text: Srednje orodje ima ukaze za 'jezno ptico'. Te boš uporabljal/a za oblikovanje
+          programa.
       9:
         image: notes/hoc1_9.jpg
-        text: On the right is your workspace where you'll drag blocks from the toolbox
-          to build your program. To delete a block, drag it to the trash in the corner.
+        text: Na desni je tvoja delovna površina, kamor boš vlekel/a bloke z orodij,
+          da zgradiš tvoj program. Da zbrišeš blok, ga povleci do smetnjaka v kotu.
       10:
         image: notes/hoc1_10.jpg
         text: Each block is one instruction. If you drag a "move forward" block to

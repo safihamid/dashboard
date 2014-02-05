@@ -2,47 +2,50 @@
   activerecord:
     attributes:
       user:
-        name: Name
-        email: Email
-        username: Username
-        password: Password
-        password_confirmation: Password confirmation
-        current_password: Current password
-        locale: Language
-        gender: Gender
-        edit_header: Edit Account Details
-  hello: Hello world
-  welcome_back: Welcome back, %{name}
+        name: பெயர்
+        email: மின்னஞ்சல்
+        username: பயனர் பெயர்
+        password: கடவுச்சொல்
+        password_confirmation: கடவுச்சொல் உறுதிப்பாடு
+        current_password: தற்போதைய கடவுச்சொல்
+        locale: மொழி
+        gender: பாலினம்
+        edit_header: கணக்கு விவரங்களை திருத்து
+  hello: வணக்கம் உலகம்
+  welcome_back: மீண்டும் வருக, %{name}
   add_teacher_form:
     code_or_email:
       label: 'Add a teacher by code or email address:'
       placeholder: Code (ABCDEF) or email (teacher@school.edu)
-    submit: Add teacher
+    submit: ஆசிரியரை சேர்
+  add_hint_form:
+    placeholder: உங்கள் குறிப்பை இங்கே உள்ளிடவும்
+    submit: உதவிக்குறிப்பு சேர்
   appname: Code.org
-  stage: Stage
-  puzzle: Puzzle
-  trophies: Trophies
-  courses: Courses
+  stage: நிலை
+  puzzle: புதிர்
+  trophies: வெற்றிக் கிண்ணங்கள்
+  courses: பாடங்கள்
   of: of
-  more: MORE
-  less: LESS
+  more: மேலும்
+  less: குறைவாக
   try_hoc: 'Try the Hour of Code, click here >> '
   try_k8intro: Or, try our K-8 Intro to Computer Science Course (15-25 hours)
-  already_started: 'Already started? Resume here >> '
+  already_started: 'ஏற்கனவே ஆரம்பிக்கப்பட்டதா ? இங்கே தொடர்க >> '
   demos: 'Admin: All Demos'
-  continue: Continue
+  continue: தொடர்க
   prize: prize
-  more_info: More info
+  more_info: மேலதிக தகவல்
   auth:
-    sign_in_with: Sign in with %{provider}
-    signed_in: Signed in!
+    sign_in_with: '%{provider} மூலம் உள்நுழையவும்'
+    signed_in: உள்நுளைந்தீர்கள்!
     already_signedup: Already signed up?
     notyet_signedup: Haven't joined yet?
-    google_oauth2: Google+
+    google_oauth2: Google +
     twitter: Twitter
     facebook: Facebook
     windowslive: Windows Live
-    forgot_password: Forgot your password?
+    forgot_password: உங்கள் கடவுச்சொல் மறந்துவிட்டதா?
     need_confirmation: Didn't receive confirmation instructions?
     need_unlock: Didn't receive unlock instructions?
   signup_form:
@@ -105,7 +108,7 @@
       confirm_password: Confirm new password
       submit: Change my password
   welcome_email:
-    subject: Join my class (on Code.org)
+    subject: எனது வகுப்பில் இணையவும் (Code.org இல்)
     body: |
       Click the link below to sign up for computer science tutorials on Code.org (with me as your "teacher"):
 
@@ -115,13 +118,14 @@
 
       %{name}
   follower:
-    invite_sent: Invite sent
-    added_teacher: '%{name} added as your teacher'
+    invite_sent: அழைப்பு அனுப்பப்பட்டது
+    added_teacher: '%{name} உங்களது ஆசிரியராக சேர்க்கப்பட்டுள்ளார்'
     registered: You've registered for %{section_name}.
     error:
       signed_in: Please signout before proceeding
-      username_not_found: Username %{username} not found
-      username_in_use: '%{username} is already taken, please pick another'
+      username_not_found: பயனர் பெயர் %{username} காணப்படவில்லை
+      username_in_use: '%{username} ஆனது ஏற்கனவே எடுக்கப்பட்டுள்ளது. தயவு செய்து வேறொன்றை
+        தேர்ந்தெடுக்கவும்'
       no_teacher: Could not find anyone signed in with '%{teacher_email_or_code}'.
         Please ask them to sign up here and then try adding them again
       blank_code: Please enter a code or your teacher's email address
@@ -131,6 +135,9 @@
       student_disassociated:
         subject: 'Code.org notification: %{student_name} is no longer associated as
           your student.'
+      teacher_disassociated:
+        subject: 'Code.org notification: %{teacher_name} is no longer associated as
+          your teacher.'
   reports:
     error:
       access_denied: You don't have access to this person's stats
@@ -206,11 +213,11 @@
             used by teachers in U.S. public schools.
   crud:
     new_model: New %{model}
-    show: Show
-    edit: Edit
+    show: காண்பி
+    edit: திருத்து
     edit_model: Edit %{model}
-    update: Update
-    destroy: Destroy
+    update: புதுப்பிக்கவும்
+    destroy: அழிக்கவும்
     back: Back
     confirm: Are you sure?
     created: '%{model} was successfully created.'
@@ -222,13 +229,13 @@
       finished_hoc: I've finished my Hour of Code
       sign_in_to_save: Sign in to save progress
     user:
-      classroom: My students
-      label: Hi %{username}
+      classroom: எனது மாணவர்கள்
+      label: வணக்கம் %{username}
       stats: My progress
-      settings: My account
-      prizes: Prizes
-      logout: Sign out
-      signin: Sign in
+      settings: எனது கணக்கு
+      prizes: பரிசுகள்
+      logout: வெளியேறு
+      signin: உள்நுழை
       signup: Sign up
     popup:
       progress: Your progress
@@ -245,12 +252,17 @@
       one: Your teacher is %{name}
       other: 'Your teachers:'
     remove: (remove teacher)
+    confirm:
+      remove: Are you sure you want to remove this teacher?
     tools: Teacher Tools
     students:
-      manage: Manage students
-      add: Add students
+      manage: மாணவர்களை நிர்வகிக்கவும்
+      add: மாணவர்களை சேர்
     rollup: Progress Dashboard
     activity: Recent class activity
+    user_not_found: The teacher or student could not be found
+    student_teacher_disassociated: '%{teacher_name} has been removed as a teacher
+      for %{student_name}'
   user:
     email_confirm_needed: 'Email address has not been confirmed:'
     email_resend_confirm: Resend confirmation instructions
@@ -258,24 +270,24 @@
     current_password_hint: (we need your current password to confirm your changes)
     cancel:
       title: Cancel my account
-      hint: Unhappy?
+      hint: அதிருப்தியா?
       button: Cancel my account
   user_level:
-    completed: Completed
-    tried: Tried
+    completed: நிறைவடைந்தது
+    tried: முயற்சிக்கப்பட்டது
   user_stats:
-    recent_activity: Recent activity
-    show_more: Show more
+    recent_activity: சமீப செயற்பாடு
+    show_more: மேலும் காண்பி
   home:
     signin_message: Or if you're already registered, %{link}
-    student_reg_link: Student
-    teacher_reg_link: Teacher
+    student_reg_link: மாணவர்
+    teacher_reg_link: ஆசிரியர்
     teacher_dashboard: See progress dashboard
     teacher_student_count_one: You have %{count} student.
     teacher_student_count: You have %{count} students.
     teacher_averages: On average your students have earned %{trophy_average} out of
       %{trophy_max} "Concept Mastery" trophies.
-    classroom: Your classroom
+    classroom: உங்கள் வகுப்பறை
     student_progress: Your learning progress
     student_stats: You've earned %{trophy_count} out of %{trophy_max} "Concept Mastery"
       trophies.

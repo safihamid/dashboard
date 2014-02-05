@@ -30,6 +30,9 @@
         Edit Code:
           desc: Kód szerkesztése
           MazeEC: 1. szakasz
+        2014 Levels:
+          desc: 2014 Puzzles (beta)
+          MazeEC: Stage 1
     game:
       name:
         Unplug1: Bevezetés a számítógép tudományába
@@ -53,6 +56,7 @@
         Artist5: A művész 5
         Unplug11: Összefoglaló
         MazeEC: A labirintus
+        Bounce: Bounce
     trophy:
       name:
         Bronze: Bronz
@@ -319,6 +323,16 @@
           TNT-be!
         maze_3_4: Ahh! Írj nekem egy programot amivel megkerülhetem a TNT-t és eljuthatok
           a malachoz.
+        bounce_1: Attach a block to the "when left arrow" block, then run and move
+          the paddle with the left arrow key to the finish target.
+        bounce_2: Attach a block to the "when right arrow" and "when left arrow" blocks,
+          then run and move the paddle with the both arrow key to both finish targets.
+        bounce_3: TBD
+        bounce_4: TBD
+        bounce_5: Attach a blocks to the "when right arrow", "when left arrow", "when
+          ball hits wall", and "when ball hits paddle" blocks.
+        bounce_6: Try again with more balls.
+        bounce_7: Now it is getting crazy!
       levelIncompleteError:
         maze_2_8: 'Hogy ezt megoldhasd, találd meg az ismétlődő mintát. Használj egy
           "ismételd amíg" blokkot, benne ezzel a 3 blokkal: előrelépni, előrelépni,

@@ -30,6 +30,9 @@
         Edit Code:
           desc: Code Bewerken
           MazeEC: Niveau 1
+        2014 Levels:
+          desc: 2014 Puzzles (beta)
+          MazeEC: Stage 1
     game:
       name:
         Unplug1: Introductie in de Informatica
@@ -53,6 +56,7 @@
         Artist5: De Artiest 5
         Unplug11: Einde
         MazeEC: Het Doolhof
+        Bounce: Bounce
     trophy:
       name:
         Bronze: Brons
@@ -325,6 +329,16 @@
           aan loop!
         maze_3_4: Argh! Schrijf een programma dat me om de dynamiet heen krijgt en
           naar het biggetje.
+        bounce_1: Attach a block to the "when left arrow" block, then run and move
+          the paddle with the left arrow key to the finish target.
+        bounce_2: Attach a block to the "when right arrow" and "when left arrow" blocks,
+          then run and move the paddle with the both arrow key to both finish targets.
+        bounce_3: TBD
+        bounce_4: TBD
+        bounce_5: Attach a blocks to the "when right arrow", "when left arrow", "when
+          ball hits wall", and "when ball hits paddle" blocks.
+        bounce_6: Try again with more balls.
+        bounce_7: Now it is getting crazy!
       levelIncompleteError:
         maze_2_8: 'Om dit op te lossen, moet je het patroon vinden dat herhaalt. Gebruik
           een "herhaal" blok met deze 3 blokken erin: beweeg, beweeg, draai rechts.'

@@ -18,6 +18,9 @@
       label: 'Lisää opettaja käyttäen pääsykoodia tai sähköpostiosoitetta:'
       placeholder: Koodi (ABCDEF) tai sähköpostiosoite (ope@koulu.fi)
     submit: Lisää opettaja
+  add_hint_form:
+    placeholder: Syötä vihjeesi tähän
+    submit: Lisää vihje
   appname: Code.org
   stage: Taso
   puzzle: Pulma
@@ -133,6 +136,8 @@
       student_disassociated:
         subject: 'Code.org ilmoitus: oppilasta %{student_name} ei ole enää yhdistetty
           sinuun.'
+      teacher_disassociated:
+        subject: 'Code.org ilmoitus: %{teacher_name} ei ole enää liitetty opettajaksesi.'
   reports:
     error:
       access_denied: Sinulla ei ole oikeutta katsella tämän henkilön tietoja
@@ -141,7 +146,7 @@
     provider: 'Tarjoaja:'
     code: 'Koodi:'
     redeem_header: 'To redeem:'
-    donorschoose_how_to: How to use your code
+    donorschoose_how_to: Kuinka käytät koodia
     success: Palkinnon lunastaminen onnistui, katso koodi alta.
     error: Palkinnon lunastaminen epäonnistui, yritä uudelleen.
     error_us_only: Palkintotarjous on voimassa vain USA:ssa.
@@ -149,7 +154,8 @@
     error_already_redeemed: Palkintosi on jo lunastettu.
     no_prizes_available: Pahoittelemme, mutta tällä hetkellä ei ole palkintoja saatavilla.
     teacher_info_required: 'Koulun nimi ja osoite palkintoja varten (vain USA:ssa): '
-    teacher_email_required: 'Teacher prizes require a confirmed email address:'
+    teacher_email_required: 'Opettajapalkintoja varten (voimassa vain USA:ssa) tarvitaan
+      vahvistettu sähköpostiosoite:'
     confirm:
       title: Vahvista
       'no': Ei
@@ -240,18 +246,23 @@
       prizes_link: lisätietoja
   teacher:
     title:
-      one: Opettajasi on %{name}
+      one: 'Opettajasi:'
       other: 'Opettajasi:'
     remove: (poista opettaja)
+    confirm:
+      remove: Oletko varma, että haluat poistaa tämän opettajan?
     tools: Opettajan työkalut
     students:
       manage: Hallinnoi oppilaita
       add: Lisää opiskelijoita
     rollup: Edistymistaulu
     activity: Luokan tapahtumat
+    user_not_found: Opettajaa tai oppilasta ei löytynyt
+    student_teacher_disassociated: Opettaja %{teacher_name} on poistettu oppilaalta
+      %{student_name}
   user:
-    email_confirm_needed: 'Email address has not been confirmed:'
-    email_resend_confirm: Resend confirmation instructions
+    email_confirm_needed: 'Sähköpostiosoitetta ei ole vahvistettu:'
+    email_resend_confirm: Lähetä vahvistusohjeet uudestaan
     new_password_hint: (jätä tyhjäksi jos et halua vaihtaa)
     current_password_hint: (anna nykyinen salasanasi, jotta voimme vahvistaa muutokset)
     cancel:

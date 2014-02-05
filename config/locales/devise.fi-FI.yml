@@ -1,7 +1,7 @@
 "fi":
   devise:
     confirmations:
-      confirmed: Tilisi on nyt luotu ja olet kirjautunut sisään.
+      confirmed: Sähköpostiosoitettasi ei voitu vahvistaa.
       send_instructions: Saat kohta sähköpostiviestin, jossa on ohjeet tilisi vahvistamiseksi.
       send_paranoid_instructions: Jos sähköpostiosoitteesi löytyy tietokannastamme,
         saat kohta sähköpostiviestin, jossa on ohjeet tilisi vahvistamiseksi.
@@ -17,9 +17,9 @@
       unconfirmed: Sinun tulee vahvistaa tilisi, ennen kuin voit jatkaa.
     mailer:
       confirmation_instructions:
-        subject: Vahvistusohjeet
+        subject: Code.org vahvistusohjeet
       reset_password_instructions:
-        subject: Salasanan palautusohjeet
+        subject: Code.org salasanan palautusohjeet
       unlock_instructions:
         subject: Avausohjeet
     omniauth_callbacks:

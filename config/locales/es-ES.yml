@@ -18,6 +18,9 @@
       label: 'Agregar a un maestro mediante código o dirección de correo electrónico:'
       placeholder: Código (ABCDEF) o correo electrónico (maestro@escuela.edu)
     submit: Añadir maestro
+  add_hint_form:
+    placeholder: Por favor introduce aquí tu pista
+    submit: Agregar pista
   appname: Code.org
   stage: Etapa
   puzzle: Puzzle
@@ -66,8 +69,8 @@
       a maestros de escuelas públicas de Estados Unidos que llevan al menos 15 estudiantes
       a través de este curso. <a href="http://code.org/educate/20hr"> consulte la
       guía de educador para obtener más información.</a> '
-    teacher_prize_limits: '(Limit: $1,000 per teacher. <a target="_blank" href="http://help.donorschoose.org/app/answers/detail/a_id/454/kw/code.org">See
-      FAQ for more limits</a>)'
+    teacher_prize_limits: '(Límite: $1,000 por profesor. <a target="_blank" href="http://help.donorschoose.org/app/answers/detail/a_id/454/kw/code.org">Mira
+      FAQ para más límites</a>)'
     teacher_pitch: Enseña la Introducción K-8 a la informática en tu aula
     teacher_title: Profesor Regístrate
     student_pitch: 'Más allá de 1 hora: prueba nuestra Introducción a la informática
@@ -132,8 +135,11 @@
       invite_student:
         subject: Únete a una clase con %{teacher_name} en Code.org!
       student_disassociated:
-        subject: 'Code.org notification: %{student_name} is no longer associated as
-          your student.'
+        subject: 'Notificación Code.org: %{student_name} ya no está asociado como
+          tu estudiante.'
+      teacher_disassociated:
+        subject: 'Notificación de Code.org: %{teacher_name} ya no está asociado como
+          tu profesor.'
   reports:
     error:
       access_denied: No tienes acceso a las estadísticas de esta persona
@@ -142,7 +148,7 @@
     provider: 'Proveedor:'
     code: 'Código:'
     redeem_header: 'Para canjear:'
-    donorschoose_how_to: How to use your code
+    donorschoose_how_to: Cómo utilizar tu código
     success: Su premio fue exitosamente compensado, vea el código más abajo.
     error: El premio no puede ser canjeado, inténtelo nuevamente.
     error_us_only: La oferta del premio es válida únicamente para los usuarios de
@@ -150,8 +156,10 @@
     error_not_earned: Aún no has ganado este premio.
     error_already_redeemed: Tu premio ya ha sido canjeado.
     no_prizes_available: Lo sentimos, pero actualmente no tenemos premios disponibles.
-    teacher_info_required: 'Teacher prizes require school name and address information:'
-    teacher_email_required: 'Teacher prizes require a confirmed email address:'
+    teacher_info_required: 'Los premios para el profesor requieren el nombre de la
+      escuela y su dirección:'
+    teacher_email_required: 'Los premios para el profesor requieren una dirección
+      de correo confirmada:'
     confirm:
       title: Confirme por favor
       'no': false
@@ -252,18 +260,23 @@
       prizes_link: más información
   teacher:
     title:
-      one: Tu maestro/a es %{name}
+      one: 'Tu profesor:'
       other: 'Tus maestros:'
-    remove: (remove teacher)
+    remove: (eliminar profesor)
+    confirm:
+      remove: ¿Estás seguro que quieres eliminar este profesor?
     tools: Herramientas del maestro/a
     students:
       manage: Administrar los alumnos
       add: Añadir alumnos/as
     rollup: Panel de progreso
     activity: Actividad reciente de la clase
+    user_not_found: El profesor o el estudiante no se encontró
+    student_teacher_disassociated: '%{teacher_name} ha sido eliminado como profesor
+      de %{student_name}'
   user:
-    email_confirm_needed: 'Email address has not been confirmed:'
-    email_resend_confirm: Resend confirmation instructions
+    email_confirm_needed: 'La dirección de correo electrónico no ha sido confirmada:'
+    email_resend_confirm: Reenviar las instrucciones de confirmación
     new_password_hint: (déjalo en blanco si no quieres cambiarlo)
     current_password_hint: (necesitamos tu contraseña actual para confirmar los cambios)
     cancel:

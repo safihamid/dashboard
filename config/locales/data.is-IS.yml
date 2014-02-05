@@ -30,6 +30,9 @@
         Edit Code:
           desc: Breyta kóða
           MazeEC: Áfangi 1
+        2014 Levels:
+          desc: 2014 Puzzles (beta)
+          MazeEC: Stage 1
     game:
       name:
         Unplug1: Kynning á tölvunarfræði
@@ -53,6 +56,7 @@
         Artist5: Listamaðurinn 5
         Unplug11: Samantekt
         MazeEC: Völundarhúsið
+        Bounce: Bounce
     trophy:
       name:
         Bronze: Brons
@@ -312,6 +316,16 @@
           sprengiefnið!
         maze_3_4: Arrg! Skrifaðu forrit fyrir mig sem kemur mér í kringum TNT sprengiefnið
           og til svínsins.
+        bounce_1: Attach a block to the "when left arrow" block, then run and move
+          the paddle with the left arrow key to the finish target.
+        bounce_2: Attach a block to the "when right arrow" and "when left arrow" blocks,
+          then run and move the paddle with the both arrow key to both finish targets.
+        bounce_3: TBD
+        bounce_4: TBD
+        bounce_5: Attach a blocks to the "when right arrow", "when left arrow", "when
+          ball hits wall", and "when ball hits paddle" blocks.
+        bounce_6: Try again with more balls.
+        bounce_7: Now it is getting crazy!
       levelIncompleteError:
         maze_2_8: 'Til að leysa þarf að nota endurtekið hreyfingamynstur. Notaðu "endurtaka"
           kubb sem inniheldur þessa þrjá: færa, færa, snúa til hægri.'
