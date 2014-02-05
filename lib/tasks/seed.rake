@@ -261,4 +261,6 @@ namespace :seed do
   end
 
   task all: [:videos, :concepts, :games, :callouts, :scripts, :trophies, :prize_providers]
+
+  task infrequent: [:ideal_solutions, :frequent_level_sources]
 end
