@@ -42,7 +42,11 @@ module LevelsHelper
   # query params. Don't cache bust during dev, so breakpoints work.
   # See where ::CACHE_BUST is initialized for more details.
   def blockly_cache_bust
-    ::CACHE_BUST
+    if ::CACHE_BUST.blank?
+      false
+    else
+      ::CACHE_BUST
+    end
   end
 
 
