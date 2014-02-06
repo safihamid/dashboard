@@ -1,7 +1,8 @@
 class LevelsController < ApplicationController
   before_filter :authenticate_user!
-  check_authorization
-  load_and_authorize_resource
+  skip_before_filter :verify_authenticity_token, :only => [:builder, :create_custom]
+  check_authorization :except => [:builder, :create_custom]
+  load_and_authorize_resource :except => [:builder, :create_custom]
 
   before_action :set_level, only: [:show, :edit, :update, :destroy]
 
@@ -73,7 +74,25 @@ class LevelsController < ApplicationController
     @level = Level.find_by_level_num('builder')
     @game = @level.game
     @full_width = true
+    @callback = "/create_custom"
+    render :show
   end
+
+  def create_custom
+    game = Game.find_by_name("Custom")
+    @level = Level.new(:game => game, :name => "builder", :solution => params[:program])
+
+    respond_to do |format|
+      if @level.save
+        format.html { redirect_to [@level.game, @level], notice: I18n.t('crud.created', model: Level.model_name.human) }
+        format.json { render action: 'show', status: :created, location: @level }
+      else
+        format.html { render action: 'new' }
+        format.json { render json: @level.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.
