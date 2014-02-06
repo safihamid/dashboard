@@ -36,7 +36,9 @@ Dashboard::Application.routes.draw do
   post '/locale', to: 'home#set_locale', as: 'locale'
 
   resources :games do
-    resources :levels
+    resources :levels do
+      get 'builder', to: 'levels#builder'
+    end
   end
 
   resources :scripts, only: [], path: '/s/' do

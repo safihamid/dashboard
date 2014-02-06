@@ -69,6 +69,12 @@ class LevelsController < ApplicationController
     end
   end
 
+  def builder
+    @level = Level.find_by_level_num('builder')
+    @game = @level.game
+    @full_width = true
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_level
