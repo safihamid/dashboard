@@ -11,7 +11,7 @@ class LevelSourceHintsController < ApplicationController
     raise "unauthorized" if !current_user.admin?
 
     @level_source_id = params[:level_source_id]
-    @hints = LevelSourceHint.where( "level_source_id = ?", @level_source_id).sort_by { |hint| -hint.times_proposed}
+    @hints = LevelSourceHint.where(level_source_id: @level_source_id).sort_by { |hint| -hint.times_proposed}
     common(@level_source_id)
   end
 
