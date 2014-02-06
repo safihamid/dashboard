@@ -6,7 +6,7 @@
   - script = Script.twenty_hour_script
   - script_levels = script.script_levels
 
-  %div{style:"display:inline-block;width:315px;position:relative;overflow:hidden;float:left;"}
+  %div{style:"display:inline-block;position:relative;overflow:hidden;float:left;"}
     %h4 #{t('nav.popup.puzzle_map')}
 
     - script_levels.group_by{ |sl| sl.level.game }.each_pair do |game, sl_group|
@@ -16,8 +16,6 @@
           %div=title
           - sl_group.each do |sl|
             - link = add_pop_hint_per_level_path(sl.level_id, 0)
-            - passed = false
             %a{ href: link, class: "level_link"}#{sl.game_chapter}
-
-      .stage_separator
+          .stage_separator
 

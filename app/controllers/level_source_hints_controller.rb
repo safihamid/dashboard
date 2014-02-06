@@ -18,6 +18,7 @@ class LevelSourceHintsController < ApplicationController
     unsuccessful_level_sources = FrequentUnsuccessfulLevelSource.where(active: true).order('num_of_attempts desc')
     if (params[:idx].to_i >= 0 && unsuccessful_level_sources.length > params[:idx].to_i)
       level_source_id = unsuccessful_level_sources.at(params[:idx].to_i).level_source_id
+      @num_of_attempts = unsuccessful_level_sources.at(params[:idx].to_i).num_of_attempts
       common(level_source_id)
       @prev_path = add_pop_hint_path(params[:idx].to_i - 1)
       @next_path = add_pop_hint_path(params[:idx].to_i + 1)
@@ -33,9 +34,11 @@ class LevelSourceHintsController < ApplicationController
     unsuccessful_level_sources = FrequentUnsuccessfulLevelSource.where(active: true, level_id: params[:level_id].to_i).order('num_of_attempts desc')
     if (params[:idx].to_i >= 0 && unsuccessful_level_sources.length > params[:idx].to_i)
       level_source_id = unsuccessful_level_sources.at(params[:idx].to_i).level_source_id
+      @num_of_attempts = unsuccessful_level_sources.at(params[:idx].to_i).num_of_attempts
       common(level_source_id)
       @prev_path = add_pop_hint_per_level_path(params[:level_id].to_i, params[:idx].to_i - 1)
       @next_path = add_pop_hint_per_level_path(params[:level_id].to_i, params[:idx].to_i + 1)
+      render 'add_pop_hint'
     elsif (params[:idx].to_i < 0)
       redirect_to  frequent_unsuccessful_level_sources_path, notice: 'You have reached the first error program of this level.'
     else
