@@ -6,8 +6,8 @@
       = text_area_tag :hint_content, nil, class: 'input-xxlarge', placeholder: t('add_hint_form.placeholder'), :required => true, :rows => 4, :maxlength => 250
       %br
       %span#content_length_message 250 characters left.
-      = hidden_field_tag :level_source_id, params[:level_source_id]
-      = hidden_field_tag :redirect, @next_path
+      = hidden_field_tag :level_source_id, @level_source_id
+      = hidden_field_tag :redirect, @current_path
     .actions
       = f.submit t('add_hint_form.submit')
   %table{:width => "30%"}
