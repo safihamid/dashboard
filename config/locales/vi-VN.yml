@@ -18,6 +18,9 @@
       label: 'Nhập mã giáo viên hoặc địa chỉ email:'
       placeholder: Mã (ABCDEF) hoặc email (teacher@school.edu)
     submit: Thêm giáo viên
+  add_hint_form:
+    placeholder: Please enter your hint here
+    submit: Add hint
   appname: Code.org
   stage: Màn
   puzzle: Câu đố
@@ -128,6 +131,9 @@
       student_disassociated:
         subject: 'Code.org notification: %{student_name} is no longer associated as
           your student.'
+      teacher_disassociated:
+        subject: 'Code.org notification: %{teacher_name} is no longer associated as
+          your teacher.'
   reports:
     error:
       access_denied: Bạn không có quyền truy cập vào tình trạng pháp nhân của người
@@ -243,12 +249,17 @@
       one: Giáo viên của bạn là %{name}
       other: 'Giáo viên của bạn:'
     remove: (remove teacher)
+    confirm:
+      remove: Are you sure you want to remove this teacher?
     tools: Công cụ dành cho giáo viên
     students:
       manage: Quản lý học sinh
       add: Thêm học sinh
     rollup: Bảng tiến trình
     activity: Hoạt động gần đây của lớp
+    user_not_found: The teacher or student could not be found
+    student_teacher_disassociated: '%{teacher_name} has been removed as a teacher
+      for %{student_name}'
   user:
     email_confirm_needed: 'Email address has not been confirmed:'
     email_resend_confirm: Resend confirmation instructions

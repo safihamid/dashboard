@@ -2,22 +2,25 @@
   activerecord:
     attributes:
       user:
-        name: Name
-        email: Email
-        username: Username
-        password: Password
-        password_confirmation: Password confirmation
-        current_password: Current password
-        locale: Language
-        gender: Gender
-        edit_header: Edit Account Details
-  hello: Hello world
-  welcome_back: Welcome back, %{name}
+        name: Nomo
+        email: Retpoŝto
+        username: Uzantnomo
+        password: Pasvorto
+        password_confirmation: Konfirmo de pasvorto
+        current_password: Nuna pasvorto
+        locale: Lingvo
+        gender: Sekso
+        edit_header: Redakti detalojn de konto
+  hello: Saluton mondo
+  welcome_back: Bonvenon reen, %{name}
   add_teacher_form:
     code_or_email:
-      label: 'Add a teacher by code or email address:'
-      placeholder: Code (ABCDEF) or email (teacher@school.edu)
-    submit: Add teacher
+      label: 'Aldoni instruiston per kodo aŭ retadreso:'
+      placeholder: Kodo (ABCDEF) aŭ retadreso (instruisto@lernejo.edu)
+    submit: Aldonu instruiston
+  add_hint_form:
+    placeholder: Please enter your hint here
+    submit: Add hint
   appname: Code.org
   stage: Stage
   puzzle: Puzzle
@@ -131,6 +134,9 @@
       student_disassociated:
         subject: 'Code.org notification: %{student_name} is no longer associated as
           your student.'
+      teacher_disassociated:
+        subject: 'Code.org notification: %{teacher_name} is no longer associated as
+          your teacher.'
   reports:
     error:
       access_denied: You don't have access to this person's stats
@@ -245,12 +251,17 @@
       one: Your teacher is %{name}
       other: 'Your teachers:'
     remove: (remove teacher)
+    confirm:
+      remove: Are you sure you want to remove this teacher?
     tools: Teacher Tools
     students:
       manage: Manage students
       add: Add students
     rollup: Progress Dashboard
     activity: Recent class activity
+    user_not_found: The teacher or student could not be found
+    student_teacher_disassociated: '%{teacher_name} has been removed as a teacher
+      for %{student_name}'
   user:
     email_confirm_needed: 'Email address has not been confirmed:'
     email_resend_confirm: Resend confirmation instructions

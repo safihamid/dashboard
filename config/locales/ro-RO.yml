@@ -18,6 +18,9 @@
       label: 'Adaugă un profesor prin cod sau adresă de email:'
       placeholder: Cod (ABCDEF) sau e-mail (profesor@școală.edu)
     submit: Adaugă profesor
+  add_hint_form:
+    placeholder: Please enter your hint here
+    submit: Add hint
   appname: Code.org
   stage: Etapă
   puzzle: Puzzle
@@ -132,6 +135,9 @@
       student_disassociated:
         subject: 'Code.org notification: %{student_name} is no longer associated as
           your student.'
+      teacher_disassociated:
+        subject: 'Code.org notification: %{teacher_name} is no longer associated as
+          your teacher.'
   reports:
     error:
       access_denied: Nu ai acces la statisticile de progress ale acestei persoane
@@ -254,12 +260,17 @@
       one: Profesorul tău este %{name}
       other: 'Profesorii tăi:'
     remove: (remove teacher)
+    confirm:
+      remove: Are you sure you want to remove this teacher?
     tools: Instrumente pentru profesor
     students:
       manage: Gestionează elevi
       add: Adaugă elevi
     rollup: Grilă de progress
     activity: Activitatea recentă a clasei
+    user_not_found: The teacher or student could not be found
+    student_teacher_disassociated: '%{teacher_name} has been removed as a teacher
+      for %{student_name}'
   user:
     email_confirm_needed: 'Email address has not been confirmed:'
     email_resend_confirm: Resend confirmation instructions

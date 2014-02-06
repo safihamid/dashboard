@@ -18,6 +18,9 @@
       label: 'Lägga till en lärare med kod eller e-postadress:'
       placeholder: Kod (ABCDEF) eller e-post (lärare@skola.se)
     submit: Lägg till lärare
+  add_hint_form:
+    placeholder: Please enter your hint here
+    submit: Add hint
   appname: Code.org
   stage: nivå
   puzzle: Pussel
@@ -136,6 +139,9 @@
       student_disassociated:
         subject: 'Code.org notification: %{student_name} is no longer associated as
           your student.'
+      teacher_disassociated:
+        subject: 'Code.org notification: %{teacher_name} is no longer associated as
+          your teacher.'
   reports:
     error:
       access_denied: Du har inte tillgång till denna personens uppgifter
@@ -246,12 +252,17 @@
       one: Din lärare är %{name}
       other: 'Dina lärare:'
     remove: (remove teacher)
+    confirm:
+      remove: Are you sure you want to remove this teacher?
     tools: Lärar-verktyg
     students:
       manage: Hantera elever
       add: Lägg till elever
     rollup: Framstegsmeny
     activity: Senaste klasshändelserna
+    user_not_found: The teacher or student could not be found
+    student_teacher_disassociated: '%{teacher_name} has been removed as a teacher
+      for %{student_name}'
   user:
     email_confirm_needed: 'Email address has not been confirmed:'
     email_resend_confirm: Resend confirmation instructions

@@ -18,6 +18,9 @@
       label: 'Aggiungi un insegnante attraverso un codice o un indirizzo email:'
       placeholder: Codice (ABCDEF) o e-mail (insegnante@school.edu)
     submit: Aggiungi insegnante
+  add_hint_form:
+    placeholder: Inserisci qui il tuo suggerimento
+    submit: Aggiungi un suggerimento
   appname: Code.org
   stage: Fase
   puzzle: Puzzle
@@ -56,17 +59,18 @@
       progressi.
     prizes_header: I primi studenti che completano il corso vincono premi! (Solo per
       gli studenti degli Stati Uniti)
-    prizes_message: U.S. students who earn all %{num_trophies} concept trophies can
-      select a variety of prizes including free Dropbox space, Skype credits, and
-      downloadable games from Electronic Arts.
+    prizes_message: Gli studenti degli Stati Uniti che guadagnano tutti i %{num_trophies}
+      trofei concetto possono selezionare una varietà di premi tra cui spazio gratuito
+      su Dropbox, crediti Skype e giochi scaricabili da Electronic Arts.
     teacher_educator_guide: Vedere la guida educatore
     teacher_prize_header: Vincere $1.000 in <a target="_blank" href="http://DonorsChoose.org">DonorsChoose.org</a>premi
-    teacher_prize_message: 'In partnership with <a target="_blank" href="http://DonorsChoose.org">DonorsChoose.org</a>,
-      Code.org will offer up to $1,000 in classroom funding to U.S. public school
-      teachers who lead at least 15 students through this course. <a href="http://code.org/educate/20hr">See
-      educator guide for more info.</a> '
-    teacher_prize_limits: '(Limit: $1,000 per teacher. <a target="_blank" href="http://help.donorschoose.org/app/answers/detail/a_id/454/kw/code.org">See
-      FAQ for more limits</a>)'
+    teacher_prize_message: 'In collaborazione con <a target="_blank" href="http://DonorsChoose.org">
+      DonorsChoose.org</a>, Code.org offrirà fino a $1.000 in finanziamenti per le
+      classi  degli insegnanti della scuola pubblica degli Stati Uniti che porteranno
+      almeno 15 studenti a seguire il corso. <a href="http://code.org/educate/20hr">
+      Per ulteriori informazioni, controlla la guida per insegnanti.</a> '
+    teacher_prize_limits: '(Limite: 1.000 $ ad insegnante. <a target="_blank" href="http://help.donorschoose.org/app/answers/detail/a_id/454/kw/code.org">
+      Vedere le FAQ per ulteriori limitazioni</a>)'
     teacher_pitch: Insegnare l'Intro di K-8 all'informatica nella tua classe
     teacher_title: Iscrizione Insegnante
     student_pitch: 'Oltre 1 ora: provare il nostro K-8 introduzione all''informatica'
@@ -121,13 +125,16 @@
       username_in_use: '%{username} è già stato preso, per favore scegliere un''altro'
       no_teacher: Non è stato trovato nessuno con %{teacher_email_or_code}. Per favore
         chiedigli di registrarsi qui e poi prova ad aggiungerli nuovamente
-      blank_code: Please enter a code or your teacher's email address
+      blank_code: Inserisci un codice o l'indirizzo e-mail del tuo insegnante
     mail:
       invite_student:
         subject: Unisciti ad una classe con %{teacher_name} su Code.org!
       student_disassociated:
-        subject: 'Code.org notification: %{student_name} is no longer associated as
-          your student.'
+        subject: 'Notifica da Code.org: %{student_name} non è più associato come vostro
+          allievo.'
+      teacher_disassociated:
+        subject: 'Notifica da Code.org: %{teacher_name} non è più associato come vostro
+          insegnante.'
   reports:
     error:
       access_denied: Non hai accesso alle statistiche di questa persona
@@ -136,29 +143,31 @@
     provider: 'Fornitore:'
     code: 'Codice:'
     redeem_header: 'Per redimere:'
-    donorschoose_how_to: How to use your code
+    donorschoose_how_to: Come utilizzare il tuo codice
     success: Il premio è stato succesfully redento, vedere il codice riportato di
       seguito.
     error: Il premio non poteva essere redento, riprovare.
     error_us_only: L'offerta del premio vale solo per gli utenti degli Stati Uniti.
-    error_not_earned: You have not yet earned this prize.
-    error_already_redeemed: Your prize has already been redeemed.
-    no_prizes_available: We're sorry, but we currently have no prizes available.
-    teacher_info_required: 'Teacher prizes require school name and address information:'
-    teacher_email_required: 'Teacher prizes require a confirmed email address:'
+    error_not_earned: Non hai ancora ottenuto questo premio.
+    error_already_redeemed: Il premio è già stato riscattato.
+    no_prizes_available: Siamo spiacenti, ma attualmente non abbiamo premi disponibili.
+    teacher_info_required: 'I premi insegnante richiedono nome ed indirizzo della
+      scuola:'
+    teacher_email_required: 'I premi insegnante richiedono un indirizzo email confermato:'
     confirm:
       title: Si prega di confermare
       'no': false
       'yes': Sì
       msg: Sei sicuro di voler reclamare il premio %{prize_name}?
       msg_student: 'Nota: Puoi solo scegliere un tipo di premio.'
-      msg_publicschool: Please confirm that you are a U.S. public school teacher.
+      msg_publicschool: Si prega di confermare di essere un insegnante della scuola
+        pubblica degli Stati Uniti.
       msg_visit_website: Visita il sito
     providers:
       apple_itunes: $10 Carta Regalo iTunes
       donors_choose: Credito DonorsChoose.org $750
       donors_choose_bonus: Credito DonorsChoose.org $250
-      dropbox: 10GB of Dropbox Space
+      dropbox: 10GB di spazio su Dropbox
       valve: Portal 2 (scarica gioco PC o Mac)
       ea_bejeweled: Bejeweled 3 (scarica gioco PC)
       ea_fifa: FIFA Soccer 13 (scarica gioco PC)
@@ -171,10 +180,11 @@
       earned: Hai guadagnato un premio! (Solo per gli studenti degli Stati Uniti)
       not_earned_title: Terminare il tutorial, e guadagna premi (solo per gli studenti
         degli Stati Uniti)
-      not_earned: 'Learn all the computer science concepts, collect all %{num_trophies}
-        trophies, and earn real-world prizes. You can choose between 10GB of free
-        Dropbox space, $10 in Skype credits, and free game downloads. NOTE: offer
-        only valid to U.S. students, and only as long as supplies last.'
+      not_earned: 'Impara tutti i concetti dell''informatica, raccogli tutti i %{num_trophies}
+        trofei e guadagna premi reali. È possibile scegliere tra una carta regalo
+        iTunes da $10, 10GB di spazio di archiviazione gratuito su Dropbox, 10 dollari
+        in crediti Skype, e giochi gratuiti da scaricare. Nota: offerta valida solo
+        per gli studenti degli Stati Uniti e solo fino ad esaurimento scorte.'
       teacher:
         earned: 10 o più studenti hanno ottenuto tutti i %{num_trophies} trofei. Hai
           vinto un premio per l'insegnante! (Solo per gli insegnanti degli Stati Uniti)
@@ -197,9 +207,9 @@
           not_earned_title: You can still earn an additional $250 in <a target="_blank"
             href="http://DonorsChoose.org">DonorsChoose.org</a> credits (U.S. teachers
             only)
-          earned: 7 o più studenti che hanno raccolto tutti i %{num_trophies} trofei
-            sono ragazze. Hai vinto un premio bonus! (Solo per gli insegnanti degli
-            Stati Uniti)
+          earned: 7 o più degli studenti che hanno raccolto tutti i %{num_trophies}
+            trofei sono ragazze. Hai vinto un premio bonus! (Solo per gli insegnanti
+            degli Stati Uniti)
           not_earned: Se almeno 7 dei tuoi studenti che guadagnano tutti i %{num_trophies}
             trofei sono ragazze, la tua ricompensa è un ulteriore $250 in crediti
             <a target="_blank" href="http://DonorsChoose.org">DonorsChoose.org</a>.
@@ -217,8 +227,8 @@
     confirm: Sei sicuro?
     created: '%{model} è stato creato correttamente.'
     updated: '%{model} è stato aggiornato correttamente.'
-    destroyed: '%{model} was successfully deleted.'
-    access_denied: You do not have access to this %{model}.
+    destroyed: '%{model}, è stato eliminato con successo.'
+    access_denied: Non hai accesso a questo %{model}.
   nav:
     header:
       finished_hoc: Ho finito la mia ora di programmazione
@@ -244,18 +254,23 @@
       prizes_link: più informazioni
   teacher:
     title:
-      one: Il tuo insegnante è %{name}
+      one: 'Il tuo insegnante:'
       other: 'I tuoi insegnanti:'
-    remove: (remove teacher)
+    remove: (rimuovi insegnante)
+    confirm:
+      remove: Sei sicuro di che voler rimuovere questo insegnante?
     tools: Strumenti dell'insegnante
     students:
       manage: Gestione studenti
       add: Aggiungi studenti
     rollup: Dashboard di avanzamento
     activity: Attività recenti della classe
+    user_not_found: L'insegnante o lo studente non è stato trovato
+    student_teacher_disassociated: '%{teacher_name} è stato rimosso come insegnante
+      per %{student_name}'
   user:
-    email_confirm_needed: 'Email address has not been confirmed:'
-    email_resend_confirm: Resend confirmation instructions
+    email_confirm_needed: 'L''indirizzo email non è stato confermato:'
+    email_resend_confirm: Reinvia le istruzioni di conferma
     new_password_hint: (lascia vuoto se non vuoi cambiarlo)
     current_password_hint: (inserisci la tua password corrente per confermare i cambiamenti)
     cancel:
@@ -282,10 +297,10 @@
     student_stats: Hai guadagnato %{trophy_count} trofei su %{trophy_max} in "Padronanza
       del concetto".
     student_left_off: 'Dove avevi interrotto:'
-    student_finished_prize: You've completed all tutorials, claim your %{prize_link}
-      and pick another class %{online_link} or at a %{local_school_link}
-    student_finished: You've completed all tutorials, pick another class %{online_link}
-      or at a %{local_school_link}
+    student_finished_prize: Hai completato tutti i tutorial, rivendica il tuo %{prize_link}
+      e scegli un'altra classe %{online_link} o una %{local_school_link}
+    student_finished: Hai completato tutti i tutorial, scegli un'altra classe %{online_link}
+      o una %{local_school_link}
     local_school: scuola locale
     online: in linea
     see_details: Vedi dettagli
@@ -316,8 +331,8 @@
   reference_area:
     title: Hai bisogno di aiuto?
     subtitle: Guarda questi video e suggerimenti
-    teacher: See the solution
-    auth_error: You are not authorized to see the solution.
+    teacher: Vedi la soluzione
+    auth_error: Non sei autorizzato a vedere la soluzione.
   video:
     tab: Video.
     notes: Nessun video? Mostra le note.
@@ -331,4 +346,4 @@
   next_stage: Finito! Continuare alla fase successiva
   download_pdf: Apri Piano di lezione
   share_code:
-    title: Click 'Run program' to see my program in action
+    title: Fai click su 'Esegui programma' per vedere il tuo programma in azione

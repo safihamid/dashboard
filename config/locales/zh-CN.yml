@@ -18,6 +18,9 @@
       label: 通过代码或电子邮件地址来添加一位老师：
       placeholder: 代码 (ABCDEF) 或电子邮件 (teacher@school.edu)
     submit: 添加老师
+  add_hint_form:
+    placeholder: Please enter your hint here
+    submit: Add hint
   appname: Code.org
   stage: 阶段
   puzzle: 谜题
@@ -120,6 +123,9 @@
       student_disassociated:
         subject: 'Code.org notification: %{student_name} is no longer associated as
           your student.'
+      teacher_disassociated:
+        subject: 'Code.org notification: %{teacher_name} is no longer associated as
+          your teacher.'
   reports:
     error:
       access_denied: 您没有权限访问此人的信息。
@@ -223,12 +229,17 @@
       one: 你的老师是 %{name}
       other: 你的老师：
     remove: (remove teacher)
+    confirm:
+      remove: Are you sure you want to remove this teacher?
     tools: 教师工具
     students:
       manage: 管理学生
       add: 添加学生
     rollup: 进度板
     activity: 最近的课程活动
+    user_not_found: The teacher or student could not be found
+    student_teacher_disassociated: '%{teacher_name} has been removed as a teacher
+      for %{student_name}'
   user:
     email_confirm_needed: 'Email address has not been confirmed:'
     email_resend_confirm: Resend confirmation instructions

@@ -18,6 +18,9 @@
       label: 'Dodaj nauczyciela używając kodu lub adresu e-mail:'
       placeholder: Kod (ABCDEF) lub e-mail (teacher@school.edu)
     submit: Dodaj nauczyciela
+  add_hint_form:
+    placeholder: Wprowadź tutaj swoją wskazówkę
+    submit: Dodaj wskazówkę
   appname: Code.org
   stage: Etap
   puzzle: Łamigłówka
@@ -134,6 +137,8 @@
       student_disassociated:
         subject: 'Code.org powiadomienie: %{student_name} nie jest już powiązany z
           Tobą jako Twój student.'
+      teacher_disassociated:
+        subject: 'Powiadomienie Code.org: %{teacher_name} nie jest już Twoim nauczycielem.'
   reports:
     error:
       access_denied: Nie masz dostępu do statystyk tej osoby
@@ -142,7 +147,7 @@
     provider: 'Dostawca:'
     code: 'Kod:'
     redeem_header: 'Do pobrania:'
-    donorschoose_how_to: How to use your code
+    donorschoose_how_to: Jak wykorzystać Twój kod
     success: Twoja nagroda została z powodzeniem odebrana, zobacz poniższy kod.
     error: Twoja nagroda nie może być odebrana, spróbuj ponownie.
     error_us_only: Oferta nagrody dotyczy tylko użytkowników w USA.
@@ -150,7 +155,8 @@
     error_already_redeemed: Twoja nagroda została już przyznana.
     no_prizes_available: Przykro nam, ale obecnie nie mamy żadnej nagrody do zaoferowania.
     teacher_info_required: 'Nagrody dla nauczyciela wymagają nazwy i adresu szkoły:'
-    teacher_email_required: 'Teacher prizes require a confirmed email address:'
+    teacher_email_required: 'Nagrody dla nauczycieli wymagają podania potwierdzonego
+      adres e-mail:'
     confirm:
       title: Prosimy o potwierdzenie
       'no': Nie
@@ -251,18 +257,23 @@
       prizes_link: więcej informacji
   teacher:
     title:
-      one: Twój nauczyciel to %{name}
+      one: 'Twój nauczyciel:'
       other: 'Twoi nauczyciele:'
     remove: (usuń nauczyciela)
+    confirm:
+      remove: Czy na pewno chcesz usunąć tego nauczyciela?
     tools: Narzędzia Nauczyciela
     students:
       manage: Zarządzaj uczniami
       add: Dodaj uczniów
     rollup: Tablica Postępów
     activity: Ostatnia aktywność klasy
+    user_not_found: Nie można odnaleźć nauczyciela lub ucznia
+    student_teacher_disassociated: '%{teacher_name} został usunięty jako nauczyciel
+      %{student_name}'
   user:
-    email_confirm_needed: 'Email address has not been confirmed:'
-    email_resend_confirm: Resend confirmation instructions
+    email_confirm_needed: 'Adres e-mail nie został potwierdzony:'
+    email_resend_confirm: Wyślij ponownie instrukcje potwierdzenia
     new_password_hint: (zostaw puste, jeśli nie chcesz tego zmienić)
     current_password_hint: (potrzebujemy Twojego aktualnego hasła, aby potwierdzić
       Twoje zmiany)

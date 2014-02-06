@@ -39,11 +39,11 @@ module LevelsHelper
 
   # XXX Since Blockly doesn't play nice with the asset pipeline, a query param
   # must be specified to bust the CDN cache. CloudFront is enabled to forward
-  # query params. Always cache bust during development.
+  # query params. Don't cache bust during dev, so breakpoints work.
   # See where ::CACHE_BUST is initialized for more details.
   def blockly_cache_bust
     if ::CACHE_BUST.blank?
-      Time.now.to_i.to_s
+      false
     else
       ::CACHE_BUST
     end

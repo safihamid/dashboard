@@ -3,7 +3,7 @@
     script:
       name:
         20-hour:
-          desc: K-8 Intro to Computer Science Course
+          desc: K-8 интро на курс по компютърни науки
           Unplug1: Етап 1
           Maze: Етап 2
           Unplug2: Етап 3
@@ -30,6 +30,9 @@
         Edit Code:
           desc: Редактиране на кода
           MazeEC: Етап 1
+        2014 Levels:
+          desc: 2014 Puzzles (beta)
+          MazeEC: Stage 1
     game:
       name:
         Unplug1: Въведение в компютърните науки
@@ -53,6 +56,7 @@
         Artist5: Художника 5
         Unplug11: Заключение
         MazeEC: Лабиринт
+        Bounce: Bounce
     trophy:
       name:
         Bronze: Бронз
@@ -61,81 +65,85 @@
     concept:
       description:
         sequence: Последователност
-        if: If block
-        if_else: If-else block
+        if: блок ако
+        if_else: Блок ако-друго
         loop_times: Repeat times block
         loop_until: Repeat until block
         loop_while: While block
         loop_for: Counter block
-        function: Functions
-        parameters: Functions with parameters
+        function: Функции
+        parameters: Функции с параметри
     level:
       instructions:
-        maze_2_2: 'Can you help me to catch the naughty pig? Stack a couple of "move
-          forward" blocks together and press "Run Program" to help me get there. '
-        maze_2_1: This pig is ruffling my feathers. Help me to find him!
-        maze_2_2_5: Trace the path and lead me to the silly pig. Avoid TNT or the
-          feathers will fly!
-        maze_2_3: Guide me to the green evilness! (Watch out for TNT)
-        maze_2_4: Keep calm and help me to find the bad pig. Otherwise I might get
-          angry!
-        maze_2_5: There's a way I can get to the silly pig using only 2 blocks. Can
-          you figure it out?
-        maze_2_6: Try to get me to the green intruder using only three blocks.
-        maze_2_7: Help me banish this bad piggy using the fewest number of blocks.
-          Try using more than one "repeat times" block.
-        maze_2_8: 'To solve this one, try a "repeat" block with these 3 blocks inside
-          it: move, move, turn.'
-        maze_2_9: Ok, try the new "repeat until" block - it will repeat until I reach
-          the annoying pig.
-        maze_2_10: Ok, one last time for practice - can you solve this one using only
-          4 blocks?
-        maze_2_11: Dear person.  Me zombie. Me hungry. Must... get... to sunflower...
-          Can you get me there with only 5 blocks?
-        maze_2_12: Ok, this is similar, but slightly different. Can you do it in only
-          5 blocks?
-        maze_2_13: 'Use the new "if" block to let me decide when to turn. Hint: you
-          only need one more block, but learn how we set it up so you can do it on
-          your own next time.'
-        maze_2_14: Ok, this is just like the last puzzle, but you need to remember
-          how you used the "if" block and the "repeat" block together.
-        maze_2_15: Me want sunflower! Use an "if" block to get me there with the fewest
-          number of blocks.
-        maze_2_16: Ok, let's do that again for practice - this isn't very different,
-          but watch out for the chompers!
-        maze_2_17: The "If-else" blocks checks a condition, and then does one thing
-          OR another. To get me to the sunflower try to use this new block.
-        maze_2_18: One more practice of the "if-else" block, can you get it right
-          on your first try?
-        maze_2_19: Can you add just 3 blocks to help me solve a more complex maze?
-          If you do it right, I can walk any curvy path no matter the length.
-        turtle_1_1: Hi, I'm an artist. You can write code to make me draw almost anything.
-          Use a few blocks to make me draw over the gray lines in the picture.
-        turtle_1_2: 'Now, draw a square. NOTE: use your favorite color by picking
-          it in the new "set color" block.'
-        turtle_1_3: Make a square using only 3 blocks.
-        turtle_1_4: 'Draw a triangle whose sides are all in different colors, using
-          the "random color" option that picks a different color each time. Hint:
-          you''ll have to figure out how far to turn by clicking on the number in
-          the turn block.'
-        turtle_1_5: Now, for practice, draw a triangle and then a square to draw an
-          envelope.
-        turtle_1_6: 'Can you figure out how draw this triangle and square? Hint: Do
-          the triangle first, then figure out how much to turn before drawing the
-          square.'
-        turtle_1_7: Ok, let's make it a bit harder - see if you can draw these green
-          glasses. The squares are 100 pixels on each side, and they're 50 pixels
-          apart. Don't forget to draw in green!
-        turtle_1_8: Ok, try to figure out what happens if you run this code (or press
-          "Run" to try it). Then, repeat it enough times to complete the drawing.
-          The colors will be different every time.
-        turtle_1_9: Can you figure out what number to replace the question marks with
-          to draw a circle?
-        turtle_1_10: 'You made it! Now, draw anything you want. Some fun ideas: a
-          stick figure, snowflake, or spiral. Also try the new "set width" block.
-          Have fun!'
-        turtle_4_1: 'Can you draw a triangle (with edges of 100 pixels) with only
-          3 blocks? Hint: use a "repeat" block.'
+        maze_2_2: 'Може ли да ми помогнете да хвана това лошо прасе? Прикрепете няколко
+          "движи се напред" блока заедно и натиснете "Изпълни програмата" за да ми
+          помогнете да стигна до там. '
+        maze_2_1: Това прасе ми лази по нервите. Помогни ми да го намеря!
+        maze_2_2_5: Проследи пътя и ме заведи до това глупаво прасе. Избягвай динамита
+          или ще хвърчи перушина!
+        maze_2_3: Заведи ме до зелената лошотия! (Внимавай за динамит)
+        maze_2_4: Запази спокойствие и ми помогни да намеря лошото прасе. В противен
+          случай може да се ядосам!
+        maze_2_5: Има начин да стигна до това глупаво прасе с помощта само на 2 блока.
+          Можеш ли да го измислиш?
+        maze_2_6: Опитай да ме заведеш до зеления нарушител като използваш само три
+          блока.
+        maze_2_7: Помогни ми да прогоня това лошо прасе като използваш възможно най-малък
+          брой блокове. Опитай да използваш повече от един "повтори" блок.
+        maze_2_8: 'За да разгадаеш този пъзел, опитай блока "повтори" с тези 3 блока
+          в него: движение, движение, завъртане.'
+        maze_2_9: Добре, опитай новия "повтаряй до" блок - той ще се повтаря докато
+          аз стигна до досадното прасе.
+        maze_2_10: Добре, последен път за упражнение - можеш ли да разгадаеш този
+          пъзел като използваш само 4 блока?
+        maze_2_11: Скъпи човек. Аз зомби. Аз гладен. Трябва... добере... до слънчоглед...
+          Можеш ли да ме заведеш до там само с 5 блока?
+        maze_2_12: Добре, това е подобно, но малко по-различно. Можеш ли да го направиш
+          само с 5 блока?
+        maze_2_13: 'Използвай новия "Ако" блок за да ми помогнеш да реша кога да се
+          обърна. Съвет: трябва ти само още един блок, но научи как го поставяме за
+          да можеш да го направиш сам следващия път.'
+        maze_2_14: Добре, това е като последния пъзел, но ще трябва да запомниш как
+          използва "Ако" блока и "повтори" блока заедно.
+        maze_2_15: Аз иска слънчоглед! Използвай "Ако" блока, за да ме заведеш до
+          там с възможно най-малък брой блокове.
+        maze_2_16: Добре, нека го направим отново за упражнение - това не е много
+          по-различно, но внимавай за дъвкачите!
+        maze_2_17: '"Ако-иначе" блока проверява условие, и прави едно нещо или друго.
+          Опитай да ме заведеш до слънчогледа като използваш този нов блок.'
+        maze_2_18: Още едно упражнение на блока "Ако-иначе", можеш ли да успееш от
+          първия път?
+        maze_2_19: Можеш ли да добавиш само 3 блока за да ми помогнеш да разреша по-сложен
+          лабиринт? Ако го направиш правилно, ще мога да ходя по всяка крива линия
+          независимо от дължината и.
+        turtle_1_1: Здравей, аз съм художник. Можеш да напишеш код, чрез който да
+          ме накараш да нарисувам почти всичко. Използвай няколко блока, за да ме
+          накараш да рисувам върху сивата линия в картинката.
+        turtle_1_2: 'Сега, начертай квадрат. ЗАБЕЛЕЖКА: използвай любимия си цвят
+          като го избереш във новия "задай цвят" блок.'
+        turtle_1_3: Направи квадрат като използваш само 3 блока.
+        turtle_1_4: 'Начертай триъгълник, чиито страни са във различни цветове, с
+          помощта на опцията "случаен цвят", която избира различен цвят всеки път.
+          Съвет: ще трябва да решиш колко да се завъртиш като цъкнеш с мишката върху
+          числото в "завърти" блока.'
+        turtle_1_5: Сега, за упражнение, начертай триъгълник после квадрат за да начертаеш
+          плик.
+        turtle_1_6: 'Можеш ли да разбереш как да нарисуваш този триъгълник и квадрат?
+          Съвет: Направи първо триъгълника, после реши колко да завъртиш преди да
+          нарисуваш квадрата.'
+        turtle_1_7: Добре, нека го направим малко по-трудно - виж дали ще можеш да
+          начертаеш тези зелени очила. Всяка страна на квадратите е 100 пиксела, и
+          са на 50 пиксела разстояние един от друг. Не забравяй да чертаеш в зелено!
+        turtle_1_8: Добре, опитай да разбереш какво става ако изпълниш този код (или
+          натисни "Изпълни" за да  опиташ). После го повтаряй достатъчно пъти, за
+          да завършиш чертежа. Цветовете ще са различни всеки път.
+        turtle_1_9: Можеш ли да отгатнеш, с какво число да заместиш въпросителните
+          знаци, за да начертаеш кръг?
+        turtle_1_10: 'Ти успя! сега, начертай каквото пожелаеш. Няколко забавни идеи:
+          фигура от черти, снежинка или спирала. Също така опитай новия "задай ширина"
+          блок. Забавлявай се!'
+        turtle_4_1: 'Можеш ли да начертаеш триъгълник (с краища от 100 пиксела) като
+          използваш само 3 блока? Съвет: използвай блок "повтори".'
         turtle_4_2: 'Try adding one block to complete this puzzle. Hint: we''ve provided
           blocks to draw 2 identical triangles, you need to put a "turn" in between,
           and decide out how far to turn.'
@@ -310,6 +318,16 @@
           of TNT!
         maze_3_4: Argh! Write me a program that gets me around the TNT and to the
           pig.
+        bounce_1: Attach a block to the "when left arrow" block, then run and move
+          the paddle with the left arrow key to the finish target.
+        bounce_2: Attach a block to the "when right arrow" and "when left arrow" blocks,
+          then run and move the paddle with the both arrow key to both finish targets.
+        bounce_3: TBD
+        bounce_4: TBD
+        bounce_5: Attach a blocks to the "when right arrow", "when left arrow", "when
+          ball hits wall", and "when ball hits paddle" blocks.
+        bounce_6: Try again with more balls.
+        bounce_7: Now it is getting crazy!
       levelIncompleteError:
         maze_2_8: 'To solve this, find the pattern that repeats. Use a "repeat" block
           with these 3 blocks inside it: move, move, turn right.'

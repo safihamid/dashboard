@@ -1,7 +1,7 @@
 "id":
   devise:
     confirmations:
-      confirmed: Akun anda telah berhasil dikonfirmasi. Anda sekarang telah masuk.
+      confirmed: Alamat email Anda telah berhasil dikonfirmasi.
       send_instructions: Anda akan menerima sebuah email dalam beberpa menit dengan
         instruksi cara konfirmasi akun anda.
       send_paranoid_instructions: JIka alamat email anda ada didalam database kami,
@@ -19,9 +19,9 @@
       unconfirmed: Anda harus mengkonfirmasi akun Anda sebelum melanjutkan.
     mailer:
       confirmation_instructions:
-        subject: Instruksi konfirmasi
+        subject: Petunjuk konfirmasi Code.org
       reset_password_instructions:
-        subject: Instruksi atur ulang password
+        subject: Instruksi atur ulang sandi Code.org
       unlock_instructions:
         subject: Membuka instruksi
     omniauth_callbacks:

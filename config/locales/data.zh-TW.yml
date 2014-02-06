@@ -30,6 +30,9 @@
         Edit Code:
           desc: 編輯程式碼
           MazeEC: 階段 1
+        2014 Levels:
+          desc: 2014 Puzzles (beta)
+          MazeEC: Stage 1
     game:
       name:
         Unplug1: 電腦科學導論
@@ -53,6 +56,7 @@
         Artist5: 藝術家 5 號
         Unplug11: 總結
         MazeEC: 迷宮
+        Bounce: Bounce
     trophy:
       name:
         Bronze: 銅牌
@@ -178,6 +182,16 @@
         maze_3_2: 給我寫一個程式，所以我可以用它抓到那頭豬。
         maze_3_3: 我應該如何抓到那頭豬？確保我不會碰到那 TNT 的盒子！
         maze_3_4: 阿！給我一個程式讓我可以繞過那些TNT炸藥，然後抓到那隻豬。
+        bounce_1: Attach a block to the "when left arrow" block, then run and move
+          the paddle with the left arrow key to the finish target.
+        bounce_2: Attach a block to the "when right arrow" and "when left arrow" blocks,
+          then run and move the paddle with the both arrow key to both finish targets.
+        bounce_3: TBD
+        bounce_4: TBD
+        bounce_5: Attach a blocks to the "when right arrow", "when left arrow", "when
+          ball hits wall", and "when ball hits paddle" blocks.
+        bounce_6: Try again with more balls.
+        bounce_7: Now it is getting crazy!
       levelIncompleteError:
         maze_2_8: '要解決這個關卡，請找出重覆的片斷。使用"重覆"程式積木將: 前進，前進，右轉 這三個程式積木包在其中。'
       other1StarError:

@@ -18,6 +18,9 @@
       label: 'Afegeix un mestre per codi o per correu electrònic:'
       placeholder: Codi (ABCDEF) o correu electrònic (teacher@school.edu)
     submit: Afegeix un professor
+  add_hint_form:
+    placeholder: Please enter your hint here
+    submit: Add hint
   appname: Code.org
   stage: Etapa
   puzzle: Puzzle
@@ -132,6 +135,9 @@
       student_disassociated:
         subject: 'Code.org notification: %{student_name} is no longer associated as
           your student.'
+      teacher_disassociated:
+        subject: 'Code.org notification: %{teacher_name} is no longer associated as
+          your teacher.'
   reports:
     error:
       access_denied: No pots accedir a les estadístiques d'aquesta persona
@@ -247,12 +253,17 @@
       one: El teu mestre és %{name}
       other: 'Els teus mestres:'
     remove: (remove teacher)
+    confirm:
+      remove: Are you sure you want to remove this teacher?
     tools: Eines del mestre
     students:
       manage: Gestiona els estudiants
       add: Afegeix estudiants
     rollup: Quadre de progrés
     activity: Activitat recent de la classe
+    user_not_found: The teacher or student could not be found
+    student_teacher_disassociated: '%{teacher_name} has been removed as a teacher
+      for %{student_name}'
   user:
     email_confirm_needed: 'Email address has not been confirmed:'
     email_resend_confirm: Resend confirmation instructions

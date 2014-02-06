@@ -3,7 +3,7 @@ require 'bundler/capistrano'
 set :application, "dashboard"
 set :user, "ubuntu"
 set :use_sudo, false
-set :stages, ["staging", "production", "private", "new_production"]
+set :stages, ["staging", "production", "private"]
 #set :default_stage, "staging"
 
 set :scm, "git"
@@ -32,6 +32,7 @@ namespace :deploy do
 
     run "mkdir -p #{release_path}/public/blockly"
     top.upload(File.expand_path("#{blockly}/dist/blockly-mooc.tgz"), tar_ball)
+    top.upload(File.expand_path("#{blockly}/.cache_bust"), "#{release_path}/.cache_bust")
     run "chmod +x #{tar_ball}"
     run "tar -xvf #{tar_ball} && mv /home/#{user}/package/* #{release_path}/public/blockly/"
     run "rm #{release_path}/public/blockly/blockly-mooc.tgz"

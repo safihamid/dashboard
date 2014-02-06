@@ -30,6 +30,9 @@
         Edit Code:
           desc: עריכת קוד
           MazeEC: שלב 1
+        2014 Levels:
+          desc: 2014 Puzzles (beta)
+          MazeEC: Stage 1
     game:
       name:
         Unplug1: מבוא למדעי המחשב
@@ -53,6 +56,7 @@
         Artist5: האומן 5
         Unplug11: סיום
         MazeEC: המבוך
+        Bounce: Bounce
     trophy:
       name:
         Bronze: ארד
@@ -141,9 +145,8 @@
           אמור להיות? (רמז: אחרי 360 מעלות של סיבוב  הציור יהפוך לעיגול שלם)'
         turtle_4_6: על ידי שימוש ב-3 בלוקים, האם אתה יכול לצייר ריבוע עם קצוות של
           20 פיקסלים?
-        turtle_4_7: 'Here''s the code for drawing the square from last puzzle. Can
-          you repeat it to draw 10 adjacent squares like a ladder? Hint: you only
-          need 2 more blocks.'
+        turtle_4_7: 'הנה הקוד עבור ציור הריבוע מהפאזל האחרון. האם תוכל לחזור עליו
+          ולצייר 10 משבצות סמוכות כמו סולם? רמז: אתה צריך רק עוד שני בלוקים .'
         turtle_4_8: Here's the solution to the previous puzzle. Can you add just 2
           more blocks to complete the drawing?
         turtle_4_9: Here's the solution to the previous puzzle. How many degrees should
@@ -295,6 +298,16 @@
           of TNT!
         maze_3_4: Argh! Write me a program that gets me around the TNT and to the
           pig.
+        bounce_1: Attach a block to the "when left arrow" block, then run and move
+          the paddle with the left arrow key to the finish target.
+        bounce_2: Attach a block to the "when right arrow" and "when left arrow" blocks,
+          then run and move the paddle with the both arrow key to both finish targets.
+        bounce_3: TBD
+        bounce_4: TBD
+        bounce_5: Attach a blocks to the "when right arrow", "when left arrow", "when
+          ball hits wall", and "when ball hits paddle" blocks.
+        bounce_6: Try again with more balls.
+        bounce_7: Now it is getting crazy!
       levelIncompleteError:
         maze_2_8: 'To solve this, find the pattern that repeats. Use a "repeat" block
           with these 3 blocks inside it: move, move, turn right.'

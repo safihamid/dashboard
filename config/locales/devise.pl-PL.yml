@@ -1,7 +1,7 @@
 "pl":
   devise:
     confirmations:
-      confirmed: Twoje konto zostało pomyślnie potwierdzone. Jesteś teraz zarejestrowany(-a).
+      confirmed: Twój adres e-mail został pomyślnie potwierdzony.
       send_instructions: Otrzymasz e-maila z instrukcjami jak potwierdzić konto w
         ciągu najbliższych kilku minut.
       send_paranoid_instructions: Jeśli Twój adres e-mail istnieje w naszej bazie
@@ -19,9 +19,9 @@
       unconfirmed: Musisz potwierdzić swoje konto przed kontynuowaniem.
     mailer:
       confirmation_instructions:
-        subject: Instrukcja potwierdzenia
+        subject: instrukcje potwierdzenia Code.org
       reset_password_instructions:
-        subject: Instrukcja resetowania hasła
+        subject: instrukcje resetowania hasła Code.or
       unlock_instructions:
         subject: Instrukcja odblokowania
     omniauth_callbacks:

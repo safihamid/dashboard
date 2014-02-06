@@ -30,6 +30,9 @@
         Edit Code:
           desc: Koda düzəliş et
           MazeEC: Mərhələ 1
+        2014 Levels:
+          desc: 2014 Puzzles (beta)
+          MazeEC: Stage 1
     game:
       name:
         Unplug1: İnformatikaya giriş
@@ -53,6 +56,7 @@
         Artist5: Rəssam 5
         Unplug11: Yekun
         MazeEC: Labirint
+        Bounce: Bounce
     trophy:
       name:
         Bronze: Bürünc
@@ -335,6 +339,16 @@
           üstünə çıxmayım!
         maze_3_4: Ax! Mənim üçün elə proqram yazın ki, məni partladıcı TNT qutusundan
           yan keçirərək donuza çatdırsın.
+        bounce_1: Attach a block to the "when left arrow" block, then run and move
+          the paddle with the left arrow key to the finish target.
+        bounce_2: Attach a block to the "when right arrow" and "when left arrow" blocks,
+          then run and move the paddle with the both arrow key to both finish targets.
+        bounce_3: TBD
+        bounce_4: TBD
+        bounce_5: Attach a blocks to the "when right arrow", "when left arrow", "when
+          ball hits wall", and "when ball hits paddle" blocks.
+        bounce_6: Try again with more balls.
+        bounce_7: Now it is getting crazy!
       levelIncompleteError:
         maze_2_8: 'Bu məsələni həll etmək üçün təkrar olunan hissəni tapın. İçərisində
           növbəti 3 blok olan "təkrar et" blokundan istifadə edin: get, get, sağa

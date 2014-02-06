@@ -18,6 +18,9 @@
       label: 'Ajoutez un professeur par code ou adresse email :'
       placeholder: Code (ABCDEF) ou email (professeur@école.edu)
     submit: Ajouter un professeur
+  add_hint_form:
+    placeholder: Entrer votre indice ici
+    submit: Ajouter indice
   appname: Code.org
   stage: Etape
   puzzle: Puzzle
@@ -134,6 +137,8 @@
         subject: Rejoins une classe avec %{teacher_name} à Code.org !
       student_disassociated:
         subject: 'Code.org notification: %{student_name} n''est plus associé à vous.'
+      teacher_disassociated:
+        subject: 'Note de Code.org: %{teacher_name} n''est plus ton professeur.'
   reports:
     error:
       access_denied: Vous n'avez pas accès aux stats de cette personne
@@ -142,7 +147,7 @@
     provider: 'Fournisseur :'
     code: 'Code :'
     redeem_header: 'To redeem:'
-    donorschoose_how_to: How to use your code
+    donorschoose_how_to: Comment utiliser votre code
     success: Your prize was succesfully redeemed, see code below.
     error: Your prize could not be redeemed, please try again.
     error_us_only: Les prix ne sont disponibles que pour les utilisateurs américains.
@@ -152,7 +157,8 @@
       prix disponibles.
     teacher_info_required: 'Fournir le nom et l''adresse de l''école pour recevoir
       les prix pour enseignants:'
-    teacher_email_required: 'Teacher prizes require a confirmed email address:'
+    teacher_email_required: 'Il faut confirmer une adresse e-mail pour obtenir un
+      des prix d''enseignant:'
     confirm:
       title: Please Confirm
       'no': Non
@@ -251,18 +257,23 @@
       prizes_link: plus d'informations
   teacher:
     title:
-      one: Votre professeur est %{name}
+      one: 'Ton professeur:'
       other: 'Vos professeurs:'
     remove: (enlever le professeur)
+    confirm:
+      remove: Êtes-vous sûr de vouloir supprimer ce professeur?
     tools: Outils du professeur
     students:
       manage: Gérer les élèves
       add: Ajouter des élèves
     rollup: Tableau de bord de progression
     activity: Activité récente de la classe
+    user_not_found: Le professeur ou l'étudiant est introuvable
+    student_teacher_disassociated: '%{teacher_name} a été supprimé en tant que professeur
+      de %{student_name}'
   user:
-    email_confirm_needed: 'Email address has not been confirmed:'
-    email_resend_confirm: Resend confirmation instructions
+    email_confirm_needed: 'L''adresse de courriel n''a pas été confirmée:'
+    email_resend_confirm: Envoyer à nouveau les instructions de confirmation
     new_password_hint: (laissez vide si vous ne voulez pas changer)
     current_password_hint: (nous avons besoin de votre mot de passe actuel pour confirmer
       vos modifications)

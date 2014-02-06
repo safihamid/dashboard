@@ -30,6 +30,9 @@
         Edit Code:
           desc: 코드 수정
           MazeEC: 1 단계
+        2014 Levels:
+          desc: 2014 Puzzles (beta)
+          MazeEC: Stage 1
     game:
       name:
         Unplug1: 컴퓨터과학(정보과학) 소개
@@ -53,6 +56,7 @@
         Artist5: 예술가 퍼즐 5
         Unplug11: 마무리
         MazeEC: 미로 퍼즐
+        Bounce: Bounce
     trophy:
       name:
         Bronze: 동
@@ -226,6 +230,16 @@
         maze_3_2: 초록 돼지를 잡을 수 있도록, 프로그램을 만들어줘.
         maze_3_3: 어떻게 해야 초록 돼지를 잡을 수 있지? TNT 폭탄이 있는 곳으로는 갈 수 없어!
         maze_3_4: 아~~~! TNT 폭탄을 피해서 초록 돼지를 잡을 수 있게 해 줘.
+        bounce_1: Attach a block to the "when left arrow" block, then run and move
+          the paddle with the left arrow key to the finish target.
+        bounce_2: Attach a block to the "when right arrow" and "when left arrow" blocks,
+          then run and move the paddle with the both arrow key to both finish targets.
+        bounce_3: TBD
+        bounce_4: TBD
+        bounce_5: Attach a blocks to the "when right arrow", "when left arrow", "when
+          ball hits wall", and "when ball hits paddle" blocks.
+        bounce_6: Try again with more balls.
+        bounce_7: Now it is getting crazy!
       levelIncompleteError:
         maze_2_8: '이 퍼즐을 해결하기 위해서는 반복되는 패턴을 찾아내야 합니다. "반복" 블럭 안에 3 개의 블럭을 넣어보세요 :
           앞으로 이동, 앞으로 이동, 오른쪽으로 돌기.'

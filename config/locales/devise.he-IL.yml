@@ -1,7 +1,7 @@
 "he":
   devise:
     confirmations:
-      confirmed: חשבונך אושר בהצלחה. אתה כעת מחובר.
+      confirmed: כתובת הדוא"ל שלך אושרה בהצלחה.
       send_instructions: תקבל הודעת דוא״ל עם הוראות כיצד לאמת את החשבון שלך תוך מספר
         דקות.
       send_paranoid_instructions: אם כתובת הדוא״ל שלך קיימת במאגר שלנו, תקבל תוך מספר
@@ -18,9 +18,9 @@
       unconfirmed: אתה צריך לאשר את החשבון שלך לפני שתמשיך.
     mailer:
       confirmation_instructions:
-        subject: הוראות אישור
+        subject: Code.org הוראות אישרור
       reset_password_instructions:
-        subject: הוראות לאיפוס סיסמה
+        subject: Code.org הוראות איפוס סיסמה
       unlock_instructions:
         subject: הוראות לפתיחת נעילה
     omniauth_callbacks:

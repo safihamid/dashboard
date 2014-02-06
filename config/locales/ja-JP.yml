@@ -18,6 +18,9 @@
       label: コード，メールアドレスで教師を追加
       placeholder: コード (ABCDEF) かメール (teacher@school.edu)
     submit: 先生を追加
+  add_hint_form:
+    placeholder: ここにあなたのヒントを入力してください。
+    submit: ヒントを追加します。
   appname: Code.org
   stage: ステージ
   puzzle: パズル
@@ -58,8 +61,8 @@
       rewards
     teacher_prize_message: <a target="_blank" href="http://DonorsChoose.org">DonorsChoose.org</a>とパートナーを組んで,Code.orgでは
       $1,000を上限とするクラスで使う資金を、このコースの間に少なくとも15人の学生を導いた米国の公立学校の教師へ提供します。 <a href="http://code.org/educate/20hr">詳細は教育者ガイドを参考にしてください。</a> 
-    teacher_prize_limits: '(Limit: $1,000 per teacher. <a target="_blank" href="http://help.donorschoose.org/app/answers/detail/a_id/454/kw/code.org">See
-      FAQ for more limits</a>)'
+    teacher_prize_limits: '(制限: 教師 1 人あたり $1,000。<a target="_blank"href="http://help.donorschoose.org/app/answers/detail/a_id/454/kw/code.org">
+      多くの制限を参照してくださいよくあるご質問</a>）'
     teacher_pitch: あなたの教室でK 8(幼稚園から８学年生）にコンピューター科学の紹介を教える。
     teacher_title: 教師入会
     student_pitch: '1 時間を超えて: 私たちのK 8 入門コンピューターサイエンスを試してみてください'
@@ -120,8 +123,9 @@
       invite_student:
         subject: '%{teacher_name} のクラスを Code.org で参加 ！%{teacher_name}'
       student_disassociated:
-        subject: 'Code.org notification: %{student_name} is no longer associated as
-          your student.'
+        subject: 'Code.org の通知: % {student_name} は、もはやあなたの学生として関連付けられていません。'
+      teacher_disassociated:
+        subject: 'Code.org の通知: % {teacher_name} は、もはやあなたの先生として関連付けられていません。'
   reports:
     error:
       access_denied: この人の統計情報へのアクセス権を持っていません。
@@ -130,15 +134,15 @@
     provider: 'プロバイダー:'
     code: 'コード:'
     redeem_header: 'To redeem:'
-    donorschoose_how_to: How to use your code
+    donorschoose_how_to: あなたのコードを使用する方法
     success: あなたの賞金は獲得できました。下のコードを参照してください。
     error: あなたの賞金は償還できませんでした、もう一度やり直してください。
     error_us_only: 賞金提供をされるのは米国内のユーザーのみに限られています。
     error_not_earned: あなたはまだこの賞を獲得していません。
     error_already_redeemed: あなたの賞金は既に換金されています。
     no_prizes_available: 申し訳ありませんが、ただ今賞品がありません。
-    teacher_info_required: 'Teacher prizes require school name and address information:'
-    teacher_email_required: 'Teacher prizes require a confirmed email address:'
+    teacher_info_required: 先生の賞品は学校の名前と住所の情報が必要です。
+    teacher_email_required: 先生の賞品には、確認済みのメール アドレスが必要です
     confirm:
       title: 確認してください
       'no': いいえ
@@ -224,18 +228,22 @@
       prizes_link: 詳細情報
   teacher:
     title:
-      one: あなたの先生は%{name}です
+      one: あなたの先生：
       other: 'あなたの先生:'
-    remove: (remove teacher)
+    remove: （先生を削除します)
+    confirm:
+      remove: この教師を削除してもよろしいですか。
     tools: 教師のツール
     students:
       manage: 学生の管理。
       add: 生徒を追加する
     rollup: プログレスダッシュ ボード
     activity: 最近のクラスの活動
+    user_not_found: 教師、又は、生徒は見つかりませんでした
+    student_teacher_disassociated: '% {teacher_name} が % {student_name} の教師として削除されています。'
   user:
-    email_confirm_needed: 'Email address has not been confirmed:'
-    email_resend_confirm: Resend confirmation instructions
+    email_confirm_needed: 電子メール アドレスが確認されていません。
+    email_resend_confirm: 確認手順の再送信
     new_password_hint: （変更したくない場合は空白のままにしてください）
     current_password_hint: (変更を確認するためにあなたの現在のパスワードが必要です)
     cancel:

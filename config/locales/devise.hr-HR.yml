@@ -1,32 +1,31 @@
 "hr":
   devise:
     confirmations:
-      confirmed: Your account was successfully confirmed. You are now signed in.
-      send_instructions: You will receive an email with instructions about how to
-        confirm your account in a few minutes.
-      send_paranoid_instructions: If your email address exists in our database, you
-        will receive an email with instructions about how to confirm your account
-        in a few minutes.
+      confirmed: Tvoja e-mail adresa je potvrđena.
+      send_instructions: Za par minuta ćeš primiti e-mail s uputama kako da potvrdiš
+        svoj korisnički račun.
+      send_paranoid_instructions: Ako tvoja e-mail adresa postoji u našoj bazi, za
+        par minuta ćeš primiti e-mail s uputama kako da potvrdiš svoj korisnički račun.
     failure:
-      already_authenticated: You are already signed in.
-      inactive: Your account was not activated yet.
-      invalid: Invalid email or password.
-      invalid_token: Invalid authentication token.
-      locked: Your account is locked.
-      not_found_in_database: Invalid email or password.
-      timeout: Your session expired, please sign in again to continue.
-      unauthenticated: You need to sign in or sign up before continuing.
-      unconfirmed: You have to confirm your account before continuing.
+      already_authenticated: Već si prijavljen.
+      inactive: Tvoj korisnički račun još nije aktiviran.
+      invalid: Neispavan e-mail ili lozinka.
+      invalid_token: Neispravan token.
+      locked: Tvoj korisnički račun je zaključan.
+      not_found_in_database: Neispavan e-mail ili lozinka.
+      timeout: Vrijeme prijave je isteklo. Za nastavak je potrebno da se ponovno prijaviš.
+      unauthenticated: Za nastavak je potrebno da se registriraš ili prijaviš.
+      unconfirmed: Za nastavak je potrebno da potvrdiš svoj korisnički račun.
     mailer:
       confirmation_instructions:
-        subject: Confirmation instructions
+        subject: Code.org upute za potvrđivanje
       reset_password_instructions:
-        subject: Reset password instructions
+        subject: Code.org upute za ponovno postavljanje lozinke
       unlock_instructions:
-        subject: Unlock Instructions
+        subject: Upute za otključavanje
     omniauth_callbacks:
-      failure: Could not authenticate you from %{kind} because "%{reason}".
-      success: Successfully authenticated from %{kind} account.
+      failure: Ne možemo te raspoznati od %{kind} zbog "%{reason}".
+      success: Uspješno raspoznato od %{kind} korisničkog računa.
     passwords:
       no_token: You can't access this page without coming from a password reset email.
         If you do come from a password reset email, please make sure you used the

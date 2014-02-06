@@ -34,6 +34,9 @@
         Edit Code:
           desc: コードの編集
           MazeEC: ステージ1
+        2014 Levels:
+          desc: 2014 Puzzles (beta)
+          MazeEC: Stage 1
     game:
       name:
         Unplug1: コンピューター・サイエンス入門
@@ -57,6 +60,7 @@
         Artist5: アーティスト 5
         Unplug11: ラップアップ
         MazeEC: 迷路
+        Bounce: Bounce
     trophy:
       name:
         Bronze: 銅
@@ -201,6 +205,16 @@
         maze_3_2: 豚の居るとこに行けるようにプログラムを書いてください。
         maze_3_3: どうやって豚を捕まえたらいいでしょうか？TNT　爆弾にぶつからないようにきおつけてください。
         maze_3_4: なんてこった、TNT　を避けて豚が捕まえれるプログラム作って下さい。
+        bounce_1: Attach a block to the "when left arrow" block, then run and move
+          the paddle with the left arrow key to the finish target.
+        bounce_2: Attach a block to the "when right arrow" and "when left arrow" blocks,
+          then run and move the paddle with the both arrow key to both finish targets.
+        bounce_3: TBD
+        bounce_4: TBD
+        bounce_5: Attach a blocks to the "when right arrow", "when left arrow", "when
+          ball hits wall", and "when ball hits paddle" blocks.
+        bounce_6: Try again with more balls.
+        bounce_7: Now it is getting crazy!
       levelIncompleteError:
         maze_2_8: この問題を解くには、くり返しのパターンを見つけます。「移動」、「移動」、「右に回転」の3つのブロック（ブロック「くり返し」が中にはいっている）を使いましょう。
       other1StarError:

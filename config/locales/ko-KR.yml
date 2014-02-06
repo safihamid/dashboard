@@ -18,6 +18,9 @@
       label: '코드번호나 이메일 주소를 사용해 선생님을 등록하세요:'
       placeholder: 코드번호(ABCDEF) 또는 이메일(teacher@school.edu)
     submit: 선생님 추가하기
+  add_hint_form:
+    placeholder: Please enter your hint here
+    submit: Add hint
   appname: Code.org
   stage: 단계
   puzzle: 퍼즐
@@ -126,6 +129,9 @@
       student_disassociated:
         subject: 'Code.org notification: %{student_name} is no longer associated as
           your student.'
+      teacher_disassociated:
+        subject: 'Code.org notification: %{teacher_name} is no longer associated as
+          your teacher.'
   reports:
     error:
       access_denied: 이 학생의 학습 상황에 접근할 수 없습니다
@@ -228,12 +234,17 @@
       one: 나의 선생님은 %{name} 입니다
       other: '나의 선생님들:'
     remove: (remove teacher)
+    confirm:
+      remove: Are you sure you want to remove this teacher?
     tools: 선생님 메뉴
     students:
       manage: 학생 관리
       add: 학생 추가
     rollup: 학습 현황
     activity: 최근 학습 활동
+    user_not_found: The teacher or student could not be found
+    student_teacher_disassociated: '%{teacher_name} has been removed as a teacher
+      for %{student_name}'
   user:
     email_confirm_needed: 'Email address has not been confirmed:'
     email_resend_confirm: Resend confirmation instructions
