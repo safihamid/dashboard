@@ -18,7 +18,7 @@ class LevelSourceHintsController < ApplicationController
   def add_pop_hint
     raise "unauthorized" if !current_user.admin?
     unsuccessful_level_sources = FrequentUnsuccessfulLevelSource.where(active: true).order('num_of_attempts desc')
-    var idx = params[:idx].to_i
+    idx = params[:idx].to_i
     if (idx >= 0 && unsuccessful_level_sources.length > idx)
       @level_source_id = unsuccessful_level_sources.at(idx).level_source_id
       @num_of_attempts = unsuccessful_level_sources.at(idx).num_of_attempts
@@ -36,7 +36,7 @@ class LevelSourceHintsController < ApplicationController
   def add_pop_hint_per_level
     raise "unauthorized" if !current_user.admin?
     unsuccessful_level_sources = FrequentUnsuccessfulLevelSource.where(active: true, level_id: params[:level_id].to_i).order('num_of_attempts desc')
-    var idx = params[:idx].to_i
+    idx = params[:idx].to_i
     if (idx >= 0 && unsuccessful_level_sources.length > idx)
       @level_source_id = unsuccessful_level_sources.at(idx).level_source_id
       @num_of_attempts = unsuccessful_level_sources.at(idx).num_of_attempts
