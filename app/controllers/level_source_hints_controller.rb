@@ -18,14 +18,15 @@ class LevelSourceHintsController < ApplicationController
   def add_pop_hint
     raise "unauthorized" if !current_user.admin?
     unsuccessful_level_sources = FrequentUnsuccessfulLevelSource.where(active: true).order('num_of_attempts desc')
-    if (params[:idx].to_i >= 0 && unsuccessful_level_sources.length > params[:idx].to_i)
-      @level_source_id = unsuccessful_level_sources.at(params[:idx].to_i).level_source_id
-      @num_of_attempts = unsuccessful_level_sources.at(params[:idx].to_i).num_of_attempts
-      @prev_path = add_pop_hint_path(params[:idx].to_i - 1)
-      @current_path = add_pop_hint_path(params[:idx].to_i)
-      @next_path = add_pop_hint_path(params[:idx].to_i + 1)
+    var idx = params[:idx].to_i
+    if (idx >= 0 && unsuccessful_level_sources.length > idx)
+      @level_source_id = unsuccessful_level_sources.at(idx).level_source_id
+      @num_of_attempts = unsuccessful_level_sources.at(idx).num_of_attempts
+      @prev_path = add_pop_hint_path(idx - 1)
+      @current_path = add_pop_hint_path(idx)
+      @next_path = add_pop_hint_path(idx + 1)
       common(@level_source_id)
-    elsif (params[:idx].to_i < 0)
+    elsif (idx < 0)
       redirect_to frequent_unsuccessful_level_sources_path, notice: 'You have reached the first error program.'
     else
       redirect_to frequent_unsuccessful_level_sources_path, notice: 'No more hint to be added. Thank you very much!'
@@ -35,15 +36,16 @@ class LevelSourceHintsController < ApplicationController
   def add_pop_hint_per_level
     raise "unauthorized" if !current_user.admin?
     unsuccessful_level_sources = FrequentUnsuccessfulLevelSource.where(active: true, level_id: params[:level_id].to_i).order('num_of_attempts desc')
-    if (params[:idx].to_i >= 0 && unsuccessful_level_sources.length > params[:idx].to_i)
-      @level_source_id = unsuccessful_level_sources.at(params[:idx].to_i).level_source_id
-      @num_of_attempts = unsuccessful_level_sources.at(params[:idx].to_i).num_of_attempts
-      @prev_path = add_pop_hint_per_level_path(params[:level_id].to_i, params[:idx].to_i - 1)
-      @current_path = add_pop_hint_per_level_path(params[:level_id].to_i, params[:idx].to_i)
-      @next_path = add_pop_hint_per_level_path(params[:level_id].to_i, params[:idx].to_i + 1)
+    var idx = params[:idx].to_i
+    if (idx >= 0 && unsuccessful_level_sources.length > idx)
+      @level_source_id = unsuccessful_level_sources.at(idx).level_source_id
+      @num_of_attempts = unsuccessful_level_sources.at(idx).num_of_attempts
+      @prev_path = add_pop_hint_per_level_path(params[:level_id].to_i, idx - 1)
+      @current_path = add_pop_hint_per_level_path(params[:level_id].to_i, idx)
+      @next_path = add_pop_hint_per_level_path(params[:level_id].to_i, idx + 1)
       common(@level_source_id)
       render 'add_pop_hint'
-    elsif (params[:idx].to_i < 0)
+    elsif (idx < 0)
       redirect_to frequent_unsuccessful_level_sources_path, notice: 'You have reached the first error program of this level.'
     else
       redirect_to frequent_unsuccessful_level_sources_path, notice: 'No more hint to be added. Please select another level.'
