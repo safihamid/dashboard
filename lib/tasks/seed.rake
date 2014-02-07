@@ -264,7 +264,13 @@ namespace :seed do
     end
   end
 
-  task all: [:videos, :concepts, :games, :callouts, :scripts, :trophies, :prize_providers]
-
   task analyze_data: [:ideal_solutions, :frequent_level_sources]
+
+  task builder_levels: :environment do
+    game = Game.create!(:name => "Custom", :app => "turtle")
+    Level.create!(:game => game, :name => "builder", :skin => "artist_zombie", :level_num => "builder")
+  end
+
+  task all: [:videos, :concepts, :games, :callouts, :scripts, :trophies, :prize_providers, :builder_levels]
+
 end

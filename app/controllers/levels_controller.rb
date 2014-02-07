@@ -73,6 +73,7 @@ class LevelsController < ApplicationController
 
   def builder
     @level = Level.find_by_level_num('builder')
+    debugger
     @game = @level.game
     @full_width = true
     @callback = "/create_custom"
@@ -81,7 +82,7 @@ class LevelsController < ApplicationController
 
   def create_custom
     game = Game.find_by_name("Custom")
-    @level = Level.new(:game => game, :level_num => "builder", :skin => "pvz")
+    @level = Level.new(:game => game, :level_num => "builder", :skin => "artist_zombie")
     @solution = LevelSource.lookup(@level, params[:program])
     @level.update(:solution_level_source_id => @solution.id)
     @level.save
