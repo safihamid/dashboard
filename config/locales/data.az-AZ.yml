@@ -349,6 +349,8 @@
           ball hits wall", and "when ball hits paddle" blocks.
         bounce_6: Try again with more balls.
         bounce_7: Now it is getting crazy!
+        bounce_8: Try again with more balls.
+        bounce_9: Now it is getting crazy!
       levelIncompleteError:
         maze_2_8: 'Bu məsələni həll etmək üçün təkrar olunan hissəni tapın. İçərisində
           növbəti 3 blok olan "təkrar et" blokundan istifadə edin: get, get, sağa

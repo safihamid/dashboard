@@ -192,6 +192,8 @@
           ball hits wall", and "when ball hits paddle" blocks.
         bounce_6: Try again with more balls.
         bounce_7: Now it is getting crazy!
+        bounce_8: Try again with more balls.
+        bounce_9: Now it is getting crazy!
       levelIncompleteError:
         maze_2_8: '要解決這個關卡，請找出重覆的片斷。使用"重覆"程式積木將: 前進，前進，右轉 這三個程式積木包在其中。'
       other1StarError:

@@ -340,6 +340,8 @@
           ball hits wall", and "when ball hits paddle" blocks.
         bounce_6: Try again with more balls.
         bounce_7: Now it is getting crazy!
+        bounce_8: Try again with more balls.
+        bounce_9: Now it is getting crazy!
       levelIncompleteError:
         maze_2_8: 'Para resolver isso, encontre o padrão que se repete. Use um bloco
           "repetir" com estes 3 blocos no seu interior:  mover, mover, vire à direita.'

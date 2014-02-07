@@ -20,7 +20,7 @@
     submit: Thêm giáo viên
   add_hint_form:
     placeholder: Please enter your hint here
-    submit: Add hint
+    submit: Thêm gợi ý
   appname: Code.org
   stage: Màn
   puzzle: Câu đố
@@ -83,7 +83,7 @@
     birthday: Ngày sinh (tùy chọn)
     submit: Đăng ký
     teacher: Bạn có phải là giáo viên?
-    valid_username: Available!
+    valid_username: Đã tồn tại!
     invalid_username: Tên người dùng phải nhiều hơn 5 ký tự
     taken_username: Tên người dùng đã được sử dụng
     valid_password: Mật khẩu hợp lệ!
@@ -114,7 +114,7 @@
     body: |
       Nhấp vào liên kết dưới đây để đăng nhập cho các hướng dẫn về khoa học máy tíng trên Code.org (với tôi như là giáo viên của bạn""): % {liên kết} Các hướng dẫn vui vẻ, trực quan hấp dẫn, và dạy các khái niệm cơ bản của khoa học máy tính bằng cách sử dụng từng kinh nghiệm đơn giản giống như hứơng dẫn chơi trò chơi. Tìm hiểu để mã lập trình từ Bill Gates, Mark Zuckerberg, Angry Birds, và nhà máy vs. zombie! :-) % (tên)
   follower:
-    invite_sent: Invite sent
+    invite_sent: Gửi lời mời
     added_teacher: '% (tên) được thêm như giáo viên của bạn'
     registered: You've registered for %{section_name}.
     error:
@@ -230,7 +230,7 @@
       label: Hi %{username}
       stats: TIến trình của bạn
       settings: Tài khoản của bạn
-      prizes: Prizes
+      prizes: Giải thưởng
       logout: Đăng xuất
       signin: Đăng nhập
       signup: Đăng ký
@@ -246,11 +246,11 @@
       prizes_link: Thông tin thêm
   teacher:
     title:
-      one: Giáo viên của bạn là %{name}
+      one: 'Giáo viên của bạn:'
       other: 'Giáo viên của bạn:'
     remove: (remove teacher)
     confirm:
-      remove: Are you sure you want to remove this teacher?
+      remove: Bạn có chắc bạn muốn loại bỏ giáo viên này không?
     tools: Công cụ dành cho giáo viên
     students:
       manage: Quản lý học sinh
@@ -266,9 +266,9 @@
     new_password_hint: (để trống nếu bạn không muốn thay đổi nó)
     current_password_hint: (chúng tôi cần mật khẩu của bạn để xác nhận thay đổi)
     cancel:
-      title: Cancel my account
-      hint: Unhappy?
-      button: Cancel my account
+      title: Hủy bỏ tài khoản của tôi
+      hint: Bạn không hài lòng?
+      button: Hãy hủy bỏ tài khoản của tôi
   user_level:
     completed: Completed
     tried: Tried
@@ -285,7 +285,7 @@
     teacher_averages: On average your students have earned %{trophy_average} out of
       %{trophy_max} "Concept Mastery" trophies.
     classroom: Lớp học của bạn
-    student_progress: Your learning progress
+    student_progress: Tiến độ học tập của bạn
     student_stats: You've earned %{trophy_count} out of %{trophy_max} "Concept Mastery"
       trophies.
     student_left_off: 'Where you left off:'
@@ -326,7 +326,7 @@
     auth_error: You are not authorized to see the solution.
   video:
     tab: Video
-    notes: No video? Show notes.
+    notes: Không xem được video? Hãy xem ghi chú.
     autoplay_option: Tự phát video
     download: Tải video xuống
   compatability:

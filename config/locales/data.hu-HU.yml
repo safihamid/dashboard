@@ -31,8 +31,8 @@
           desc: Kód szerkesztése
           MazeEC: 1. szakasz
         2014 Levels:
-          desc: 2014 Puzzles (beta)
-          MazeEC: Stage 1
+          desc: 2014 Puzzle-k (beta)
+          MazeEC: 1. szakasz
     game:
       name:
         Unplug1: Bevezetés a számítógép tudományába
@@ -44,7 +44,7 @@
         Artist2: A művész 2
         Unplug5: Függvények
         Farmer: A Farmer
-        Unplug6: Feltételek/Döntések
+        Unplug6: Feltételek
         Artist3: A művész 3
         Unplug7: Dal iras
         Farmer2: A Farmer 2
@@ -333,6 +333,8 @@
           ball hits wall", and "when ball hits paddle" blocks.
         bounce_6: Try again with more balls.
         bounce_7: Now it is getting crazy!
+        bounce_8: Try again with more balls.
+        bounce_9: Now it is getting crazy!
       levelIncompleteError:
         maze_2_8: 'Hogy ezt megoldhasd, találd meg az ismétlődő mintát. Használj egy
           "ismételd amíg" blokkot, benne ezzel a 3 blokkal: előrelépni, előrelépni,

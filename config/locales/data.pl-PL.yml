@@ -32,8 +32,8 @@
           desc: Edytuj kod
           MazeEC: Etap 1
         2014 Levels:
-          desc: 2014 Puzzles (beta)
-          MazeEC: Stage 1
+          desc: Łamigłówki 2014 (beta)
+          MazeEC: Etap 1
     game:
       name:
         Unplug1: Wprowadzenie do informatyki
@@ -330,6 +330,8 @@
           ball hits wall", and "when ball hits paddle" blocks.
         bounce_6: Try again with more balls.
         bounce_7: Now it is getting crazy!
+        bounce_8: Try again with more balls.
+        bounce_9: Now it is getting crazy!
       levelIncompleteError:
         maze_2_8: 'Aby rozwiązać ten problem, znajdź wzór (układ), który się powtarza.
           Użyj bloku powtórz z trzema blokami w nim: idź, idź, skręć w prawo.'

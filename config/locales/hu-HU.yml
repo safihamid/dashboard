@@ -87,7 +87,7 @@
     invalid_username: Felhasználónév minimum 5 karakter hosszú
     taken_username: Felhasználónév már foglalt
     valid_password: Érvényes jelszó!
-    invalid_password: Jelszó minimum 6 karakter hosszú legyen
+    invalid_password: Jelszónak minimum 6 karakter hosszúnak kell lennie
     mismatch_password: A megadott két jelszó nem egyezik
     student_terms: Elfogadom a felhasználási feltételeket. Ha 13 évesnél fiatalabb
       vagyok megerősítem, hogy van egy szülő vagy törvényes gondviseló engedélyem,
@@ -182,8 +182,8 @@
         tárhely, 10 $ Skype kredit, és szabad játék letöltés között. Megjegyzés: az
         ajánlat csak amerikai diákoknak szól , és csak a szolgáltató működéséig él.'
       teacher:
-        earned: 10 vagy több diákja minden %{num_trophies}-trófeát begyűjtött. Ön
-          egy tanári díjat nyert! (Csak USA tanároknak)
+        earned: 15 vagy több tanuló is összegyűjtötte mind a(z) %{num_trophies} trófeát.
+          Nyertél egy tanár díjat! (csak amerikai tanárok)
         not_earned_title: Teach the class, earn up to $1,000 in <a target="_blank"
           href="http://DonorsChoose.org">DonorsChoose.org</a> credits (U.S. teachers
           only)

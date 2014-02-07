@@ -19,8 +19,8 @@
       placeholder: Kod (ABCDEF) veya e-posta (teacher@school.edu)
     submit: Öğretmen Ekle
   add_hint_form:
-    placeholder: Please enter your hint here
-    submit: Add hint
+    placeholder: Lütfen ipucunu buraya girin
+    submit: İpucu ekle
   appname: Code.org
   stage: Kademe
   puzzle: Bulmaca
@@ -142,7 +142,7 @@
     provider: 'Sağlayıcı:'
     code: 'Kod:'
     redeem_header: 'To redeem:'
-    donorschoose_how_to: How to use your code
+    donorschoose_how_to: Kodunuzu nasıl kullanırsınız
     success: Ödülünüzü başarılı bir şekilde kullandınız, aşağıdaki koda bakın.
     error: Ödülünüzü kullanamazsınız, lütfen tekrar deneyin.
     error_us_only: Ödül teklifi sadece A.B.D. kullanıcıları için geçerlidir.
@@ -222,7 +222,7 @@
     created: '%{model} başarılı bir şekilde oluşturuldu.'
     updated: '%{model} başarılı bir şekilde güncellendi.'
     destroyed: '%{model} was successfully deleted.'
-    access_denied: You do not have access to this %{model}.
+    access_denied: ' % {model} ''e erişiminiz yok.'
   nav:
     header:
       finished_hoc: Kod Saati'ni tamamladım
@@ -248,20 +248,20 @@
       prizes_link: daha fazla bilgi
   teacher:
     title:
-      one: '%{name} sizin öğretmeninizdir'
+      one: 'Öğretmenin :'
       other: 'Öğretmeniniz:'
-    remove: (remove teacher)
+    remove: (öğretmeni kaldır)
     confirm:
-      remove: Are you sure you want to remove this teacher?
+      remove: Bu öğretmeni kaldırmak istediğinizden emin misiniz?
     tools: Öğretmen Araçları
     students:
       manage: Öğrencileri yönet
       add: Öğrenciler Ekle
     rollup: İlerleme Kontrol Paneli
     activity: Son sınıf etkinlikleri
-    user_not_found: The teacher or student could not be found
-    student_teacher_disassociated: '%{teacher_name} has been removed as a teacher
-      for %{student_name}'
+    user_not_found: Öğrenci ve öğretmen bulunamadı
+    student_teacher_disassociated: '% {teacher_name},  % {student_name} ''in öğretmeni
+      olmaktan kaldırıldı'
   user:
     email_confirm_needed: 'Email address has not been confirmed:'
     email_resend_confirm: Resend confirmation instructions

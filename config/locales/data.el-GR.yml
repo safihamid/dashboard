@@ -361,6 +361,8 @@
           ball hits wall", and "when ball hits paddle" blocks.
         bounce_6: Try again with more balls.
         bounce_7: Now it is getting crazy!
+        bounce_8: Try again with more balls.
+        bounce_9: Now it is getting crazy!
       levelIncompleteError:
         maze_2_8: 'Για να λυθεί αυτό, βρες το μοτίβο που επαναλαμβάνεται. Χρησιμοποίησε
           ένα "επανάλαβε" πλακίδιο με αυτά τα 3 πλακίδια μέσα σ '' αυτό: κινήσου,
