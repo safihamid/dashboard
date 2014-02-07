@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140205220657) do
+ActiveRecord::Schema.define(version: 20140207010312) do
 
   create_table "activities", force: true do |t|
     t.integer  "user_id"
@@ -122,6 +122,7 @@ ActiveRecord::Schema.define(version: 20140205220657) do
     t.string   "level_num"
     t.string   "skin"
     t.integer  "ideal_level_source_id"
+    t.integer  "solution_level_source_id"
   end
 
   add_index "levels", ["game_id"], name: "index_levels_on_game_id", using: :btree

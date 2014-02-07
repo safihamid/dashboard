@@ -16,6 +16,7 @@ class LevelsController < ApplicationController
   # GET /levels/1
   # GET /levels/1.json
   def show
+    @solution_blocks = LevelSource.find(@level.solution_level_source_id).data
     @full_width = true
   end
 
@@ -80,17 +81,11 @@ class LevelsController < ApplicationController
 
   def create_custom
     game = Game.find_by_name("Custom")
-    @level = Level.new(:game => game, :name => "builder", :solution => params[:program])
-
-    respond_to do |format|
-      if @level.save
-        format.html { redirect_to [@level.game, @level], notice: I18n.t('crud.created', model: Level.model_name.human) }
-        format.json { render action: 'show', status: :created, location: @level }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @level.errors, status: :unprocessable_entity }
-      end
-    end
+    @level = Level.new(:game => game, :level_num => "builder", :skin => "pvz")
+    @solution = LevelSource.lookup(@level, params[:program])
+    @level.update(:solution_level_source_id => @solution.id)
+    @level.save
+    render text: "Your new level can be found at: #{game_level_url(game, @level)}"
   end
 
 
