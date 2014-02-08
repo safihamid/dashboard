@@ -2,9 +2,11 @@ Feature: Blocks can be dragged
 
 Background:
   Given I am on localhost:3000/s/1/level/6
+  #Given I am on learn.dev-code.org/s/1/level/6
 
 Scenario: Connect two blocks from toolbox
-  When I wait for 3 seconds
+  When I wait for 15 seconds
+  #And I rotate a device to landscape
   And I inject simulation
   And I press "x-close"
   And I press "ok-button"
