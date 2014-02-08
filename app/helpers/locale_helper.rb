@@ -91,4 +91,8 @@ module LocaleHelper
     I18n.t("data.#{dotted_path}.#{key.to_s}.#{suffix}")
   end
 
+  def serve_fonts?
+    Dashboard::Application::LOCALES[locale.to_s].fetch(:webfonts, true)
+  end
+
 end
