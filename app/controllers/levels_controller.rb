@@ -1,4 +1,5 @@
 class LevelsController < ApplicationController
+  include LevelsHelper
   before_filter :authenticate_user!
   skip_before_filter :verify_authenticity_token, :only => [:builder, :create_custom]
   check_authorization :except => [:builder, :create_custom]
@@ -16,7 +17,6 @@ class LevelsController < ApplicationController
   # GET /levels/1
   # GET /levels/1.json
   def show
-    @solution_blocks = LevelSource.find(@level.solution_level_source_id).data
     @full_width = true
   end
 
@@ -72,23 +72,23 @@ class LevelsController < ApplicationController
   end
 
   def builder
-    @level = Level.find_by_level_num('builder')
-    debugger
+    @level = Level.find_by_name('builder')
     @game = @level.game
     @full_width = true
     @callback = "/create_custom"
-    render :show
+    render :show, :locals => {:builder => true}
   end
 
   def create_custom
     game = Game.find_by_name("Custom")
-    @level = Level.new(:game => game, :level_num => "builder", :skin => "artist_zombie")
-    @solution = LevelSource.lookup(@level, params[:program])
-    @level.update(:solution_level_source_id => @solution.id)
-    @level.save
-    render text: "Your new level can be found at: #{game_level_url(game, @level)}"
+    script = Script.find_by_name("Builder Levels")
+    level = Level.new(:game => game, :level_num => "builder", :skin => "artist_zombie")
+    script_level = ScriptLevel.create(script: script, level: level, chapter: 1, game_chapter: 1)
+    solution = LevelSource.lookup(level, params[:program])
+    level.update(:solution_level_source_id => solution.id)
+    level.save
+    render text: "{ \"url\": \"#{build_script_level_url(script_level)}\"}"
   end
-
 
   private
     # Use callbacks to share common setup or constraints between actions.

@@ -49,6 +49,7 @@ namespace :seed do
     Game.create!(name: 'Unplug10', app: 'unplug')
     Game.create!(name: 'Unplug11', app: 'unplug')
     Game.create!(name: 'Bounce', app: 'bounce')
+    Game.create!(:name => "Custom", :app => "turtle")
   end
 
   COL_GAME = 'Game'
@@ -71,6 +72,7 @@ namespace :seed do
         { file: 'config/hoc_script.csv', params: { name: 'Hour of Code', wrapup_video: Video.find_by_key('hoc_wrapup'), trophies: false, hidden: false }},
         { file: 'config/ec_script.csv', params: { name: 'Edit Code', wrapup_video: Video.find_by_key('hoc_wrapup'), trophies: false, hidden: true }},
         { file: 'config/2014_script.csv', params: { name: '2014 Levels', wrapup_video: nil, trophies: false, hidden: true }},
+        { file: 'config/builder_script.csv', params: { name: 'Builder Levels', wrapup_video: nil, trophies: false, hidden: true }}
     ]
     sources.each do |source|
       script = Script.create!(source[:params])
@@ -267,8 +269,10 @@ namespace :seed do
   task analyze_data: [:ideal_solutions, :frequent_level_sources]
 
   task builder_levels: :environment do
-    game = Game.create!(:name => "Custom", :app => "turtle")
-    Level.create!(:game => game, :name => "builder", :skin => "artist_zombie", :level_num => "builder")
+    game = Game.find_by_name("Custom")
+    level = Level.create!(:game => game, :name => "builder", :skin => "artist_zombie", :level_num => "builder")
+    script = Script.find_by_name("Builder Levels")
+    ScriptLevel.create!(script: script, level: level, chapter: 1, game_chapter: 1)
   end
 
   task all: [:videos, :concepts, :games, :callouts, :scripts, :trophies, :prize_providers, :builder_levels]

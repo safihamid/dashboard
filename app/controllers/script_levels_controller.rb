@@ -73,6 +73,9 @@ private
     @level = script_level.level
     @game = @level.game
 
+    level_source = LevelSource.find(@level.solution_level_source_id)
+    @solution_blocks = level_source.data if level_source
+
     @videos = @level.videos
 
     # todo: make this based on which videos the user/session has already seen
