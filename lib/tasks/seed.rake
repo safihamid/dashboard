@@ -153,6 +153,28 @@ namespace :seed do
     end
   end
 
+  task :frequent_level_sources, [:freq_cutoff] => :environment do |t, args|
+    # Among all the level_sources, find the ones that are submitted more than freq_cutoff times.
+    FrequentUnsuccessfulLevelSource.update_all('active = false')
+    freq_cutoff = args[:freq_cutoff].to_i > 0 ? args[:freq_cutoff].to_i : 100
+    # 0: level_source_id, 1: level_id, 2: num_of_attempts
+    Activity.connection.execute('select level_source_id, level_id, count(*) as num_of_attempts from activities where test_result < 100 group by level_source_id order by num_of_attempts DESC').each do |level_source|
+      if level_source[2] >= freq_cutoff
+        unsuccessful_level_source = FrequentUnsuccessfulLevelSource.where(
+            level_source_id: level_source[0],
+            level_id: level_source[1],
+            num_of_attempts: level_source[2]).first_or_create;
+        if LevelSourceHint.where(level_source_id: unsuccessful_level_source.level_source_id).size < 3
+          puts "Active level source #{unsuccessful_level_source.level_source_id}"
+          unsuccessful_level_source.active = true;
+          unsuccessful_level_source.save!
+        end
+      else
+        break;
+      end
+    end
+  end
+
   task dummy_prizes: :environment do
     # placeholder data
     Prize.connection.execute('truncate table prizes')
@@ -245,4 +267,6 @@ namespace :seed do
   end
 
   task all: [:videos, :concepts, :games, :callouts, :scripts, :trophies, :prize_providers]
+
+  task analyze_data: [:ideal_solutions, :frequent_level_sources]
 end

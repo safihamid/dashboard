@@ -3,7 +3,7 @@
   = form_for([LevelSourceHint.new]) do |f|
     .field
       = text_field_tag :hint_content, nil, class: 'input-xxlarge', placeholder: t('add_hint_form.placeholder'), :required => true
-      = hidden_field_tag :level_source_id, params[:level_source_id]
+      = hidden_field_tag :level_source_id, @level_source_id
       = hidden_field_tag :redirect, build_add_hint_path(params[:idx].to_i + 1, params[:pop_level_source_ids]) || level_stats_path(LevelSource.find(params[:level_source_id]).level_id)
     .actions
       = f.submit t('add_hint_form.submit')

@@ -14,6 +14,10 @@ Dashboard::Application.routes.draw do
   resources :level_source_hints
   get '/add_hint/:level_source_id', :to => 'level_source_hints#add_hint', as: 'add_hint'
   get '/show_hints/:level_source_id', :to => 'level_source_hints#show_hints', as: 'show_hints'
+  get '/add_pop_hint/:idx', :to => 'level_source_hints#add_pop_hint', as: 'add_pop_hint'
+  get '/add_pop_hint_per_level/:level_id/:idx', :to => 'level_source_hints#add_pop_hint_per_level', as: 'add_pop_hint_per_level'
+
+  resources :frequent_unsuccessful_level_sources, only: [:index]
 
   devise_for :users, controllers: {
     omniauth_callbacks: 'omniauth_callbacks',
