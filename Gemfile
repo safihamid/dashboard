@@ -5,7 +5,7 @@ ruby '2.0.0'
 gem 'rails', '4.0.0'
 gem 'rails-i18n', '~> 4.0.0'
 
-gem 'mysql2'
+gem 'mysql2', '0.3.13'
 gem 'seamless_database_pool'
 
 group :development, :test do
