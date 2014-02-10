@@ -1,2 +1,2 @@
 set :rails_env, 'staging'
-server "dash4.dev-code.org", :app, :web, :db, :primary => true
+server "ec2-54-204-150-200.compute-1.amazonaws.com", :app, :web, :db, :primary => true
