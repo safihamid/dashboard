@@ -20,7 +20,7 @@ end
 =end
 
 
-url = "http://#{ENV['BROWSERSTACK_']}:#{ENV['BROWSERSTACK_AUTHKEY']}@hub.browserstack.com/wd/hub"
+url = "http://#{ENV['BROWSERSTACK_USERNAME']}:#{ENV['BROWSERSTACK_AUTHKEY']}@hub.browserstack.com/wd/hub"
 
 capabilities = Selenium::WebDriver::Remote::Capabilities.new
 
