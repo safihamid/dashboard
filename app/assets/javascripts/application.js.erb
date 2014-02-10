@@ -155,7 +155,7 @@ var addClickTouchEvent = function(element, handler) {
 function Dialog(options) {
   var body = options.body;
   var header = options.header;
-  var close = $('<div/>').append($('<img src="<%= asset_path 'x_button.png' %>"/>'))
+  var close = $('<div id="x-close"/>').append($('<img src="<%= asset_path 'x_button.png' %>"/>'))
                          .addClass('x-close')
                          .attr('data-dismiss', 'modal');
   this.div = $('<div tabindex="-1"/>').addClass('modal');
