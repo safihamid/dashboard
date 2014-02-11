@@ -159,7 +159,7 @@ namespace :seed do
     freq_cutoff = args[:freq_cutoff].to_i > 0 ? args[:freq_cutoff].to_i : 100
     # 0: level_source_id, 1: level_id, 2: num_of_attempts
     Activity.connection.execute('select level_source_id, level_id, count(*) as num_of_attempts from activities where test_result < 100 group by level_source_id order by num_of_attempts DESC').each do |level_source|
-      if level_source[2] >= freq_cutoff
+      if level_source[2] >= freq_cutoff && !level_source.nil? && !level_source[0].nil? && !level_source[1].nil? && !level_source[2].nil?
         unsuccessful_level_source = FrequentUnsuccessfulLevelSource.where(
             level_source_id: level_source[0],
             level_id: level_source[1],
