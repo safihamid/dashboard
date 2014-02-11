@@ -1,4 +1,4 @@
 set :rails_env, 'production'
-server 'dash5.code.org', :app, :web, :db, :primary => true
-server 'dash6.code.org', :app, :web
-server 'dash7.code.org', :app, :web
+server 'dashboard-production-b1.code.org', :app, :web, :db, :primary => true
+server 'dashboard-production-c1.code.org', :app, :web
+server 'dashboard-production-d1.code.org', :app, :web
