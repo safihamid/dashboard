@@ -37,12 +37,13 @@ class LevelSourceHintsController < ApplicationController
     raise "unauthorized" if !current_user.admin?
     unsuccessful_level_sources = FrequentUnsuccessfulLevelSource.where(active: true, level_id: params[:level_id].to_i).order('num_of_attempts desc')
     idx = params[:idx].to_i
+    level_idx = params[:level_id].to_i
     if (idx >= 0 && unsuccessful_level_sources.length > idx)
       @level_source_id = unsuccessful_level_sources.at(idx).level_source_id
       @num_of_attempts = unsuccessful_level_sources.at(idx).num_of_attempts
-      @prev_path = add_pop_hint_per_level_path(params[:level_id].to_i, idx - 1)
-      @current_path = add_pop_hint_per_level_path(params[:level_id].to_i, idx)
-      @next_path = add_pop_hint_per_level_path(params[:level_id].to_i, idx + 1)
+      @prev_path = add_pop_hint_per_level_path(level_idx, idx - 1)
+      @current_path = add_pop_hint_per_level_path(level_idx, idx)
+      @next_path = add_pop_hint_per_level_path(level_idx, idx + 1)
       common(@level_source_id)
       render 'add_pop_hint'
     elsif (idx < 0)
