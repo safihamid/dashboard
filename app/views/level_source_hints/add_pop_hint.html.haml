@@ -2,7 +2,7 @@
   %h1 #{@num_of_attempts} students wrote the code below. Enter a targeted hint to help them solve the puzzle.
   %p Don't just give the answer. For example, instead of saying "you need to turn right instead of left", say "Make sure you're turning in the correct direction."
   - script = @script || Script.twenty_hour_script
-  - if current_user && (current_user.teacher? || current_user.admin?) && @level.ideal_level_source_id && !@level.nil?
+  - if !@level.nil? && @level.ideal_level_source_id
     .solution_link
       #{link_to t('reference_area.teacher'), script_level_solution_path(script, @level), :target => "_blank"}
   = form_for([LevelSourceHint.new]) do |f|
