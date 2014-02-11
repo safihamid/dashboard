@@ -271,7 +271,7 @@ namespace :seed do
   task builder_levels: :environment do
     game = Game.find_by_name("Custom")
     level = Level.create!(:game => game, :name => "builder", :skin => "artist_zombie", :level_num => "builder")
-    script = Script.find_by_name("Builder Levels")
+    script = Script::BUILDER
     ScriptLevel.create!(script: script, level: level, chapter: 1, game_chapter: 1)
   end
 

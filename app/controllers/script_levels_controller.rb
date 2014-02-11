@@ -73,8 +73,8 @@ private
     @level = script_level.level
     @game = @level.game
 
-    level_source = LevelSource.find(@level.solution_level_source_id)
-    @solution_blocks = level_source.data if level_source
+    solution = @level.solution_level_source
+    @solution_blocks = solution.data if solution
 
     @videos = @level.videos
 

@@ -5,6 +5,7 @@ class Script < ActiveRecord::Base
 
   TWENTY_HOUR_ID = 1
   HOC_ID = 2
+  BUILDER = self.find_by_name("Builder Levels")
 
   def self.twenty_hour_script
     @@twenty_hour_script ||= Script.includes(script_levels: { level: [:game, :concepts] }).find(TWENTY_HOUR_ID)

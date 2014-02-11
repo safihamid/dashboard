@@ -72,7 +72,7 @@ class LevelsController < ApplicationController
   end
 
   def builder
-    @level = Level.find_by_name('builder')
+    @level = Level::BUILDER
     @game = @level.game
     @full_width = true
     @callback = "/create_custom"
@@ -80,13 +80,12 @@ class LevelsController < ApplicationController
   end
 
   def create_custom
-    game = Game.find_by_name("Custom")
-    script = Script.find_by_name("Builder Levels")
+    game = Game::CUSTOM
+    script = Script::BUILDER
     level = Level.new(:game => game, :level_num => "custom", :skin => "artist_zombie")
     script_level = ScriptLevel.create(script: script, level: level, chapter: 1, game_chapter: 1)
     solution = LevelSource.lookup(level, params[:program])
-    level.update(:solution_level_source_id => solution.id)
-    level.save
+    level.update(solution_level_source: solution)
     render text: "{ \"url\": \"#{build_script_level_url(script_level)}\"}"
   end
 
