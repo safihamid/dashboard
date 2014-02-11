@@ -78,7 +78,6 @@ namespace :seed do
 
       CSV.read(source[:file], { col_sep: "\t", headers: true }).each_with_index do |row, index|
         game = game_map[row[COL_GAME].squish]
-        puts "row #{index}: #{row.inspect}"
         level = Level.find_or_create_by_game_id_and_level_num(game.id, row[COL_LEVEL])
         level.name = row[COL_NAME]
         level.level_url ||= row[COL_URL]
@@ -165,7 +164,6 @@ namespace :seed do
             level_id: level_source[1],
             num_of_attempts: level_source[2]).first_or_create;
         if LevelSourceHint.where(level_source_id: unsuccessful_level_source.level_source_id).size < 3
-          puts "Active level source #{unsuccessful_level_source.level_source_id}"
           unsuccessful_level_source.active = true;
           unsuccessful_level_source.save!
         end
