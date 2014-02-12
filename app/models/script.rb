@@ -5,7 +5,9 @@ class Script < ActiveRecord::Base
 
   TWENTY_HOUR_ID = 1
   HOC_ID = 2
-  BUILDER = self.find_by_name("Builder Levels")
+  EDIT_CODE_ID = 3
+  TWENTY_FOURTEEN_LEVELS_ID = 4
+  BUILDER_ID = 5
 
   def self.twenty_hour_script
     @@twenty_hour_script ||= Script.includes(script_levels: { level: [:game, :concepts] }).find(TWENTY_HOUR_ID)
@@ -44,8 +46,12 @@ class Script < ActiveRecord::Base
     self.script_levels.detect { |sl| sl.level_id == level_id }
   end
 
-  def self.find_twenty_hour_script
-    Script.find_by_id(TWENTY_HOUR_ID)
+  def self.twenty_hour_script
+    Script.find(TWENTY_HOUR_ID)
+  end
+
+  def self.builder_script
+    Script.find(BUILDER_ID)
   end
 
   def get_script_level_by_id(script_level_id)

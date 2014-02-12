@@ -49,7 +49,7 @@ namespace :seed do
     Game.create!(name: 'Unplug10', app: 'unplug')
     Game.create!(name: 'Unplug11', app: 'unplug')
     Game.create!(name: 'Bounce', app: 'bounce')
-    Game.create!(:name => "Custom", :app => "turtle")
+    Game.create!(name: "Custom", app: "turtle")
   end
 
   COL_GAME = 'Game'
@@ -271,7 +271,7 @@ namespace :seed do
   task builder_levels: :environment do
     game = Game.find_by_name("Custom")
     level = Level.create!(:game => game, :name => "builder", :skin => "artist_zombie", :level_num => "builder")
-    script = Script::BUILDER
+    script = Script.builder_script
     ScriptLevel.create!(script: script, level: level, chapter: 1, game_chapter: 1)
   end
 

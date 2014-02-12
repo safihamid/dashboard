@@ -72,7 +72,7 @@ class LevelsController < ApplicationController
   end
 
   def builder
-    @level = Level::BUILDER
+    @level = Level.builder_script
     @game = @level.game
     @full_width = true
     @callback = "/create_custom"
