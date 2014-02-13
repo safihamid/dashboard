@@ -37,7 +37,7 @@ namespace :deploy do
     run "tar -xvf #{tar_ball} && mv /home/#{user}/package/* #{release_path}/public/blockly/"
     run "rm #{release_path}/public/blockly/blockly-mooc.tgz"
     run "cd '#{release_path}' && #{rake} youtube:thumbnails pseudolocalize RAILS_ENV=#{rails_env}"
-    run "#{rake} seed:all :only => { :primary => true } RAILS_ENV=#{rails_env}"
+    run "cd '#{release_path}' && #{rake} seed:all, :only => { :primary => true } RAILS_ENV=#{rails_env}"
   end
 
   task :setup_config, roles: :app do
