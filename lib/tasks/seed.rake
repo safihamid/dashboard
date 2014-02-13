@@ -162,8 +162,8 @@ namespace :seed do
         if level_source[2] >= freq_cutoff
           unsuccessful_level_source = FrequentUnsuccessfulLevelSource.where(
               level_source_id: level_source[0],
-              level_id: level_source[1],
-              num_of_attempts: level_source[2]).first_or_create
+              level_id: level_source[1]).first_or_create
+          unsuccessful_level_source.num_of_attempts = level_source[2]
           if LevelSourceHint.where(level_source_id: unsuccessful_level_source.level_source_id).size < 3
             unsuccessful_level_source.active = true
             unsuccessful_level_source.save!
