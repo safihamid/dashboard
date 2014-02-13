@@ -278,7 +278,7 @@ en:
     local_school: local school
     online: online
     see_details: See details
-    prize_info: 'Prizes for participation (US only): $10 gift cards for student completion and $1,000 classroom rewards for teachers.'
+    prize_info: 'Prizes for participation (U.S. only): $10 gift cards for student completion and up to $1,000 in classroom rewards for public school teachers'
   gender:
     male: 'Male'
     female: 'Female'

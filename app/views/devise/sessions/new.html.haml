@@ -11,13 +11,16 @@
           = t('signin_form.remember')
       = f.submit t('signin_form.submit'), class: "btn btn-primary"
 
+    %br/
+    %br/
+    
     .row
       .span3
         %a{:href=>hoc_reset_path}
-          %button.btn.btn-info{:style=>'height:50px'} #{t('signin.try_hoc')}
+          %button.btn.btn-info.medium-height-button #{t('signin.try_hoc')}
       .span3
         %a{:href=>root_path}
-          %button.btn.btn-info{:style=>'height:50px'} #{t('signin.try_20hours')}
+          %button.btn.btn-info.medium-height-button #{t('signin.try_20hours')}
 
   .span4
     %div{ style: 'padding-left: 20px;  border-left: 1px solid black;' }= render "devise/shared/links"
