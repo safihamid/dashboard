@@ -68,8 +68,9 @@
       okulu öğretmenleri için Code.org <a target="_blank" href="http://DonorsChoose.org">
       DonorsChoose.org</a> ile ortaklık içinde 1000$''a kadar fon sunacaktır. <a href="http://code.org/educate/20hr">Daha
       fazla bilgi için eğitimci kılavuzuna bakınız.</a> '
-    teacher_prize_limits: '(Limit: $1,000 per teacher. <a target="_blank" href="http://help.donorschoose.org/app/answers/detail/a_id/454/kw/code.org">See
-      FAQ for more limits</a>)'
+    teacher_prize_limits: '(Limit: öğretmen başına 1000 dolar. <a target="_blank"
+      href="http://help.donorschoose.org/app/answers/detail/a_id/454/kw/code.org">Bkz:
+      SSS</a>.)'
     teacher_pitch: Bilgisayar Bilimine Giriş K-8'i sınıfında öğret
     teacher_title: Öğretmen Kayıt
     student_pitch: '1 Saat ötesinde: Bilgisayar bilimi K-8 Intromuzu deneyin'
@@ -129,11 +130,9 @@
       invite_student:
         subject: Code.org'ta %{teacher_name} ile bir sınıfa katıl!
       student_disassociated:
-        subject: 'Code.org notification: %{student_name} is no longer associated as
-          your student.'
+        subject: 'Code.org bildirim: %{student_name} artık senin öğrencin değil.'
       teacher_disassociated:
-        subject: 'Code.org notification: %{teacher_name} is no longer associated as
-          your teacher.'
+        subject: 'Code.org bildirimi: %{teacher_name} artık öğretmeniniz değil.'
   reports:
     error:
       access_denied: Bu kişinin istatistiklerine erişemezsiniz
@@ -149,8 +148,8 @@
     error_not_earned: Henüz bu ödülü kazanmadınız.
     error_already_redeemed: Ödülün zaten alındı.
     no_prizes_available: Üzgünüz, ama şu anda kullanılabilir hiçbir ödülümüz yok.
-    teacher_info_required: 'Teacher prizes require school name and address information:'
-    teacher_email_required: 'Teacher prizes require a confirmed email address:'
+    teacher_info_required: 'Öğretmen ödülleri okul adı ve adres bilgilerini gerektirir:'
+    teacher_email_required: 'Öğretmen ödülleri teyitli eposta adresi gerektirir:'
     confirm:
       title: Lütfen onaylayın
       'no': Hayır
@@ -221,7 +220,7 @@
     confirm: Emin misiniz?
     created: '%{model} başarılı bir şekilde oluşturuldu.'
     updated: '%{model} başarılı bir şekilde güncellendi.'
-    destroyed: '%{model} was successfully deleted.'
+    destroyed: '%{model} başarıyla silindi.'
     access_denied: ' % {model} ''e erişiminiz yok.'
   nav:
     header:
@@ -263,8 +262,8 @@
     student_teacher_disassociated: '% {teacher_name},  % {student_name} ''in öğretmeni
       olmaktan kaldırıldı'
   user:
-    email_confirm_needed: 'Email address has not been confirmed:'
-    email_resend_confirm: Resend confirmation instructions
+    email_confirm_needed: 'Eposta adresiniz teyit edilmedi:'
+    email_resend_confirm: Onay yönergelerini yeniden gönder
     new_password_hint: (Eğer değiştirmek iştemiyorsanız boş bırakın)
     current_password_hint: (Değişikliklerinizi onaylamak için geçerli parolanız gerekiyor)
     cancel:

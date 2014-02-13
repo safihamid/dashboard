@@ -31,8 +31,8 @@
           desc: Editează Codul
           MazeEC: Etapa 1
         2014 Levels:
-          desc: 2014 Puzzles (beta)
-          MazeEC: Stage 1
+          desc: Puzzle-uri 2014 (beta)
+          MazeEC: Etapa 1
     game:
       name:
         Unplug1: Introducere în Informatică
@@ -56,7 +56,7 @@
         Artist5: Artistul 5
         Unplug11: Încheiere
         MazeEC: Labirintul
-        Bounce: Bounce
+        Bounce: Saritura
     trophy:
       name:
         Bronze: Bronz
@@ -333,18 +333,27 @@
         maze_3_3: Cum să ajung la porcușor? Asigură-te că nu intru în cutia cu TNT!
         maze_3_4: Argh! Scrie-mi un program care mă duce de jur împrejurul minelor
           de TNT şi până la porcușor.
-        bounce_1: Attach a block to the "when left arrow" block, then run and move
-          the paddle with the left arrow key to the finish target.
-        bounce_2: Attach a block to the "when right arrow" and "when left arrow" blocks,
-          then run and move the paddle with the both arrow key to both finish targets.
-        bounce_3: TBD
-        bounce_4: TBD
-        bounce_5: Attach a blocks to the "when right arrow", "when left arrow", "when
-          ball hits wall", and "when ball hits paddle" blocks.
-        bounce_6: Try again with more balls.
-        bounce_7: Now it is getting crazy!
-        bounce_8: Try again with more balls.
-        bounce_9: Now it is getting crazy!
+        bounce_1: Ataşaţi un bloc la "atunci când săgeată stanga" bloc, apoi apăsaţi
+          "Executa Programul" şi muta paletele cu tasta săgeată stânga pana la final.
+        bounce_2: Ataşaţi un bloc la "când săgeată dreapta" şi "atunci când săgeată
+          stânga" blocuri, apoi ruleaza şi muta paletele cu ambele taste de săgeti
+          pentru a termina obiectivul.
+        bounce_3: Acum, încerca ceva similar cu blocul "atunci cand sageata in sus".
+          Muta paleltele pana la obiectiv în partea de sus.
+        bounce_4: De data aceasta aveţi nevoie să adăugaţi patru blocuri. Muta paletele
+          la toate cele patru obiective pentru a finaliza acest puzzle.
+        bounce_5: Vom trimite o minge sa zboare în jos spre palete. Ataşaţi un bloc
+          la blocul "când mingea loveste peleta" pentru a garanta ca mingea atinge
+          obiectivul tinta.
+        bounce_6: Acum obiectivul tinta se afla in partea de sus. Ai nevoie sa atasezi
+          blocuri la ambele "cand mingea loveste" blocuri pentru a rezolva puzzle-ul.
+        bounce_7: Ataseaza blocuri la blocurile "cand sageata dreapta", "cand sageata
+          stanga", "cand mingea loveste peretele", si "mingea loveste paleta".
+        bounce_8: Încercaţi din nou cu mai multe mingi.
+        bounce_9: Acum devine nebunie!
+        bounce_10: There is a now a goal at the top. Attach "increment score" blocks
+          to the the "when ball in goal" and "when ball misses paddle" blocks to make
+          a game.
       levelIncompleteError:
         maze_2_8: 'Pentru a rezolva acesta, găsește modelul care repetă. Folosește
           un bloc "repetă" care să conțină următoarele 3 blocuri în el: mută, mută,

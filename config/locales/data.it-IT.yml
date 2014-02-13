@@ -31,8 +31,8 @@
           desc: Modifica il codice
           MazeEC: Fase 1
         2014 Levels:
-          desc: 2014 Puzzles (beta)
-          MazeEC: Stage 1
+          desc: Puzzle del 2014 (versione beta)
+          MazeEC: Fase 1
     game:
       name:
         Unplug1: Introduzione all'informatica
@@ -56,7 +56,7 @@
         Artist5: L'artista 5
         Unplug11: Conclusione
         MazeEC: Il labirinto
-        Bounce: Bounce
+        Bounce: Rimbalzo
     trophy:
       name:
         Bronze: Bronzo
@@ -337,18 +337,30 @@
           cassetta di TNT!
         maze_3_4: Argh! Scrivimi un programma che mi faccia andare intorno il TNT
           e verso il maiale.
-        bounce_1: Attach a block to the "when left arrow" block, then run and move
-          the paddle with the left arrow key to the finish target.
-        bounce_2: Attach a block to the "when right arrow" and "when left arrow" blocks,
-          then run and move the paddle with the both arrow key to both finish targets.
-        bounce_3: TBD
-        bounce_4: TBD
-        bounce_5: Attach a blocks to the "when right arrow", "when left arrow", "when
-          ball hits wall", and "when ball hits paddle" blocks.
-        bounce_6: Try again with more balls.
-        bounce_7: Now it is getting crazy!
-        bounce_8: Try again with more balls.
-        bounce_9: Now it is getting crazy!
+        bounce_1: Collega un blocco al blocco "quando la freccia a sinistra", poi
+          premi "Esegui Programma" e sposta la racchetta verso il bersaglio finale
+          usando il tasto "freccia a sinistra".
+        bounce_2: Collega un blocco ai blocchi "quando la freccia a sinistra" e "quando
+          la freccia a destra", poi premi "Esegui Programma" e sposta la racchetta
+          verso il bersaglio finale usando entrambi i tasti "freccia a sinistra" e
+          "freccia a destra".
+        bounce_3: Ora prova qualcosa di simile con il blocco "quando la freccia in
+          alto". Sposta la racchetta verso il bersaglio finale in alto.
+        bounce_4: Questa volta devi aggiungere quattro blocchi. Sposta la racchetta
+          verso tutti e quattro i bersagli finali per completare questo puzzle.
+        bounce_5: Faremo volare una palla verso il basso incontro alla racchetta.
+          Collega un blocco al blocco "quando la palla colpisce la racchetta" per
+          far sì che la palla raggiunga il bersaglio finale.
+        bounce_6: Ora il bersaglio finale è in alto. Per risolvere questo puzzle ènecessario
+          collegare dei blocchi ad entrambi i blocchi "quando la palla colpisce".
+        bounce_7: Collega dei blocchi ai blocchi "quando la freccia a destra", "quando
+          la freccia a sinistra", "quando la palla colpisce il muro" e "quando la
+          palla colpisce la racchetta".
+        bounce_8: Riprova di nuovo con più palle.
+        bounce_9: Ora ti farà impazzire!
+        bounce_10: There is a now a goal at the top. Attach "increment score" blocks
+          to the the "when ball in goal" and "when ball misses paddle" blocks to make
+          a game.
       levelIncompleteError:
         maze_2_8: 'Per risolvere questo, trovare il modello che si ripete. Utilizzare
           un blocco "ripetizione" con questi 3 blocchi all''interno di esso: muoversi,

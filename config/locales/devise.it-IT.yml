@@ -21,7 +21,7 @@
       confirmation_instructions:
         subject: Istruzioni di conferma di Code.org
       reset_password_instructions:
-        subject: Ripristina le istruzioni per la password su Code.org
+        subject: Istruzioni di ripristino della password su Code.org
       unlock_instructions:
         subject: Istruzioni di sblocco
     omniauth_callbacks:

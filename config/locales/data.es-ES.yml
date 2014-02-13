@@ -341,8 +341,11 @@
           ball hits wall", and "when ball hits paddle" blocks.
         bounce_6: Try again with more balls.
         bounce_7: Now it is getting crazy!
-        bounce_8: Try again with more balls.
-        bounce_9: Now it is getting crazy!
+        bounce_8: Pruébalo otra vez con más bolas.
+        bounce_9: ¡Ahora se está volviendo loco!
+        bounce_10: There is a now a goal at the top. Attach "increment score" blocks
+          to the the "when ball in goal" and "when ball misses paddle" blocks to make
+          a game.
       levelIncompleteError:
         maze_2_8: 'Para resolver este, encuentra el bloque que repite. Usa un bloque
           "repetir" con estos 3 bloques en su interior: avanzar, avanzar, girar a

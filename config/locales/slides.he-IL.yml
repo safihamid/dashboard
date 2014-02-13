@@ -220,10 +220,10 @@
           מקום ה- "אורך".
       4:
         image: notes/stage11_4.jpg
-        text: This means our artist is going to draw a square that has 50 pixel length
-          sides, then it will add 10 to that and draw a square with 60 pixel length
-          sides. Then it will keep adding 10 and drawing squares until it reaches
-          90. So we'll have squares of 50, 60, 70, 80, and 90.
+        text: זה אומר שהאמן שלנו הולך לצייר ריבוע שכל צד באורך 50 פיקסלים, ואז הוא
+          יוסיף 10 לזה ויצייר ריבוע שכל צד באורך 60 פיקסלים. אחר-כך הוא ימשיך להוסיף
+          10 ולצייר ריבועים עד שהוא יגיע ל90. אז יהיו לנו ריבועים של 50, 60, 70, 80,
+          ו90.
     parameters:
       1:
         image: notes/stage15_1.jpg
@@ -236,25 +236,25 @@
         text: היינו יכולים לכתוב את כל הקוד בעצמנו או שנוכל להשתמש בפונקציה עם פרמטרים.
       4:
         image: notes/stage15_4.jpg
-        text: To do this, click the blue star on the "draw a triangle" function definition.
-          Then drag "input name" into the "input" block.
+        text: כדי לעשות זאת לחץ על הכפתור הכחול של הגדרת הפונקציה "צייר משולש". אז
+          גרור "שם קלט" לתוך בלוק ה"קלט".
       5:
         image: notes/stage15_5.jpg
-        text: Then if you write "length" in the spot where it says "x" and press "Enter"
-          you'll create a length input for your function.
+        text: אז אם תכתוב "אורך" במקום שכתוב "x" ותלחץ על Enter, תיצור קלט אורך לפונקציה
+          שלך.
       6:
         image: notes/stage15_6.jpg
-        text: Then click on the star. Now, you want to click on the variables category
-          and drag the "length" block into the "move forward" block of your function
-          definition. And drag away the old number block.
+        text: אז תלחץ על הכוכב. עכשיו, אתה רוצה ללחוץ על קטגוריית המשתנים ולגרור את
+          הבלוק "אורך" לתוך הבלוק "לזוז קדימה" של הפונקציה שלך. כמו כן, תגרור משם
+          את הבלוק מספר הישן.
       7:
         image: notes/stage15_7.jpg
-        text: To use your function with parameters, click on the functions category
-          and drag out your "draw a triangle with length" function.
+        text: כדי להשתמש בפונקציה שלך עם פרמטרים, לחץ על קטגוריית הפונקציות וגרור
+          החוצה את הפונקציה "צייר משולש עם אורך".
       8:
         image: notes/stage15_8.jpg
-        text: Now you can use the math block to input different numbers to draw triangles
-          of different sizes.
+        text: עכשיו אתה יכול להשתמש בבלוק מתמטיקה כדי להכניס מספרים שונים כדי לצייר
+          משולשים בגדלים שונים.
     hoc_wrapup:
       1:
         image: notes/hoc6_1.jpg

@@ -31,8 +31,8 @@
           desc: Kodu Düzenle
           MazeEC: 1. Aşama
         2014 Levels:
-          desc: 2014 Puzzles (beta)
-          MazeEC: Stage 1
+          desc: 2014 Bulmacaları (beta)
+          MazeEC: 1. Aşama
     game:
       name:
         Unplug1: Bilgisayar Bilimine Giriş
@@ -223,8 +223,9 @@
         turtle_2_8: Bu biraz uğraştıracak. "Kardan adam çiz" ve yeni "İleri zıpla"
           (Hareketler kategorisinde) fonksiyonunu kullanarak aralarında 100 piksel
           bulunan 3 farklı renkte kardan adam çiz.
-        turtle_2_9: Use a "count with" loop to draw a family of snowmen with heights
-          of 110, 100, 90, 80, and 70. The snowmen should all be 60 pixels apart.
+        turtle_2_9: 110, 100, 90, 80 ve 70 boylarında kardan adam ailesi çizmek için
+          "ile say" döngüsünü kullanın. Kardan adamların tümü 60 piksel uzaklıkta
+          olmalıdır.
         turtle_2_10: Değişik spirallerle çalışman için bir kod. Dönme miktarını değiştirirsen
           ne olur? Ya da döngüyü rastgele renge ayarlasan? İstediğin herhangi bir
           şey çiz.
@@ -324,8 +325,11 @@
           ball hits wall", and "when ball hits paddle" blocks.
         bounce_6: Try again with more balls.
         bounce_7: Now it is getting crazy!
-        bounce_8: Try again with more balls.
-        bounce_9: Now it is getting crazy!
+        bounce_8: Daha çok top ile yeniden deneyin.
+        bounce_9: Şimdi deli oluyor!
+        bounce_10: There is a now a goal at the top. Attach "increment score" blocks
+          to the the "when ball in goal" and "when ball misses paddle" blocks to make
+          a game.
       levelIncompleteError:
         maze_2_8: 'Bunu çözmek için yinelenen denetim örneğini bulun. "repeat" bloğunu
           bu 3 blok ile kullanın: yürüyün, yürüyün, sağa dönün.'

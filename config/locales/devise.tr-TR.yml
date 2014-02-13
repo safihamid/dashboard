@@ -1,7 +1,7 @@
 "tr":
   devise:
     confirmations:
-      confirmed: Hesabınız başarıyla onaylandı ! Şimdi giriş yaptınız.
+      confirmed: Eposta adresiniz başarıyla doğrulandı.
       send_instructions: Birkaç dakika içinde hesabınızı nasıl aktifleştireceğinizi
         anlatan bir mail alacaksınız.
       send_paranoid_instructions: Eğer mail adresiniz bizde kayıtlı ise, birkaç dakika
@@ -18,9 +18,9 @@
       unconfirmed: Devam etmeden önce hesabınızı onaylamanız gerekir.
     mailer:
       confirmation_instructions:
-        subject: Onay talimatları
+        subject: Code.org onay yönergeleri
       reset_password_instructions:
-        subject: Şifre talimatlarını sıfırlayın
+        subject: Code.org parola sıfırlama yönergeleri
       unlock_instructions:
         subject: Talimatların kilidini aç
     omniauth_callbacks:
