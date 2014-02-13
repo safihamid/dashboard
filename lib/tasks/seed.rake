@@ -269,7 +269,7 @@ namespace :seed do
   task analyze_data: [:ideal_solutions, :frequent_level_sources]
 
   task builder_levels: :environment do
-    game = Game.whereh(:name => "Custom")
+    game = Game.where(:name => "Custom")
     level = Level.where(:game => game, :name => "builder", :skin => "artist_zombie", :level_num => "builder").first_or_create
     script = Script.builder_script
     ScriptLevel.where(:script => script, :level => level, :chapter => 1, :game_chapter => 1).first_or_create
