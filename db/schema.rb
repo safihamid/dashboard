@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140212235319) do
+ActiveRecord::Schema.define(version: 20140213224051) do
 
   create_table "activities", force: true do |t|
     t.integer  "user_id"
@@ -94,6 +94,7 @@ ActiveRecord::Schema.define(version: 20140212235319) do
     t.float    "priority"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
   end
 
   create_table "level_source_images", force: true do |t|

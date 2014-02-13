@@ -54,11 +54,14 @@ class LevelSourceHintsController < ApplicationController
   end
 
   def create
+    raise "unauthorized" if !current_user.admin? && !current_user.hint_access?
     # Find or create the hint data
     level_source_hint =
-        LevelSourceHint.where(level_source_id: params[:level_source_id], hint:  params[:hint_content]).first_or_create
+        LevelSourceHint.where(level_source_id: params[:level_source_id], hint: params[:hint_content]).first_or_create
     # Update the times this hint has been proposed
     level_source_hint.times_proposed = (level_source_hint.times_proposed || 0) + 1
+    # Record the user_id entering the hint
+    level_source_hint.user_id = current_user.id
     level_source_hint.save!
 
     # Set the associated frequent_unsuccessful_level_source to be inactive
