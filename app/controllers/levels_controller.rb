@@ -82,7 +82,7 @@ class LevelsController < ApplicationController
   def create_custom
     game = Game::CUSTOM
     script = Script.builder_script
-    level = Level.new(:game => game, :level_num => "custom", :skin => "artist_zombie")
+    level = Level.new(:game => game, :level_num => "custom", :skin => "artist_zombie", :user => current_user || User.new)
     script_level = ScriptLevel.create(script: script, level: level, chapter: 1, game_chapter: 1)
     solution = LevelSource.lookup(level, params[:program])
     level.update(solution_level_source: solution)
