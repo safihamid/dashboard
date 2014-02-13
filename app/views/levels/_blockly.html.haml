@@ -33,6 +33,7 @@
       showVideo(#{@autoplay_video_info.to_json})
 
   - share = false if local_assigns[:share].nil?
+  - builder = false if local_assigns[:builder].nil?
   - hide_source = false if local_assigns[:hide_source].nil?
   - start_blocks = false if local_assigns[:start_blocks].nil?
 
@@ -46,6 +47,11 @@
       onAttempt: function(report) {
         report.fallbackResponse = #{@fallback_response.to_json};
         report.callback = '#{@callback}';
+        if (#{builder}) {
+          report.onComplete = function(response) {
+            alert("Give this link to your students: " + response.url);
+          };
+        }
         sendReport(report);
       },
       onContinue: function() {
@@ -96,7 +102,8 @@
         levelIncompleteError: '#{escape_javascript(@levelIncompleteError)}',
         other1StarError: '#{escape_javascript(@other1StarError)}',
         tooFewBlocksMsg: '#{escape_javascript(@tooFewBlocksMsg)}',
-        #{("startBlocks: '" + start_blocks + "'") if start_blocks}
+        #{("startBlocks: '" + start_blocks + "',") if start_blocks}
+        #{("solutionBlocks: '" + @solution_blocks + "',") if @solution_blocks}
       },
       skinId: '#{@level.skin}'
     });

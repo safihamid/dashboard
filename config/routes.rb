@@ -38,6 +38,8 @@ Dashboard::Application.routes.draw do
   resources :games do
     resources :levels
   end
+  get 'builder', to: 'levels#builder'
+  post 'create_custom', to: 'levels#create_custom'
 
   resources :scripts, only: [], path: '/s/' do
     resources :script_levels, as: :levels, only: [:show], path: "/level", format: false do
