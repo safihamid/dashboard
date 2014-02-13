@@ -11,7 +11,22 @@
           = link_to t('home.teacher_student_count', count: current_user.students.length), manage_followers_path
           = t('home.teacher_averages', trophy_average: ("%.1f" % current_user.average_student_trophies), trophy_max: Trophy::TROPHY_MAX)
 
-        = render partial: 'shared/teacher_nav', locals: { current: 'home' }
+        %p
+          = render partial: 'shared/teacher_nav', locals: { current: 'home' }
+
+        %p
+          %a#printcertificates{:href=>"#"} #{t('home.teacher_print_certificates')}
+          - finished_students = current_user.students.select { |student| student.prize_earned == true }
+          - js_array = "<input type='hidden' name='course' value='20hours'>"
+          - finished_students.first(30).each do |finished_student|
+            - js_array = js_array +  "<input type='hidden' name='names[]' value='" + CGI::escape(finished_student.name) + "'>"
+          :javascript
+            $("#printcertificates").click(function() {
+              $('<form action="http://code.org/certificates" method="POST">' + 
+                "#{js_array}" +
+                '</form>').submit();
+            });
+
         %hr
 
       %h4 #{t('home.student_progress')}:
