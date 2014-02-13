@@ -2,8 +2,8 @@ class LevelsController < ApplicationController
   include LevelsHelper
   before_filter :authenticate_user!
   skip_before_filter :verify_authenticity_token, :only => [:builder, :create_custom]
-  check_authorization :except => [:builder, :create_custom]
-  load_and_authorize_resource :except => [:builder, :create_custom]
+  load_and_authorize_resource
+  check_authorization
 
   before_action :set_level, only: [:show, :edit, :update, :destroy]
 
@@ -72,7 +72,7 @@ class LevelsController < ApplicationController
   end
 
   def builder
-    @level = Level.builder_script
+    @level = Level::BUILDER
     @game = @level.game
     @full_width = true
     @callback = "/create_custom"
@@ -81,7 +81,7 @@ class LevelsController < ApplicationController
 
   def create_custom
     game = Game::CUSTOM
-    script = Script::BUILDER
+    script = Script.builder_script
     level = Level.new(:game => game, :level_num => "custom", :skin => "artist_zombie")
     script_level = ScriptLevel.create(script: script, level: level, chapter: 1, game_chapter: 1)
     solution = LevelSource.lookup(level, params[:program])
