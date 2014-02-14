@@ -1,5 +1,14 @@
 %div
 
+  - if current_user && current_user.admin?
+    %h3 Add hint access by entering the user's email address below.
+    = form_for(current_user, :url => edit_user_registration_path, :html => { :method => :get }) do |f|
+      .field
+        = text_field_tag :user_email, nil, class: 'input-xxlarge', placeholder: 'Email for user', :required => true
+        = hidden_field_tag :redirect, frequent_unsuccessful_level_sources_path
+      .actions
+        = f.submit 'Add Hint Access'
+
   %h1= link_to 'Start adding hints (where needed) >>', add_pop_hint_path(0)
   %br
   %h1 Or, choose a particular puzzle and add hints just for that puzzle:
@@ -18,4 +27,7 @@
             - link = add_pop_hint_per_level_path(sl.level_id, 0)
             %a{ href: link, class: "level_link"}#{sl.game_chapter}
           .stage_separator
+
+:javascript
+  $( "#user_email" ).placeholder();
 

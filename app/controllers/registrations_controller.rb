@@ -30,6 +30,14 @@ class RegistrationsController < Devise::RegistrationsController
     end
   end
 
+  def edit
+    User.where(email: params[:user_email]).each do |user|
+      user.update_attribute(:hint_access, true)
+    end
+    redirect_url = params[:redirect]
+    redirect_to redirect_url, notice: "User hint access added to #{params[:user_email]}"
+  end
+
   private
 
   # check if we need password to update user data
