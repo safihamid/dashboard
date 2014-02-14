@@ -16,14 +16,14 @@
 
         %p
           %a#printcertificates{:href=>"#"} #{t('home.teacher_print_certificates')}
-          - finished_students = current_user.students.select { |student| student.prize_earned == true }
-          - js_array = "<input type='hidden' name='course' value='20hours'>"
+          - finished_students = current_user.students.select { |student| student.prize_earned }
+          - finished_student_post = "<input type='hidden' name='course' value='20hours'>"
           - finished_students.first(30).each do |finished_student|
-            - js_array = js_array +  "<input type='hidden' name='names[]' value='" + CGI::escape(finished_student.name) + "'>"
+            - finished_student_post = finished_student_post +  "<input type='hidden' name='names[]' value='" + CGI::escape(finished_student.name) + "'>"
           :javascript
             $("#printcertificates").click(function() {
               $('<form action="http://code.org/certificates" method="POST">' + 
-                "#{js_array}" +
+                "#{finished_student_post}" +
                 '</form>').submit();
             });
 
