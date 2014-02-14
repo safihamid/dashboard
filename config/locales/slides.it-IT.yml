@@ -88,8 +88,8 @@
           i buchi.
       3:
         image: notes/stage9_3.jpg
-        text: I nuovi blocchi rimuovono 1 badilata di sporco da una pila e riempiono
-          con 1 badilata di sporco un buco.
+        text: I nuovi blocchi rimuovono 1 palata di terra da un mucchio e riempiono
+          una buca con 1 palata di terra.
       4:
         image: notes/stage9_4.jpg
         text: I mucchi e i fori sono di diemensioni differenti, quindi devi dire l'agricoltore
@@ -214,9 +214,9 @@
           compone di un blocco "ripetizione" e un blocco "riempire".
       4:
         image: notes/stage13_4.jpg
-        text: La definizione si trova nell'area di lavoro, ma il nostro agricoltore
-          non eseguirà la funzione fino a quando trascineremo fuori il nostro blocco
-          funzione "riempimento 5" dalla categoria di funzioni.
+        text: La definizione si trova nell'area di lavoro, ma per far eseguire la
+          funzione al contadino devi trascinare il blocco funzione "riempi di 5" fuori
+          dalla categoria "Funzioni".
       5:
         image: notes/stage13_5.jpg
         text: Mettiamo il "divertimento" in "FUNzione!" 
@@ -226,12 +226,12 @@
         text: Ciao, sono Makinde! Impariamo il blocco "mentre" 
       2:
         image: notes/stage9_6.jpg
-        text: Il blocco "mentre" farà qualunque cosa si inserisce all'interno di esso
-          FINO A CHE l'istruzione riportata sopra è VERA.
+        text: Il blocco "mentre" farà qualunque cosa si trova all'interno di esso
+          PER TUTTO IL TEMPO IN CUI la condizione presente all'inizio è VERA.
       3:
         image: notes/stage9_7.jpg
-        text: Ad esempio, se l'agricoltore è in piedi su un mucchio, continuerà a
-          rimuovere 1 palata MENTRE c'è ancora un mucchio sotto di lei.
+        text: Ad esempio, se il contadino è sopra un mucchio, continuerà a rimuovere
+          1 palata MENTRE c'è ancora un mucchio sotto di lui.
     loop_for:
       1:
         image: notes/stage11_1.jpg

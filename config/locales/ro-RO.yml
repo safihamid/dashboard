@@ -19,8 +19,8 @@
       placeholder: Cod (ABCDEF) sau e-mail (profesor@școală.edu)
     submit: Adaugă profesor
   add_hint_form:
-    placeholder: Please enter your hint here
-    submit: Add hint
+    placeholder: Introdu indiciul tau aici
+    submit: Adauga indiciu
   appname: Code.org
   stage: Etapă
   puzzle: Puzzle
@@ -69,8 +69,9 @@
       către clase, acelor profesori de şcoală publică din U.S.A. care coordonează
       cel puţin 15 elevi prin acest curs. <a href="http://code.org/educate/20hr">
       a se vedea Ghidul educatorului pentru mai multe informaţii.</a> '
-    teacher_prize_limits: '(Limit: $1,000 per teacher. <a target="_blank" href="http://help.donorschoose.org/app/answers/detail/a_id/454/kw/code.org">See
-      FAQ for more limits</a>)'
+    teacher_prize_limits: '(Limita: $1.000 pentru fiecare profesor. <a target="_blank"
+      href="http://help.donorschoose.org/app/answers/detail/a_id/454/kw/code.org">
+      A se vedea FAQ pentru mai multe limite</a>)'
     teacher_pitch: Predă Introducerea K-8 în Informatică în clasa ta
     teacher_title: Înregistrare Profesor
     student_pitch: 'Peste 1 oră: încearcă Introducerea noastră K-8 în Informatică'
@@ -133,11 +134,10 @@
       invite_student:
         subject: Alătură-te clasei cu %{teacher_name} la Code.org!
       student_disassociated:
-        subject: 'Code.org notification: %{student_name} is no longer associated as
-          your student.'
+        subject: 'Code.org notificare: %{student_name} nu mai este asociat ca student.'
       teacher_disassociated:
-        subject: 'Code.org notification: %{teacher_name} is no longer associated as
-          your teacher.'
+        subject: 'Code.org notificare: %{teacher_name} nu mai este asociat ca profesorul
+          tău.'
   reports:
     error:
       access_denied: Nu ai acces la statisticile de progress ale acestei persoane
@@ -146,7 +146,7 @@
     provider: 'Furnizor:'
     code: 'Cod:'
     redeem_header: 'To redeem:'
-    donorschoose_how_to: How to use your code
+    donorschoose_how_to: Cum sa-ti utilizezi codul
     success: Ți-ai revendicat cu succes premiul, vezi codul de mai jos.
     error: Premiul tău nu a putut fi revendicat, te rugăm să încerci din nou.
     error_us_only: Premiile oferite sunt valabile doar pentru utilizatorii din Statele
@@ -154,8 +154,10 @@
     error_not_earned: Nu ai câștigat încă acest premiu.
     error_already_redeemed: Premiul tău a fost deja răscumpărat.
     no_prizes_available: Ne pare rău, dar nu avem niciun premiu disponibil în prezent.
-    teacher_info_required: 'Teacher prizes require school name and address information:'
-    teacher_email_required: 'Teacher prizes require a confirmed email address:'
+    teacher_info_required: 'Premiile pentru profesori necesita informatii despre numele
+      scolii si adresa:'
+    teacher_email_required: 'Premiile profesorilor necesita confirmarea adresei de
+      email:'
     confirm:
       title: Te rugăm să confirmi
       'no': Nu
@@ -187,9 +189,8 @@
         valabilă numai pentru studenţii din SUA, şi numai atât timp cât încă mai sunt
         pe stoc.'
       teacher:
-        earned: 10 sau mai mulți studenţii au colectate toate cele %{num_trophies}
-          trofee. Ai câștigat un premiu pentru profesor! (Numai pentru profesorii
-          din SUA)
+        earned: 15 sau mai mulți studenţii au colectat toate %{num_trophies} trofee.
+          Ai câștigat un premiu pentru profesor! (Numai pentru profesorii din SUA)
         not_earned_title: Teach the class, earn up to $1,000 in <a target="_blank"
           href="http://DonorsChoose.org">DonorsChoose.org</a> credits (U.S. teachers
           only)
@@ -229,8 +230,8 @@
     confirm: Eşti sigur(ă)?
     created: '%{model} a fost creat cu succes.'
     updated: '%{model} a fost actualizat cu succes.'
-    destroyed: '%{model} was successfully deleted.'
-    access_denied: You do not have access to this %{model}.
+    destroyed: '%{model} a fost şters cu succes.'
+    access_denied: Nu aveţi acces la această %{model}.
   nav:
     header:
       finished_hoc: Am terminat Ora mea de Cod
@@ -257,23 +258,23 @@
       prizes_link: mai multe informaţii
   teacher:
     title:
-      one: Profesorul tău este %{name}
+      one: 'Profesorul tău:'
       other: 'Profesorii tăi:'
-    remove: (remove teacher)
+    remove: (eliminaţi profesor)
     confirm:
-      remove: Are you sure you want to remove this teacher?
+      remove: Esti sigur ca vrei sa elimini acest profesor?
     tools: Instrumente pentru profesor
     students:
       manage: Gestionează elevi
       add: Adaugă elevi
     rollup: Grilă de progress
     activity: Activitatea recentă a clasei
-    user_not_found: The teacher or student could not be found
-    student_teacher_disassociated: '%{teacher_name} has been removed as a teacher
-      for %{student_name}'
+    user_not_found: Profesorul sau studentul nu pot fi găsit
+    student_teacher_disassociated: '%{teacher_name} a fost eliminat ca profesor pentru
+      %{student_name}'
   user:
-    email_confirm_needed: 'Email address has not been confirmed:'
-    email_resend_confirm: Resend confirmation instructions
+    email_confirm_needed: 'Adresa de email nu a fost confirmata:'
+    email_resend_confirm: Retrimite instructiunile de confirmare
     new_password_hint: (lasă necompletat dacă nu dorești să schimbi)
     current_password_hint: (avem nevoie de parola ta curentă pentru a confirma modificările)
     cancel:

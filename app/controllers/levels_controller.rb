@@ -1,7 +1,9 @@
 class LevelsController < ApplicationController
+  include LevelsHelper
   before_filter :authenticate_user!
-  check_authorization
+  skip_before_filter :verify_authenticity_token, :only => [:builder, :create_custom]
   load_and_authorize_resource
+  check_authorization
 
   before_action :set_level, only: [:show, :edit, :update, :destroy]
 
@@ -67,6 +69,24 @@ class LevelsController < ApplicationController
       format.html { redirect_to game_levels_url }
       format.json { head :no_content }
     end
+  end
+
+  def builder
+    @level = Level::BUILDER
+    @game = @level.game
+    @full_width = true
+    @callback = "/create_custom"
+    render :show, :locals => {:builder => true}
+  end
+
+  def create_custom
+    game = Game::CUSTOM
+    script = Script.builder_script
+    level = Level.new(:game => game, :level_num => "custom", :skin => "artist_zombie", :user => current_user)
+    script_level = ScriptLevel.create(script: script, level: level, chapter: 1, game_chapter: 1)
+    solution = LevelSource.lookup(level, params[:program])
+    level.update(solution_level_source: solution)
+    render text: "{ \"url\": \"#{build_script_level_url(script_level)}\"}"
   end
 
   private

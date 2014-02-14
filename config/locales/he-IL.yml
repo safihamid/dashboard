@@ -20,8 +20,8 @@
       placeholder: קוד (ABCDEF) או תשלחו אימייל ל (teacher@school.edu)
     submit: הוספת מורה
   add_hint_form:
-    placeholder: Please enter your hint here
-    submit: Add hint
+    placeholder: הכניסו בבקשה את הרמז שלכם כאן
+    submit: הוסף רמז
   appname: Code.org
   stage: שלב
   puzzle: חידה
@@ -133,8 +133,7 @@
       student_disassociated:
         subject: 'הודעה מCode.org: %{student_name} כבר לא רשום כתלמיד שלך.'
       teacher_disassociated:
-        subject: 'Code.org notification: %{teacher_name} is no longer associated as
-          your teacher.'
+        subject: 'הודעת מערכת: {teacher_name}%לא משויך עוד כמורה שלך. '
   reports:
     error:
       access_denied: אין לך גישה לסטטיסטיקות של האדם הזה
@@ -181,8 +180,8 @@
         של Skype, והורדות של משחקים בחינם. הערה: הצעה זו תקפה רק לתושבי ארה"ב, ורק
         כל עוד נשאר במלאי.'
       teacher:
-        earned: 10 או יותר תלמידים אספו את כל ה%{num_trophies} גביעים. אתה זכית בפרס
-          למורים (רק למורים בארה"ב)
+        earned: 15 או יותר תלמידים אספו % {num_trophies} גביעים, שהם כל הגביעים. זכית
+          בפרס המורה! (מורים בארה"ב בלבד)
         not_earned_title: Teach the class, earn up to $1,000 in <a target="_blank"
           href="http://DonorsChoose.org">DonorsChoose.org</a> credits (U.S. teachers
           only)
@@ -254,9 +253,8 @@
       add: הוסף תלמיד
     rollup: לוח התקדמות
     activity: פעילות אחרונה בכיתה
-    user_not_found: The teacher or student could not be found
-    student_teacher_disassociated: '%{teacher_name} has been removed as a teacher
-      for %{student_name}'
+    user_not_found: לא ניתן היה למצוא את המורה או התלמיד
+    student_teacher_disassociated: '% {teacher_name} הוסר כמורה של % {student_name}'
   user:
     email_confirm_needed: 'כתובת הדוא"ל עוד לא אושרה:'
     email_resend_confirm: שלח מחדש הוראות אישור דוא"ל

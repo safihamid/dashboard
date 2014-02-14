@@ -59,7 +59,7 @@ class ApplicationController < ActionController::Base
       if !next_level
         # If the current script is hour of code, continue on to twenty-hour
         if script_level.script.hoc?
-          next_level = Script.find_twenty_hour_script.get_script_level_by_chapter(script_level.chapter + 1)
+          next_level = Script.twenty_hour_script.get_script_level_by_chapter(script_level.chapter + 1)
           redirect = current_user ? build_script_level_path(next_level) : "http://code.org/api/hour/finish"
         else
           response[:redirect] = root_path

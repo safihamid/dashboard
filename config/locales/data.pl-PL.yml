@@ -57,7 +57,7 @@
         Artist5: Artysta 5
         Unplug11: Podsumowanie
         MazeEC: Labirynt
-        Bounce: Bounce
+        Bounce: Odbicie
     trophy:
       name:
         Bronze: Brąz
@@ -320,18 +320,28 @@
           na pole z TNT!
         maze_3_4: Argh! Napisz mi program, który poprowadzi mnie wokół pól z TNT i
           doprowadzi mnie do świnki.
-        bounce_1: Attach a block to the "when left arrow" block, then run and move
-          the paddle with the left arrow key to the finish target.
-        bounce_2: Attach a block to the "when right arrow" and "when left arrow" blocks,
-          then run and move the paddle with the both arrow key to both finish targets.
-        bounce_3: TBD
-        bounce_4: TBD
-        bounce_5: Attach a blocks to the "when right arrow", "when left arrow", "when
-          ball hits wall", and "when ball hits paddle" blocks.
-        bounce_6: Try again with more balls.
-        bounce_7: Now it is getting crazy!
-        bounce_8: Try again with more balls.
-        bounce_9: Now it is getting crazy!
+        bounce_1: Dołącz blok do bloku "kiedy strzałka w lewo", a następnie naciśnij
+          przycisk "Uruchom Program" i przenieś paletkę z klawiszem strzałki w lewo
+          na koniec.
+        bounce_2: Dołącz blok do bloku "kiedy strzałka w prawo" i bloku "kiedy strzałka
+          w lewo", a następnie uruchom i przenieś paletki z obydwoma klawiszami strzałek
+          na oba końce.
+        bounce_3: Teraz spróbuj czegoś podobnego z blokiem "kiedy strzałka w górę".
+          Przenieś paletki do miejsca końcowego na górze.
+        bounce_4: Tym razem musisz dodać cztery bloki. Przenieś paletki do wszystkich
+          czterech miejsc końcowych, by zakończyć układankę.
+        bounce_5: Mamy zamiar skierować piłkę lecącą w dół w kierunku paletki. Dołącz
+          blok do bloku "kiedy piłka uderza paletkę", aby upewnić się, że piłka osiąga
+          ostateczny cel.
+        bounce_6: Teraz ostateczny cel jest na górze. Musisz dołączyć bloki do obu
+          bloków "kiedy piłka uderza", aby rozwiązać tę łamigłówkę.
+        bounce_7: Dołącz bloki do bloków "kiedy strzałka w prawo", "kiedy strzałka
+          w lewo", "kiedy piłka uderza w ścianę" i "kiedy piłka uderza w paletkę".
+        bounce_8: Spróbuj ponownie z większą liczbą piłek.
+        bounce_9: Teraz to się staje szalone!
+        bounce_10: There is a now a goal at the top. Attach "increment score" blocks
+          to the the "when ball in goal" and "when ball misses paddle" blocks to make
+          a game.
       levelIncompleteError:
         maze_2_8: 'Aby rozwiązać ten problem, znajdź wzór (układ), który się powtarza.
           Użyj bloku powtórz z trzema blokami w nim: idź, idź, skręć w prawo.'
