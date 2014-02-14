@@ -30,18 +30,6 @@ class RegistrationsController < Devise::RegistrationsController
     end
   end
 
-  def edit
-    redirect_url = params[:redirect]
-    user = User.where(email: params[:user_email]).first
-    if user && user.teacher? && user.confirmed?
-      user.update_attribute(:hint_access, true)
-      redirect_to redirect_url, notice: "User hint access added to #{params[:user_email]}"
-    else
-      redirect_to redirect_url, notice: "Failed: #{params[:user_email]} either is not a teacher or has not confirmed his/her email."
-    end
-
-  end
-
   private
 
   # check if we need password to update user data

@@ -75,6 +75,17 @@ class LevelSourceHintsController < ApplicationController
     redirect_to redirect_url, notice: I18n.t('add_hint_form.submit')
   end
 
+  def add_hint_access
+    redirect_url = params[:redirect]
+    user = User.where(email: params[:user_email]).first
+    if user && user.teacher? && user.confirmed?
+      user.update_attribute(:hint_access, true)
+      redirect_to redirect_url, notice: "User hint access added to #{params[:user_email]}"
+    else
+      redirect_to redirect_url, notice: "Failed: #{params[:user_email]} either is not a teacher or has not confirmed his/her email."
+    end
+  end
+
   protected
   def common(level_source_id)
     @level_source = LevelSource.find(level_source_id)

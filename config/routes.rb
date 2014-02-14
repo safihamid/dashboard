@@ -16,6 +16,7 @@ Dashboard::Application.routes.draw do
   get '/show_hints/:level_source_id', :to => 'level_source_hints#show_hints', as: 'show_hints'
   get '/add_pop_hint/:idx', :to => 'level_source_hints#add_pop_hint', as: 'add_pop_hint'
   get '/add_pop_hint_per_level/:level_id/:idx', :to => 'level_source_hints#add_pop_hint_per_level', as: 'add_pop_hint_per_level'
+  get '/add_hint_access', :to => 'level_source_hints#add_hint_access', as: 'add_hint_access'
 
   resources :frequent_unsuccessful_level_sources, only: [:index]
 

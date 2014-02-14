@@ -2,7 +2,7 @@
 
   - if current_user && current_user.admin?
     %h3 Add hint access by entering the user's email address below.
-    = form_for(current_user, :url => edit_user_registration_path, :html => { :method => :get }) do |f|
+    = form_for(current_user, :url => add_hint_access_path, :html => { :method => :get }) do |f|
       .field
         = text_field_tag :user_email, nil, class: 'input-xxlarge', placeholder: 'Email for user', :required => true
         = hidden_field_tag :redirect, frequent_unsuccessful_level_sources_path
