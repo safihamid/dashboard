@@ -38,23 +38,24 @@
         - if !current_user.teacher? && current_user.teachers.length == 0
           = link_to t('add_teacher_form.submit'), "#" + :teacher_email_or_code.to_s
 - else
-  %h3= link_to t('try_hoc'), hoc_reset_path()
-  = link_to t('already_started'), hoc_chapter_path(ScriptLevel::NEXT)
-  %br/
-  %br/
-
-  %hr
-
   %h3= link_to t('try_k8intro'), k8intro_chapter_path(ScriptLevel::NEXT)
   = image_tag 'signup_header.jpg'
   %br/
 
   - unless Rails.configuration.minimal_mode
     %br/
-    %p
-      #{t('nav.user.signup')}: #{link_to t('home.student_reg_link'), new_user_registration_path} | #{link_to t('home.teacher_reg_link'), new_user_registration_path('user[user_type]' => User::TYPE_TEACHER)}.
+    %p.medium-size-text
+      #{link_to t('home.student_reg_link'), new_user_registration_path} | #{link_to t('home.teacher_reg_link'), new_user_registration_path('user[user_type]' => User::TYPE_TEACHER)}.
       #{raw t('home.signin_message', link: link_to(t('nav.user.signin'), new_user_session_path))}.
-
+    %p
+      #{t('signup_form.overview')}
+    - if eligible_for_prize?
+      %p
+        #{t('home.prize_info')}
+        = render partial: 'shared/student_prize_mini_grid'
+      %br/
+      %br/
+    %br/
 
 .row
   .span12

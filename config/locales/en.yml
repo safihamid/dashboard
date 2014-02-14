@@ -51,7 +51,7 @@ en:
   more: "MORE"
   less: "LESS"
   try_hoc: "Try the Hour of Code, click here >> "
-  try_k8intro: "Or, try our K-8 Intro to Computer Science Course (15-25 hours)"
+  try_k8intro: "Try our K-8 Intro to Computer Science Course (15-25 hours)"
   already_started: "Already started? Resume here >> "
   demos: "Admin: All Demos"
   continue: 'Continue'
@@ -99,11 +99,14 @@ en:
     student_terms: "I agree to be bound by the Code.org terms of service. If I am under 13 years of age, I confirm by submitting this form that I have my parent or legal guardian's permission to use the Code.org services."
     teacher_terms: "I agree to be bound by the Code.org terms of service."
   signin_form:
-    title: 'Sign in'
+    title: 'Have an account already? Sign in'
     login: 'Email or username'
     password: 'Password'
     remember: 'Remember me'
     submit: 'Sign in'
+  signin:
+    try_hoc: 'Try one Hour of Code first'
+    try_20hours: 'Try our 20 hour Intro to Computer Science'
   password:
     reset_form:
       title: 'Forgot your password?'
@@ -260,8 +263,8 @@ en:
     show_more: Show more
   home:
     signin_message: "Or if you're already registered, %{link}"
-    student_reg_link: 'Student'
-    teacher_reg_link: 'Teacher'
+    student_reg_link: 'Student Sign Up'
+    teacher_reg_link: 'Teacher Sign Up'
     teacher_dashboard: See progress dashboard
     teacher_student_count_one: You have %{count} student.
     teacher_student_count: You have %{count} students.
@@ -276,6 +279,7 @@ en:
     local_school: local school
     online: online
     see_details: See details
+    prize_info: 'Prizes for participation (U.S. only): $10 gift cards for student completion and up to $1,000 in classroom rewards for public school teachers'
   gender:
     male: 'Male'
     female: 'Female'

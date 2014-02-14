@@ -55,7 +55,7 @@
                       .header_text= "#{t(:of)} #{progress['max_trophies']}"
                   - else
                     .header_separator
-                    %a.header_finished_link{href: new_user_registration_path}
+                    %a.header_finished_link{href: root_path}
                       = t('nav.header.sign_in_to_save')
                 - if script.twenty_hour?
                   .header_separator
