@@ -16,6 +16,7 @@ Dashboard::Application.routes.draw do
   get '/show_hints/:level_source_id', :to => 'level_source_hints#show_hints', as: 'show_hints'
   get '/add_pop_hint/:idx', :to => 'level_source_hints#add_pop_hint', as: 'add_pop_hint'
   get '/add_pop_hint_per_level/:level_id/:idx', :to => 'level_source_hints#add_pop_hint_per_level', as: 'add_pop_hint_per_level'
+  get '/add_hint_access', :to => 'level_source_hints#add_hint_access', as: 'add_hint_access'
 
   resources :frequent_unsuccessful_level_sources, only: [:index]
 
@@ -38,6 +39,8 @@ Dashboard::Application.routes.draw do
   resources :games do
     resources :levels
   end
+  get 'builder', to: 'levels#builder'
+  post 'create_custom', to: 'levels#create_custom'
 
   resources :scripts, only: [], path: '/s/' do
     resources :script_levels, as: :levels, only: [:show], path: "/level", format: false do

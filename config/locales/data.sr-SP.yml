@@ -331,6 +331,9 @@
         bounce_7: Now it is getting crazy!
         bounce_8: Try again with more balls.
         bounce_9: Now it is getting crazy!
+        bounce_10: There is a now a goal at the top. Attach "increment score" blocks
+          to the the "when ball in goal" and "when ball misses paddle" blocks to make
+          a game.
       levelIncompleteError:
         maze_2_8: 'Како бих сте решили ово, пронађите сличност која се понавља. Користите
           "понови" блок са ова 3 блока унутар: крени, крени, скрени десно.'

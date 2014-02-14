@@ -49,6 +49,7 @@ namespace :seed do
     Game.create!(name: 'Unplug10', app: 'unplug')
     Game.create!(name: 'Unplug11', app: 'unplug')
     Game.create!(name: 'Bounce', app: 'bounce')
+    Game.create!(name: "Custom", app: "turtle")
   end
 
   COL_GAME = 'Game'
@@ -71,6 +72,7 @@ namespace :seed do
         { file: 'config/hoc_script.csv', params: { name: 'Hour of Code', wrapup_video: Video.find_by_key('hoc_wrapup'), trophies: false, hidden: false }},
         { file: 'config/ec_script.csv', params: { name: 'Edit Code', wrapup_video: Video.find_by_key('hoc_wrapup'), trophies: false, hidden: true }},
         { file: 'config/2014_script.csv', params: { name: '2014 Levels', wrapup_video: nil, trophies: false, hidden: true }},
+        { file: 'config/builder_script.csv', params: { name: 'Builder Levels', wrapup_video: nil, trophies: false, hidden: true }}
     ]
     sources.each do |source|
       script = Script.create!(source[:params])
@@ -78,7 +80,6 @@ namespace :seed do
 
       CSV.read(source[:file], { col_sep: "\t", headers: true }).each_with_index do |row, index|
         game = game_map[row[COL_GAME].squish]
-        puts "row #{index}: #{row.inspect}"
         level = Level.find_or_create_by_game_id_and_level_num(game.id, row[COL_LEVEL])
         level.name = row[COL_NAME]
         level.level_url ||= row[COL_URL]
@@ -159,18 +160,19 @@ namespace :seed do
     freq_cutoff = args[:freq_cutoff].to_i > 0 ? args[:freq_cutoff].to_i : 100
     # 0: level_source_id, 1: level_id, 2: num_of_attempts
     Activity.connection.execute('select level_source_id, level_id, count(*) as num_of_attempts from activities where test_result < 100 group by level_source_id order by num_of_attempts DESC').each do |level_source|
-      if level_source[2] >= freq_cutoff && !level_source.nil? && !level_source[0].nil? && !level_source[1].nil? && !level_source[2].nil?
-        unsuccessful_level_source = FrequentUnsuccessfulLevelSource.where(
-            level_source_id: level_source[0],
-            level_id: level_source[1],
-            num_of_attempts: level_source[2]).first_or_create;
-        if LevelSourceHint.where(level_source_id: unsuccessful_level_source.level_source_id).size < 3
-          puts "Active level source #{unsuccessful_level_source.level_source_id}"
-          unsuccessful_level_source.active = true;
-          unsuccessful_level_source.save!
+      if !level_source.nil? && !level_source[0].nil? && !level_source[1].nil? && !level_source[2].nil?
+        if level_source[2] >= freq_cutoff
+          unsuccessful_level_source = FrequentUnsuccessfulLevelSource.where(
+              level_source_id: level_source[0],
+              level_id: level_source[1]).first_or_create
+          unsuccessful_level_source.num_of_attempts = level_source[2]
+          if LevelSourceHint.where(level_source_id: unsuccessful_level_source.level_source_id).size < 3
+            unsuccessful_level_source.active = true
+            unsuccessful_level_source.save!
+          end
+        else
+          break
         end
-      else
-        break;
       end
     end
   end
@@ -266,7 +268,15 @@ namespace :seed do
     end
   end
 
-  task all: [:videos, :concepts, :games, :callouts, :scripts, :trophies, :prize_providers]
-
   task analyze_data: [:ideal_solutions, :frequent_level_sources]
+
+  task builder_levels: :environment do
+    game = Game.where(name: "Custom").first
+    level = Level.where(game: game, name: "builder", skin: "artist_zombie", level_num: "builder").first_or_create
+    script = Script.builder_script
+    ScriptLevel.where(script: script, level: level, chapter: 1, game_chapter: 1).first_or_create
+  end
+
+  task all: [:videos, :concepts, :games, :callouts, :scripts, :trophies, :prize_providers, :builder_levels]
+
 end

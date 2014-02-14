@@ -59,13 +59,13 @@
       progressi.
     prizes_header: I primi studenti che completano il corso vincono premi! (Solo per
       gli studenti degli Stati Uniti)
-    prizes_message: Gli studenti degli Stati Uniti che guadagnano tutti i %{num_trophies}
-      trofei concetto possono selezionare una varietà di premi tra cui spazio gratuito
-      su Dropbox, crediti Skype e giochi scaricabili da Electronic Arts.
+    prizes_message: 'Gli studenti degli Stati Uniti che guadagnano tutti i %{num_trophies}
+      trofei possono selezionare una varietà di premi tra cui: spazio gratuito su
+      Dropbox, crediti Skype e giochi scaricabili da Electronic Arts.'
     teacher_educator_guide: Vedere la guida educatore
     teacher_prize_header: Vincere $1.000 in <a target="_blank" href="http://DonorsChoose.org">DonorsChoose.org</a>premi
     teacher_prize_message: 'In collaborazione con <a target="_blank" href="http://DonorsChoose.org">
-      DonorsChoose.org</a>, Code.org offrirà fino a $1.000 in finanziamenti per le
+      DonorsChoose.org</a>, Code.org offrirà fino a $1.000 di finanziamento per le
       classi  degli insegnanti della scuola pubblica degli Stati Uniti che porteranno
       almeno 15 studenti a seguire il corso. <a href="http://code.org/educate/20hr">
       Per ulteriori informazioni, controlla la guida per insegnanti.</a> '
@@ -130,10 +130,10 @@
       invite_student:
         subject: Unisciti ad una classe con %{teacher_name} su Code.org!
       student_disassociated:
-        subject: 'Notifica da Code.org: %{student_name} non è più associato come vostro
-          allievo.'
+        subject: 'Notifica da Code.org: %{student_name} non è più associato come tuo
+          studente.'
       teacher_disassociated:
-        subject: 'Notifica da Code.org: %{teacher_name} non è più associato come vostro
+        subject: 'Notifica da Code.org: %{teacher_name} non è più associato come tuo
           insegnante.'
   reports:
     error:
@@ -149,19 +149,20 @@
     error: Il premio non poteva essere redento, riprovare.
     error_us_only: L'offerta del premio vale solo per gli utenti degli Stati Uniti.
     error_not_earned: Non hai ancora ottenuto questo premio.
-    error_already_redeemed: Il premio è già stato riscattato.
+    error_already_redeemed: Il tuo premio è stato già consegnato.
     no_prizes_available: Siamo spiacenti, ma attualmente non abbiamo premi disponibili.
-    teacher_info_required: 'I premi insegnante richiedono nome ed indirizzo della
-      scuola:'
-    teacher_email_required: 'I premi insegnante richiedono un indirizzo email confermato:'
+    teacher_info_required: 'I premi per l''insegnante richiedono nome ed indirizzo
+      della scuola:'
+    teacher_email_required: 'I premi per l''insegnante richiedono un indirizzo email
+      confermato:'
     confirm:
       title: Si prega di confermare
       'no': false
       'yes': Sì
       msg: Sei sicuro di voler reclamare il premio %{prize_name}?
       msg_student: 'Nota: Puoi solo scegliere un tipo di premio.'
-      msg_publicschool: Si prega di confermare di essere un insegnante della scuola
-        pubblica degli Stati Uniti.
+      msg_publicschool: Per favore conferma di essere un insegnante della scuola pubblica
+        degli Stati Uniti.
       msg_visit_website: Visita il sito
     providers:
       apple_itunes: $10 Carta Regalo iTunes
@@ -186,7 +187,7 @@
         in crediti Skype, e giochi gratuiti da scaricare. Nota: offerta valida solo
         per gli studenti degli Stati Uniti e solo fino ad esaurimento scorte.'
       teacher:
-        earned: 10 o più studenti hanno ottenuto tutti i %{num_trophies} trofei. Hai
+        earned: 15 o più studenti hanno ottenuto tutti i %{num_trophies} trofei. Hai
           vinto un premio per l'insegnante! (Solo per gli insegnanti degli Stati Uniti)
         not_earned_title: Teach the class, earn up to $1,000 in <a target="_blank"
           href="http://DonorsChoose.org">DonorsChoose.org</a> credits (U.S. teachers
@@ -227,7 +228,7 @@
     confirm: Sei sicuro?
     created: '%{model} è stato creato correttamente.'
     updated: '%{model} è stato aggiornato correttamente.'
-    destroyed: '%{model}, è stato eliminato con successo.'
+    destroyed: '%{model} è stato eliminato con successo.'
     access_denied: Non hai accesso a questo %{model}.
   nav:
     header:
@@ -258,7 +259,7 @@
       other: 'I tuoi insegnanti:'
     remove: (rimuovi insegnante)
     confirm:
-      remove: Sei sicuro di che voler rimuovere questo insegnante?
+      remove: Sei sicuro di voler rimuovere questo insegnante?
     tools: Strumenti dell'insegnante
     students:
       manage: Gestione studenti

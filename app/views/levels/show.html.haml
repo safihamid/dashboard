@@ -12,7 +12,9 @@
 - if @game.app == 'unplug'
   = render partial: "levels/unplug", locals: { app: @game.app }
 - else
-  = render partial: "levels/blockly", locals: { start_blocks: @start_blocks, app: @game.app }
+  -# Solution and start blocks may be nil if they don't exist for this level.
+  - @solution_blocks = '' if ! defined? @solution_blocks
+  = render partial: "levels/blockly", locals: { start_blocks: @start_blocks, app: @game.app, solution_blocks: @solution_blocks, builder: local_assigns[:builder]}
 
 - if Rails.env.production? && request.path == hoc_chapter_path(chapter: 1)
   -# special tracking image to make sure a cookie is set when hoc starts (/hoc/1)
