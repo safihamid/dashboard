@@ -16,7 +16,9 @@
   %script{src: "#{blockly_path}js/#{js_locale}/vendor.js?v=#{blockly_cache_bust}"}
   %script{src: "#{blockly_path}js/#{js_locale}/#{app}#{pretty ? '' : '.min'}.js?v=#{blockly_cache_bust}"}
 
-  - @instructions = data_t('level.instructions', "#{@level.game.app}_#{@level.level_num}")
+  -# Get instructions from db if available.
+  - @instructions = @level.instructions
+  - @instructions ||= data_t('level.instructions', "#{@level.game.app}_#{@level.level_num}")
   - @instructions ||= data_t('level.instructions', "#{@level.game.name}_#{@level.level_num}")
 
   - @levelIncompleteError = data_t('level.levelIncompleteError', "#{@level.game.app}_#{@level.level_num}")
@@ -102,6 +104,7 @@
         levelIncompleteError: '#{escape_javascript(@levelIncompleteError)}',
         other1StarError: '#{escape_javascript(@other1StarError)}',
         tooFewBlocksMsg: '#{escape_javascript(@tooFewBlocksMsg)}',
+        builder: #{builder},
         #{("startBlocks: '" + start_blocks + "',") if start_blocks}
         #{("solutionBlocks: '" + @solution_blocks + "',") if @solution_blocks}
       },
