@@ -60,22 +60,18 @@ namespace :seed do
   COL_SKIN = 'Skin'
 
   task scripts: :environment do
-    c = Script.connection
-    c.execute('truncate table script_levels')
-    c.execute('truncate table scripts')
-
     game_map = Game.all.index_by(&:name)
     concept_map = Concept.all.index_by(&:name)
 
     sources = [
-        { file: 'config/script.csv', params: { name: '20-hour', wrapup_video: nil, trophies: true, hidden: false }},
+        { file: 'config/script.csv', params: { name: '20-hour', trophies: true, hidden: false }},
         { file: 'config/hoc_script.csv', params: { name: 'Hour of Code', wrapup_video: Video.find_by_key('hoc_wrapup'), trophies: false, hidden: false }},
         { file: 'config/ec_script.csv', params: { name: 'Edit Code', wrapup_video: Video.find_by_key('hoc_wrapup'), trophies: false, hidden: true }},
-        { file: 'config/2014_script.csv', params: { name: '2014 Levels', wrapup_video: nil, trophies: false, hidden: true }},
-        { file: 'config/builder_script.csv', params: { name: 'Builder Levels', wrapup_video: nil, trophies: false, hidden: true }}
+        { file: 'config/2014_script.csv', params: { name: '2014 Levels', trophies: false, hidden: true }},
+        { file: 'config/builder_script.csv', params: { name: 'Builder Levels', trophies: false, hidden: true }}
     ]
     sources.each do |source|
-      script = Script.create!(source[:params])
+      script = Script.where(source[:params]).first_or_create
       game_index = Hash.new{|h,k| h[k] = 0}
 
       CSV.read(source[:file], { col_sep: "\t", headers: true }).each_with_index do |row, index|
