@@ -94,7 +94,7 @@ namespace :seed do
           end
         end
         level.save!
-        ScriptLevel.create!(script: script, level: level, chapter: (index + 1), game_chapter: (game_index[game.id] += 1))
+        ScriptLevel.where(script: script, level: level, chapter: (index + 1), game_chapter: (game_index[game.id] += 1)).first_or_create
       end
     end
   end

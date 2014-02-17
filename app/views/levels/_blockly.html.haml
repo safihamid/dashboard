@@ -16,10 +16,10 @@
   %script{src: "#{blockly_path}js/#{js_locale}/vendor.js?v=#{blockly_cache_bust}"}
   %script{src: "#{blockly_path}js/#{js_locale}/#{app}#{pretty ? '' : '.min'}.js?v=#{blockly_cache_bust}"}
 
-  -# Get instructions from db if available.
-  - @instructions = @level.instructions
-  - @instructions ||= data_t('level.instructions', "#{@level.game.app}_#{@level.level_num}")
+  - @instructions = data_t('level.instructions', "#{@level.game.app}_#{@level.level_num}")
   - @instructions ||= data_t('level.instructions', "#{@level.game.name}_#{@level.level_num}")
+  -# Get instructions from db if available.
+  - @instructions ||= @level.instructions
 
   - @levelIncompleteError = data_t('level.levelIncompleteError', "#{@level.game.app}_#{@level.level_num}")
   - @levelIncompleteError ||= data_t('level.levelIncompleteError', "#{@level.game.name}_#{@level.level_num}")
