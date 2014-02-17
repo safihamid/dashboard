@@ -72,6 +72,7 @@ class LevelsController < ApplicationController
   end
 
   def builder
+    raise "unauthorized" if !current_user.admin?
     @level = Level::BUILDER
     @game = @level.game
     @full_width = true
@@ -80,9 +81,10 @@ class LevelsController < ApplicationController
   end
 
   def create_custom
+    raise "unauthorized" if !current_user.admin?
     game = Game::CUSTOM
     script = Script.builder_script
-    level = Level.new(:game => game, :level_num => "custom", :skin => "artist_zombie", :user => current_user)
+    level = Level.new(game: game, level_num: "custom", skin: "artist_zombie", user: current_user, instructions: params[:instructions])
     script_level = ScriptLevel.create(script: script, level: level, chapter: 1, game_chapter: 1)
     solution = LevelSource.lookup(level, params[:program])
     level.update(solution_level_source: solution)
