@@ -100,6 +100,9 @@
     password: Senha
     remember: Lembrar de mim
     submit: Entrar
+  signin:
+    try_hoc: Try one Hour of Code first
+    try_20hours: Try our 20 hour Intro to Computer Science
   password:
     reset_form:
       title: Esqueceu sua senha?
@@ -189,7 +192,7 @@
         downloads de jogos grátis. Nota: oferta válida somente para estudantes dos
         EUA e apenas enquanto durarem os estoques.'
       teacher:
-        earned: 10 ou mais alunos receberam todos os %{num_trophies} troféus. Você
+        earned: 15 ou mais alunos receberam todos os %{num_trophies} troféus. Você
           ganhou um prêmio de professor! (Somente para professores dos EUA)
         not_earned_title: Teach the class, earn up to $1,000 in <a target="_blank"
           href="http://DonorsChoose.org">DonorsChoose.org</a> credits (U.S. teachers
@@ -297,6 +300,9 @@
     teacher_student_count: Você tem %{count} alunos.
     teacher_averages: Em média os seus alunos ganharam %{trophy_average} de %{trophy_max}
       em troféus de "Conceito de Maestria".
+    teacher_print_certificates: Print certificates for students who finish this course
+    teacher_read_blog: Read about news and updates to our materials at our Educator
+      Blog
     classroom: Sua sala de aula
     student_progress: Seu progresso de aprendizagem
     student_stats: Você ganhou  %{trophy_count} de %{trophy_max} em troféus de "Conceito
@@ -309,6 +315,8 @@
     local_school: escola local
     online: on-line
     see_details: Ver detalhes
+    prize_info: 'Prizes for participation (U.S. only): $10 gift cards for student
+      completion and up to $1,000 in classroom rewards for public school teachers'
   gender:
     male: Masculino
     female: Feminino

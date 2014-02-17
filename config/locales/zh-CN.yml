@@ -90,6 +90,9 @@
     password: '密码:'
     remember: 记住我
     submit: 登录
+  signin:
+    try_hoc: Try one Hour of Code first
+    try_20hours: Try our 20 hour Intro to Computer Science
   password:
     reset_form:
       title: 忘记密码？
@@ -263,6 +266,9 @@
     teacher_student_count_one: 你有 %{count} 个学生。
     teacher_student_count: 你有 %{count} 个学生。
     teacher_averages: 平均下来，您的学生获得了%{trophy_average}/%{trophy_max}个“概念掌握”奖杯。
+    teacher_print_certificates: Print certificates for students who finish this course
+    teacher_read_blog: Read about news and updates to our materials at our Educator
+      Blog
     classroom: 你的教室
     student_progress: 你的学习进度
     student_stats: 你已经获得了%{trophy_count}/%{trophy_max}个“概念掌握”奖杯。
@@ -272,6 +278,8 @@
     local_school: 本地学校
     online: 在线
     see_details: 查看详细信息
+    prize_info: 'Prizes for participation (U.S. only): $10 gift cards for student
+      completion and up to $1,000 in classroom rewards for public school teachers'
   gender:
     male: 男性
     female: 女性

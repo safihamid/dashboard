@@ -101,6 +101,9 @@
     password: Κωδικός
     remember: Να με θυμάσαι
     submit: Σύνδεση
+  signin:
+    try_hoc: Try one Hour of Code first
+    try_20hours: Try our 20 hour Intro to Computer Science
   password:
     reset_form:
       title: Ξέχασες τον κωδικό σου;
@@ -297,6 +300,9 @@
     teacher_student_count: Εχεις %{count} μαθητές.
     teacher_averages: Οι μαθητές σου έχουν κερδίσει κατά μέσο όρο %{trophy_average}
       από %{trophy_max} βραβεία "Μαεστρίας".
+    teacher_print_certificates: Print certificates for students who finish this course
+    teacher_read_blog: Read about news and updates to our materials at our Educator
+      Blog
     classroom: Η αίθουσά σου
     student_progress: Η πρόοδός σας
     student_stats: Κέρδισες %{trophy_count} από %{trophy_max} τρόπαια "Μαεστρίας".
@@ -308,6 +314,8 @@
     local_school: τοπικό σχολείο
     online: σε σύνδεση
     see_details: Δείτε λεπτομέρειες
+    prize_info: 'Prizes for participation (U.S. only): $10 gift cards for student
+      completion and up to $1,000 in classroom rewards for public school teachers'
   gender:
     male: Αγόρι
     female: Κορίτσι

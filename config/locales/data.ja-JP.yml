@@ -220,6 +220,8 @@
         bounce_10: There is a now a goal at the top. Attach "increment score" blocks
           to the the "when ball in goal" and "when ball misses paddle" blocks to make
           a game.
+        Custom_builder: Drag blocks from the toolbox to the workspace to draw the
+          level you wish to create. Press "Run Program" when you are ready.
       levelIncompleteError:
         maze_2_8: この問題を解くには、くり返しのパターンを見つけます。「移動」、「移動」、「右に回転」の3つのブロック（ブロック「くり返し」が中にはいっている）を使いましょう。
       other1StarError:

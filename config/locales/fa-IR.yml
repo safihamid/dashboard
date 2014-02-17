@@ -98,6 +98,9 @@
     password: کلمه عبور
     remember: مرا به خاطر بسپار
     submit: ورود
+  signin:
+    try_hoc: Try one Hour of Code first
+    try_20hours: Try our 20 hour Intro to Computer Science
   password:
     reset_form:
       title: کلمه عبور خود را فراموش کرده اید؟
@@ -285,6 +288,9 @@
     teacher_student_count: شما %{count} دانش آموز دارید.
     teacher_averages: به طور متوسط دانش آموزان شما %{trophy_average} گنج از مجموع
       %{trophy_max} گنج «تسلط بر مفهوم» را جمع کرده اند.
+    teacher_print_certificates: Print certificates for students who finish this course
+    teacher_read_blog: Read about news and updates to our materials at our Educator
+      Blog
     classroom: کلاس درس شما
     student_progress: میزان پیشرفت یادگیری شما
     student_stats: شما %{trophy_count} گنج از مجموع %{trophy_max} گنج مرتبط با «تسلط
@@ -297,6 +303,8 @@
     local_school: مدرسه محلی
     online: آنلاین
     see_details: مشاهده جزئیات
+    prize_info: 'Prizes for participation (U.S. only): $10 gift cards for student
+      completion and up to $1,000 in classroom rewards for public school teachers'
   gender:
     male: مرد
     female: زن

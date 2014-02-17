@@ -339,9 +339,10 @@
           w lewo", "kiedy piłka uderza w ścianę" i "kiedy piłka uderza w paletkę".
         bounce_8: Spróbuj ponownie z większą liczbą piłek.
         bounce_9: Teraz to się staje szalone!
-        bounce_10: There is a now a goal at the top. Attach "increment score" blocks
-          to the the "when ball in goal" and "when ball misses paddle" blocks to make
-          a game.
+        bounce_10: Tam jest teraz cel u góry. Dołącz bloki "zwiększ wynik" do bloków  "kiedy
+          piłka w bramce" i "kiedy piłka mija paletkę"i, aby utworzyć grę.
+        Custom_builder: Drag blocks from the toolbox to the workspace to draw the
+          level you wish to create. Press "Run Program" when you are ready.
       levelIncompleteError:
         maze_2_8: 'Aby rozwiązać ten problem, znajdź wzór (układ), który się powtarza.
           Użyj bloku powtórz z trzema blokami w nim: idź, idź, skręć w prawo.'

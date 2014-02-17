@@ -102,6 +102,9 @@
     password: Password
     remember: Remember me
     submit: Sign in
+  signin:
+    try_hoc: Try one Hour of Code first
+    try_20hours: Try our 20 hour Intro to Computer Science
   password:
     reset_form:
       title: Forgot your password?
@@ -291,6 +294,9 @@
     teacher_student_count: You have %{count} students.
     teacher_averages: On average your students have earned %{trophy_average} out of
       %{trophy_max} "Concept Mastery" trophies.
+    teacher_print_certificates: Print certificates for students who finish this course
+    teacher_read_blog: Read about news and updates to our materials at our Educator
+      Blog
     classroom: Your classroom
     student_progress: Your learning progress
     student_stats: You've earned %{trophy_count} out of %{trophy_max} "Concept Mastery"
@@ -303,6 +309,8 @@
     local_school: local school
     online: online
     see_details: See details
+    prize_info: 'Prizes for participation (U.S. only): $10 gift cards for student
+      completion and up to $1,000 in classroom rewards for public school teachers'
   gender:
     male: Male
     female: Female

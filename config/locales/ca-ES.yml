@@ -97,6 +97,9 @@
     password: Contrasenya
     remember: Recorda'm
     submit: Inicia la sessió
+  signin:
+    try_hoc: Try one Hour of Code first
+    try_20hours: Try our 20 hour Intro to Computer Science
   password:
     reset_form:
       title: Has oblidat la constrasenya?
@@ -289,6 +292,9 @@
     teacher_student_count: Tens %{count} estudiants.
     teacher_averages: "Els teus estudiants han guanyat de mitjana %{trophy_average}
       fora del \n%{trophy_max} \"Concepte de Domini\" de trofeus.\n"
+    teacher_print_certificates: Print certificates for students who finish this course
+    teacher_read_blog: Read about news and updates to our materials at our Educator
+      Blog
     classroom: La teva classe
     student_progress: El teu progrés d'aprenentatge
     student_stats: Has guanyat %{trophy_count} fora del %{trophy_max} "Concepte de
@@ -301,6 +307,8 @@
     local_school: escola local
     online: en línia
     see_details: Veure detalls
+    prize_info: 'Prizes for participation (U.S. only): $10 gift cards for student
+      completion and up to $1,000 in classroom rewards for public school teachers'
   gender:
     male: Home
     female: Dona

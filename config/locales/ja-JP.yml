@@ -89,6 +89,9 @@
     password: パスワード
     remember: ログインを覚えてください。
     submit: ログイン
+  signin:
+    try_hoc: Try one Hour of Code first
+    try_20hours: Try our 20 hour Intro to Computer Science
   password:
     reset_form:
       title: パスワードをお忘れですか？
@@ -264,6 +267,9 @@
     teacher_student_count_one: あなたには %{count} 人の生徒がいます。
     teacher_student_count: あなたには %{count} 人の生徒がいます。
     teacher_averages: 平均であなたの学生わ %{trophy_max}のうち%{trophy_average}　"コンセプト習得"のトロフィーを獲得しています。
+    teacher_print_certificates: Print certificates for students who finish this course
+    teacher_read_blog: Read about news and updates to our materials at our Educator
+      Blog
     classroom: あなたの教室
     student_progress: 学習の進行状況
     student_stats: '%{trophy_max}このうち%{trophy_count} の"コンセプト"習得のトロフィーを獲得しました。'
@@ -274,6 +280,8 @@
     local_school: 地元の学校
     online: オンライン
     see_details: 詳細はこちら
+    prize_info: 'Prizes for participation (U.S. only): $10 gift cards for student
+      completion and up to $1,000 in classroom rewards for public school teachers'
   gender:
     male: 男性
     female: 女性

@@ -100,6 +100,9 @@
     password: Mot de passe
     remember: Se souvenir de moi
     submit: Connexion
+  signin:
+    try_hoc: Try one Hour of Code first
+    try_20hours: Try our 20 hour Intro to Computer Science
   password:
     reset_form:
       title: Mot de passe oublié ?
@@ -191,7 +194,7 @@
         offre uniquement valable pour les élèves aux États-Unis, et dans la limite
         des stocks disponibles.'
       teacher:
-        earned: 10 étudiants ou plus ont recueillis tous les %{num_trophies}. Vous
+        earned: 15 étudiants ou plus ont recueillis tous les %{num_trophies}. Vous
           avec gagné un prix de l'enseignant! (enseignant américains seulement)
         not_earned_title: Teach the class, earn up to $1,000 in <a target="_blank"
           href="http://DonorsChoose.org">DonorsChoose.org</a> credits (U.S. teachers
@@ -296,6 +299,9 @@
     teacher_student_count: Vous avez %{count} étudiants.
     teacher_averages: En moyenne, vos élèves ont acquis  %{trophy_average} sur  %{trophy_max}
       trophées "Concept de Maîtrise".
+    teacher_print_certificates: Print certificates for students who finish this course
+    teacher_read_blog: Read about news and updates to our materials at our Educator
+      Blog
     classroom: Votre classe
     student_progress: Votre progression d'apprentissage
     student_stats: Tu as gagné %{trophy_count} sur %{trophy_max} trophées "Concept
@@ -308,6 +314,8 @@
     local_school: école locale
     online: en ligne
     see_details: Voir les détails
+    prize_info: 'Prizes for participation (U.S. only): $10 gift cards for student
+      completion and up to $1,000 in classroom rewards for public school teachers'
   gender:
     male: Homme
     female: Femme

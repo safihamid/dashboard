@@ -97,6 +97,9 @@
     password: Lykilorð
     remember: Muna eftir mér
     submit: Innskráning
+  signin:
+    try_hoc: Try one Hour of Code first
+    try_20hours: Try our 20 hour Intro to Computer Science
   password:
     reset_form:
       title: Gleymt lykilorð?
@@ -291,6 +294,9 @@
     teacher_student_count: Þú ert með %{count} nemendur.
     teacher_averages: Að meðaltali hafa nemendur þínir unnið til %{trophy_average}
       af %{trophy_max} mögulegum "Concept Mastery" bikurum.
+    teacher_print_certificates: Print certificates for students who finish this course
+    teacher_read_blog: Read about news and updates to our materials at our Educator
+      Blog
     classroom: Bekkjarstofan þín
     student_progress: Námsframvinda þín
     student_stats: Þú hefur unnið til %{trophy_count} af %{trophy_max} mögulegum "Concept
@@ -303,6 +309,8 @@
     local_school: nálægur skóli
     online: á netinu
     see_details: Sjá nánar
+    prize_info: 'Prizes for participation (U.S. only): $10 gift cards for student
+      completion and up to $1,000 in classroom rewards for public school teachers'
   gender:
     male: Karlkyns
     female: Kvenkyns

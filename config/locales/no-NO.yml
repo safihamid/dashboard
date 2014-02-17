@@ -19,8 +19,8 @@
       placeholder: Kode (ABCDEF) eller e-post (navn@skole.no)
     submit: Legg til lærer
   add_hint_form:
-    placeholder: Please enter your hint here
-    submit: Add hint
+    placeholder: Skriv inn et hint her
+    submit: Legg til hint
   appname: Code.org
   stage: Scene
   puzzle: Oppgave
@@ -59,7 +59,7 @@
     prizes_header: The first students to complete the course win prizes! (U.S. students
       only)
     prizes_message: Amerikanske elever som får alle %{num_trophies} konsept-pokaler
-      kan velge mellom flere priser som gratis Dropbox-lagringsplass, Skype-kreditt,
+      kan velge mellom flere premier som gratis Dropbox-lagringsplass, Skype-kreditt,
       og nedlastbare spill fra Electronic Arts.
     teacher_educator_guide: Se lærerveiledningen
     teacher_prize_header: (Kun i USA) Vinn $1,000 i <a target="_blank" href="http://DonorsChoose.org">DonorsChoose.org</a>
@@ -68,8 +68,8 @@
       DonorsChoose.org</a> tilbyr Code.org opp til $1000 til USAs offentlig ansatte
       skolelærere som leder minst 15 elever gjennom dette kurset. <a href="http://code.org/educate/20hr">
       se pedagog guide for mer info.</a> '
-    teacher_prize_limits: '(Limit: $1,000 per teacher. <a target="_blank" href="http://help.donorschoose.org/app/answers/detail/a_id/454/kw/code.org">See
-      FAQ for more limits</a>)'
+    teacher_prize_limits: '(Grense: $1000 per lærer. <a target="_blank" href="http://help.donorschoose.org/app/answers/detail/a_id/454/kw/code.org">
+      Se FAQ-en for flere begrensninger</a>)'
     teacher_pitch: Lær bort ungdomsskolepensum i informatikk i klassen
     teacher_title: Påmelding for lærere
     student_pitch: 'Utover 1 time: Prøv vårt ungdomsskole-introduksjon til informatikk'
@@ -97,6 +97,9 @@
     password: Passord
     remember: Husk meg
     submit: Logg inn
+  signin:
+    try_hoc: Try one Hour of Code first
+    try_20hours: Try our 20 hour Intro to Computer Science
   password:
     reset_form:
       title: Har du glemt passordet ditt?
@@ -132,11 +135,11 @@
       invite_student:
         subject: Bli med i en av klassene til %{teacher_name} på Code.org!
       student_disassociated:
-        subject: 'Code.org notification: %{student_name} is no longer associated as
-          your student.'
+        subject: 'Melding fra Code.org: %{student_name} er ikke lenger tilknyttet
+          som din student.'
       teacher_disassociated:
-        subject: 'Code.org notification: %{teacher_name} is no longer associated as
-          your teacher.'
+        subject: 'Melding fra Code.org: %{teacher_name} er ikke lenger tilknyttet
+          som læreren din.'
   reports:
     error:
       access_denied: Du har ikke tilgang til denne personens statistikk
@@ -145,15 +148,15 @@
     provider: 'Tilbyder:'
     code: 'Kode:'
     redeem_header: 'To redeem:'
-    donorschoose_how_to: How to use your code
+    donorschoose_how_to: Slik bruker du koden din
     success: Premien din ble innløst, se koden nedenfor.
     error: Premien din kunne ikke løses inn, prøv igjen.
     error_us_only: Tilbudet om premier gjelder bare for amerikanske brukere.
     error_not_earned: Du har ikke ennå fortjent denne premien.
     error_already_redeemed: Premien din har allerede blitt innløst.
     no_prizes_available: Beklager, men vi har ingen premiene tilgjengelig.
-    teacher_info_required: 'Teacher prizes require school name and address information:'
-    teacher_email_required: 'Teacher prizes require a confirmed email address:'
+    teacher_info_required: 'Lærerpremier krever navn og adresse til skolen:'
+    teacher_email_required: 'Lærerpremier krever en bekreftet e-postadresse:'
     confirm:
       title: Vennligst bekreft
       'no': Nei
@@ -184,8 +187,8 @@
         Merk: tilbudet er bare for amerikanske elever, og bare så lenge som lageret
         rekker.'
       teacher:
-        earned: 10 eller flere studenter samlet alle %{num_trophies} pokalene. Du
-          har vunnet en lærerpremie! (Kun for lærere i USA)
+        earned: 15 eller flere studenter samlet alle de %{num_trophies} pokalene.
+          Du har vunnet en lærerpremie! (Kun for lærere i USA)
         not_earned_title: Teach the class, earn up to $1,000 in <a target="_blank"
           href="http://DonorsChoose.org">DonorsChoose.org</a> credits (U.S. teachers
           only)
@@ -221,8 +224,8 @@
     confirm: Er du sikker?
     created: '%{model} ble opprettet.'
     updated: '%{model} ble oppdatert.'
-    destroyed: '%{model} was successfully deleted.'
-    access_denied: You do not have access to this %{model}.
+    destroyed: '%{model} ble slettet.'
+    access_denied: Du har ikke tilgang til denne %{model}.
   nav:
     header:
       finished_hoc: Jeg har fullført min Kodetimen
@@ -248,23 +251,22 @@
       prizes_link: mer info
   teacher:
     title:
-      one: '%{name} er læreren din'
+      one: 'Din lærer:'
       other: 'Dine lærere:'
-    remove: (remove teacher)
+    remove: (Fjern lærer)
     confirm:
-      remove: Are you sure you want to remove this teacher?
+      remove: Er du sikker på at du vil fjerne denne læreren?
     tools: Lærerverktøy
     students:
       manage: Administrer elever
       add: Legg til elever
     rollup: Fremdriftsoversikt
     activity: Nylig klasseaktivitet
-    user_not_found: The teacher or student could not be found
-    student_teacher_disassociated: '%{teacher_name} has been removed as a teacher
-      for %{student_name}'
+    user_not_found: Læreren eller studenten ble ikke funnet
+    student_teacher_disassociated: '%{teacher_name} er fjernet som lærer for %{student_name}'
   user:
-    email_confirm_needed: 'Email address has not been confirmed:'
-    email_resend_confirm: Resend confirmation instructions
+    email_confirm_needed: 'E-postadressen er ikke bekreftet:'
+    email_resend_confirm: Send bekreftelse på nytt
     new_password_hint: (la stå tomt hvis du ikke vil endre det)
     current_password_hint: (vi trenger ditt gjeldende passord for å bekrefte dine
       endringer)
@@ -287,6 +289,9 @@
     teacher_student_count: Du har %{count} elever.
     teacher_averages: I gjennomsnitt har dine elever fått %{trophy_average} av totalt
       %{trophy_max}  pokaler for "Konseptmestring".
+    teacher_print_certificates: Print certificates for students who finish this course
+    teacher_read_blog: Read about news and updates to our materials at our Educator
+      Blog
     classroom: Ditt klasserom
     student_progress: Din læringskurve
     student_stats: Du har fått %{trophy_count} av maks %{trophy_max} pokaler for Konseptmestring.
@@ -298,6 +303,8 @@
     local_school: den lokale skolen
     online: på nett
     see_details: Se detaljer
+    prize_info: 'Prizes for participation (U.S. only): $10 gift cards for student
+      completion and up to $1,000 in classroom rewards for public school teachers'
   gender:
     male: Mann
     female: Kvinne

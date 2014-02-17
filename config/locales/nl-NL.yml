@@ -99,6 +99,9 @@
     password: Wachtwoord
     remember: Onthoud me
     submit: Log in
+  signin:
+    try_hoc: Try one Hour of Code first
+    try_20hours: Try our 20 hour Intro to Computer Science
   password:
     reset_form:
       title: Wachtwoord vergeten?
@@ -294,6 +297,9 @@
     teacher_student_count: Je hebt %{count} studenten.
     teacher_averages: Gemiddeld hebben je studenten %{trophy_average} van de %{trophy_max}
       "Concept Mastery" trofeeën.
+    teacher_print_certificates: Print certificates for students who finish this course
+    teacher_read_blog: Read about news and updates to our materials at our Educator
+      Blog
     classroom: Je klas
     student_progress: Je voortgang
     student_stats: Je hebt %{trophy_count} van de %{trophy_max} "Concept Mastery"
@@ -306,6 +312,8 @@
     local_school: lokale school
     online: online
     see_details: Bekijk details
+    prize_info: 'Prizes for participation (U.S. only): $10 gift cards for student
+      completion and up to $1,000 in classroom rewards for public school teachers'
   gender:
     male: Man
     female: Vrouw

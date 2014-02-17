@@ -99,6 +99,9 @@
     password: Parol
     remember: Məni yadda saxla
     submit: Daxil olun
+  signin:
+    try_hoc: Try one Hour of Code first
+    try_20hours: Try our 20 hour Intro to Computer Science
   password:
     reset_form:
       title: Parolunuzu unutmusunuz?
@@ -294,6 +297,9 @@
     teacher_student_count: Sizin %{count} tələbəniz var.
     teacher_averages: Tələbələriniz %{trophy_max} "Anlayışların mənimsənilməsi" kubokundan
       orta hesabla %{trophy_average} dənəsini qazandılar.
+    teacher_print_certificates: Print certificates for students who finish this course
+    teacher_read_blog: Read about news and updates to our materials at our Educator
+      Blog
     classroom: Sizin sinfiniz
     student_progress: Sizin təlim nəticələriniz
     student_stats: Siz %{trophy_max} "Anlayışların mənimsənilməsi" kubokundan %{trophy_count}
@@ -306,6 +312,8 @@
     local_school: yerli məktəb
     online: onlayn
     see_details: Təfərrüatına baxın
+    prize_info: 'Prizes for participation (U.S. only): $10 gift cards for student
+      completion and up to $1,000 in classroom rewards for public school teachers'
   gender:
     male: Kişi
     female: Qadın

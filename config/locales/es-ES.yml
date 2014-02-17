@@ -99,6 +99,9 @@
     password: Contraseña
     remember: Recordarme
     submit: Iniciar Sesión
+  signin:
+    try_hoc: Try one Hour of Code first
+    try_20hours: Try our 20 hour Intro to Computer Science
   password:
     reset_form:
       title: ¿Olvidaste tu contraseña?
@@ -298,6 +301,9 @@
     teacher_student_count: Tienes %{count} estudiantes.
     teacher_averages: Un promedio de tus estudiantes han ganado %{trophy_average}
       de %{trophy_max} trofeos "Dominio del Concepto" .
+    teacher_print_certificates: Print certificates for students who finish this course
+    teacher_read_blog: Read about news and updates to our materials at our Educator
+      Blog
     classroom: Tu aula
     student_progress: Tu progreso de aprendizaje
     student_stats: Has ganado %{trophy_count} de %{trophy_max} trofeos de  "Maestría
@@ -310,6 +316,8 @@
     local_school: escuela local
     online: en línea
     see_details: Ver detalles
+    prize_info: 'Prizes for participation (U.S. only): $10 gift cards for student
+      completion and up to $1,000 in classroom rewards for public school teachers'
   gender:
     male: Hombre
     female: Mujer

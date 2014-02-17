@@ -31,8 +31,8 @@
           desc: Mettre à jour le code
           MazeEC: Étape 1
         2014 Levels:
-          desc: 2014 Puzzles (beta)
-          MazeEC: Stage 1
+          desc: Puzzles de 2014 (bêta)
+          MazeEC: Étape 1
     game:
       name:
         Unplug1: Introduction à l'informatique
@@ -56,7 +56,7 @@
         Artist5: L'Artiste 5
         Unplug11: Résumé
         MazeEC: Le labyrinthe
-        Bounce: Bounce
+        Bounce: Rebondissement
     trophy:
       name:
         Bronze: Bronze
@@ -341,21 +341,31 @@
           pas sur la boîte d'explosifs !
         maze_3_4: Zut! Ecrivez-moi un programme qui me fasse éviter les explosifs
           et qui me conduise au cochon.
-        bounce_1: Attach a block to the "when left arrow" block, then run and move
-          the paddle with the left arrow key to the finish target.
-        bounce_2: Attach a block to the "when right arrow" and "when left arrow" blocks,
-          then run and move the paddle with the both arrow key to both finish targets.
-        bounce_3: TBD
-        bounce_4: TBD
-        bounce_5: Attach a blocks to the "when right arrow", "when left arrow", "when
-          ball hits wall", and "when ball hits paddle" blocks.
-        bounce_6: Try again with more balls.
-        bounce_7: Now it is getting crazy!
-        bounce_8: Try again with more balls.
-        bounce_9: Now it is getting crazy!
-        bounce_10: There is a now a goal at the top. Attach "increment score" blocks
-          to the the "when ball in goal" and "when ball misses paddle" blocks to make
-          a game.
+        bounce_1: Attache un bloc au bloc "quand flèche à gauche", puis appuie sur
+          "Exécuter Programme" pour que la raquette se déplace vers la cible en tapant
+          sur la touche 'flèche à gauche'.
+        bounce_2: Attache un bloc aux blocs "quand flèche à gauche" et "quand flèche
+          à droite", puis appuie sur "Exécuter Programme" pour que la raquette se
+          déplace vers la cible en tapant soit sur la touche 'flèche à gauche' ou
+          'flèche à droite'.
+        bounce_3: Maintenant, essaye la même chose avec le bloc "quand flèche en haut".  Fais
+          déplacer la raquette vers la cible en haut.
+        bounce_4: Cette fois, tu dois ajouter quatre blocs. Déplace la raquette vers
+          chacune des quatre cibles pour compléter ce puzzle.
+        bounce_5: Nous allons envoyer une balle vers la raquette.  Attache un bloc
+          au bloc "quand balle touche raquette" pour faire en sorte que la balle arrive
+          à la cible.
+        bounce_6: Maintenant la cible est au dessus.  Il te faudra attacher des blocs
+          à chacun des blocs "quand balle touche" pour terminer ce puzzle.
+        bounce_7: Attache des blocs aux blocs "quand flèche à droite", "quand flèche
+          à gauche", "quand balle touche au mur", et "quand balle touche la raquette".
+        bounce_8: Essaye à nouveau avec plus de balles.
+        bounce_9: Ça devient fou!
+        bounce_10: Il ya maintenant un but en haut.  Attache des blocs "incrémenter
+          le pointage" au blocs "quand balle au but" et "quand balle manque raquette"
+          pour construire un jeu.
+        Custom_builder: Drag blocks from the toolbox to the workspace to draw the
+          level you wish to create. Press "Run Program" when you are ready.
       levelIncompleteError:
         maze_2_8: 'Pour résoudre ceci, trouvez le schémas qui se répète. Utilisez
           un bloc "Répéter" contenant ces trois blocs: avancer, avancer, tourner à

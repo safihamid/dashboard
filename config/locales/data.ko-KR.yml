@@ -245,6 +245,8 @@
         bounce_10: There is a now a goal at the top. Attach "increment score" blocks
           to the the "when ball in goal" and "when ball misses paddle" blocks to make
           a game.
+        Custom_builder: Drag blocks from the toolbox to the workspace to draw the
+          level you wish to create. Press "Run Program" when you are ready.
       levelIncompleteError:
         maze_2_8: '이 퍼즐을 해결하기 위해서는 반복되는 패턴을 찾아내야 합니다. "반복" 블럭 안에 3 개의 블럭을 넣어보세요 :
           앞으로 이동, 앞으로 이동, 오른쪽으로 돌기.'

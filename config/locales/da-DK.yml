@@ -99,6 +99,9 @@
     password: Adgangskode
     remember: Husk mig
     submit: Log ind
+  signin:
+    try_hoc: Try one Hour of Code first
+    try_20hours: Try our 20 hour Intro to Computer Science
   password:
     reset_form:
       title: Glemt din adgangskode?
@@ -292,6 +295,9 @@
     teacher_student_count: Du har %{count} studerende.
     teacher_averages: Dine elever har i gennemsnit optjent %{trophy_average} ud af
       %{trophy_max} "Koncept beherskelse" trofæer.
+    teacher_print_certificates: Print certificates for students who finish this course
+    teacher_read_blog: Read about news and updates to our materials at our Educator
+      Blog
     classroom: Dit klasseværelse
     student_progress: Dit lærings fremskridt
     student_stats: Du har optjent %{trophy_count} ud af %{trophy_max} "Koncept beherskelses"
@@ -304,6 +310,8 @@
     local_school: lokal skole
     online: online
     see_details: Se detaljer
+    prize_info: 'Prizes for participation (U.S. only): $10 gift cards for student
+      completion and up to $1,000 in classroom rewards for public school teachers'
   gender:
     male: Mand
     female: Kvinde

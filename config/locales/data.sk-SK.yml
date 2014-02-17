@@ -4,56 +4,56 @@
       name:
         20-hour:
           desc: K-8 Intro to Computer Science Course
-          Unplug1: Stage 1
-          Maze: Stage 2
-          Unplug2: Stage 3
-          Unplug3: Stage 4
-          Artist: Stage 5
-          Unplug4: Stage 6
-          Artist2: Stage 7
-          Unplug5: Stage 8
-          Farmer: Stage 9
-          Unplug6: Stage 10
-          Artist3: Stage 11
-          Unplug7: Stage 12
-          Farmer2: Stage 13
-          Unplug8: Stage 14
-          Artist4: Stage 15
-          Unplug9: Stage 16
-          Farmer3: Stage 17
-          Unplug10: Stage 18
-          Artist5: Stage 19
-          Unplug11: Stage 20
+          Unplug1: Úroveň 1
+          Maze: Úroveň 2
+          Unplug2: Úroveň 3
+          Unplug3: Úroveň 4
+          Artist: Úroveň 5
+          Unplug4: Úroveň 6
+          Artist2: Úroveň 7
+          Unplug5: Úroveň 8
+          Farmer: Úroveň 9
+          Unplug6: Úroveň 10
+          Artist3: Úroveň 11
+          Unplug7: Úroveň 12
+          Farmer2: Úroveň 13
+          Unplug8: Úroveň 14
+          Artist4: Úroveň 15
+          Unplug9: Úroveň 16
+          Farmer3: Úroveň 17
+          Unplug10: Úroveň 18
+          Artist5: Úroveň 19
+          Unplug11: Úroveň 20
         Hour of Code:
           desc: Hour of Code
-          Maze: Stage 1
+          Maze: Úroveň 1
         Edit Code:
           desc: Edit Code
-          MazeEC: Stage 1
+          MazeEC: Úroveň 1
         2014 Levels:
           desc: 2014 Puzzles (beta)
-          MazeEC: Stage 1
+          MazeEC: Úroveň 1
     game:
       name:
         Unplug1: Introduction to Computer Science
         Maze: The Maze
         Unplug2: Computational Thinking
         Unplug3: Graph Paper Programming
-        Artist: The Artist
+        Artist: Umelec
         Unplug4: Algorithms
-        Artist2: The Artist 2
-        Unplug5: Functions
-        Farmer: The Farmer
+        Artist2: Umelec 2
+        Unplug5: Funkcie
+        Farmer: Farmár
         Unplug6: Conditionals
-        Artist3: The Artist 3
+        Artist3: Umelec 3
         Unplug7: Song Writing
-        Farmer2: The Farmer 2
+        Farmer2: Farmár 2
         Unplug8: Abstraction
-        Artist4: The Artist 4
+        Artist4: Umelec 4
         Unplug9: Relay Programming
-        Farmer3: The Farmer 3
+        Farmer3: Farmár 3
         Unplug10: The Internet
-        Artist5: The Artist 5
+        Artist5: Umelec 5
         Unplug11: Wrap-up
         MazeEC: The Maze
         Bounce: Bounce
@@ -329,6 +329,8 @@
         bounce_10: There is a now a goal at the top. Attach "increment score" blocks
           to the the "when ball in goal" and "when ball misses paddle" blocks to make
           a game.
+        Custom_builder: Drag blocks from the toolbox to the workspace to draw the
+          level you wish to create. Press "Run Program" when you are ready.
       levelIncompleteError:
         maze_2_8: 'To solve this, find the pattern that repeats. Use a "repeat" block
           with these 3 blocks inside it: move, move, turn right.'

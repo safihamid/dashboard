@@ -102,6 +102,9 @@
     password: Lösenord
     remember: Kom ihåg mig
     submit: Logga in
+  signin:
+    try_hoc: Try one Hour of Code first
+    try_20hours: Try our 20 hour Intro to Computer Science
   password:
     reset_form:
       title: Glömt ditt lösenord?
@@ -287,6 +290,9 @@
     teacher_student_count: Du har %{count} elever.
     teacher_averages: Eleverna har i genomsnitt samlat %{trophy_average} av %{trophy_max}
       "Koncept-bemästring" troféer.
+    teacher_print_certificates: Print certificates for students who finish this course
+    teacher_read_blog: Read about news and updates to our materials at our Educator
+      Blog
     classroom: Ditt klassrum
     student_progress: Dina framsteg
     student_stats: Du har samlat %{trophy_count} av %{trophy_max} "Koncept-bemästring"
@@ -299,6 +305,8 @@
     local_school: närliggande skola
     online: Online
     see_details: Se detaljer
+    prize_info: 'Prizes for participation (U.S. only): $10 gift cards for student
+      completion and up to $1,000 in classroom rewards for public school teachers'
   gender:
     male: Man
     female: Kvinna

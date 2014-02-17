@@ -99,6 +99,9 @@
     password: Salasana
     remember: Muista minut
     submit: Kirjaudu
+  signin:
+    try_hoc: Try one Hour of Code first
+    try_20hours: Try our 20 hour Intro to Computer Science
   password:
     reset_form:
       title: Unohditko salasanasi?
@@ -284,6 +287,9 @@
     teacher_student_count: Sinulla on %{count} oppilasta.
     teacher_averages: Keskimäärin oppilaasi ovat ansainneet %{trophy_average}/%{trophy_max}
       "käsitteiden hallinta" pokaaleista.
+    teacher_print_certificates: Print certificates for students who finish this course
+    teacher_read_blog: Read about news and updates to our materials at our Educator
+      Blog
     classroom: Luokkasi
     student_progress: Edistymisesi
     student_stats: Olet ansainnut %{trophy_count}/%{trophy_max} "käsitteiden hallinta"
@@ -297,6 +303,8 @@
     local_school: koulu
     online: online
     see_details: Lisätietoja
+    prize_info: 'Prizes for participation (U.S. only): $10 gift cards for student
+      completion and up to $1,000 in classroom rewards for public school teachers'
   gender:
     male: Mies
     female: Nainen

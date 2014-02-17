@@ -2,50 +2,50 @@
   activerecord:
     attributes:
       user:
-        name: Name
-        email: Email
-        username: Username
-        password: Password
-        password_confirmation: Password confirmation
-        current_password: Current password
-        locale: Language
-        gender: Gender
-        edit_header: Edit Account Details
-  hello: Hello world
-  welcome_back: Welcome back, %{name}
+        name: Meno
+        email: E-mail
+        username: Používateľské meno
+        password: Heslo
+        password_confirmation: Potvrdenie hesla
+        current_password: Aktuálne heslo
+        locale: Jazyk
+        gender: Pohlavie
+        edit_header: Upraviť podrobnosti účtu
+  hello: Ahoj svet
+  welcome_back: Vitajte späť, %{name}
   add_teacher_form:
     code_or_email:
-      label: 'Add a teacher by code or email address:'
-      placeholder: Code (ABCDEF) or email (teacher@school.edu)
-    submit: Add teacher
+      label: 'Pridať učiteľa zadaním kódu alebo e-mailovej adresy:'
+      placeholder: Kód (ABCDEF) alebo email (teacher@school.edu)
+    submit: Pridať učiteľa
   add_hint_form:
-    placeholder: Please enter your hint here
-    submit: Add hint
+    placeholder: Prosím zadajte Váš tip sem
+    submit: Pridať tip
   appname: Code.org
-  stage: Stage
-  puzzle: Puzzle
-  trophies: Trophies
-  courses: Courses
-  of: of
-  more: MORE
-  less: LESS
+  stage: Etapa
+  puzzle: Úloha
+  trophies: Trofeje
+  courses: Kurzy
+  of: z
+  more: VIAC
+  less: MENEJ
   try_hoc: 'Try the Hour of Code, click here >> '
   try_k8intro: Or, try our K-8 Intro to Computer Science Course (15-25 hours)
   already_started: 'Already started? Resume here >> '
-  demos: 'Admin: All Demos'
-  continue: Continue
+  demos: 'Admin: Všetky ukážky'
+  continue: Pokračovať
   prize: prize
-  more_info: More info
+  more_info: Viac info
   auth:
-    sign_in_with: Sign in with %{provider}
-    signed_in: Signed in!
-    already_signedup: Already signed up?
-    notyet_signedup: Haven't joined yet?
+    sign_in_with: Prihlásiť sa cez %{provider}
+    signed_in: Prihlásený!
+    already_signedup: Už ste zaregistrovaní?
+    notyet_signedup: Ešte ste sa nepridali?
     google_oauth2: Google+
     twitter: Twitter
     facebook: Facebook
     windowslive: Windows Live
-    forgot_password: Forgot your password?
+    forgot_password: Zabudli ste heslo?
     need_confirmation: Didn't receive confirmation instructions?
     need_unlock: Didn't receive unlock instructions?
   signup_form:
@@ -61,7 +61,7 @@
     prizes_message: U.S. students who earn all %{num_trophies} concept trophies can
       select a variety of prizes including free Dropbox space, Skype credits, and
       downloadable games from Electronic Arts.
-    teacher_educator_guide: See educator guide
+    teacher_educator_guide: Pozrieť príručku učiteľa
     teacher_prize_header: Win $1,000 in <a target="_blank" href="http://DonorsChoose.org">DonorsChoose.org</a>
       rewards
     teacher_prize_message: 'In partnership with <a target="_blank" href="http://DonorsChoose.org">DonorsChoose.org</a>,
@@ -97,6 +97,9 @@
     password: Password
     remember: Remember me
     submit: Sign in
+  signin:
+    try_hoc: Try one Hour of Code first
+    try_20hours: Try our 20 hour Intro to Computer Science
   password:
     reset_form:
       title: Forgot your password?
@@ -286,6 +289,9 @@
     teacher_student_count: You have %{count} students.
     teacher_averages: On average your students have earned %{trophy_average} out of
       %{trophy_max} "Concept Mastery" trophies.
+    teacher_print_certificates: Print certificates for students who finish this course
+    teacher_read_blog: Read about news and updates to our materials at our Educator
+      Blog
     classroom: Your classroom
     student_progress: Your learning progress
     student_stats: You've earned %{trophy_count} out of %{trophy_max} "Concept Mastery"
@@ -298,6 +304,8 @@
     local_school: local school
     online: online
     see_details: See details
+    prize_info: 'Prizes for participation (U.S. only): $10 gift cards for student
+      completion and up to $1,000 in classroom rewards for public school teachers'
   gender:
     male: Male
     female: Female

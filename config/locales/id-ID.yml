@@ -100,6 +100,9 @@
     password: Kata sandi
     remember: Ingat saya
     submit: Masuk
+  signin:
+    try_hoc: Try one Hour of Code first
+    try_20hours: Try our 20 hour Intro to Computer Science
   password:
     reset_form:
       title: Lupa kata sandi?
@@ -294,6 +297,9 @@
     teacher_student_count: Anda memiliki  %{count} siswa.
     teacher_averages: Rata-rata siswa anda telah mendapatkan %{trophy_average} dari
       %{trophy_max} piala "Penguasaan konsep".
+    teacher_print_certificates: Print certificates for students who finish this course
+    teacher_read_blog: Read about news and updates to our materials at our Educator
+      Blog
     classroom: Kelas anda
     student_progress: Kemajuan belajar Anda
     student_stats: Anda telah menerima  %{trophy_count} dari total %{trophy_max} piala
@@ -306,6 +312,8 @@
     local_school: sekolah lokal
     online: online
     see_details: Lihat rincian
+    prize_info: 'Prizes for participation (U.S. only): $10 gift cards for student
+      completion and up to $1,000 in classroom rewards for public school teachers'
   gender:
     male: Laki-laki
     female: Wanita

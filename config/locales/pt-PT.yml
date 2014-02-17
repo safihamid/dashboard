@@ -99,6 +99,9 @@
     password: Palavra-passe
     remember: Lembrar-se de mim
     submit: Entrar
+  signin:
+    try_hoc: Try one Hour of Code first
+    try_20hours: Try our 20 hour Intro to Computer Science
   password:
     reset_form:
       title: Esqueceste-te da tua palavra-passe?
@@ -291,6 +294,9 @@
     teacher_student_count: Tem alunos %{count}.
     teacher_averages: Em média os seus alunos ganharam %{trophy_average} de %{trophy_max}
       troféus "Mestria de Conceitos".
+    teacher_print_certificates: Print certificates for students who finish this course
+    teacher_read_blog: Read about news and updates to our materials at our Educator
+      Blog
     classroom: A sua sala de aula
     student_progress: O seu progresso de aprendizagem
     student_stats: Ganhaste %{trophy_count} de %{trophy_max}  troféus "Mestria de
@@ -303,6 +309,8 @@
     local_school: escola local
     online: online
     see_details: Ver detalhes
+    prize_info: 'Prizes for participation (U.S. only): $10 gift cards for student
+      completion and up to $1,000 in classroom rewards for public school teachers'
   gender:
     male: Masculino
     female: Feminino

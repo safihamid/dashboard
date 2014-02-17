@@ -348,6 +348,8 @@
         bounce_10: There is a now a goal at the top. Attach "increment score" blocks
           to the the "when ball in goal" and "when ball misses paddle" blocks to make
           a game.
+        Custom_builder: Drag blocks from the toolbox to the workspace to draw the
+          level you wish to create. Press "Run Program" when you are ready.
       levelIncompleteError:
         maze_2_8: 'Per solucionar això, troba el patró que es repeteix. Utilitza un
           bloc "repetir" amb aquests 3 blocs a dins: mou, mou, girar a la dreta.'

@@ -88,6 +88,9 @@
     password: 密碼
     remember: 記住密碼
     submit: 登入
+  signin:
+    try_hoc: Try one Hour of Code first
+    try_20hours: Try our 20 hour Intro to Computer Science
   password:
     reset_form:
       title: 忘記密碼？
@@ -259,6 +262,9 @@
     teacher_student_count_one: 您有 %{count} 位學生.
     teacher_student_count: 您有 %{count} 位學生.
     teacher_averages: '你的學生平均下來獲得了 %{trophy_average}/%{trophy_max} "概念通達"獎盃。 '
+    teacher_print_certificates: Print certificates for students who finish this course
+    teacher_read_blog: Read about news and updates to our materials at our Educator
+      Blog
     classroom: 您的教室
     student_progress: 您的學習進度
     student_stats: 你已經獲得 %{trophy_count}/%{trophy_max} "概念通達"獎盃
@@ -270,6 +276,8 @@
     local_school: 當地的學校
     online: 在線上
     see_details: 查看詳細資訊
+    prize_info: 'Prizes for participation (U.S. only): $10 gift cards for student
+      completion and up to $1,000 in classroom rewards for public school teachers'
   gender:
     male: 男性
     female: 女性

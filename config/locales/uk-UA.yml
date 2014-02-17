@@ -95,6 +95,9 @@
     password: Пароль
     remember: Запам'ятати мене
     submit: Вхід
+  signin:
+    try_hoc: Try one Hour of Code first
+    try_20hours: Try our 20 hour Intro to Computer Science
   password:
     reset_form:
       title: Забули свій пароль?
@@ -286,6 +289,9 @@
     teacher_student_count: У вас %{count} учнів.
     teacher_averages: У середньому ваші учні вже здобули %{trophy_average} із %{trophy_max}
       трофеїв "Опанування понять".
+    teacher_print_certificates: Print certificates for students who finish this course
+    teacher_read_blog: Read about news and updates to our materials at our Educator
+      Blog
     classroom: Ваш клас
     student_progress: Ваші навчальні досягнення
     student_stats: Ви здобули %{trophy_count} із %{trophy_max} трофеїв "Опанування
@@ -298,6 +304,8 @@
     local_school: місцева школа
     online: онлайн
     see_details: Див. докладніше
+    prize_info: 'Prizes for participation (U.S. only): $10 gift cards for student
+      completion and up to $1,000 in classroom rewards for public school teachers'
   gender:
     male: Чоловік
     female: Жінка

@@ -305,9 +305,10 @@
           פוגע בקיר, ו"כאשר כדור פוגע במשוט".'
         bounce_8: נסה שוב עם יותר כדורים.
         bounce_9: עכשיו זה נהיה משוגע!
-        bounce_10: There is a now a goal at the top. Attach "increment score" blocks
-          to the the "when ball in goal" and "when ball misses paddle" blocks to make
-          a game.
+        bounce_10: יש עכשיו מטרה בלמעלה. הוסף את הבלוקים "הגדל ניקוד" לבלוקים "כאשר
+          כדור בתוך השער" ו"כאשר כדור מפספס משוט" כדי להכין משחק.
+        Custom_builder: Drag blocks from the toolbox to the workspace to draw the
+          level you wish to create. Press "Run Program" when you are ready.
       levelIncompleteError:
         maze_2_8: 'כדי לפתור את זה, נסה למצוא את התבנית שחוזרת. השתמש בבלוק "חזור
           שוב" עם שלושת הבלוקים האלו בתוכו: זוז, זוז, פנה ימינה.'

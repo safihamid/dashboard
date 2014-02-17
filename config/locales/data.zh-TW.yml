@@ -197,6 +197,8 @@
         bounce_10: There is a now a goal at the top. Attach "increment score" blocks
           to the the "when ball in goal" and "when ball misses paddle" blocks to make
           a game.
+        Custom_builder: Drag blocks from the toolbox to the workspace to draw the
+          level you wish to create. Press "Run Program" when you are ready.
       levelIncompleteError:
         maze_2_8: '要解決這個關卡，請找出重覆的片斷。使用"重覆"程式積木將: 前進，前進，右轉 這三個程式積木包在其中。'
       other1StarError:

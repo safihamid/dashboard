@@ -92,6 +92,9 @@
     password: 비밀번호
     remember: 아이디 기억하기
     submit: 로그인하기
+  signin:
+    try_hoc: Try one Hour of Code first
+    try_20hours: Try our 20 hour Intro to Computer Science
   password:
     reset_form:
       title: 비밀번호를 잊으셨나요?
@@ -269,6 +272,9 @@
     teacher_student_count: 나의 학생들은 %{count} 명 입니다.
     teacher_averages: 나의 학생들은, 평균 %{trophy_average} 개의 "기초개념학습 트로피"를 획득했습니다. 총 %{trophy_max}
       개.
+    teacher_print_certificates: Print certificates for students who finish this course
+    teacher_read_blog: Read about news and updates to our materials at our Educator
+      Blog
     classroom: 내 학급
     student_progress: 나의 학습 진도
     student_stats: '%{trophy_count} 개의 "기초개념학습 트로피"를 획득했습니다. 총 %{trophy_max} 개.'
@@ -280,6 +286,8 @@
     local_school: 학교
     online: 온라인
     see_details: 자세히 살펴보기
+    prize_info: 'Prizes for participation (U.S. only): $10 gift cards for student
+      completion and up to $1,000 in classroom rewards for public school teachers'
   gender:
     male: 남
     female: 여
