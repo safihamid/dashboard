@@ -82,7 +82,7 @@ class LevelSourceHintsController < ApplicationController
       user.update_attribute(:hint_access, true)
       redirect_to redirect_url, notice: "User hint access added to #{params[:user_email]}"
     else
-      redirect_to redirect_url, notice: "Failed: #{params[:user_email]} either is not a teacher or has not confirmed his/her email."
+      redirect_to redirect_url, notice: "Failed: cannot find user with email #{params[:user_email]}."
     end
   end
 
