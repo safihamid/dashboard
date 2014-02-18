@@ -3,8 +3,7 @@
     script:
       name:
         20-hour:
-          desc: Introduzione al corso di informatica per scuole elementari e medie
-            inferiori
+          desc: Corso introduttivo di informatica per scuole elementari e medie inferiori
           Unplug1: Fase 1
           Maze: Fase 2
           Unplug2: Fase 3
@@ -76,21 +75,23 @@
         parameters: Funzioni con parametri
     level:
       instructions:
-        maze_2_2: 'Puoi aiutarmi a catturare il maiale cattivo? Sovrapponi due blocchi
-          "vai avanti" e premi "esegui il programma" per aiutarmi a raggiungerlo. '
-        maze_2_1: Questo maiale mi sta spettinando le piume. Aiutami a trovarlo!
-        maze_2_2_5: Disegna il percorso per farmi arrivare a quello sciocco maiale.
-          Evita la dinamite (TNT) o le mie piume salteranno in aria!
-        maze_2_3: Guidami verso quel verde cattivo! Fai attenzione alla dinamite (TNT)
-        maze_2_4: Mantieni la calma e aiutami a trovare il maiale cattivo. Altrimenti
-          potrei arrabbiarmi!
+        maze_2_2: 'Puoi aiutarmi a catturare il maiale cattivo? Accosta due blocchi
+          "vai avanti" uno sopra l''altro e poi premi "Esegui il programma" per aiutarmi
+          a raggiungerlo. '
+        maze_2_1: Questo maiale mi fa arricciare le penne. Aiutami a prenderlo!
+        maze_2_2_5: Fammi fare il percorso per arrivare a quello sciocco maiale. Evita
+          la dinamite (TNT) o le mie piume salteranno in aria!
+        maze_2_3: Guidami verso quel cattivone verde! Fai attenzione alla dinamite
+          (TNT)
+        maze_2_4: Mantieni la calma e aiutami a trovare quel cattivone di un maiale.
+          Altrimenti potrei arrabbiarmi!
         maze_2_5: C'è un modo per arrivare a quello sciocco maiale utilizzando solo
           2 blocchi. Riesci a trovarlo?
         maze_2_6: Prova a farmi arrivare all'intruso verde utilizzando solo tre blocchi.
-        maze_2_7: Aiutami a catturare questo maiale cattivo utilizzando il minor numero
+        maze_2_7: Aiutami a catturare questo maialaccio utilizzando il minor numero
           possibile di blocchi. Prova a utilizzare più di un blocco "ripeti più volte".
-        maze_2_8: 'Per risolvere questo puzzle, prova un blocco "ripeti" con questi
-          3 blocchi al suo interno: "avanza", "avanza",  "gira".'
+        maze_2_8: 'Per risolvere questo puzzle, prova un blocco "ripeti ... volte"
+          con questi 3 blocchi al suo interno: "vai avanti", "vai avanti",  "gira".'
         maze_2_9: Ok, prova ad usare il nuovo blocco "ripeti fino a che". Esso mi
           farà "ripetere" le azioni "fino a che" ho raggiunto quel fastidioso maiale.
         maze_2_10: 'Ok, un''ultima volta per fare esercizio: riesci a risolvere questo
@@ -135,7 +136,7 @@
           occhiali verdi. I quadrati hanno 100 pixel su ciascun lato, e sono distanti
           tra loro 50 pixel. Non dimenticarti di disegnare usando il verde!'
         turtle_1_8: Ok, cerca di immaginare cosa succede se si esegue questo codice
-          (o premi "esegui il programma" per verificarlo). Dopo, ripetilo una quantità
+          (o premi "Esegui il programma" per verificarlo). Dopo, ripetilo una quantità
           di volte sufficiente a completare il disegno. I colori saranno diversi ogni
           volta.
         turtle_1_9: Riesci a capire con quale numero devi sostituire i punti interrogativi
@@ -276,8 +277,8 @@
           un triangolo" (e altri blocchi) per disegnare una casa intorno al leone.
         turtle_3_5: 'Ora crea una nuova funzione "disegna una casa" e usala per dare
           un alloggio a due gatti. Suggerimento: crea una nuova funzione usando il
-          blocco "fai qualcosa" e digita il testo che vuoi usare per dare in nome
-          al blocco.'
+          blocco "per fare qualcosa" e digita il testo che vuoi usare per dare il
+          nome al blocco della funzione.'
         turtle_3_6: 'Usando "disegna un quadrato" come esempio, aggiungi un input
           chiamato "lunghezza" per costruire una funzione "disegna un triangolo" in
           grado di disegnare triangoli di diverse dimensioni. (Suggerimento: fai clic
@@ -361,19 +362,20 @@
         bounce_10: Adesso c'è una rete in alto. Attacca i blocchi "aumenta il punteggio"
           ai blocchi "quando la palla è in rete" e "quando la palla manca la racchetta"
           per costruire un gioco.
-        Custom_builder: Drag blocks from the toolbox to the workspace to draw the
-          level you wish to create. Press "Run Program" when you are ready.
+        Custom_builder: Sposta i blocchi dalla cassetta degli attrezzi allo spazio
+          di lavoro per disegnare il livello che vuoi creare. Premi "Esegui il programma"
+          quando hai fatto.
       levelIncompleteError:
-        maze_2_8: 'Per risolvere questo puzzle, trova il modello che si ripete. Usa
-          un blocco "ripeti" con questi 3 blocchi all''interno di esso: "avanza",
-          "avanza", "gira a destra".'
+        maze_2_8: 'Per risolvere questo puzzle, trova il comportamento da ripetere.
+          Usa un blocco "ripeti ... volte" con questi 3 blocchi all''interno di esso:
+          "vai avanti", "vai avanti", "gira a destra".'
       other1StarError:
         maze_2_14: Hai bisogno di un blocco "se" all'interno di un blocco "ripeti".
           Se hai problemi, prova di nuovo il livello precedente per vedere come funzionava.
       tooFewBlocksMsg:
-        maze_2_8: 'Per risolvere questo puzzle, trova il modello che si ripete. Usa
-          un blocco "ripeti" con questi 3 blocchi all''interno di esso: "avanza",
-          "avanza", "gira a destra".'
+        maze_2_8: 'Per risolvere questo puzzle, trova il comportamento da ripetere.
+          Usa un blocco "ripeti ... volte" con questi 3 blocchi all''interno di esso:
+          "vai avanti", "vai avanti", "gira a destra".'
     video:
       name:
         maze_intro: Introduzione al Labirinto

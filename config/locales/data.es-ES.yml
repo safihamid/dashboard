@@ -331,23 +331,33 @@
         maze_3_3: ¿Cómo llego al cerdo? Asegúrate de que no pasar por la caja de TNT!
         maze_3_4: ¡Argh! Escríbeme un programa que me haga esquivar el TNT y llegue
           hasta el cerdo.
-        bounce_1: Attach a block to the "when left arrow" block, then run and move
-          the paddle with the left arrow key to the finish target.
-        bounce_2: Attach a block to the "when right arrow" and "when left arrow" blocks,
-          then run and move the paddle with the both arrow key to both finish targets.
-        bounce_3: TBD
-        bounce_4: TBD
-        bounce_5: Attach a blocks to the "when right arrow", "when left arrow", "when
-          ball hits wall", and "when ball hits paddle" blocks.
-        bounce_6: Try again with more balls.
-        bounce_7: Now it is getting crazy!
+        bounce_1: Junta un bloque al bloque "cuando flecha a la izquierda", luego
+          oprima el botón "Correr Programa" y mueve la palanca con la tecla de flecha
+          izquierda hacia el objetivo final.
+        bounce_2: Junta un bloque a los bloques "cuando flecha a la derecha" y "cuando
+          flecha a la izquierda", luego corre y mueve la palanca con ambas teclas
+          de flecha para ambos objetivos finales.
+        bounce_3: Ahora intenta algo similar con el bloque "cuando flecha arriba".
+          Mueve la palanca hacia el objetivo final en la parte superior.
+        bounce_4: Esta vez tienes que añadir cuatro bloques. Mueve la palanca a los
+          cuatro objetivos terminados para completar este reto.
+        bounce_5: Vamos a lanzar una bola bajando hacia la palanca. Junta un bloque
+          al bloque "cuando la bola golpea la palanca" para asegurar que la bola alcance
+          el objetivo final.
+        bounce_6: Ahora el objetivo final está en la parte superior. Tienes que juntar
+          los bloques a ambos bloques de "cuando la bola choca" para resolver éste
+          reto.
+        bounce_7: Añade los bloques a los bloques "cuando flecha a la derecha", "cuando
+          flecha a la izquierda", "cuando la bola golpea la pared" y "cuando la bola
+          golpea la palanca".
         bounce_8: Pruébalo otra vez con más bolas.
         bounce_9: ¡Ahora se está volviendo loco!
-        bounce_10: There is a now a goal at the top. Attach "increment score" blocks
-          to the the "when ball in goal" and "when ball misses paddle" blocks to make
-          a game.
-        Custom_builder: Drag blocks from the toolbox to the workspace to draw the
-          level you wish to create. Press "Run Program" when you are ready.
+        bounce_10: Ahora hay un gol en la parte superior. Junta los bloques "subir
+          puntuación" a los bloques "cuando la bola está en la portería" y los bloques
+          "cuando la bola esquiva la palanca" para hacer un juego.
+        Custom_builder: Arrastra los bloques desde la caja de herramientas al espacio
+          de trabajo para dibujar el nivel que deseas crear. Presiona "Run Program"
+          cuando estés listo.
       levelIncompleteError:
         maze_2_8: 'Para resolver este, encuentra el bloque que repite. Usa un bloque
           "repetir" con estos 3 bloques en su interior: avanzar, avanzar, girar a

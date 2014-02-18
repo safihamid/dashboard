@@ -19,9 +19,9 @@
       unconfirmed: Você tem que confirmar sua conta antes de continuar.
     mailer:
       confirmation_instructions:
-        subject: Code.org instruções de confirmação
+        subject: Instruções de confirmação para o Code.org
       reset_password_instructions:
-        subject: Code.org instruções para redefinição de senha
+        subject: Instruções para redefinição de senha para o Code.org
       unlock_instructions:
         subject: Instruções de desbloqueio
     omniauth_callbacks:

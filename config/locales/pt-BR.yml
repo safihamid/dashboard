@@ -20,7 +20,7 @@
     submit: Adicionar professor
   add_hint_form:
     placeholder: Por favor, digite sua dica aqui
-    submit: Adicione dica
+    submit: Adicionar dica
   appname: Code.org
   stage: Fase
   puzzle: Quebra-cabeça
@@ -30,8 +30,8 @@
   more: MAIS
   less: MENOS
   try_hoc: 'Experimente a Hora do Código, clique aqui >> '
-  try_k8intro: Ou, tente nossa Introdução para o Ensino Fundamental ao Curso de Ciência
-    da Computação (15-25 horas)
+  try_k8intro: Teste a nossa introdução do curso de Ciência da Computação (15-25 horas)
+    para o Ensino Fundamental
   already_started: 'Já começou? Continue aqui >> '
   demos: 'Administrar: Todas as Demonstrações'
   continue: Continuar
@@ -95,14 +95,14 @@
       autorização dos meus pais ou do tutor legal para usar os serviços de Code.org.
     teacher_terms: Eu concordo em respeitar os termos de serviço de Code.org.
   signin_form:
-    title: Entrar
+    title: Já tem uma conta? Entrar
     login: Email ou nome de usuário
     password: Senha
     remember: Lembrar de mim
     submit: Entrar
   signin:
-    try_hoc: Try one Hour of Code first
-    try_20hours: Try our 20 hour Intro to Computer Science
+    try_hoc: Tente uma Hora de Código primeiro
+    try_20hours: Tente nossa introdução de 20 horas em Ciência da Computação
   password:
     reset_form:
       title: Esqueceu sua senha?
@@ -160,7 +160,8 @@
     no_prizes_available: Pedimos desculpas, mas atualmente não temos prêmios disponíveis.
     teacher_info_required: 'Premiações para professor exigem informações de nome e
       endereço de escola:'
-    teacher_email_required: 'O professor aprecia a confirmação do endereço de e-mail:'
+    teacher_email_required: 'A premiação para professor  requer a confirmação do endereço
+      de e-mail:'
     confirm:
       title: Por favor, confirme
       'no': Não

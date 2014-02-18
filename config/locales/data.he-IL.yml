@@ -307,8 +307,8 @@
         bounce_9: עכשיו זה נהיה משוגע!
         bounce_10: יש עכשיו מטרה בלמעלה. הוסף את הבלוקים "הגדל ניקוד" לבלוקים "כאשר
           כדור בתוך השער" ו"כאשר כדור מפספס משוט" כדי להכין משחק.
-        Custom_builder: Drag blocks from the toolbox to the workspace to draw the
-          level you wish to create. Press "Run Program" when you are ready.
+        Custom_builder: גרור בלוקים מתיבת הכלים לאזור העבודה כדי לצייר את השלב שאתה
+          רוצה ליצור. כשאתה גומר, לחץ "הרץ תוכנית".
       levelIncompleteError:
         maze_2_8: 'כדי לפתור את זה, נסה למצוא את התבנית שחוזרת. השתמש בבלוק "חזור
           שוב" עם שלושת הבלוקים האלו בתוכו: זוז, זוז, פנה ימינה.'

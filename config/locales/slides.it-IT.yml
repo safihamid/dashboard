@@ -3,16 +3,16 @@
     maze_intro:
       1:
         image: notes/hoc1_1.jpg
-        text: Benvenuti al vostro primo incontro con l'Ora del Codice! Tuffati subito
+        text: Benvenuto al tuo primo incontro con l'Ora del Codice! Tuffati subito
           in un primo assaggio di programmazione.
       2:
         image: notes/hoc1_2.jpg
-        text: Useremo "Blockly", un linguaggio di programmazione visivo in cui usi
+        text: Useremo "Blockly", un linguaggio visuale di programmazione in cui usi
           blocchi per scrivere programmi.
       3:
         image: notes/hoc1_3.jpg
-        text: Gran parte del codice reale viene digitato, mentre Blockly è visivo.
-          Ciascun blocco corrisponde ad una riga di codice "reale".
+        text: Gran parte del codice reale viene digitato, mentre Blockly è un linguaggio
+          visuale. Ogni "blocco" corrisponde ad una riga di codice reale.
       4:
         image: notes/hoc1_4.jpg
         text: 'Imparerai i fondamenti dell''informatica: concetti che sono utilizzati
@@ -43,17 +43,17 @@
       10:
         image: notes/hoc1_10.jpg
         text: Ogni blocco è un'istruzione. Se trascini un blocco "vai avanti" nell'area
-          di lavoro e premi "esegui il programma", l'uccello si sposta di uno spazio
-          in avanti sul labirinto.
+          di lavoro e premi "Esegui il programma", l'uccello si sposta di uno spazio
+          in avanti nel labirinto.
       11:
         image: notes/hoc1_11.jpg
-        text: Per fare più di un'azione, è possibile trascinare molti blocchi nell'area
-          di lavoro e accostarli verticalmente. L'uccello eseguirà le istruzioni associate
+        text: Per fare più di un'azione, trascina più blocchi nell'area di lavoro
+          e mettili uno sotto l'altro. L'uccello eseguirà le istruzioni associate
           ai blocchi procedendo dall'alto verso il basso.
       12:
         image: notes/hoc1_12.jpg
         text: Se dopo aver eseguito un programma vuoi cambiarlo ed eseguirlo di nuovo,
-          premi il pulsante "Reimposta".
+          premi il pulsante "Ricomincia".
       13:
         image: notes/hoc1_13.jpg
         text: Andiamo a prendere quei maiali!
@@ -101,7 +101,7 @@
     loop_times:
       1:
         image: notes/hoc2_1.jpg
-        text: Ciao, sono Mark! Impariamo ad usare i blocchi di ripetizione. Utilizzando
+        text: Ciao, sono Mark! Impariamo ad usare i blocchi di ripetizione. Usando
           i blocchi di ripetizione puoi dire a un computer di ripetere qualsiasi serie
           di azioni più e più volte, migliaia o addirittura miliardi di volte.
       2:
@@ -110,19 +110,19 @@
           spazi in avanti per raggiungere il maiale.
       3:
         image: notes/hoc2_3.jpg
-        text: Puoi usare il nuovo blocco di ripetizione "ripeti" per aiutarci.
+        text: Puoi usare il nuovo blocco di ripetizione "ripeti ... volte" per aiutarci.
       4:
         image: notes/hoc2_4.jpg
         text: Invece di usare 5 blocchi "vai avanti" ...
       5:
         image: notes/hoc2_5.jpg
         text: Possiamo mettere il blocco "vai avanti" all'interno del blocco di ripetizione
-          "ripeti" e scrivere un numero nel blocco "ripeti" per stabilire quante ripetizioni
-          fare.
+          "ripeti ... volte" e scrivere un numero nel blocco "ripeti ... volte" per
+          stabilire quante ripetizioni fare.
       6:
         image: notes/hoc2_6.jpg
-        text: 'E questo è importante: è possibile inserire più di un blocco all''interno
-          di un blocco di ripetizione "ripeti".'
+        text: 'Fai attenzione: "è possibile inserire più di un blocco all''interno
+          di un blocco di ripetizione \"ripeti ... volte\"."'
       7:
         image: notes/hoc2_7.jpg
         text: Divertiti ad usare il nuovo blocco di ripetizione "ripeti"!
@@ -130,8 +130,8 @@
       1:
         image: notes/hoc3_1.jpg
         text: Ciao, sono Chris. Prima di entrare nel Miami Heat, ho studiato informatica
-          al Georgia Tech Informatica. Proviamo il nuovo blocco di ripetizione, il
-          blocco "ripeti fino a che".
+          al Georgia Tech. Proviamo il nuovo blocco di ripetizione, il blocco "ripeti
+          fino a che".
       2:
         image: notes/hoc3_2.jpg
         text: Cosa succede se non sappiamo di quanto l'uccello deve spostarsi in avanti
@@ -143,9 +143,9 @@
           il maiale (o sbatte contro un muro).
       4:
         image: notes/hoc3_4.jpg
-        text: 'E questo è importante: proprio come prima, possiamo mettere più blocchi
-          all''interno del blocco di ripetizione "ripeti fino a che", ed essi verranno
-          tutti ripetuti.'
+        text: 'Fai attenzione: "proprio come prima, possiamo mettere più blocchi all''interno
+          del blocco di ripetizione \"ripeti fino a che\", ed essi verranno tutti
+          ripetuti."'
     if:
       1:
         image: notes/hoc4_1.jpg
@@ -157,8 +157,8 @@
           al mattino, ti dici SE fuori piove, devo indossare la giacca.
       3:
         image: notes/hoc4_3.jpg
-        text: Possiamo dire allo zombie di verificare se c'è un sentiero a sinistra,
-          e se trova un sentiero a sinistra, possiamo farlo girare in quella direzione.
+        text: Possiamo dire allo zombie di verificare se c'è strada a sinistra, e
+          se trova strada a sinistra, possiamo farlo girare in quella direzione.
       4:
         image: notes/hoc4_4.jpg
         text: Per scrivere il codice per questo, trasciniamo nell'area di lavoro un
@@ -166,9 +166,10 @@
       5:
         image: notes/hoc4_5.jpg
         text: Ora, se mettiamo un blocco "vai avanti" al di sopra di esso e un blocco
-          di ripetizione "ripeti" intorno a tutto, ogni volta che lo zombie si muove
-          controllerà se c'è un sentiero a sinistra e girerà. L'istruzione "ripeti"
-          è fondamentale per effettuare il controllo ad ogni passo.
+          di ripetizione "ripeti fino a che" intorno a tutto, ogni volta che lo zombie
+          si muove controllerà se c'è strada a sinistra e in caso positivo girerà.
+          L'istruzione "ripeti fino a che" è fondamentale per effettuare il controllo
+          ad ogni passo.
       6:
         image: notes/hoc4_6.jpg
         text: Le istruzioni "se" sono davvero importanti nell'informatica. Uno dei
@@ -189,9 +190,8 @@
         image: notes/hoc5_2.jpg
         text: Se metti un blocco "vai avanti" dove dice "fai" e un blocco "gira a
           sinistra" dove dice "altrimenti" questo significa che lo zombie sceglierà
-          tra 2 opzioni. SE c'è un percorso in avanti, lo zombie si sposterà in avanti
-          e ALTRIMENTI (cioè se non c'è un percorso davanti), lo zombie svolterà a
-          sinistra.
+          tra 2 opzioni. SE c'è strada in avanti, lo zombie si sposterà in avanti
+          e ALTRIMENTI (cioè se non c'è strada in avanti), lo zombie svolterà a sinistra.
       3:
         image: notes/hoc5_3.jpg
         text: Proprio come con il blocco "se", quando mettiamo un blocco "se-altrimenti"
@@ -200,7 +200,7 @@
           per girare.
       4:
         image: notes/hoc5_4.jpg
-        text: Ora, fai arrivare quegli zombie nel posto a cui appartengono!
+        text: Ora, manda quegli zombie nel luogo da cui provengono!
     function:
       1:
         image: notes/stage13_1.jpg

@@ -30,8 +30,8 @@
   more: DI PIÙ
   less: DI MENO
   try_hoc: 'Prova l''Ora del Codice, clicca qui >> '
-  try_k8intro: Oppure, provate la nostra intro K-8 al corso di informatica (15-25
-    ore)
+  try_k8intro: Prova il nostro corso introduttivo di informatica per scuole elementari
+    e medie inferiori (15-25 ore)
   already_started: 'Hai già iniziato? Riprendi qui >> '
   demos: 'Amministratore: Tutte le dimostrazioni'
   continue: Prosegui
@@ -96,14 +96,14 @@
       Code.org.
     teacher_terms: Accetto di essere vincolato dai termini di servizio di Code.org.
   signin_form:
-    title: Accedi
+    title: Hai già un account? Accedi
     login: E-mail o nome utente
     password: Password
     remember: Ricorda le mie credenziali di accesso
     submit: Accedi
   signin:
-    try_hoc: Try one Hour of Code first
-    try_20hours: Try our 20 hour Intro to Computer Science
+    try_hoc: Prova subito l'Ora del Codice
+    try_20hours: Prova il corso di introduzione all'Informatica in 20 ore
   password:
     reset_form:
       title: Hai dimenticato la tua password?
@@ -294,16 +294,17 @@
     show_more: Mostra di più
   home:
     signin_message: o se sei già registrato, %{link}
-    student_reg_link: Studente
-    teacher_reg_link: Insegnante
+    student_reg_link: Iscrizione di studenti
+    teacher_reg_link: Iscrizione di insegnanti
     teacher_dashboard: Vedi il cruscotto di avanzamento
     teacher_student_count_one: Hai %{count} studenti.
     teacher_student_count: Hai %{count} studenti.
     teacher_averages: In media i tuoi studenti hanno guadagnato %{trophy_average}
       trofei su %{trophy_max} in "Padronanza dei concetti".
-    teacher_print_certificates: Print certificates for students who finish this course
-    teacher_read_blog: Read about news and updates to our materials at our Educator
-      Blog
+    teacher_print_certificates: Stampa il certificato per gli studenti che completano
+      questo corso
+    teacher_read_blog: Leggi notizie e aggiornamenti relativi al nostro materiale
+      didattico sul nostro "Educator Blog"
     classroom: La tua classe
     student_progress: I tuoi progressi di apprendimento
     student_stats: Hai guadagnato %{trophy_count} trofei su %{trophy_max} in "Padronanza
@@ -316,8 +317,9 @@
     local_school: scuola locale
     online: in linea
     see_details: Vedi i dettagli
-    prize_info: 'Prizes for participation (U.S. only): $10 gift cards for student
-      completion and up to $1,000 in classroom rewards for public school teachers'
+    prize_info: 'Premi per i partecipanti (solo per gli Stati Uniti): buoni regalo
+      da $10 per gli studenti che completano il corso e buoni regalo per l''intera
+      classe fino a $1,000 per gli insegnanti della scuola pubblica'
   gender:
     male: Maschile
     female: Femminile
@@ -349,7 +351,7 @@
     auth_error: Non sei autorizzato a vedere la soluzione.
   video:
     tab: Video.
-    notes: Nessun video? Mostra le note.
+    notes: Mostra le spiegazioni.
     autoplay_option: Avvia automaticamente i video
     download: Scarica il video
   compatability:

@@ -31,7 +31,7 @@
   more: יותר
   less: פחות
   try_hoc: 'נסה שעה של קוד, לחץ כאן >> '
-  try_k8intro: לחלופין, נסה את K-8 שלנו, הקדמה לקורס מדעי המחשב (15-25 שעות)
+  try_k8intro: נסה את הקורס מבוא למדעי המחשב לכיתות גן-ח'(15-25 שעות)
   already_started: 'כבר התחלת? המשך כאן >> '
   demos: 'מנהל: כל הדוגמאות'
   continue: המשך
@@ -89,14 +89,14 @@
       שמציע האתר Code.org.
     teacher_terms: אני מסכים להיות מחויב לתנאי השימוש של Code.org.
   signin_form:
-    title: התחבר
+    title: כבר יצרת משתמש? היכנס למערכת
     login: דוא ל או שם משתמש
     password: סיסמא
     remember: זכור אותי
     submit: התחבר
   signin:
-    try_hoc: Try one Hour of Code first
-    try_20hours: Try our 20 hour Intro to Computer Science
+    try_hoc: נסה קודם את שעת הקוד
+    try_20hours: נסה את קורס ה-20 שעות שלנו - מבוא למדעי המחשב
   password:
     reset_form:
       title: שכחת את הסיסמא שלך?
@@ -276,16 +276,15 @@
     show_more: הצג יותר
   home:
     signin_message: או אם אתה כבר רשום, %{link}
-    student_reg_link: תלמיד
-    teacher_reg_link: מורה
+    student_reg_link: הירשמות תלמיד
+    teacher_reg_link: הירשמות מורה
     teacher_dashboard: לראות התקדמות לוח המחוונים
     teacher_student_count_one: יש לך %{count} תלמיד.
     teacher_student_count: יש לך %{count} תלמידים.
     teacher_averages: בממוצע, התלמידים שלך הרוויחו %{trophy_average} פרסים, מתוך %{trophy_max}
       אפשריים.
-    teacher_print_certificates: Print certificates for students who finish this course
-    teacher_read_blog: Read about news and updates to our materials at our Educator
-      Blog
+    teacher_print_certificates: הדפס תעודות לתלמידים שגמרו את הקורס הזה
+    teacher_read_blog: קרא על חדשות ועדכונים לחומרים שלנו ב"בלוג מחנכים"
     classroom: הכיתה שלך
     student_progress: התקדמות הלמידה שלך
     student_stats: הרווחת %{trophy_count} פרסים מתוך %{trophy_max} אפשריים.
@@ -297,8 +296,8 @@
     local_school: בה"ס מקומי
     online: באינטרנט
     see_details: ראה פרטים
-    prize_info: 'Prizes for participation (U.S. only): $10 gift cards for student
-      completion and up to $1,000 in classroom rewards for public school teachers'
+    prize_info: 'פרסים עבור השתתפות (רק בארה"ב): כרטיס מתנה של $10 לכל תלמיד שגומר
+      ועד $1000 בפרסים לכיתות עבוד מורים בבי"ס ציבוריים'
   gender:
     male: גבר
     female: אישה
