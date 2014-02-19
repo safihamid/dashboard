@@ -67,7 +67,7 @@
         sequence: Sequenza
         if: Blocco "se"
         if_else: Blocco "se-altrimenti"
-        loop_times: Blocco "ripeti più volte"
+        loop_times: Blocco "ripeti ... volte"
         loop_until: Blocco "ripeti fino a che"
         loop_while: Blocco "mentre"
         loop_for: Blocco "contatore"
@@ -89,7 +89,7 @@
           2 blocchi. Riesci a trovarlo?
         maze_2_6: Prova a farmi arrivare all'intruso verde utilizzando solo tre blocchi.
         maze_2_7: Aiutami a catturare questo maialaccio utilizzando il minor numero
-          possibile di blocchi. Prova a utilizzare più di un blocco "ripeti più volte".
+          possibile di blocchi. Prova a utilizzare più di un blocco "ripeti ... volte".
         maze_2_8: 'Per risolvere questo puzzle, prova un blocco "ripeti ... volte"
           con questi 3 blocchi al suo interno: "vai avanti", "vai avanti",  "gira".'
         maze_2_9: Ok, prova ad usare il nuovo blocco "ripeti fino a che". Esso mi
@@ -108,7 +108,7 @@
         maze_2_15: Io volere girasole! Usa un blocco "se" per farmi arrivare là con
           il minor numero possibile di blocchi.
         maze_2_16: 'Ok, esercitiamoci di nuovo per far pratica: questo puzzle non
-          è molto diverso, ma stai attento ai mangiatori!'
+          è molto diverso, ma stai attento alle piante carnivore!'
         maze_2_17: 'Il blocco "se-altrimenti" controlla una condizione: se è vera
           fa una cosa ALTRIMENTI ne fa un''altra. Prova ad usare questo nuovo blocco
           per farmi arrivare al girasole.'
@@ -293,7 +293,7 @@
         turtle_3_10: Hai imparato molto! Ora utilizza ciò che hai imparato per disegnare
           quello che vuoi. Prova a disegnare una stella, o una spirale o un fiocco
           di neve stravagante.
-        maze_karel_debug_seq_1: Benvenuti alla correzione del codice (debug)! Il mio
+        maze_karel_debug_seq_1: Benvenuto alla correzione del codice (debug)! Il mio
           codice non funziona correttamente. Riesci ad individuare il problema e a
           risolverlo in modo da livellare il campo e prepararlo per la semina?
         maze_karel_debug_seq_2: Che cosa c'è di sbagliato in questo programma? Come
@@ -381,12 +381,12 @@
         maze_intro: Introduzione al Labirinto
         artist_intro: Introduzione all'Artista
         farmer_intro: Introduzione al Contadino
-        loop_times: Blocco "ripeti più volte"
+        loop_times: Blocco "ripeti ... volte"
         loop_until: Blocco "ripeti fino a che"
         if: Blocco "se"
         if_else: Blocco "se-altrimenti"
         function: Funzioni
-        loop_while: Blocco Mentre
+        loop_while: Blocco "mentre"
         loop_for: Blocco "contatore"
         parameters: Funzioni con parametri
         hoc_wrapup: Conclusione dell'Ora del Codice

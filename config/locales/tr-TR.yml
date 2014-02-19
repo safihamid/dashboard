@@ -30,7 +30,8 @@
   more: DAHA FAZLA
   less: DAHA AZ
   try_hoc: 'Kod Saati''ni denemek için buraya tıklayın >> '
-  try_k8intro: Veya, K-8 Bilgisayar Bilimlerine Giriş Kursumuzu deneyin (15-25 saat)
+  try_k8intro: İlköğretim okullarına yönelik Bilgisayar Bilimlerine Giriş dersimizi
+    deneyin (15-25 saat)
   already_started: 'Zaten başladınız mı? Buradan devam edin >> '
   demos: 'Yönetici: Tüm Demolar'
   continue: Devam
@@ -93,14 +94,14 @@
       kullanma iznine sahip olduğumu bu formu göndererek onaylıyorum.
     teacher_terms: Code.org 'un hizmet hükümlerine bağlı olmayı kabul ediyorum.
   signin_form:
-    title: Giriş Yap
+    title: Zaten bir hesabınız var mı? Oturum Aç
     login: Kullanıcı adınız veya e-posta
     password: Şifre
     remember: Beni hatırla
     submit: Giriş Yap
   signin:
-    try_hoc: Try one Hour of Code first
-    try_20hours: Try our 20 hour Intro to Computer Science
+    try_hoc: Önce bir Kodlama Saati dene
+    try_20hours: 20 saatlik Bilgisayar Bilimlerine Giriş dersini dene
   password:
     reset_form:
       title: Şifrenizi mi unuttunuz?
@@ -281,16 +282,16 @@
     show_more: Daha fazla göster
   home:
     signin_message: veya zaten kayıtlıysanız %{link}
-    student_reg_link: Öğrenci
-    teacher_reg_link: Öğretmen
+    student_reg_link: Öğrenci Üyelik
+    teacher_reg_link: Öğretmen Üyelik
     teacher_dashboard: İlerleme kontrol paneli bakın
     teacher_student_count_one: '%{count} öğrenciye sahipsiniz.'
     teacher_student_count: '%{count} öğrenciye sahipsiniz.'
     teacher_averages: Öğrencileriniz "Kavram Ustalığı" kupalarından ortalama olarak
       %{trophy_max} kupadan %{trophy_average} kupayı kazanmıştır.
-    teacher_print_certificates: Print certificates for students who finish this course
-    teacher_read_blog: Read about news and updates to our materials at our Educator
-      Blog
+    teacher_print_certificates: Bu dersi bitiren öğrenciler için sertifika bastır
+    teacher_read_blog: Ders malzemeleri hakkında haberler ve güncellemeleri eğitimci
+      bloğumuzda okuyun
     classroom: Sınıfınız
     student_progress: Öğrenme ilerlemeniz
     student_stats: '"Kavram Ustalığı" kupalarından %{trophy_max} kupadan %{trophy_count}
@@ -304,8 +305,8 @@
     local_school: Yerel okul
     online: Online
     see_details: Ayrıntılara bakınız
-    prize_info: 'Prizes for participation (U.S. only): $10 gift cards for student
-      completion and up to $1,000 in classroom rewards for public school teachers'
+    prize_info: 'Katılım için ödüller (sadece A.B.D.): Öğrencinin dersi tamamlaması
+      durumunda 10$ hediye çeki, ve okul öğretmenleri için 1000$''a kadar sınıf ödülleri'
   gender:
     male: Erkek
     female: Kadın

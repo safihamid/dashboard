@@ -30,8 +30,8 @@
   more: TÖBB
   less: KEVESEBB
   try_hoc: 'Próbálja ki a Kódolás Óráját, kattintson ide >> '
-  try_k8intro: Vagy próbálja ki a K-8 bevezetőnket a Számítógép Tudomány Tanfolyamhoz
-    (15-25 óra)
+  try_k8intro: Próbálja ki a K-8 bevezetőnket a Számítógép Tudomány Tanfolyamhoz (15-25
+    óra)
   already_started: Már elkezdted? Folytasd itt >>
   demos: 'Admin: Minden demó'
   continue: Tovább
@@ -94,14 +94,14 @@
       hogy használjam a Code.org szolgáltatásait.
     teacher_terms: Elfogadom a felhasználási feltételeket.
   signin_form:
-    title: Bejelentkezés
+    title: Van felhasználói azonosítója? Jelentkezzen be!
     login: E-mail cím vagy felhasználónév
     password: Jelszó
     remember: Emlékezz rám
     submit: Bejelentkezés
   signin:
-    try_hoc: Try one Hour of Code first
-    try_20hours: Try our 20 hour Intro to Computer Science
+    try_hoc: Először próbáld meg a Kódolás Órája-t
+    try_20hours: Próbálja ki a 20 órás bevezetőt a számítógép-tudományhoz
   password:
     reset_form:
       title: Elfelejtette a jelszavát?
@@ -282,16 +282,17 @@
     show_more: Mutass többet
   home:
     signin_message: Vagy ha már regisztrált, %{link}
-    student_reg_link: Diák
-    teacher_reg_link: Tanár
+    student_reg_link: Diák Bejelentkezés
+    teacher_reg_link: Tanár Bejelentkezés
     teacher_dashboard: Nézd meg a fejlődés bemutatót
     teacher_student_count_one: '%{count} diákod van.'
     teacher_student_count: '%{count} diákod van.'
     teacher_averages: Diákjaid átlagosan   %{trophy_average} trófeát szereztek meg
       a %{trophy_max}  "Concept Mastery" trófeákból.
-    teacher_print_certificates: Print certificates for students who finish this course
-    teacher_read_blog: Read about news and updates to our materials at our Educator
-      Blog
+    teacher_print_certificates: Nyomtasa ki a bizonyítványokat a diákoknak, akik befejezték
+      a tanfolyamot
+    teacher_read_blog: Olvastam a híreket és frissítéseket az anyagokhoz  a Pedagógus
+      Blog-ban
     classroom: A tantermed
     student_progress: Fejlődésed
     student_stats: Már megszereztél %{trophy_count} trófeát a %{trophy_max} "Concept
@@ -305,8 +306,8 @@
     local_school: helyi iskola
     online: online
     see_details: Részletek
-    prize_info: 'Prizes for participation (U.S. only): $10 gift cards for student
-      completion and up to $1,000 in classroom rewards for public school teachers'
+    prize_info: 'Részvétel (csak USA) díjak: 10$ -os ajándék kártya diákoknak a befejezésért,
+      és akár 1,000$ az állami iskolákban a tanítóknak'
   gender:
     male: Férfi
     female: Nő
