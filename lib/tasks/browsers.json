@@ -1,6 +1,8 @@
+/* full list of browsers at https://github.com/browserstack/automate-ruby-samples/blob/master/parallel-tests-cucumber/browsers.all.json */
+
 [
   /* our top browsers by analytics */
-  
+
   {
     "browser": "chrome",
     "browser_version": "31",
@@ -22,20 +24,14 @@
     "os": "OS X",
     "os_version": "Mavericks"
   },
-  {
-    "browser": "",
-    "browser_version": "",
-    "device": null,
-    "os": "",
-    "os_version": ""
-  },
-  {
+  /* IE9 crashes on our site.
+   {
     "browser": "Internet Explorer",
     "browser_version": "9",
     "device": null,
     "os": "Windows",
     "os_version": "7"
-  },
+  }, */
   {
     "browser": "Internet Explorer",
     "browser_version": "10",
@@ -43,6 +39,7 @@
     "os": "Windows",
     "os_version": "7"
   },
+  /* Selenium doesn't yet support IE11.
   {
     "browser": "Internet Explorer",
     "browser_version": "11",
@@ -88,20 +85,22 @@
     "os": "Windows",
     "os_version": "8"
   },
+  /* We don't work on IE8. 
   {
     "browser": "ie",
     "browser_version": "8.0",
     "device": null,
     "os": "Windows",
     "os_version": "7"
-  },
+  }, */
+  /* IE9 crashes on our site.
   {
     "browser": "ie",
     "browser_version": "9.0",
     "device": null,
     "os": "Windows",
     "os_version": "7"
-  },
+  }, */
   {
     "browser": "ie",
     "browser_version": "10.0",

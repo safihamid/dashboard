@@ -6,7 +6,7 @@ Background:
 
 Scenario: Connect two blocks from toolbox
   #When I wait for 1 seconds
-  When I inject simulation
+  #When I inject simulation
   And I press "x-close"
   And I press "ok-button"
   And I drag block "1" to offset "160, 0"
@@ -16,7 +16,7 @@ Scenario: Connect two blocks from toolbox
 
 Scenario: Connect two blocks from toolbox
   #When I wait for 1 seconds
-  When I inject simulation
+  #When I inject simulation
   And I press "ok-button"
   And I drag block "1" to offset "160, 0"
   And I drag block "1" to block "4"
