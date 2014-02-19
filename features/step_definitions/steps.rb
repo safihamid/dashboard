@@ -2,10 +2,6 @@ Given /^I am on (.+)$/ do |url|
   @browser.navigate.to "http://#{url}"
 end
 
-When /^I rotate a device to landscape$/ do
-  @browser.rotate(:landscape)
-end
-
 When /^I fill in "([^"]*)" found by "([^"]*)" with "([^"]*)"$/ do |value, type, keys|
   @element = @browser.find_element(type, value)
   @element.send_keys keys

@@ -1,0 +1,112 @@
+[
+  /* our top browsers by analytics */
+  
+  {
+    "browser": "chrome",
+    "browser_version": "31",
+    "device": null,
+    "os": "Windows",
+    "os_version": "7"
+  },
+  {
+    "browser": "chrome",
+    "browser_version": "31",
+    "device": null,
+    "os": "Windows",
+    "os_version": "XP"
+  },
+  {
+    "browser": "Safari",
+    "browser_version": "7",
+    "device": null,
+    "os": "OS X",
+    "os_version": "Mavericks"
+  },
+  {
+    "browser": "",
+    "browser_version": "",
+    "device": null,
+    "os": "",
+    "os_version": ""
+  },
+  {
+    "browser": "Internet Explorer",
+    "browser_version": "9",
+    "device": null,
+    "os": "Windows",
+    "os_version": "7"
+  },
+  {
+    "browser": "Internet Explorer",
+    "browser_version": "10",
+    "device": null,
+    "os": "Windows",
+    "os_version": "7"
+  },
+  {
+    "browser": "Internet Explorer",
+    "browser_version": "11",
+    "device": null,
+    "os": "Windows",
+    "os_version": "7"
+  },
+  {
+    "browser": "Firefox 26",
+    "browser_version": "",
+    "device": null,
+    "os": "Windows",
+    "os_version": "7"
+  },
+
+
+  /* browserstack sample list */
+
+  {
+    "browser": "iPhone",
+    "platform": "MAC",
+    "device": "iPhone 5",
+    "deviceOrientation": "landscape"
+  },
+  {
+    "browser": "firefox",
+    "browser_version": "15.0",
+    "device": null,
+    "os": "OS X",
+    "os_version": "Snow Leopard"
+  },
+  {
+    "browser": "firefox",
+    "browser_version": "16.0",
+    "device": null,
+    "os": "Windows",
+    "os_version": "7"
+  },
+  {
+    "browser": "firefox",
+    "browser_version": "17.0",
+    "device": null,
+    "os": "Windows",
+    "os_version": "8"
+  },
+  {
+    "browser": "ie",
+    "browser_version": "8.0",
+    "device": null,
+    "os": "Windows",
+    "os_version": "7"
+  },
+  {
+    "browser": "ie",
+    "browser_version": "9.0",
+    "device": null,
+    "os": "Windows",
+    "os_version": "7"
+  },
+  {
+    "browser": "ie",
+    "browser_version": "10.0",
+    "device": null,
+    "os": "Windows",
+    "os_version": "8"
+  }  
+]
