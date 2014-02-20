@@ -1,6 +1,7 @@
 class Activity < ActiveRecord::Base
   MINIMUM_FINISHED_RESULT = 10
   MINIMUM_PASS_RESULT = 20
+  FREE_PLAY_RESULT = 30
   BEST_PASS_RESULT = 100
 
   belongs_to :level
