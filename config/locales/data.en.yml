@@ -42,6 +42,9 @@ en:
         '2014 Levels':
           desc: '2014 Puzzles (beta)'
           'MazeEC': 'Stage 1'
+        'Flappy Levels':
+          desc: 'Flappy Bird'
+          'MazeEC': 'Stage 1'
     game:
       name:
         'Unplug1': 'Introduction to Computer Science'
@@ -66,6 +69,7 @@ en:
         'Unplug11': 'Wrap-up'
         'MazeEC': 'The Maze'
         'Bounce': 'Bounce'
+        'Flappy': 'Flappy Bird'
     trophy:
       name:
         'Bronze': 'Bronze'
@@ -199,6 +203,12 @@ en:
         'bounce_9': "Now it is getting crazy!"
         'bounce_10': "There is a now a goal at the top. Attach \"increment score\" blocks to the the \"when ball in goal\" and \"when ball misses paddle\" blocks to make a game."
         'Custom_builder': "Drag blocks from the toolbox to the workspace to draw the level you wish to create. Press \"Run Program\" when you are ready."
+        'flappy_1': "Attach a block to the \"when click\" block, then press \"Run Program\" and move Flappy to the goal."
+        'flappy_2': "Now we've added some ground.  Attach a block to the \"when collide with ground\" block, then press \"Run Program\" and have the game end when Flappy crashes into the ground."
+        'flappy_3': "Pipes will begin to appear as Flappy flies.  Attach a block to the \"when collide with obstacle\" block, then press \"Run Program\" and have the game end when Flappy crashes into the first pipe."
+        'flappy_4': "We should score points when Flappy enters a pipe.  Add a block to the \"when enter an obstacle\" block, then score a point by flying Flappy through the first obstacle."
+        'flappy_5': "See if you can still score a point after making Flappy flap either a smaller or larger amount."
+        'flappy_11': "Create your own Flappy Bird game and then share it with friends." 
       levelIncompleteError:
         # Keyed by "#{game.name}_#{level.level_num}" with fallback "#{game.app}_#{level.level_num}"
         'maze_2_8': "To solve this, find the pattern that repeats. Use a \"repeat\" block with these 3 blocks inside it: move, move, turn right."
