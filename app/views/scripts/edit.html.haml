@@ -1,0 +1,23 @@
+%h1 Edit Your Script
+
+%p="Currently Included in Script"
+%ul#current-script-levels.connectedSortable
+  - @current_script_levels.each do |sl|
+    = content_tag_for :li, sl.level do
+      = sl.level.game.name + " " + sl.level.name
+
+%p="All Levels"
+%ul#all-levels.connectedSortable
+  - @levels.each do |level|
+    = content_tag_for :li, level do
+      = level.game.name + " " + level.name
+
+:javascript
+  $('#current-script-levels, #all-levels').sortable({
+    connectWith: '.connectedSortable',
+  }).disableSelection();
+  $('#current-script-levels').sortable({
+    update: function() {
+      $.post('#{script_sort_url @script}', $('#current-script-levels').sortable('serialize') + "&id=" + #{@script.id});
+    }
+  });
