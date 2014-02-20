@@ -16,6 +16,6 @@ fjs.parentNode.insertBefore(js, fjs);
 - @page_title = t('share_code.title')
 
 %h1= @page_title
-= render partial: "levels/blockly", locals: { start_blocks: @start_blocks, app: @game.app, hide_source: @hide_source, share: @share }
+= render partial: "levels/blockly", locals: { start_blocks: @start_blocks, app: @game.app, hide_source: @hide_source, share: @share, slider_speed: "0.9" }
 
 .fb-comments{:data=> {:href => request.original_url, :numposts => 10, :colorscheme => "light"} }
