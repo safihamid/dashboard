@@ -38,6 +38,7 @@
   - builder = false if local_assigns[:builder].nil?
   - hide_source = false if local_assigns[:hide_source].nil?
   - start_blocks = false if local_assigns[:start_blocks].nil?
+  - slider_speed = false if local_assigns[:slider_speed].nil?
 
   :javascript
     // See assets/javascripts/sendReport for definition of nextRedirect etc.
@@ -107,6 +108,7 @@
         builder: #{builder},
         #{("startBlocks: '" + start_blocks + "',") if start_blocks}
         #{("solutionBlocks: '" + @solution_blocks + "',") if @solution_blocks}
+        #{("sliderSpeed: '" + slider_speed + "',") if slider_speed}
       },
       skinId: '#{@level.skin}'
     });
