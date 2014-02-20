@@ -24,7 +24,7 @@ class ScriptsController < ApplicationController
   def edit
     authorize! :manage, Script
     @script = Script.find(params[:id])
-    @current_script_levels = ScriptLevel.where(script_id: params[:id])
+    @current_script_levels = ScriptLevel.where(script_id: params[:id]).order(:chapter)
     @levels = Level.all
     # Add or remove a level at the specified index in the script.
   end
@@ -35,13 +35,15 @@ class ScriptsController < ApplicationController
     # Remove all existing script levels and create new ones. Optimize this
     # if it is too slow.
     script = Script.find(params[:id])
+    old_script_levels = ScriptLevel.where(script: script).to_a
 
-    params[:level].each_with_index do |level, index|
+    params.fetch(:level, []).each_with_index do |level, index|
       script_level = ScriptLevel.where(level_id: level, script: script).first_or_create # 1 based indexed chapters
+      old_script_levels.delete(script_level)
       script_level.update(chapter: index + 1, game_chapter: index + 1)
     end
     # old_script_levels now contains script_levels that were removed.
-    old_script_levels.each { |sl| ScriptLevel.remove(sl) }
+    old_script_levels.each { |sl| ScriptLevel.delete(sl) }
 
     render nothing: true
   end

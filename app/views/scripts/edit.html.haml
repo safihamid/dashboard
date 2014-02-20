@@ -1,16 +1,26 @@
-%h1 Edit Your Script
+#edit-script-content
+  %h1 Edit Your Script
 
-%p="Currently Included in Script"
-%ul#current-script-levels.connectedSortable
-  - @current_script_levels.each do |sl|
-    = content_tag_for :li, sl.level do
-      = sl.level.game.name + " " + sl.level.name
+  %p#script-updated="Script Updated"
 
-%p="All Levels"
-%ul#all-levels.connectedSortable
-  - @levels.each do |level|
-    = content_tag_for :li, level do
-      = level.game.name + " " + level.name
+  %p="Currently Levels"
+  - filtered_levels = @levels.to_a
+  %ul#current-script-levels.connectedSortable
+    - @current_script_levels.each do |sl|
+      - level = sl.level
+      - filtered_levels.delete(level)
+      = content_tag_for :li, level do
+        %span=level.game.name + " " + level.name
+        =link_to "View", "#", class: "sl-edit-level-link", data: {url: "/games/1/levels/#{level.id}"}
+
+  %p="Unused Levels"
+  %ul#all-levels.connectedSortable
+    - filtered_levels.each do |level|
+      = content_tag_for :li, level do
+        %span=level.game.name + " " + level.name
+        =link_to "View", "#", class: "sl-edit-level-link", data: {url: "/games/1/levels/#{level.id}"}
+
+%iframe#blockly-frame
 
 :javascript
   $('#current-script-levels, #all-levels').sortable({
@@ -18,6 +28,16 @@
   }).disableSelection();
   $('#current-script-levels').sortable({
     update: function() {
-      $.post('#{script_sort_url @script}', $('#current-script-levels').sortable('serialize') + "&id=" + #{@script.id});
+      $.post('#{script_sort_url @script}', $('#current-script-levels').sortable('serialize') + "&id=" + #{@script.id})
+        .done(function () {
+          $('#script-updated').fadeIn('slow').fadeOut('slow');
+        });
     }
   });
+  $('.sl-edit-level-link').click(function(e) { // hoverIntent plugin
+    $('#blockly-frame').attr('src', $(this).data('url'));
+  });
+:css
+  .container {
+    width: 100%;
+  }

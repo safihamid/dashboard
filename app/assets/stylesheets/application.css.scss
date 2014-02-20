@@ -861,6 +861,17 @@ a.download-video {
 #current-script-levels, #all-levels {
   li {
     list-style-type: none;
-    width: 120px;
   }
+}
+#script-updated {
+  color: green;
+  display: none;
+}
+#edit-script-content {
+  float: left;
+  width: 25%;
+}
+#blockly-frame {
+  width: 70%;
+  height: 800px;
 }
