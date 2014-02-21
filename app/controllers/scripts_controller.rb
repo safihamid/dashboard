@@ -25,17 +25,15 @@ class ScriptsController < ApplicationController
     authorize! :manage, Script
     @script = Script.find(params[:id])
     @current_script_levels = ScriptLevel.where(script_id: params[:id]).order(:chapter)
+    # Get all levels that were created by seed (null user) or this user.
     @levels = Level.where("user_id is NULL or user_id = ?", current_user)
-    # Add or remove a level at the specified index in the script.
   end
 
   def sort
     authorize! :manage, Script
 
-    # Remove all existing script levels and create new ones. Optimize this
-    # if it is too slow.
     script = Script.find(params[:id])
-    old_script_levels = ScriptLevel.where(script: script).to_a
+    old_script_levels = ScriptLevel.where(script: script).to_a  # tracks which levels are no longer included in script.
 
     params.fetch(:level, []).each_with_index do |level, index|
       script_level = ScriptLevel.where(level_id: level, script: script).first_or_create # 1 based indexed chapters
