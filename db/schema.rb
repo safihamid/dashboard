@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140217213747) do
+ActiveRecord::Schema.define(version: 20140221220547) do
 
   create_table "activities", force: true do |t|
     t.integer  "user_id"
@@ -116,7 +116,7 @@ ActiveRecord::Schema.define(version: 20140217213747) do
 
   create_table "levels", force: true do |t|
     t.integer  "game_id"
-    t.string   "name"
+    t.string   "name",                     null: false
     t.string   "level_url"
     t.datetime "created_at"
     t.datetime "updated_at"
