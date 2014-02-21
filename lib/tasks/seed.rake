@@ -50,6 +50,7 @@ namespace :seed do
     Game.create!(name: 'Unplug11', app: 'unplug')
     Game.create!(name: 'Bounce', app: 'bounce')
     Game.create!(name: "Custom", app: "turtle")
+    Game.create!(name: 'Flappy', app: 'flappy')
   end
 
   COL_GAME = 'Game'
@@ -68,7 +69,8 @@ namespace :seed do
         { file: 'config/hoc_script.csv', params: { name: 'Hour of Code', wrapup_video: Video.find_by_key('hoc_wrapup'), trophies: false, hidden: false }},
         { file: 'config/ec_script.csv', params: { name: 'Edit Code', wrapup_video: Video.find_by_key('hoc_wrapup'), trophies: false, hidden: true }},
         { file: 'config/2014_script.csv', params: { name: '2014 Levels', trophies: false, hidden: true }},
-        { file: 'config/builder_script.csv', params: { name: 'Builder Levels', trophies: false, hidden: true }}
+        { file: 'config/builder_script.csv', params: { name: 'Builder Levels', trophies: false, hidden: true }},
+        { file: 'config/flappy_script.csv', params: { name: 'Flappy Levels', trophies: false, hidden: true }}
     ]
     sources.each do |source|
       script = Script.where(source[:params]).first_or_create
