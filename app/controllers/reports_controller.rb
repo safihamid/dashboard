@@ -109,6 +109,10 @@ SQL
     all_but_best_code_map = Hash.new{|h,k| h[k] = {:level_source_id => k, :count => 0, :popular => false} }
 
     Activity.all.where(['level_id = ?', @level.id]).order('id desc').limit(10000).each do |activity|
+      # Do not process activity records with nil level_source_id
+      if activity.level_source_id.nil?
+        continue
+      end
       if activity.best?
         best_code_map[activity.level_source_id][:count] += 1
       elsif activity.passing?
