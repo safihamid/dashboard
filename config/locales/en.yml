@@ -52,6 +52,7 @@ en:
   less: "LESS"
   try_hoc: "Try the Hour of Code, click here >> "
   try_k8intro: "Try our K-8 Intro to Computer Science Course (15-25 hours)"
+  k8intro: "K-8 Intro to Computer Science Course (15-25 hours)"
   already_started: "Already started? Resume here >> "
   demos: "Admin: All Demos"
   continue: 'Continue'
@@ -262,9 +263,10 @@ en:
     recent_activity: Recent activity
     show_more: Show more
   home:
-    signin_message: "Or if you're already registered, %{link}"
+    signin_message: "Already registered? %{link}"
     student_reg_link: 'Student Sign Up'
     teacher_reg_link: 'Teacher Sign Up'
+    signin_directions: 'Use an account to track progress and get rewards.<br/> Teachers, track your entire class.'
     teacher_dashboard: See progress dashboard
     teacher_student_count_one: You have %{count} student.
     teacher_student_count: You have %{count} students.
@@ -280,7 +282,9 @@ en:
     local_school: local school
     online: online
     see_details: See details
-    prize_info: 'Prizes for participation (U.S. only): $10 gift cards for student completion and up to $1,000 in classroom rewards for public school teachers'
+    prize_info: 'Prizes for participation (U.S. only): $10 gift cards for student completion and up to $1,000 in classroom rewards for public school teachers.'
+    tryfirst: 'Or, you can try it first, and sign up later:'
+    trynow: 'Try now'
   gender:
     male: 'Male'
     female: 'Female'
