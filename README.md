@@ -62,5 +62,16 @@ Then configure the dashboard to use your development version:
 rake blockly:dev['/path/to/blockly-mooc']
 ```
 
+### Sending mail
+
+The application sometimes sends an email, for example when a student attaches to a teacher.  This requires *mailcatcher* to be manually
+installed on your system.  Mailcatcher should not be added to the Gemfile, rather it should be manually installed and run, like so:
+```shell
+gem install mailcatcher
+mailcatcher
+```
+(Note that you might need to open a new shell session for it to be found in the path.)
+
+
 [1]: https://github.com/code-dot-org/blockly/blob/master/README.md
 [2]: https://github.com/code-dot-org/dashboard/blob/master/README_Windows.md
