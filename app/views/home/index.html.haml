@@ -105,6 +105,7 @@
     %ul
       - Script.all.each do |script|
         %li= link_to(data_t_suffix('script.name', script.name, 'desc'), script_level_path(script, ScriptLevel::NEXT))
+    = link_to "Manange Scripts", scripts_path
     %h3= link_to 'Admin Stats', admin_stats_path
 
   :javascript

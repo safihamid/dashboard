@@ -859,6 +859,7 @@ a.download-video {
   }
 }
 #current-script-levels, #all-levels {
+  min-height: 50px;
   li {
     list-style-type: none;
   }

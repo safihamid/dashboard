@@ -1,24 +1,22 @@
 #edit-script-content
   %h1 Edit Your Script
+  = link_to "Back to scripts", scripts_path
+  = link_to "Create new level", builder_path
 
   %p#script-updated="Script Updated"
 
-  %p="Currently Levels"
+  %p="Current Levels"
   - filtered_levels = @levels.to_a
   %ul#current-script-levels.connectedSortable
     - @current_script_levels.each do |sl|
       - level = sl.level
       - filtered_levels.delete(level)
-      = content_tag_for :li, level do
-        %span=level.game.name + " " + level.name
-        =link_to "View", "#", class: "sl-edit-level-link", data: {url: "/games/1/levels/#{level.id}"}
+      = render partial: "drag_level", locals: { level: level }
 
   %p="Unused Levels"
   %ul#all-levels.connectedSortable
     - filtered_levels.each do |level|
-      = content_tag_for :li, level do
-        %span=level.game.name + " " + level.name
-        =link_to "View", "#", class: "sl-edit-level-link", data: {url: "/games/1/levels/#{level.id}"}
+      = render partial: "drag_level", locals: { level: level }
 
 %iframe#blockly-frame
 

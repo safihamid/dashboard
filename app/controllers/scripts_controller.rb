@@ -25,7 +25,7 @@ class ScriptsController < ApplicationController
     authorize! :manage, Script
     @script = Script.find(params[:id])
     @current_script_levels = ScriptLevel.where(script_id: params[:id]).order(:chapter)
-    @levels = Level.all
+    @levels = Level.where("user_id is NULL or user_id = ?", current_user)
     # Add or remove a level at the specified index in the script.
   end
 
