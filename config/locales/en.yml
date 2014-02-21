@@ -83,7 +83,7 @@ en:
     teacher_pitch: "Teach the K-8 Intro to Computer Science in your classroom"
     teacher_title: 'Teacher sign up'
     student_pitch: "Beyond 1 hour: try our K-8 Intro to Computer Science"
-    student_title: 'Sign up'
+    student_title: 'Student sign up'
     school_name: 'School Name (optional)'
     school_address: 'School Address (optional)'
     address_placeholder: 'address, city, state, zip'
