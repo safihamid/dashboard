@@ -3,9 +3,6 @@
 .row
   .span12
     %h1= resource.student? ? t('signup_form.student_pitch') : t('signup_form.teacher_pitch')
-    = image_tag 'signup_header.jpg'
-    %br/
-    %br/
     - if resource.student?
       = t('signup_form.overview')
 
