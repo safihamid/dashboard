@@ -203,15 +203,26 @@ function Dialog(options) {
 
 /**
  * Options is configurable with a top and left properties, both are integers.
+ * Also includes staticBackdrop.  When true, modal dialog's backdrop will not
+ * close the dialog when clicked.
  */
 Dialog.prototype.show = function(options) {
   options = options || {};
 
-  $(this.div).modal('show');
+  if (options.staticBackdrop) {
+    $(this.div).modal({
+      'show': true,
+      'backdrop': 'static'
+    });
+  } else {
+    $(this.div).modal('show');
+  }
 
-  addClickTouchEvent($(this.div).next(), $.proxy(function() {
-    this.hide();
-  }, this));
+  if (!options.staticBackdrop) {
+    addClickTouchEvent($(this.div).next(), $.proxy(function() {
+      this.hide();
+    }, this));
+  }
 
   this.div.offset(options);
 }
