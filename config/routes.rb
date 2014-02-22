@@ -42,7 +42,8 @@ Dashboard::Application.routes.draw do
   get 'builder', to: 'levels#builder'
   post 'create_custom', to: 'levels#create_custom'
 
-  resources :scripts, only: [], path: '/s/' do
+  resources :scripts, path: '/s/' do
+      post 'sort', to: 'scripts#sort'
     resources :script_levels, as: :levels, only: [:show], path: "/level", format: false do
       get 'solution', to: 'script_levels#solution'
     end

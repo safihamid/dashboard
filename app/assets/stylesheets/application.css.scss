@@ -858,3 +858,21 @@ a.download-video {
     }
   }
 }
+#current-script-levels, #all-levels {
+  min-height: 50px;
+  li {
+    list-style-type: none;
+  }
+}
+#script-updated {
+  color: green;
+  display: none;
+}
+#edit-script-content {
+  float: left;
+  width: 25%;
+}
+#blockly-frame {
+  width: 70%;
+  height: 800px;
+}
