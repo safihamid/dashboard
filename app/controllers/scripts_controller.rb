@@ -3,7 +3,7 @@ class ScriptsController < ApplicationController
   check_authorization
 
   def index
-    authorize! :show, Script
+    authorize! :manage, Script
     # Show all the scripts that a user has created.
     @scripts = Script.where(user: current_user)
   end
@@ -17,7 +17,7 @@ class ScriptsController < ApplicationController
     authorize! :manage, Script
     params[:script].require(:name)
     script = Script.create!(name: params[:script][:name], user: current_user)
-    flash.notice = "You created a new script."
+    flash.notice = t("builder.created")
     redirect_to scripts_path
   end
 
@@ -49,7 +49,7 @@ class ScriptsController < ApplicationController
   def destroy
     authorize! :manage, Script
     Script.find(params[:id]).destroy
-    flash.notice = "You destroyed a script."
+    flash.notice = t("builder.destroyed")
     redirect_to scripts_path
   end
 end

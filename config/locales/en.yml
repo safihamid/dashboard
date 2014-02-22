@@ -322,3 +322,13 @@ en:
   download_pdf: 'Open Lesson Plan'
   share_code:
     title: "Click 'Run program' to see my program in action"
+  builder:
+    created: "You created a new script."
+    destroyed: "You destroyed a script."
+    manage: "Manage Scripts"
+    view: "View"
+    back: "Back to scripts"
+    level:
+      create: "Create new level"
+      current: "Current Levels"
+      unused: "Unused Levels"
