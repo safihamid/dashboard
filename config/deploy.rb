@@ -77,7 +77,7 @@ namespace :deploy do
 
 
   before "deploy", "deploy:check_revision"
-  after "deploy:update", "deploy:cleanup"
+  after "deploy:restart", "deploy:cleanup"
 end
 
 require './config/boot'
