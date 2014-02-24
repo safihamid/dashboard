@@ -78,7 +78,7 @@ namespace :seed do
 
       CSV.read(source[:file], { col_sep: "\t", headers: true }).each_with_index do |row, index|
         game = game_map[row[COL_GAME].squish]
-        level = Level.find_or_create_by_game_id_and_level_num(:game_id => game.id, :level_num => row[COL_LEVEL], :name => row[COL_NAME])
+        level = Level.find_or_create_by_game_id_and_level_num_and_name(game.id, row[COL_LEVEL], row[COL_NAME])
         level.level_url ||= row[COL_URL]
         level.skin = row[COL_SKIN]
 
