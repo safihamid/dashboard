@@ -99,7 +99,16 @@ namespace :seed do
           end
         end
         level.save!
-        ScriptLevel.where(script: script, level: level, chapter: (index + 1), game_chapter: (game_index[game.id] += 1)).first_or_create
+        # Update script_level with script and chapter. Note: we should not have two script_levels associated with the
+        # same script and chapter ids.
+        script_level = ScriptLevel.where(script: script, chapter: (index + 1)).first
+        if (script_level)
+          script_level.level = level
+          script_level.game_chapter = (game_index[game.id] += 1)
+          script_level.save!
+        else
+          ScriptLevel.where(script: script, level: level, chapter: (index + 1), game_chapter: (game_index[game.id] += 1)).first_or_create
+        end
       end
     end
   end
