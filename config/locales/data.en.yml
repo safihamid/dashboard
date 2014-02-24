@@ -209,7 +209,7 @@ en:
         'flappy_4': "Pipes will begin to appear as Flappy flies.  Attach a block to the \"when hit an obstacle\" block, then press \"Run Program\". To pass this puzzle, your code needs to 'END GAME' when Flappy crashes into the first pipe."
         'flappy_5': "We should score points when Flappy enters a obstacle.  Add a block to the \"when pass an obstacle\" block, then score a point by flying Flappy through the first obstacle."
         'flappy_6': "See if you can still score a point after making Flappy flap either a smaller or larger amount."
-        'flappy_7': "Next, let's try changing the background by attaching another block to the \"when Run is clicked\"."
+        'flappy_7': "Next, let's try changing the scene by attaching another block to the \"when Run is clicked\"."
         'flappy_11': "Create your own Flappy Bird game and then share it with friends." 
       levelIncompleteError:
         # Keyed by "#{game.name}_#{level.level_num}" with fallback "#{game.app}_#{level.level_num}"
