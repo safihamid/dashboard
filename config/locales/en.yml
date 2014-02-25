@@ -323,7 +323,7 @@ en:
   share_code:
     title: "Click 'Run program' to see my program in action"
     flappy_og_title: "Check out my Flappy Game"
-    flappy_og_description: "I wrote the code myself with Code.org"
+    og_description: "I wrote the code myself with Code.org"
   builder:
     created: "You created a new script."
     destroyed: "You destroyed a script."

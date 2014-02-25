@@ -9,16 +9,13 @@ fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));
 </script>
 - content_for :head do
-  - if @game.app == "turtle"
-    = tag('meta', :property => 'og:image', :content => show_image(@level_source_id))
-    = tag('meta', :name => 'twitter:card', :content => "photo")
-    = tag('meta', :name => 'twitter:image', :content => show_image(@level_source_id))
-  - if @game.app = "flappy"
-    = tag('meta', :property => 'og:image', :content => 'app/assets/images/flappy_sharing_drawing.png'
-    = tag('meta', :property => 'og:title', :content => t('share_code.flappy_og_title')
-    = tag('meta', :property => 'og:description', :content => t('share_code.flappy_og_description')
-    = tag('meta', :name => 'twitter:card', :content => "photo"
-    = tag('meta', :name => 'twitter:image', :content => 'app/assets/images/flappy_sharing_drawing.png'
+  = tag('meta', :name => 'twitter:card', :content => "photo")
+  = tag('meta', :property => 'og:description', :content => t('share_code.og_description'))
+  = tag('meta', :property => 'og:image', :content => show_image(@level_source_id))
+  = tag('meta', :name => 'twitter:image', :content => show_image(@level_source_id))
+  
+  - if @game.app == "flappy"
+    = tag('meta', :property => 'og:title', :content => t('share_code.flappy_og_title'))
 - @page_title = t('share_code.title')
 
 %h1= @page_title
