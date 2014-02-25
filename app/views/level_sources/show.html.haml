@@ -15,7 +15,8 @@ fjs.parentNode.insertBefore(js, fjs);
     = tag('meta', :name => 'twitter:image', :content => show_image(@level_source_id))
 - @page_title = t('share_code.title')
 
-%h1= @page_title
+- if @game.app != "flappy"
+  %h1= @page_title
 = render partial: "levels/blockly", locals: { start_blocks: @start_blocks, app: @game.app, hide_source: @hide_source, share: @share, slider_speed: "0.9" }
 
 - if @share && !mobile?
