@@ -226,6 +226,7 @@ en:
         'maze_intro': "Maze Intro"
         'artist_intro': "Artist Intro"
         'farmer_intro': "Farmer Intro"
+        'flappy_intro': "Flappy Intro"
         'loop_times': "Repeat Times Block"
         'loop_until': "Repeat Until Block"
         'if': "If Block"
