@@ -50,7 +50,8 @@ namespace :seed do
     Game.create!(name: 'Unplug11', app: 'unplug')
     Game.create!(name: 'Bounce', app: 'bounce')
     Game.create!(name: "Custom", app: "turtle")
-    Game.create!(name: 'Flappy', app: 'flappy')
+    Game.create!(name: 'Flappy', app: 'flappy', intro_video: Video.find_by_key('flappy_intro'))
+
   end
 
   COL_GAME = 'Game'
