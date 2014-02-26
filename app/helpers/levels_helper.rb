@@ -50,12 +50,12 @@ module LevelsHelper
   end
 
 
-  def show_image(id)
-    if id.nil?
-      app = 'flappy'
-    else
+  def show_image(params)
+    if params[:id]
       level_source = LevelSource.find(id)
       app = level_source.level.game.app
+    else
+      app = params[:app]
     end
 
     if app == 'flappy'
