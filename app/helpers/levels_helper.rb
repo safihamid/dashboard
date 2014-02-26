@@ -50,15 +50,20 @@ module LevelsHelper
   end
 
 
-  def show_image(id)
-    level_source = LevelSource.find(id)
+  def show_image(params)
+    if params[:id]
+      level_source = LevelSource.find(params[:id])
+      app = level_source.level.game.app
+    else
+      app = params[:app]
+    end
 
-    if level_source.level.game.app == 'flappy'
+    if app == 'flappy'
       request.protocol + request.host_with_port + ActionController::Base.helpers.asset_path('flappy_sharing_drawing.png')
     else
       level_source_image = LevelSourceImage.find_by_level_source_id(level_source.id)
       if !level_source_image.nil? && !level_source_image.image.nil?
-        url_for(:controller => "level_sources", :action => "generate_image", :id => id, only_path: false)
+        url_for(:controller => "level_sources", :action => "generate_image", :id => params[:id], only_path: false)
       else
         request.protocol + request.host_with_port + ActionController::Base.helpers.asset_path('sharing_drawing.png')
       end
