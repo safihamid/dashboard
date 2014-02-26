@@ -61,6 +61,19 @@ en:
       5:
         image: 'notes/stage5_5.jpg'
         text: "Click on the arrow in either of these blocks to change the amount the artist moves forward or turns. Play around to get familiar with these new blocks."
+    farmer_intro:
+      1:
+        image: 'notes/stage9_1.jpg'
+        text: "Hi, I'm Paola! In these puzzles, you're a farmer who has to get her field completely flat to start planting crops."
+      2:
+        image: 'notes/stage9_2.jpg'
+        text: "You have to help her remove all the piles of dirt and fill in all the holes."
+      3:
+        image: 'notes/stage9_3.jpg'
+        text: "The new blocks remove 1 shovelful of dirt from a pile and fill in 1 shovelful of dirt to a hole."
+      4:
+        image: 'notes/stage9_4.jpg'
+        text: "The piles and holes are different sizes, so you have to tell the farmer how many shovelfuls to use."
     flappy_intro:
       1:
         image: 'notes/flappy01.jpg'
@@ -91,20 +104,6 @@ en:
         text: "When you see a drop down arrow like this, that means you can change the settings - like what sound to play when flappy hits the ground."
       10:
         image: 'notes/flappy10.jpg'
-        text: "In the final puzzle you'll be able to create your own game and share it with your friends. Have fun!"
-   farmer_intro:
-      1:
-        image: 'notes/stage9_1.jpg'
-        text: "Hi, I'm Paola! In these puzzles, you're a farmer who has to get her field completely flat to start planting crops."
-      2:
-        image: 'notes/stage9_2.jpg'
-        text: "You have to help her remove all the piles of dirt and fill in all the holes."
-      3:
-        image: 'notes/stage9_3.jpg'
-        text: "The new blocks remove 1 shovelful of dirt from a pile and fill in 1 shovelful of dirt to a hole."
-      4:
-        image: 'notes/stage9_4.jpg'
-        text: "The piles and holes are different sizes, so you have to tell the farmer how many shovelfuls to use." 
     loop_times:
       1:
         image: 'notes/hoc2_1.jpg'
