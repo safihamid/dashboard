@@ -1,16 +1,16 @@
 "sq":
   devise:
     confirmations:
-      confirmed: Your account was successfully confirmed. You are now signed in.
-      send_instructions: You will receive an email with instructions about how to
-        confirm your account in a few minutes.
-      send_paranoid_instructions: If your email address exists in our database, you
-        will receive an email with instructions about how to confirm your account
-        in a few minutes.
+      confirmed: Emiali i juaj eshte i konfirmuar me sukses.
+      send_instructions: Do ju dergohet nje email mbrenda disa minutave me instrukcione
+        se si ta konfrimoni llogarine tuaj.
+      send_paranoid_instructions: Nese keni adrese e cila egziton ne bazen e te dhenave
+        tona, ateher ju do te mirni mbrenda disa minutave nje emaili me instrukcione
+        se si ta konfirmoni llogarin tuaj.
     failure:
-      already_authenticated: You are already signed in.
-      inactive: Your account was not activated yet.
-      invalid: Invalid email or password.
+      already_authenticated: Ju veq me jeni te regjistruar.
+      inactive: Llogaria juaj nuk eshte aktivizuar akoma.
+      invalid: Gabim emaili ose fjalkalimi.
       invalid_token: Invalid authentication token.
       locked: Your account is locked.
       not_found_in_database: Invalid email or password.

@@ -34,8 +34,8 @@
           desc: Завдання 2014 (бета-версія)
           MazeEC: Етап 1
         Flappy Levels:
-          desc: Flappy Bird
-          MazeEC: Stage 1
+          desc: Пташок Пурх
+          MazeEC: Етап 1
     game:
       name:
         Unplug1: Вступ до інформатики
@@ -60,7 +60,7 @@
         Unplug11: Підведення підсумків
         MazeEC: Лабіринт
         Bounce: Відбити
-        Flappy: Flappy Bird
+        Flappy: Пташок Пурх
     trophy:
       name:
         Bronze: Бронза
@@ -370,9 +370,10 @@
           a smaller or larger amount.
         flappy_7: Next, try changing the scene by attaching another block to the "when
           Run is clicked".
-        flappy_11: Create your own Flappy game and share it. You can change the visuals,
-          or even the rules. Try changing visuals each time Flappy passes an obstacle.
-          Or make Flappy invincible so he never dies.
+        flappy_11: Створіть свою власну гру про Пурха та поділіться нею. Ви можете
+          змінити вигляд гри, або навіть правила. Спробуйте змінювати візуальні ефекти
+          щоразу як Пурх долає перешкоду. Або зробіть його непереможним, щоб він ніколи
+          не гинув.
       levelIncompleteError:
         maze_2_8: 'Щоб вирішити цю проблему, знайдіть шаблон, який повторюється. Використовуйте
           блок "повтор" з цих 3 блоків всередині нього: рух вперед, рух вперед, поворот
@@ -389,7 +390,7 @@
         maze_intro: Вступ до лабіринту
         artist_intro: Вступ до художника
         farmer_intro: Вступ до фермера
-        flappy_intro: Flappy Intro
+        flappy_intro: Вступ до Пташка
         loop_times: Блок "повторити ... разів"
         loop_until: Блок „Повторити до“
         if: Блок Якщо
