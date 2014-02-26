@@ -31,6 +31,7 @@
   less: KURANG
   try_hoc: 'Cobalah Jam Kode, klik di sini >> '
   try_k8intro: Cobalah kursus pengenalan ilmu komputer untuk anak-anak  (15-25 jam)
+  k8intro: K-8 Intro to Computer Science Course (15-25 hours)
   already_started: 'Sudah mulai? Lanjutkan di sini >> '
   demos: 'Admin: Semua demo'
   continue: Lanjutkan
@@ -292,6 +293,8 @@
     signin_message: Atau jika Anda sudah terdaftar, %{link}
     student_reg_link: Siswa
     teacher_reg_link: Guru
+    signin_directions: Use an account to track progress and get rewards.<br/> Teachers,
+      track your entire class.
     teacher_dashboard: Lihat kemajuan di dasbor
     teacher_student_count_one: Anda memiliki  %{count} siswa.
     teacher_student_count: Anda memiliki  %{count} siswa.
@@ -314,6 +317,8 @@
     see_details: Lihat rincian
     prize_info: 'Prizes for participation (U.S. only): $10 gift cards for student
       completion and up to $1,000 in classroom rewards for public school teachers'
+    tryfirst: 'Or, you can try it first, and sign up later:'
+    trynow: Try now
   gender:
     male: Laki-laki
     female: Wanita
@@ -356,3 +361,15 @@
   download_pdf: Rencana pelajaran terbuka
   share_code:
     title: Klik 'Jalankan program' untuk melihat bagaimana program bekerja
+    flappy_og_title: Check out my Flappy Game
+    og_description: I wrote the code myself with Code.org
+  builder:
+    created: You created a new script.
+    destroyed: You destroyed a script.
+    manage: Manage Scripts
+    view: View
+    back: Back to scripts
+    level:
+      create: Create new level
+      current: Current Levels
+      unused: Unused Levels

@@ -25,7 +25,7 @@
           Artist5: Fase 19
           Unplug11: Fase 20
         Hour of Code:
-          desc: L'Ora del Codice
+          desc: L'Ora di Codice
           Maze: Fase 1
         Edit Code:
           desc: Modifica il codice
@@ -33,6 +33,9 @@
         2014 Levels:
           desc: Puzzle del 2014 (versione beta)
           MazeEC: Fase 1
+        Flappy Levels:
+          desc: Flappy Bird
+          MazeEC: Stage 1
     game:
       name:
         Unplug1: Introduzione all'informatica
@@ -57,6 +60,7 @@
         Unplug11: Conclusione
         MazeEC: Il labirinto
         Bounce: Rimbalzo
+        Flappy: Flappy Bird
     trophy:
       name:
         Bronze: Bronzo
@@ -279,12 +283,13 @@
           un alloggio a due gatti. Suggerimento: crea una nuova funzione usando il
           blocco "per fare qualcosa" e digita il testo che vuoi usare per dare il
           nome al blocco della funzione.'
-        turtle_3_6: 'Usando "disegna un quadrato" come esempio, aggiungi un input
+        turtle_3_6: 'Usando "disegna un quadrato" come esempio, aggiungi un ingresso
           chiamato "lunghezza" per costruire una funzione "disegna un triangolo" in
           grado di disegnare triangoli di diverse dimensioni. (Suggerimento: fai clic
-          sulla stella per aggiungere un input ad una funzione)'
-        turtle_3_7: Aggiungi un input chiamato "altezza" alla funzione "disegna una
-          casa" e costruisci una grande casa per l'elefante (con lati lunghi 150 pixel)
+          sulla stella per aggiungere un ingresso ad una funzione)'
+        turtle_3_7: Aggiungi un ingresso chiamato "lunghezza" alla funzione "disegna
+          una casa" e costruisci una casa grande per l'elefante (con lati lunghi 150
+          pixel)
         turtle_3_8: Qui ci sono tutti i blocchi del puzzle precedente.  Modifica "disegna
           una casa" in modo che finisca all'angolo inferiore destro dopo aver disegnato
           una nuova casa. Utilizza la funzione così modificata per disegnare tre case.
@@ -365,6 +370,27 @@
         Custom_builder: Sposta i blocchi dalla cassetta degli attrezzi allo spazio
           di lavoro per disegnare il livello che vuoi creare. Premi "Esegui il programma"
           quando hai fatto.
+        flappy_1: Attach a block to the "when click" block, then press "Run Program"
+          and click or tap to move Flappy to the target.
+        flappy_2: Now we've added some ground.  Attach a block to the "when hit the
+          ground" block, then press "Run Program". To pass this puzzle, your code
+          needs to 'END GAME' when Flappy crashes into the ground.
+        flappy_3: The "when Run is clicked" block allows you to run code when your
+          game first starts.  Try setting the level speed and flapping to the target.
+        flappy_4: Flappy will fly through obstacles unless you write code to make
+          him crash. Attach a block to the "when hit an obstacle" block. To pass the
+          puzzle, your code needs to 'END GAME' and make Flappy crash into the first
+          pipe so he can reach the target.
+        flappy_5: Let's add a scoreboard, and count points when Flappy makes it past
+          obstacles. Add to the "when pass an obstacle" block, and then score a point
+          by flying Flappy through the first set of pipes.
+        flappy_6: See if you can still score a point after making Flappy flap either
+          a smaller or larger amount.
+        flappy_7: Next, try changing the scene by attaching another block to the "when
+          Run is clicked".
+        flappy_11: Create your own Flappy game and share it. You can change the visuals,
+          or even the rules. Try changing visuals each time Flappy passes an obstacle.
+          Or make Flappy invincible so he never dies.
       levelIncompleteError:
         maze_2_8: 'Per risolvere questo puzzle, trova il comportamento da ripetere.
           Usa un blocco "ripeti ... volte" con questi 3 blocchi all''interno di esso:
@@ -381,6 +407,7 @@
         maze_intro: Introduzione al Labirinto
         artist_intro: Introduzione all'Artista
         farmer_intro: Introduzione al Contadino
+        flappy_intro: Flappy Intro
         loop_times: Blocco "ripeti ... volte"
         loop_until: Blocco "ripeti fino a che"
         if: Blocco "se"
@@ -389,5 +416,5 @@
         loop_while: Blocco "mentre"
         loop_for: Blocco "contatore"
         parameters: Funzioni con parametri
-        hoc_wrapup: Conclusione dell'Ora del Codice
+        hoc_wrapup: Conclusione dell'Ora di Codice
         20_wrapup: Conclusione del corso di 20 Ore

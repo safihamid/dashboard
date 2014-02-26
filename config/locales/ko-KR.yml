@@ -31,6 +31,7 @@
   less: 현재단계
   try_hoc: 'Hour of Code 해보기! >> '
   try_k8intro: 또는, 유치원~중2(K-8) 학생들을 위한 컴퓨터과학(CS, 정보과학) 코스(15-25시간)
+  k8intro: K-8 Intro to Computer Science Course (15-25 hours)
   already_started: 학습 계속하기 >>
   demos: '관리자: 모든 퍼즐'
   continue: 계속하기
@@ -267,6 +268,8 @@
     signin_message: 가입되어있다면 %{link}
     student_reg_link: 학생 가입
     teacher_reg_link: 선생님 가입
+    signin_directions: Use an account to track progress and get rewards.<br/> Teachers,
+      track your entire class.
     teacher_dashboard: 학습 현황
     teacher_student_count_one: 나의 학생들은 %{count} 명 입니다.
     teacher_student_count: 나의 학생들은 %{count} 명 입니다.
@@ -288,6 +291,8 @@
     see_details: 자세히 살펴보기
     prize_info: 'Prizes for participation (U.S. only): $10 gift cards for student
       completion and up to $1,000 in classroom rewards for public school teachers'
+    tryfirst: 'Or, you can try it first, and sign up later:'
+    trynow: Try now
   gender:
     male: 남
     female: 여
@@ -330,3 +335,15 @@
   download_pdf: Open Lesson Plan
   share_code:
     title: '''프로그램 실행''을 눌러 실행 결과를 살펴보세요'
+    flappy_og_title: Check out my Flappy Game
+    og_description: I wrote the code myself with Code.org
+  builder:
+    created: You created a new script.
+    destroyed: You destroyed a script.
+    manage: Manage Scripts
+    view: View
+    back: Back to scripts
+    level:
+      create: Create new level
+      current: Current Levels
+      unused: Unused Levels

@@ -32,6 +32,7 @@
   try_hoc: 'Experimente a Hora do Código, clique aqui >> '
   try_k8intro: Teste a nossa introdução do curso de Ciência da Computação (15-25 horas)
     para o Ensino Fundamental
+  k8intro: K-8 Intro to Computer Science Course (15-25 hours)
   already_started: 'Já começou? Continue aqui >> '
   demos: 'Administrar: Todas as Demonstrações'
   continue: Continuar
@@ -294,16 +295,19 @@
     show_more: Mostrar mais
   home:
     signin_message: Ou se você já está registrado, %{link}
-    student_reg_link: Estudante
-    teacher_reg_link: Professor
+    student_reg_link: Inscrição de Estudante
+    teacher_reg_link: Inscrição para Professores
+    signin_directions: Use an account to track progress and get rewards.<br/> Teachers,
+      track your entire class.
     teacher_dashboard: Consulte o painel de controle do progresso
     teacher_student_count_one: Você tem %{count} alunos.
     teacher_student_count: Você tem %{count} alunos.
     teacher_averages: Em média os seus alunos ganharam %{trophy_average} de %{trophy_max}
       em troféus de "Conceito de Maestria".
-    teacher_print_certificates: Print certificates for students who finish this course
-    teacher_read_blog: Read about news and updates to our materials at our Educator
-      Blog
+    teacher_print_certificates: Impressão de certificados para os alunos que terminarem
+      este curso
+    teacher_read_blog: Leia sobre notícias e novidades dos nossos materiais em nosso
+      Blog Educativo
     classroom: Sua sala de aula
     student_progress: Seu progresso de aprendizagem
     student_stats: Você ganhou  %{trophy_count} de %{trophy_max} em troféus de "Conceito
@@ -318,6 +322,8 @@
     see_details: Ver detalhes
     prize_info: 'Prizes for participation (U.S. only): $10 gift cards for student
       completion and up to $1,000 in classroom rewards for public school teachers'
+    tryfirst: 'Or, you can try it first, and sign up later:'
+    trynow: Try now
   gender:
     male: Masculino
     female: Feminino
@@ -361,3 +367,15 @@
   download_pdf: Abra o planejamento da aula
   share_code:
     title: Clique em 'Executar programa' para ver o meu programa em ação
+    flappy_og_title: Check out my Flappy Game
+    og_description: I wrote the code myself with Code.org
+  builder:
+    created: You created a new script.
+    destroyed: You destroyed a script.
+    manage: Manage Scripts
+    view: View
+    back: Back to scripts
+    level:
+      create: Create new level
+      current: Current Levels
+      unused: Unused Levels

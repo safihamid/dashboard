@@ -1,29 +1,29 @@
 "sl":
   devise:
     confirmations:
-      confirmed: Your account was successfully confirmed. You are now signed in.
-      send_instructions: You will receive an email with instructions about how to
-        confirm your account in a few minutes.
-      send_paranoid_instructions: If your email address exists in our database, you
-        will receive an email with instructions about how to confirm your account
-        in a few minutes.
+      confirmed: Vaš e-poštni naslov je bil uspešno potrjen.
+      send_instructions: E-pošto z navodilom o tem, kako potrdite svoj račun, boste
+        prejeli v nekaj minutah.
+      send_paranoid_instructions: Če vaš email naslov obstaja v naši bazi podatkov,
+        boste v nekaj minutah prejeli e-pošto z navodili o tem, kako potrdite svoj
+        račun.
     failure:
-      already_authenticated: You are already signed in.
-      inactive: Your account was not activated yet.
-      invalid: Invalid email or password.
+      already_authenticated: Ste že vpisani.
+      inactive: Vaš račun še ni bil aktiviran.
+      invalid: Neveljaven elektronski naslov ali geslo.
       invalid_token: Invalid authentication token.
-      locked: Your account is locked.
-      not_found_in_database: Invalid email or password.
-      timeout: Your session expired, please sign in again to continue.
-      unauthenticated: You need to sign in or sign up before continuing.
-      unconfirmed: You have to confirm your account before continuing.
+      locked: Vaš račun je zaklenjen.
+      not_found_in_database: Neveljaven elektronski naslov ali geslo.
+      timeout: Vaša seja je potekla, za nadaljevanje se prosimo ponovno vpišite.
+      unauthenticated: Pred nadaljevanjem se je potrebno vpisati ali prijaviti.
+      unconfirmed: Pred nadaljevanjem morate potrditi vaš račun.
     mailer:
       confirmation_instructions:
-        subject: Confirmation instructions
+        subject: Code.org navodila za potrditev
       reset_password_instructions:
-        subject: Reset password instructions
+        subject: Code.org navodila za ponastavitev gesla
       unlock_instructions:
-        subject: Unlock Instructions
+        subject: Navodila za odklep
     omniauth_callbacks:
       failure: Could not authenticate you from %{kind} because "%{reason}".
       success: Successfully authenticated from %{kind} account.
@@ -31,8 +31,8 @@
       no_token: You can't access this page without coming from a password reset email.
         If you do come from a password reset email, please make sure you used the
         full URL provided.
-      send_instructions: You will receive an email with instructions about how to
-        reset your password in a few minutes.
+      send_instructions: V nekaj minutah boste prejeli e-pošto z navodili o tem, kako
+        ponastaviti vaše geslo.
       send_paranoid_instructions: If your email address exists in our database, you
         will receive a password recovery link at your email address in a few minutes.
       updated: Your password was changed successfully. You are now signed in.
@@ -52,8 +52,8 @@
         confirm link to finalize confirming your new email address.
       updated: You updated your account successfully.
     sessions:
-      signed_in: Signed in successfully.
-      signed_out: Signed out successfully.
+      signed_in: Uspešen vpis.
+      signed_out: Uspešen izpis.
     unlocks:
       send_instructions: You will receive an email with instructions about how to
         unlock your account in a few minutes.
@@ -66,8 +66,8 @@
       confirmation_period_expired: needs to be confirmed within %{period}, please
         request a new one
       expired: has expired, please request a new one
-      not_found: not found
-      not_locked: was not locked
+      not_found: ni mogoče najti
+      not_locked: ni bil zaklenjen
       not_saved:
         one: '1 error prohibited this %{resource} from being saved:'
         other: '%{count} errors prohibited this %{resource} from being saved:'

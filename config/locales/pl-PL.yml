@@ -30,8 +30,8 @@
   more: WIĘCEJ
   less: MNIEJ
   try_hoc: 'Spróbuj Godziny Kodowania (Hour of Code), kliknij tutaj >> '
-  try_k8intro: Lub spróbuj naszego wprowadzającego kursu K-8 z informatyki  (15-25
-    godzin)
+  try_k8intro: Spróbuj naszego wprowadzającego kursu K-8 z informatyki  (15-25 godzin)
+  k8intro: K-8 Intro to Computer Science Course (15-25 hours)
   already_started: 'Już rozpocząłeś ? Wznów tutaj >> '
   demos: 'Admin: Wszystkie dema'
   continue: Kontynuuj
@@ -95,14 +95,14 @@
       rodziców lub prawnych opiekunów, by korzystać z usług Code.org.
     teacher_terms: Zobowiązuję się do przestrzegania regulaminu Code.org.
   signin_form:
-    title: Zaloguj się
+    title: Masz już konto? Zaloguj się
     login: E-mail lub nazwa użytkownika
     password: Hasło
     remember: Zapamiętaj mnie
     submit: Zaloguj się
   signin:
-    try_hoc: Try one Hour of Code first
-    try_20hours: Try our 20 hour Intro to Computer Science
+    try_hoc: Najpierw wypróbuj Godzinę Kodowania
+    try_20hours: Wypróbuj nasz 20 godzinny Wstęp do informatyki
   password:
     reset_form:
       title: Nie pamiętasz swojego hasła?
@@ -292,16 +292,19 @@
     show_more: Pokaż więcej
   home:
     signin_message: Lub, jeśli jesteś już zarejestrowany, %{link}
-    student_reg_link: Uczeń
-    teacher_reg_link: Nauczyciel
+    student_reg_link: Uczeń zalogował się
+    teacher_reg_link: Nauczyciel zalogował się
+    signin_directions: Use an account to track progress and get rewards.<br/> Teachers,
+      track your entire class.
     teacher_dashboard: Zobacz panel postępu
     teacher_student_count_one: Masz %{count} uczniów.
     teacher_student_count: Masz %{count} uczniów.
     teacher_averages: Średnio Twoi uczniowie zdobyli %{trophy_average} z %{trophy_max}
       trofeów "Concept Mastery".
-    teacher_print_certificates: Print certificates for students who finish this course
-    teacher_read_blog: Read about news and updates to our materials at our Educator
-      Blog
+    teacher_print_certificates: Drukowanie certyfikatów dla uczniów, którzy ukończyli
+      ten kurs
+    teacher_read_blog: Przeczytaj o nowościach i aktualizacjach materiałów na naszym
+      blogu pedagogicznym
     classroom: Twoja klasa
     student_progress: Twoje postępy w nauce
     student_stats: Zdobyłeś %{trophy_count} z %{trophy_max} trofeów "Concept Mastery".
@@ -315,6 +318,8 @@
     see_details: Zobacz szczegóły
     prize_info: 'Prizes for participation (U.S. only): $10 gift cards for student
       completion and up to $1,000 in classroom rewards for public school teachers'
+    tryfirst: 'Or, you can try it first, and sign up later:'
+    trynow: Try now
   gender:
     male: Mężczyzna
     female: Kobieta
@@ -357,3 +362,15 @@
   download_pdf: Otwórz plan lekcji
   share_code:
     title: Kliknij przycisk Uruchom program, aby zobaczyć mój program w działaniu
+    flappy_og_title: Check out my Flappy Game
+    og_description: I wrote the code myself with Code.org
+  builder:
+    created: You created a new script.
+    destroyed: You destroyed a script.
+    manage: Manage Scripts
+    view: View
+    back: Back to scripts
+    level:
+      create: Create new level
+      current: Current Levels
+      unused: Unused Levels

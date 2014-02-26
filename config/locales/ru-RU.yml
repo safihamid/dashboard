@@ -31,6 +31,7 @@
   less: СВЕРНУТЬ
   try_hoc: Для участия в "Часе кода" нажми здесь >> 
   try_k8intro: Или попробуйте наш курс "Введение в Информатику" (15-25 часов)
+  k8intro: K-8 Intro to Computer Science Course (15-25 hours)
   already_started: 'Уже начали? Продолжайте здесь >> '
   demos: 'Admin: Все демо'
   continue: Продолжить
@@ -274,6 +275,8 @@
     signin_message: Или, если Вы уже зарегистрированы, %{link}
     student_reg_link: Ученик
     teacher_reg_link: Учитель
+    signin_directions: Use an account to track progress and get rewards.<br/> Teachers,
+      track your entire class.
     teacher_dashboard: Открыть панель контроля хода выполнения
     teacher_student_count_one: У Вас %{count} ученик.
     teacher_student_count: У Вас %{count} учеников.
@@ -296,6 +299,8 @@
     see_details: Подробнее
     prize_info: 'Prizes for participation (U.S. only): $10 gift cards for student
       completion and up to $1,000 in classroom rewards for public school teachers'
+    tryfirst: 'Or, you can try it first, and sign up later:'
+    trynow: Try now
   gender:
     male: Мужской
     female: Женский
@@ -338,3 +343,15 @@
   download_pdf: Показать план урока
   share_code:
     title: Нажми "Запустить программу", чтобы посмотреть работу моей программы
+    flappy_og_title: Check out my Flappy Game
+    og_description: I wrote the code myself with Code.org
+  builder:
+    created: You created a new script.
+    destroyed: You destroyed a script.
+    manage: Manage Scripts
+    view: View
+    back: Back to scripts
+    level:
+      create: Create new level
+      current: Current Levels
+      unused: Unused Levels

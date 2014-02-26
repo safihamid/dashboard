@@ -31,6 +31,7 @@
   less: MINDER
   try_hoc: 'Probeer the Hour of Code, klik hier >> '
   try_k8intro: of probeer onze K-8 intro voor Computer Science les (15-25 uur)
+  k8intro: K-8 Intro to Computer Science Course (15-25 hours)
   already_started: 'al begonnen? ga hier verder >> '
   demos: 'Admin: alle demo''s'
   continue: verder gaan
@@ -292,6 +293,8 @@
     signin_message: Of als je al ingeschreven bent, %{link}
     student_reg_link: Leerling
     teacher_reg_link: Leraar
+    signin_directions: Use an account to track progress and get rewards.<br/> Teachers,
+      track your entire class.
     teacher_dashboard: Ga naar voorgangsoverzicht
     teacher_student_count_one: Je hebt %{count} leerling.
     teacher_student_count: Je hebt %{count} studenten.
@@ -314,6 +317,8 @@
     see_details: Bekijk details
     prize_info: 'Prizes for participation (U.S. only): $10 gift cards for student
       completion and up to $1,000 in classroom rewards for public school teachers'
+    tryfirst: 'Or, you can try it first, and sign up later:'
+    trynow: Try now
   gender:
     male: Man
     female: Vrouw
@@ -357,3 +362,15 @@
   download_pdf: Open lesplan
   share_code:
     title: Click 'Run program' to see my program in action
+    flappy_og_title: Check out my Flappy Game
+    og_description: I wrote the code myself with Code.org
+  builder:
+    created: You created a new script.
+    destroyed: You destroyed a script.
+    manage: Manage Scripts
+    view: View
+    back: Back to scripts
+    level:
+      create: Create new level
+      current: Current Levels
+      unused: Unused Levels

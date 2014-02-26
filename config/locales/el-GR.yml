@@ -32,6 +32,7 @@
   try_hoc: Δοκίμασε την Ώρα του Κώδικα, κάνε κλικ εδώ >> 
   try_k8intro: Ή, δοκίμασε το εισαγωγικό μάθημα, κατηγορίας K-8, στην Επιστήμη Υπολογιστών
     (15-25 ώρες)
+  k8intro: K-8 Intro to Computer Science Course (15-25 hours)
   already_started: 'Έχεις ήδη ξεκινήσει; Συνέχισε εδώ >> '
   demos: 'Διαχειριστής: Όλα τα Demo'
   continue: Συνέχεια
@@ -295,6 +296,8 @@
     signin_message: Ή αν είστε ήδη εγγεγραμμένος, %{link}
     student_reg_link: Μαθητής
     teacher_reg_link: Δάσκαλος
+    signin_directions: Use an account to track progress and get rewards.<br/> Teachers,
+      track your entire class.
     teacher_dashboard: Προβολη σύνοψης προόδου
     teacher_student_count_one: Εχεις %{count} μαθητές.
     teacher_student_count: Εχεις %{count} μαθητές.
@@ -316,6 +319,8 @@
     see_details: Δείτε λεπτομέρειες
     prize_info: 'Prizes for participation (U.S. only): $10 gift cards for student
       completion and up to $1,000 in classroom rewards for public school teachers'
+    tryfirst: 'Or, you can try it first, and sign up later:'
+    trynow: Try now
   gender:
     male: Αγόρι
     female: Κορίτσι
@@ -360,3 +365,15 @@
   share_code:
     title: Κάντε κλικ στο κουμπί «Εκτέλεση προγράμματος» για να δείτε το πρόγραμμα
       μου να εκτελείται
+    flappy_og_title: Check out my Flappy Game
+    og_description: I wrote the code myself with Code.org
+  builder:
+    created: You created a new script.
+    destroyed: You destroyed a script.
+    manage: Manage Scripts
+    view: View
+    back: Back to scripts
+    level:
+      create: Create new level
+      current: Current Levels
+      unused: Unused Levels

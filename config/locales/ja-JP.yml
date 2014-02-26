@@ -31,6 +31,7 @@
   less: 隠す
   try_hoc: ここをクリックしてコードの時間を試してください >>
   try_k8intro: または、私たちの K- 8 イントロ計算機科学コース (15-25 時間)を試してください。
+  k8intro: K-8 Intro to Computer Science Course (15-25 hours)
   already_started: 既に開始しましたか？ここで再開してください >>
   demos: 管理者： 全部のデモ
   continue: 続行しますか？
@@ -263,6 +264,8 @@
     signin_message: すでに登録されていましたら %{link}
     student_reg_link: 生徒
     teacher_reg_link: 先生
+    signin_directions: Use an account to track progress and get rewards.<br/> Teachers,
+      track your entire class.
     teacher_dashboard: プログレス状況わ、ダッシュ ボードを参照してください。
     teacher_student_count_one: あなたには %{count} 人の生徒がいます。
     teacher_student_count: あなたには %{count} 人の生徒がいます。
@@ -282,6 +285,8 @@
     see_details: 詳細はこちら
     prize_info: 'Prizes for participation (U.S. only): $10 gift cards for student
       completion and up to $1,000 in classroom rewards for public school teachers'
+    tryfirst: 'Or, you can try it first, and sign up later:'
+    trynow: Try now
   gender:
     male: 男性
     female: 女性
@@ -324,3 +329,15 @@
   download_pdf: オープン レッスン ・ プラン
   share_code:
     title: 「プログラムを実行する」をクリックすて、アクションで私のプログラムを見てください
+    flappy_og_title: Check out my Flappy Game
+    og_description: I wrote the code myself with Code.org
+  builder:
+    created: You created a new script.
+    destroyed: You destroyed a script.
+    manage: Manage Scripts
+    view: View
+    back: Back to scripts
+    level:
+      create: Create new level
+      current: Current Levels
+      unused: Unused Levels

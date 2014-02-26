@@ -32,6 +32,7 @@
   try_hoc: 'Prøv En Times Kodning, klik her >> '
   try_k8intro: Eller prøv vores Folkeskole Intro til Computer Videnskabs Kursus (15-25
     timer)
+  k8intro: K-8 Intro to Computer Science Course (15-25 hours)
   already_started: 'Allerede startet? Fortsæt her >> '
   demos: 'Admin: Alle demoer'
   continue: Fortsæt
@@ -290,6 +291,8 @@
     signin_message: Eller hvis du allerede er registreret, %{link}
     student_reg_link: Studerende
     teacher_reg_link: Lærer
+    signin_directions: Use an account to track progress and get rewards.<br/> Teachers,
+      track your entire class.
     teacher_dashboard: Se fremskridts oversigt
     teacher_student_count_one: Du har %{count} studerende.
     teacher_student_count: Du har %{count} studerende.
@@ -312,6 +315,8 @@
     see_details: Se detaljer
     prize_info: 'Prizes for participation (U.S. only): $10 gift cards for student
       completion and up to $1,000 in classroom rewards for public school teachers'
+    tryfirst: 'Or, you can try it first, and sign up later:'
+    trynow: Try now
   gender:
     male: Mand
     female: Kvinde
@@ -355,3 +360,15 @@
   download_pdf: Åben lektionsplan
   share_code:
     title: Klik 'Kør program' at se mit program i aktion
+    flappy_og_title: Check out my Flappy Game
+    og_description: I wrote the code myself with Code.org
+  builder:
+    created: You created a new script.
+    destroyed: You destroyed a script.
+    manage: Manage Scripts
+    view: View
+    back: Back to scripts
+    level:
+      create: Create new level
+      current: Current Levels
+      unused: Unused Levels

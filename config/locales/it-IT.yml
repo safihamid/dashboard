@@ -29,9 +29,10 @@
   of: di
   more: DI PIÙ
   less: DI MENO
-  try_hoc: 'Prova l''Ora del Codice, clicca qui >> '
+  try_hoc: 'Prova l''Ora di Codice, clicca qui >> '
   try_k8intro: Prova il nostro corso introduttivo di informatica per scuole elementari
     e medie inferiori (15-25 ore)
+  k8intro: K-8 Intro to Computer Science Course (15-25 hours)
   already_started: 'Hai già iniziato? Riprendi qui >> '
   demos: 'Amministratore: Tutte le dimostrazioni'
   continue: Prosegui
@@ -74,7 +75,7 @@
     teacher_pitch: Insegna nella tua classe l'Introduzione all'informatica per scuole
       elementari e medie inferiori
     teacher_title: Iscrizione dell'insegnante
-    student_pitch: 'Vai oltre un''ora: prova il nostro corso di introduzione all''informatica
+    student_pitch: 'Dopo la prima ora: prova il nostro corso di introduzione all''informatica
       per scuole elementari e medie inferiori'
     student_title: Iscriviti
     school_name: Nome della scuola (facoltativo)
@@ -102,7 +103,7 @@
     remember: Ricorda le mie credenziali di accesso
     submit: Accedi
   signin:
-    try_hoc: Prova subito l'Ora del Codice
+    try_hoc: Prova subito l'Ora di Codice
     try_20hours: Prova il corso di introduzione all'Informatica in 20 ore
   password:
     reset_form:
@@ -128,7 +129,7 @@
     error:
       signed_in: Per favore esci prima di procedere
       username_not_found: Nome utente %{username} non trovato
-      username_in_use: '%{username} è già stato preso, per favore sceglini un''altro'
+      username_in_use: '%{username} è già stato preso, per favore scegline un''altro'
       no_teacher: Non è stato trovato alcun insegnante con %{teacher_email_or_code}.
         Per favore chiedigli di iscriversi qui e poi prova ad aggiungerlo nuovamente
       blank_code: Inserisci un codice o l'indirizzo e-mail del tuo insegnante
@@ -184,7 +185,7 @@
     msg:
       choose: 'Scegli un premio:'
       choose_teacher: 'Clicca sul logo qui sotto per richiedere il premio:'
-      earned: Hai guadagnato un premio! (Solo per gli studenti degli Stati Uniti)
+      earned: Hai vinto un premio! (Solo per gli studenti degli Stati Uniti)
       not_earned_title: Finisci il corso e guadagna premi (solo per gli studenti degli
         Stati Uniti)
       not_earned: 'Impara tutti i concetti dell''informatica, raccogli tutti i %{num_trophies}
@@ -240,7 +241,7 @@
     access_denied: Non hai accesso a questo %{model}.
   nav:
     header:
-      finished_hoc: Ho finito la mia Ora del Codice
+      finished_hoc: Ho finito la mia Ora di Codice
       sign_in_to_save: Accedi per salvare i progressi fatti
     user:
       classroom: I miei studenti
@@ -296,6 +297,8 @@
     signin_message: o se sei già registrato, %{link}
     student_reg_link: Iscrizione di studenti
     teacher_reg_link: Iscrizione di insegnanti
+    signin_directions: Use an account to track progress and get rewards.<br/> Teachers,
+      track your entire class.
     teacher_dashboard: Vedi il cruscotto di avanzamento
     teacher_student_count_one: Hai %{count} studenti.
     teacher_student_count: Hai %{count} studenti.
@@ -320,6 +323,8 @@
     prize_info: 'Premi per i partecipanti (solo per gli Stati Uniti): buoni regalo
       da $10 per gli studenti che completano il corso e buoni regalo per l''intera
       classe fino a $1,000 per gli insegnanti della scuola pubblica'
+    tryfirst: 'Or, you can try it first, and sign up later:'
+    trynow: Try now
   gender:
     male: Maschile
     female: Femminile
@@ -360,6 +365,18 @@
   slow_loading: Questa operazione sta prendendo più tempo del solito...
   try_reloading: Prova a ricaricare la pagina
   next_stage: Finito! Continua con la fase successiva
-  download_pdf: Programma di lavoro per questa lezione
+  download_pdf: Apri il piano di lavoro di questa lezione
   share_code:
     title: Fai click su 'Esegui il programma' per vedere il tuo programma in azione
+    flappy_og_title: Check out my Flappy Game
+    og_description: I wrote the code myself with Code.org
+  builder:
+    created: You created a new script.
+    destroyed: You destroyed a script.
+    manage: Manage Scripts
+    view: View
+    back: Back to scripts
+    level:
+      create: Create new level
+      current: Current Levels
+      unused: Unused Levels

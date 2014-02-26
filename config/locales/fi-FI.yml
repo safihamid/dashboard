@@ -31,6 +31,7 @@
   less: VÄHEMMÄN
   try_hoc: 'Kokeile Koodaustuntia, napsauta tästä >> '
   try_k8intro: Tai kokeile ala-asteen johdantoa tietojenkäsittelyyn (15-25 tuntia)
+  k8intro: K-8 Intro to Computer Science Course (15-25 hours)
   already_started: 'Aloititko jo? Jatka tästä >> '
   demos: 'Ylläpitäjä: Kaikki demot'
   continue: Jatka
@@ -282,6 +283,8 @@
     signin_message: Tai jos olet jo rekisteröitynyt, %{link}
     student_reg_link: Oppilas
     teacher_reg_link: Opettaja
+    signin_directions: Use an account to track progress and get rewards.<br/> Teachers,
+      track your entire class.
     teacher_dashboard: Näytä edistysminen
     teacher_student_count_one: Sinulla on %{count} oppilasta.
     teacher_student_count: Sinulla on %{count} oppilasta.
@@ -305,6 +308,8 @@
     see_details: Lisätietoja
     prize_info: 'Prizes for participation (U.S. only): $10 gift cards for student
       completion and up to $1,000 in classroom rewards for public school teachers'
+    tryfirst: 'Or, you can try it first, and sign up later:'
+    trynow: Try now
   gender:
     male: Mies
     female: Nainen
@@ -347,3 +352,15 @@
   download_pdf: Avaa oppituntisuunnitelma
   share_code:
     title: Näpäytä 'Suorita ohjelma' nähdäksesi ohjelman toiminnassa
+    flappy_og_title: Check out my Flappy Game
+    og_description: I wrote the code myself with Code.org
+  builder:
+    created: You created a new script.
+    destroyed: You destroyed a script.
+    manage: Manage Scripts
+    view: View
+    back: Back to scripts
+    level:
+      create: Create new level
+      current: Current Levels
+      unused: Unused Levels

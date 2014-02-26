@@ -32,6 +32,7 @@
   try_hoc: 'Próbálja ki a Kódolás Óráját, kattintson ide >> '
   try_k8intro: Próbálja ki a K-8 bevezetőnket a Számítógép Tudomány Tanfolyamhoz (15-25
     óra)
+  k8intro: K-8 Intro to Computer Science Course (15-25 hours)
   already_started: Már elkezdted? Folytasd itt >>
   demos: 'Admin: Minden demó'
   continue: Tovább
@@ -284,6 +285,8 @@
     signin_message: Vagy ha már regisztrált, %{link}
     student_reg_link: Diák Bejelentkezés
     teacher_reg_link: Tanár Bejelentkezés
+    signin_directions: Use an account to track progress and get rewards.<br/> Teachers,
+      track your entire class.
     teacher_dashboard: Nézd meg a fejlődés bemutatót
     teacher_student_count_one: '%{count} diákod van.'
     teacher_student_count: '%{count} diákod van.'
@@ -308,6 +311,8 @@
     see_details: Részletek
     prize_info: 'Részvétel (csak USA) díjak: 10$ -os ajándék kártya diákoknak a befejezésért,
       és akár 1,000$ az állami iskolákban a tanítóknak'
+    tryfirst: 'Or, you can try it first, and sign up later:'
+    trynow: Try now
   gender:
     male: Férfi
     female: Nő
@@ -351,3 +356,15 @@
   download_pdf: Nyitott óravázlat
   share_code:
     title: Kattints a 'Program futtatása'  gombra, hogy lásd, hogyan működik
+    flappy_og_title: Check out my Flappy Game
+    og_description: I wrote the code myself with Code.org
+  builder:
+    created: You created a new script.
+    destroyed: You destroyed a script.
+    manage: Manage Scripts
+    view: View
+    back: Back to scripts
+    level:
+      create: Create new level
+      current: Current Levels
+      unused: Unused Levels

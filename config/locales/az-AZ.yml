@@ -32,6 +32,7 @@
   try_hoc: Kod Saatında özünüzü sınayın, buraya klikləyin >> 
   try_k8intro: Yaxud da bizim K-8 İnformatikaya Giriş kursunu (15-25 saat) sınaqdan
     keçirin
+  k8intro: K-8 Intro to Computer Science Course (15-25 hours)
   already_started: 'Artıq başlamısınız? Burada davam edin >> '
   demos: 'Admin: bütün demolar'
   continue: Davam et
@@ -292,6 +293,8 @@
     signin_message: və ya əgər siz artıq qeydiyyatdan keçmisinizsə, %{link}
     student_reg_link: Şagird
     teacher_reg_link: Müəllim
+    signin_directions: Use an account to track progress and get rewards.<br/> Teachers,
+      track your entire class.
     teacher_dashboard: Gedişat panelinə baxın
     teacher_student_count_one: Sizin %{count} tələbəniz var.
     teacher_student_count: Sizin %{count} tələbəniz var.
@@ -314,6 +317,8 @@
     see_details: Təfərrüatına baxın
     prize_info: 'Prizes for participation (U.S. only): $10 gift cards for student
       completion and up to $1,000 in classroom rewards for public school teachers'
+    tryfirst: 'Or, you can try it first, and sign up later:'
+    trynow: Try now
   gender:
     male: Kişi
     female: Qadın
@@ -356,3 +361,15 @@
   download_pdf: Dərs planını aç
   share_code:
     title: Mənim proqramımı fəaliyyətdə görmək üçün 'Proqramı icra et' - ə klikləyiniz
+    flappy_og_title: Check out my Flappy Game
+    og_description: I wrote the code myself with Code.org
+  builder:
+    created: You created a new script.
+    destroyed: You destroyed a script.
+    manage: Manage Scripts
+    view: View
+    back: Back to scripts
+    level:
+      create: Create new level
+      current: Current Levels
+      unused: Unused Levels

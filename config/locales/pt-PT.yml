@@ -32,6 +32,7 @@
   try_hoc: 'Tenta a "Hora do código", clica aqui >> '
   try_k8intro: Ou, tenta a nossa introdução ao curso de ciência da computação (15-25
     horas) para o ciclo básico até 3º ciclo
+  k8intro: K-8 Intro to Computer Science Course (15-25 hours)
   already_started: 'Já começaste? Retomar aqui >> '
   demos: 'Administrador: Todas as demonstrações'
   continue: Continuar
@@ -289,6 +290,8 @@
     signin_message: Ou, se já está registado, %{link}
     student_reg_link: Estudante
     teacher_reg_link: Professor
+    signin_directions: Use an account to track progress and get rewards.<br/> Teachers,
+      track your entire class.
     teacher_dashboard: Consulte o painel de controlo do progresso
     teacher_student_count_one: Você tem %{count} aluno.
     teacher_student_count: Tem alunos %{count}.
@@ -311,6 +314,8 @@
     see_details: Ver detalhes
     prize_info: 'Prizes for participation (U.S. only): $10 gift cards for student
       completion and up to $1,000 in classroom rewards for public school teachers'
+    tryfirst: 'Or, you can try it first, and sign up later:'
+    trynow: Try now
   gender:
     male: Masculino
     female: Feminino
@@ -354,3 +359,15 @@
   download_pdf: Abre o plano de aula
   share_code:
     title: Clique em 'Executar programa' para ver o meu programa em ação
+    flappy_og_title: Check out my Flappy Game
+    og_description: I wrote the code myself with Code.org
+  builder:
+    created: You created a new script.
+    destroyed: You destroyed a script.
+    manage: Manage Scripts
+    view: View
+    back: Back to scripts
+    level:
+      create: Create new level
+      current: Current Levels
+      unused: Unused Levels

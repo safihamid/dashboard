@@ -31,6 +31,7 @@
   less: МЕНШЕ
   try_hoc: 'Спробуйте Годину коду, натисніть тут >> '
   try_k8intro: Або спробуйте наш вступний курс інформатики (15-25 годин)
+  k8intro: K-8 Intro to Computer Science Course (15-25 hours)
   already_started: 'Готові почати? Продовжимо тут >> '
   demos: 'Адмін: Всі демо'
   continue: Продовжити
@@ -90,7 +91,7 @@
       згоду батьків або опікунів на  користування послугами Code.org.
     teacher_terms: Я погоджуюся з умови надання послуг Code.org.
   signin_form:
-    title: Реєстрація
+    title: Вже маєте обліковий запис? Увійдіть
     login: Електронної пошти або ім'я користувача
     password: Пароль
     remember: Запам'ятати мене
@@ -282,8 +283,10 @@
     show_more: Показати більше
   home:
     signin_message: Або якщо ви вже зареєстровані, %{link}
-    student_reg_link: Учень
-    teacher_reg_link: Вчитель
+    student_reg_link: Реєстрація учня
+    teacher_reg_link: Реєстрація вчителя
+    signin_directions: Use an account to track progress and get rewards.<br/> Teachers,
+      track your entire class.
     teacher_dashboard: Побачити панель досягнень
     teacher_student_count_one: У вас %{count} учнів.
     teacher_student_count: У вас %{count} учнів.
@@ -306,6 +309,8 @@
     see_details: Див. докладніше
     prize_info: 'Prizes for participation (U.S. only): $10 gift cards for student
       completion and up to $1,000 in classroom rewards for public school teachers'
+    tryfirst: 'Or, you can try it first, and sign up later:'
+    trynow: Try now
   gender:
     male: Чоловік
     female: Жінка
@@ -348,3 +353,15 @@
   download_pdf: Відкрити план уроку
   share_code:
     title: Клацніть 'Запустити програму', щоб побачити роботу моєї програми
+    flappy_og_title: Check out my Flappy Game
+    og_description: I wrote the code myself with Code.org
+  builder:
+    created: You created a new script.
+    destroyed: You destroyed a script.
+    manage: Manage Scripts
+    view: View
+    back: Back to scripts
+    level:
+      create: Create new level
+      current: Current Levels
+      unused: Unused Levels

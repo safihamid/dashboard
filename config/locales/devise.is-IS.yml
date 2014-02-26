@@ -1,7 +1,7 @@
 "is":
   devise:
     confirmations:
-      confirmed: Staðfesting reiknings heppnaðist. Þú ert nú skráð(ur) inn.
+      confirmed: Tókst að staðfesta netfang þitt.
       send_instructions: Þú færð á næstu mínútum tölvupóst með leiðbeiningum um hvernig
         á að staðfesta reikning þinn.
       send_paranoid_instructions: Ef netfang þitt er skráð í gagnagrunn okkar, munt
@@ -21,9 +21,9 @@
       unconfirmed: Þú verður að staðfesta reikning þinn áður en lengra er haldið.
     mailer:
       confirmation_instructions:
-        subject: Leiðbeiningar varðandi staðfestingu
+        subject: Leiðbeiningar Code.org um staðfestingu
       reset_password_instructions:
-        subject: Leiðbeiningar varðandi endurstillingu lykilorðs
+        subject: Leiðbeiningar Code.org um endurstillingu aðgangsorðs
       unlock_instructions:
         subject: Leiðbeiningar varðandi aflæsingu
     omniauth_callbacks:

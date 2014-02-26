@@ -31,6 +31,7 @@
   less: 更少
   try_hoc: 尝试一小时代码，请单击此处 >>
   try_k8intro: 或者尝试我们的K-8计算机入门课程（15-25小时）
+  k8intro: K-8 Intro to Computer Science Course (15-25 hours)
   already_started: 已经开始了吗？在这里恢复 >>
   demos: 管理员： 所有演示
   continue: 继续
@@ -262,6 +263,8 @@
     signin_message: 或者如果你已经注册了， %{link}
     student_reg_link: 学生
     teacher_reg_link: 老师
+    signin_directions: Use an account to track progress and get rewards.<br/> Teachers,
+      track your entire class.
     teacher_dashboard: 看进度板
     teacher_student_count_one: 你有 %{count} 个学生。
     teacher_student_count: 你有 %{count} 个学生。
@@ -280,6 +283,8 @@
     see_details: 查看详细信息
     prize_info: 'Prizes for participation (U.S. only): $10 gift cards for student
       completion and up to $1,000 in classroom rewards for public school teachers'
+    tryfirst: 'Or, you can try it first, and sign up later:'
+    trynow: Try now
   gender:
     male: 男性
     female: 女性
@@ -320,3 +325,15 @@
   download_pdf: 开放课程
   share_code:
     title: 点击运行程序来观看程序的运行情况
+    flappy_og_title: Check out my Flappy Game
+    og_description: I wrote the code myself with Code.org
+  builder:
+    created: You created a new script.
+    destroyed: You destroyed a script.
+    manage: Manage Scripts
+    view: View
+    back: Back to scripts
+    level:
+      create: Create new level
+      current: Current Levels
+      unused: Unused Levels

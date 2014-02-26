@@ -32,6 +32,7 @@
   try_hoc: Subukan ang Hour of Code, i-click dito >> 
   try_k8intro: O kaya, sumubok ng pang K-8 na Pagpapakilala Sa Kurso Ng Computer Science
     (15-25 oras)
+  k8intro: K-8 Intro to Computer Science Course (15-25 hours)
   already_started: 'Nag simula na? Mag simula ulit dito >> '
   demos: 'Admin: Lahat ng Demos'
   continue: Magpatuloy
@@ -289,6 +290,8 @@
     signin_message: Or if you're already registered, %{link}
     student_reg_link: Student
     teacher_reg_link: Teacher
+    signin_directions: Use an account to track progress and get rewards.<br/> Teachers,
+      track your entire class.
     teacher_dashboard: See progress dashboard
     teacher_student_count_one: You have %{count} student.
     teacher_student_count: You have %{count} students.
@@ -311,6 +314,8 @@
     see_details: See details
     prize_info: 'Prizes for participation (U.S. only): $10 gift cards for student
       completion and up to $1,000 in classroom rewards for public school teachers'
+    tryfirst: 'Or, you can try it first, and sign up later:'
+    trynow: Try now
   gender:
     male: Male
     female: Female
@@ -353,3 +358,15 @@
   download_pdf: Open Lesson Plan
   share_code:
     title: Click 'Run program' to see my program in action
+    flappy_og_title: Check out my Flappy Game
+    og_description: I wrote the code myself with Code.org
+  builder:
+    created: You created a new script.
+    destroyed: You destroyed a script.
+    manage: Manage Scripts
+    view: View
+    back: Back to scripts
+    level:
+      create: Create new level
+      current: Current Levels
+      unused: Unused Levels

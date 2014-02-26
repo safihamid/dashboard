@@ -19,8 +19,8 @@
       placeholder: Koda (ABCDEF) ali elektronska pošta (ucitelj@sola.edu)
     submit: Dodaj učitelja
   add_hint_form:
-    placeholder: Please enter your hint here
-    submit: Add hint
+    placeholder: Prosim vnesite vaš namig tukaj
+    submit: Dodaj namig
   appname: Code.org
   stage: Stopnja
   puzzle: Uganka
@@ -30,7 +30,8 @@
   more: VEČ
   less: MANJ
   try_hoc: 'Poskusi Ura programiranja, klikni tu >> '
-  try_k8intro: Ali preizkusi naš tečaj K-8 Uvod v računalništvo (15-25 ur)
+  try_k8intro: Poizkusi naš K-8 tečaj Uvod v računalništvo (15-25 ur)
+  k8intro: K-8 Intro to Computer Science Course (15-25 hours)
   already_started: 'Si že začel? Nadaljuj tukaj >> '
   demos: 'Administrator: Vse demonstracije'
   continue: Nadaljuj
@@ -92,14 +93,14 @@
       da lahko uporabljam storitve Code.org.
     teacher_terms: Strinjam se s pogoji uporabe Code.org.
   signin_form:
-    title: Prijava
+    title: Že imate račun? Vpišite se
     login: Elektronska pošta ali uporabniško ime
     password: Geslo
     remember: Zapomni si me
     submit: Vpis
   signin:
-    try_hoc: Try one Hour of Code first
-    try_20hours: Try our 20 hour Intro to Computer Science
+    try_hoc: Poizkusite najprej eno Uro kode
+    try_20hours: Poizkusite naš 20 urni Uvod v računalništvo
   password:
     reset_form:
       title: Si pozabil/a svoje geslo?
@@ -137,8 +138,7 @@
       student_disassociated:
         subject: 'Code.org obvestilo: %{student_name} ni več tvoj učenec.'
       teacher_disassociated:
-        subject: 'Code.org notification: %{teacher_name} is no longer associated as
-          your teacher.'
+        subject: 'Code.org obvestilo: %{teacher_name} ni več povezan/a kot vaš učitelj/ica.'
   reports:
     error:
       access_denied: Nimaš dostopa do statistike te osebe
@@ -186,8 +186,8 @@
         krediti za 10 dolarjev in brezplačne prenose iger. OBVESTILO: ponudba velja
         samo za ameriške učence in dokler so nagrade na zalogi.'
       teacher:
-        earned: 10 or more students collected all %{num_trophies} trophies. You have
-          won a teacher prize! (U.S. teachers only)
+        earned: 15 ali več študentov je zbralo vseh %{num_trophies} trofej. Osvojili
+          ste nagrado učitelja! (Samo za ZDA učitelje)
         not_earned_title: Teach the class, earn up to $1,000 in <a target="_blank"
           href="http://DonorsChoose.org">DonorsChoose.org</a> credits (U.S. teachers
           only)
@@ -251,29 +251,29 @@
       prizes_link: več informacij
   teacher:
     title:
-      one: Your teacher is %{name}
+      one: 'Vaš učitelj:'
       other: 'Tvoji učitelji:'
     remove: (odstrani učitelja/ico)
     confirm:
-      remove: Are you sure you want to remove this teacher?
+      remove: Ali ste prepričani da želite odstraniti tega učitelja?
     tools: Orodja za učitelje
     students:
       manage: Upravljaj z učenci
       add: Dodaj učence
     rollup: Plošča napredka
     activity: Zadnje aktivnosti razreda
-    user_not_found: The teacher or student could not be found
-    student_teacher_disassociated: '%{teacher_name} has been removed as a teacher
-      for %{student_name}'
+    user_not_found: Učitelj ali študent ni bil najden
+    student_teacher_disassociated: '%{teacher_name} je bil/a odstranjen/a kot učitelj/ica
+      %{student_name}'
   user:
     email_confirm_needed: 'Elektronska pošta ni bila potrjena:'
     email_resend_confirm: Ponovno pošlji potrditvena navodila
     new_password_hint: (pusti prazno, če tega nočeš spremeniti)
     current_password_hint: (potrebujemo tvoje trenutno geslo, da potrdimo tvoje spremembe)
     cancel:
-      title: Cancel my account
+      title: Prekliči moj račun
       hint: Nezadovoljen?
-      button: Cancel my account
+      button: Ukini moj račun
   user_level:
     completed: Zaključeno
     tried: Poskus
@@ -282,46 +282,50 @@
     show_more: Prikaži več
   home:
     signin_message: Ali če ste že registrirani, %{link}
-    student_reg_link: Učenec
-    teacher_reg_link: Učitelj/ica
+    student_reg_link: Vpis študenta
+    teacher_reg_link: Vpis učitelja
+    signin_directions: Use an account to track progress and get rewards.<br/> Teachers,
+      track your entire class.
     teacher_dashboard: Poglej napredek
     teacher_student_count_one: Imaš %{count} učenca/k.
     teacher_student_count: Imaš %{count} učenca/k.
     teacher_averages: On average your students have earned %{trophy_average} out of
       %{trophy_max} "Concept Mastery" trophies.
-    teacher_print_certificates: Print certificates for students who finish this course
-    teacher_read_blog: Read about news and updates to our materials at our Educator
-      Blog
-    classroom: Your classroom
-    student_progress: Your learning progress
+    teacher_print_certificates: Tiskanje potrdila za študente ki so opravili tečaj
+    teacher_read_blog: Preberi o novicah in posodobitvah našega gradiva na našem blogu
+      Izobraževalcev
+    classroom: Vaša učilnica
+    student_progress: Vaš napredek učenja
     student_stats: You've earned %{trophy_count} out of %{trophy_max} "Concept Mastery"
       trophies.
-    student_left_off: 'Where you left off:'
+    student_left_off: 'Kjer ste končali:'
     student_finished_prize: You've completed all tutorials, claim your %{prize_link}
       and pick another class %{online_link} or at a %{local_school_link}
-    student_finished: You've completed all tutorials, pick another class %{online_link}
-      or at a %{local_school_link}
-    local_school: local school
-    online: online
-    see_details: See details
+    student_finished: Dokončali ste vse vaje, izberite drug razred na %{online_link}
+      ali %{local_school_link}
+    local_school: lokalna šola
+    online: na spletu
+    see_details: Glej podrobnosti
     prize_info: 'Prizes for participation (U.S. only): $10 gift cards for student
       completion and up to $1,000 in classroom rewards for public school teachers'
+    tryfirst: 'Or, you can try it first, and sign up later:'
+    trynow: Try now
   gender:
-    male: Male
-    female: Female
-    none: Prefer not to answer
+    male: Moški
+    female: Ženska
+    none: Raje ne bi odgovoril
   footer:
-    help_from_html: Engineers from <a href="http://www.google.com">Google</a>, <a
-      href="http://www.microsoft.com">Microsoft</a>, <a href="http://www.facebook.com">Facebook</a>,
-      and <a href="http://www.twitter.com">Twitter</a> helped create this tutorial.
-    art_from_html: Angry Birds&trade; & &copy; 2009 - 2013 <a href="http://www.rovio.com">Rovio
-      Entertainment Ltd</a>. All Rights Reserved.<br/> Plants vs. Zombies&trade; &
-      &copy; 2013 <a href="http://www.ea.com">Electronic Arts Inc.</a>. All Rights
-      Reserved.
-    feedback: Provide feedback
-    translate: Help us translate to your language
-    tos: Terms of service
-    privacy: Privacy Policy
+    help_from_html: Inženirji iz <a href="http://www.google.com"> Google</a>, <a href="http://www.microsoft.com">
+      Microsoft</a>, <a href="http://www.facebook.com"> Facebook</a> in <a href="http://www.twitter.com">
+      Twitter</a> so pomagali ustvariti ta vodič.
+    art_from_html: Angry Birds&trade; & &copy; 2009-2013 <a href="http://www.rovio.com">
+      Rovio Entertainment Ltd</a>. Vse pravice pridržane. <br/> Plants vs Zombies&trade;
+      & &copy; 2013 <a href="http://www.ea.com"> Electronic Arts Inc</a>. Vse pravice
+      pridržane.
+    feedback: Povratne informacije
+    translate: Pomagajte nam prevesti v vaš jezik
+    tos: Pogoji storitve
+    privacy: Izjava o zasebnosti
   prize_mail:
     prize_earned:
       subject: Redeem your prize at Code.org!
@@ -330,21 +334,33 @@
     teacher_bonus_prize_earned:
       subject: Redeem your bonus prize at Code.org!
   reference_area:
-    title: Need help?
-    subtitle: See these videos and hints
-    teacher: See the solution
-    auth_error: You are not authorized to see the solution.
+    title: Potrebujete pomoč?
+    subtitle: Poglejte si naslednje videe in namige
+    teacher: Poglejte rešitev
+    auth_error: Niste pooblaščeni za ogled rešitev.
   video:
-    tab: Video.
-    notes: No video? Show notes.
-    autoplay_option: Autoplay videos
-    download: Download Video
+    tab: Video posnetek.
+    notes: Ni video posnetka? Prikaži zapiske.
+    autoplay_option: Samodejno predvajanje videoposnetkov
+    download: Prenos videa
   compatability:
-    working: We are working on support for your browser.
-    upgrade: Please upgrade your browser.
-  slow_loading: This is taking longer than usual...
-  try_reloading: Try reloading the page
-  next_stage: Finished! Continue to next stage
-  download_pdf: Open Lesson Plan
+    working: Delamo na podpori za vaš brskalnik.
+    upgrade: Prosimo, nadgradite vaš brskalnik.
+  slow_loading: To traja dlje kot običajno...
+  try_reloading: Poskusite znova naložiti stran
+  next_stage: Končano! Nadaljujte na naslednjo stopnjo
+  download_pdf: Odpri načrt lekcije
   share_code:
-    title: Click 'Run program' to see my program in action
+    title: Kliknite "Zaženi program" za prikaz mojega programa v akciji
+    flappy_og_title: Check out my Flappy Game
+    og_description: I wrote the code myself with Code.org
+  builder:
+    created: You created a new script.
+    destroyed: You destroyed a script.
+    manage: Manage Scripts
+    view: View
+    back: Back to scripts
+    level:
+      create: Create new level
+      current: Current Levels
+      unused: Unused Levels

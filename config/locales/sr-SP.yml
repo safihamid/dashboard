@@ -31,6 +31,7 @@
   less: МАЊЕ
   try_hoc: 'Испробајте Hour of Code.Кликните овде >> '
   try_k8intro: Или, покушајте наш К-8 курс "Увод у Рачунарске Науке" (15-25 часова)
+  k8intro: K-8 Intro to Computer Science Course (15-25 hours)
   already_started: Већ почели? Наставите овде >>
   demos: 'Admin: All Demos'
   continue: Наставите
@@ -285,6 +286,8 @@
     signin_message: Или ако сте већ регистровани, %{link}
     student_reg_link: Студент
     teacher_reg_link: Учитељ
+    signin_directions: Use an account to track progress and get rewards.<br/> Teachers,
+      track your entire class.
     teacher_dashboard: Видјети плочу напретка
     teacher_student_count_one: Имате %{count} студената.
     teacher_student_count: Ви имате %{count} студената.
@@ -307,6 +310,8 @@
     see_details: Погледај деталје
     prize_info: 'Prizes for participation (U.S. only): $10 gift cards for student
       completion and up to $1,000 in classroom rewards for public school teachers'
+    tryfirst: 'Or, you can try it first, and sign up later:'
+    trynow: Try now
   gender:
     male: Мушко
     female: Женско
@@ -349,3 +354,15 @@
   download_pdf: Отворен План Лекције
   share_code:
     title: Click 'Run program' to see my program in action
+    flappy_og_title: Check out my Flappy Game
+    og_description: I wrote the code myself with Code.org
+  builder:
+    created: You created a new script.
+    destroyed: You destroyed a script.
+    manage: Manage Scripts
+    view: View
+    back: Back to scripts
+    level:
+      create: Create new level
+      current: Current Levels
+      unused: Unused Levels
