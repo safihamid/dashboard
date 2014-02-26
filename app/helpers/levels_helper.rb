@@ -51,9 +51,14 @@ module LevelsHelper
 
 
   def show_image(id)
-    level_source = LevelSource.find(id)
+    if id.nil?
+      app = 'flappy'
+    else
+      level_source = LevelSource.find(id)
+      app = level_source.level.game.app
+    end
 
-    if level_source.level.game.app == 'flappy'
+    if app == 'flappy'
       request.protocol + request.host_with_port + ActionController::Base.helpers.asset_path('flappy_sharing_drawing.png')
     else
       level_source_image = LevelSourceImage.find_by_level_source_id(level_source.id)

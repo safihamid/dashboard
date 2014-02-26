@@ -1,5 +1,9 @@
 - @page_title = "#{data_t('game.name', @game.name)} ##{@script_level.try(:game_chapter) || @level.level_num} "
 
+- content_for :head do
+  - if @game.app == 'flappy'
+    = tag('meta', :property => 'og:image', :content => show_image(nil))
+
 #notes-content{:style => 'display: none;'}
   %ul
     %li
