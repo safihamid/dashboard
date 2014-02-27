@@ -832,13 +832,13 @@ a.download-video {
   #lesson {
     background-color:rgb(88, 103, 113);
     #heading {
-      box-sizing: border-box; padding: 10px 20px 10px 0px;
+      -moz-box-sizing:border-box; box-sizing:border-box; padding: 10px 20px 10px 0px;
       .whitetext {
         color:white;
       }
     }
     #trynow {
-      text-align:right; box-sizing:border-box; padding-top:20px; padding-right:40px;
+      text-align:right; -moz-box-sizing:border-box; box-sizing:border-box; padding-top:20px; padding-right:40px;
       .biggerbutton {
         font-size:20px; height:40px;
       }
@@ -854,7 +854,7 @@ a.download-video {
     background-color:#eeeeee;
     padding-bottom:20px;
     #rightside {
-      box-sizing:border-box; padding:10px;
+      -moz-box-sizing:border-box; box-sizing:border-box; padding:10px;
     }
   }
 }
