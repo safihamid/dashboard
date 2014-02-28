@@ -17,7 +17,7 @@
     - if !phone? || !@level
       = render partial: 'layouts/header'
     - if @full_width
-      .full_container
+      .full_container{ style: @no_padding ? 'padding: 0px 0px 25px 0px;' : '' }
         = yield
     - else
       .container.main{ style: 'padding: 10px;'}
