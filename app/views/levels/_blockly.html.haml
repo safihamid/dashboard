@@ -39,6 +39,7 @@
   - hide_source = false if local_assigns[:hide_source].nil?
   - start_blocks = false if local_assigns[:start_blocks].nil?
   - slider_speed = false if local_assigns[:slider_speed].nil?
+  - no_padding = false if local_assigns[:no_padding].nil?
 
   :javascript
     // See assets/javascripts/sendReport for definition of nextRedirect etc.
@@ -98,6 +99,7 @@
       },
       hide_source: #{hide_source},
       share: #{share},
+      no_padding: #{no_padding},
       level: {
         puzzle_number: #{@script_level ? @script_level.game_chapter : 1},
         stage_total: #{@script ? @script.script_levels_from_game(@level.game_id).length : @level.game.levels.count},
