@@ -24,5 +24,6 @@ class LevelSourcesController < ApplicationController
     @full_width = true
     @hide_source = hide_source
     @share = true
+    @no_padding = @share && phone? && @game.app == "flappy"
   end
 end
