@@ -16,21 +16,20 @@
             = render partial: 'shared/teacher_nav', locals: { current: 'home' }
 
           %p
-            %a#printcertificates{:href=>"#"} #{t('home.teacher_print_certificates')}
-            - finished_students = current_user.students.select { |student| student.prize_earned }
-            - finished_student_post = "<input type='hidden' name='course' value='20hours'>"
-            - finished_students.first(30).each do |finished_student|
-              - finished_student_post = finished_student_post +  "<input type='hidden' name='names[]' value='" + CGI::escape(finished_student.name) + "'>"
-            :javascript
-              $("#printcertificates").click(function() {
-                $('<form action="http://code.org/certificates" method="POST">' + 
-                  "#{finished_student_post}" +
-                  '</form>').submit();
-              });
-
+            %a#printcertificates{:href=>"#"}  #{t('home.teacher_print_certificates')}
             |
-
             %a{:href=>'http://codecurriculum.tumblr.com/', :target=>'_blank'} #{t('home.teacher_read_blog')}
+
+          %form#printcertificatesform{:action=>"http://code.org/certificates", :method=>"POST"}
+            %input{:type=>'hidden', :name=>'course', :value=>'20hours'}
+            - finished_students = current_user.students.select { |student| student.prize_earned }
+            - finished_students.first(30).each do |finished_student|
+              %input{:type=>'hidden', :name=>'names[]', :value=>CGI::escape(finished_student.name)}
+        
+          :javascript
+            $("#printcertificates").click(function() {
+              $('#printcertificatesform').submit();
+            });
 
           %hr
 
