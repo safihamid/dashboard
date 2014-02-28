@@ -10,6 +10,8 @@
         = f.submit 'Add Hint Access'
 
   %h1= link_to 'Start adding hints (where needed) >>', add_pop_hint_path(0)
+  - if current_user && current_user.admin?
+    %h3= link_to 'Show hints >>', show_pop_hints_path(0)
   %br
   %h1 Or, choose a particular puzzle and add hints just for that puzzle:
   - script = Script.twenty_hour_script
@@ -26,6 +28,9 @@
           - sl_group.each do |sl|
             - link = add_pop_hint_per_level_path(sl.level_id, 0)
             %a{ href: link, class: "level_link"}#{sl.game_chapter}
+            - if current_user && current_user.admin?
+              - link = show_pop_hints_per_level_path(sl.level_id, 0)
+              %a{ href: link}#{'Show hint ' + sl.game_chapter.to_s}
           .stage_separator
 
 :javascript

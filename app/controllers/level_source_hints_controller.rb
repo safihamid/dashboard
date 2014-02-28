@@ -29,6 +29,25 @@ class LevelSourceHintsController < ApplicationController
     elsif (idx < 0)
       redirect_to frequent_unsuccessful_level_sources_path, notice: 'You have reached the first error program.'
     else
+      redirect_to frequent_unsuccessful_level_sources_path, notice: 'No more hint to show. Thank you very much!'
+    end
+  end
+
+  def show_pop_hints
+    raise "unauthorized" if !current_user.admin?
+    unsuccessful_level_sources = FrequentUnsuccessfulLevelSource.order('num_of_attempts desc')
+    idx = params[:idx].to_i
+    if (idx >= 0 && unsuccessful_level_sources.length > idx)
+      @level_source_id = unsuccessful_level_sources.at(idx).level_source_id
+      @num_of_attempts = unsuccessful_level_sources.at(idx).num_of_attempts
+      @prev_path = show_pop_hints_path(idx - 1)
+      @current_path = show_pop_hints_path(idx)
+      @next_path = show_pop_hints_path(idx + 1)
+      @hints = LevelSourceHint.where(level_source_id: @level_source_id).sort_by { |hint| -hint.times_proposed}
+      common(@level_source_id)
+    elsif (idx < 0)
+      redirect_to frequent_unsuccessful_level_sources_path, notice: 'You have reached the first error program.'
+    else
       redirect_to frequent_unsuccessful_level_sources_path, notice: 'No more hint to be added. Thank you very much!'
     end
   end
@@ -50,6 +69,27 @@ class LevelSourceHintsController < ApplicationController
       redirect_to frequent_unsuccessful_level_sources_path, notice: 'You have reached the first error program of this level.'
     else
       redirect_to frequent_unsuccessful_level_sources_path, notice: 'No more hint to be added. Please select another level.'
+    end
+  end
+
+  def show_pop_hints_per_level
+    raise "unauthorized" if !current_user.admin?
+    unsuccessful_level_sources = FrequentUnsuccessfulLevelSource.where(level_id: params[:level_id].to_i).order('num_of_attempts desc')
+    idx = params[:idx].to_i
+    level_idx = params[:level_id].to_i
+    if (idx >= 0 && unsuccessful_level_sources.length > idx)
+      @level_source_id = unsuccessful_level_sources.at(idx).level_source_id
+      @num_of_attempts = unsuccessful_level_sources.at(idx).num_of_attempts
+      @prev_path = show_pop_hints_per_level_path(level_idx, idx - 1)
+      @current_path = show_pop_hints_per_level_path(level_idx, idx)
+      @next_path = show_pop_hints_per_level_path(level_idx, idx + 1)
+      @hints = LevelSourceHint.where(level_source_id: @level_source_id).sort_by { |hint| -hint.times_proposed}
+      common(@level_source_id)
+      render 'show_pop_hints'
+    elsif (idx < 0)
+      redirect_to frequent_unsuccessful_level_sources_path, notice: 'You have reached the first error program of this level.'
+    else
+      redirect_to frequent_unsuccessful_level_sources_path, notice: 'No more hint to show. Please select another level.'
     end
   end
 
