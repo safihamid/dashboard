@@ -96,6 +96,24 @@ class ApplicationController < ActionController::Base
       response[:level_source] = level_source_url(options[:level_source])
     end
 
+    # Check if the current level_source has program specific hint, use it if use is set.
+    if options[:level_source]
+      experiment_hints = []
+      options[:level_source].level_source_hints.each do |hint|
+        if hint.selected?
+          # Selected hint overwrites other hints
+          response[:hint] = hint.hint
+          break
+        elsif hint.experiment?
+          experiment_hints.push(hint)
+        end
+      end
+      # Randomly select one of the experimental hints
+      if response[:hint].nil? && experiment_hints.length > 0
+        response[:hint] = (experiment_hints[rand(experiment_hints.count)]).hint
+      end
+    end
+
     response
   end
 
