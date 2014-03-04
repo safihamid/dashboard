@@ -115,10 +115,12 @@ class ApplicationController < ActionController::Base
 
       # Record this activity
       if response[:hint]
-        ActivityHint.create!(
-            activity_id: options[:activity_id],
-            level_source_hint_id: response[:hint].id
-        )
+        if options[:activity_id]
+          ActivityHint.create!(
+              activity_id: options[:activity_id],
+              level_source_hint_id: response[:hint].id
+          )
+        end
         response[:hint] = response[:hint].hint
       end
     end
