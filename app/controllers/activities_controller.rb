@@ -43,7 +43,7 @@ class ActivitiesController < ApplicationController
       authorize! :create, Activity
       authorize! :create, UserLevel
 
-      Activity.create!(
+      activity = Activity.create!(
           user: current_user,
           level: level,
           action: solved,
@@ -96,7 +96,8 @@ class ActivitiesController < ApplicationController
                                     total_lines: total_lines,
                                     trophy_updates: trophy_updates,
                                     solved?: solved,
-                                    level_source: level_source)
+                                    level_source: level_source,
+                                    activity_id: activity.id)
   end
 
   # GET /activities

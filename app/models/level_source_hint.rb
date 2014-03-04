@@ -1,5 +1,6 @@
 class LevelSourceHint < ActiveRecord::Base
   belongs_to :level_source
+  has_many :activity_hints
 
   STATUS_SELECTED = 'selected'
   STATUS_EXPERIMENT = 'experiment'
