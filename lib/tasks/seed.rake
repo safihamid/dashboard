@@ -75,6 +75,7 @@ namespace :seed do
     ]
     sources.each do |source|
       script = Script.where(source[:params]).first_or_create
+      old_script_levels = ScriptLevel.where(script: script).to_a  # tracks which levels are no longer included in script.
       game_index = Hash.new{|h,k| h[k] = 0}
 
       CSV.read(source[:file], { col_sep: "\t", headers: true }).each_with_index do |row, index|
@@ -107,10 +108,13 @@ namespace :seed do
           script_level.level = level
           script_level.game_chapter = (game_index[game.id] += 1)
           script_level.save!
+          old_script_levels.delete(script_level)
         else
           ScriptLevel.where(script: script, level: level, chapter: (index + 1), game_chapter: (game_index[game.id] += 1)).first_or_create
         end
       end
+      # old_script_levels now contains script_levels that were removed from this csv-based script - clean them up:
+      old_script_levels.each { |sl| ScriptLevel.delete(sl) }
     end
   end
 
