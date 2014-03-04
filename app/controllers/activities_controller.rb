@@ -92,12 +92,13 @@ class ActivitiesController < ApplicationController
       end
     end
 
+    activity_id = activity.id if activity
     render json: milestone_response(script_level: script_level,
                                     total_lines: total_lines,
                                     trophy_updates: trophy_updates,
                                     solved?: solved,
                                     level_source: level_source,
-                                    activity_id: activity.id)
+                                    activity_id: activity_id)
   end
 
   # GET /activities
