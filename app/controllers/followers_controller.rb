@@ -162,15 +162,21 @@ SQL
     f = Follower.find_by_user_id_and_student_user_id(@teacher, @user)
     
     if !f.present?
-      redirect_to(redirect_url, notice: t('teacher.user_not_found'))
+      redirect_to redirect_url, alert: t('teacher.user_not_found')
     else
-      # if this was the student's first teacher, store that teacher id in the student's record
-      @user.update_attributes(:prize_teacher_id => @teacher.id) if @user.teachers.first.try(:id) == @teacher.id && @user.prize_teacher_id.blank?
-      
-      f.delete
-      FollowerMailer.student_disassociated_notify_teacher(@teacher, @user).deliver if removed_by_student
-      FollowerMailer.teacher_disassociated_notify_student(@teacher, @user).deliver if !removed_by_student
-      redirect_to redirect_url, notice: t('teacher.student_teacher_disassociated', teacher_name: @teacher.name, student_name: @user.name)
+      if @user.email.present? || @user.teachers.count > 1
+        # if this was the student's first teacher, store that teacher id in the student's record
+        @user.update_attributes(:prize_teacher_id => @teacher.id) if @user.teachers.first.try(:id) == @teacher.id && @user.prize_teacher_id.blank?
+        
+        f.delete
+        FollowerMailer.student_disassociated_notify_teacher(@teacher, @user).deliver if removed_by_student
+        FollowerMailer.teacher_disassociated_notify_student(@teacher, @user).deliver if !removed_by_student
+        redirect_to redirect_url, notice: t('teacher.student_teacher_disassociated', teacher_name: @teacher.name, student_name: @user.name)
+      else
+        # we can't allow the student to be removed because they don't have an email address and they only have one teacher
+        # that teacher is needed to allow them to reset their password since we can't send them a password reset link
+        redirect_to redirect_url, alert: t(removed_by_student ? 'teacher.cant_remove_teacher_no_email' : 'teacher.cant_remove_student_no_email', teacher_name: @teacher.name, student_name: @user.name)
+      end
     end
   end
 
