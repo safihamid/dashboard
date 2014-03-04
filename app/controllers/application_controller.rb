@@ -102,7 +102,7 @@ class ApplicationController < ActionController::Base
       options[:level_source].level_source_hints.each do |hint|
         if hint.selected?
           # Selected hint overwrites other hints
-          response[:hint] = hint.hint
+          response[:hint] = hint
           break
         elsif hint.experiment?
           experiment_hints.push(hint)
@@ -110,7 +110,16 @@ class ApplicationController < ActionController::Base
       end
       # Randomly select one of the experimental hints
       if response[:hint].nil? && experiment_hints.length > 0
-        response[:hint] = (experiment_hints[rand(experiment_hints.count)]).hint
+        response[:hint] = experiment_hints[rand(experiment_hints.count)]
+      end
+
+      # Record this activity
+      if response[:hint]
+        ActivityHint.create!(
+            activity_id: options[:activity_id],
+            level_source_hint_id: response[:hint].id
+        )
+        response[:hint] = response[:hint].hint
       end
     end
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140303212153) do
+ActiveRecord::Schema.define(version: 20140303235248) do
 
   create_table "activities", force: true do |t|
     t.integer  "user_id"
@@ -29,6 +29,16 @@ ActiveRecord::Schema.define(version: 20140303212153) do
 
   add_index "activities", ["level_source_id"], name: "index_activities_on_level_source_id", using: :btree
   add_index "activities", ["user_id", "level_id"], name: "index_activities_on_user_id_and_level_id", using: :btree
+
+  create_table "activity_hints", force: true do |t|
+    t.integer  "activity_id",          null: false
+    t.integer  "level_source_hint_id", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "activity_hints", ["activity_id"], name: "index_activity_hints_on_activity_id", using: :btree
+  add_index "activity_hints", ["level_source_hint_id"], name: "index_activity_hints_on_level_source_hint_id", using: :btree
 
   create_table "callouts", force: true do |t|
     t.string   "element_id", limit: 1024, null: false
