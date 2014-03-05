@@ -13,6 +13,10 @@ module ApplicationHelper
     "#{s} ago"
   end
 
+  def safari?(agent = request.user_agent)
+    return true if agent =~ /Safari/
+  end
+
   def mobile?(agent = request.user_agent)
     return true if agent =~ /\b(iPad|urbanpad)\b/
     return true if agent =~ /BlackBerry|BB10.*mobile/i

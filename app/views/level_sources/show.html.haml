@@ -8,9 +8,9 @@ js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=544354895612633";
 fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));
 </script>
-- if @game.app == 'flappy'
+- if @game.app == 'flappy' && safari?
   <script>
-  window.addEventListener("load", function() { addToHome.show(true); }, false);
+  if (!window.navigator.standalone) { window.addEventListener("load", function() { addToHome.show(true); }, false); }
   </script>
 - content_for :head do
   - if @game.app == 'flappy' || @game.app == 'turtle'
@@ -21,6 +21,8 @@ fjs.parentNode.insertBefore(js, fjs);
     
     - if @game.app == "flappy"
       = tag('meta', :property => 'og:title', :content => t('share_code.flappy_og_title'))
+      = tag :meta, name: "apple-mobile-web-app-capable", content: "yes"
+      = tag :meta, name: "apple-mobile-web-app-status-bar-style", content: "black-translucent"
 
 - if @game.app != "flappy"
   - @page_title = t('share_code.title')
