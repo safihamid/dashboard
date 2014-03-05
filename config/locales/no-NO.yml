@@ -264,6 +264,10 @@
     rollup: Fremdriftsoversikt
     activity: Nylig klasseaktivitet
     user_not_found: Læreren eller studenten ble ikke funnet
+    cant_remove_student_no_email: '%{student_name} cannot be removed as your student
+      because %{student_name} has not registered an e-mail address'
+    cant_remove_teacher_no_email: '%{teacher_name} cannot be removed as your teacher
+      because you have not registered an e-mail address'
     student_teacher_disassociated: '%{teacher_name} er fjernet som lærer for %{student_name}'
   user:
     email_confirm_needed: 'E-postadressen er ikke bekreftet:'

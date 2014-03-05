@@ -96,49 +96,51 @@
           hogy hány shovelfult használjon.
     flappy_intro:
       1:
-        image: notes/flappy01.jpg
-        text: Hi, I'm Katie! One of the most exciting things about computer science
-          is that a computer program can be interactive.
+        image: Megjegyzések/flappy01.jpg
+        text: Szia, Kati vagyok!  Az egyik legizgalmasabb dolog a számítógéppel, hogy
+          egy program lehet interaktív.
       2:
-        image: notes/flappy02.jpg
-        text: Any time somebody clicks or taps or types on a computer or phone, that
-          generates an EVENT, and there's some code that decides what to do when an
-          EVENT occurs.
+        image: Megjegyzések/flappy02.jpg
+        text: Bármikor gépelek klikkelek vagy megérintem,  a számítógépemen vagy telefonomon,
+          az egy ESEMÉNY-t generál, és valahol van egy kód, ami eldönti, mit is csináljon,
+          ha ez az esemény megtörténik.
       3:
-        image: notes/flappy03.jpg
-        text: 'For example, you could have an EVENT-HANDLER that says "when the mouse
-          is clicked, play a sound" '
+        image: Megjegyzések/flappy03.jpg
+        text: 'Mondjuk lehet egy ESEMÉNYKEZELŐ, ami úgy dönt: "amikor az egéren klikkelnek,
+          lejátszom egy hangot" '
       4:
-        image: notes/flappy04.jpg
-        text: Have you ever heard of the game FlappyBird? By using Event handlers,
-          we're going to learn to program our own custom version of FlappyBird!
+        image: Megjegyzések/flappy04.jpg
+        text: Hallottál már a FlappyBird játék-ról ? Eseménykezelők használatával
+          fogunk megtanulni hogyan lehet a saját egyéni  FlappyBird változat programját
+          elkészíteni!
       5:
-        image: notes/flappy05.jpg
-        text: The code you'll write involves dragging and dropping blocks that represent
-          commands for the computer. Under the hood, each of these blocks is represented
-          by real code.
+        image: Megjegyzések/flappy05.jpg
+        text: A  kódot, a számítógépnek parancsokat jelentő blokkokat  felkapva és
+          átrakva (drag and drop) fogja írni. Az grafikusan ábrázolt blokkok valódi
+          kódot reprezentálnak.
       6:
-        image: notes/flappy06.jpg
-        text: 'If you take a look at the workspace, there are some green blocks that
-          are filled in for you - these are "event handlers" '
+        image: Megjegyzések/flappy06.jpg
+        text: 'Ha egy pillantást vet a munkaterületre, lát néhány zöld blokkot, amiket
+          kitöltöttek az Ön részére- ezek a "eseménykezelők" '
       7:
-        image: notes/flappy07.jpg
-        text: If you want the bird to FLAP when you CLICK the mouse, you can do that
-          by attaching the "FLAP" block to the appropriate event handler, and now
-          in your game whenever you click the mouse, the bird will flap.
+        image: Megjegyzések/flappy07.jpg
+        text: Ha azt szeretné, hogy a madár csapjon szárnyával, ha RÁKATTINT az egérrel,
+          arra ott van a "FLAP" blokk. Ezt hozzárendeli a megfelelő eseménykezelőhöz,
+          és akkor az ön játékában valahányszor klikkel, a madár csap egyet a szárnyával.
       8:
-        image: notes/flappy08.jpg
-        text: In each puzzle of this activity we'll introduce new types of events
-          as green blocks on the workspace, and you can decide the appropriate blocks
-          to add in response to those events.
+        image: Megjegyzések/flappy08.jpg
+        text: Minden egyes rejtvény bemutat egy új típusú eseményt, mint zöld blokkot
+          a munkaterületen. Ön kiválaszthatja a megfelelő blokkokat, az  eseményekre
+          adott válaszként.
       9:
-        image: notes/flappy09.jpg
-        text: When you see a drop down arrow like this, that means you can change
-          the settings - like what sound to play when flappy hits the ground.
+        image: Megjegyzések/flappy09.jpg
+        text: Amikor vagy lát egy lefelé nyilat, mint ez, ez azt jelenti, meg lehet
+          változtatni a beállításokat - például az akkor lejátszandó hangot, amikor
+          flappy eléri a talajt.
       10:
-        image: notes/flappy10.jpg
-        text: In the final puzzle you'll be able to create your own game and share
-          it with your friends. Have fun!
+        image: Megjegyzések/flappy10.jpg
+        text: Az utolsó lépcsőn már képes létrehozni a saját játékát, és megosztani
+          azt barátaival. Jó szórakozást!
     loop_times:
       1:
         image: notes/hoc2_1.jpg

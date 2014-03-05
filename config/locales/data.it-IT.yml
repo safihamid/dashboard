@@ -35,7 +35,7 @@
           MazeEC: Fase 1
         Flappy Levels:
           desc: Flappy Bird
-          MazeEC: Stage 1
+          MazeEC: Fase 1
     game:
       name:
         Unplug1: Introduzione all'informatica
@@ -249,8 +249,8 @@
           che ora è nella categoria "Funzioni". Usalo per aiutarmi a riempire questa
           buca.
         maze_karel_2_3: Usa il nuovo blocco "riempi di 5" per farmi riempire tutte
-          le buche. E' stato inserito nella categoria "Funzioni" e devi quindi prenderlo
-          là e trascinarlo fuori.
+          le buche. E' stato inserito nella categoria "Funzioni" e devi quindi spostarlo
+          da là.
         maze_karel_2_4: Definisci una nuova funzione che rimuove 7 palate. Quindi
           usala per scrivere un programma che rimuove tutti i mucchi.
         maze_karel_2_5: Crea una nuova funzione che rimuove 6 palate da un mucchio
@@ -362,13 +362,11 @@
         bounce_7: Collega dei blocchi ai blocchi "quando la freccia a destra", "quando
           la freccia a sinistra", "quando la palla colpisce il muro" e "quando la
           palla colpisce la racchetta".
-        bounce_8: Riprova di nuovo con più palle.
-        bounce_9: Ora ti farà impazzire!
         bounce_10: Adesso c'è una rete in alto. Attacca i blocchi "aumenta il punteggio"
           ai blocchi "quando la palla è in rete" e "quando la palla manca la racchetta"
           per costruire un gioco.
-        Custom_builder: Sposta i blocchi dalla cassetta degli attrezzi allo spazio
-          di lavoro per disegnare il livello che vuoi creare. Premi "Esegui il programma"
+        Custom_builder: Sposta i blocchi dalla cassetta degli attrezzi all'area di
+          lavoro per disegnare il livello che vuoi creare. Premi "Esegui il programma"
           quando hai fatto.
         flappy_1: Attach a block to the "when click" block, then press "Run Program"
           and click or tap to move Flappy to the target.
@@ -381,16 +379,16 @@
           him crash. Attach a block to the "when hit an obstacle" block. To pass the
           puzzle, your code needs to 'END GAME' and make Flappy crash into the first
           pipe so he can reach the target.
-        flappy_5: Let's add a scoreboard, and count points when Flappy makes it past
-          obstacles. Add to the "when pass an obstacle" block, and then score a point
-          by flying Flappy through the first set of pipes.
-        flappy_6: See if you can still score a point after making Flappy flap either
-          a smaller or larger amount.
+        flappy_5: Aggiungiamo un tabellone per contare i punti quando Flappy supera
+          gli ostacoli. Aggiungilo al blocco "quando passa un ostacolo" e quindi segna
+          un punto facendo volare Flappy attraverso la prima serie di tubi. DA RIVEDERE
+        flappy_6: Vedi se puoi ancora segnare un punto dopo aver fatto volare Flappy
+          di una quantità più piccola o più grande. DA RIVEDERE
         flappy_7: Next, try changing the scene by attaching another block to the "when
           Run is clicked".
-        flappy_11: Create your own Flappy game and share it. You can change the visuals,
-          or even the rules. Try changing visuals each time Flappy passes an obstacle.
-          Or make Flappy invincible so he never dies.
+        flappy_11: Crea la tua versione del gioco Flappy e condividilo. Puoi modificare
+          la grafica, o anche le regole. Prova a cambiare grafica ogni volta che Flappy
+          supera un ostacolo. O rendi Flappy invincibile, così che non muoia mai.
       levelIncompleteError:
         maze_2_8: 'Per risolvere questo puzzle, trova il comportamento da ripetere.
           Usa un blocco "ripeti ... volte" con questi 3 blocchi all''interno di esso:
@@ -407,7 +405,7 @@
         maze_intro: Introduzione al Labirinto
         artist_intro: Introduzione all'Artista
         farmer_intro: Introduzione al Contadino
-        flappy_intro: Flappy Intro
+        flappy_intro: Introduzione a Flappy
         loop_times: Blocco "ripeti ... volte"
         loop_until: Blocco "ripeti fino a che"
         if: Blocco "se"

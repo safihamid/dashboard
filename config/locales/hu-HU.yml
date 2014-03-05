@@ -264,6 +264,10 @@
     rollup: Fejlődés tájékoztató
     activity: Mostanában osztály aktivitás
     user_not_found: A tanár, vagy a diák nem ismert
+    cant_remove_student_no_email: '%{student_name} cannot be removed as your student
+      because %{student_name} has not registered an e-mail address'
+    cant_remove_teacher_no_email: '%{teacher_name} cannot be removed as your teacher
+      because you have not registered an e-mail address'
     student_teacher_disassociated: '%{teacher_name}, mint a %{student_name} tanáraként
       el lett bocsátva'
   user:

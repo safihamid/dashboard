@@ -32,7 +32,7 @@
   try_hoc: 'Experimente a Hora do Código, clique aqui >> '
   try_k8intro: Teste a nossa introdução do curso de Ciência da Computação (15-25 horas)
     para o Ensino Fundamental
-  k8intro: K-8 Intro to Computer Science Course (15-25 hours)
+  k8intro: K-8 Introdução ao Curso de Ciência da Computação (15-25 horas)
   already_started: 'Já começou? Continue aqui >> '
   demos: 'Administrar: Todas as Demonstrações'
   continue: Continuar
@@ -77,7 +77,7 @@
     teacher_title: Professor inscreva-se
     student_pitch: 'Para além de 1 hora: Tente nossa Introdução à Ciência da Computação
       para Ensino Fundamental'
-    student_title: Inscreva-se
+    student_title: Cadastro de estudante
     school_name: Nome da escola (opcional)
     school_address: Endereço da escola (opcional)
     address_placeholder: logradouro, cidade, estado, CEP
@@ -276,6 +276,10 @@
     rollup: Painel de controle do progresso
     activity: Atividade recente de classe
     user_not_found: O professor ou o estudante não pôde ser encontrado
+    cant_remove_student_no_email: '%{student_name} cannot be removed as your student
+      because %{student_name} has not registered an e-mail address'
+    cant_remove_teacher_no_email: '%{teacher_name} cannot be removed as your teacher
+      because you have not registered an e-mail address'
     student_teacher_disassociated: '%{teacher_name} has been removed as a teacher
       for %{student_name}'
   user:
@@ -294,11 +298,11 @@
     recent_activity: Atividade recente
     show_more: Mostrar mais
   home:
-    signin_message: Ou se você já está registrado, %{link}
+    signin_message: Já se registrou? %{link}
     student_reg_link: Inscrição de Estudante
     teacher_reg_link: Inscrição para Professores
-    signin_directions: Use an account to track progress and get rewards.<br/> Teachers,
-      track your entire class.
+    signin_directions: Use uma conta para controlar o progresso e obter recompensas.
+      <br/> Professores, acompanha sua classe inteira.
     teacher_dashboard: Consulte o painel de controle do progresso
     teacher_student_count_one: Você tem %{count} alunos.
     teacher_student_count: Você tem %{count} alunos.
@@ -320,10 +324,11 @@
     local_school: escola local
     online: on-line
     see_details: Ver detalhes
-    prize_info: 'Prizes for participation (U.S. only): $10 gift cards for student
-      completion and up to $1,000 in classroom rewards for public school teachers'
-    tryfirst: 'Or, you can try it first, and sign up later:'
-    trynow: Try now
+    prize_info: 'Prêmios para os participantes (somente nos EUA): Cartões de presente
+      de US$10 para estudantes formados e até US$1,000 em recompensas de sala de aula
+      para professores de escola pública.'
+    tryfirst: 'Ou, você pode experimentar primeiro e se inscrever depois:'
+    trynow: Tente agora
   gender:
     male: Masculino
     female: Feminino
@@ -367,15 +372,15 @@
   download_pdf: Abra o planejamento da aula
   share_code:
     title: Clique em 'Executar programa' para ver o meu programa em ação
-    flappy_og_title: Check out my Flappy Game
-    og_description: I wrote the code myself with Code.org
+    flappy_og_title: Confira meu jogo Flappy
+    og_description: Eu mesmo escrevi o código com Code.org
   builder:
-    created: You created a new script.
-    destroyed: You destroyed a script.
-    manage: Manage Scripts
-    view: View
-    back: Back to scripts
+    created: Você criou um novo script.
+    destroyed: Você destruiu um script.
+    manage: Gerenciar Scripts
+    view: Visualizar
+    back: Voltar para scripts
     level:
-      create: Create new level
-      current: Current Levels
-      unused: Unused Levels
+      create: Criar novo nível
+      current: Níveis atuais
+      unused: Níveis não utilizados

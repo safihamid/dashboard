@@ -263,6 +263,10 @@
     rollup: Plošča napredka
     activity: Zadnje aktivnosti razreda
     user_not_found: Učitelj ali študent ni bil najden
+    cant_remove_student_no_email: '%{student_name} cannot be removed as your student
+      because %{student_name} has not registered an e-mail address'
+    cant_remove_teacher_no_email: '%{teacher_name} cannot be removed as your teacher
+      because you have not registered an e-mail address'
     student_teacher_disassociated: '%{teacher_name} je bil/a odstranjen/a kot učitelj/ica
       %{student_name}'
   user:

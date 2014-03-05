@@ -19,8 +19,8 @@
       placeholder: Kode (ABCDEF) atau email (guru@sekolah.edu)
     submit: Cantumkan nama guru
   add_hint_form:
-    placeholder: Please enter your hint here
-    submit: Add hint
+    placeholder: Mohon masukkan pentunjuk anda disini
+    submit: tambah petunjuk
   appname: Code.org
   stage: Tahap
   puzzle: Teka-teki
@@ -30,7 +30,8 @@
   more: lebih
   less: KURANG
   try_hoc: 'Cobalah Jam Kode, klik di sini >> '
-  try_k8intro: Cobalah kursus pengenalan ilmu komputer untuk anak-anak  (15-25 jam)
+  try_k8intro: Cobalah pendahuluan K-8 kami tentang pelajaran Teknologi Komputer (15-25
+    jam)
   k8intro: K-8 Intro to Computer Science Course (15-25 hours)
   already_started: 'Sudah mulai? Lanjutkan di sini >> '
   demos: 'Admin: Semua demo'
@@ -60,9 +61,9 @@
       masuk supaya kemajuan belajar Anda dapat dicatat.
     prizes_header: Para siswa yang pertama yang menyelesaikan kursus akan memenangkan
       hadiah! (hanya untuk siswa di Amerika Serikat)
-    prizes_message: Siswa Amerika Serikat yang telah memperoleh seluruh %{num_trophies}
+    prizes_message: Siswa Amerika Serikat yang memperoleh seluruh %{num_trophies}
       piala konsep dapat memilih berbagai hadiah seperti ruang simpan Dropbox gratis,
-      kredit Skype, dan men-download permainan dari Electronic Arts.
+      kredit Skype, dan mengunduh permainan dari Electronic Arts.
     teacher_educator_guide: Lihat panduan guru
     teacher_prize_header: Memenangkan $1.000 hadiah dari <a target="_blank" href="http://DonorsChoose.org">
       DonorsChoose.org</a>
@@ -77,7 +78,7 @@
     teacher_title: Guru mendaftar
     student_pitch: 'Setelah 1 jam: Cobalah pengantar ilmu komputer untuk sekolah dasar
       dan menengah'
-    student_title: Daftar
+    student_title: Murid Daftar
     school_name: Nama sekolah (opsional)
     school_address: Alamat sekolah (opsional)
     address_placeholder: Alamat, kota, propinsi, zip
@@ -96,13 +97,13 @@
       telah memiliki izin dari orang tua atau wali untuk menggunakan layanan Code.org.
     teacher_terms: Saya setuju dengan segala persyaratan layanan Code.org.
   signin_form:
-    title: Masuk
+    title: Sudah punya aku? Masuk
     login: Email atau nama pengguna
     password: Kata sandi
     remember: Ingat saya
     submit: Masuk
   signin:
-    try_hoc: Try one Hour of Code first
+    try_hoc: Cobalah dahulu 1 Jam berkode
     try_20hours: Try our 20 hour Intro to Computer Science
   password:
     reset_form:
@@ -259,23 +260,27 @@
       prizes_link: Info lebih lanjut
   teacher:
     title:
-      one: Guru Anda adalah %{name}
+      one: 'Guru anda:'
       other: 'Guru Anda:'
-    remove: (remove teacher)
+    remove: (hapus guru)
     confirm:
-      remove: Are you sure you want to remove this teacher?
+      remove: Apakah anda yakin ingin menghapus guru ini?
     tools: Peralatan Guru
     students:
       manage: Mengelola siswa
       add: Cantumkan nama siswa
     rollup: 'Dashboard Kemajuan '
     activity: Aktivitas kelas
-    user_not_found: The teacher or student could not be found
-    student_teacher_disassociated: '%{teacher_name} has been removed as a teacher
-      for %{student_name}'
+    user_not_found: Guru atau murid tidak dapat ditemukan
+    cant_remove_student_no_email: '%{student_name} cannot be removed as your student
+      because %{student_name} has not registered an e-mail address'
+    cant_remove_teacher_no_email: '%{teacher_name} cannot be removed as your teacher
+      because you have not registered an e-mail address'
+    student_teacher_disassociated: '%{teacher_name} telah dihapus sebagai guru dari
+      %{student_name}'
   user:
-    email_confirm_needed: 'Email address has not been confirmed:'
-    email_resend_confirm: Resend confirmation instructions
+    email_confirm_needed: 'Alamat email belum dikonfirmasi:'
+    email_resend_confirm: Kirim ulang petunjuk konfirmasi
     new_password_hint: (Kosongkan jika Anda tidak ingin mengubahnya)
     current_password_hint: (kita perlu password Anda saat ini untuk mengkonfirmasi
       perubahan Anda)
@@ -290,9 +295,9 @@
     recent_activity: Aktivitas terakhir
     show_more: Tunjukkan lebih banyak
   home:
-    signin_message: Atau jika Anda sudah terdaftar, %{link}
-    student_reg_link: Siswa
-    teacher_reg_link: Guru
+    signin_message: Sudah terdaftar? %{link}
+    student_reg_link: Murid Daftar
+    teacher_reg_link: Guru Daftar
     signin_directions: Use an account to track progress and get rewards.<br/> Teachers,
       track your entire class.
     teacher_dashboard: Lihat kemajuan di dasbor
@@ -318,7 +323,7 @@
     prize_info: 'Prizes for participation (U.S. only): $10 gift cards for student
       completion and up to $1,000 in classroom rewards for public school teachers'
     tryfirst: 'Or, you can try it first, and sign up later:'
-    trynow: Try now
+    trynow: Coba sekarang
   gender:
     male: Laki-laki
     female: Wanita
@@ -362,14 +367,14 @@
   share_code:
     title: Klik 'Jalankan program' untuk melihat bagaimana program bekerja
     flappy_og_title: Check out my Flappy Game
-    og_description: I wrote the code myself with Code.org
+    og_description: Saya menulis kode ini sendiri dengan Code.org
   builder:
-    created: You created a new script.
+    created: Kamu membuat skript baru.
     destroyed: You destroyed a script.
     manage: Manage Scripts
-    view: View
-    back: Back to scripts
+    view: Tampilan
+    back: Kembali ke skrip
     level:
-      create: Create new level
-      current: Current Levels
+      create: Buat level baru
+      current: Tingkat saat ini
       unused: Unused Levels

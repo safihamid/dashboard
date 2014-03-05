@@ -32,10 +32,10 @@
           MazeEC: màn 1
         2014 Levels:
           desc: 2014 Puzzles (beta)
-          MazeEC: Stage 1
+          MazeEC: màn 1
         Flappy Levels:
           desc: Flappy Bird
-          MazeEC: Stage 1
+          MazeEC: màn 1
     game:
       name:
         Unplug1: Giới thiệu tới công nghệ thông tin
@@ -59,7 +59,7 @@
         Artist5: Nghệ sĩ 5
         Unplug11: Gói gọn
         MazeEC: mê cung
-        Bounce: Bounce
+        Bounce: Bật lại
         Flappy: Flappy Bird
     trophy:
       name:
@@ -209,8 +209,8 @@
         turtle_2_4: 'Now we''re going to get fancy. Change the code to draw 36 squares,
           100 pixels wide, and each 10 degrees apart. Hint: you may want to use the
           slider to make me go faster.'
-        turtle_2_5: Draw squares with sides of 50, 60, 70, 80, and 90 pixels.  You'll
-          need to use the "draw a square" function five times.
+        turtle_2_5: Vẽ hình vuông với cạnh là 50, 60, 70, 80 và 90 pixel.  Bạn sẽ
+          cần phải sử dụng chức năng "vẽ một hình vuông" năm lần.
         turtle_2_6: 'Ok, this program will use a counter, to draw the same squares
           as last time. You want the square to be the same size as the counter, so
           use the "counter" block. Hint: It''s in the Variables category.'
@@ -295,9 +295,9 @@
           my field flat?
         maze_karel_debug_function_3: 'Edit this program so I''ll remove all the piles
           on my field. '
-        turtle_5_1: Try running this program, and make changes to see what happens.
-          Can you figure out how it works? (Or delete it and replace it with something
-          totally different)
+        turtle_5_1: Thử chạy chương trình này, và tạo vài thay đổi để xem điều gì
+          sẽ xảy ra. Bạn có thể tìm ra làm thế nào mà nó hoạt động? (Hoặc xóa nó và
+          thay thế nó bằng một cái gì đó hoàn toàn khác)
         turtle_5_2: Try running this program, and make changes to see what happens.
           Can you figure out how it works? (Or delete it and replace it with something
           totally different)
@@ -330,8 +330,6 @@
           ball hits wall", and "when ball hits paddle" blocks.
         bounce_6: Try again with more balls.
         bounce_7: Now it is getting crazy!
-        bounce_8: Try again with more balls.
-        bounce_9: Now it is getting crazy!
         bounce_10: There is a now a goal at the top. Attach "increment score" blocks
           to the the "when ball in goal" and "when ball misses paddle" blocks to make
           a game.

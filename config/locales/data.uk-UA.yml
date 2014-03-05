@@ -345,13 +345,12 @@
           потрібно додати блоки до обох блоків "коли м'яч влучає".
         bounce_7: Вкласти блоки у блоки "коли стрілка Вліво", "коли стрілка Вправо",
           "коли м'яч влучає у стіну" і "коли м'яч влучає у платформу".
-        bounce_8: Спробувати знову з більшою кількістю кульок.
-        bounce_9: От тепер це божевілля!
         bounce_10: Ціль тепер нагорі. Додайте блоки "збільшити бал" до блоків "коли
           м'яч влучає в ціль" і "коли м'яч промахується повз платформу" та почніть
           гру.
-        Custom_builder: Drag blocks from the toolbox to the workspace to draw the
-          level you wish to create. Press "Run Program" when you are ready.
+        Custom_builder: Перетягуйте блоки з панелі інструментів на робочу область
+          для того, щоб намалювати рівень, який бажаєте створити. Клацніть "Запустити
+          програму" коли все готово.
         flappy_1: Attach a block to the "when click" block, then press "Run Program"
           and click or tap to move Flappy to the target.
         flappy_2: Now we've added some ground.  Attach a block to the "when hit the
@@ -363,11 +362,11 @@
           him crash. Attach a block to the "when hit an obstacle" block. To pass the
           puzzle, your code needs to 'END GAME' and make Flappy crash into the first
           pipe so he can reach the target.
-        flappy_5: Let's add a scoreboard, and count points when Flappy makes it past
-          obstacles. Add to the "when pass an obstacle" block, and then score a point
-          by flying Flappy through the first set of pipes.
-        flappy_6: See if you can still score a point after making Flappy flap either
-          a smaller or larger amount.
+        flappy_5: Додамо табло підрахунку балів коли Пурх долає перешкоди. Додайте
+          блок "коли перешкоду подолано" та заробіть бал, провівши Пурха крізь перший
+          набір труб.
+        flappy_6: Подивіться, чи ви все ще можете заробити бал, змушуючи Пурха махати
+          крилами більше або менше.
         flappy_7: Next, try changing the scene by attaching another block to the "when
           Run is clicked".
         flappy_11: Створіть свою власну гру про Пурха та поділіться нею. Ви можете

@@ -341,8 +341,6 @@
           bloków "kiedy piłka uderza", aby rozwiązać tę łamigłówkę.
         bounce_7: Dołącz bloki do bloków "kiedy strzałka w prawo", "kiedy strzałka
           w lewo", "kiedy piłka uderza w ścianę" i "kiedy piłka uderza w paletkę".
-        bounce_8: Spróbuj ponownie z większą liczbą piłek.
-        bounce_9: Teraz to się staje szalone!
         bounce_10: Tam jest teraz cel u góry. Dołącz bloki "zwiększ wynik" do bloków  "kiedy
           piłka w bramce" i "kiedy piłka mija paletkę"i, aby utworzyć grę.
         Custom_builder: Drag blocks from the toolbox to the workspace to draw the

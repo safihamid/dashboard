@@ -264,6 +264,10 @@
     rollup: İlerleme Kontrol Paneli
     activity: Son sınıf etkinlikleri
     user_not_found: Öğrenci ve öğretmen bulunamadı
+    cant_remove_student_no_email: '%{student_name} cannot be removed as your student
+      because %{student_name} has not registered an e-mail address'
+    cant_remove_teacher_no_email: '%{teacher_name} cannot be removed as your teacher
+      because you have not registered an e-mail address'
     student_teacher_disassociated: '% {teacher_name},  % {student_name} ''in öğretmeni
       olmaktan kaldırıldı'
   user:

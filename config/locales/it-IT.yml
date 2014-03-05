@@ -32,7 +32,8 @@
   try_hoc: 'Prova l''Ora di Codice, clicca qui >> '
   try_k8intro: Prova il nostro corso introduttivo di informatica per scuole elementari
     e medie inferiori (15-25 ore)
-  k8intro: K-8 Intro to Computer Science Course (15-25 hours)
+  k8intro: Corso introduttivo di informatica per scuole elementari e medie inferiori
+    (15-25 ore)
   already_started: 'Hai già iniziato? Riprendi qui >> '
   demos: 'Amministratore: Tutte le dimostrazioni'
   continue: Prosegui
@@ -77,7 +78,7 @@
     teacher_title: Iscrizione dell'insegnante
     student_pitch: 'Dopo la prima ora: prova il nostro corso di introduzione all''informatica
       per scuole elementari e medie inferiori'
-    student_title: Iscriviti
+    student_title: Iscrizione degli studenti
     school_name: Nome della scuola (facoltativo)
     school_address: Indirizzo della scuola (facoltativo)
     address_placeholder: Indirizzo, città, stato, CAP
@@ -125,7 +126,7 @@
   follower:
     invite_sent: Invito spedito
     added_teacher: '%{name} è stato aggiunto come tuo insegnante'
-    registered: Ti sei registrato per %{section_name}.
+    registered: Ti sei iscritto per %{section_name}.
     error:
       signed_in: Per favore esci prima di procedere
       username_not_found: Nome utente %{username} non trovato
@@ -137,11 +138,11 @@
       invite_student:
         subject: Unisciti ad una classe con %{teacher_name} su Code.org!
       student_disassociated:
-        subject: 'Notifica da Code.org: %{student_name} non è più registrato come
-          tuo studente.'
+        subject: 'Notifica da Code.org: %{student_name} non è più iscritto come tuo
+          studente.'
       teacher_disassociated:
-        subject: 'Notifica da Code.org: %{teacher_name} non è più registrato come
-          tuo insegnante.'
+        subject: 'Notifica da Code.org: %{teacher_name} non è più iscritto come tuo
+          insegnante.'
   reports:
     error:
       access_denied: Non hai accesso alle statistiche di questa persona
@@ -276,6 +277,10 @@
     rollup: Cruscotto di avanzamento
     activity: Attività recenti della classe
     user_not_found: L'insegnante o lo studente non è stato trovato
+    cant_remove_student_no_email: '%{student_name} cannot be removed as your student
+      because %{student_name} has not registered an e-mail address'
+    cant_remove_teacher_no_email: '%{teacher_name} cannot be removed as your teacher
+      because you have not registered an e-mail address'
     student_teacher_disassociated: '%{teacher_name} è stato rimosso come insegnante
       per %{student_name}'
   user:
@@ -294,11 +299,11 @@
     recent_activity: Attività recenti
     show_more: Mostra di più
   home:
-    signin_message: o se sei già registrato, %{link}
+    signin_message: Già iscritto? %{link}
     student_reg_link: Iscrizione di studenti
     teacher_reg_link: Iscrizione di insegnanti
-    signin_directions: Use an account to track progress and get rewards.<br/> Teachers,
-      track your entire class.
+    signin_directions: Usa un account per tenere traccia dei tuoi progressi e ottenere
+      premi. <br/> Insegnante, segui l'andamento di tutta la tua classe.
     teacher_dashboard: Vedi il cruscotto di avanzamento
     teacher_student_count_one: Hai %{count} studenti.
     teacher_student_count: Hai %{count} studenti.
@@ -322,9 +327,9 @@
     see_details: Vedi i dettagli
     prize_info: 'Premi per i partecipanti (solo per gli Stati Uniti): buoni regalo
       da $10 per gli studenti che completano il corso e buoni regalo per l''intera
-      classe fino a $1,000 per gli insegnanti della scuola pubblica'
-    tryfirst: 'Or, you can try it first, and sign up later:'
-    trynow: Try now
+      classe fino a $1,000 per gli insegnanti della scuola pubblica.'
+    tryfirst: 'Oppure, puoi prima provarlo e successivamente iscriverti:'
+    trynow: Prova adesso
   gender:
     male: Maschile
     female: Femminile
@@ -368,15 +373,15 @@
   download_pdf: Apri il piano di lavoro di questa lezione
   share_code:
     title: Fai click su 'Esegui il programma' per vedere il tuo programma in azione
-    flappy_og_title: Check out my Flappy Game
-    og_description: I wrote the code myself with Code.org
+    flappy_og_title: Prova il mio gioco Flappy
+    og_description: Ho scritto il codice io stesso con Code.org
   builder:
-    created: You created a new script.
-    destroyed: You destroyed a script.
-    manage: Manage Scripts
-    view: View
-    back: Back to scripts
+    created: Hai creato un nuovo script.
+    destroyed: Hai cancellato uno script.
+    manage: Gestisci gli script
+    view: Mostra
+    back: Ritorna agli script
     level:
-      create: Create new level
-      current: Current Levels
-      unused: Unused Levels
+      create: Crea un nuovo livello
+      current: Livelli correnti
+      unused: LIvelli non usati

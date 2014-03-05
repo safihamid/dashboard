@@ -258,6 +258,10 @@
     rollup: לוח התקדמות
     activity: פעילות אחרונה בכיתה
     user_not_found: לא ניתן היה למצוא את המורה או התלמיד
+    cant_remove_student_no_email: '%{student_name} cannot be removed as your student
+      because %{student_name} has not registered an e-mail address'
+    cant_remove_teacher_no_email: '%{teacher_name} cannot be removed as your teacher
+      because you have not registered an e-mail address'
     student_teacher_disassociated: '% {teacher_name} הוסר כמורה של % {student_name}'
   user:
     email_confirm_needed: 'כתובת הדוא"ל עוד לא אושרה:'

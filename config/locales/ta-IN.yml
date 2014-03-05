@@ -265,6 +265,10 @@
     rollup: Progress Dashboard
     activity: Recent class activity
     user_not_found: The teacher or student could not be found
+    cant_remove_student_no_email: '%{student_name} cannot be removed as your student
+      because %{student_name} has not registered an e-mail address'
+    cant_remove_teacher_no_email: '%{teacher_name} cannot be removed as your teacher
+      because you have not registered an e-mail address'
     student_teacher_disassociated: '%{teacher_name} has been removed as a teacher
       for %{student_name}'
   user:

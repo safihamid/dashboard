@@ -30,8 +30,7 @@
   more: MAI MULT
   less: MAI PUŢIN
   try_hoc: 'Încearcă Ora de Cod, faceți clic aici >> '
-  try_k8intro: Sau, încearcă Cursul nostru K-8 de introducere în Informatică (15-25
-    ore)
+  try_k8intro: Încearcă Cursul nostru K-8 de introducere în Informatică (15-25 ore)
   k8intro: K-8 Intro to Computer Science Course (15-25 hours)
   already_started: Ai început deja? Rezumă aici >>
   demos: 'Admin: Toate demo-urile'
@@ -76,7 +75,7 @@
     teacher_pitch: Predă Introducerea K-8 în Informatică în clasa ta
     teacher_title: Înregistrare Profesor
     student_pitch: 'Peste 1 oră: încearcă Introducerea noastră K-8 în Informatică'
-    student_title: Înregistrează-te
+    student_title: Înscriere student
     school_name: Numele şcolii (opţional)
     school_address: Adresa şcolii (opţional)
     address_placeholder: adresă, oraş, județ, cod poștal
@@ -95,14 +94,14 @@
       părinților mei sau a tutorelui legal pentru a folosi serviciile Code.org.
     teacher_terms: Sunt de acord să respect termenii și condițiile serviciului Code.org.
   signin_form:
-    title: Loghează-te
+    title: Ai cont deja? Conectează-te
     login: Email sau nume de utilizator
     password: Parolă
     remember: Ține-mă minte
     submit: Loghează-te
   signin:
-    try_hoc: Try one Hour of Code first
-    try_20hours: Try our 20 hour Intro to Computer Science
+    try_hoc: Încearcă prima data o Oră de Cod
+    try_20hours: Încearcă cele 20 de ore ale noastre de Introducere în Informatică
   password:
     reset_form:
       title: Ai uitat parola?
@@ -274,6 +273,10 @@
     rollup: Grilă de progress
     activity: Activitatea recentă a clasei
     user_not_found: Profesorul sau studentul nu pot fi găsit
+    cant_remove_student_no_email: '%{student_name} cannot be removed as your student
+      because %{student_name} has not registered an e-mail address'
+    cant_remove_teacher_no_email: '%{teacher_name} cannot be removed as your teacher
+      because you have not registered an e-mail address'
     student_teacher_disassociated: '%{teacher_name} a fost eliminat ca profesor pentru
       %{student_name}'
   user:
@@ -292,19 +295,20 @@
     recent_activity: Activitate recentă
     show_more: Arată mai multe
   home:
-    signin_message: Sau dacă sunteţi deja înregistrat, % {link}
-    student_reg_link: Student
-    teacher_reg_link: Profesor
-    signin_directions: Use an account to track progress and get rewards.<br/> Teachers,
-      track your entire class.
+    signin_message: Deja înregistrat? %{link}
+    student_reg_link: Înregistrare student
+    teacher_reg_link: Înregistrare profesor
+    signin_directions: Utilizează un cont pentru a urmări progresul şi a obține recompense.<br/>
+      Profesori, urmăriţi întreaga clasă.
     teacher_dashboard: Vezi grila de progres
     teacher_student_count_one: Ai %{count} elevi.
     teacher_student_count: Ai %{count} elevi.
     teacher_averages: În medie, elevii tăi au câștigat %{trophy_average} din cele
       %{trophy_max} trofee de "Concept de Măestrie"
-    teacher_print_certificates: Print certificates for students who finish this course
-    teacher_read_blog: Read about news and updates to our materials at our Educator
-      Blog
+    teacher_print_certificates: Tipărește certificate pentru studenţii care termină
+      acest curs
+    teacher_read_blog: Citeşte despre ştiri şi actualizări referitoare la materialele
+      noastre pe Blog-ul nostru de Educator
     classroom: Clasa ta
     student_progress: Progresul tău de învățare
     student_stats: Ai câştigat %{trophy_count} din cele %{trophy_max} trofee de "Concept
@@ -317,10 +321,11 @@
     local_school: şcoală locală
     online: online
     see_details: Vezi detalii
-    prize_info: 'Prizes for participation (U.S. only): $10 gift cards for student
-      completion and up to $1,000 in classroom rewards for public school teachers'
-    tryfirst: 'Or, you can try it first, and sign up later:'
-    trynow: Try now
+    prize_info: 'Premii pentru participare (numai SUA): carduri-cadou de 10 dolari
+      pentru studenți la finalizare şi până la 1.000 dolari în recompense de clasă
+      pentru profesorii de şcoală publică.'
+    tryfirst: 'Sau, poţi încerca prima dată, urmând să te înscrii mai târziu:'
+    trynow: Încearcă acum
   gender:
     male: De sex masculin
     female: De sex feminin
@@ -364,15 +369,15 @@
   download_pdf: Plan de lecţie deschisă
   share_code:
     title: Dă clic pe 'Rulează program' pentru a-ți vedea programul în acţiune
-    flappy_og_title: Check out my Flappy Game
-    og_description: I wrote the code myself with Code.org
+    flappy_og_title: Aruncă-ți o privire asupra jocului meu Flappy
+    og_description: Am scris codul chiar eu cu Code.org
   builder:
-    created: You created a new script.
-    destroyed: You destroyed a script.
-    manage: Manage Scripts
-    view: View
-    back: Back to scripts
+    created: Ai creat un nou script.
+    destroyed: Ai distrus un script.
+    manage: Gestionează script-uri
+    view: Vizualizare
+    back: Înapoi la script-uri
     level:
-      create: Create new level
-      current: Current Levels
-      unused: Unused Levels
+      create: Crează nivel nou
+      current: Niveluri curente
+      unused: Niveluri neutilizate

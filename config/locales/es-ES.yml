@@ -31,7 +31,7 @@
   less: MENOS
   try_hoc: 'Prueba la Hora del Código, haz clic aquí >> '
   try_k8intro: Prueba nuestro curso de Introducción a la informática K-8 (15-25 horas)
-  k8intro: K-8 Intro to Computer Science Course (15-25 hours)
+  k8intro: K-8 Introducción al Curso de Ciencias de la Computación (15-25 horas)
   already_started: '¿Ya empezaste? Reanudar aquí >> '
   demos: 'Administrador: Todas las Demostraciones'
   continue: Continuar
@@ -70,13 +70,13 @@
       a maestros de escuelas públicas de Estados Unidos que llevan al menos 15 estudiantes
       a través de este curso. <a href="http://code.org/educate/20hr"> consulte la
       guía de educador para obtener más información.</a> '
-    teacher_prize_limits: '(Límite: $1,000 por maestro. <a target="_blank" href="http://help.donorschoose.org/app/answers/detail/a_id/454/kw/code.org">Checa
-      las Preguntas Frecuentes para más limitaciones</a>)'
+    teacher_prize_limits: '(Límite: $1,000 por profesor. <a target="_blank" href="http://help.donorschoose.org/app/answers/detail/a_id/454/kw/code.org">Mira
+      FAQ para más límites</a>)'
     teacher_pitch: Enseña la Introducción K-8 a la informática en tu aula
     teacher_title: Profesor Regístrate
     student_pitch: 'Más allá de 1 hora: prueba nuestra Introducción a la informática
       K-8'
-    student_title: Registrarse
+    student_title: Unirse como Estudiante
     school_name: Nombre de la escuela (opcional)
     school_address: Dirección de la escuela (opcional)
     address_placeholder: Dirección, ciudad, estado/provincia, código postal
@@ -102,7 +102,7 @@
     submit: Iniciar Sesión
   signin:
     try_hoc: Prueba primero Una Hora de Código
-    try_20hours: Prueba nuestra Introducción a la Informática de 20 horas de duración
+    try_20hours: Prueba ahora Introducción a la informática en 20 horas
   password:
     reset_form:
       title: ¿Olvidaste tu contraseña?
@@ -160,8 +160,8 @@
     error_not_earned: Aún no has ganado este premio.
     error_already_redeemed: Tu premio ya ha sido canjeado.
     no_prizes_available: Lo sentimos, pero actualmente no tenemos premios disponibles.
-    teacher_info_required: 'Los premios para maestros requieren el nombre y la dirección
-      de la escuela:'
+    teacher_info_required: 'Los premios para el profesor requieren el nombre de la
+      escuela y su dirección:'
     teacher_email_required: 'Los premios para el profesor requieren una dirección
       de correo confirmada:'
     confirm:
@@ -276,6 +276,10 @@
     rollup: Panel de progreso
     activity: Actividad reciente de la clase
     user_not_found: El profesor o el estudiante no se encontró
+    cant_remove_student_no_email: '%{student_name} cannot be removed as your student
+      because %{student_name} has not registered an e-mail address'
+    cant_remove_teacher_no_email: '%{teacher_name} cannot be removed as your teacher
+      because you have not registered an e-mail address'
     student_teacher_disassociated: '%{teacher_name} ha sido eliminado como profesor
       de %{student_name}'
   user:
@@ -294,17 +298,17 @@
     recent_activity: Actividad reciente
     show_more: Mostrar más
   home:
-    signin_message: o si ya estás registrado %{link}
+    signin_message: ¿Ya estás registrado? %{link}
     student_reg_link: Estudiante Regístrate
-    teacher_reg_link: Maestro Regístrate
-    signin_directions: Use an account to track progress and get rewards.<br/> Teachers,
-      track your entire class.
+    teacher_reg_link: Profesor Regístrate
+    signin_directions: Utilizar una cuenta para el seguimiento del progreso y obtener
+      recompensas.<br/>Sigue la pista a tus clases.
     teacher_dashboard: Ver panel de progreso
     teacher_student_count_one: Tiene(s) %{count} estudiante(s).
     teacher_student_count: Tienes %{count} estudiantes.
     teacher_averages: Un promedio de tus estudiantes han ganado %{trophy_average}
       de %{trophy_max} trofeos "Dominio del Concepto" .
-    teacher_print_certificates: Certificados impresos para los estudiantes que terminan
+    teacher_print_certificates: Imprimir certificados para los alumnos que terminan
       este curso
     teacher_read_blog: Lee sobre noticias y actualizaciones de nuestro material en
       nuestro Blog del Educador
@@ -320,10 +324,11 @@
     local_school: escuela local
     online: en línea
     see_details: Ver detalles
-    prize_info: 'Prizes for participation (U.S. only): $10 gift cards for student
-      completion and up to $1,000 in classroom rewards for public school teachers'
-    tryfirst: 'Or, you can try it first, and sign up later:'
-    trynow: Try now
+    prize_info: 'Premios por participar (Sólo USA): Tarjetas de regalo de $10 para
+      estudiantes que terminan y hasta $1,000 en recompensas para el aula para maestros
+      de escuelas públicas.'
+    tryfirst: 'O, puedes probarlo primero y registrarte más adelante:'
+    trynow: Probar ahora
   gender:
     male: Hombre
     female: Mujer
@@ -367,15 +372,15 @@
   download_pdf: Abrir la planificación de la lección
   share_code:
     title: Haz clic en 'Ejecutar programa' para ver mi programa en acción
-    flappy_og_title: Check out my Flappy Game
-    og_description: I wrote the code myself with Code.org
+    flappy_og_title: Echale un vistazo mi juego Flappy
+    og_description: Yo escribí el código con Code.org
   builder:
-    created: You created a new script.
-    destroyed: You destroyed a script.
-    manage: Manage Scripts
-    view: View
-    back: Back to scripts
+    created: Has creado un nuevo código.
+    destroyed: Has destruido un código.
+    manage: Administrar códigos
+    view: Ver
+    back: Volver a códigos
     level:
-      create: Create new level
-      current: Current Levels
-      unused: Unused Levels
+      create: Crear nuevo nivel
+      current: Niveles actuales
+      unused: Niveles no utilizados

@@ -275,6 +275,10 @@
     rollup: Fortschrittsanzeige
     activity: Letzte Aktivitäten der Klasse
     user_not_found: Der Lehrer oder Student konnte nicht gefunden werden
+    cant_remove_student_no_email: '%{student_name} cannot be removed as your student
+      because %{student_name} has not registered an e-mail address'
+    cant_remove_teacher_no_email: '%{teacher_name} cannot be removed as your teacher
+      because you have not registered an e-mail address'
     student_teacher_disassociated: '%{teacher_name} wurde als Lehrerin für %{student_name}
       entfernt'
   user:

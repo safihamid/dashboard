@@ -363,8 +363,6 @@
           à chacun des blocs "quand balle touche" pour terminer ce puzzle.
         bounce_7: Attache des blocs aux blocs "quand flèche à droite", "quand flèche
           à gauche", "quand balle touche au mur", et "quand balle touche la raquette".
-        bounce_8: Essaye à nouveau avec plus de balles.
-        bounce_9: Ça devient fou!
         bounce_10: Il ya maintenant un but en haut.  Attache des blocs "incrémenter
           le pointage" au blocs "quand balle au but" et "quand balle manque raquette"
           pour construire un jeu.

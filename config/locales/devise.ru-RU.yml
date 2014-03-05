@@ -1,7 +1,7 @@
 "ru":
   devise:
     confirmations:
-      confirmed: Ваша регистрация была успешно подтверждена. Вход выполнен.
+      confirmed: Ваш адрес электронной почты был успешно подтвержден.
       send_instructions: Для завершения регистрации, на Вашу электронную почту отправлено
         письмо с инструкцией.
       send_paranoid_instructions: Если адрес Вашей электронной почты существует в
@@ -19,9 +19,9 @@
       unconfirmed: Прежде чем продолжить, Вы должны подтвердить свою регистрацию.
     mailer:
       confirmation_instructions:
-        subject: Инструкции по подтверждению
+        subject: Code.org подтверждение инструкций
       reset_password_instructions:
-        subject: Инструкция для смены пароля
+        subject: Code.org сброс инструкций пароля
       unlock_instructions:
         subject: Инструкция по разблокированию
     omniauth_callbacks:

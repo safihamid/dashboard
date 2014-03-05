@@ -244,6 +244,10 @@
     rollup: プログレスダッシュ ボード
     activity: 最近のクラスの活動
     user_not_found: 教師、又は、生徒は見つかりませんでした
+    cant_remove_student_no_email: '%{student_name} cannot be removed as your student
+      because %{student_name} has not registered an e-mail address'
+    cant_remove_teacher_no_email: '%{teacher_name} cannot be removed as your teacher
+      because you have not registered an e-mail address'
     student_teacher_disassociated: '% {teacher_name} が % {student_name} の教師として削除されています。'
   user:
     email_confirm_needed: 電子メール アドレスが確認されていません。
@@ -328,7 +332,7 @@
   next_stage: 完成 ！次のステージに続きます。
   download_pdf: オープン レッスン ・ プラン
   share_code:
-    title: 「プログラムを実行する」をクリックすて、アクションで私のプログラムを見てください
+    title: 私のプログラムを動かすには、「プログラムの実行」をクリックしてください
     flappy_og_title: Check out my Flappy Game
     og_description: I wrote the code myself with Code.org
   builder:

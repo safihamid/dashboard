@@ -272,6 +272,10 @@
     rollup: Tablica Postępów
     activity: Ostatnia aktywność klasy
     user_not_found: Nie można odnaleźć nauczyciela lub ucznia
+    cant_remove_student_no_email: '%{student_name} cannot be removed as your student
+      because %{student_name} has not registered an e-mail address'
+    cant_remove_teacher_no_email: '%{teacher_name} cannot be removed as your teacher
+      because you have not registered an e-mail address'
     student_teacher_disassociated: '%{teacher_name} został usunięty jako nauczyciel
       %{student_name}'
   user:
@@ -291,7 +295,7 @@
     recent_activity: Ostatnia aktywność
     show_more: Pokaż więcej
   home:
-    signin_message: Lub, jeśli jesteś już zarejestrowany, %{link}
+    signin_message: Jesteś już zarejestrowany? %{link}
     student_reg_link: Uczeń zalogował się
     teacher_reg_link: Nauczyciel zalogował się
     signin_directions: Use an account to track progress and get rewards.<br/> Teachers,
@@ -318,8 +322,8 @@
     see_details: Zobacz szczegóły
     prize_info: 'Prizes for participation (U.S. only): $10 gift cards for student
       completion and up to $1,000 in classroom rewards for public school teachers'
-    tryfirst: 'Or, you can try it first, and sign up later:'
-    trynow: Try now
+    tryfirst: 'Możesz wpierw spróbować, a zarejestrować się później:'
+    trynow: Spróbuj teraz
   gender:
     male: Mężczyzna
     female: Kobieta
@@ -362,15 +366,15 @@
   download_pdf: Otwórz plan lekcji
   share_code:
     title: Kliknij przycisk Uruchom program, aby zobaczyć mój program w działaniu
-    flappy_og_title: Check out my Flappy Game
-    og_description: I wrote the code myself with Code.org
+    flappy_og_title: Sprawdź teraz moją grę Flappy
+    og_description: Sam napisałem w całości kod za pomocą Code.org
   builder:
-    created: You created a new script.
-    destroyed: You destroyed a script.
-    manage: Manage Scripts
-    view: View
-    back: Back to scripts
+    created: Stworzyłeś nowy skrypt.
+    destroyed: Zniszczyłeś swój skrypt.
+    manage: Zarządzaj skryptami
+    view: Zobacz
+    back: Powrót do skryptu
     level:
-      create: Create new level
-      current: Current Levels
-      unused: Unused Levels
+      create: Stwórz nowy poziom
+      current: Aktualne poziomy
+      unused: Niewykorzystane poziomy

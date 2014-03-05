@@ -82,66 +82,69 @@
     farmer_intro:
       1:
         image: notes/stage9_1.jpg
-        text: Bună, eu sunt Paula! În aceste puzzle-uri, tu ești un fermier care vrea
-          să-și curețe terenul ca să fie complet plat pentru a începe să-și planteze
-          culturilor.
+        text: Bună, eu sunt Paula! În aceste puzzle-uri, tu ești un fermier care trebuie
+          să-și niveleze terenul astfel încât să devină complet plat pentru a începe
+          plantarea culturilor.
       2:
         image: notes/stage9_2.jpg
-        text: Trebuie să o ajuți să-și elimine toate grămezile de murdărie și să-și
-          umple toate găurile.
+        text: Trebuie să o ajuți să elimine toate grămezile de murdărie și să umple
+          toate găurile.
       3:
         image: notes/stage9_3.jpg
-        text: Noile blocuri elimină o lopată de murdărie de pe o grămadă și umple
-          o altă gaură cu o lopată de murdărie.
+        text: Noile blocuri elimină 1 lopată de murdărie dintr-o grămadă și umple
+          o altă gaură cu 1 lopată de murdărie.
       4:
         image: notes/stage9_4.jpg
         text: Grămezile și găurile sunt de mărimi diferite, deci va trebui să-i spui
           fermierului câte lopeți să folosească.
     flappy_intro:
       1:
-        image: notes/flappy01.jpg
-        text: Hi, I'm Katie! One of the most exciting things about computer science
-          is that a computer program can be interactive.
+        image: note/flappy01.jpg
+        text: Bună, eu sunt Katie! Unul dintre lucrurile cele mai incitante despre
+          informatică este ca un program de calculator poate fi interactiv.
       2:
-        image: notes/flappy02.jpg
-        text: Any time somebody clicks or taps or types on a computer or phone, that
-          generates an EVENT, and there's some code that decides what to do when an
-          EVENT occurs.
+        image: note/flappy02.jpg
+        text: Oricând cineva dă clic sau apasă sau tastează de la un calculator sau
+          telefon, aceasta generează un EVENIMENT, şi pe undeva există un cod care
+          decide ce să facă atunci când are loc un eveniment.
       3:
-        image: notes/flappy03.jpg
-        text: 'For example, you could have an EVENT-HANDLER that says "when the mouse
-          is clicked, play a sound" '
+        image: note/flappy03.jpg
+        text: 'De exemplu, ai putea avea un HANDLER de EVENIMENT care spune "Când
+          se face clic cu mouse-ul, scoate un sunet" '
       4:
-        image: notes/flappy04.jpg
-        text: Have you ever heard of the game FlappyBird? By using Event handlers,
-          we're going to learn to program our own custom version of FlappyBird!
+        image: note/flappy04.jpg
+        text: Ai auzit vreodată de jocul FlappyBird? Prin utilizarea gestionărilor
+          de Eveniment, vom învăţa să programăm singuri versiunea noastră personalizată
+          de FlappyBird!
       5:
-        image: notes/flappy05.jpg
-        text: The code you'll write involves dragging and dropping blocks that represent
-          commands for the computer. Under the hood, each of these blocks is represented
-          by real code.
+        image: note/flappy05.jpg
+        text: Codul pe care îl vei scrie presupune glisarea şi plasarea blocurilor
+          care reprezintă comenzi pentru calculator. Sub capotă, fiecare din aceste
+          blocuri este reprezentat de un cod propriu-zis.
       6:
-        image: notes/flappy06.jpg
-        text: 'If you take a look at the workspace, there are some green blocks that
-          are filled in for you - these are "event handlers" '
+        image: note/flappy06.jpg
+        text: 'Dacă te uiți la spațiul de lucru, există unele blocuri verzi, care
+          sunt completate pentru tine - acestea sunt "gestionari de eveniment" '
       7:
-        image: notes/flappy07.jpg
-        text: If you want the bird to FLAP when you CLICK the mouse, you can do that
-          by attaching the "FLAP" block to the appropriate event handler, and now
-          in your game whenever you click the mouse, the bird will flap.
+        image: note/flappy07.jpg
+        text: Dacă dorești ca pasăre să DEA DIN ARIPI când dai clic cu mouse-ul, poţi
+          face asta ataşând blocul "DĂ DIN ARIPI" la gestionarea de eveniment corespunzătoare,
+          şi de acum când te joci, ori de câte ori faci clic cu mouse-ul, pasărea
+          va da din aripi.
       8:
-        image: notes/flappy08.jpg
-        text: In each puzzle of this activity we'll introduce new types of events
-          as green blocks on the workspace, and you can decide the appropriate blocks
-          to add in response to those events.
+        image: note/flappy08.jpg
+        text: În fiecare puzzle din cadrul acestei activități vom introduce noi tipuri
+          de evenimente sub forma blocurilor verzi din spațiul de lucru, şi tu poţi
+          alege blocurile adecvate pe care le vei adauga în răspuns la aceste evenimente.
       9:
-        image: notes/flappy09.jpg
-        text: When you see a drop down arrow like this, that means you can change
-          the settings - like what sound to play when flappy hits the ground.
+        image: note/flappy09.jpg
+        text: Când vezi o săgeată de tip "dropdown" ca aceasta, înseamnă că poţi schimba
+          setările - cum ar fi, de exemplu, ce sunet să se scoată atunci când flappy
+          atinge pământul.
       10:
-        image: notes/flappy10.jpg
-        text: In the final puzzle you'll be able to create your own game and share
-          it with your friends. Have fun!
+        image: note/flappy10.jpg
+        text: În puzzle-ul final vei fi capabil să-ți creezi propriul joc şi să-l
+          distribui și prietenilor tăi. Distracţie plăcută!
     loop_times:
       1:
         image: notes/hoc2_1.jpg
@@ -326,9 +329,9 @@
           crea o intrare de tipul lungime pentru funcția ta.
       6:
         image: notes/stage15_6.jpg
-        text: Apoi dă clic pe stea. Acum, vei dori să dai clic pe categoria variabile
-          și să tragi blocul "lungime" înspre blocul definiției funcției "mergi înainte".
-          Și trage în afară blocul cu vechiul număr.
+        text: Apoi fă clic pe stea. Acum, vei dori să dai clic pe categoria variabile
+          și să glisezi blocul "lungime" înspre blocul definiției funcției "mergi
+          înainte". Și înlătură prin glisare blocul cu vechiul număr.
       7:
         image: notes/stage15_7.jpg
         text: Pentru a folosi funcția cu parametri, dă clic pe categoria de funcții

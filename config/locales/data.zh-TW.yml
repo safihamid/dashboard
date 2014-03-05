@@ -31,11 +31,11 @@
           desc: 編輯程式碼
           MazeEC: 階段 1
         2014 Levels:
-          desc: 2014 Puzzles (beta)
-          MazeEC: Stage 1
+          desc: 2014 關卡 （測試版）
+          MazeEC: 階段 1
         Flappy Levels:
           desc: Flappy Bird
-          MazeEC: Stage 1
+          MazeEC: 階段 1
     game:
       name:
         Unplug1: 電腦科學導論
@@ -44,22 +44,22 @@
         Unplug3: 圖畫紙程式設計
         Artist: 藝術家
         Unplug4: 演算法
-        Artist2: 藝術家 2 號
+        Artist2: '藝術家 2 '
         Unplug5: 函數
         Farmer: 農夫
         Unplug6: 條件式陳述
-        Artist3: 藝術家 3 號
+        Artist3: '藝術家 3 '
         Unplug7: 歌曲創作
-        Farmer2: 農夫 2 號
+        Farmer2: '農夫 2 '
         Unplug8: 抽象
-        Artist4: 藝術家 4 號
+        Artist4: '藝術家 4 '
         Unplug9: 接力式程式設計
-        Farmer3: 農夫 3 號
+        Farmer3: '農夫 3 '
         Unplug10: 網際網路
-        Artist5: 藝術家 5 號
+        Artist5: '藝術家 5 '
         Unplug11: 總結
         MazeEC: 迷宮
-        Bounce: Bounce
+        Bounce: 彈跳
         Flappy: Flappy Bird
     trophy:
       name:
@@ -90,7 +90,7 @@
         maze_2_8: 要解開這個關卡，試著將"移動"、"移動"、"轉動"這三個程式積木放在"重複"程式積木中。
         maze_2_9: 好，接著讓我們試試這個新的"重複直到"程式積木，他會一直重複直到我抓到這隻惹人厭的豬豬。
         maze_2_10: 好，最後一次的練習--你可以使用4個程式積木解決這個問題嗎？
-        maze_2_11: 親愛的人類。我～～僵屍～～餓了。想吃～～向日葵。你有辦法只用5個程式積木將我送到那嗎？
+        maze_2_11: 親愛的人類。我~僵屍。我~餓了。必須...吃到...向日葵...你有辦法只用 5 個程式積木就讓我到那兒嗎？
         maze_2_12: 好，這個也差不多，但還是有一些不同。你可以只用 5 個程式積木完成它嗎？
         maze_2_13: 使用新的"如果"程式積木讓我來決定何時要轉彎。提示： 只要在新增一個程式積木就可以了。但記得看看我們是如何安排其他程式積木，這樣下次你就可以自己完成整個程式設計囉。
         maze_2_14: 好，這就像是最後一個關卡，但你需要記住的是如何同時使用"如果"及"重複"程式積木的方式。
@@ -186,23 +186,15 @@
         maze_3_2: 給我寫一個程式，所以我可以用它抓到那頭豬。
         maze_3_3: 我應該如何抓到那頭豬？確保我不會碰到那 TNT 的盒子！
         maze_3_4: 阿！給我一個程式讓我可以繞過那些TNT炸藥，然後抓到那隻豬。
-        bounce_1: Attach a block to the "when left arrow" block, then run and move
-          the paddle with the left arrow key to the finish target.
-        bounce_2: Attach a block to the "when right arrow" and "when left arrow" blocks,
-          then run and move the paddle with the both arrow key to both finish targets.
-        bounce_3: TBD
-        bounce_4: TBD
-        bounce_5: Attach a blocks to the "when right arrow", "when left arrow", "when
-          ball hits wall", and "when ball hits paddle" blocks.
-        bounce_6: Try again with more balls.
+        bounce_1: 放置"當左方向鍵"積木塊，然後按下"執行程式"，並使用左方向鍵移動槳來完成目標。
+        bounce_2: 放置"當右方向鍵"和"當左方向鍵"積木塊，然後"執行"，並移動左右方向鍵移動槳來完成目標。
+        bounce_3: 現在，嘗試與"當向上箭頭"程式積木類似的東西。將槳移動到頂部以完成目標。
+        bounce_4: 現在你需要加入四個程式積木塊。移動槳到這四個積木塊來達成目標並完成題目。
+        bounce_5: 我們打算把球丟向槳。夾放一個"當球打中槳"的積木塊來確保球有達成目標。
+        bounce_6: 現在要完成的目標在最上方。您需要將附加積木到兩個"當球擊中"積木上，來解決這一關卡。
         bounce_7: Now it is getting crazy!
-        bounce_8: Try again with more balls.
-        bounce_9: Now it is getting crazy!
-        bounce_10: There is a now a goal at the top. Attach "increment score" blocks
-          to the the "when ball in goal" and "when ball misses paddle" blocks to make
-          a game.
-        Custom_builder: Drag blocks from the toolbox to the workspace to draw the
-          level you wish to create. Press "Run Program" when you are ready.
+        bounce_10: 現在有一個目標在頂端。附加"遞增得分"程式積木到"當球在目標中"，還有附加"當球未命中槳"程式積木，讓遊戲能夠玩。
+        Custom_builder: 將程式積木從工具箱中拖動到工作區中來描繪您想要創建的級別。當您準備好時，按下"執行程式"。
         flappy_1: Attach a block to the "when click" block, then press "Run Program"
           and click or tap to move Flappy to the target.
         flappy_2: Now we've added some ground.  Attach a block to the "when hit the
@@ -214,16 +206,12 @@
           him crash. Attach a block to the "when hit an obstacle" block. To pass the
           puzzle, your code needs to 'END GAME' and make Flappy crash into the first
           pipe so he can reach the target.
-        flappy_5: Let's add a scoreboard, and count points when Flappy makes it past
-          obstacles. Add to the "when pass an obstacle" block, and then score a point
-          by flying Flappy through the first set of pipes.
-        flappy_6: See if you can still score a point after making Flappy flap either
-          a smaller or larger amount.
+        flappy_5: 讓我們添加記分牌，在 Flappy 越過障礙時可以記分。添加"當通過障礙"積木，然後當 Flappy 飛過第一組水管障礙時計分。
+        flappy_6: 看看你在讓 Flappy 拍動更小或更大的數值時，是否仍能得分。
         flappy_7: Next, try changing the scene by attaching another block to the "when
           Run is clicked".
-        flappy_11: Create your own Flappy game and share it. You can change the visuals,
-          or even the rules. Try changing visuals each time Flappy passes an obstacle.
-          Or make Flappy invincible so he never dies.
+        flappy_11: 創建您自己的 Flappy 遊戲並分享它。您可以更改視覺效果甚至更改規則。請試著在 Flappy 每次越過障礙後，更改視覺效果。或令
+          Flappy 立於不敗之地，使它永遠不死。
       levelIncompleteError:
         maze_2_8: '要解決這個關卡，請找出重覆的片斷。使用"重覆"程式積木將: 前進，前進，右轉 這三個程式積木包在其中。'
       other1StarError:
@@ -235,7 +223,7 @@
         maze_intro: 迷宮簡介
         artist_intro: 藝術家簡介
         farmer_intro: 農夫簡介
-        flappy_intro: Flappy Intro
+        flappy_intro: Flappy 介紹
         loop_times: '"重覆...次"程式積木'
         loop_until: '"重覆...直到"程式積木'
         if: '"如果"程式積木'

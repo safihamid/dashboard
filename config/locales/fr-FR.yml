@@ -273,6 +273,10 @@
     rollup: Tableau de bord de progression
     activity: Activité récente de la classe
     user_not_found: Le professeur ou l'étudiant est introuvable
+    cant_remove_student_no_email: '%{student_name} cannot be removed as your student
+      because %{student_name} has not registered an e-mail address'
+    cant_remove_teacher_no_email: '%{teacher_name} cannot be removed as your teacher
+      because you have not registered an e-mail address'
     student_teacher_disassociated: '%{teacher_name} a été supprimé en tant que professeur
       de %{student_name}'
   user:

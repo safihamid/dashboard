@@ -11,7 +11,7 @@
         locale: 語言
         gender: 性別
         edit_header: 編輯帳戶的詳細資訊
-  hello: 世界您好
+  hello: 世界 您好！
   welcome_back: 歡迎回來，%{name}
   add_teacher_form:
     code_or_email:
@@ -19,8 +19,8 @@
       placeholder: 代碼 (ABCDEF) 或電子郵件 (teacher@school.edu)
     submit: 指定教師
   add_hint_form:
-    placeholder: Please enter your hint here
-    submit: Add hint
+    placeholder: 請在此處輸入您的提示
+    submit: 添加提示
   appname: Code.org
   stage: 階段
   puzzle: 關卡
@@ -31,7 +31,7 @@
   less: 更少
   try_hoc: 試試看一小時的程式設計課程，請按一下這裡 >>
   try_k8intro: 或試試我們提供給 K-8 的電腦科學簡介課程 (15-25 小時)
-  k8intro: K-8 Intro to Computer Science Course (15-25 hours)
+  k8intro: 'K 8 簡介電腦科學課程 （15-25 小時） '
   already_started: 已經開始了嗎？從這裡繼續 >>
   demos: 管理者：範例展示
   continue: '繼續 '
@@ -66,7 +66,7 @@
     teacher_pitch: 在您的班上進行K-8電腦科學簡介課程。
     teacher_title: 教師註冊
     student_pitch: 在一小時之後：試試我們的K-8電腦科學簡介課程
-    student_title: 註冊帳號
+    student_title: 學生註冊
     school_name: 學校名稱 （選填）
     school_address: 學校地址 （選填）
     address_placeholder: 地址、 城市、 州、 郵遞區號
@@ -84,14 +84,14 @@
       Code.org 的服務。
     teacher_terms: 我同意接受 Code.org服務條款的約束。
   signin_form:
-    title: 登入
+    title: 你已經有一個帳號了嗎？請登入
     login: 電子郵件或使用者名稱
     password: 密碼
     remember: 記住密碼
     submit: 登入
   signin:
-    try_hoc: Try one Hour of Code first
-    try_20hours: Try our 20 hour Intro to Computer Science
+    try_hoc: 第一次嘗試一小時編程
+    try_20hours: 試試看我們的 20 小時簡介電腦科學
   password:
     reset_form:
       title: 忘記密碼？
@@ -128,8 +128,7 @@
       student_disassociated:
         subject: Code.org 通知： %{student_name} 將你從教師名單中移除。
       teacher_disassociated:
-        subject: 'Code.org notification: %{teacher_name} is no longer associated as
-          your teacher.'
+        subject: Code.org 通知： %{teacher_name} 與您不再是師生關係了。
   reports:
     error:
       access_denied: 您不能讀取此人的統計資訊
@@ -138,7 +137,7 @@
     provider: 'Provider:'
     code: 'Code:'
     redeem_header: 'To redeem:'
-    donorschoose_how_to: How to use your code
+    donorschoose_how_to: 如何使用你的程式碼
     success: Your prize was succesfully redeemed, see code below.
     error: Your prize could not be redeemed, please try again.
     error_us_only: 這個獎項只提供給美國使用者。
@@ -146,7 +145,7 @@
     error_already_redeemed: 您獲得的獎項已經兌現。
     no_prizes_available: 很抱歉，目前我們無法提供獎品。
     teacher_info_required: '教師的獎勵需要學校名稱跟地址:'
-    teacher_email_required: 'Teacher prizes require a confirmed email address:'
+    teacher_email_required: 老師獎需要一個已確認電子郵件地址：
     confirm:
       title: Please Confirm
       'no': false
@@ -174,7 +173,7 @@
       not_earned: 學習所有的電腦科學概念，並收集完所有 %{num_trophies}個獎盃，就能獲得真實世界的獎品。您可以選擇 10 GB 的
         Dropbox 空間，10美元的Skype儲值或是免費遊戲下載。注意：獎項僅適用於美國學生，並僅有在獎品供應持續的情況下適用。
       teacher:
-        earned: 10個以上的學生已經收及完所有 %{num_trophies}個獎盃。你贏得了教師獎章！(僅限美國教師)
+        earned: 15 個以上的學生已經收集完所有 %{num_trophies} 個獎盃。您贏得了教師獎章！(僅限美國教師)
         not_earned_title: Teach the class, earn up to $1,000 in <a target="_blank"
           href="http://DonorsChoose.org">DonorsChoose.org</a> credits (U.S. teachers
           only)
@@ -226,23 +225,26 @@
       prizes_link: '更多資訊 '
   teacher:
     title:
-      one: 你的老師是 %{名字}
+      one: 你的老師：
       other: 你的老師：
     remove: （將教師移除）
     confirm:
-      remove: Are you sure you want to remove this teacher?
+      remove: 你確認要刪除這個老師嗎？
     tools: 教師工具
     students:
       manage: 學生管理
       add: 新增學生
     rollup: 進度表
     activity: 最近的班級活動
-    user_not_found: The teacher or student could not be found
-    student_teacher_disassociated: '%{teacher_name} has been removed as a teacher
-      for %{student_name}'
+    user_not_found: 無法找到該名老師或學生
+    cant_remove_student_no_email: '%{student_name} cannot be removed as your student
+      because %{student_name} has not registered an e-mail address'
+    cant_remove_teacher_no_email: '%{teacher_name} cannot be removed as your teacher
+      because you have not registered an e-mail address'
+    student_teacher_disassociated: '%{student_name}的老師%{teacher_name}已經被移除'
   user:
-    email_confirm_needed: 'Email address has not been confirmed:'
-    email_resend_confirm: Resend confirmation instructions
+    email_confirm_needed: 電子郵件地址尚未被確認：
+    email_resend_confirm: 重新發送確認指令
     new_password_hint: （如果你不想變更它就保留空白）
     current_password_hint: （我們需要您現在的密碼以確認您的更改）
     cancel:
@@ -256,18 +258,16 @@
     recent_activity: 最近的活動
     show_more: 顯示更多
   home:
-    signin_message: 或者你已經註冊過了，%{link}
-    student_reg_link: '學生 '
-    teacher_reg_link: 老師
-    signin_directions: Use an account to track progress and get rewards.<br/> Teachers,
-      track your entire class.
+    signin_message: 已經註冊了? %{link}
+    student_reg_link: 學生登入
+    teacher_reg_link: 教師登入
+    signin_directions: 使用一個帳戶來追蹤進度和獲取獎勵。 <br/>教師們，追蹤您所有課程。
     teacher_dashboard: 瀏覽進度表
     teacher_student_count_one: 您有 %{count} 位學生.
     teacher_student_count: 您有 %{count} 位學生.
     teacher_averages: '你的學生平均下來獲得了 %{trophy_average}/%{trophy_max} "概念通達"獎盃。 '
-    teacher_print_certificates: Print certificates for students who finish this course
-    teacher_read_blog: Read about news and updates to our materials at our Educator
-      Blog
+    teacher_print_certificates: 為完成此課程的學生列印證書
+    teacher_read_blog: 在Educator Blog閱讀我們的最新資訊
     classroom: 您的教室
     student_progress: 您的學習進度
     student_stats: 你已經獲得 %{trophy_count}/%{trophy_max} "概念通達"獎盃
@@ -279,10 +279,9 @@
     local_school: 當地的學校
     online: 在線上
     see_details: 查看詳細資訊
-    prize_info: 'Prizes for participation (U.S. only): $10 gift cards for student
-      completion and up to $1,000 in classroom rewards for public school teachers'
-    tryfirst: 'Or, you can try it first, and sign up later:'
-    trynow: Try now
+    prize_info: （僅限於美國） 參與獎：完成的學生給予 10 元禮品卡以及公立學校教師最高 1000 元的課堂獎勵。
+    tryfirst: 或者，你也可以先試試，之後再 註冊：
+    trynow: 快來試試
   gender:
     male: 男性
     female: 女性
@@ -323,15 +322,15 @@
   download_pdf: 開啟教學計畫
   share_code:
     title: 按一下'執行程式'來看看程式執行結果
-    flappy_og_title: Check out my Flappy Game
-    og_description: I wrote the code myself with Code.org
+    flappy_og_title: 快來嘗試我設計的Flappy Game
+    og_description: 我用 Code.org寫了自己的程式碼
   builder:
-    created: You created a new script.
-    destroyed: You destroyed a script.
-    manage: Manage Scripts
-    view: View
-    back: Back to scripts
+    created: 您創建了一個新的腳本。
+    destroyed: 你毀了一個腳本。
+    manage: 管理腳本
+    view: 檢視
+    back: 返回腳本
     level:
-      create: Create new level
-      current: Current Levels
-      unused: Unused Levels
+      create: 建立新水準
+      current: 當前水平
+      unused: 未使用狀態

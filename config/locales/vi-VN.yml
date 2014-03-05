@@ -19,7 +19,7 @@
       placeholder: Mã (ABCDEF) hoặc email (teacher@school.edu)
     submit: Thêm giáo viên
   add_hint_form:
-    placeholder: Please enter your hint here
+    placeholder: Hãy nhập gợi ý của bạn ở đây
     submit: Thêm gợi ý
   appname: Code.org
   stage: Màn
@@ -34,7 +34,7 @@
     tiếng)
   k8intro: K-8 Intro to Computer Science Course (15-25 hours)
   already_started: 'Đã bắt đầu rồi à? Tiếp tục ở đây >> '
-  demos: 'Admin: All Demos'
+  demos: 'Admin: Tất cả các bản demo'
   continue: Tiếp tục
   prize: giải thưởng
   more_info: Thông tin thêm
@@ -76,7 +76,7 @@
     teacher_title: Giáo viên đăng ký
     student_pitch: 'Vượt ra ngoài 1 giờ: hãy thử "Giới thiệu về Khoa học Máy tính
       cho K-8" của chúng tôi'
-    student_title: Đăng ký
+    student_title: Sinh viên đăng ký
     school_name: Tên trường (tùy chọn)
     school_address: Địa chỉ trường (tùy chọn)
     address_placeholder: địa chỉ, thành phố, tỉnh, mã bưu điện
@@ -95,7 +95,7 @@
       giám hộ hợp pháp để sử dụng các dịch vụ của Code.org.
     teacher_terms: Tôi đồng ý với các điều khoản của dịch vụ Code.org.
   signin_form:
-    title: Đăng nhập
+    title: Đã có một tài khoản? Đăng nhập
     login: Email hoặc tên người dùng
     password: Mật khẩu
     remember: Nhớ mật khẩu
@@ -230,7 +230,7 @@
       finished_hoc: I've finished my Hour of Code
       sign_in_to_save: Sign in to save progress
     user:
-      classroom: My students
+      classroom: Học sinh của tôi
       label: Hi %{username}
       stats: TIến trình của bạn
       settings: Tài khoản của bạn
@@ -242,7 +242,7 @@
       progress: Qua trình của bạn
       lines: 'Tổng số dòng mã: %{lines}'
       close: Đóng lại
-      mastery: Concepts
+      mastery: Khái niệm
       puzzle_map: Các bước
       prizes: Thu thập tất cả  %{total_trophies} cúp và giành giải thưởng!
       prize_earned: All %{total_trophies} trophies collected. Prize won!
@@ -262,6 +262,10 @@
     rollup: Bảng tiến trình
     activity: Hoạt động gần đây của lớp
     user_not_found: The teacher or student could not be found
+    cant_remove_student_no_email: '%{student_name} cannot be removed as your student
+      because %{student_name} has not registered an e-mail address'
+    cant_remove_teacher_no_email: '%{teacher_name} cannot be removed as your teacher
+      because you have not registered an e-mail address'
     student_teacher_disassociated: '%{teacher_name} has been removed as a teacher
       for %{student_name}'
   user:
@@ -274,15 +278,15 @@
       hint: Bạn không hài lòng?
       button: Hãy hủy bỏ tài khoản của tôi
   user_level:
-    completed: Completed
-    tried: Tried
+    completed: Đã hoàn thành
+    tried: Cố gắng
   user_stats:
-    recent_activity: Recent activity
+    recent_activity: Hoạt động gần đây
     show_more: Hiển thị thêm
   home:
     signin_message: Or if you're already registered, %{link}
-    student_reg_link: Student
-    teacher_reg_link: Teacher
+    student_reg_link: Sinh viên đăng ký
+    teacher_reg_link: Giáo viên đăng ký
     signin_directions: Use an account to track progress and get rewards.<br/> Teachers,
       track your entire class.
     teacher_dashboard: See progress dashboard
@@ -290,14 +294,15 @@
     teacher_student_count: You have %{count} students.
     teacher_averages: On average your students have earned %{trophy_average} out of
       %{trophy_max} "Concept Mastery" trophies.
-    teacher_print_certificates: Print certificates for students who finish this course
-    teacher_read_blog: Read about news and updates to our materials at our Educator
-      Blog
+    teacher_print_certificates: In giấy chứng nhận cho học sinh hoàn thành khóa học
+      này
+    teacher_read_blog: Đọc về tin tức và cập nhật của chúng tôi tại tài liệu blog
+      giáo dục của chúng tôi
     classroom: Lớp học của bạn
     student_progress: Tiến độ học tập của bạn
     student_stats: You've earned %{trophy_count} out of %{trophy_max} "Concept Mastery"
       trophies.
-    student_left_off: 'Where you left off:'
+    student_left_off: 'Nơi bạn rời đi:'
     student_finished_prize: You've completed all tutorials, claim your %{prize_link}
       and pick another class %{online_link} or at a %{local_school_link}
     student_finished: You've completed all tutorials, pick another class %{online_link}
@@ -305,10 +310,11 @@
     local_school: trường học ở địa phương
     online: trực tuyến
     see_details: Xem chi tiết
-    prize_info: 'Prizes for participation (U.S. only): $10 gift cards for student
-      completion and up to $1,000 in classroom rewards for public school teachers'
-    tryfirst: 'Or, you can try it first, and sign up later:'
-    trynow: Try now
+    prize_info: 'Giải thưởng khi tham gia (chỉ Hoa Kỳ): thẻ quà tặng $10 cho sinh
+      viên hoàn thành và lên đến $1,000 trong lớp học phần thưởng cho các giáo viên
+      trường công lập.'
+    tryfirst: 'Hoặc, bạn có thể thử nó trước, và đăng ký sau:'
+    trynow: Thử ngay bây giờ
   gender:
     male: Nam
     female: Nữ
@@ -324,7 +330,7 @@
     feedback: Cung cấp thông tin phản hồi
     translate: Giúp chúng tôi dịch sang ngôn ngữ của bạn
     tos: Điều khoản Dịch vụ
-    privacy: Privacy Policy
+    privacy: Chính sách riêng tư
   prize_mail:
     prize_earned:
       subject: Redeem your prize at Code.org!
@@ -335,31 +341,31 @@
   reference_area:
     title: Cần trợ giúp?
     subtitle: Xem các video và gợi ý
-    teacher: See the solution
-    auth_error: You are not authorized to see the solution.
+    teacher: Xem giải pháp
+    auth_error: Bạn không có quyền xem các giải pháp.
   video:
     tab: Video
     notes: Không xem được video? Hãy xem ghi chú.
     autoplay_option: Tự phát video
     download: Tải video xuống
   compatability:
-    working: We are working on support for your browser.
+    working: Chúng tôi đang làm việc để hỗ trợ cho trình duyệt của bạn.
     upgrade: Hãy nâng cấp trình duyệt của bạn.
-  slow_loading: This is taking longer than usual...
+  slow_loading: Điều này mất nhiều thời gian hơn bình thường...
   try_reloading: Hãy thử tải lại trang
   next_stage: Hoàn thành! Tiếp tục màn tiếp theo
   download_pdf: Open Lesson Plan
   share_code:
     title: Click 'Run program' to see my program in action
-    flappy_og_title: Check out my Flappy Game
-    og_description: I wrote the code myself with Code.org
+    flappy_og_title: Hãy kiểm tra Game Flappy của tôi
+    og_description: Tôi đã viết mã của mình với Code.org
   builder:
-    created: You created a new script.
-    destroyed: You destroyed a script.
-    manage: Manage Scripts
-    view: View
-    back: Back to scripts
+    created: Tạo một kịch bản mới.
+    destroyed: Phá hủy một kịch bản.
+    manage: Quản lý kịch bản
+    view: Xem
+    back: Quay lại kịch bản
     level:
-      create: Create new level
-      current: Current Levels
-      unused: Unused Levels
+      create: Tạo ra mức độ mới
+      current: Mức hiện tại
+      unused: Không sử dụng cấp độ

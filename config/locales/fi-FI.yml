@@ -262,6 +262,10 @@
     rollup: Edistymistaulu
     activity: Luokan tapahtumat
     user_not_found: Opettajaa tai oppilasta ei löytynyt
+    cant_remove_student_no_email: '%{student_name} cannot be removed as your student
+      because %{student_name} has not registered an e-mail address'
+    cant_remove_teacher_no_email: '%{teacher_name} cannot be removed as your teacher
+      because you have not registered an e-mail address'
     student_teacher_disassociated: Opettaja %{teacher_name} on poistettu oppilaalta
       %{student_name}
   user:

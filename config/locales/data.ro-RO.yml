@@ -34,8 +34,8 @@
           desc: Puzzle-uri 2014 (beta)
           MazeEC: Etapa 1
         Flappy Levels:
-          desc: Flappy Bird
-          MazeEC: Stage 1
+          desc: Pasărea Flappy
+          MazeEC: Etapa 1
     game:
       name:
         Unplug1: Introducere în Informatică
@@ -60,7 +60,7 @@
         Unplug11: Încheiere
         MazeEC: Labirintul
         Bounce: Saritura
-        Flappy: Flappy Bird
+        Flappy: Pasărea Flappy
     trophy:
       name:
         Bronze: Bronz
@@ -337,13 +337,13 @@
         maze_3_3: Cum să ajung la porcușor? Asigură-te că nu intru în cutia cu TNT!
         maze_3_4: Argh! Scrie-mi un program care mă duce de jur împrejurul minelor
           de TNT şi până la porcușor.
-        bounce_1: Ataşaţi un bloc la "atunci când săgeată stanga" bloc, apoi apăsaţi
-          "Executa Programul" şi muta paletele cu tasta săgeată stânga pana la final.
-        bounce_2: Ataşaţi un bloc la "când săgeată dreapta" şi "atunci când săgeată
-          stânga" blocuri, apoi ruleaza şi muta paletele cu ambele taste de săgeti
+        bounce_1: Ataşează un bloc la blocul "când săgeată stânga" bloc, apoi apasă
+          "Execută Programul" şi mută paletele cu tasta săgeată stânga până la final.
+        bounce_2: Ataşează un bloc la blocurile "când săgeată dreapta" şi "atunci
+          când săgeată stânga", apoi rulează şi mută padela cu ambele taste de săgeți
           pentru a termina obiectivul.
-        bounce_3: Acum, încerca ceva similar cu blocul "atunci cand sageata in sus".
-          Muta paleltele pana la obiectiv în partea de sus.
+        bounce_3: Acum, încearcă ceva similar cu blocul "când săgeata în sus". Mută
+          padela până la obiectivul final din partea de sus.
         bounce_4: De data aceasta aveţi nevoie să adăugaţi patru blocuri. Muta paletele
           la toate cele patru obiective pentru a finaliza acest puzzle.
         bounce_5: Vom trimite o minge sa zboare în jos spre palete. Ataşaţi un bloc
@@ -353,13 +353,12 @@
           blocuri la ambele "cand mingea loveste" blocuri pentru a rezolva puzzle-ul.
         bounce_7: Ataseaza blocuri la blocurile "cand sageata dreapta", "cand sageata
           stanga", "cand mingea loveste peretele", si "mingea loveste paleta".
-        bounce_8: Încercaţi din nou cu mai multe mingi.
-        bounce_9: Acum devine nebunie!
-        bounce_10: There is a now a goal at the top. Attach "increment score" blocks
-          to the the "when ball in goal" and "when ball misses paddle" blocks to make
-          a game.
-        Custom_builder: Drag blocks from the toolbox to the workspace to draw the
-          level you wish to create. Press "Run Program" when you are ready.
+        bounce_10: Acolo este o acum un gol în partea de sus. Ataşează blocuri "incremență
+          scor" la "când mingea la țintă" şi "când mingea ratează ținta" pentru a
+          face un joc.
+        Custom_builder: Glisează blocuri din caseta de instrumente în spațiul de lucru
+          astfel încât să elaboreze nivelul pe care dorești să-l creezi. Apasă "Execută
+          Programul" atunci când ești gata.
         flappy_1: Attach a block to the "when click" block, then press "Run Program"
           and click or tap to move Flappy to the target.
         flappy_2: Now we've added some ground.  Attach a block to the "when hit the
@@ -371,16 +370,17 @@
           him crash. Attach a block to the "when hit an obstacle" block. To pass the
           puzzle, your code needs to 'END GAME' and make Flappy crash into the first
           pipe so he can reach the target.
-        flappy_5: Let's add a scoreboard, and count points when Flappy makes it past
-          obstacles. Add to the "when pass an obstacle" block, and then score a point
-          by flying Flappy through the first set of pipes.
-        flappy_6: See if you can still score a point after making Flappy flap either
-          a smaller or larger amount.
+        flappy_5: Hai să adăugăm un tabel de scor, și numarăm puncte atunci când Flappy
+          trece de obstacole. Adaugă-l la blocul "când trece de un obstacol", și apoi
+          înscrie un punct de scor zburându-l pe Flappy prin primul set de conducte.
+        flappy_6: Verifică dacă încă mai poți înscrie un punct după ce-l faci pe Flappy
+          să dea din aripi mai mult sau mai puțin.
         flappy_7: Next, try changing the scene by attaching another block to the "when
           Run is clicked".
-        flappy_11: Create your own Flappy game and share it. You can change the visuals,
-          or even the rules. Try changing visuals each time Flappy passes an obstacle.
-          Or make Flappy invincible so he never dies.
+        flappy_11: Crează-ți propriul tău joc Flappy şi apoi distribuie-l. Poţi schimba
+          elementele vizuale, sau chiar regulile. Încearcă să schimbi elementele vizuale
+          de fiecare dată Flappy trece de un obstacol. Sau fă-l pe Flappy invincibil
+          ca să nu mai moară niciodată.
       levelIncompleteError:
         maze_2_8: 'Pentru a rezolva acesta, găsește modelul care repetă. Folosește
           un bloc "repetă" care să conțină următoarele 3 blocuri în el: mută, mută,
@@ -397,7 +397,7 @@
         maze_intro: Intro Labirint
         artist_intro: 'Intro Artist '
         farmer_intro: Intro Fermier
-        flappy_intro: Flappy Intro
+        flappy_intro: Flappy introducerea
         loop_times: Bloc Repetă ori
         loop_until: Bloc Repetă Până La
         if: Bloc Dacă

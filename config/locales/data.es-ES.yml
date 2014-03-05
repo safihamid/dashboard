@@ -35,7 +35,7 @@
           MazeEC: Etapa 1
         Flappy Levels:
           desc: Flappy Bird
-          MazeEC: Stage 1
+          MazeEC: Etapa 1
     game:
       name:
         Unplug1: Introducción a la ciencia en computación
@@ -354,8 +354,6 @@
         bounce_7: Añade los bloques a los bloques "cuando flecha a la derecha", "cuando
           flecha a la izquierda", "cuando la bola golpea la pared" y "cuando la bola
           golpea la palanca".
-        bounce_8: Pruébalo otra vez con más bolas.
-        bounce_9: ¡Ahora se está volviendo loco!
         bounce_10: Ahora hay un gol en la parte superior. Junta los bloques "subir
           puntuación" a los bloques "cuando la bola está en la portería" y los bloques
           "cuando la bola esquiva la palanca" para hacer un juego.
@@ -373,16 +371,17 @@
           him crash. Attach a block to the "when hit an obstacle" block. To pass the
           puzzle, your code needs to 'END GAME' and make Flappy crash into the first
           pipe so he can reach the target.
-        flappy_5: Let's add a scoreboard, and count points when Flappy makes it past
-          obstacles. Add to the "when pass an obstacle" block, and then score a point
-          by flying Flappy through the first set of pipes.
-        flappy_6: See if you can still score a point after making Flappy flap either
-          a smaller or larger amount.
+        flappy_5: Vamos a añadir un marcador y contar puntos cuando Flappy pase más
+          allá de los obstáculos. Agregue al bloque de  "when pass an obstacle (cuando
+          pasa un obstáculo)"  esto anotrará un punto cuando Flappy pase el primer
+          conjunto de tubos.
+        flappy_6: Ve si puedes anotar un punto haciendo que Flappy aletee, rapido
+          o lento.
         flappy_7: Next, try changing the scene by attaching another block to the "when
           Run is clicked".
-        flappy_11: Create your own Flappy game and share it. You can change the visuals,
-          or even the rules. Try changing visuals each time Flappy passes an obstacle.
-          Or make Flappy invincible so he never dies.
+        flappy_11: Crear tu propio juego Flappy y compartelo. Puede cambiar las imágenes,
+          o incluso las reglas. Trata de cambiar imágenes cada vez que Flappy pasa
+          un obstáculo. O hacer un Flappy invencible, haciendo que nunca muera.
       levelIncompleteError:
         maze_2_8: 'Para resolver este, encuentra el bloque que repite. Usa un bloque
           "repetir" con estos 3 bloques en su interior: avanzar, avanzar, girar a
