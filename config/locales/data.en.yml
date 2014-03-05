@@ -208,9 +208,9 @@ en:
         'flappy_5': "Let's add a scoreboard, and count points when Flappy makes it past obstacles. Add to the \"when pass an obstacle\" block, and then score a point by flying Flappy through the first set of pipes."
         'flappy_6': "See if you can still score a point after making Flappy flap either a smaller or larger amount."
         'flappy_7': "Next, try changing the scene by attaching another block to the \"when game starts\" block."
-        'flappy_8': "Setting the scene doesn't have to happen when the game starts.  See what happens if you set a random scene when other events occur."
-        'flappy_9': "What happens if when we hit an obstacle, instead of ending the game we just set the score back to 0?"
-        'flappy_11': "Create your own Flappy game and share it. You can change the visuals, or even the rules. Try changing visuals each time Flappy passes an obstacle. Or make Flappy invincible so he never dies."
+        'flappy_8': "You can set visuals anytime, not just when the game starts. Try setting a RANDOM scene when other events happen, for example, when passing an obstacle."
+        'flappy_9': "To mix things up, when hitting an obstacle or the ground, instead of ending the game try setting the score back to 0."
+        'flappy_11': "Create your own Flappy game. You can change all the visuals and all the rules, even the gravity. When you're done, click Share to let friends try your game on their phones."
       levelIncompleteError:
         # Keyed by "#{game.name}_#{level.level_num}" with fallback "#{game.app}_#{level.level_num}"
         'maze_2_8': "To solve this, find the pattern that repeats. Use a \"repeat\" block with these 3 blocks inside it: move, move, turn right."
