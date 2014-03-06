@@ -1,6 +1,14 @@
 class LevelSourceHintsController < ApplicationController
   before_filter :authenticate_user!
 
+  def index
+    raise "unauthorized" if !current_user.admin?
+    @level_source_hints = []
+    LevelSourceHint.select('user_id, count(*) as count').group('user_id').order('count desc').each do |user|
+      @level_source_hints = @level_source_hints + LevelSourceHint.where(:user_id => user.user_id)
+    end
+  end
+
   def add_hint
     raise "unauthorized" if !current_user.admin? && !current_user.hint_access?
     @level_source_id = params[:level_source_id]
