@@ -11,7 +11,8 @@
 
   %h1= link_to 'Start adding hints (where needed) >>', add_pop_hint_path(0)
   - if current_user && current_user.admin?
-    %h3= link_to 'Show hints >>', show_pop_hints_path(0)
+    %h3= link_to 'Show hints by popularity >>', show_pop_hints_path(0)
+    %h3= link_to 'Show hints by user >>', level_source_hints_path
   %br
   %h1 Or, choose a particular puzzle and add hints just for that puzzle:
   - script = Script.twenty_hour_script
