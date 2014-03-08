@@ -45,7 +45,7 @@ en:
         pdfs: ['unplug7']
       'Unplug8':
         title: "Abstraction"
-        desc: 'This lesson will introduce the concept of Computer Science and explain what a Computer Scientist does.  It will also give students an opportunity to assume the role of a computer scientist.  By the end of the activity, each student will have a take-home reminder of what he or she learned.  You may be tempted to skip teaching young children the complicated vocabulary words that are associated with the lessons that follow, but presenting them in a fun and playful light now is far more productive than waiting for more advanced opportunities.'
+        desc: 'This activity combines your students’ everyday routine and a Mad-Lib style thinking game to help your class learn about the effectiveness of abstraction.'
         video: 'FGpzpYD9ZVs'
         download: 'https://s3.amazonaws.com/cdo-videos/new/14-abstraction-activity.mp4'
         pdfs: ['unplug8']
