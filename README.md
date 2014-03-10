@@ -68,6 +68,7 @@ The application sometimes sends an email, for example when a student attaches to
 installed on your system.  Mailcatcher should not be added to the Gemfile, rather it should be manually installed and run, like so:
 ```shell
 gem install mailcatcher
+rbenv rehash  # if using rbenv
 mailcatcher
 ```
 (Note that you might need to open a new shell session for it to be found in the path.)
