@@ -209,16 +209,14 @@ function Dialog(options) {
 Dialog.prototype.show = function(options) {
   options = options || {};
 
-  if (options.staticBackdrop) {
-    $(this.div).modal({
-      'show': true,
-      'backdrop': 'static'
-    });
-  } else {
-    $(this.div).modal('show');
-  }
+  $(this.div).modal({
+    show: true,
+    // The default value for backdrop is true, meaning clicking the backdrop
+    // will close the modal. A value of 'static' will not close the modal.
+    backdrop: options.backdrop || true
+  });
 
-  if (!options.staticBackdrop) {
+  if (options.backdrop !== 'static') {
     addClickTouchEvent($(this.div).next(), $.proxy(function() {
       this.hide();
     }, this));
