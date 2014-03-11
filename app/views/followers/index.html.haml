@@ -1,5 +1,5 @@
 - @page_title = "#{current_user.name} #{t('teacher.rollup')}"
-- stage_map = @all_script_levels.group_by { |sl| sl.level.game }
+- stage_map = @script_levels_to_display.group_by { |sl| sl.level.game }
 - hours = (params[:hours] || 1).to_i
 - add_section_ui = !current_user.sections.blank?
 
@@ -68,10 +68,10 @@
           %tr.report_row
     %td{ style: "padding: 0px;" }
       %div{ style:"overflow-x:scroll; width: 800px; margin:0px; padding: 0px;" }
-        %table{ style:"width:#{(@all_concepts.length + @all_script_levels.length) * 25}px;table-layout:fixed;"}
+        %table{ style:"width:#{(@all_concepts.length + @script_levels_to_display.length) * 25}px;table-layout:fixed;"}
           - @all_concepts.each do
             %col{ width: '25px'}
-          - @all_script_levels.each do
+          - @script_levels_to_display.each do
             %col{ width: '25px'}
           - @section_map.each_pair do |section, students|
             %tr.report_row
@@ -88,7 +88,7 @@
                     - if ut && (ut.updated_at > hours.hours.ago)
                       = bullet_html
 
-                - @all_script_levels.each do |sl|
+                - @script_levels_to_display.each do |sl|
                   - ul = level_map[sl.level_id]
                   %td{ class: "report_cell #{level_box_class(ul.try(:best_result))}", title: build_user_level_message(student, ul, sl) }
                     - if ul
