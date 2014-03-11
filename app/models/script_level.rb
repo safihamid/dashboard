@@ -2,9 +2,6 @@ class ScriptLevel < ActiveRecord::Base
   belongs_to :level
   belongs_to :script
 
-  WITHOUT_UNPLUGGED_QUERY = "script_levels.level_id IN (SELECT levels.id FROM levels JOIN games ON levels.game_id = games.id AND games.name NOT LIKE '%Unplug%')"
-  scope :without_unplugged, ->{ where(WITHOUT_UNPLUGGED_QUERY).references(:games) }
-
   NEXT = 'next'
 
   # this is

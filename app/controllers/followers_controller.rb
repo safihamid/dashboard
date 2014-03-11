@@ -12,7 +12,7 @@ class FollowersController < ApplicationController
       @section_map[f.section] << f.student_user
     end
 
-    @script_levels_to_display = script.script_levels.includes({ level: :game }).without_unplugged
+    @script_levels_to_display = script.script_levels.joins(level: :game).where.not('games.app' => "unplug")
     @script_levels_to_display = @script_levels_to_display.where(['levels.game_id = ?', params[:game_id].to_i]) if params[:game_id].to_i > 0
 
     @all_concepts = Concept.cached
