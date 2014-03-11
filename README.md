@@ -1,9 +1,10 @@
+*Note: dashboard is a component of [the CDO Curriculum](https://github.com/code-dot-org/cdo-curriculum). See the [root umbrella repository](https://github.com/code-dot-org/cdo-curriculum) which includes instructions for setting up a full learn.code.org curriculum build with blockly.*
+
 ## Development Quick Start Readme
 
 ### Background
 We are building drag-drop programming tutorials to allow a beginner to learn very basic programming concepts (sequencing, if-then statements, for loops, variables, functions), but using drag-drop programming.
 The visual language we're using is based on Blockly (and open-source drag-drop language that spits out XML or JavaScript or Python). 
-
 
 The end-product is a 1-hour tutorial to be used during the Hour of Code campaign, for anybody to get a basic intro to Computer Science, AND a 20-hour follow-on tutorial and teacher-dashboard, meant for use in K-8 (elementary and middle school) classrooms.
 
