@@ -1,4 +1,4 @@
-*Note: dashboard is a component of [the CDO Curriculum](https://github.com/code-dot-org/cdo-curriculum). See the [root umbrella repository](https://github.com/code-dot-org/cdo-curriculum) which includes instructions for setting up a full learn.code.org curriculum build with blockly.*
+*Note: dashboard is a component of [the learn.code.org curriculum](https://github.com/code-dot-org/cdo-curriculum). See the [root umbrella repository](https://github.com/code-dot-org/cdo-curriculum) which includes instructions for setting up a full learn.code.org build which includes the dashboard and blockly.*
 
 ## Development Quick Start Readme
 
