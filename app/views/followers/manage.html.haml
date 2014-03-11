@@ -11,18 +11,21 @@
 %br/
 %br/
 
+- content_for :section_assignment_dropdown do
+  .manage_section_area{style: "display:none;"}
+    Assign checked students to section:
+    - options_select = options_from_collection_for_select(@sections, :id, :name)
+    - options_select += '<option value="NULL">(None)</option'.html_safe
+    = select_tag('section_id', options_select, style: 'margin: 0 7px 0px 4px')
+    = submit_tag 'Go'
+
 = form_tag(add_to_section_path) do
   - if add_section_ui
     %div{style: "min-height: 40px;"}
       .manage_section_area_instructions
         To divide your class into multiple sections, select students to assign to a new section. 
-      .manage_section_area{style: "display:none;"}
-        Assign checked students to section:
-        - options_select = options_from_collection_for_select(@sections, :id, :name)
-        - options_select += '<option value="NULL">(None)</option'.html_safe
-        = select_tag('section_id', options_select, style: 'margin: 0 7px 0px 4px')
-        = submit_tag 'Go'
-
+      = yield :section_assignment_dropdown
+      
   %fieldset
     %table{ style: "width:850px; table-layout:fixed;"}
       %colgroup
@@ -48,6 +51,8 @@
             = followed.section.try(:name)
             = link_to("(remove from section)", remove_from_section_path(follower_id: followed.student_user_id, section_id: followed.section_id), method: :post) if followed.section.present?
 
+  %div{style: 'min-height: 40px; margin-top: 10px'}
+    = yield :section_assignment_dropdown
 
 %br/
 
