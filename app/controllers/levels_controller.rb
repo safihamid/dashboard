@@ -1,8 +1,12 @@
+require "csv"
+
 class LevelsController < ApplicationController
   include LevelsHelper
+  include ActiveSupport::Inflector
   before_filter :authenticate_user!
-  skip_before_filter :verify_authenticity_token, :only => [:builder, :create_custom]
-  load_and_authorize_resource
+  skip_before_filter :verify_authenticity_token, :only => [:create]
+  skip_before_filter :verify_params_before_cancan_loads_mode, :only => [:create]
+  load_and_authorize_resource :except => [:create]
   check_authorization
 
   before_action :set_level, only: [:show, :edit, :update, :destroy]
@@ -17,47 +21,75 @@ class LevelsController < ApplicationController
   # GET /levels/1
   # GET /levels/1.json
   def show
-    @full_width = true
-  end
+    set_videos_and_blocks_and_callouts
 
-  # GET /levels/new
-  def new
-    @level = Level.new
-    @game = Game.find(params[:game_id])
+    @fallback_response = {
+      success: {message: 'good job'},
+      failure: {message: 'try again'}
+    }
+
+    @full_width = true
   end
 
   # GET /levels/1/edit
   def edit
+    level = Level.find(params[:id])
+    @blocks = Block.all
+    @start_blocks = level.start_level_blocks.collect(&:block)
+    @toolbox_blocks = level.toolbox_level_blocks.collect(&:block)
   end
 
   # POST /levels
   # POST /levels.json
   def create
-    @level = Level.new(level_params.permit([:name, :token, :level_type]))
-    @level.game = Game.find(params[:game_id])
-
-    respond_to do |format|
-      if @level.save
-        format.html { redirect_to [@level.game, @level], notice: I18n.t('crud.created', model: Level.model_name.human) }
-        format.json { render action: 'show', status: :created, location: @level }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @level.errors, status: :unprocessable_entity }
-      end
+    authorize! :create, :level
+    case params[:level_type]
+    when 'maze'
+      create_maze
+    when 'artist'
+      create_artist
+    else
+      raise "Unkown level type #{params[:level_type]}"
     end
   end
 
+  def create_maze
+    contents = CSV.new(params[:level].read)
+    maze = contents.read[0...params[:size].to_i].to_s
+    game = Game::CUSTOM_MAZE
+    @level = Level.create(maze: maze, game: game, level_num: 'custom', skin: 'birds', user: current_user, instructions: params[:instructions], name: params[:name])
+    redirect_to game_level_url(game, @level)
+  end
+
+  def create_artist
+    game = Game.find(params[:game_id])
+    @level = Level.new(game: game, level_num: 'custom', skin: 'artist_zombie', user: current_user, instructions: params[:instructions], name: params[:name])
+    solution = LevelSource.lookup(@level, params[:program])
+    @level.update(solution_level_source: solution)
+    render json: { redirect: game_level_url(game, @level) }
+  end
+
   # PATCH/PUT /levels/1
-  # PATCH/PUT /levels/1.json
   def update
-    respond_to do |format|
-      if @level.update(level_params)
-        format.html { redirect_to [@level.game, @level], notice: I18n.t('crud.updated', Level.model_name.human) }
-        format.json { head :no_content }
-      else
-        format.html { render action: 'edit' }
-        format.json { render json: @level.errors, status: :unprocessable_entity }
+    if @level.update(level_params)
+      update_blocks ToolboxLevelBlock, StartLevelBlock
+      redirect_to [@level.game, @level], notice: I18n.t('crud.updated', Level.model_name.human)
+    else
+      edit
+      render 'edit'
+    end
+  end
+
+  def update_blocks(*block_models)
+    block_models.each do |block_model|
+      old_blocks = block_model.where(level: @level)
+      block_attribute = underscore(block_model)  # ToolboxLevelBlock => toolbox_level_block
+      params[block_attribute + '_ids'] ||= []
+
+      level_blocks = params[block_attribute + '_ids'].collect do |block_id|
+        block_model.where(level: @level, block_id: block_id).first_or_create
       end
+      block_model.delete(old_blocks - level_blocks)
     end
   end
 
@@ -65,33 +97,32 @@ class LevelsController < ApplicationController
   # DELETE /levels/1.json
   def destroy
     @level.destroy
-    respond_to do |format|
-      format.html { redirect_to game_levels_url }
-      format.json { head :no_content }
-    end
+    redirect_to(params[:redirect].nil?? game_levels_url : params[:redirect])
   end
 
-  def builder
+  def new
+    authorize! :create, :level
+    case params[:type]
+    when 'artist'
+      artist_builder
+    when 'maze'
+      @game = Game::CUSTOM_MAZE
+      render :maze_builder
+    end
+    @levels = Level.where(user: current_user)
+  end
+
+  def artist_builder
+    authorize! :create, :level
     @level = Level::BUILDER
-    authorize! :create, @level
     @game = @level.game
     @full_width = true
-    @callback = "/create_custom"
-    render :show, :locals => {:builder => true}
+    @artist_builder = true
+    @callback = game_levels_path @game
+    show
+    render :show
   end
 
-  def create_custom
-    @level = Level.new # should be using load_and_authorize_resource... here we create a blank level that we will throw away just so we can use authorize!
-    authorize! :create, @level
-    @level = nil
-    game = Game::CUSTOM
-    script = Script.builder_script
-    level = Level.new(game: game, level_num: "custom", skin: "artist_zombie", user: current_user, instructions: params[:instructions], name: params[:name])
-    @script_level = ScriptLevel.create(script: script, level: level, chapter: 1, game_chapter: 1)
-    solution = LevelSource.lookup(level, params[:program])
-    level.update(solution_level_source: solution)
-    render text: "{ \"url\": \"#{build_script_level_url(@script_level)}\"}"
-  end
 
   private
     # Use callbacks to share common setup or constraints between actions.

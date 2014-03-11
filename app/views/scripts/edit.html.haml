@@ -2,6 +2,7 @@
   %h1 Edit Your Script
   = link_to t("builder.back"), scripts_path
   = link_to t("builder.level.create"), builder_path
+  = link_to "Add New Stage", new_script_stage_path(params[:id])
 
   %p#script-updated="Script Updated"
 
@@ -12,6 +13,10 @@
       - level = sl.level
       - filtered_levels.delete(level)
       = render partial: "drag_level", locals: { level: level }
+    - @script.stages.each do |stage|
+      = content_tag_for :li, stage, class: "stage" do
+        %div
+          %span=stage.name
 
   %p=t("builder.level.unused")
   %ul#all-levels.connectedSortable
@@ -21,10 +26,22 @@
 %iframe#blockly-frame
 
 :javascript
-  $('#current-script-levels, #all-levels').sortable({
+  $('#current-script-levels, #all-levels').nestedSortable({
+    listType: 'ul',
+    handle: 'div',
+    items: 'li',
+    toleranceElement: 'div',
     connectWith: '.connectedSortable',
+    isAllowed: function(item, parent_item) {
+      // Only allow levels to be dropped under stages.
+      return (parent_item === null || (item.hasClass('level') && parent_item.hasClass('stage')));
+    }
   }).disableSelection();
-  $('#current-script-levels').sortable({
+  $('#current-script-levels').nestedSortable({
+    listType: 'ul',
+    handle: 'div',
+    items: 'li',
+    toleranceElement: 'div',
     update: function() {
       $.post('#{script_sort_url @script}', $('#current-script-levels').sortable('serialize') + "&id=" + #{@script.id})
         .done(function () {

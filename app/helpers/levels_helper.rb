@@ -15,8 +15,33 @@ module LevelsHelper
     "#{root_url.chomp('/')}#{path}"
   end
 
-    # this defines which levels should be seeded with th last result from a different level
+  def set_videos_and_blocks_and_callouts
+    solution = @level.solution_level_source
+    @solution_blocks = solution.data if solution
+
+    @videos = @level.videos
+
+    # todo: make this based on which videos the user/session has already seen
+    seen = session[:videos_seen] || Set.new()
+    @videos.each do |v|
+      if !seen.include?(v.key)
+        @autoplay_video_info = params[:noautoplay] ? nil : video_info(v)
+        seen.add(v.key)
+        session[:videos_seen] = seen
+        break
+      end
+    end
+
+    @toolbox_blocks = Block.xml(@level.toolbox_level_blocks.collect(&:block)) if !@level.toolbox_level_blocks.empty?
+    @start_blocks = Block.xml(@level.start_level_blocks.collect(&:block), false) if !@level.start_level_blocks.empty?
+  end
+
+  # this defines which levels should be seeded with th last result from a different level
   def initial_blocks(user, level)
+    if level.start_blocks
+      return level.start_blocks.xml
+    end
+
     if params[:initial_code]
       return params[:initial_code]
     end

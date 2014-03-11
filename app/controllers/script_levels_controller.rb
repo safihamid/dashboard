@@ -79,23 +79,8 @@ private
     @level = script_level.level
     @game = @level.game
 
-    solution = @level.solution_level_source
-    @solution_blocks = solution.data if solution
+    set_videos_and_blocks_and_callouts
 
-    @videos = @level.videos
-
-    # todo: make this based on which videos the user/session has already seen
-    seen = session[:videos_seen] || Set.new()
-    @videos.each do |v|
-      if !seen.include?(v.key)
-        @autoplay_video_info = params[:noautoplay] ? nil : video_info(v)
-        seen.add(v.key)
-        session[:videos_seen] = seen
-        break
-      end
-    end
-
-    @start_blocks = initial_blocks(current_user, @level)
     @callback = milestone_url(user_id: current_user.try(:id) || 0, script_level_id: @script_level)
     @full_width = true
     @callouts = Callout.where(script_level: @script_level)

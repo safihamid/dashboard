@@ -11,6 +11,7 @@ class ApplicationController < ActionController::Base
 
   # this is needed to avoid devise breaking on email param
   before_filter :configure_permitted_parameters, if: :devise_controller?
+  before_filter :verify_params_before_cancan_loads_mode
 
   around_filter :with_locale
 
@@ -26,7 +27,7 @@ class ApplicationController < ActionController::Base
 
 # we need the following to fix a problem with the interaction between CanCan and strong_parameters
 # https://github.com/ryanb/cancan/issues/835
-  before_filter do
+  def verify_params_before_cancan_loads_mode
     resource = controller_name.singularize.to_sym
     method = "#{resource}_params"
     params[resource] &&= send(method) if respond_to?(method, true)

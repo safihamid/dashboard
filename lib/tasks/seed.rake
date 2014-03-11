@@ -15,6 +15,14 @@ namespace :seed do
     Rake::Task["youtube:thumbnails"].invoke
   end
 
+  task blocks: :environment do
+    Block.connection.execute('truncate table blocks')
+
+    CSV.read('config/blocks.csv', { headers: true }).each do |row|
+      Block.create!(name: row['Name'], xml: row['Xml'], app: row['App'])
+    end
+  end
+
   task concepts: :environment do
     Concept.transaction do
       Concept.delete_all # use delete instead of destroy so callbacks are not called
