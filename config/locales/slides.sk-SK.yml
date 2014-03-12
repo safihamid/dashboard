@@ -3,72 +3,72 @@
     maze_intro:
       1:
         image: notes/hoc1_1.jpg
-        text: Welcome to your first hour of code! Let's dive right into your first
-          taste of programming.
+        text: Vitaj na svojej prvej hodine kódovania! Poďme sa pustiť do programovania.
       2:
         image: notes/hoc1_2.jpg
-        text: We'll be using Blockly, a visual programming language where you drag
-          and drop blocks to write code.
+        text: Budeme používať Blockly, vizuálny programovací jazyk, kde budeš presúvať
+          a vkladať bloky, aby si napísal kód.
       3:
         image: notes/hoc1_3.jpg
-        text: Most code is typed, but Blockly is visual. Each blocks corresponds to
-          a line of "real" code.
+        text: Väčšina kódu je písaná, ale Blockly je vizuálny. Každý blok zodpovedá
+          riadku "skutočného" kódu.
       4:
         image: notes/hoc1_4.jpg
-        text: You'll learn the foundations of computer science, concepts which are
-          used anywhere from making apps to controlling the Mars rover.
+        text: Naučíš sa základy informatiky, pojmy, ktoré sú používané kdekoľvek od
+          tvorby aplikácií k tvorbe programov na ovládanie robota na Marse.
       5:
         image: notes/hoc1_5.jpg
-        text: A program is a set of instructions for your computer to follow.
+        text: Program je súbor pokynov, ktoré tvoj počítač vykonáva.
       6:
         image: notes/hoc1_6.jpg
-        text: The goal of your first program is to get an Angry Bird through a maze
-          to hit a Green Pig.
+        text: Cieľom tvojho prvého programu je dostať nahnevaného vtáka cez bludisko
+          k zelenému prasaťu.
       7:
         image: notes/hoc1_7.jpg
-        text: The left side is the maze where your program is run. The instructions
-          for each puzzle are below the maze.
+        text: Na ľavej strane je bludisko, kde program prebieha. Pokyny pre každý
+          príkaz sú pod bludiskom.
       8:
         image: notes/hoc1_8.jpg
-        text: The middle toolbox has the commands for the Angry Bird. You'll use these
-          to build your code.
+        text: Panel nástrojov v strede obsahuje príkazy pre nahnevaného vtáka. Príkazy
+          použiješ na poskladanie svojho kódu.
       9:
         image: notes/hoc1_9.jpg
-        text: On the right is your workspace where you'll drag blocks from the toolbox
-          to build your program. To delete a block, drag it to the trash in the corner.
+        text: Na pravej strane je tvoj pracovný priestor kam presuneš bloky z panelu
+          nástrojov, aby si vytvoril svoj program. Pre vymazanie bloku, presuň blok
+          do koša v rohu.
       10:
         image: notes/hoc1_10.jpg
-        text: Each block is one instruction. If you drag a "move forward" block to
-          your workspace and press "Run Program", the bird moves one space on the
-          maze.
+        text: Každý blok je nejakým pokynom. Ak presuneš blok "move forward" do svojho
+          pracovného priestoru a klikneš na "Run Program", vták sa v bludisku pohne
+          o jedno políčko.
       11:
         image: notes/hoc1_11.jpg
-        text: To do more than one action, you can drag many block to your workspace
-          and attach them together. The bird will do the commands from top to bottom.
+        text: Aby si spravil viac ako jeden pokyn, do svojho pracovného priestoru
+          môžeš vložiť viac blokov a spojiť ich dohromady. Vták bude vykonávať príkazy
+          smerom zhora nadol.
       12:
         image: notes/hoc1_12.jpg
-        text: If you run a program and want to fix it and try again, press the "Reset"
-          button.
+        text: 'Ak spustíš program a chceš ho upraviť a spustiť znovu, klikni na tlačítko
+          "Reset". '
       13:
         image: notes/hoc1_13.jpg
-        text: Let's go get those pigs!
+        text: Poďme na tie prasce!
     artist_intro:
       1:
         image: notes/stage5_1.jpg
-        text: Hi, I'm JR! Every race car team need computer scientists to win. They
-          analyze data from the car to make it go faster.
+        text: Ahoj, ja som JR ! Každý automobilový závodný tím potrebuje počítačového
+          vedca, aby vyhral. Oni analyzujú údaje z auta, aby mohlo ísť rýchlejšie.
       2:
         image: notes/stage5_2.jpg
-        text: In these puzzles, you'll be an artist that draws a line behind them
-          everywhere they go.
+        text: Teraz budeš umelec, ktorý za nimi kreslí čiaru všade kade idú.
       3:
         image: notes/stage5_3.jpg
-        text: This block says "move forward by 100 pixels." Pixels are just really
-          tiny dots on your screen.
+        text: Tento blok hovorí "posuň sa dopredu o 100 pixelov." Pixely sú malé bodky
+          na tvojej obrazovke.
       4:
         image: notes/stage5_4.jpg
-        text: This block says "turn right by 90 degrees." This will turn your artist
-          the same amount as the "turn" blocks in the maze puzzles.
+        text: Tento blok hovorí "zatoč vpravo o 90 stupňov." Toto otočí tvojho umelca
+          o rovnaký počet stupňov ako ako otočka v bludisku.
       5:
         image: notes/stage5_5.jpg
         text: Click on the arrow in either of these blocks to change the amount the
@@ -77,20 +77,19 @@
     farmer_intro:
       1:
         image: notes/stage9_1.jpg
-        text: Hi, I'm Paola! In these puzzles, you're a farmer who has to get her
-          field completely flat to start planting crops.
+        text: Ahoj, ja som Paola! V týchto úlohách si farmárkou, ktorej úlohou je
+          vyhladiť pole, aby mohol začať pestovať plodiny.
       2:
         image: notes/stage9_2.jpg
-        text: You have to help her remove all the piles of dirt and fill in all the
-          holes.
+        text: Musíš jej pomôcť odstrániť všetky hromady hliny a vyplniť všetky jamy.
       3:
         image: notes/stage9_3.jpg
         text: The new blocks remove 1 shovelful of dirt from a pile and fill in 1
           shovelful of dirt to a hole.
       4:
         image: notes/stage9_4.jpg
-        text: The piles and holes are different sizes, so you have to tell the farmer
-          how many shovelfuls to use.
+        text: Kôpky a jamy sú rozdielnych veľkostí, tak budeš musieť farmárke povedať
+          koľko krát lopatu použije.
     flappy_intro:
       1:
         image: notes/flappy01.jpg
@@ -139,9 +138,9 @@
     loop_times:
       1:
         image: notes/hoc2_1.jpg
-        text: Hi, I'm Mark! Let's learn about loops. Using loops you can tell a computer
-          to repeat any set of actions over and over, thousands or even billions of
-          times.
+        text: Ahoj, ja som Mark! Poďme sa naučiť niečo o cykloch. Používaním cyklov
+          rozkážeš počítaču, aby opakoval znova a znova akékoľvek množstvo pokynov,
+          tisíce, alebo dokonca aj miliardy krát.
       2:
         image: notes/hoc2_2.jpg
         text: In this puzzle, we want to make the bird move forward 5 spaces to get
@@ -162,7 +161,7 @@
           block.'
       7:
         image: notes/hoc2_7.jpg
-        text: Enjoy using your new "repeat" block!
+        text: Uži si používanie nového "repeat" bloku!
     loop_until:
       1:
         image: notes/hoc3_1.jpg
@@ -210,7 +209,7 @@
           win.
       7:
         image: notes/hoc4_7.jpg
-        text: Have fun using the "if" block!
+        text: Zabávaj sa používaním "if" bloku!
     if_else:
       1:
         image: notes/hoc5_1.jpg

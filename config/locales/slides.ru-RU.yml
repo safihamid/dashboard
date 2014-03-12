@@ -95,13 +95,12 @@
     flappy_intro:
       1:
         image: notes/flappy01.jpg
-        text: Hi, I'm Katie! One of the most exciting things about computer science
-          is that a computer program can be interactive.
+        text: Привет меня зовут Кэти! Одна из самых интересных вещей в изучении компьютера
+          то, что компьютерная программа может быть интерактивна.
       2:
         image: notes/flappy02.jpg
-        text: Any time somebody clicks or taps or types on a computer or phone, that
-          generates an EVENT, and there's some code that decides what to do when an
-          EVENT occurs.
+        text: Каждый раз когда кто-то нажимает или печатает на компьютере или телефоне,
+          генерируется событие, а этот код решает что делать когда случается событие.
       3:
         image: notes/flappy03.jpg
         text: 'For example, you could have an EVENT-HANDLER that says "when the mouse
@@ -112,31 +111,31 @@
           we're going to learn to program our own custom version of FlappyBird!
       5:
         image: notes/flappy05.jpg
-        text: The code you'll write involves dragging and dropping blocks that represent
-          commands for the computer. Under the hood, each of these blocks is represented
-          by real code.
+        text: Код, который вы будете писать включает перетаскивание блоков, которые
+          представляют команды для компьютера. Под скрытой частью каждого из этих
+          блоков представлен  настоящий код.
       6:
         image: notes/flappy06.jpg
-        text: 'If you take a look at the workspace, there are some green blocks that
-          are filled in for you - these are "event handlers" '
+        text: 'Если вы посмотрите на рабочую область, там есть некоторые зеленые блоки,
+          которые заполняются для вас - это «обработчики событий» '
       7:
         image: notes/flappy07.jpg
-        text: If you want the bird to FLAP when you CLICK the mouse, you can do that
-          by attaching the "FLAP" block to the appropriate event handler, and now
-          in your game whenever you click the mouse, the bird will flap.
+        text: Если вы хотите чтобы птица взлетела при НАЖАТИИ кнопки мыши, вы можете
+          сделать это путем присоединения блока «взлет» в соответствующем обработчике
+          событий, и теперь в игре при нажатии кнопки мыши, птица будет взлетать.
       8:
         image: notes/flappy08.jpg
-        text: In each puzzle of this activity we'll introduce new types of events
-          as green blocks on the workspace, and you can decide the appropriate blocks
-          to add in response to those events.
+        text: В каждой головоломке этой деятельности мы познакомимся с новыми типами
+          событий, такими как зеленые блоки на рабочей области, и вы можете решить
+          соответствующие блоки для добавления в ответ на эти события.
       9:
         image: notes/flappy09.jpg
-        text: When you see a drop down arrow like this, that means you can change
-          the settings - like what sound to play when flappy hits the ground.
+        text: Когда вы видите падение вниз, как это, это означает, что вы можете изменить
+          настройки - как то, что мелодия звучит когда flappy падает на землю.
       10:
         image: notes/flappy10.jpg
-        text: In the final puzzle you'll be able to create your own game and share
-          it with your friends. Have fun!
+        text: В последней головоломке у вас будет возможность создать свою собственную
+          игру и поделиться ей с друзьями. Веселитесь!
     loop_times:
       1:
         image: notes/hoc2_1.jpg

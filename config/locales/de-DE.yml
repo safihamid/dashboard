@@ -298,19 +298,20 @@
     recent_activity: Letzte Aktivität
     show_more: Erweiterte Ansicht
   home:
-    signin_message: oder wenn Sie bereits registriert sind %{link}
-    student_reg_link: Schüler
-    teacher_reg_link: Lehrer
-    signin_directions: Use an account to track progress and get rewards.<br/> Teachers,
-      track your entire class.
+    signin_message: Schon registriert? %{link}
+    student_reg_link: Studenten Login
+    teacher_reg_link: Lehrer Anmeldung
+    signin_directions: Nutze eine Konto um deinen Fortschritt zu speichern. <br/>
+      Lehrer können den Fortschritt deiner Klasse einsehen.
     teacher_dashboard: Fortschrittsanzeige einsehen
     teacher_student_count_one: Sie haben %{count} Schüler.
     teacher_student_count: Sie haben %{count} Studenten.
     teacher_averages: Im Durchschnitt haben Ihre Schüler %{trophy_average} von %{trophy_max}
       "Concept Mastery" Trophäen erreicht.
-    teacher_print_certificates: Print certificates for students who finish this course
-    teacher_read_blog: Read about news and updates to our materials at our Educator
-      Blog
+    teacher_print_certificates: Drucken sie Zertifikate für Schüler die diesen Kurs
+      bestanden haben
+    teacher_read_blog: Lese Nachrichten und Neuigkeiten zu unseren Materialien in
+      unserem Lehrer-Blog
     classroom: Ihr Klassenzimmer
     student_progress: Ihr Lernfortschritt
     student_stats: Sie haben %{trophy_count} von %{trophy_max} "Concept Mastery" Trophäen.
@@ -325,8 +326,8 @@
     see_details: Zeige Details
     prize_info: 'Prizes for participation (U.S. only): $10 gift cards for student
       completion and up to $1,000 in classroom rewards for public school teachers'
-    tryfirst: 'Or, you can try it first, and sign up later:'
-    trynow: Try now
+    tryfirst: 'Oder Probiere es aus und melde Dich später an: '
+    trynow: Probiere es aus
   gender:
     male: Männlich
     female: Weiblich
@@ -371,14 +372,14 @@
   share_code:
     title: Klicke auf 'Programm ausführen', um mein Programm in Aktion zu sehen
     flappy_og_title: Check out my Flappy Game
-    og_description: I wrote the code myself with Code.org
+    og_description: Ich habe meinen Code selbst mit Code.org erstellt
   builder:
-    created: You created a new script.
-    destroyed: You destroyed a script.
-    manage: Manage Scripts
-    view: View
-    back: Back to scripts
+    created: Du hast ein neues Script erstellt.
+    destroyed: Du hast ein Script zerstört.
+    manage: Verwalte Skripte
+    view: Anzeigen
+    back: Zurück zu den Skripten
     level:
-      create: Create new level
+      create: Erstelle ein neues Level
       current: Current Levels
       unused: Unused Levels

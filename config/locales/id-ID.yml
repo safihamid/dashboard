@@ -19,7 +19,7 @@
       placeholder: Kode (ABCDEF) atau email (guru@sekolah.edu)
     submit: Cantumkan nama guru
   add_hint_form:
-    placeholder: Mohon masukkan pentunjuk anda disini
+    placeholder: Masukkan pentunjuk anda disini
     submit: tambah petunjuk
   appname: Code.org
   stage: Tahap
@@ -30,9 +30,9 @@
   more: lebih
   less: KURANG
   try_hoc: 'Cobalah Jam Kode, klik di sini >> '
-  try_k8intro: Cobalah pendahuluan K-8 kami tentang pelajaran Teknologi Komputer (15-25
+  try_k8intro: Cobalah pendahuluan K-8 kami tentang pelajaran ilmu komputer (15-25
     jam)
-  k8intro: K-8 Intro to Computer Science Course (15-25 hours)
+  k8intro: Kursus pengenalan ilmu komputer (15-25 jam)
   already_started: 'Sudah mulai? Lanjutkan di sini >> '
   demos: 'Admin: Semua demo'
   continue: Lanjutkan
@@ -61,9 +61,9 @@
       masuk supaya kemajuan belajar Anda dapat dicatat.
     prizes_header: Para siswa yang pertama yang menyelesaikan kursus akan memenangkan
       hadiah! (hanya untuk siswa di Amerika Serikat)
-    prizes_message: Siswa Amerika Serikat yang memperoleh seluruh %{num_trophies}
-      piala konsep dapat memilih berbagai hadiah seperti ruang simpan Dropbox gratis,
-      kredit Skype, dan mengunduh permainan dari Electronic Arts.
+    prizes_message: Siswa Amerika Serikat yang memperoleh semua %{num_trophies} piala
+      konsep dapat memilih berbagai hadiah seperti ruang simpan Dropbox gratis, kredit
+      Skype, dan mengunduh permainan dari Electronic Arts.
     teacher_educator_guide: Lihat panduan guru
     teacher_prize_header: Memenangkan $1.000 hadiah dari <a target="_blank" href="http://DonorsChoose.org">
       DonorsChoose.org</a>
@@ -72,13 +72,13 @@
       pendanaan untuk US guru sekolah umum yang memimpin setidaknya 15 siswa melalui
       kursus ini. <a href="http://code.org/educate/20hr"> Lihat pendidik panduan untuk
       info lebih lanjut.</a> '
-    teacher_prize_limits: '(Limit: $1,000 per teacher. <a target="_blank" href="http://help.donorschoose.org/app/answers/detail/a_id/454/kw/code.org">See
-      FAQ for more limits</a>)'
+    teacher_prize_limits: '(Batas: $1.000 per guru. <a target="_blank" href="http://help.donorschoose.org/app/answers/detail/a_id/454/kw/code.org">
+      Lihat FAQ untuk membaca persyaratan yang lain</a>)'
     teacher_pitch: Ajarilah ilmu komputer tingkat pemula di kelas Anda
     teacher_title: Guru mendaftar
     student_pitch: 'Setelah 1 jam: Cobalah pengantar ilmu komputer untuk sekolah dasar
       dan menengah'
-    student_title: Murid Daftar
+    student_title: Daftar sebagai siswa
     school_name: Nama sekolah (opsional)
     school_address: Alamat sekolah (opsional)
     address_placeholder: Alamat, kota, propinsi, zip
@@ -97,14 +97,14 @@
       telah memiliki izin dari orang tua atau wali untuk menggunakan layanan Code.org.
     teacher_terms: Saya setuju dengan segala persyaratan layanan Code.org.
   signin_form:
-    title: Sudah punya aku? Masuk
+    title: Punya akun? Masuk disini
     login: Email atau nama pengguna
     password: Kata sandi
     remember: Ingat saya
     submit: Masuk
   signin:
-    try_hoc: Cobalah dahulu 1 Jam berkode
-    try_20hours: Try our 20 hour Intro to Computer Science
+    try_hoc: Cobalah 1 Jam berkode
+    try_20hours: 'Cobalah program 20 jam perkenalan ilmu komputer '
   password:
     reset_form:
       title: Lupa kata sandi?
@@ -138,11 +138,11 @@
       invite_student:
         subject: Bergabung dengan kelas dengan %{teacher_name} di Code.org!
       student_disassociated:
-        subject: 'Code.org notification: %{student_name} is no longer associated as
-          your student.'
+        subject: 'Pemberitahuan Code.org : %{student_name} tidak lagi terdaftar sebagai
+          siswa Anda.'
       teacher_disassociated:
-        subject: 'Code.org notification: %{teacher_name} is no longer associated as
-          your teacher.'
+        subject: 'Pemberitahuan Code.org: %{teacher_name} tidak lagi terdaftar sebagai
+          guru Anda.'
   reports:
     error:
       access_denied: Anda tidak memiliki akses untuk melihat statistik orang ini
@@ -151,7 +151,7 @@
     provider: 'Penyedia:'
     code: 'Kode:'
     redeem_header: 'Untuk menebus:'
-    donorschoose_how_to: How to use your code
+    donorschoose_how_to: Bagaimana menggunakan kode Anda
     success: Hadiah Anda telah berhasil ditebus, silahkan lihat kode di bawah ini.
     error: Hadiah Anda tidak bisa ditebus, silakan coba lagi.
     error_us_only: Tawaran hadiah hanya berlaku untuk pengguna yang berdomisili di
@@ -159,8 +159,9 @@
     error_not_earned: Anda belum bisa mendapatkan hadiah ini.
     error_already_redeemed: Hadiah Anda sudah ditebus.
     no_prizes_available: Mohon maaf, tetapi saat ini hadiah tidak tersedia.
-    teacher_info_required: 'Teacher prizes require school name and address information:'
-    teacher_email_required: 'Teacher prizes require a confirmed email address:'
+    teacher_info_required: 'Hadiah untuk guru memerlukan informasi nama dan alamat
+      sekolah:'
+    teacher_email_required: 'Hadiah guru membutuhkan konfirmasi email:'
     confirm:
       title: Silakan konfirmasi
       'no': Tidak
@@ -192,8 +193,8 @@
         Catatan: Penawaran hanya berlaku untuk siswa dari Amerika Serikat, dan hadiah
         berlaku selama masih ada persediaan.'
       teacher:
-        earned: 10 atau lebih siswa telah mengumpulkan semua Piala %{num_trophies}.
-          Anda telah memenangkan hadiah $750! (ini berlaku hanya untuk guru dari Amerika
+        earned: 15 atau lebih siswa telah mengumpulkan semua %{num_trophies} Piala.
+          Anda telah memenangkan hadiah $750! (Hanya berlaku untuk guru dari Amerika
           Serikat)
         not_earned_title: Teach the class, earn up to $1,000 in <a target="_blank"
           href="http://DonorsChoose.org">DonorsChoose.org</a> credits (U.S. teachers
@@ -233,8 +234,8 @@
     confirm: Anda yakin?
     created: '%{model} berhasil dibuat.'
     updated: '%{model} berhasil dibuat.'
-    destroyed: '%{model} was successfully deleted.'
-    access_denied: You do not have access to this %{model}.
+    destroyed: '% {model} telah berhasil dihapus.'
+    access_denied: Anda tidak memiliki akses untuk %{model} ini.
   nav:
     header:
       finished_hoc: Saya telah menyelesaikan jam kode!
@@ -272,10 +273,10 @@
     rollup: 'Dashboard Kemajuan '
     activity: Aktivitas kelas
     user_not_found: Guru atau murid tidak dapat ditemukan
-    cant_remove_student_no_email: '%{student_name} cannot be removed as your student
-      because %{student_name} has not registered an e-mail address'
-    cant_remove_teacher_no_email: '%{teacher_name} cannot be removed as your teacher
-      because you have not registered an e-mail address'
+    cant_remove_student_no_email: '% {student_name} tidak dapat dihapus sebagai siswa
+      Anda karena %{student_name} belum mendaftar e-mail'
+    cant_remove_teacher_no_email: '%{teacher_name} tidak dapat dihapus sebagai guru
+      Anda karena Anda belum mendaftarkan e-mail'
     student_teacher_disassociated: '%{teacher_name} telah dihapus sebagai guru dari
       %{student_name}'
   user:
@@ -296,18 +297,19 @@
     show_more: Tunjukkan lebih banyak
   home:
     signin_message: Sudah terdaftar? %{link}
-    student_reg_link: Murid Daftar
-    teacher_reg_link: Guru Daftar
-    signin_directions: Use an account to track progress and get rewards.<br/> Teachers,
-      track your entire class.
+    student_reg_link: Daftar sebagai siswa
+    teacher_reg_link: Daftar sebagai guru
+    signin_directions: Menggunakan akun untuk melacak kemajuan dan mendapatkan hadiah.
+      <br/> Untuk para guru, Anda dapat memperhatikan seluruh siswa-siswi.
     teacher_dashboard: Lihat kemajuan di dasbor
     teacher_student_count_one: Anda memiliki  %{count} siswa.
     teacher_student_count: Anda memiliki  %{count} siswa.
     teacher_averages: Rata-rata siswa anda telah mendapatkan %{trophy_average} dari
       %{trophy_max} piala "Penguasaan konsep".
-    teacher_print_certificates: Print certificates for students who finish this course
-    teacher_read_blog: Read about news and updates to our materials at our Educator
-      Blog
+    teacher_print_certificates: Cetak sertifikat untuk siswa yang telah menyelesaikan
+      kursus ini
+    teacher_read_blog: Baca lebih lanjut berita dan bahan-bahan di blog pendidikan
+      kami
     classroom: Kelas anda
     student_progress: Kemajuan belajar Anda
     student_stats: Anda telah menerima  %{trophy_count} dari total %{trophy_max} piala
@@ -320,9 +322,9 @@
     local_school: sekolah lokal
     online: online
     see_details: Lihat rincian
-    prize_info: 'Prizes for participation (U.S. only): $10 gift cards for student
-      completion and up to $1,000 in classroom rewards for public school teachers'
-    tryfirst: 'Or, you can try it first, and sign up later:'
+    prize_info: 'Hadiah untuk partisipasi (terbatas untuk daerah AS): hadiah $10 untuk
+      siswa yang menyelesaikan dan maximum $1.000 per kelas untuk guru sekolah umum.'
+    tryfirst: 'Atau, Anda dapat mencobanya dulu kemudian mendaftar:'
     trynow: Coba sekarang
   gender:
     male: Laki-laki
@@ -366,15 +368,15 @@
   download_pdf: Rencana pelajaran terbuka
   share_code:
     title: Klik 'Jalankan program' untuk melihat bagaimana program bekerja
-    flappy_og_title: Check out my Flappy Game
+    flappy_og_title: Cobalah permainan Flappyku
     og_description: Saya menulis kode ini sendiri dengan Code.org
   builder:
     created: Kamu membuat skript baru.
-    destroyed: You destroyed a script.
-    manage: Manage Scripts
+    destroyed: Anda menghapus satu script.
+    manage: kelola script
     view: Tampilan
     back: Kembali ke skrip
     level:
       create: Buat level baru
       current: Tingkat saat ini
-      unused: Unused Levels
+      unused: Tingkat yang tidak terpakai

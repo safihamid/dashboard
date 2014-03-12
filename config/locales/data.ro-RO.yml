@@ -356,6 +356,9 @@
         bounce_10: Acolo este o acum un gol în partea de sus. Ataşează blocuri "incremență
           scor" la "când mingea la țintă" şi "când mingea ratează ținta" pentru a
           face un joc.
+        bounce_11: You can now attach blocks to the "when game starts" block. Try
+          changing the speed of the paddle and the ball and see how many points you
+          can score before your opponent scores twice.
         Custom_builder: Glisează blocuri din caseta de instrumente în spațiul de lucru
           astfel încât să elaboreze nivelul pe care dorești să-l creezi. Apasă "Execută
           Programul" atunci când ești gata.
@@ -377,6 +380,11 @@
           să dea din aripi mai mult sau mai puțin.
         flappy_7: Next, try changing the scene by attaching another block to the "when
           Run is clicked".
+        flappy_8: You can set visuals anytime, not just when the game starts. Try
+          setting a RANDOM scene when other events happen, for example, when passing
+          an obstacle.
+        flappy_9: To mix things up, when hitting an obstacle or the ground, instead
+          of ending the game try setting the score back to 0.
         flappy_11: Crează-ți propriul tău joc Flappy şi apoi distribuie-l. Poţi schimba
           elementele vizuale, sau chiar regulile. Încearcă să schimbi elementele vizuale
           de fiecare dată Flappy trece de un obstacol. Sau fă-l pe Flappy invincibil

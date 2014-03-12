@@ -265,10 +265,10 @@
     rollup: Панель досягнень
     activity: Остання діяльність класу
     user_not_found: Не вдається знайти вчителя чи учня
-    cant_remove_student_no_email: '%{student_name} cannot be removed as your student
-      because %{student_name} has not registered an e-mail address'
-    cant_remove_teacher_no_email: '%{teacher_name} cannot be removed as your teacher
-      because you have not registered an e-mail address'
+    cant_remove_student_no_email: Неможливо видалити %{student_name} зі списку ваших
+      учнів, оскільки %{student_name} не реєстрував адресу електронної пошти
+    cant_remove_teacher_no_email: Неможливо видалити %{teacher_name} як вашого вчителя,
+      бо ви не реєстрували адресу електронної пошти
     student_teacher_disassociated: '%{teacher_name} вилучений як вчитель для %{student_name}'
   user:
     email_confirm_needed: 'Адресу електронної пошти не підтверджено:'

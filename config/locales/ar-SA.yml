@@ -19,8 +19,8 @@
       placeholder: الرمز (ABCDEF) أو البريد الإلكتروني (teacher@school.edu)
     submit: إضف معلم
   add_hint_form:
-    placeholder: Please enter your hint here
-    submit: Add hint
+    placeholder: الرجاء إدخال التلميح الخاص بك هنا
+    submit: إضافة تلميح
   appname: Code.org
   stage: المرحلة
   puzzle: لغز
@@ -30,9 +30,9 @@
   more: أكثر
   less: أقل
   try_hoc: قم بتجربة ساعة من البرمجة, انقر هنا>> 
-  try_k8intro: أو جرب مقدمة عن درس "علوم الكمبيوتر" للمستوى المبتدئ والمتوسط  (من
-    15 الى 25 ساعة)
-  k8intro: K-8 Intro to Computer Science Course (15-25 hours)
+  try_k8intro: جرب مقدمة عن درس "علوم الكمبيوتر" للمستوى المبتدئ والمتوسط  (من 15
+    الى 25 ساعة)
+  k8intro: مقدمة عن درس "علوم الكمبيوتر" للمستوى المبتدئ والمتوسط  (من 15 الى 25 ساعة)
   already_started: بدأت بالفعل؟ اكمل من هنا >> 
   demos: 'المشرف:  جميع العروض التوضيحية'
   continue: أستمر

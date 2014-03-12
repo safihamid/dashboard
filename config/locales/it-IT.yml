@@ -22,7 +22,7 @@
     placeholder: Inserisci qui il tuo suggerimento
     submit: Aggiungi un suggerimento
   appname: Code.org
-  stage: Fase
+  stage: Lezione
   puzzle: Puzzle
   trophies: Trofei
   courses: Corsi
@@ -31,9 +31,9 @@
   less: DI MENO
   try_hoc: 'Prova l''Ora di Codice, clicca qui >> '
   try_k8intro: Prova il nostro corso introduttivo di informatica per scuole elementari
-    e medie inferiori (15-25 ore)
+    e medie inferiori (in 20 lezioni)
   k8intro: Corso introduttivo di informatica per scuole elementari e medie inferiori
-    (15-25 ore)
+    (in 20 lezioni)
   already_started: 'Hai già iniziato? Riprendi qui >> '
   demos: 'Amministratore: Tutte le dimostrazioni'
   continue: Prosegui
@@ -52,13 +52,12 @@
     need_confirmation: Non hai ricevuto le istruzioni di conferma?
     need_unlock: Non hai ricevuto le istruzioni di sblocco?
   signup_form:
-    overview: Questo corso di 20 ore introduce l'informatica di base e i concetti
+    overview: Questo corso in 20 lezioni introduce l'informatica di base e i concetti
       della programmazione. Il corso è progettato per l'uso nella scuola elementare
       e media inferiore, ma è divertente per imparare l'informatica a qualunque età.
     no_signup_header: Non vuoi iscriverti?
-    no_signup_message: È possibile <a target="_blank" href="http://learn.code.org">sfogliare
-      le varie fasi e i puzzle</a>, ma sarà necessario iscriversi per salvare i tuoi
-      progressi.
+    no_signup_message: Puoi <a target="_blank" href="http://learn.code.org">sfogliare
+      le varie lezioni e i puzzle</a>, ma devi iscriverti per salvare i tuoi progressi.
     prizes_header: I primi studenti che completano il corso vincono premi! (Solo per
       gli studenti degli Stati Uniti)
     prizes_message: 'Gli studenti degli Stati Uniti che guadagnano tutti i %{num_trophies}
@@ -78,7 +77,7 @@
     teacher_title: Iscrizione dell'insegnante
     student_pitch: 'Dopo la prima ora: prova il nostro corso di introduzione all''informatica
       per scuole elementari e medie inferiori'
-    student_title: Iscrizione degli studenti
+    student_title: Iscrizione dello studente
     school_name: Nome della scuola (facoltativo)
     school_address: Indirizzo della scuola (facoltativo)
     address_placeholder: Indirizzo, città, stato, CAP
@@ -258,7 +257,7 @@
       lines: 'Totale delle linee di codice:  %{lines}'
       close: CHIUDI
       mastery: Concetti
-      puzzle_map: Fasi
+      puzzle_map: Lezioni
       prizes: Ottieni tutti i %{total_trophies} trofei e vinci premi!
       prize_earned: Hai ottenuto tutti i %{total_trophies} trofei. Hai vinto il premio!
       prize_us_only: (Solo per gli studenti degli Stati Uniti)
@@ -277,10 +276,10 @@
     rollup: Cruscotto di avanzamento
     activity: Attività recenti della classe
     user_not_found: L'insegnante o lo studente non è stato trovato
-    cant_remove_student_no_email: '%{student_name} cannot be removed as your student
-      because %{student_name} has not registered an e-mail address'
-    cant_remove_teacher_no_email: '%{teacher_name} cannot be removed as your teacher
-      because you have not registered an e-mail address'
+    cant_remove_student_no_email: '% {student_name} non può essere rimosso come tuo
+      allievo perché % {student_name} non ha registrato un indirizzo di posta elettronica'
+    cant_remove_teacher_no_email: '% {teacher_name} non può essere rimosso come vostro
+      insegnante perché non avete registrato un indirizzo di posta elettronica'
     student_teacher_disassociated: '%{teacher_name} è stato rimosso come insegnante
       per %{student_name}'
   user:
@@ -300,10 +299,11 @@
     show_more: Mostra di più
   home:
     signin_message: Già iscritto? %{link}
-    student_reg_link: Iscrizione di studenti
-    teacher_reg_link: Iscrizione di insegnanti
-    signin_directions: Usa un account per tenere traccia dei tuoi progressi e ottenere
-      premi. <br/> Insegnante, segui l'andamento di tutta la tua classe.
+    student_reg_link: Iscrizione studenti
+    teacher_reg_link: Iscrizione insegnanti
+    signin_directions: Iscriviti per tener traccia dei tuoi progressi e (solo per
+      studenti degli Stati Uniti) ottenere premi. <br/> Insegnante, iscriviti per
+      seguire l'andamento di tutta la tua classe.
     teacher_dashboard: Vedi il cruscotto di avanzamento
     teacher_student_count_one: Hai %{count} studenti.
     teacher_student_count: Hai %{count} studenti.
@@ -369,7 +369,7 @@
     upgrade: Per favore aggiorna il tuo browser.
   slow_loading: Questa operazione sta prendendo più tempo del solito...
   try_reloading: Prova a ricaricare la pagina
-  next_stage: Finito! Continua con la fase successiva
+  next_stage: Finito! Continua con la lezione successiva
   download_pdf: Apri il piano di lavoro di questa lezione
   share_code:
     title: Fai click su 'Esegui il programma' per vedere il tuo programma in azione

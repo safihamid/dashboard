@@ -71,18 +71,18 @@
           dovunque va.
       3:
         image: notes/stage5_3.jpg
-        text: Questo blocco dice "vai avanti di 100 pixel". I pixel sono i minuscoli
-          puntini del tuo schermo.
+        text: Questo blocco dice "vai avanti di 100 pixel" (move forward by 100 pixels)
+          . I pixel sono i minuscoli puntini del tuo schermo.
       4:
         image: notes/stage5_4.jpg
-        text: Questo blocco dice "gira a destra di 90 gradi". Questo fa girare il
-          tuo artista della stessa quantità, come fa il blocco "gira" nel puzzle del
-          labirinto.
+        text: Questo blocco dice "gira a destra di 90 gradi" (turn right by 90 degrees).
+          Questo fa girare il tuo artista della stessa quantità, come fa il blocco
+          "gira" nel puzzle del labirinto.
       5:
         image: notes/stage5_5.jpg
-        text: Fai clic sulla freccia in uno di questi blocchi, per cambiare di quanto
-          l'artista si sposta in avanti o gira. Fai qualche prova per prendere confidenza
-          con questi nuovi blocchi.
+        text: Se in questi blocchi fai clic sul triangolo con la punta verso il basso
+          puoi cambiare di quanto l'artista si sposta in avanti o gira. Fai qualche
+          prova per prendere confidenza con questi nuovi blocchi.
     farmer_intro:
       1:
         image: notes/stage9_1.jpg
@@ -181,16 +181,16 @@
         image: notes/hoc3_1.jpg
         text: Ciao, sono Chris. Prima di entrare nel Miami Heat, ho studiato informatica
           al Georgia Tech. Proviamo il nuovo blocco di ripetizione, il blocco "ripeti
-          fino a che".
+          fino a che" (repeat until).
       2:
         image: notes/hoc3_2.jpg
         text: Cosa succede se non sappiamo di quanto l'uccello deve spostarsi in avanti
           per raggiungere il maiale?
       3:
         image: notes/hoc3_3.jpg
-        text: Se mettiamo un blocco "vai avanti" all'interno del blocco di ripetizione
-          "ripeti fino a che", l'uccello si sposta in avanti FINO A CHE raggiunge
-          il maiale (o sbatte contro un muro).
+        text: Se mettiamo un blocco "vai avanti" (move forward) all'interno del blocco
+          di ripetizione "ripeti fino a che" (repeat until), l'uccello si sposta in
+          avanti FINO A CHE raggiunge il maiale (o sbatte contro un muro).
       4:
         image: notes/hoc3_4.jpg
         text: 'Fai attenzione: "proprio come prima, possiamo mettere più blocchi all''interno
@@ -212,9 +212,9 @@
           quella direzione.
       4:
         image: notes/hoc4_4.jpg
-        text: Per scrivere il codice per questo, sposta nell'area di lavoro un blocco
-          "se c'è strada a sinistra" (if path to the left) e metti un blocco "gira
-          a sinistra" (turn left) all'interno di esso.
+        text: Per scrivere il codice per fare questo, sposta nell'area di lavoro un
+          blocco "se c'è strada a sinistra" e metti un blocco "gira a sinistra" (turn
+          left) all'interno di esso.
       5:
         image: notes/hoc4_5.jpg
         text: Ora, se mettiamo un blocco "vai avanti" (move forward) al di sopra di
@@ -289,8 +289,9 @@
           PER TUTTO IL TEMPO IN CUI la condizione presente all'inizio è VERA.
       3:
         image: notes/stage9_7.jpg
-        text: Ad esempio, se il contadino è sopra un mucchio, continuerà a rimuovere
-          1 palata MENTRE c'è ancora un mucchio sotto di lui.
+        text: Ad esempio, se il contadino è sopra un mucchio, il blocco "mentre" gli
+          farà rimuovere 1 palata PER TUTTO IL TEMPO IN CUI c'è ancora un mucchio
+          (while there is a pile) sotto di lui.
     loop_for:
       1:
         image: notes/stage11_1.jpg
