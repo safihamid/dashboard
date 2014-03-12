@@ -19,8 +19,8 @@
       placeholder: کد شناسایی (ABCDEF) یا رایانامه (teacher@school.edu)
     submit: افزودن معلم
   add_hint_form:
-    placeholder: Please enter your hint here
-    submit: Add hint
+    placeholder: لطفا پیشنهادتان را اینجا وارد کنید
+    submit: افزودن پیشنهاد
   appname: Code.org
   stage: مرحله
   puzzle: پازل
@@ -30,8 +30,8 @@
   more: بیشتر
   less: کمتر
   try_hoc: برای انجام «ساعت کد» اینجا کلیک کنید >>
-  try_k8intro: یا دوره مقدماتی علوم رایانه ای (15 تا 25 ساعت) را امتحان کنید
-  k8intro: K-8 Intro to Computer Science Course (15-25 hours)
+  try_k8intro: دوره مقدماتی علوم کامپیوتر(k-8) ما را امتحان کنید
+  k8intro: دوره معرفی علوم کامپیوتر(15 تا 25 ساعت)
   already_started: قبلا انجام داده‌اید؟ از اینجا ادامه بدهید >>
   demos: 'مدیر: تمام نسخه‌های نمایشی'
   continue: ادامه
@@ -65,10 +65,11 @@
     teacher_educator_guide: به راهنمای معلم مراجعه کنید
     teacher_prize_header: ۱۰۰۰ دلار پاداش بگیرید <a target="_blank" href="http://DonorsChoose.org">
       DonorsChoose.org</a>
-    teacher_prize_message: 'In partnership with <a target="_blank" href="http://DonorsChoose.org">DonorsChoose.org</a>,
-      Code.org will offer up to $1,000 in classroom funding to U.S. public school
-      teachers who lead at least 15 students through this course. <a href="http://code.org/educate/20hr">See
-      educator guide for more info.</a> '
+    teacher_prize_message: 'در همکاری با  <a target="_blank" href="http://DonorsChoose.org">DonorsChoose.org</a>
+      ، سایت code.org تا $1000 دلار در هر کلاس ، کمک هزینه مالی به معلمان مدارس دولتی
+      آمریکا که حداقل 15 دانش اموز را در این دوره هدایت کنند ارائه خواهد داد. برای
+      اطلاعات بیشتر به <a href="http://code.org/educate/20hr">راهنمای معلم (educator
+      guide)  مرا جعه کنید.</a> '
     teacher_prize_limits: '(Limit: $1,000 per teacher. <a target="_blank" href="http://help.donorschoose.org/app/answers/detail/a_id/454/kw/code.org">See
       FAQ for more limits</a>)'
     teacher_pitch: آموزش معرفی K-8 درعلوم کامپیوتر در کلاس درس خودتان
@@ -94,14 +95,14 @@
     teacher_terms: من متعهد میشوم که در چارچوب قوانین استفاده از خدمات Code.org فعالیت
       کنم.
   signin_form:
-    title: ورود
+    title: دارای حساب کاربری در حال حاضر؟ ورود
     login: رایانامه یا نام کاربری
     password: کلمه عبور
     remember: مرا به خاطر بسپار
     submit: ورود
   signin:
-    try_hoc: Try one Hour of Code first
-    try_20hours: Try our 20 hour Intro to Computer Science
+    try_hoc: اولین ساعت از کد نویسیتان را امتحان کنید
+    try_20hours: دوره 20 ساعته معرفی (مقدماتی) علوم کامپیوتر ما را امتحان کنید
   password:
     reset_form:
       title: کلمه عبور خود را فراموش کرده اید؟
@@ -147,14 +148,14 @@
     provider: 'فراهم کننده:'
     code: 'کد:'
     redeem_header: 'To redeem:'
-    donorschoose_how_to: How to use your code
+    donorschoose_how_to: چگونه از کد خود استفاده کنید
     success: جایزه شما با موفقیت آزاد شد، کد زیر را مشاهده کنید.
     error: جایزه شما قابل آزاد شدن نیست, لطفا دوباره سعی کنید.
     error_us_only: پیشنهاد جایزه فقط برای کاربران ایالات متحده اعتبار دارد.
     error_not_earned: شما هنوز این جایزه را نبردید.
     error_already_redeemed: جایزه تان را قبلا استفاده کرده اید.
     no_prizes_available: متاسفیم، اما در حال حاضر هیچ جایزه ای موجود نیست.
-    teacher_info_required: 'Teacher prizes require school name and address information:'
+    teacher_info_required: 'جوایز معلم نیاز به اطلاعات نام و ادرس مدرسه :'
     teacher_email_required: 'Teacher prizes require a confirmed email address:'
     confirm:
       title: لطفا تایید کنید

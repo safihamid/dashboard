@@ -353,6 +353,9 @@
         bounce_10: Agora há um gol no topo. Anexe blocos "incrementar a pontuação"
           para o "quando a bola no gol" e "quando a bola perde a raquete" para fazer
           um jogo.
+        bounce_11: You can now attach blocks to the "when game starts" block. Try
+          changing the speed of the paddle and the ball and see how many points you
+          can score before your opponent scores twice.
         Custom_builder: Arraste blocos da caixa de ferramentas para a área de trabalho
           para desenhar o nível que você deseja criar. Quando estiver pronto, pressione
           "Executar Programa".
@@ -375,6 +378,11 @@
           agitar com uma quantidade menor ou maior.
         flappy_7: Next, try changing the scene by attaching another block to the "when
           Run is clicked".
+        flappy_8: You can set visuals anytime, not just when the game starts. Try
+          setting a RANDOM scene when other events happen, for example, when passing
+          an obstacle.
+        flappy_9: To mix things up, when hitting an obstacle or the ground, instead
+          of ending the game try setting the score back to 0.
         flappy_11: Crie seu próprio jogo Flappy e compartilhe-o. Você pode alterar
           o visual, ou mesmo as regras. Tente alterar elementos visuais cada vez que
           Flappy passar um obstáculo. Ou faça Flappy invencível para que ele nunca

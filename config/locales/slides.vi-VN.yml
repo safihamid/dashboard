@@ -75,9 +75,9 @@
           bạn giống như khối lệnh "quay" trong loạt câu đố mê cung.
       5:
         image: notes/stage5_5.jpg
-        text: Click on the arrow in either of these blocks to change the amount the
-          artist moves forward or turns. Play around to get familiar with these new
-          blocks.
+        text: Nhấp chuột vào mũi tên trong các khối để thay đổi số lượng các di chuyển
+          của nghệ sĩ về phía trước hoặc quay. Chơi nhiều khối để làm quen với các
+          khối mới.
     farmer_intro:
       1:
         image: notes/stage9_1.jpg
@@ -138,8 +138,8 @@
           the settings - like what sound to play when flappy hits the ground.
       10:
         image: notes/flappy10.jpg
-        text: In the final puzzle you'll be able to create your own game and share
-          it with your friends. Have fun!
+        text: Trong câu đố cuối cùng, có thể bạn sẽ tạo ra trò chơi của riêng bạn
+          và chia sẻ nó với bạn bè của bạn. Chúc vui vẻ!
     loop_times:
       1:
         image: notes/hoc2_1.jpg
@@ -158,89 +158,94 @@
         text: Thay vì kéo ra 5 khối "tiến lên phía trước"...
       5:
         image: notes/hoc2_5.jpg
-        text: We can put the "move forward" block inside the "repeat" block and write
-          a number in the block to tell it how many times to repeat.
+        text: Chúng tôi có thể đặt các khối "di chuyển về phía trước" bên trong khối
+          "lặp lại" và viết một số vào trong khối để cho biết nó lặp lại bao nhiêu
+          lần.
       6:
         image: notes/hoc2_6.jpg
-        text: 'And this is important: you can put more than one command inside a "repeat"
-          block.'
+        text: 'Điều quan trọng: bạn có thể đặt nhiều hơn một lệnh bên trong một khối
+          "lặp lại".'
       7:
         image: notes/hoc2_7.jpg
-        text: Enjoy using your new "repeat" block!
+        text: Sử dụng khối "lặp lại" mới của bạn!
     loop_until:
       1:
         image: notes/hoc3_1.jpg
-        text: Hi, I'm Chris. Before joining the Miami Heat, I went to Georgia Tech
-          to study Computer Science. Let's try our new block, the "repeat until" block.
+        text: 'Xin chào, tôi là Chris. Trước khi gia nhập Miami Heat, tôi đã đi đến
+          Georgia Tech để nghiên cứu khoa học máy tính. Hãy thử khối mới của chúng
+          tôi: "lặp lại cho đến khi".'
       2:
         image: notes/hoc3_2.jpg
-        text: What if we didn't know how far the bird had to move to get to the pig?
+        text: Phải làm gì nếu chúng tôi không biết khoảng cách những con chim phải
+          di chuyển bao xa để đến được những con lợn?
       3:
         image: notes/hoc3_3.jpg
-        text: If we put a "move forward" block inside the "repeat until" block, the
-          bird will move forward UNTIL it reaches the pig (or crashes into a wall).
+        text: Nếu chúng ta đặt một khối "di chuyển về phía trước" bên trong khối "lặp
+          lại cho đến khi", chim sẽ di chuyển về phía trước cho đến khi nó đi đến
+          con lợn (hay đâm vào một bức tường).
       4:
         image: notes/hoc3_4.jpg
-        text: 'And this is important: just like before, we can put multiple blocks
-          inside the "repeat until" block, and they will all be repeated.'
+        text: 'Và điều này là quan trọng: giống như trước, chúng tôi đặt nhiều khối
+          bên trong khối "lặp lại cho đến khi", và nó sẽ lặp đi lặp lại tất cả.'
     if:
       1:
         image: notes/hoc4_1.jpg
-        text: 'Hi, I''m Bill! Let''s learn a new fundamental concept: "If" statements.
-          This is how computers make decisions.'
+        text: 'Xin chào, tôi là Bill! Hãy tìm hiểu một khái niệm cơ bản mới: "nếu"
+          báo cáo. Điều này là làm thế nào để máy tính đưa ra quyết định.'
       2:
         image: notes/hoc4_2.jpg
-        text: You use "If" statements yourself everday. Before you go outside each
-          morning, you say IF it's raining outside, I need to wear my jacket.
+        text: Bạn sử dụng báo cáo "nếu" cho mình mỗi ngày. Trước khi bạn đi ra ngoài
+          mỗi buổi sáng, bạn nói nếu nó mưa bên ngoài, tôi phải mặc áo của tôi.
       3:
         image: notes/hoc4_3.jpg
-        text: We can tell the zombie to check IF there's path to the left, and if
-          he finds a path to the left, we can have him turn in that direction.
+        text: Chúng tôi có thể cho các zombie biết để kiểm tra xem nếu có các con
+          đường bên trái, và nếu anh ta tìm thấy một con đường bên trái, chúng tôi
+          có thể có anh ta chuyển theo hướng đó.
       4:
         image: notes/hoc4_4.jpg
-        text: To write the code for this, let's drag out our "if" block and put a
-          "turn left" block inside it.
+        text: Để viết mã cho việc này, hãy kéo ra khối "nếu" và đặt một khối "rẽ trái"
+          bên trong nó.
       5:
         image: notes/hoc4_5.jpg
-        text: Now, if we put a "move forward" block above it and a "repeat" block
-          around everything, each time the zombie moves, he'll check if there's a
-          path to the left and turn. The "repeat" command is critical, to check for
-          a turn at every step.
+        text: Bây giờ, nếu chúng ta đặt một khối "di chuyển về phía trước" ở trên
+          nó và một khối "lặp lại" xung quanh tất cả mọi thứ, mỗi khi zombie di chuyển,
+          anh ta sẽ kiểm tra nếu có một con đường bên trái và quay sang. "Lặp lại"
+          lệnh là rất quan trọng để kiểm tra một lần lượt tại mỗi bước.
       6:
         image: notes/hoc4_6.jpg
-        text: If statements are really important in computer science. One of the first
-          programs I wrote was a tic-tac-toe game, and there was a If statement that
-          said IF the other person is about to win, block the spot that lets them
-          win.
+        text: Lệnh nếu rất quan trọng trong khoa học máy tính. Một trong những chương
+          trình đầu tiên tôi đã viết là một trò chơi tic-tac-toe, Và trong trò chơi
+          nếu có một người về đầu và dành chiến thắng, ngay lập tức chặn cái vị trí
+          chiến thắng lại đối với những người còn lại.
       7:
         image: notes/hoc4_7.jpg
-        text: Have fun using the "if" block!
+        text: Vui chơi bằng cách sử dụng khối "if"!
     if_else:
       1:
         image: notes/hoc5_1.jpg
-        text: Hi, my name is Saloni. I use computer science to help solve problems
-          in health and medicine. Let's learn about the "if else" block. It looks
-          like the "if" block, but it has an extra part at the end that says "else".
+        text: Chào, tên tôi là Saloni. Tôi sử dụng khoa học máy tính để giúp giải
+          quyết các vấn đề sức khỏe và y học. Hãy tìm hiểu về các khối "if else".
+          Cũng giống như khối "if", nhưng nó có một phần phụ vào cuối là "else".
       2:
         image: notes/hoc5_2.jpg
-        text: If I put a "move forward" block in the spot where it says "do" and a
-          "turn left" block where it says "else" that means that the zombie will choose
-          between 2 options. IF there is a path ahead, the zombie will move forward,
-          and OTHERWISE (there isn't a path ahead), the zombie will turn left.
+        text: Nếu tôi đặt một khối "di chuyển về phía trước" ở vị trí "làm" và một
+          khối "rẽ trái" ở vị trí "khác" có nghĩa là các zombie sẽ lựa chọn giữa 2
+          lựa chọn. Nếu có một con đường phía trước, zombie sẽ di chuyển về phía trước,
+          và nếu không (không có một con đường phía trước), zombie sẽ rẽ trái.
       3:
         image: notes/hoc5_3.jpg
-        text: Just like the "if" block, we can put "if else" blocks inside a "repeat"
-          blocks so that the zombie keeps moving and the "if else" block will keep
-          checking if there's somewhere to turn.
+        text: Giống như các khối "nếu", chúng tôi có thể đặt khối "nếu khác" bên trong
+          khối "lặp lại", zombie sẽ giữ di chuyển và các "nếu khối khác" sẽ kiểm tra
+          nếu có một nơi nào đó để chuyển, sẽ di chuyển theo hướng đó.
       4:
         image: notes/hoc5_4.jpg
         text: Now, get those zombies where they belong!
     function:
       1:
         image: notes/stage13_1.jpg
-        text: Hi, I'm Brina, an engineer at Instagram. A function is certain lines
-          of code that you want to use over and over again, so instead of writing
-          that code out everytime, you can just use one block.
+        text: Xin chào, tôi là Brina, một kỹ sư tại Instagram. Có một chức năng mà
+          một số dòng mã bạn muốn sử dụng nhiều, thay vì viết mã trong mọi lúc, bạn
+          có thể chỉ cần sử dụng một khối.
       2:
         image: notes/stage13_2.jpg
         text: We're going to learn how to define functions. Function definitions have
@@ -347,4 +352,4 @@
     20_wrapup:
       1:
         image: notes/bird.png
-        text: Show notes coming soon!
+        text: Hiển thị ghi chú đến!

@@ -19,8 +19,8 @@
       placeholder: Код (ABCDEF) или электронная почта (teacher@school.edu)
     submit: Добавить учителя
   add_hint_form:
-    placeholder: Please enter your hint here
-    submit: Add hint
+    placeholder: Пожалуйста, введите вашу подсказку здесь
+    submit: Добавить подсказку
   appname: Code.org
   stage: Этап
   puzzle: Головоломка
@@ -30,8 +30,8 @@
   more: ЕЩЁ
   less: СВЕРНУТЬ
   try_hoc: Для участия в "Часе кода" нажми здесь >> 
-  try_k8intro: Или попробуйте наш курс "Введение в Информатику" (15-25 часов)
-  k8intro: K-8 Intro to Computer Science Course (15-25 hours)
+  try_k8intro: Попробуйте наш курс К-8 "Введение в информатику" (15-25 часов)
+  k8intro: Курс К-8 "Введение в компьютерную науку" (15-25 часов)
   already_started: 'Уже начали? Продолжайте здесь >> '
   demos: 'Admin: Все демо'
   continue: Продолжить
@@ -59,9 +59,9 @@
       чтобы сохранять свои  результаты.
     prizes_header: The first students to complete the course win prizes! (U.S. students
       only)
-    prizes_message: Американские ученики, которые получили все %{num_trophies} кубков,
-      могу выбрать различные призы, включая дисковое пространство на Dropbox.com,
-      кредит Skype и игры,  скачиваемые с Electronic Arts and Valve.
+    prizes_message: Американские ученики, которые получили все %{num_trophies} тематические
+      трофеи, могут выбрать различные призы, включая дисковое пространство на Dropbox.com,
+      кредиты в Skype и игры,  скачиваемые с Electronic Arts.
     teacher_educator_guide: Смотри руководство учителя
     teacher_prize_header: Выиграть $1,000 - награду <a target="_blank" href="http://DonorsChoose.org">
       DonorsChoose.org</a>
@@ -69,12 +69,12 @@
       Code.org предлагагает финансирования классов до $1,000 для учителей государственных
       школ, у которых не менее 15 учеников прошли этот курс. <a href="http://code.org/educate/20hr">Подробности
       смотри в руководстве преподавателя</a> '
-    teacher_prize_limits: '(Limit: $1,000 per teacher. <a target="_blank" href="http://help.donorschoose.org/app/answers/detail/a_id/454/kw/code.org">See
-      FAQ for more limits</a>)'
+    teacher_prize_limits: '(Ограничение: $1000 на учителя. <a target="_blank" href="http://help.donorschoose.org/app/answers/detail/a_id/454/kw/code.org">
+      Посмотреть FAQ для следующих ограничений</a>)'
     teacher_pitch: Проведите курс "Введение в Информатику" в вашем классе
     teacher_title: Регистрация учителя
     student_pitch: 'После 1-ого часа: познакомься с нашим "Введением в Информатику"'
-    student_title: Регистрация
+    student_title: Регистрация для ученика
     school_name: Название школы (не обязательно)
     school_address: Адрес школы (не обязательно)
     address_placeholder: адрес, город, область, индекс
@@ -93,14 +93,14 @@
       моих родителей или законного опекуна на использование Code.org.
     teacher_terms: Я согласен с условиями использования Code.org.
   signin_form:
-    title: Вход
+    title: Уже есть аккаунт? Войти
     login: Адрес электронной почты или имя пользователя
     password: Пароль
     remember: Запомнить меня
     submit: Войти
   signin:
-    try_hoc: Try one Hour of Code first
-    try_20hours: Try our 20 hour Intro to Computer Science
+    try_hoc: Попробуйтеодин Час Кода вначале
+    try_20hours: Попробуйте наше двадцатичасовое "Введение в компьютерную науку"
   password:
     reset_form:
       title: Забыли пароль?
@@ -133,11 +133,11 @@
       invite_student:
         subject: Присоединяйся к классу учителя %{teacher_name} на Code.org!
       student_disassociated:
-        subject: 'Code.org notification: %{student_name} is no longer associated as
-          your student.'
+        subject: 'Code.org уведомление: % {student_name} больше не является вашим
+          студентом.'
       teacher_disassociated:
-        subject: 'Code.org notification: %{teacher_name} is no longer associated as
-          your teacher.'
+        subject: 'Code.org уведомление: % {teacher_name} больше не является вашим
+          учителем.'
   reports:
     error:
       access_denied: Вы не имеете доступа к статистике этого пользователя
@@ -146,15 +146,16 @@
     provider: 'Provider:'
     code: 'Code:'
     redeem_header: 'To redeem:'
-    donorschoose_how_to: How to use your code
+    donorschoose_how_to: Как использовать ваш код
     success: Your prize was succesfully redeemed, see code below.
     error: Your prize could not be redeemed, please try again.
     error_us_only: Предложение приза действительно только для пользователей в США.
     error_not_earned: Вы ещё не заработали этот приз.
     error_already_redeemed: Ваш приз уже получен.
     no_prizes_available: Извините, но сейчас у нас нет призов.
-    teacher_info_required: 'Teacher prizes require school name and address information:'
-    teacher_email_required: 'Teacher prizes require a confirmed email address:'
+    teacher_info_required: 'Для призов учителю требуется имя и адрес школы:'
+    teacher_email_required: 'Учительская награда требуетт подтверждения адреса электронной
+      почты:'
     confirm:
       title: Please Confirm
       'no': false
@@ -185,8 +186,8 @@
         или бесплатное скачивание игр. ПРИМЕЧАНИЕ: действительно только для учеников
         в США, пока призы не закончатся.'
       teacher:
-        earned: 10 или более учеников собрали все %{num_trophies} кубков. Вы выиграли
-          учительский приз $750! (Только для учителей в США)
+        earned: 10 или более учеников собрали все %{num_trophies} трофеи. Вы выиграли
+          учительский приз $750! (Только для учителей США)
         not_earned_title: Teach the class, earn up to $1,000 in <a target="_blank"
           href="http://DonorsChoose.org">DonorsChoose.org</a> credits (U.S. teachers
           only)
@@ -215,8 +216,8 @@
     confirm: Уверен?
     created: '%{model} был успешно создан.'
     updated: '%{model} был успешно обновлен.'
-    destroyed: '%{model} was successfully deleted.'
-    access_denied: You do not have access to this %{model}.
+    destroyed: '% {модели} был успешно удален.'
+    access_denied: Вы не имеют доступа к этим % {модели}.
   nav:
     header:
       finished_hoc: Я закончил мой Час Кода
@@ -242,27 +243,26 @@
       prizes_link: подробнее
   teacher:
     title:
-      one: Твой учитель -  %{name}
-      other: 'Ваши преподаватели:'
-    remove: (remove teacher)
+      one: 'Ваш Учитель:'
+      other: 'Ваши учителя:'
+    remove: (убрать учителя)
     confirm:
-      remove: Are you sure you want to remove this teacher?
+      remove: Вы уверены, что вы хотите удалить этого учителя?
     tools: Инструментарий учителя
     students:
       manage: Управление учениками
       add: Пригласить учеников
     rollup: Панель контроля хода выполнения
     activity: Последние данные по работе класса
-    user_not_found: The teacher or student could not be found
-    cant_remove_student_no_email: '%{student_name} cannot be removed as your student
-      because %{student_name} has not registered an e-mail address'
-    cant_remove_teacher_no_email: '%{teacher_name} cannot be removed as your teacher
-      because you have not registered an e-mail address'
-    student_teacher_disassociated: '%{teacher_name} has been removed as a teacher
-      for %{student_name}'
+    user_not_found: Преподаватель или студент не может быть найден
+    cant_remove_student_no_email: '% {student_name} не могут быть удалены как ваш
+      студент, потому что % {student_name} не зарегистрировали адрес электронной почты'
+    cant_remove_teacher_no_email: '% {teacher_name} не могут быть удалены как ваш
+      учитель, потому что вы еще не зарегистрировали адрес электронной почты'
+    student_teacher_disassociated: '% {teacher_name} был удален как учитель для% {student_name}'
   user:
-    email_confirm_needed: 'Email address has not been confirmed:'
-    email_resend_confirm: Resend confirmation instructions
+    email_confirm_needed: 'Не был подтвержден адрес электронной почты:'
+    email_resend_confirm: Выслать подтверждение инструкции
     new_password_hint: (оставьте пустым, если не хотите ничего менять)
     current_password_hint: (нам нужен Ваш текущий пароль для подтверждения изменений)
     cancel:
@@ -276,19 +276,20 @@
     recent_activity: Последние данные по работе
     show_more: Показать ещё
   home:
-    signin_message: Или, если Вы уже зарегистрированы, %{link}
-    student_reg_link: Ученик
-    teacher_reg_link: Учитель
-    signin_directions: Use an account to track progress and get rewards.<br/> Teachers,
-      track your entire class.
+    signin_message: Уже зарегистрированы? %{link}
+    student_reg_link: Регистрация для ученика
+    teacher_reg_link: Регистрация для учителя
+    signin_directions: Использовать учетную запись для отслеживания прогресса и получения
+      вознаграждения. <br/> Учителя, отслеживайте весь ваш класс.
     teacher_dashboard: Открыть панель контроля хода выполнения
     teacher_student_count_one: У Вас %{count} ученик.
     teacher_student_count: У Вас %{count} учеников.
     teacher_averages: В среднем Ваши ученики заработали  %{trophy_average} из %{trophy_max}
       возможных кубков «Знаток основ».
-    teacher_print_certificates: Print certificates for students who finish this course
-    teacher_read_blog: Read about news and updates to our materials at our Educator
-      Blog
+    teacher_print_certificates: Печать сертификатов для студентов, которые закончили
+      этот курс
+    teacher_read_blog: Читайте о новостях и новинках наших материалов на нашем Учебном
+      Блоге
     classroom: Ваш класс
     student_progress: Ваши результаты обучения
     student_stats: Вы заработали %{trophy_count} из %{trophy_max} возможных кубков
@@ -301,10 +302,11 @@
     local_school: местная школа
     online: онлайн
     see_details: Подробнее
-    prize_info: 'Prizes for participation (U.S. only): $10 gift cards for student
-      completion and up to $1,000 in classroom rewards for public school teachers'
-    tryfirst: 'Or, you can try it first, and sign up later:'
-    trynow: Try now
+    prize_info: 'Призы за участие (только для США): $10 на подарочные карты для завершения
+      студенческого обучения и до $1000 в классе награды для учителей государственных
+      школ.'
+    tryfirst: 'Или, вы можете сначала попробовать это и зарегистрироваться позже:'
+    trynow: Попробуйте сейчас
   gender:
     male: Мужской
     female: Женский
@@ -347,15 +349,15 @@
   download_pdf: Показать план урока
   share_code:
     title: Нажми "Запустить программу", чтобы посмотреть работу моей программы
-    flappy_og_title: Check out my Flappy Game
-    og_description: I wrote the code myself with Code.org
+    flappy_og_title: Проверь мои Flappy игру
+    og_description: Я написал код с Code.org  сам
   builder:
-    created: You created a new script.
-    destroyed: You destroyed a script.
-    manage: Manage Scripts
-    view: View
-    back: Back to scripts
+    created: Вы создали новый скрипт.
+    destroyed: Вы уничтожили скрипт.
+    manage: Управление сценариями
+    view: Просмотр
+    back: Назад к скриптам
     level:
-      create: Create new level
-      current: Current Levels
-      unused: Unused Levels
+      create: Создать новый уровень
+      current: Текущие уровни
+      unused: Неиспользованные уровни

@@ -194,22 +194,26 @@
         bounce_6: 現在要完成的目標在最上方。您需要將附加積木到兩個"當球擊中"積木上，來解決這一關卡。
         bounce_7: Now it is getting crazy!
         bounce_10: 現在有一個目標在頂端。附加"遞增得分"程式積木到"當球在目標中"，還有附加"當球未命中槳"程式積木，讓遊戲能夠玩。
+        bounce_11: You can now attach blocks to the "when game starts" block. Try
+          changing the speed of the paddle and the ball and see how many points you
+          can score before your opponent scores twice.
         Custom_builder: 將程式積木從工具箱中拖動到工作區中來描繪您想要創建的級別。當您準備好時，按下"執行程式"。
-        flappy_1: Attach a block to the "when click" block, then press "Run Program"
-          and click or tap to move Flappy to the target.
+        flappy_1: 將一個程式積木附加到"當點擊時"程式積木中，然後按下"運行程式"。按一下或點擊螢幕將 Flappy 移動到目標。
         flappy_2: Now we've added some ground.  Attach a block to the "when hit the
           ground" block, then press "Run Program". To pass this puzzle, your code
           needs to 'END GAME' when Flappy crashes into the ground.
-        flappy_3: The "when Run is clicked" block allows you to run code when your
-          game first starts.  Try setting the level speed and flapping to the target.
-        flappy_4: Flappy will fly through obstacles unless you write code to make
-          him crash. Attach a block to the "when hit an obstacle" block. To pass the
-          puzzle, your code needs to 'END GAME' and make Flappy crash into the first
-          pipe so he can reach the target.
+        flappy_3: '"當遊戲開始"程式積木允許您在遊戲開始時運行程式碼。嘗試設置級別速度和撲向目標。'
+        flappy_4: Flappy 會飛越障礙，除非你寫的程式碼讓它崩潰。附加一個程式積木到 "當命中障礙" 程式積木。 當 Flappy 撞掉第一組水管時，您的程式碼必須能夠
+          '結束遊戲' 。
         flappy_5: 讓我們添加記分牌，在 Flappy 越過障礙時可以記分。添加"當通過障礙"積木，然後當 Flappy 飛過第一組水管障礙時計分。
         flappy_6: 看看你在讓 Flappy 拍動更小或更大的數值時，是否仍能得分。
         flappy_7: Next, try changing the scene by attaching another block to the "when
           Run is clicked".
+        flappy_8: You can set visuals anytime, not just when the game starts. Try
+          setting a RANDOM scene when other events happen, for example, when passing
+          an obstacle.
+        flappy_9: To mix things up, when hitting an obstacle or the ground, instead
+          of ending the game try setting the score back to 0.
         flappy_11: 創建您自己的 Flappy 遊戲並分享它。您可以更改視覺效果甚至更改規則。請試著在 Flappy 每次越過障礙後，更改視覺效果。或令
           Flappy 立於不敗之地，使它永遠不死。
       levelIncompleteError:
