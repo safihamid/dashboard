@@ -15,7 +15,7 @@
   .manage_section_area{style: "display:none;"}
     Assign checked students to section:
     - options_select = options_from_collection_for_select(@sections, :id, :name)
-    - options_select += '<option value="NULL">(None)</option'.html_safe
+    - options_select += '<option value="NULL">(None)</option>'.html_safe
     = select_tag('section_id', options_select, style: 'margin: 0 7px 0px 4px')
     = submit_tag 'Go'
 
