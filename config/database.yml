@@ -42,15 +42,13 @@ test:
   database: dashboard_test
 
 staging:
-  <<: *prod_mysql_defaults
-  master:
-    host: <%= ENV['DATABASE_MACHINE'] %>
-    pool_weight: 1
-  read_pool:
-    - host: <%= ENV['DATABASE_MACHINE'] %>
-      pool_weight: 2
+  adapter: mysql2
+  encoding: utf8
+  username: root
+  host: localhost
+  pool: 5
   database: dashboard_staging
-
+ 
 production:
   <<: *prod_mysql_defaults
   database: dashboard_production
