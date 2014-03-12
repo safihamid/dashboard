@@ -47,7 +47,7 @@ staging:
   username: root
   host: localhost
   pool: 5
-  database: dashboard_staging
+  database: dashboard_development
  
 production:
   <<: *prod_mysql_defaults
