@@ -33,4 +33,7 @@ Dashboard::Application.configure do
 
   # Print deprecation notices to the stderr.
   config.active_support.deprecation = :stderr
+
+  # Whether or not to display pretty blockly.
+  config.pretty_blockly = true
 end
