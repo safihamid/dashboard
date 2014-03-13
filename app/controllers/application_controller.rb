@@ -14,13 +14,13 @@ class ApplicationController < ActionController::Base
 
   around_filter :with_locale
 
-# we may need the following to fix a problem with the interaction between CanCan and strong_parameters
+# we need the following to fix a problem with the interaction between CanCan and strong_parameters
 # https://github.com/ryanb/cancan/issues/835
-#  before_filter do
-#    resource = controller_name.singularize.to_sym
-#    method = "#{resource}_params"
-#    params[resource] &&= send(method) if respond_to?(method, true)
-#  end
+  before_filter do
+    resource = controller_name.singularize.to_sym
+    method = "#{resource}_params"
+    params[resource] &&= send(method) if respond_to?(method, true)
+  end
 
   def code_org_root_path
     Rails.env.production? ? "http://www.code.org" : Rails.env.development? ? "http://localhost:3000" : "http://staging.code.org"
