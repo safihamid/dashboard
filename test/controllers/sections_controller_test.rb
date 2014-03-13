@@ -180,6 +180,7 @@ class SectionsControllerTest < ActionController::TestCase
     # followers are removed from section
     @follower = @follower.reload
     assert_equal nil, @follower.section
+    assert_equal nil, @follower.section_id
 
     assert_redirected_to sections_followers_path
   end
