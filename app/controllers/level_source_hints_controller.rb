@@ -10,6 +10,9 @@ class LevelSourceHintsController < ApplicationController
     end
   end
 
+  def show
+  end
+
   # PATCH/PUT /level_source_hints/1
   # PATCH/PUT /level_source_hints/1.json
   def update
