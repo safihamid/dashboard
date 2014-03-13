@@ -14,11 +14,10 @@ class ApplicationController < ActionController::Base
 
   around_filter :with_locale
 
-  # Appends text/html as an acceptable response type if not present in the HTTP_ACCEPT header.
-  # This should stop malformed user agents from generating 'Missing template' errors on pages.
-  before_action :fix_accept_headers
-  def fix_accept_headers
-    unless request.formats.include?(Mime::ALL) || request.formats.include?(Mime::HTML)
+  # Edmodo fix: append text/html as an acceptable response type for Edmodo's malformed HTTP_ACCEPT header.
+  before_action :fix_edmodo_header
+  def fix_edmodo_header
+    if request.formats.include?("image/*") && request.user_agent.include?("Edmodo")
       request.formats.append Mime::HTML
     end
   end
