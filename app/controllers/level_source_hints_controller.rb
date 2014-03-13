@@ -1,11 +1,26 @@
 class LevelSourceHintsController < ApplicationController
   before_filter :authenticate_user!
+  before_action :set_level_source_hint, only: [:update]
 
   def index
     raise "unauthorized" if !current_user.admin?
     @level_source_hints = []
     LevelSourceHint.select('user_id, count(*) as count').group('user_id').order('count desc').each do |user|
       @level_source_hints = @level_source_hints + LevelSourceHint.where(:user_id => user.user_id)
+    end
+  end
+
+  # PATCH/PUT /level_source_hints/1
+  # PATCH/PUT /level_source_hints/1.json
+  def update
+    respond_to do |format|
+      if @level_source_hint.update(level_source_hint_params)
+        format.html { redirect_to params[:redirect] || @level_source_hint, notice: I18n.t('crud.updated', model: LevelSourceHint.model_name.human) }
+        format.json { head :no_content }
+      else
+        format.html { render action: 'edit' }
+        format.json { render json: @level_source_hint.errors, status: :unprocessable_entity }
+      end
     end
   end
 
@@ -143,5 +158,16 @@ class LevelSourceHintsController < ApplicationController
     @full_width = true
     @hide_source = false
     @share = true
+  end
+
+  private
+  # Use callbacks to share common setup or constraints between actions.
+  def set_level_source_hint
+    @level_source_hint = LevelSourceHint.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def level_source_hint_params
+    params.permit([:hint, :status])
   end
 end
