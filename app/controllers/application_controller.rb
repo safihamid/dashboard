@@ -14,6 +14,15 @@ class ApplicationController < ActionController::Base
 
   around_filter :with_locale
 
+  # Appends text/html as an acceptable response type if not present in the HTTP_ACCEPT header.
+  # This should stop malformed user agents from generating 'Missing template' errors on pages.
+  before_action :fix_accept_headers
+  def fix_accept_headers
+    unless request.formats.include?(Mime::ALL) || request.formats.include?(Mime::HTML)
+      request.formats.append Mime::HTML
+    end
+  end
+
   def code_org_root_path
     Rails.env.production? ? "http://www.code.org" : Rails.env.development? ? "http://localhost:3000" : "http://staging.code.org"
   end
