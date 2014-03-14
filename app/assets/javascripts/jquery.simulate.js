@@ -12,7 +12,7 @@
 ;(function( $, undefined ) {
 
 var rkeyEvent = /^key/,
-	rmouseEvent = /^(?:mouse|contextmenu)|click/;
+	rmouseEvent = /^(?:mouse|contextmenu|touch|pointer|MSPointer)|click/;
 
 $.fn.simulate = function( type, options ) {
 	return this.each(function() {
@@ -289,6 +289,27 @@ function findCorner( elem ) {
 	};
 }
 
+var touchMappings = {};
+if ('ontouchstart' in document.documentElement) {
+  	touchMappings = {
+		mousedown: 'touchstart',
+		mousemove: 'touchmove',
+		mouseup: 'touchend'
+  };
+} else if (window.navigator.pointerEnabled) {  // IE 11+ support
+  	touchMappings = {
+		mousedown: 'pointerdown',
+		mousemove: 'pointermove',
+		mouseup: 'pointerup'
+  };
+} else if (window.navigator.msPointerEnabled) {  // IE 10 support
+  	touchMappings = {
+		mousedown: 'MSPointerDown',
+		mousemove: 'MSPointerMove',
+		mouseup: 'MSPointerUp'
+  };
+}
+
 $.extend( $.simulate.prototype, {
 	simulateDrag: function() {
 		var i = 0,
@@ -302,10 +323,17 @@ $.extend( $.simulate.prototype, {
 			dy = options.dy || ( options.y !== undefined ? options.y - y : 0 ),
 			moves = options.moves || 3;
 
-		this.simulateEvent( target, "mousedown", coord );
-
-		// BR: inject an extra move at starting location for blockly
-		this.simulateEvent(target.ownerDocument, "mousemove", { clientX: x, clientY: y });
+		function simulateEvent(obj, target, name, param)
+		{
+			if (name in touchMappings)
+			{
+				//if (console.log)
+				//	console.log("jquery.simulateDrag: mapping " + name + " to " + touchMappings[name]);;
+				name = touchMappings[name];
+			}
+			obj.simulateEvent(target, name, param);
+		}
+		simulateEvent(this, target, "mousedown", coord);
 
 		for ( ; i < moves ; i++ ) {
 			x += dx / moves;
@@ -316,14 +344,14 @@ $.extend( $.simulate.prototype, {
 				clientY: Math.round( y )
 			};
 
-			this.simulateEvent( target.ownerDocument, "mousemove", coord );
+			simulateEvent(this, target.ownerDocument, "mousemove", coord );
 		}
 
 		if ( $.contains( document, target ) ) {
-			this.simulateEvent( target, "mouseup", coord );
-			this.simulateEvent( target, "click", coord );
+			simulateEvent(this, target, "mouseup", coord );
+			simulateEvent(this, target, "click", coord );
 		} else {
-			this.simulateEvent( document, "mouseup", coord );
+			simulateEvent(this, document, "mouseup", coord );
 		}
 	}
 });
