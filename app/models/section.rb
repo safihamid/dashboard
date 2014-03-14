@@ -9,14 +9,19 @@ class Section < ActiveRecord::Base
   before_create :assign_code
 
   def assign_code
-    self.code = random_text(6)
+    self.code = random_code
   end
 
-private
+  private
   CHARS = ("A".."Z").to_a
   def random_text(len)
-    str = ""
-    len.times { |i| str << CHARS[rand(CHARS.length - 1)] }
-    str
+    len.times.to_a.collect{ CHARS.sample }.join
+  end
+
+  def random_code
+    loop do 
+      code = random_text(6)
+      return code unless Section.exists?(code: code)
+    end 
   end
 end
