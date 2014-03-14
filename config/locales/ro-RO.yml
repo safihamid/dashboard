@@ -270,6 +270,8 @@
     students:
       manage: Gestionează elevi
       add: Adaugă elevi
+    sections:
+      manage: Manage sections
     rollup: Grilă de progress
     activity: Activitatea recentă a clasei
     user_not_found: Profesorul sau studentul nu pot fi găsit
@@ -309,6 +311,7 @@
       acest curs
     teacher_read_blog: Citeşte despre ştiri şi actualizări referitoare la materialele
       noastre pe Blog-ul nostru de Educator
+    teacher_survey: Tell us what you think about this course
     classroom: Clasa ta
     student_progress: Progresul tău de învățare
     student_stats: Ai câştigat %{trophy_count} din cele %{trophy_max} trofee de "Concept

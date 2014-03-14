@@ -255,6 +255,8 @@
     students:
       manage: נהל תלמידים
       add: הוסף תלמיד
+    sections:
+      manage: Manage sections
     rollup: לוח התקדמות
     activity: פעילות אחרונה בכיתה
     user_not_found: לא ניתן היה למצוא את המורה או התלמיד
@@ -292,6 +294,7 @@
       אפשריים.
     teacher_print_certificates: הדפס תעודות לתלמידים שגמרו את הקורס הזה
     teacher_read_blog: קרא על חדשות ועדכונים לחומרים שלנו ב"בלוג מחנכים"
+    teacher_survey: Tell us what you think about this course
     classroom: הכיתה שלך
     student_progress: התקדמות הלמידה שלך
     student_stats: הרווחת %{trophy_count} פרסים מתוך %{trophy_max} אפשריים.

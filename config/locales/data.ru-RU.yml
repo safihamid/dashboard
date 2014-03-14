@@ -31,10 +31,10 @@
           desc: Редактирование кода
           MazeEC: Этап 1
         2014 Levels:
-          desc: 2014 Puzzles (beta)
+          desc: 2014 Головоломки (beta)
           MazeEC: Этап 1
         Flappy Levels:
-          desc: Flappy Bird
+          desc: Порхающая птичка
           MazeEC: Этап 1
     game:
       name:
@@ -59,8 +59,8 @@
         Artist5: Художник 5
         Unplug11: Итоги
         MazeEC: Лабиринт
-        Bounce: Bounce
-        Flappy: Flappy Bird
+        Bounce: Прыжок
+        Flappy: Порхающая птичка
     trophy:
       name:
         Bronze: Бронзовый
@@ -329,12 +329,14 @@
           в ящик со взрывчаткой!
         maze_3_4: А-а-а-а! Напиши мне программу, чтобы я обошёл взрывчатку и добрался
           до свиньи.
-        bounce_1: Attach a block to the "when left arrow" block, then run and move
-          the paddle with the left arrow key to the finish target.
+        bounce_1: Прикрепи блок к блоку "когда стрелка влово" и нажми кнопку «Запуск
+          программы». Перемести весло, используя кнопку со стрелкой влево для достижения
+          конечной цели.
         bounce_2: Attach a block to the "when right arrow" and "when left arrow" blocks,
           then run and move the paddle with the both arrow key to both finish targets.
         bounce_3: TBD
-        bounce_4: TBD
+        bounce_4: В этот раз тебе нужно добавить четыре блока. Перемести весло ко
+          всем четырем конечным целям , чтобы решить эту головоломку.
         bounce_5: Attach a blocks to the "when right arrow", "when left arrow", "when
           ball hits wall", and "when ball hits paddle" blocks.
         bounce_6: Try again with more balls.
@@ -345,8 +347,9 @@
         bounce_11: You can now attach blocks to the "when game starts" block. Try
           changing the speed of the paddle and the ball and see how many points you
           can score before your opponent scores twice.
-        Custom_builder: Drag blocks from the toolbox to the workspace to draw the
-          level you wish to create. Press "Run Program" when you are ready.
+        Custom_builder: Перетащи блоки с панели инструментов на рабочий стол, чтобы
+          нарисовать уровень который хочешь создать. Нажми "Запустить программу" когда
+          закончишь.
         flappy_1: Attach a block to the "when click" block, then press "Run Program"
           and click or tap to move Flappy to the target.
         flappy_2: Now we've added some ground.  Attach a block to the "when hit the
@@ -363,16 +366,16 @@
           by flying Flappy through the first set of pipes.
         flappy_6: See if you can still score a point after making Flappy flap either
           a smaller or larger amount.
-        flappy_7: Next, try changing the scene by attaching another block to the "when
-          Run is clicked".
-        flappy_8: You can set visuals anytime, not just when the game starts. Try
-          setting a RANDOM scene when other events happen, for example, when passing
-          an obstacle.
+        flappy_7: Теперь попробуй изменить сцены, присоединив другой блок на блок,
+          «когда начинется игра».
+        flappy_8: Визуальные эффекты можно задать в любое время, не только при запуске
+          игры. Попробуй установить СЛУЧАЙНАЯ сцена, когда происходят другие события,
+          например, когда проходятся препятствия.
         flappy_9: To mix things up, when hitting an obstacle or the ground, instead
           of ending the game try setting the score back to 0.
-        flappy_11: Create your own Flappy game and share it. You can change the visuals,
-          or even the rules. Try changing visuals each time Flappy passes an obstacle.
-          Or make Flappy invincible so he never dies.
+        flappy_11: Создайте свою собственную игру. Вы можете поменять все визуальные
+          эффекты и все правила, даже сложность. Когда вы закончите, нажмите поделиться,
+          чтобы ваши друзья могли попробовать игру на своих телефонах.
       levelIncompleteError:
         maze_2_8: 'Чтобы решить эту задачу, нужно определить повторяющиеся действия.
           Используйте блок "повторить" с тремя блоками внутри: двигаться, двигаться,
@@ -389,7 +392,7 @@
         maze_intro: Лабиринт - Введение
         artist_intro: Художник - Введение
         farmer_intro: Фермер - Введение
-        flappy_intro: Flappy Intro
+        flappy_intro: Вступление для летящей птички
         loop_times: Блок "повторить несколько раз"
         loop_until: Блок "повторять до"
         if: Блок "если"

@@ -263,6 +263,8 @@
     students:
       manage: Gestiona els estudiants
       add: Afegeix estudiants
+    sections:
+      manage: Manage sections
     rollup: Quadre de progrés
     activity: Activitat recent de la classe
     user_not_found: The teacher or student could not be found
@@ -302,6 +304,7 @@
     teacher_print_certificates: Print certificates for students who finish this course
     teacher_read_blog: Read about news and updates to our materials at our Educator
       Blog
+    teacher_survey: Tell us what you think about this course
     classroom: La teva classe
     student_progress: El teu progrés d'aprenentatge
     student_stats: Has guanyat %{trophy_count} fora del %{trophy_max} "Concepte de

@@ -269,6 +269,8 @@
     students:
       manage: Zarządzaj uczniami
       add: Dodaj uczniów
+    sections:
+      manage: Manage sections
     rollup: Tablica Postępów
     activity: Ostatnia aktywność klasy
     user_not_found: Nie można odnaleźć nauczyciela lub ucznia
@@ -309,6 +311,7 @@
       ten kurs
     teacher_read_blog: Przeczytaj o nowościach i aktualizacjach materiałów na naszym
       blogu pedagogicznym
+    teacher_survey: Tell us what you think about this course
     classroom: Twoja klasa
     student_progress: Twoje postępy w nauce
     student_stats: Zdobyłeś %{trophy_count} z %{trophy_max} trofeów "Concept Mastery".

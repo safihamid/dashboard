@@ -261,6 +261,8 @@
     students:
       manage: Öğrencileri yönet
       add: Öğrenciler Ekle
+    sections:
+      manage: Manage sections
     rollup: İlerleme Kontrol Paneli
     activity: Son sınıf etkinlikleri
     user_not_found: Öğrenci ve öğretmen bulunamadı
@@ -299,6 +301,7 @@
     teacher_print_certificates: Bu dersi bitiren öğrenciler için sertifika bastır
     teacher_read_blog: Ders malzemeleri hakkında haberler ve güncellemeleri eğitimci
       bloğumuzda okuyun
+    teacher_survey: Tell us what you think about this course
     classroom: Sınıfınız
     student_progress: Öğrenme ilerlemeniz
     student_stats: '"Kavram Ustalığı" kupalarından %{trophy_max} kupadan %{trophy_count}

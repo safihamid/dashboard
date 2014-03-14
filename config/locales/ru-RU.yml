@@ -252,6 +252,8 @@
     students:
       manage: Управление учениками
       add: Пригласить учеников
+    sections:
+      manage: Manage sections
     rollup: Панель контроля хода выполнения
     activity: Последние данные по работе класса
     user_not_found: Преподаватель или студент не может быть найден
@@ -290,6 +292,7 @@
       этот курс
     teacher_read_blog: Читайте о новостях и новинках наших материалов на нашем Учебном
       Блоге
+    teacher_survey: Tell us what you think about this course
     classroom: Ваш класс
     student_progress: Ваши результаты обучения
     student_stats: Вы заработали %{trophy_count} из %{trophy_max} возможных кубков

@@ -1,4 +1,4 @@
-"zh-CN":
+"zh":
   activerecord:
     attributes:
       user:
@@ -19,8 +19,8 @@
       placeholder: 代码 (ABCDEF) 或电子邮件 (teacher@school.edu)
     submit: 添加老师
   add_hint_form:
-    placeholder: Please enter your hint here
-    submit: Add hint
+    placeholder: 请在这里输入您的提示
+    submit: 增加提示
   appname: Code.org
   stage: 阶段
   puzzle: 谜题
@@ -30,8 +30,8 @@
   more: 更多
   less: 更少
   try_hoc: 尝试一小时代码，请单击此处 >>
-  try_k8intro: 或者尝试我们的K-8计算机入门课程（15-25小时）
-  k8intro: K-8 Intro to Computer Science Course (15-25 hours)
+  try_k8intro: 尝试我们的K-8计算机科学入门课程（15-25小时）
+  k8intro: K-8计算机科学入门课程（15-25小时）
   already_started: 已经开始了吗？在这里恢复 >>
   demos: 管理员： 所有演示
   continue: 继续
@@ -63,12 +63,11 @@
     teacher_prize_message: 与 <a target="_blank"href="http://DonorsChoose.org"> DonorsChoose.org</a>
       合作，Code.org 将提供向美国公立学校有至少15名学生的教提供 1000 美元的课程基金。<a href="http://code.org/educate/20hr">
       的详细信息请参阅教师指南。</a>
-    teacher_prize_limits: '(Limit: $1,000 per teacher. <a target="_blank" href="http://help.donorschoose.org/app/answers/detail/a_id/454/kw/code.org">See
-      FAQ for more limits</a>)'
+    teacher_prize_limits: '(限额: 每位老师1000美元. <a target="_blank" href="http://help.donorschoose.org/app/answers/detail/a_id/454/kw/code.org">查看更多常见问题</a>)'
     teacher_pitch: 在你的课堂里教授 K-8 计算机基础课程
     teacher_title: 老师登记
     student_pitch: 一小时之后：试试我们的 K-8 计算机基础课程
-    student_title: 登记
+    student_title: 学生注册
     school_name: 学校名称 （可选）
     school_address: 学校地址 （可选）
     address_placeholder: 地址、 城市、 州、 邮编
@@ -86,14 +85,14 @@
       Code.org 服务。
     teacher_terms: 我同意Code.org 的服务条款。
   signin_form:
-    title: 登录
+    title: 已经有账号了？登录
     login: 电子邮件或用户名
     password: '密码:'
     remember: 记住我
     submit: 登录
   signin:
-    try_hoc: Try one Hour of Code first
-    try_20hours: Try our 20 hour Intro to Computer Science
+    try_hoc: 先尝试一个 代码一小时
+    try_20hours: 请尝试我们 20 小时计算机科学简介课程
   password:
     reset_form:
       title: 忘记密码？
@@ -125,11 +124,9 @@
       invite_student:
         subject: 加入 %{teacher_name} 老师的班级吧！
       student_disassociated:
-        subject: 'Code.org notification: %{student_name} is no longer associated as
-          your student.'
+        subject: 'Code.org 提醒: %{student_name} 已不再是您的学生。'
       teacher_disassociated:
-        subject: 'Code.org notification: %{teacher_name} is no longer associated as
-          your teacher.'
+        subject: 'Code.org 提醒: %{teacher_name} 已不再作为您的老师。'
   reports:
     error:
       access_denied: 您没有权限访问此人的信息。
@@ -138,15 +135,15 @@
     provider: 提供者
     code: 代码：
     redeem_header: 'To redeem:'
-    donorschoose_how_to: How to use your code
+    donorschoose_how_to: 如何使用您的代码
     success: 你的奖金已经成功兑现，请参见下面的代码。
     error: 你的奖品无法兑现，请重新尝试。
     error_us_only: 奖项仅向美国用户提供。
     error_not_earned: 你还没有获得这一奖项。
     error_already_redeemed: 您获得的奖项已经被兑现。
     no_prizes_available: 我们很抱歉，但我们目前有没有可用的奖品。
-    teacher_info_required: 'Teacher prizes require school name and address information:'
-    teacher_email_required: 'Teacher prizes require a confirmed email address:'
+    teacher_info_required: 老师奖品需要学校名称和地址信息：
+    teacher_email_required: 老师奖品需要一个已确认电子邮件地址：
     confirm:
       title: 请确认
       'no': 否
@@ -174,7 +171,7 @@
       not_earned: 学习所有的计算机科学概念、 收集所有 %{num_trophies} 奖杯，和赚取真实世界的奖品。您可以选择 10 GB 免费的
         Dropbox 空间， 10美元Skype信用 和免费游戏下载。注意： 仅向美国学生提供并且仅仅供应至最后一个。
       teacher:
-        earned: 10 个或更多的学生收集到所有 %{num_trophies} 奖杯。你已经获得教师奖 ！（仅限美国教师)
+        earned: 超过15 个学生收集到所有 %{num_trophies} 个奖杯。你获得老师奖 ！（仅限美国教师)
         not_earned_title: Teach the class, earn up to $1,000 in <a target="_blank"
           href="http://DonorsChoose.org">DonorsChoose.org</a> credits (U.S. teachers
           only)
@@ -230,27 +227,26 @@
       prizes_link: 更多的信息
   teacher:
     title:
-      one: 你的老师是 %{name}
+      one: 你的老师：
       other: 你的老师：
-    remove: (remove teacher)
+    remove: （删除老师）
     confirm:
-      remove: Are you sure you want to remove this teacher?
+      remove: 你确实要删除这个老师吗?
     tools: 教师工具
     students:
       manage: 管理学生
       add: 添加学生
+    sections:
+      manage: Manage sections
     rollup: 进度板
     activity: 最近的课程活动
-    user_not_found: The teacher or student could not be found
-    cant_remove_student_no_email: '%{student_name} cannot be removed as your student
-      because %{student_name} has not registered an e-mail address'
-    cant_remove_teacher_no_email: '%{teacher_name} cannot be removed as your teacher
-      because you have not registered an e-mail address'
-    student_teacher_disassociated: '%{teacher_name} has been removed as a teacher
-      for %{student_name}'
+    user_not_found: 无法找到这个老师或学生
+    cant_remove_student_no_email: 因为 %{student_name} 未注册电子邮件地址， %{student_name}不能移动为你的学生。
+    cant_remove_teacher_no_email: 因为您还没有注册的电子邮件地址，%{teacher_name}不能移为你的老师。
+    student_teacher_disassociated: '%{teacher_name} 已被移为 %{student_name}的一位老师'
   user:
-    email_confirm_needed: 'Email address has not been confirmed:'
-    email_resend_confirm: Resend confirmation instructions
+    email_confirm_needed: 没有确认的电子邮件地址：
+    email_resend_confirm: 重新发送确认指令
     new_password_hint: （如果你不想改变它，留空白）
     current_password_hint: （我们需要您的当前密码以确认您的更改）
     cancel:
@@ -264,18 +260,17 @@
     recent_activity: 最近的动态
     show_more: 显示更多
   home:
-    signin_message: 或者如果你已经注册了， %{link}
-    student_reg_link: 学生
-    teacher_reg_link: 老师
-    signin_directions: Use an account to track progress and get rewards.<br/> Teachers,
-      track your entire class.
+    signin_message: 已经注册了吗？%{link}
+    student_reg_link: 学生 注册
+    teacher_reg_link: 老师 注册
+    signin_directions: 使用一个帐户来跟踪进度和获取奖励。 <br/>教师，跟踪您的整个班级。
     teacher_dashboard: 看进度板
     teacher_student_count_one: 你有 %{count} 个学生。
     teacher_student_count: 你有 %{count} 个学生。
     teacher_averages: 平均下来，您的学生获得了%{trophy_average}/%{trophy_max}个“概念掌握”奖杯。
-    teacher_print_certificates: Print certificates for students who finish this course
-    teacher_read_blog: Read about news and updates to our materials at our Educator
-      Blog
+    teacher_print_certificates: 为完成此课程的学生打印证书
+    teacher_read_blog: 阅读有关新闻和我们在教育家博客的材料的更新
+    teacher_survey: Tell us what you think about this course
     classroom: 你的教室
     student_progress: 你的学习进度
     student_stats: 你已经获得了%{trophy_count}/%{trophy_max}个“概念掌握”奖杯。
@@ -285,10 +280,9 @@
     local_school: 本地学校
     online: 在线
     see_details: 查看详细信息
-    prize_info: 'Prizes for participation (U.S. only): $10 gift cards for student
-      completion and up to $1,000 in classroom rewards for public school teachers'
-    tryfirst: 'Or, you can try it first, and sign up later:'
-    trynow: Try now
+    prize_info: （仅限于美国） 参与奖： 完成课程学生的10 元礼品卡和最高 1000 美元的公立学校教师的课堂奖励。
+    tryfirst: 或者，你也可以先试一试，晚些再注册：
+    trynow: 现在就试试
   gender:
     male: 男性
     female: 女性
@@ -329,15 +323,15 @@
   download_pdf: 开放课程
   share_code:
     title: 点击运行程序来观看程序的运行情况
-    flappy_og_title: Check out my Flappy Game
-    og_description: I wrote the code myself with Code.org
+    flappy_og_title: 看看我的Flappy游戏
+    og_description: 我用 Code.org自己写的代码
   builder:
-    created: You created a new script.
-    destroyed: You destroyed a script.
-    manage: Manage Scripts
-    view: View
-    back: Back to scripts
+    created: 您创建了一个新的脚本。
+    destroyed: 你毁了一个脚本。
+    manage: 管理脚本
+    view: 查看
+    back: 回到脚本
     level:
-      create: Create new level
-      current: Current Levels
-      unused: Unused Levels
+      create: 创建新的水平
+      current: 目前的水平
+      unused: 未使用的水平

@@ -1,4 +1,4 @@
-"zh-TW":
+"zh":
   activerecord:
     attributes:
       user:
@@ -234,6 +234,8 @@
     students:
       manage: 學生管理
       add: 新增學生
+    sections:
+      manage: Manage sections
     rollup: 進度表
     activity: 最近的班級活動
     user_not_found: 無法找到該名老師或學生
@@ -266,6 +268,7 @@
     teacher_averages: '你的學生平均下來獲得了 %{trophy_average}/%{trophy_max} "概念通達"獎盃。 '
     teacher_print_certificates: 為完成此課程的學生列印證書
     teacher_read_blog: 在Educator Blog閱讀我們的最新資訊
+    teacher_survey: Tell us what you think about this course
     classroom: 您的教室
     student_progress: 您的學習進度
     student_stats: 你已經獲得 %{trophy_count}/%{trophy_max} "概念通達"獎盃

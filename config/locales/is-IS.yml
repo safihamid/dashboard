@@ -265,6 +265,8 @@
     students:
       manage: Umsjón nemenda
       add: Bæta við nemendum
+    sections:
+      manage: Manage sections
     rollup: Mælaborð árangurs
     activity: Nýleg virkni bekkjar
     user_not_found: Kennarinn eða nemandinn fannst ekki
@@ -304,6 +306,7 @@
     teacher_print_certificates: Prenta skírteini fyrir nemendur sem ljúka þessu námskeiði
     teacher_read_blog: Lesa um fréttir og uppfærslur á efni okkar á kennarabloggi
       okkar
+    teacher_survey: Tell us what you think about this course
     classroom: Bekkjarstofan þín
     student_progress: Námsframvinda þín
     student_stats: Þú hefur unnið til %{trophy_count} af %{trophy_max} mögulegum "Concept

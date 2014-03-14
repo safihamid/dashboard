@@ -270,6 +270,8 @@
     students:
       manage: Gérer les élèves
       add: Ajouter des élèves
+    sections:
+      manage: Manage sections
     rollup: Tableau de bord de progression
     activity: Activité récente de la classe
     user_not_found: Le professeur ou l'étudiant est introuvable
@@ -309,6 +311,7 @@
     teacher_print_certificates: Print certificates for students who finish this course
     teacher_read_blog: Read about news and updates to our materials at our Educator
       Blog
+    teacher_survey: Tell us what you think about this course
     classroom: Votre classe
     student_progress: Votre progression d'apprentissage
     student_stats: Tu as gagné %{trophy_count} sur %{trophy_max} trophées "Concept

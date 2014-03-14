@@ -241,6 +241,8 @@
     students:
       manage: 学生の管理。
       add: 生徒を追加する
+    sections:
+      manage: Manage sections
     rollup: プログレスダッシュ ボード
     activity: 最近のクラスの活動
     user_not_found: 教師、又は、生徒は見つかりませんでした
@@ -277,6 +279,7 @@
     teacher_print_certificates: Print certificates for students who finish this course
     teacher_read_blog: Read about news and updates to our materials at our Educator
       Blog
+    teacher_survey: Tell us what you think about this course
     classroom: あなたの教室
     student_progress: 学習の進行状況
     student_stats: '%{trophy_max}このうち%{trophy_count} の"コンセプト"習得のトロフィーを獲得しました。'
