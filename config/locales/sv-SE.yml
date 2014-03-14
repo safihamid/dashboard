@@ -1,4 +1,4 @@
-"sv-SE":
+"sv":
   activerecord:
     attributes:
       user:
@@ -262,6 +262,8 @@
     students:
       manage: Hantera elever
       add: Lägg till elever
+    sections:
+      manage: Manage sections
     rollup: Framstegsmeny
     activity: Senaste klasshändelserna
     user_not_found: The teacher or student could not be found
@@ -300,6 +302,7 @@
     teacher_print_certificates: Print certificates for students who finish this course
     teacher_read_blog: Read about news and updates to our materials at our Educator
       Blog
+    teacher_survey: Tell us what you think about this course
     classroom: Ditt klassrum
     student_progress: Dina framsteg
     student_stats: Du har samlat %{trophy_count} av %{trophy_max} "Koncept-bemästring"

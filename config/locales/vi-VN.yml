@@ -261,6 +261,8 @@
     students:
       manage: Quản lý học sinh
       add: Thêm học sinh
+    sections:
+      manage: Manage sections
     rollup: Bảng tiến trình
     activity: Hoạt động gần đây của lớp
     user_not_found: The teacher or student could not be found
@@ -300,6 +302,7 @@
       này
     teacher_read_blog: Đọc về tin tức và cập nhật của chúng tôi tại tài liệu blog
       giáo dục của chúng tôi
+    teacher_survey: Tell us what you think about this course
     classroom: Lớp học của bạn
     student_progress: Tiến độ học tập của bạn
     student_stats: You've earned %{trophy_count} out of %{trophy_max} "Concept Mastery"

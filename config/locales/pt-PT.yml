@@ -1,4 +1,4 @@
-"pt-PT":
+"pt":
   activerecord:
     attributes:
       user:
@@ -265,6 +265,8 @@
     students:
       manage: Gerir alunos
       add: Adicionar alunos
+    sections:
+      manage: Manage sections
     rollup: Painel de controlo do Progresso
     activity: Atividade recente da turma
     user_not_found: The teacher or student could not be found
@@ -304,6 +306,7 @@
     teacher_print_certificates: Print certificates for students who finish this course
     teacher_read_blog: Read about news and updates to our materials at our Educator
       Blog
+    teacher_survey: Tell us what you think about this course
     classroom: A sua sala de aula
     student_progress: O seu progresso de aprendizagem
     student_stats: Ganhaste %{trophy_count} de %{trophy_max}  troféus "Mestria de

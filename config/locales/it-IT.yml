@@ -273,6 +273,8 @@
     students:
       manage: Gestisci i tuoi studenti
       add: Aggiungi i tuoi studenti
+    sections:
+      manage: Manage sections
     rollup: Cruscotto di avanzamento
     activity: Attività recenti della classe
     user_not_found: L'insegnante o lo studente non è stato trovato
@@ -313,6 +315,7 @@
       questo corso
     teacher_read_blog: Leggi notizie e aggiornamenti relativi al nostro materiale
       didattico sul nostro "Educator Blog"
+    teacher_survey: Tell us what you think about this course
     classroom: La tua classe
     student_progress: I tuoi progressi di apprendimento
     student_stats: Hai guadagnato %{trophy_count} trofei su %{trophy_max} in "Padronanza

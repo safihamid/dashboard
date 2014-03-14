@@ -342,8 +342,9 @@
           menabrak kotak TNT!
         maze_3_4: |
           Waduh! Buatkan saya sebuah program yang membantu saya mencapai babi tetapi menghindari TNT.
-        bounce_1: Attach a block to the "when left arrow" block, then run and move
-          the paddle with the left arrow key to the finish target.
+        bounce_1: Melampirkan blok untuk "ketika meninggalkan panah" blok dan tekan
+          "Menjalankan Program". Pindahkan menggunakan tombol panah kiri untuk mencapai
+          target .
         bounce_2: Attach a block to the "when right arrow" and "when left arrow" blocks,
           then run and move the paddle with the both arrow key to both finish targets.
         bounce_3: Sekarang cobalah sesuatu yang mirip dengan blok "ketika panah keatas".
@@ -380,16 +381,16 @@
           raihlah Skor lebih dengan membuat Flappy terbang melalui set pipa pertama.
         flappy_6: Perhatikan apakah Anda masih bisa mendapat Skor setelah mengubah
           Flappy mengepak sayap lebih banyak atau lebih sedikit.
-        flappy_7: Next, try changing the scene by attaching another block to the "when
-          Run is clicked".
-        flappy_8: You can set visuals anytime, not just when the game starts. Try
-          setting a RANDOM scene when other events happen, for example, when passing
-          an obstacle.
+        flappy_7: Selanjutnya, cobalah mengubah adegan dengan menempelkan blok lain
+          kepada blok "ketika permainan dimulai".
+        flappy_8: Kamu dapat mengatur visual kapan saja, tidak hantan ketika permainan
+          dimulai.Mencoba mensetting adegan acak ketika adegan lainnya, misalnya ketika
+          melewati penghalang.
         flappy_9: To mix things up, when hitting an obstacle or the ground, instead
           of ending the game try setting the score back to 0.
-        flappy_11: Create your own Flappy game and share it. You can change the visuals,
-          or even the rules. Try changing visuals each time Flappy passes an obstacle.
-          Or make Flappy invincible so he never dies.
+        flappy_11: Membuat permainan Flappy kamu sendiri. Kamu dapat mengubah semua
+          visual dan semua aturan, bahkan gravitasi. Setelah selesai, klik bagikan
+          untuk membiarkan teman-teman mencoba permainan Kamu pada ponsel mereka.
       levelIncompleteError:
         maze_2_8: 'Untuk memecahkan masalah ini, temukan pola yang berulang. Gunakan
           blok "ulangi" (repeat) dengan 3 blok didalamnya: gerak, gerak, belok kanan.'

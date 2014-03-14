@@ -268,6 +268,8 @@
     students:
       manage: Beheer student
       add: voeg leerling toe
+    sections:
+      manage: Manage sections
     rollup: Overzicht vooruitgang
     activity: Recente klasactiviteiten
     user_not_found: The teacher or student could not be found
@@ -307,6 +309,7 @@
     teacher_print_certificates: Print certificates for students who finish this course
     teacher_read_blog: Read about news and updates to our materials at our Educator
       Blog
+    teacher_survey: Tell us what you think about this course
     classroom: Je klas
     student_progress: Je voortgang
     student_stats: Je hebt %{trophy_count} van de %{trophy_max} "Concept Mastery"

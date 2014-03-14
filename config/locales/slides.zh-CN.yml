@@ -1,4 +1,4 @@
-"zh-CN":
+"zh":
   slides:
     maze_intro:
       1:
@@ -65,16 +65,14 @@
         text: 我们要工资！我们要工资！翻译尼玛这么多代码还有提示语神马的也不给我们付工资！严正抗议~~~
       3:
         image: notes/stage9_3.jpg
-        text: The new blocks remove 1 shovelful of dirt from a pile and fill in 1
-          shovelful of dirt to a hole.
+        text: 新块从土堆上移走一铲土并填到洞里。
       4:
         image: notes/stage9_4.jpg
         text: 我们要工资！我们要工资！翻译尼玛这么多代码还有提示语神马的也不给我们付工资！严正抗议~~~
     flappy_intro:
       1:
         image: 标记/ flappy01.jpg
-        text: Hi, I'm Katie! One of the most exciting things about computer science
-          is that a computer program can be interactive.
+        text: 你好，我是凯蒂 ！计算机科学最令人兴奋的事情之一就是计算机程序可以互动。
       2:
         image: 标记/ flappy02.jpg
         text: Any time somebody clicks or taps or types on a computer or phone, that

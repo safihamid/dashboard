@@ -1,4 +1,4 @@
-"si-LK":
+"si":
   data:
     script:
       name:
@@ -32,10 +32,10 @@
           MazeEC: අදියර 1
         2014 Levels:
           desc: 2014 Puzzles (beta)
-          MazeEC: Stage 1
+          MazeEC: අදියර 1
         Flappy Levels:
           desc: Flappy Bird
-          MazeEC: Stage 1
+          MazeEC: අදියර 1
     game:
       name:
         Unplug1: පරිඝණක විද්‍යාව හැදින්වීම

@@ -259,6 +259,8 @@
     students:
       manage: Hallinnoi oppilaita
       add: Lisää opiskelijoita
+    sections:
+      manage: Manage sections
     rollup: Edistymistaulu
     activity: Luokan tapahtumat
     user_not_found: Opettajaa tai oppilasta ei löytynyt
@@ -297,6 +299,7 @@
     teacher_print_certificates: Print certificates for students who finish this course
     teacher_read_blog: Read about news and updates to our materials at our Educator
       Blog
+    teacher_survey: Tell us what you think about this course
     classroom: Luokkasi
     student_progress: Edistymisesi
     student_stats: Olet ansainnut %{trophy_count}/%{trophy_max} "käsitteiden hallinta"

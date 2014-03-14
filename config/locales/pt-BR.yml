@@ -1,4 +1,4 @@
-"pt-BR":
+"pt":
   activerecord:
     attributes:
       user:
@@ -273,6 +273,8 @@
     students:
       manage: Gerenciar alunos
       add: Adicionar alunos
+    sections:
+      manage: Manage sections
     rollup: Painel de controle do progresso
     activity: Atividade recente de classe
     user_not_found: O professor ou o estudante não pôde ser encontrado
@@ -312,6 +314,7 @@
       este curso
     teacher_read_blog: Leia sobre notícias e novidades dos nossos materiais em nosso
       Blog Educativo
+    teacher_survey: Tell us what you think about this course
     classroom: Sua sala de aula
     student_progress: Seu progresso de aprendizagem
     student_stats: Você ganhou  %{trophy_count} de %{trophy_max} em troféus de "Conceito

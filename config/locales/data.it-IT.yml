@@ -343,13 +343,12 @@
           contro la cassetta di dinamite (TNT)!
         maze_3_4: Argh! Scrivi un programma che mi faccia girare alla larga della
           dinamite (TNT) ed arrivare al maiale.
-        bounce_1: Collega un blocco al blocco "quando la freccia a sinistra", poi
-          premi "Esegui il programma" e sposta la racchetta verso il bersaglio finale
-          usando il tasto "freccia a sinistra".
-        bounce_2: Collega un blocco ai blocchi "quando la freccia a sinistra" e "quando
-          la freccia a destra", poi premi "Esegui il programma" e sposta la racchetta
-          verso il bersaglio finale usando entrambi i tasti "freccia a sinistra" e
-          "freccia a destra".
+        bounce_1: Aggiungi un blocco al blocco "quando sinistra freccia" e premere
+          "Esegui programma". Spostare la pagaia utilizzando la freccia a sinistra
+          per raggiungere la destinazione finale.
+        bounce_2: Aggiungi un blocco ai blocchi "quando freccia a destra" e "quando
+          freccia sinistra". Sposta la pagaia per raggiungere entrambi gli obiettivi
+          della finitura.
         bounce_3: Ora prova qualcosa di simile con il blocco "quando la freccia in
           alto". Sposta la racchetta verso il bersaglio finale in alto.
         bounce_4: Questa volta devi aggiungere quattro blocchi. Sposta la racchetta
@@ -360,23 +359,23 @@
         bounce_6: Ora il bersaglio finale è in alto. Per risolvere questo puzzle è
           necessario collegare dei blocchi ad entrambi i blocchi "quando la palla
           colpisce".
-        bounce_7: Collega dei blocchi ai blocchi "quando la freccia a destra", "quando
-          la freccia a sinistra", "quando la palla colpisce il muro" e "quando la
-          palla colpisce la racchetta".
-        bounce_10: Adesso c'è una rete in alto. Attacca i blocchi "aumenta il punteggio"
-          ai blocchi "quando la palla è in rete" e "quando la palla manca la racchetta"
-          per costruire un gioco.
-        bounce_11: You can now attach blocks to the "when game starts" block. Try
-          changing the speed of the paddle and the ball and see how many points you
-          can score before your opponent scores twice.
+        bounce_7: Aggiungi i blocchi a ciascuno dei blocchi "quando". Fai rimbalzare
+          la palla fino a quando colpisce il bersaglio finale.
+        bounce_10: Ora c'è un obiettivo al top. Aggiungi il blocco "punteggio" e il
+          blocco "segnare punto avversario" al blocco "quando palla in gol" e al blocco
+          "palla quando manca paddle" blocchi per fare una partita. Vedi quanti punti
+          puoi segnare prima che il tuo avversario faccia punto due volte.
+        bounce_11: Ora puoi aggiungere al blocco il blocco "quando il gioco inizia".
+          Prova a cambiare la velocità della pagaia e della palla e guarda quanti
+          punti puoi segnare prima che il tuo avversario faccia punto due volte.
         Custom_builder: Sposta i blocchi dalla cassetta degli attrezzi all'area di
           lavoro per disegnare il livello che vuoi creare. Premi "Esegui il programma"
           quando hai fatto.
         flappy_1: Attacca un blocco "quando fa clic su" e poi premere "Esegui programma".
           Fare clic o toccare lo schermo per spostare Flappy alla destinazione.
-        flappy_2: Now we've added some ground.  Attach a block to the "when hit the
-          ground" block, then press "Run Program". To pass this puzzle, your code
-          needs to 'END GAME' when Flappy crashes into the ground.
+        flappy_2: Ora abbiamo aggiunto qualche terra.  Allegare un blocco al blocco
+          "quando ha colpito la terra".  Il tuo codice ha bisogno del blocco 'END
+          GAME' quando Flappy precipita a terra.
         flappy_3: Il blocco "quando gioco inizia" permette di eseguire il codice quando
           il gioco inizia.  Provare impostando il livello velocità e volare alla destinazione.
         flappy_4: Flappy volerà attraverso gli ostacoli, a meno che non si scrive
@@ -388,16 +387,16 @@
           un punto facendo volare Flappy attraverso la prima serie di tubi. DA RIVEDERE
         flappy_6: Vedi se puoi ancora segnare un punto dopo aver fatto volare Flappy
           di una quantità più piccola o più grande. DA RIVEDERE
-        flappy_7: Next, try changing the scene by attaching another block to the "when
-          Run is clicked".
-        flappy_8: You can set visuals anytime, not just when the game starts. Try
-          setting a RANDOM scene when other events happen, for example, when passing
-          an obstacle.
-        flappy_9: To mix things up, when hitting an obstacle or the ground, instead
-          of ending the game try setting the score back to 0.
-        flappy_11: Crea la tua versione del gioco Flappy e condividilo. Puoi modificare
-          la grafica, o anche le regole. Prova a cambiare grafica ogni volta che Flappy
-          supera un ostacolo. O rendi Flappy invincibile, così che non muoia mai.
+        flappy_7: Successivamente, prova a cambiare la scena  associando un altro
+          blocco al blocco "quando il gioco inizia".
+        flappy_8: Puoi impostare le immagini in qualsiasi momento, non solo quando
+          il gioco inizia. Provare a impostare una scena casuale quando altri eventi
+          accadono, per esempio, quando si passa un ostacolo.
+        flappy_9: Confondi un po' le cose, quando colpisce un ostacolo oppure il suolo,
+          invece di finire il gioco prova a impostare nuovamente il punteggio a 0.
+        flappy_11: Creare il proprio gioco Flappy. È possibile modificare tutte le
+          immagini e tutte le regole, anche la gravità. Quando hai finito, fai clic
+          su Condividi per far provare agli amici il gioco sui loro smartphone.
       levelIncompleteError:
         maze_2_8: 'Per risolvere questo puzzle, trova il comportamento da ripetere.
           Usa un blocco "ripeti ... volte" con questi 3 blocchi all''interno di esso:

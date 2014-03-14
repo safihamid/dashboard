@@ -261,6 +261,8 @@
     students:
       manage: Diákok kezelése
       add: Diákok hozzáadása
+    sections:
+      manage: Manage sections
     rollup: Fejlődés tájékoztató
     activity: Mostanában osztály aktivitás
     user_not_found: A tanár, vagy a diák nem ismert
@@ -300,6 +302,7 @@
       a tanfolyamot
     teacher_read_blog: Olvastam a híreket és frissítéseket az anyagokhoz  a Pedagógus
       Blog-ban
+    teacher_survey: Tell us what you think about this course
     classroom: A tantermed
     student_progress: Fejlődésed
     student_stats: Már megszereztél %{trophy_count} trófeát a %{trophy_max} "Concept

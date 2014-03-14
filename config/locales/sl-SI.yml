@@ -260,6 +260,8 @@
     students:
       manage: Upravljaj z učenci
       add: Dodaj učence
+    sections:
+      manage: Manage sections
     rollup: Plošča napredka
     activity: Zadnje aktivnosti razreda
     user_not_found: Učitelj ali študent ni bil najden
@@ -298,6 +300,7 @@
     teacher_print_certificates: Tiskanje potrdila za študente ki so opravili tečaj
     teacher_read_blog: Preberi o novicah in posodobitvah našega gradiva na našem blogu
       Izobraževalcev
+    teacher_survey: Tell us what you think about this course
     classroom: Vaša učilnica
     student_progress: Vaš napredek učenja
     student_stats: You've earned %{trophy_count} out of %{trophy_max} "Concept Mastery"

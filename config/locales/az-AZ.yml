@@ -269,6 +269,8 @@
     students:
       manage: Tələbələri idarə edin
       add: Tələbələri əlavə edin
+    sections:
+      manage: Manage sections
     rollup: Gedişat paneli
     activity: Ən son sinif işləri
     user_not_found: The teacher or student could not be found
@@ -307,6 +309,7 @@
     teacher_print_certificates: Print certificates for students who finish this course
     teacher_read_blog: Read about news and updates to our materials at our Educator
       Blog
+    teacher_survey: Tell us what you think about this course
     classroom: Sizin sinfiniz
     student_progress: Sizin təlim nəticələriniz
     student_stats: Siz %{trophy_max} "Anlayışların mənimsənilməsi" kubokundan %{trophy_count}
