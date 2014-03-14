@@ -14,7 +14,7 @@ module ReportsHelper
   def level_passed(params)
     result = 0
     if params[:user]
-      result = params[:user_level] ? params[:user_level].best_result : 0
+      result = params[:user_level].best_result if params[:user_level] && params[:user_level].best_result
     elsif (session[:progress] && session[:progress][params[:level_id]])
       result = session[:progress][params[:level_id]]
     end
