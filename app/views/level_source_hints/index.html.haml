@@ -5,6 +5,7 @@
       %th User id
       %th Hint message
       %th Puzzle link
+      %th Approve
       %th Time
   %tbody
     - @level_source_hints.each do |level_source_hint|
@@ -12,6 +13,28 @@
         %td{:align => "center"}= level_source_hint.user_id
         %td{:width => "50%"}= level_source_hint.hint
         %td{:align => "center"}= link_to "Show", show_hints_path(level_source_hint.level_source_id)
+        %td{:class => "level_source_hint_radio_button"}
+          =form_for(level_source_hint, :remote => true) do |f|
+            =hidden_field_tag :redirect, level_source_hints_path
+            =radio_button_tag 'status', LevelSourceHint::STATUS_SELECTED, level_source_hint.status == LevelSourceHint::STATUS_SELECTED, :onchange => 'update_status("' + level_source_hint_path(level_source_hint.id) + '","' + LevelSourceHint::STATUS_SELECTED + '")'
+            =label_tag 'Approve'
+            =radio_button_tag 'status', LevelSourceHint::STATUS_EXPERIMENT, level_source_hint.status == LevelSourceHint::STATUS_EXPERIMENT, :onchange => 'update_status("' + level_source_hint_path(level_source_hint.id) + '","' + LevelSourceHint::STATUS_EXPERIMENT + '")'
+            =label_tag 'Experiment'
+            =radio_button_tag 'status', LevelSourceHint::STATUS_INACTIVE, level_source_hint.status == LevelSourceHint::STATUS_INACTIVE, :onchange => 'update_status("' + level_source_hint_path(level_source_hint.id) + '","' + LevelSourceHint::STATUS_INACTIVE + '")'
+            =label_tag 'Disapprove'
         %td= level_source_hint.created_at.to_date
+
 %br/
 %h3= link_to "Add More Hints", frequent_unsuccessful_level_sources_path
+
+:javascript
+  function update_status(url, status) {
+    jQuery.ajax({
+      url: url,
+      type: "PATCH",
+      data: {"status" : status},
+      dataType: "json",
+      success: function(data) {
+      }
+    });
+  }
