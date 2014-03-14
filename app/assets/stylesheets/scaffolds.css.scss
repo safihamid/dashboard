@@ -37,15 +37,19 @@ div {
   color: green;
 }
 
-.field_with_errors {
-  padding: 2px;
-  background-color: red;
-  display: table;
+.field_with_errors label {
+  color: red;
+  display: inline-block;
 }
+
+.field_with_errors input {
+  background-color: yellow;
+}
+
 
 #error_explanation {
   width: 450px;
-  border: 2px solid red;
+  border: 2px solid #c00;
   padding: 7px;
   padding-bottom: 0;
   margin-bottom: 20px;
@@ -53,7 +57,7 @@ div {
   h2 {
     text-align: left;
     font-weight: bold;
-    padding: 5px 5px 5px 15px;
+    padding: 0 0 0 15px;
     font-size: 12px;
     margin: -7px;
     margin-bottom: 0px;
@@ -63,5 +67,6 @@ div {
   ul li {
     font-size: 12px;
     list-style: square;
+    padding: 5px 0;
   }
 }

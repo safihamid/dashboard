@@ -2,131 +2,129 @@
   data:
     unplugged:
       Unplug1:
-        title: Introduction to Computer Science
-        desc: This lesson will introduce the concept of Computer Science and explain
-          what a Computer Scientist does.  It will also give students an opportunity
-          to assume the role of a computer scientist.  By the end of the activity,
-          each student will have a take-home reminder of what he or she learned.  You
-          may be tempted to skip teaching young children the vocabulary words that
-          are associated with the lessons that follow, but presenting them in a fun
-          and playful light now is far more productive than waiting for more advanced
-          opportunities.
+        title: Introducción al Arte de las Ciencias de la Computación
+        desc: Esta clase dará una introducción al concepto de “Ciencias de la Computación”
+          y explicará qué hace un “informático”. Los estudiantes, tambièn tendrán
+          la chance de asumir el rol de un informático. Al finalizar la actividad,
+          cada estudiante tendrá un recordatorio para llevar a su hogar sobre qué
+          aprendió durante la clase. Tal vez Ud. crea que es conveniente evitar enseñar
+          a los niños más pequeños el complejo vocabulario asociado a las clases que
+          siguen, pero presentarlo de manera lùdica y divertida ahora es mucho màs
+          productivo que esperar otras oportunidades.
         video: HsXaVV6fFDY
         download: https://s3.amazonaws.com/cdo-videos/new/1-whatisCS-unpluggedactivity.mp4
         pdfs:
-        - unplug1
+        - unplug1-es-ES
       Unplug2:
-        title: Computational Thinking
-        desc: With nothing but paper and markers, students will learn the four steps
-          of computational thinking. After a brief introduction, students should be
-          split into groups where they will have to create directions for other students
-          to draw a specific monster (from a catalog of pre-selected monsters). The
-          entire task must be decomposed, then teams will analyze all monsters in
-          the catalog for patterns, abstract different details from the monsters,
-          then use that information to create an algorithm (directions) for another
-          team to draw a certain monster. Teams will then switch algorithms with another
-          group and draw the monster based on what that algorithm indicates. Is the
-          drawing what the original team intended?
+        title: Pensamiento computacional
+        desc: Con papel y fibrones, los estudiantes deben aprender los 4 pasos del
+          pensamiento computacional.  Después de una breve introducción, deben dividirse
+          en grupos y pensar instrucciones para dar a los otros grupos para dibujar
+          un monstruo específico (del catálogo de monstruos preseleccionados). La
+          tarea debe ser dividida, para que luego los equipos encuentren patrones
+          en todos los monstruos del catálogo, y abstraigan detalles similares entre
+          los monstruos. Deben usar esa información para crear un algoritmo (instrucciones)
+          para que otro equipo dibuje un monstruo específico. Los equipos deben intercambiar
+          algoritmos y dibujar un monstruo siguiendo el algoritmo que les toque. Analizar
+          si el dibujo coincide con lo que sus creadores pensaron.
         video: injJWiSA0pw
         download: https://s3.amazonaws.com/cdo-videos/new/3-computational-thinking-activity.mp4
         pdfs:
-        - unplug2
+        - unplug2-es-ES
       Unplug3:
-        title: Graph Paper Programming
-        desc: By programming one another to draw pictures, students will begin to
-          understand what programming is really about. The class will begin by students
-          instructing each other to color squares in on graph paper in an effort to
-          reproduce an existing picture.  If there's time, the lesson can conclude
-          with images that the students create themselves.
+        title: Programación en hoja cuadriculada
+        desc: Programando algunos dibujos, los estudiantes empezarán a entender de
+          qué trata la programación. La clase empezará haciendo que los estudiantes
+          intercambien instrucciones para colorear cuadrados en una hoja cuadriculada,
+          con el fin de reproducir una imagen en la hoja. La clase puede terminar
+          exhibiendo los dibujos que los estudiantes realizaron.
         video: 4e3fi_ls8CA
         download: https://s3.amazonaws.com/cdo-videos/new/4-graphpaperprog-activity.mp4
         pdfs:
-        - unplug3
+        - unplug3-es-ES
       Unplug4:
-        title: Algorithms
-        desc: This lesson covers algorithms.  Using tangram shapes and graph paper,
-          the first exercise will show how important it is to make each instruction
-          as clear and unambiguous as possible.  Afterward, the class will explore
-          how many ways you can fold paper into a rectangle, noting how some methods
-          can take more or fewer folds than others.
+        title: Algoritmos
+        desc: Esta clase cubre el tema algoritmos. Usando figuras de tangram y papel
+          cuadriculado, el primer ejercicio muestra qué tan importante es hacer a
+          cada instrucción lo más clara e inequívoca posible. Al final, la clase puede
+          explorar en cuántas formas se puede doblar un papel en un rectángulo, notando
+          cómo algunos métodos requieren menos pliegues que otros.
         video: gW_aPXjgBTc
         download: https://s3.amazonaws.com/cdo-videos/new/6-Algorithms-activity.mp4
         pdfs:
-        - unplug4
+        - unplug4-es-ES
       Unplug5:
-        title: Functions
-        desc: In this lesson, students will make a suncatcher out of string, beads,
-          and a special charm. The students will follow a series of repetitive steps,
-          then be asked to identify certain sets of "skills" that are duplicated several
-          times. Once those skills are defined, they will be called from a main program
-          and the whole beautiful process of creation will be recorded on a single
-          sheet of paper. The final program will be geared toward the entire class,
-          whatever their type of string, beads, and charms. To effectively allow for
-          this, students will need to "abstract out" the details of their specific
-          materials and create vague terms for an individual's supplies.  This use
-          of generic placeholders is a wonderful introduction to variables.
+        title: Funciones
+        desc: En esta clase, los estudiantes harán un collar hecho de cuerdas, cuentas
+          y un amuleto especial. Seguirán una serie de tareas repetitivas, y luego
+          se les pedirá que identifiquen ciertos conjuntos de “habilidades” que se
+          duplican varias veces. Una vez que esas habilidades fueron definidas, serán
+          llamadas desde un programa principal y el bello proceso de creación será
+          copiado en una sola pieza de papel. El programa final será escrito por toda
+          la clase, independientemente del tipo de cuerdas, cuentas o medallones.
+          Para efectivamente permitir esto, los estudiantes necesitarán “abstraer”
+          los detalles específicos entre los materiales y crear términos vagos para
+          los suministros de cada uno. El uso de huecos genéricos es una maravillosa
+          introducción a las variables.
         video: NAViNTHS3LU
         download: https://s3.amazonaws.com/cdo-videos/new/8-functions-activity.mp4
         pdfs:
-        - unplug5
+        - unplug5-es-ES
       Unplug6:
-        title: Conditions
-        desc: This is a class game.  After introducing the idea of conditionals, if-statements,
-          and loops, the class can practice together using a pre-written program,
-          a deck of cards, and luck of the draw.
+        title: Condicionales
+        desc: La clase trata de un juego.  Después de introducir la idea de condicionales,
+          sentencias “si”, y bucles, la clase puede practicar en conjunto el uso de
+          un programa ya escrito, con un mazo de tarjetas y suerte.
         video: yr6g0AWE7yw
         download: https://s3.amazonaws.com/cdo-videos/new/10-conditionals-activity.mp4
         pdfs:
-        - unplug6
+        - unplug6-es-ES
       Unplug7:
-        title: Song Writing
-        desc: Reading lyrics is a pretty intuitive venture for most students.  We'll
-          take an activity that's already common knowledge and shift it into a solid
-          education on defining and calling functions. Once students are familiar
-          with the define/call process, we will add the extra capabilities that come
-          along with passing parameters within those function calls.
+        title: Escribir canciones
+        desc: Leer letras de canciones puede ser una aventura intuitiva para los estudiantes.
+          Vamos a tomar una actividad que hace uso de conocimientos previos para dar
+          una buena clase sobre definición y llamada de funciones. Una vez que los
+          estudiantes se familiaricen con el proceso de definición/llamado, podemos
+          añadir complicaciones como pasaje de parámetros en los llamados a funciones.
         video: hx0tBso08aA
         download: https://s3.amazonaws.com/cdo-videos/new/12-songwriting-activity.mp4
         pdfs:
-        - unplug7
+        - unplug7-es-ES
       Unplug8:
-        title: Abstraction
-        desc: This lesson will introduce the concept of Computer Science and explain
-          what a Computer Scientist does.  It will also give students an opportunity
-          to assume the role of a computer scientist.  By the end of the activity,
-          each student will have a take-home reminder of what he or she learned.  You
-          may be tempted to skip teaching young children the complicated vocabulary
-          words that are associated with the lessons that follow, but presenting them
-          in a fun and playful light now is far more productive than waiting for more
-          advanced opportunities.
+        title: Liberación abstracta
+        desc: Vamos a combinar la rutina diaria de los estudiantes y un juego que
+          trata de juegos de palabras, para que la clase aprenda sobre la efectividad
+          que posee la abstracción.
         video: FGpzpYD9ZVs
         download: https://s3.amazonaws.com/cdo-videos/new/14-abstraction-activity.mp4
         pdfs:
-        - unplug8
+        - unplug8-es-ES
       Unplug9:
-        title: Relay Programming
-        desc: This lesson will take an idea from a previous activity (4. Graph Paper
-          Programming) and use those skills to emphasize the importance of completing
-          programs that operate in sequence and frequently checking programs for "bugs".
+        title: Programación bajo presión
+        desc: Esta lección tomará una idea de una actividad anterior (4. Programación
+          en hoja cuadriculada) y el uso de esas habilidades para hacer hincapié en
+          la importancia de completar los programas que funcionan con una determinada
+          secuencia y la importancia de comprobar frecuentemente la existencia de
+          errores (bugs) en los programas.
         video: FFpvtooUrzg
         download: https://s3.amazonaws.com/cdo-videos/new/16-relay-programming-activity.mp4
         pdfs:
-        - unplug9
+        - unplug9-es-ES
       Unplug10:
-        title: The Internet
-        desc: In this lesson, students will pretend to flow through the Internet,
-          all the while learning about web addresses, IPs and the DNS.
+        title: Internet
+        desc: En esta clase, los alumnos seguirán el flujo de Internet, mientras aprenden
+          sobre direcciones web, IPs y DNS.
         video: Zs26JgnWbTE
         download: https://s3.amazonaws.com/cdo-videos/new/18-internet-activity.mp4
         pdfs:
-        - unplug10
+        - unplug10-es-ES
       Unplug11:
-        title: Wrap-Up
-        desc: The final wrap-up in the first 20-hour series will help the class relive
-          all of their favorite moments, while giving them next steps that they can
-          take on their own if they are interested in continuing their computer science
-          journey.
+        title: Cierre
+        desc: Este cierre final en nuestra primera serie de 20 horas ayudará a la
+          clase a volver a vivir sus momentos favoritos, mientras se les dan los próximos
+          pasos para que puedan continuar, si están interesados, en continuar el viaje
+          a través de las Ciencias de la computación.
         video: Rbi7keldjZY
         download: https://s3.amazonaws.com/cdo-videos/new/20-wrapup-activity.mp4
         pdfs:
-        - unplug11
+        - unplug11-es-ES

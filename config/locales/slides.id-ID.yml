@@ -98,48 +98,48 @@
     flappy_intro:
       1:
         image: notes/flappy01.jpg
-        text: Hi, I'm Katie! One of the most exciting things about computer science
-          is that a computer program can be interactive.
+        text: Hi, I 'm Katie! Salah satu hal yang paling menarik tentang ilmu komputer
+          adalah bahwa sebuah program komputer bisa interaktif.
       2:
         image: notes/flappy02.jpg
-        text: Any time somebody clicks or taps or types on a computer or phone, that
-          generates an EVENT, and there's some code that decides what to do when an
-          EVENT occurs.
+        text: Jika seseorang mengklik atau mengetuk atau mengetik di komputer atau
+          telepon, yang menghasilkan sebuah EVENT, dan ada beberapa kode yang dapat
+          memutuskan apa yang harus dilakukan ketika ini terjadi.
       3:
         image: notes/flappy03.jpg
         text: 'Contohnya, Kamu bisa mendapatkan pesan ''EVEN-HANDLER'' isinya "ketika
-          tetikus ditekan, mainkan sebuah suara" '
+          maus ditekan, mainkan sebuah bunyi" '
       4:
         image: notes/flappy04.jpg
         text: Pernahkan kamu mendengar permainan FlappyBird? Dengan menggunakan 'Event
-          Handlers', kita akan belajar untuk memrogram FlappyBird buatan kita sendiri!
+          Handlers', kita akan belajar untuk memprogram FlappyBird buatan kita sendiri!
       5:
         image: notes/flappy05.jpg
-        text: The code you'll write involves dragging and dropping blocks that represent
-          commands for the computer. Under the hood, each of these blocks is represented
-          by real code.
+        text: Kode yang Anda akan tulis melibatkan mengambil blok yang mewakili perintah
+          untuk komputer. Didalam masing-masing blok, ada kode yang nyata.
       6:
         image: notes/flappy06.jpg
-        text: 'If you take a look at the workspace, there are some green blocks that
-          are filled in for you - these are "event handlers" '
+        text: 'Jika Anda melihat di ruang kerja (workspace), ada beberapa blok hijau
+          yang telah diisi - blok-bok ini dinamakan "event handlers" '
       7:
         image: notes/flappy07.jpg
-        text: If you want the bird to FLAP when you CLICK the mouse, you can do that
-          by attaching the "FLAP" block to the appropriate event handler, and now
-          in your game whenever you click the mouse, the bird will flap.
+        text: Jika Anda ingin burung mengepakkan sayap ketika Anda klik maus, Anda
+          dapat melakukannya dengan melampirkan blok "kepakkan sayap" ke "event handler"
+          tertentu, dan karena itu dalam permainan Anda setiap kali Anda mengklik
+          maus, burung akan mengepakkan sayapnya.
       8:
         image: notes/flappy08.jpg
-        text: In each puzzle of this activity we'll introduce new types of events
-          as green blocks on the workspace, and you can decide the appropriate blocks
-          to add in response to those events.
+        text: Dalam setiap teka-teki kegiatan ini kami akan memperkenalkan jenis baru
+          dari peristiwa sebagai blok hijau pada ruang kerja (workspace), dan Anda
+          dapat memutuskan blok mana yang harus ditempelkan sesuai "event"nya.
       9:
         image: notes/flappy09.jpg
-        text: When you see a drop down arrow like this, that means you can change
-          the settings - like what sound to play when flappy hits the ground.
+        text: Ketika Anda melihat menu seperti ini, itu berarti Anda dapat mengubah
+          pengaturan - seperti bunyi apa yang bermain ketika flappy menyentuh permukaan.
       10:
         image: notes/flappy10.jpg
-        text: In the final puzzle you'll be able to create your own game and share
-          it with your friends. Have fun!
+        text: Dalam teka-teki akhir Anda akan dapat membuat permainan Anda sendiri
+          dan berbagi dengan teman-teman Anda. Selamat bersenang-senang!
     loop_times:
       1:
         image: notes/hoc2_1.jpg

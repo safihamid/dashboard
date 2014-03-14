@@ -101,8 +101,8 @@
     remember: Nhớ mật khẩu
     submit: Đăng nhập
   signin:
-    try_hoc: Try one Hour of Code first
-    try_20hours: Try our 20 hour Intro to Computer Science
+    try_hoc: Hãy thử lập trình một giờ đầu tiên
+    try_20hours: 20 tiếng để xem bài giới thiệu về khoa học máy tính của chúng tôi
   password:
     reset_form:
       title: Quên mật khẩu?
@@ -122,13 +122,13 @@
     added_teacher: '% (tên) được thêm như giáo viên của bạn'
     registered: You've registered for %{section_name}.
     error:
-      signed_in: Please signout before proceeding
+      signed_in: Xin vui lòng đăng xuất trước khi tiếp tục
       username_not_found: Tên người sử dụng % {username} không tìm thấy
       username_in_use: '% {tên người sử dụng} đã được chọn, xin vui lòng chọn một
         tên khác'
       no_teacher: Không thể tìm thấy bất cứ ai đã đăng nhập bằng '% {teacher_email_or_code}'.
         Xin vui lòng yêu cầu họ đăng nhập ở đây và sau đó thử thêm chúng một lần nữa
-      blank_code: Please enter a code or your teacher's email address
+      blank_code: Vui lòng nhập một mã số hoặc địa chỉ email của giáo viên bạn
     mail:
       invite_student:
         subject: Tham gia một lớp học với % {giáo viên_tên} tại Code.org!
@@ -147,7 +147,7 @@
     provider: 'Provider:'
     code: 'Code:'
     redeem_header: 'To redeem:'
-    donorschoose_how_to: How to use your code
+    donorschoose_how_to: Làm thế nào để sử dụng mã
     success: Your prize was succesfully redeemed, see code below.
     error: Your prize could not be redeemed, please try again.
     error_us_only: Giải thưởng chỉ được trao cho người sử dụng ở Mỹ.
@@ -155,14 +155,16 @@
     error_already_redeemed: Your prize has already been redeemed.
     no_prizes_available: We're sorry, but we currently have no prizes available.
     teacher_info_required: 'Teacher prizes require school name and address information:'
-    teacher_email_required: 'Teacher prizes require a confirmed email address:'
+    teacher_email_required: 'Giải thưởng giáo viên yêu cầu một địa chỉ thư điện tử
+      đã được xác nhận:'
     confirm:
       title: Please Confirm
       'no': false
       'yes': true
       msg: Are you sure you want to claim the %{prize_name} prize?
       msg_student: 'NOTE: You can only choose one type of prize.'
-      msg_publicschool: Please confirm that you are a U.S. public school teacher.
+      msg_publicschool: Xin vui lòng xác nhận rằng bạn là một giáo viên trường công
+        lập Hoa Kỳ.
       msg_visit_website: Visit website
     providers:
       apple_itunes: $10 iTunes Gift Card
@@ -227,8 +229,8 @@
     access_denied: You do not have access to this %{model}.
   nav:
     header:
-      finished_hoc: I've finished my Hour of Code
-      sign_in_to_save: Sign in to save progress
+      finished_hoc: Tôi đã hoàn thành giờ mã của tôi
+      sign_in_to_save: Đăng nhập để lưu lại những tiến bộ của bạn
     user:
       classroom: Học sinh của tôi
       label: Hi %{username}
@@ -246,7 +248,7 @@
       puzzle_map: Các bước
       prizes: Thu thập tất cả  %{total_trophies} cúp và giành giải thưởng!
       prize_earned: All %{total_trophies} trophies collected. Prize won!
-      prize_us_only: (U.S. students only)
+      prize_us_only: (Chỉ sinh viên Hoa Kỳ)
       prizes_link: Thông tin thêm
   teacher:
     title:
@@ -354,9 +356,9 @@
   slow_loading: Điều này mất nhiều thời gian hơn bình thường...
   try_reloading: Hãy thử tải lại trang
   next_stage: Hoàn thành! Tiếp tục màn tiếp theo
-  download_pdf: Open Lesson Plan
+  download_pdf: Mở bài học
   share_code:
-    title: Click 'Run program' to see my program in action
+    title: Nhấp vào 'Chạy chương trình' để xem chương trình của tôi hoạt động
     flappy_og_title: Hãy kiểm tra Game Flappy của tôi
     og_description: Tôi đã viết mã của mình với Code.org
   builder:

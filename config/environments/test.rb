@@ -20,6 +20,10 @@ Dashboard::Application.configure do
   config.consider_all_requests_local       = true
   config.action_controller.perform_caching = false
 
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.default_url_options = { :host => 'test.mail.host' }
+  config.action_mailer.delivery_method = :smtp
+
   # Raise exceptions instead of rendering exception templates.
   config.action_dispatch.show_exceptions = false
 
@@ -33,4 +37,7 @@ Dashboard::Application.configure do
 
   # Print deprecation notices to the stderr.
   config.active_support.deprecation = :stderr
+
+  # Whether or not to display pretty blockly.
+  config.pretty_blockly = true
 end

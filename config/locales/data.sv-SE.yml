@@ -341,6 +341,9 @@
         bounce_10: There is a now a goal at the top. Attach "increment score" blocks
           to the the "when ball in goal" and "when ball misses paddle" blocks to make
           a game.
+        bounce_11: You can now attach blocks to the "when game starts" block. Try
+          changing the speed of the paddle and the ball and see how many points you
+          can score before your opponent scores twice.
         Custom_builder: Drag blocks from the toolbox to the workspace to draw the
           level you wish to create. Press "Run Program" when you are ready.
         flappy_1: Attach a block to the "when click" block, then press "Run Program"
@@ -361,6 +364,11 @@
           a smaller or larger amount.
         flappy_7: Next, try changing the scene by attaching another block to the "when
           Run is clicked".
+        flappy_8: You can set visuals anytime, not just when the game starts. Try
+          setting a RANDOM scene when other events happen, for example, when passing
+          an obstacle.
+        flappy_9: To mix things up, when hitting an obstacle or the ground, instead
+          of ending the game try setting the score back to 0.
         flappy_11: Create your own Flappy game and share it. You can change the visuals,
           or even the rules. Try changing visuals each time Flappy passes an obstacle.
           Or make Flappy invincible so he never dies.

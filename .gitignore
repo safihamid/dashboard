@@ -48,3 +48,9 @@ public/blockly
 
 # Private staging ground
 config/deploy/private.rb
+
+# Ignore all emacs backup files
+*~
+
+# Ignore coverage output
+/coverage

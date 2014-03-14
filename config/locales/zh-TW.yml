@@ -47,8 +47,8 @@
     facebook: Facebook
     windowslive: Windows Live
     forgot_password: 忘記了您的密碼嗎？
-    need_confirmation: 沒有收到確認的說明嗎？
-    need_unlock: 沒收到解鎖說明嗎？
+    need_confirmation: 沒有收到確認說明嗎？
+    need_unlock: 沒有收到解鎖說明嗎？
   signup_form:
     overview: 這 20 小時課程將介紹電腦科學和程式設計的核心概念。本課程是設計給 K-8 年級的學生在教室內使用，但對所有年齡的人來說，也能把本課程當成興趣來學習。
     no_signup_header: 不想註冊嗎？
@@ -237,10 +237,8 @@
     rollup: 進度表
     activity: 最近的班級活動
     user_not_found: 無法找到該名老師或學生
-    cant_remove_student_no_email: '%{student_name} cannot be removed as your student
-      because %{student_name} has not registered an e-mail address'
-    cant_remove_teacher_no_email: '%{teacher_name} cannot be removed as your teacher
-      because you have not registered an e-mail address'
+    cant_remove_student_no_email: 因為 %{student_name} 並未註冊電子郵件，故 %{student_name} 無法作為你的學生被移除
+    cant_remove_teacher_no_email: 因為您尚未註冊電子郵件，故 %{teacher_name} 無法作為你的老師被移除的
     student_teacher_disassociated: '%{student_name}的老師%{teacher_name}已經被移除'
   user:
     email_confirm_needed: 電子郵件地址尚未被確認：

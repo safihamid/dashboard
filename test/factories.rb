@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :user do
     sequence(:username) { |n| "testuser#{n}" }
-    email { "#{username}@example.com" }
+    email { "#{username}@example.com.xx" }
     password "00secret"
     locale 'en-US'
     name { "#{username} Codeberg" }
@@ -10,6 +10,15 @@ FactoryGirl.define do
     factory :admin do
       admin true
     end
+
+    factory :teacher do
+      user_type User::TYPE_TEACHER
+    end
+  end
+
+  factory :section do
+    sequence(:name) { |n| "Section #{n}"}
+    user
   end
 
   factory :game do

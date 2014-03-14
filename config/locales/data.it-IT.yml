@@ -4,38 +4,38 @@
       name:
         20-hour:
           desc: Corso introduttivo di informatica per scuole elementari e medie inferiori
-          Unplug1: Fase 1
-          Maze: Fase 2
-          Unplug2: Fase 3
-          Unplug3: Fase 4
-          Artist: Fase 5
-          Unplug4: Fase 6
-          Artist2: Fase 7
-          Unplug5: Fase 8
-          Farmer: Fase 9
-          Unplug6: Fase 10
-          Artist3: Fase 11
-          Unplug7: Fase 12
-          Farmer2: Fase 13
-          Unplug8: Fase 14
-          Artist4: Fase 15
-          Unplug9: Fase 16
-          Farmer3: Fase 17
-          Unplug10: Fase 18
-          Artist5: Fase 19
-          Unplug11: Fase 20
+          Unplug1: Lezione 1
+          Maze: Lezione 2
+          Unplug2: Lezione 3
+          Unplug3: Lezione 4
+          Artist: Lezione 5
+          Unplug4: Lezione 6
+          Artist2: Lezione 7
+          Unplug5: Lezione 8
+          Farmer: Lezione 9
+          Unplug6: Lezione 10
+          Artist3: Lezione 11
+          Unplug7: Lezione 12
+          Farmer2: Lezione 13
+          Unplug8: Lezione 14
+          Artist4: Lezione 15
+          Unplug9: Lezione 16
+          Farmer3: Lezione 17
+          Unplug10: Lezione 18
+          Artist5: Lezione 19
+          Unplug11: Lezione 20
         Hour of Code:
           desc: L'Ora di Codice
-          Maze: Fase 1
+          Maze: Lezione 1
         Edit Code:
           desc: Modifica il codice
-          MazeEC: Fase 1
+          MazeEC: Lezione 1
         2014 Levels:
           desc: Puzzle del 2014 (versione beta)
-          MazeEC: Fase 1
+          MazeEC: Lezione 1
         Flappy Levels:
           desc: Flappy Bird
-          MazeEC: Fase 1
+          MazeEC: Lezione 1
     game:
       name:
         Unplug1: Introduzione all'informatica
@@ -124,17 +124,17 @@
         turtle_1_1: Ciao, io sono un artista. Puoi scrivere del codice per farmi disegnare
           quasi qualunque cosa. Usa alcuni blocchi per farmi disegnare lungo le linee
           grigie dell'immagine.
-        turtle_1_2: 'Ora, disegna un quadrato. NOTA: usa il tuo colore preferito scegliendolo
-          col nuovo blocco "imposta colore".'
-        turtle_1_3: Fai un quadrato usando solo 3 blocchi.
+        turtle_1_2: 'Ora, disegna un quadrato. Suggerimento: usa il tuo colore preferito
+          scegliendolo col nuovo blocco "imposta colore".'
+        turtle_1_3: Disegna un quadrato usando solo 3 blocchi.
         turtle_1_4: 'Disegna un triangolo i cui lati sono tutti di colori diversi,
           usando l''opzione "colore casuale" che sceglie ogni volta un colore diverso.
-          Suggerimento: devi capire quando girare cliccando sul numero nel blocco
+          Suggerimento: devi capire di quanto girare cliccando sul numero nel blocco
           "gira".'
         turtle_1_5: Ora, per fare esercizio, disegna un triangolo e poi un quadrato
-          per raffigurare una busta.
+          in modo da riprodurre una busta.
         turtle_1_6: 'Riesci a capire come disegnare il triangolo e il quadrato? Suggerimento:
-          disegna prima il triangolo, poi cerca di capire quanto devi girare prima
+          disegna prima il triangolo, poi cerca di capire di quanto devi girare prima
           di iniziare a disegnare il quadrato.'
         turtle_1_7: 'Ok, ora è un po'' più difficile: vedi se riesci a disegnare questi
           occhiali verdi. I quadrati hanno 100 pixel su ciascun lato, e sono distanti
@@ -163,26 +163,26 @@
         turtle_4_5: 'Ecco lo stesso codice del puzzle precedente, ma ripetendo i giri
           36 volte. Di quanti gradi dovrebbe essere ogni giro? (Suggerimento: dopo
           360 gradi di rotazione il disegno diventerà un cerchio completo)'
-        turtle_4_6: Usando solo 3 blocchi, riesci a disegnare un quadrato con i lati
-          lunghi 20 pixel?
-        turtle_4_7: 'Ecco il codice del puzzle precedente per disegnare il quadrato.
-          Riesci a ripeterlo per disegnare 10 quadrati vicini che fanno una scaletta?
-          Suggerimento: hai bisogno solo di altri 2 blocchi.'
+        turtle_4_6: Usando solo 3 blocchi, riesci a disegnare un quadratino con i
+          lati lunghi 20 pixel?
+        turtle_4_7: 'Ecco il codice del puzzle precedente per disegnare il quadratino
+          da 20 pixel. Come puoi "ripeterlo" per disegnare 10 quadratini vicini che
+          formano una scaletta? Suggerimento: hai bisogno solo di altri 2 blocchi.'
         turtle_4_8: Ecco la soluzione del puzzle precedente. Riesci ad aggiungere
           solo 2 blocchi in più per completare il disegno?
         turtle_4_9: Ecco la soluzione del puzzle precedente. Di quanti gradi devi
-          girare per completare il disegno? (Probabilmente devi provare ad indovinare
-          un paio di volte)
-        turtle_4_10: Ecco la soluzione del puzzle precedente. Quante volte devi ripeterla
-          per completare il disegno?
+          girare dopo aver disegnato una scaletta per completare il disegno? (Probabilmente
+          devi provare ad indovinare un paio di volte)
+        turtle_4_10: Ecco la soluzione del puzzle precedente. Inserisci il numero
+          giusto di ripetizioni per completare il disegno.
         turtle_4_11: Prova a cambiare i numeri nei blocchi "gira" e "ripeti" per fare
           modelli differenti. Oppure, prova a cambiare il resto del codice per disegnare
           tutto ciò che vuoi.
         maze_karel_1_1: Ciao, io sono un contadino. Ho bisogno del tuo aiuto per livellare
           il terreno nella mia fattoria, in modo che sia pronto per la semina. Spostami
           verso i mucchi di terra e usa il blocco "rimuovi" per rimuoverli.
-        maze_karel_1_2: Dopo, spostami verso la buca e riempila con 2 palate di terra,
-          usando il blocco "riempi".
+        maze_karel_1_2: Adesso, spostami verso la buca e riempila con 2 palate di
+          terra, usando il blocco "riempi".
         maze_karel_1_3: Spostami verso il mucchio di terra e dimmi quante palate servono
           per rimuoverla usando il minor numero possibile di blocchi.
         maze_karel_1_4: 'Riesci ad aiutarmi a rimuovere tutti e quattro i mucchi di
@@ -190,24 +190,25 @@
         maze_karel_1_5: 'Aiutami a riempire tutte queste buche con 5 palate di terra.
           Suggerimento: puoi mettere un blocco "ripeti" all''interno del blocco "mentre".'
         maze_karel_1_6: Rimuovi tutti i mucchi di terra, usando il minor numero possibile
-          di blocchi. Usa le nuove opzioni nel menu a discesa del blocco "mentre"
-          per sapere se sto sopra un mucchio o sopra una buca.
-        maze_karel_1_7: Wow, ho trovato una buca davvero profonda! Non so quante palate
-          di terra saranno necessarie. Riesci a scrivere un programma che la riempie
-          fino a quando il terreno è livellato?
+          di blocchi.
+        maze_karel_1_7: 'Wow, ho trovato una buca davvero profonda! Non so quante
+          palate di terra saranno necessarie. Riesci a scrivere un programma che la
+          riempie fino a quando il terreno è livellato? Suggerimento: usa le opzioni
+          nel menu a discesa del blocco "mentre".'
         maze_karel_1_8: Aiutami a riempire la buca alla fine del mio terreno, utilizzando
           il minor numero possibile di blocchi.
-        maze_karel_1_9: 'Fammi rimuovere tutti questi mucchi di terra. Prova ad usare
-          il minor numero possibile di blocchi. Suggerimento: prova ad usare un blocco
-          "mentre".'
+        maze_karel_1_9: Fammi rimuovere tutti questi mucchi di terra. Prova ad usare
+          il minor numero possibile di blocchi. Ce la fai usando il blocco "mentre"
+          e senza usare il blocco "ripeti"?
         maze_karel_1_10: Sto lavorando di sera, fuori è buio e non posso dire quanto
-          grandi sono i mucchi. Adesso non ho a disposizione tutte le opzioni che
-          avevo sul blocco "mentre". Spostami lungo il campo e se c'è un mucchio rimuovilo.
+          grandi sono i mucchi. Questa volta non ho a disposizione le opzioni che
+          avevo prima sul blocco "mentre". Spostami lungo il campo e se c'è un mucchio
+          rimuovilo.
         maze_karel_1_11: 'È ancora buio fuori. Spostami lungo il terreno. Se c''è
           un mucchio, rimuovilo e se c''è una buca, riempila. Suggerimento: usa il
           menu a discesa delle opzioni del blocco "se".'
         turtle_2_1: 'Ciao. Io artista zombie. Mi piace disegnare! Aiutami a disegnare
-          un quadrato con un colore speciale. Importante: i blocchi sono sempre gli
+          un quadrato con un colore speciale. Attenzione: i blocchi sono sempre gli
           stessi, ma ora sono stati organizzati in categorie.'
         turtle_2_2: Benvenuto all'uso di funzioni che consentono di definire nuovi
           blocchi! Prova il nuovo blocco "disegna un quadrato", che si trova nella
@@ -365,20 +366,23 @@
         bounce_10: Adesso c'è una rete in alto. Attacca i blocchi "aumenta il punteggio"
           ai blocchi "quando la palla è in rete" e "quando la palla manca la racchetta"
           per costruire un gioco.
+        bounce_11: You can now attach blocks to the "when game starts" block. Try
+          changing the speed of the paddle and the ball and see how many points you
+          can score before your opponent scores twice.
         Custom_builder: Sposta i blocchi dalla cassetta degli attrezzi all'area di
           lavoro per disegnare il livello che vuoi creare. Premi "Esegui il programma"
           quando hai fatto.
-        flappy_1: Attach a block to the "when click" block, then press "Run Program"
-          and click or tap to move Flappy to the target.
+        flappy_1: Attacca un blocco "quando fa clic su" e poi premere "Esegui programma".
+          Fare clic o toccare lo schermo per spostare Flappy alla destinazione.
         flappy_2: Now we've added some ground.  Attach a block to the "when hit the
           ground" block, then press "Run Program". To pass this puzzle, your code
           needs to 'END GAME' when Flappy crashes into the ground.
-        flappy_3: The "when Run is clicked" block allows you to run code when your
-          game first starts.  Try setting the level speed and flapping to the target.
-        flappy_4: Flappy will fly through obstacles unless you write code to make
-          him crash. Attach a block to the "when hit an obstacle" block. To pass the
-          puzzle, your code needs to 'END GAME' and make Flappy crash into the first
-          pipe so he can reach the target.
+        flappy_3: Il blocco "quando gioco inizia" permette di eseguire il codice quando
+          il gioco inizia.  Provare impostando il livello velocità e volare alla destinazione.
+        flappy_4: Flappy volerà attraverso gli ostacoli, a meno che non si scrive
+          del codice per farlo sbattere. Allegare un blocco al blocco "quando ha colpito
+          un ostacolo". Il tuo codice deve essere 'END GAME' quando Flappy si schianta
+          contro la prima serie di tubi.
         flappy_5: Aggiungiamo un tabellone per contare i punti quando Flappy supera
           gli ostacoli. Aggiungilo al blocco "quando passa un ostacolo" e quindi segna
           un punto facendo volare Flappy attraverso la prima serie di tubi. DA RIVEDERE
@@ -386,6 +390,11 @@
           di una quantità più piccola o più grande. DA RIVEDERE
         flappy_7: Next, try changing the scene by attaching another block to the "when
           Run is clicked".
+        flappy_8: You can set visuals anytime, not just when the game starts. Try
+          setting a RANDOM scene when other events happen, for example, when passing
+          an obstacle.
+        flappy_9: To mix things up, when hitting an obstacle or the ground, instead
+          of ending the game try setting the score back to 0.
         flappy_11: Crea la tua versione del gioco Flappy e condividilo. Puoi modificare
           la grafica, o anche le regole. Prova a cambiare grafica ogni volta che Flappy
           supera un ostacolo. O rendi Flappy invincibile, così che non muoia mai.

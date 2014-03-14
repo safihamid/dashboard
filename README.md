@@ -1,9 +1,10 @@
+*Note: dashboard is a component of [the learn.code.org curriculum](https://github.com/code-dot-org/cdo-curriculum). See the [root umbrella repository](https://github.com/code-dot-org/cdo-curriculum) which includes instructions for setting up a full learn.code.org build which includes the dashboard and blockly.*
+
 ## Development Quick Start Readme
 
 ### Background
 We are building drag-drop programming tutorials to allow a beginner to learn very basic programming concepts (sequencing, if-then statements, for loops, variables, functions), but using drag-drop programming.
 The visual language we're using is based on Blockly (and open-source drag-drop language that spits out XML or JavaScript or Python). 
-
 
 The end-product is a 1-hour tutorial to be used during the Hour of Code campaign, for anybody to get a basic intro to Computer Science, AND a 20-hour follow-on tutorial and teacher-dashboard, meant for use in K-8 (elementary and middle school) classrooms.
 
@@ -68,6 +69,7 @@ The application sometimes sends an email, for example when a student attaches to
 installed on your system.  Mailcatcher should not be added to the Gemfile, rather it should be manually installed and run, like so:
 ```shell
 gem install mailcatcher
+rbenv rehash  # if using rbenv
 mailcatcher
 ```
 (Note that you might need to open a new shell session for it to be found in the path.)

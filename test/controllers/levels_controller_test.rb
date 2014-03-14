@@ -22,11 +22,12 @@ class LevelsControllerTest < ActionController::TestCase
 
   test "should create level" do
     assert_difference('Level.count') do
-      post :create, game_id: @level.game, level: {  }
+      post :create_custom, :name => "NewCustomLevel", :program => "<hey>"
     end
 
-    level = assigns(:level)
-    assert_redirected_to game_level_path(level.game, level)
+    assert_equal "{ \"url\": \"http://test.host/s/5/level/1\"}", @response.body
+#    level = assigns(:level)
+#    assert_redirected_to game_level_path(level.game, level)
   end
 
   test "should show level" do

@@ -107,45 +107,49 @@
         maze_2_13: 'Use the new "if" block to let me decide when to turn. Hint: you
           only need one more block, but learn how we set it up so you can do it on
           your own next time.'
-        maze_2_14: Ok, this is just like the last puzzle, but you need to remember
-          how you used the "if" block and the "repeat" block together.
-        maze_2_15: Me want sunflower! Use an "if" block to get me there with the fewest
-          number of blocks.
+        maze_2_14: OK, đây là những câu đố cuối cùng, nhưng bạn cần phải nhớ làm thế
+          nào bạn sử dụng khối "nếu" và khối "lặp lại" cùng với nhau.
+        maze_2_15: Tôi muốn hoa hướng dương! Sử dụng một khối "nếu" để làm cho tôi
+          có thể có hoa hướng dương với số khối ít nhất.
         maze_2_16: Ok, let's do that again for practice - this isn't very different,
           but watch out for the chompers!
-        maze_2_17: The "If-else" blocks checks a condition, and then does one thing
-          OR another. To get me to the sunflower try to use this new block.
-        maze_2_18: One more practice of the "if-else" block, can you get it right
-          on your first try?
-        maze_2_19: Can you add just 3 blocks to help me solve a more complex maze?
-          If you do it right, I can walk any curvy path no matter the length.
-        turtle_1_1: Hi, I'm an artist. You can write code to make me draw almost anything.
-          Use a few blocks to make me draw over the gray lines in the picture.
-        turtle_1_2: 'Now, draw a square. NOTE: use your favorite color by picking
-          it in the new "set color" block.'
-        turtle_1_3: Make a square using only 3 blocks.
+        maze_2_17: Các khối "Nếu-khác" kiểm tra một điều kiện, để làm một việc này
+          hay một việc khác. Để tôi có được hoa hướng dương, hãy thử sử dụng khối
+          mới.
+        maze_2_18: Thêm một bài thực hành nữa với khối "nếu-khác" nào, bạn có thể
+          sử dụng khối "nếu-khác" ngay được không?
+        maze_2_19: Bạn có thể thêm chỉ 3 khối để giúp tôi giải quyết một mê cung phức
+          tạp hơn được không? Nếu bạn làm điều đó đúng, tôi có thể đi bộ trên con
+          đường cong và không có vấn đề với chiều dài.
+        turtle_1_1: Xin chào, tôi là một nghệ sĩ. Bạn có thể viết mã để cho tôi vẽ
+          ra bất cứ hình gì. Sử dụng một vài khối để làm cho tôi vẽ theo các đường
+          dây màu xám trong hình.
+        turtle_1_2: 'Bây giờ, vẽ một hình vuông. Lưu ý: sử dụng màu sắc yêu thích
+          của bạn bằng cách chọn nó trong khối mới "thiết lập màu".'
+        turtle_1_3: Vẽ một hình vuông, chỉ sử dụng 3 khối.
         turtle_1_4: 'Draw a triangle whose sides are all in different colors, using
           the "random color" option that picks a different color each time. Hint:
           you''ll have to figure out how far to turn by clicking on the number in
           the turn block.'
-        turtle_1_5: Now, for practice, draw a triangle and then a square to draw an
-          envelope.
+        turtle_1_5: Bây giờ, để thực hành, vẽ một hình tam giác và sau đó là một hình
+          vuông để vẽ một phong bì.
         turtle_1_6: 'Can you figure out how draw this triangle and square? Hint: Do
           the triangle first, then figure out how much to turn before drawing the
           square.'
-        turtle_1_7: Ok, let's make it a bit harder - see if you can draw these green
-          glasses. The squares are 100 pixels on each side, and they're 50 pixels
-          apart. Don't forget to draw in green!
-        turtle_1_8: Ok, try to figure out what happens if you run this code (or press
-          "Run" to try it). Then, repeat it enough times to complete the drawing.
-          The colors will be different every time.
-        turtle_1_9: Can you figure out what number to replace the question marks with
-          to draw a circle?
-        turtle_1_10: 'You made it! Now, draw anything you want. Some fun ideas: a
-          stick figure, snowflake, or spiral. Also try the new "set width" block.
-          Have fun!'
-        turtle_4_1: 'Can you draw a triangle (with edges of 100 pixels) with only
-          3 blocks? Hint: use a "repeat" block.'
+        turtle_1_7: OK, chúng ta hãy làm cho nó khó khăn hơn một chút - xem nếu bạn
+          có thể vẽ các ô kính màu xanh lá cây. Các ô vuông độ dài là 100 điểm ảnh
+          mỗi cạnh, và khoảng cách giữa chúng là 50 pixel. Đừng quên vẽ màu xanh lá
+          cây!
+        turtle_1_8: Được rồi, cố gắng nhìn xem những gì sẽ xảy ra nếu bạn chạy mã
+          này (hoặc nhấn "Chạy" để thử nó). Sau đó, lặp lại nó đủ số lần để hoàn tất
+          bản vẽ. Các màu sắc sẽ khác nhau mỗi lần.
+        turtle_1_9: Bạn hãy tìm ra số để thay thế các ký hiệu chấm hỏi để vẽ một vòng
+          tròn?
+        turtle_1_10: 'Bạn đã làm nó! Bây giờ, vẽ bất cứ cái gì bạn muốn. Một số thú
+          vị ý tưởng: một nhân vật dính, bông tuyết hoặc xoắn ốc. Cũng thử khối mới
+          "thiết lập chiều rộng". Chúc vui vẻ!'
+        turtle_4_1: 'Bạn có thể vẽ một hình tam giác (với mỗi cạnh là 100 điểm ảnh)
+          với chỉ 3 khối? Gợi ý: sử dụng một khối "lặp lại".'
         turtle_4_2: 'Try adding one block to complete this puzzle. Hint: we''ve provided
           blocks to draw 2 identical triangles, you need to put a "turn" in between,
           and decide out how far to turn.'
@@ -296,8 +300,8 @@
         maze_karel_debug_function_3: 'Edit this program so I''ll remove all the piles
           on my field. '
         turtle_5_1: Thử chạy chương trình này, và tạo vài thay đổi để xem điều gì
-          sẽ xảy ra. Bạn có thể tìm ra làm thế nào mà nó hoạt động? (Hoặc xóa nó và
-          thay thế nó bằng một cái gì đó hoàn toàn khác)
+          sẽ xảy ra. Bạn có thể tìm ra cách mà nó hoạt động? (Hoặc xóa nó và thay
+          thế nó bằng một cái gì đó hoàn toàn khác)
         turtle_5_2: Try running this program, and make changes to see what happens.
           Can you figure out how it works? (Or delete it and replace it with something
           totally different)
@@ -333,6 +337,9 @@
         bounce_10: There is a now a goal at the top. Attach "increment score" blocks
           to the the "when ball in goal" and "when ball misses paddle" blocks to make
           a game.
+        bounce_11: You can now attach blocks to the "when game starts" block. Try
+          changing the speed of the paddle and the ball and see how many points you
+          can score before your opponent scores twice.
         Custom_builder: Drag blocks from the toolbox to the workspace to draw the
           level you wish to create. Press "Run Program" when you are ready.
         flappy_1: Attach a block to the "when click" block, then press "Run Program"
@@ -353,6 +360,11 @@
           a smaller or larger amount.
         flappy_7: Next, try changing the scene by attaching another block to the "when
           Run is clicked".
+        flappy_8: You can set visuals anytime, not just when the game starts. Try
+          setting a RANDOM scene when other events happen, for example, when passing
+          an obstacle.
+        flappy_9: To mix things up, when hitting an obstacle or the ground, instead
+          of ending the game try setting the score back to 0.
         flappy_11: Create your own Flappy game and share it. You can change the visuals,
           or even the rules. Try changing visuals each time Flappy passes an obstacle.
           Or make Flappy invincible so he never dies.
@@ -375,7 +387,7 @@
         loop_until: Repeat Until Block
         if: If Block
         if_else: If/else Block
-        function: Functions
+        function: Hàm số
         loop_while: While Block
         loop_for: Counter Block
         parameters: Functions with Parameters

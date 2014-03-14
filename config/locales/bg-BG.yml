@@ -19,8 +19,8 @@
       placeholder: Код (ABCDEF) или имейл (teacher@school.edu)
     submit: Добавяне на учител
   add_hint_form:
-    placeholder: Please enter your hint here
-    submit: Add hint
+    placeholder: Моля, въведете вашия съвет тук
+    submit: Добавяне на подсказване
   appname: Code.org
   stage: Етап
   puzzle: Пъзел
@@ -32,7 +32,7 @@
   try_hoc: 'Опитайте ''Часът на Кодирането'', натиснете тук >> '
   try_k8intro: Или опитайте нашите начални встъпителни курсове по компютърни науки
     (15-25 часа)
-  k8intro: K-8 Intro to Computer Science Course (15-25 hours)
+  k8intro: K-8 представяне на курс по компютърни науки (15-25 часа)
   already_started: 'Вече сте започнали? Продължете от тук >> '
   demos: 'Администратор: Всички демонстрации'
   continue: Продължи
@@ -76,8 +76,8 @@
       Вижте ЧЗВ за повече ограничения</a>)'
     teacher_pitch: Научи въведението K-8 за компютърни науки в класната ти стая
     teacher_title: Регистрация за Учители/Възпитатели
-    student_pitch: 'Beyond 1 hour: try our K-8 Intro to Computer Science'
-    student_title: Регистрирайте се
+    student_pitch: 'След 1 час: опитайте нашето K-8 Въведение в компютърни науки'
+    student_title: регистрация
     school_name: Име на училище (по желание)
     school_address: Адрес на училището (по избор)
     address_placeholder: адрес, град, държава, пощенски код
@@ -96,14 +96,14 @@
       родител или законен настойник разрешава да използвам услугите на Code.org .
     teacher_terms: Съгласен съм с условията на Code.org  за ползване.
   signin_form:
-    title: Вход
+    title: Вече имате профил? Влизане
     login: Имейл или потребителско име
     password: Парола
     remember: Запомни ме
     submit: Вход
   signin:
-    try_hoc: Try one Hour of Code first
-    try_20hours: Try our 20 hour Intro to Computer Science
+    try_hoc: Опитайте един час програмиране първо
+    try_20hours: Опитайте нашите 20 часа въведение в компютърни науки
   password:
     reset_form:
       title: Забравена парола?
@@ -116,14 +116,11 @@
       submit: Смяна на паролата ми
   welcome_email:
     subject: Присъединете се към моя клас (на Code.org)
-    body: |
-      Click the link below to sign up for computer science tutorials on Code.org (with me as your "teacher"):
-
-      %{link}
-
-      The tutorials are fun, visually engaging, and teach the basic concepts of computer science using a simple, guided, game-like experience. Learn to code from Bill Gates, Mark Zuckerberg, Angry Birds, and Plants vs. Zombies! :-)
-
-      %{name}
+    body: Щракнете върху връзката по-долу за да се регистрирате за уроци по компютърни
+      науки в Code.org (с мен като вашия "учител"):%{link}. Уроците са забавни, визуално
+      привлекателни и ще ви научат на основните понятия в компютърните науки, с помощта
+      на прости съвети и игри. Научете се да код от Бил Гейтс, Марк Зукерберг, Angry
+      Birds, и Plants vs. Zombies! :-) %{name}
   follower:
     invite_sent: Поканата изпратена
     added_teacher: '%{name}, добавен като ваш учител'
@@ -134,46 +131,46 @@
       username_in_use: Името %{username} вече е заето, моля изберете друго
       no_teacher: Не е намерен никой регистриран с '%{teacher_email_or_code}'. Моля
         помолете ги да се регистрират тук и тогава се опитайте да ги добавите отново
-      blank_code: Please enter a code or your teacher's email address
+      blank_code: Моля въведете код или имейл адрес  на учителя си
     mail:
       invite_student:
-        subject: Join a class with %{teacher_name} at Code.org!
+        subject: Присъединете се към един клас с %{teacher_name} на Code.org!
       student_disassociated:
-        subject: 'Code.org notification: %{student_name} is no longer associated as
-          your student.'
+        subject: 'Code.org уведомление: %{student_name} вече не свързан като ваш ученик.'
       teacher_disassociated:
-        subject: 'Code.org notification: %{teacher_name} is no longer associated as
-          your teacher.'
+        subject: 'Code.org уведомление: %{teacher_name} вече не е свързан като ваш
+          учител.'
   reports:
     error:
-      access_denied: You don't have access to this person's stats
+      access_denied: Нямате достъп до статистиката на този човек
   redeem_prizes:
     title: 'Redeem Prizes: %{name}'
     provider: 'Provider:'
     code: 'Code:'
     redeem_header: 'To redeem:'
-    donorschoose_how_to: How to use your code
+    donorschoose_how_to: Как да използвате вашия код
     success: Your prize was succesfully redeemed, see code below.
     error: Your prize could not be redeemed, please try again.
-    error_us_only: The prize offer is only valid for U.S. users.
-    error_not_earned: You have not yet earned this prize.
-    error_already_redeemed: Your prize has already been redeemed.
-    no_prizes_available: We're sorry, but we currently have no prizes available.
-    teacher_info_required: 'Teacher prizes require school name and address information:'
-    teacher_email_required: 'Teacher prizes require a confirmed email address:'
+    error_us_only: Награда офертата важи само за потребители от  САЩ.
+    error_not_earned: Все още не сте спечелили тази награда.
+    error_already_redeemed: Вашата награда вече е била спечелена.
+    no_prizes_available: Съжаляваме, но в момента нямаме налични награди.
+    teacher_info_required: 'Учителските награди изискват информация за името и адреса
+      на училището:'
+    teacher_email_required: 'Учителските награди изискват потвърждаване на имейл адрес:'
     confirm:
       title: Please Confirm
       'no': false
       'yes': true
       msg: Are you sure you want to claim the %{prize_name} prize?
       msg_student: 'NOTE: You can only choose one type of prize.'
-      msg_publicschool: Please confirm that you are a U.S. public school teacher.
+      msg_publicschool: Моля, потвърдете, че сте  учител в САЩ .
       msg_visit_website: Visit website
     providers:
       apple_itunes: $10 iTunes Gift Card
       donors_choose: DonorsChoose.org $750 credit
       donors_choose_bonus: DonorsChoose.org $250 credit
-      dropbox: 10GB of Dropbox Space
+      dropbox: 10GB на Dropbox пространство
       valve: Portal 2 (PC or Mac game download)
       ea_bejeweled: Bejeweled 3 (PC game download)
       ea_fifa: FIFA Soccer 13 (PC game download)
@@ -183,15 +180,15 @@
     msg:
       choose: 'Choose a prize:'
       choose_teacher: 'Click on the logo below to claim your prize:'
-      earned: You have earned a prize! (U.S. students only)
+      earned: Вие сте спечелили награда! (Само за САЩ ученици)
       not_earned_title: Finish the tutorial, earn rewards (U.S. students only)
-      not_earned: 'Learn all the computer science concepts, collect all %{num_trophies}
-        trophies, and earn real-world prizes. You can choose between 10GB of free
-        Dropbox space, $10 in Skype credits, and free game downloads. NOTE: offer
-        only valid to U.S. students, and only as long as supplies last.'
+      not_earned: 'Научете всички компютърни понятия, съберете всички %{num_trophies}
+        трофеи и спечелете реални награди. Можете да избирате между 10GB свободно
+        пространство на Dropbox, $10 в Skype кредити, и свободно сваляне игра. Забележка:  офертата
+        е валидна за ученици от САЩ.'
       teacher:
-        earned: 10 или повече от Вашите студенти, са събрали всички %{num_trophies}
-          трофеи. Спечелихте наградата за учител! (Важи само за учители от САЩ)
+        earned: Ако 15 или повече от Вашите ученици са събрали всички %{num_trophies}
+          трофеи, вие печелите награда за учител! (Важи само за учители от САЩ)
         not_earned_title: Teach the class, earn up to $1,000 in <a target="_blank"
           href="http://DonorsChoose.org">DonorsChoose.org</a> credits (U.S. teachers
           only)

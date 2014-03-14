@@ -309,6 +309,9 @@
           פוגע בקיר, ו"כאשר כדור פוגע במשוט".'
         bounce_10: יש עכשיו מטרה בלמעלה. הוסף את הבלוקים "הגדל ניקוד" לבלוקים "כאשר
           כדור בתוך השער" ו"כאשר כדור מפספס משוט" כדי להכין משחק.
+        bounce_11: You can now attach blocks to the "when game starts" block. Try
+          changing the speed of the paddle and the ball and see how many points you
+          can score before your opponent scores twice.
         Custom_builder: גרור בלוקים מתיבת הכלים לאזור העבודה כדי לצייר את השלב שאתה
           רוצה ליצור. כשאתה גומר, לחץ "הרץ תוכנית".
         flappy_1: Attach a block to the "when click" block, then press "Run Program"
@@ -329,6 +332,11 @@
           a smaller or larger amount.
         flappy_7: Next, try changing the scene by attaching another block to the "when
           Run is clicked".
+        flappy_8: You can set visuals anytime, not just when the game starts. Try
+          setting a RANDOM scene when other events happen, for example, when passing
+          an obstacle.
+        flappy_9: To mix things up, when hitting an obstacle or the ground, instead
+          of ending the game try setting the score back to 0.
         flappy_11: Create your own Flappy game and share it. You can change the visuals,
           or even the rules. Try changing visuals each time Flappy passes an obstacle.
           Or make Flappy invincible so he never dies.

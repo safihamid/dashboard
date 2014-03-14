@@ -348,20 +348,22 @@
         bounce_10: Ціль тепер нагорі. Додайте блоки "збільшити бал" до блоків "коли
           м'яч влучає в ціль" і "коли м'яч промахується повз платформу" та почніть
           гру.
+        bounce_11: You can now attach blocks to the "when game starts" block. Try
+          changing the speed of the paddle and the ball and see how many points you
+          can score before your opponent scores twice.
         Custom_builder: Перетягуйте блоки з панелі інструментів на робочу область
           для того, щоб намалювати рівень, який бажаєте створити. Клацніть "Запустити
           програму" коли все готово.
-        flappy_1: Attach a block to the "when click" block, then press "Run Program"
-          and click or tap to move Flappy to the target.
+        flappy_1: Додайте блок до блоку "коли клацнули", а тоді запустіть програму.
+          Клацайте чи торкайтесь екрану для того, щоб Пурх дістався до цілі.
         flappy_2: Now we've added some ground.  Attach a block to the "when hit the
           ground" block, then press "Run Program". To pass this puzzle, your code
           needs to 'END GAME' when Flappy crashes into the ground.
-        flappy_3: The "when Run is clicked" block allows you to run code when your
-          game first starts.  Try setting the level speed and flapping to the target.
-        flappy_4: Flappy will fly through obstacles unless you write code to make
-          him crash. Attach a block to the "when hit an obstacle" block. To pass the
-          puzzle, your code needs to 'END GAME' and make Flappy crash into the first
-          pipe so he can reach the target.
+        flappy_3: Блок "коли гра починається" дозволяє запускати певний код після
+          початку гри. Спробуйте задати рівень швидкості та долетіти до мети.
+        flappy_4: Пурх летітиме крізь перешкоди, якщо ви не напишете код, що змусить
+          його врізатись у них. Додайте блоки до блоку "коли влучили у перешкоду".
+          Ваш код має завершувати гру, коли Пурх вріжеться у перший набір труб.
         flappy_5: Додамо табло підрахунку балів коли Пурх долає перешкоди. Додайте
           блок "коли перешкоду подолано" та заробіть бал, провівши Пурха крізь перший
           набір труб.
@@ -369,6 +371,11 @@
           крилами більше або менше.
         flappy_7: Next, try changing the scene by attaching another block to the "when
           Run is clicked".
+        flappy_8: You can set visuals anytime, not just when the game starts. Try
+          setting a RANDOM scene when other events happen, for example, when passing
+          an obstacle.
+        flappy_9: To mix things up, when hitting an obstacle or the ground, instead
+          of ending the game try setting the score back to 0.
         flappy_11: Створіть свою власну гру про Пурха та поділіться нею. Ви можете
           змінити вигляд гри, або навіть правила. Спробуйте змінювати візуальні ефекти
           щоразу як Пурх долає перешкоду. Або зробіть його непереможним, щоб він ніколи
