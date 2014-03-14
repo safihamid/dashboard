@@ -25,7 +25,7 @@ class LevelsControllerTest < ActionController::TestCase
       post :create_custom, :name => "NewCustomLevel", :program => "<hey>"
     end
 
-    assert_equal "{ \"url\": \"http://test.host/s/5/level/1\"}", @response.body
+    assert_equal "{ \"url\": \"http://test.host/s/5/level/#{assigns(:script_level).id}\"}", @response.body
 #    level = assigns(:level)
 #    assert_redirected_to game_level_path(level.game, level)
   end
