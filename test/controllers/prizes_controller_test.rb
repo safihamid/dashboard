@@ -5,8 +5,10 @@ class PrizesControllerTest < ActionController::TestCase
 
   setup do
     @prize = prizes(:one)
-    @user = create(:admin)
-    sign_in(@user)
+    @admin = create(:admin)
+    sign_in(@admin)
+
+    @not_admin = create(:user)
   end
 
   test "should get index" do
@@ -14,6 +16,22 @@ class PrizesControllerTest < ActionController::TestCase
     assert_response :success
     assert_not_nil assigns(:prizes)
   end
+
+  test "should not get index if not signed in" do
+    sign_out @admin
+    get :index
+
+    assert_redirected_to_sign_in
+  end
+
+  test "should not get index if not admin" do
+    sign_in @not_admin
+
+    get :index
+
+    assert_response :forbidden
+  end
+
 
   test "should get new" do
     get :new

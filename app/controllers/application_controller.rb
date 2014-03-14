@@ -34,6 +34,11 @@ class ApplicationController < ActionController::Base
     Rails.env.production? ? "http://www.code.org" : Rails.env.development? ? "http://localhost:3000" : "http://staging.code.org"
   end
 
+  # when CanCan denies access, send a 403 Forbidden response instead of causing a server error
+  rescue_from CanCan::AccessDenied do
+    head :forbidden
+  end
+
   protected
 
   PERMITTED_USER_FIELDS = [:name, :username, :email, :password, :password_confirmation, :locale, :gender, :login,
