@@ -10,15 +10,12 @@ class LevelSourceHintsController < ApplicationController
     end
   end
 
-  def show
-  end
-
   # PATCH/PUT /level_source_hints/1
   # PATCH/PUT /level_source_hints/1.json
   def update
     respond_to do |format|
       if @level_source_hint.update(level_source_hint_params)
-        format.html { redirect_to params[:redirect] || @level_source_hint, notice: I18n.t('crud.updated', model: LevelSourceHint.model_name.human) }
+        format.html { redirect_to level_source_hints_path, notice: I18n.t('crud.updated', model: LevelSourceHint.model_name.human) }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
