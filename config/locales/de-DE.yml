@@ -272,6 +272,8 @@
     students:
       manage: Studenten verwalten
       add: Schüler hinzufügen
+    sections:
+      manage: Manage sections
     rollup: Fortschrittsanzeige
     activity: Letzte Aktivitäten der Klasse
     user_not_found: Der Lehrer oder Student konnte nicht gefunden werden
@@ -312,6 +314,7 @@
       bestanden haben
     teacher_read_blog: Lese Nachrichten und Neuigkeiten zu unseren Materialien in
       unserem Lehrer-Blog
+    teacher_survey: Tell us what you think about this course
     classroom: Ihr Klassenzimmer
     student_progress: Ihr Lernfortschritt
     student_stats: Sie haben %{trophy_count} von %{trophy_max} "Concept Mastery" Trophäen.

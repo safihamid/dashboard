@@ -261,6 +261,8 @@
     students:
       manage: Управление на ученици
       add: Добавяне на ученици
+    sections:
+      manage: Manage sections
     rollup: Табло на прогреса
     activity: Последните дейности на класа
     user_not_found: The teacher or student could not be found
@@ -300,6 +302,7 @@
     teacher_print_certificates: Print certificates for students who finish this course
     teacher_read_blog: Read about news and updates to our materials at our Educator
       Blog
+    teacher_survey: Tell us what you think about this course
     classroom: Вашата класна стая
     student_progress: Вашият учебен прогрес
     student_stats: Вие сте спечелил %{trophy_count} от %{trophy_max} "Концепция майсторство"

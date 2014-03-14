@@ -261,6 +261,8 @@
     students:
       manage: Рспоредити студенте
       add: Сви студенти
+    sections:
+      manage: Manage sections
     rollup: Плоча напретка
     activity: Скорашнје активности разреда
     user_not_found: The teacher or student could not be found
@@ -300,6 +302,7 @@
     teacher_print_certificates: Print certificates for students who finish this course
     teacher_read_blog: Read about news and updates to our materials at our Educator
       Blog
+    teacher_survey: Tell us what you think about this course
     classroom: Ваша учионица
     student_progress: Ваш напредак у ученју
     student_stats: Ви сте зарадили %{trophy_count} од %{trophy_max} "Concept Mastery"

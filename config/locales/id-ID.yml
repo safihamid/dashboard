@@ -270,6 +270,8 @@
     students:
       manage: Mengelola siswa
       add: Cantumkan nama siswa
+    sections:
+      manage: Manage sections
     rollup: 'Dashboard Kemajuan '
     activity: Aktivitas kelas
     user_not_found: Guru atau murid tidak dapat ditemukan
@@ -310,6 +312,7 @@
       kursus ini
     teacher_read_blog: Baca lebih lanjut berita dan bahan-bahan di blog pendidikan
       kami
+    teacher_survey: Tell us what you think about this course
     classroom: Kelas anda
     student_progress: Kemajuan belajar Anda
     student_stats: Anda telah menerima  %{trophy_count} dari total %{trophy_max} piala

@@ -262,6 +262,8 @@
     students:
       manage: Керування учнями
       add: Додати учнів
+    sections:
+      manage: Manage sections
     rollup: Панель досягнень
     activity: Остання діяльність класу
     user_not_found: Не вдається знайти вчителя чи учня
@@ -300,6 +302,7 @@
       курс
     teacher_read_blog: Читати про новини та оновлення наших матеріалів на нашому педагогічному
       блозі
+    teacher_survey: Tell us what you think about this course
     classroom: Ваш клас
     student_progress: Ваші навчальні досягнення
     student_stats: Ви здобули %{trophy_count} із %{trophy_max} трофеїв "Опанування

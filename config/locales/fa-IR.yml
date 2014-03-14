@@ -261,6 +261,8 @@
     students:
       manage: مدیریت دانش آموزان
       add: افزودن دانش آموزان
+    sections:
+      manage: Manage sections
     rollup: داشبورد پیشرفت
     activity: آخرین فعالیت های کلاس
     user_not_found: The teacher or student could not be found
@@ -299,6 +301,7 @@
     teacher_print_certificates: Print certificates for students who finish this course
     teacher_read_blog: Read about news and updates to our materials at our Educator
       Blog
+    teacher_survey: Tell us what you think about this course
     classroom: کلاس درس شما
     student_progress: میزان پیشرفت یادگیری شما
     student_stats: شما %{trophy_count} گنج از مجموع %{trophy_max} گنج مرتبط با «تسلط

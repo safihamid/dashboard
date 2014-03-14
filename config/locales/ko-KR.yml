@@ -244,6 +244,8 @@
     students:
       manage: 학생 관리
       add: 학생 추가
+    sections:
+      manage: Manage sections
     rollup: 학습 현황
     activity: 최근 학습 활동
     user_not_found: The teacher or student could not be found
@@ -282,6 +284,7 @@
     teacher_print_certificates: Print certificates for students who finish this course
     teacher_read_blog: Read about news and updates to our materials at our Educator
       Blog
+    teacher_survey: Tell us what you think about this course
     classroom: 내 학급
     student_progress: 나의 학습 진도
     student_stats: '%{trophy_count} 개의 "기초개념학습 트로피"를 획득했습니다. 총 %{trophy_max} 개.'

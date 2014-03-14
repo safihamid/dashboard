@@ -14,6 +14,14 @@ class ActivitiesControllerTest < ActionController::TestCase
     assert_not_nil assigns(:activities)
   end
 
+  test "should get index with edmodo header" do
+    @request.headers["Accept"] = "image/*"
+    @request.headers["User-Agent"] = "Edmodo/14 CFNetwork/672.0.2 Darwin/14.0.0"
+    get :index
+    assert_response :success
+    assert_not_nil assigns(:activities)
+  end
+
   test "should get new" do
     get :new
     assert_response :success

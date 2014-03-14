@@ -261,6 +261,8 @@
     students:
       manage: Administrer elever
       add: Legg til elever
+    sections:
+      manage: Manage sections
     rollup: Fremdriftsoversikt
     activity: Nylig klasseaktivitet
     user_not_found: Læreren eller studenten ble ikke funnet
@@ -299,6 +301,7 @@
     teacher_print_certificates: Print certificates for students who finish this course
     teacher_read_blog: Read about news and updates to our materials at our Educator
       Blog
+    teacher_survey: Tell us what you think about this course
     classroom: Ditt klasserom
     student_progress: Din læringskurve
     student_stats: Du har fått %{trophy_count} av maks %{trophy_max} pokaler for Konseptmestring.

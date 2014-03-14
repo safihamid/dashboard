@@ -271,6 +271,8 @@
     students:
       manage: Διαχείριση μαθητών
       add: Προσθήκη μαθητών
+    sections:
+      manage: Manage sections
     rollup: Σύνοψη Προόδου
     activity: Πρόσφατη δραστηριότητα τμήματος
     user_not_found: The teacher or student could not be found
@@ -310,6 +312,7 @@
     teacher_print_certificates: Print certificates for students who finish this course
     teacher_read_blog: Read about news and updates to our materials at our Educator
       Blog
+    teacher_survey: Tell us what you think about this course
     classroom: Η αίθουσά σου
     student_progress: Η πρόοδός σας
     student_stats: Κέρδισες %{trophy_count} από %{trophy_max} τρόπαια "Μαεστρίας".

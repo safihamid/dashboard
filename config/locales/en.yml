@@ -243,6 +243,8 @@ en:
     students:
       manage: 'Manage students'
       add: 'Add students'
+    sections:
+      manage: 'Manage sections'
     rollup: 'Progress Dashboard'
     activity: 'Recent class activity'
     user_not_found: 'The teacher or student could not be found'
