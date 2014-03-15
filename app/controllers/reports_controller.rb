@@ -1,6 +1,7 @@
 class ReportsController < ApplicationController
   before_filter :authenticate_user!, except: [:header_stats]
-  check_authorization except: [:all_usage, :level_stats, :students, :header_stats, :admin_stats, :admin_progress]
+
+  check_authorization except: [:header_stats, :students]
 
   before_action :set_script
   include LevelSourceHintsHelper
@@ -9,8 +10,8 @@ class ReportsController < ApplicationController
     @user = User.find_by_id(params[:user_id])
     authorize! :read, @user
     if !@user || !(@user.id == current_user.id || @user.teachers.include?(current_user) || current_user.admin?)
-      flash[:alert] = I18n.t('reports.error.access_denied')
-      redirect_to root_path
+      # this may be redundant with the above authorize! check
+      head :forbidden
       return
     end
 
@@ -42,14 +43,14 @@ SQL
   end
 
   def all_usage
-    raise "unauthorized" if !current_user.admin?
+    authorize! :read, :reports
 
     @recent_activities = get_base_usage_activity
     render 'usage', formats: [:html]
   end
 
   def admin_stats
-    raise "unauthorized" if !current_user.admin?
+    authorize! :read, :reports
     
     SeamlessDatabasePool.use_persistent_read_connection do
       @user_count = User.count
@@ -79,7 +80,7 @@ SQL
   end
 
   def admin_progress
-    raise "unauthorized" if !current_user.admin?
+    authorize! :read, :reports
     
     SeamlessDatabasePool.use_persistent_read_connection do
       @user_count = User.count
@@ -98,7 +99,7 @@ SQL
   end
 
   def level_stats
-    raise "unauthorized" if !current_user.admin?
+    authorize! :read, :reports
 
     @level = Level.find(params[:level_id])
 
