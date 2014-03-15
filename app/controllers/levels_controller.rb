@@ -72,8 +72,8 @@ class LevelsController < ApplicationController
   end
 
   def builder
-    raise "unauthorized" if !current_user.admin?
     @level = Level::BUILDER
+    authorize! :create, @level
     @game = @level.game
     @full_width = true
     @callback = "/create_custom"
@@ -81,7 +81,9 @@ class LevelsController < ApplicationController
   end
 
   def create_custom
-    raise "unauthorized" if !current_user.admin?
+    @level = Level.new # should be using load_and_authorize_resource... here we create a blank level that we will throw away just so we can use authorize!
+    authorize! :create, @level
+    @level = nil
     game = Game::CUSTOM
     script = Script.builder_script
     level = Level.new(game: game, level_num: "custom", skin: "artist_zombie", user: current_user, instructions: params[:instructions], name: params[:name])
