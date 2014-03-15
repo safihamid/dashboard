@@ -1,6 +1,6 @@
 *Note: dashboard is a component of [the learn.code.org curriculum](https://github.com/code-dot-org/cdo-curriculum). See the [root umbrella repository](https://github.com/code-dot-org/cdo-curriculum) which includes instructions for setting up a full learn.code.org build which includes the dashboard and blockly.*
 
-# Development Quick Start Readme
+## Development Quick Start Readme
 
 ### Background
 We are building drag-drop programming tutorials to allow a beginner to learn very basic programming concepts (sequencing, if-then statements, for loops, variables, functions), but using drag-drop programming.
