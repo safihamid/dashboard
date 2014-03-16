@@ -1,55 +1,36 @@
-mysql_defaults: &mysql_defaults
-  adapter: seamless_database_pool
-  pool_adapter: mysql2
-  host: localhost
-  encoding: utf8
-  pool: 10
-  master:
-    username: root
-    pool_weight: 1
-  read_pool:
-    - username: root
-      pool_weight: 2
+<%
+deployment_path = File.expand_path('../../deployment.rb', __FILE__)
+if File.file?(deployment_path)
+  require deployment_path
+  db_uri = URI.parse(Deploy.config['db_reader'])
+  ENV['RAILS_ENV'] = ENV['RACK_ENV'] = Deploy.config['rack_env']
+  ENV['DASHBOARD_DB_USER'] = db_uri.user
+  ENV['DASHBOARD_DB_HOST'] = db_uri.host
+  ENV['DASHBOARD_DB_PASSWORD'] = db_uri.password
+  ENV['DASHBOARD_DB_NAME'] = "dashboard_#{Deploy.config['rack_env']}"
+end
+%>
 
-prod_mysql_defaults: &prod_mysql_defaults
-  adapter: seamless_database_pool
-  pool_adapter: mysql2
+mysql_defaults: &mysql_defaults
+  adapter: mysql2
   encoding: utf8
-  username: db
-  password: <%= ENV['DATABASE_PASSWORD'] %>
-  pool: 4
-  master:
-    host: <%= ENV['DATABASE_MACHINE'] %>
-    pool_weight: 1
-  read_pool:
-    - host: <%= ENV['DATABASE_MACHINE'] %>
-      pool_weight: 2
+  username: <%= ENV['DASHBOARD_DB_USER'] || 'root' %>
+  host: <%= ENV['DASHBOARD_DB_HOST'] || 'localhost' %>
+  password: <%= ENV['DASHBOARD_DB_PASSWORD'] || '' %>
+  pool: 5
 
 development:
   <<: *mysql_defaults
-  database: dashboard_development
-
+  database:  <%= ENV['DASHBOARD_DB_NAME'] || 'dashboard_development' %>
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
-  adapter: mysql2
-  encoding: utf8
-  username: root
-  host: localhost
-  pool: 5
-  database: dashboard_test
+  <<: *mysql_defaults
+  database: <%= ENV['DASHBOARD_DB_NAME'] || 'dashboard_test' %>
 
-staging:
-  adapter: mysql2
-  encoding: utf8
-  username: root
-  host: localhost
-  pool: 5
-  database: dashboard_development
- 
 production:
-  <<: *prod_mysql_defaults
-  database: dashboard_production
+  <<: *mysql_defaults
+  database: <%= ENV['DASHBOARD_DB_NAME'] || 'dashboard_production' %>
 
