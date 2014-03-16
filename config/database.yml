@@ -3,7 +3,6 @@ deployment_path = File.expand_path('../../deployment.rb', __FILE__)
 if File.file?(deployment_path)
   require deployment_path
   db_uri = URI.parse(Deploy.config['db_reader'])
-  ENV['RAILS_ENV'] = ENV['RACK_ENV'] = Deploy.config['rack_env']
   ENV['DASHBOARD_DB_USER'] = db_uri.user
   ENV['DASHBOARD_DB_HOST'] = db_uri.host
   ENV['DASHBOARD_DB_PASSWORD'] = db_uri.password
@@ -22,6 +21,10 @@ mysql_defaults: &mysql_defaults
 development:
   <<: *mysql_defaults
   database:  <%= ENV['DASHBOARD_DB_NAME'] || 'dashboard_development' %>
+
+staging:
+  <<: *mysql_defaults
+  database:  <%= ENV['DASHBOARD_DB_NAME'] || 'dashboard_staging' %>
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
