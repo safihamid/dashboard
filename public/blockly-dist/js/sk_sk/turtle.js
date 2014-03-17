@@ -1311,7 +1311,7 @@ var createSharingDiv = function(options) {
   if (options.showingSharing &&
       exports.canContinueToNextLevel(options.feedbackType)) {
     var sharingDiv = document.createElement('div');
-    sharingDiv.className = 'shareDiv';
+    sharingDiv.setAttribute('style', 'display:inline-block');
     var sharingImage = document.createElement('div');
 
     var feedbackImage = createFeedbackImage(options);
@@ -1580,7 +1580,7 @@ var getEnabledBlocks = function() {
  * a set of blocks that at least one of them should be used. Each block is
  * represented as the prefix of an id in the corresponding template.soy.
  */
-var getMissingRequiredBlocks = function() {
+var getMissingRequiredBlocks = function () {
   var missingBlocks = [];
   var code = null;  // JavaScript code, which is initalized lazily.
   if (BlocklyApps.REQUIRED_BLOCKS && BlocklyApps.REQUIRED_BLOCKS.length) {
@@ -1663,7 +1663,7 @@ exports.getTestResults = function() {
   }
 };
 
-Keycodes = {
+var Keycodes = {
   ENTER: 13,
   SPACE: 32
 };
@@ -1740,6 +1740,7 @@ var generateXMLForBlocks = function(blocks) {
   }
   return blockXMLStrings.join('');
 };
+
 
 },{"../locale/sk_sk/common":32,"./codegen":4,"./dom":5,"./templates/buttons.html":11,"./templates/code.html":12,"./templates/readonly.html":17,"./templates/showCode.html":18,"./templates/trophy.html":19,"./utils":30}],7:[function(require,module,exports){
 // Functions for checking required blocks.
@@ -2070,7 +2071,7 @@ escape = escape || function (html){
 };
 var buf = [];
 with (locals || {}) { (function(){ 
- buf.push('');1; var msg = require('../../locale/sk_sk/common'); ; buf.push('\n\n');3; if (data.ok) {; buf.push('  <div class="farSide" style="padding: 1ex 3ex 0">\n    <button id="ok-button" class="secondary">\n      ', escape((5,  msg.dialogOK() )), '\n    </button>\n  </div>\n');8; };; buf.push('\n');9; if (data.previousLevel) {; buf.push('  <button id="back-button" class="launch">\n    ', escape((10,  msg.backToPreviousLevel() )), '\n  </button>\n');12; };; buf.push('\n');13; if (data.tryAgain) {; buf.push('  <button id="again-button" class="launch">\n    ', escape((14,  msg.tryAgain() )), '\n  </button>\n');16; };; buf.push('\n');17; if (data.nextLevel) {; buf.push('  <button id="continue-button" class="launch">\n    ', escape((18,  msg.continue() )), '\n  </button>\n');20; };; buf.push('\n');21; if (data.facebookUrl) {; buf.push('  <a href=', escape((21,  data.facebookUrl )), ' target="_blank">\n    <img src=', escape((22,  BlocklyApps.assetUrl("media/facebook_purple.png") )), '>\n  </a>\n');24; };; buf.push('\n');25; if (data.twitterUrl) {; buf.push('  <a href=', escape((25,  data.twitterUrl )), ' target="_blank">\n    <img src=', escape((26,  BlocklyApps.assetUrl("media/twitter_purple.png") )), ' >\n  </a>\n  <br>\n');29; };; buf.push('\n');30; if (data.sharingUrl) {; buf.push('  <input type="text" id="sharing-input" style="width:100%;" value=', escape((30,  data.sharingUrl )), ' >\n');31; };; buf.push(''); })();
+ buf.push('');1; var msg = require('../../locale/sk_sk/common'); ; buf.push('\n\n');3; if (data.ok) {; buf.push('  <div class="farSide" style="padding: 1ex 3ex 0">\n    <button id="ok-button" class="secondary">\n      ', escape((5,  msg.dialogOK() )), '\n    </button>\n  </div>\n');8; };; buf.push('\n');9; if (data.previousLevel) {; buf.push('  <button id="back-button" class="launch">\n    ', escape((10,  msg.backToPreviousLevel() )), '\n  </button>\n');12; };; buf.push('\n');13; if (data.tryAgain) {; buf.push('  <button id="again-button" class="launch">\n    ', escape((14,  msg.tryAgain() )), '\n  </button>\n');16; };; buf.push('\n');17; if (data.nextLevel) {; buf.push('  <button id="continue-button" class="launch">\n    ', escape((18,  msg.continue() )), '\n  </button>\n');20; };; buf.push('\n');21; if (data.facebookUrl) {; buf.push('  <a href=', escape((21,  data.facebookUrl )), ' target="_blank">\n    <img src=', escape((22,  BlocklyApps.assetUrl("media/facebook_purple.png") )), '>\n  </a>\n');24; };; buf.push('\n');25; if (data.twitterUrl) {; buf.push('  <a href=', escape((25,  data.twitterUrl )), ' target="_blank">\n    <img src=', escape((26,  BlocklyApps.assetUrl("media/twitter_purple.png") )), ' >\n  </a>\n  <br>\n');29; };; buf.push('\n');30; if (data.sharingUrl) {; buf.push('  <input type="text" id="sharing-input" value=', escape((30,  data.sharingUrl )), ' >\n');31; };; buf.push(''); })();
 } 
 return buf.join('');
 };
@@ -5235,7 +5236,7 @@ exports.dialogOK = function(d){return "ok"};
 
 exports.emptyBlocksErrorMsg = function(d){return "\"Repeat\", alebo \"If\" bloky musia obsahovať ďalšie bloky vo vnútri aby pracovali. Uistite sa, že vnútorný blok sedí správne vo vnútri týchto blokov."};
 
-exports.extraTopBlocks = function(d){return "You have extra blocks that aren't attached to an event block."};
+exports.extraTopBlocks = function(d){return "Máte ďalšie extra bloky, ktoré nie sú pripojené k blokom udalostí."};
 
 exports.finalStage = function(d){return "Gratulujem! Dokončili ste poslednú úroveň."};
 
@@ -5253,7 +5254,7 @@ exports.levelIncompleteError = function(d){return "Používate všetky potrebné
 
 exports.listVariable = function(d){return "zoznam"};
 
-exports.makeYourOwnFlappy = function(d){return "Make Your Own Flappy Game"};
+exports.makeYourOwnFlappy = function(d){return "Vytvor si svoju vlastnú \"Flappy\" hru"};
 
 exports.missingBlocksErrorMsg = function(d){return "Skúste použiť jeden alebo viac blokov nižšie pre vyriešenie tejto úlohy."};
 
@@ -5291,7 +5292,7 @@ exports.tooManyBlocksMsg = function(d){return "Táto úloha môže byť vyrieše
 
 exports.tooMuchWork = function(d){return "Spravil si mi veľa práce!  Mohol by si skúsiť opakovať menej krát?"};
 
-exports.flappySpecificFail = function(d){return "Your code looks good - it will flap with each click. But you need to click many times to flap to the target."};
+exports.flappySpecificFail = function(d){return "Tvoj kód vyzerá dobre - vták mávne krídlami pri každom kliknutí, ale musíš kliknúť viac krát, aby si sa dostal k cieľu. "};
 
 exports.toolboxHeader = function(d){return "Bloky"};
 
@@ -5336,99 +5337,99 @@ var MessageFormat = require("messageformat");MessageFormat.locale.sk = function 
   }
   return 'other';
 };
-exports.blocksUsed = function(d){return "Blocks used: %1"};
+exports.blocksUsed = function(d){return "Použité bloky: %1"};
 
-exports.catColour = function(d){return "Color"};
+exports.catColour = function(d){return "Farba"};
 
-exports.catControl = function(d){return "Loops"};
+exports.catControl = function(d){return "Cykly"};
 
-exports.catMath = function(d){return "Math"};
+exports.catMath = function(d){return "Matematika"};
 
-exports.catProcedures = function(d){return "Functions"};
+exports.catProcedures = function(d){return "Funkcie"};
 
-exports.catTurtle = function(d){return "Actions"};
+exports.catTurtle = function(d){return "Akcie"};
 
-exports.catVariables = function(d){return "Variables"};
+exports.catVariables = function(d){return "Premenné"};
 
-exports.catLogic = function(d){return "Logic"};
+exports.catLogic = function(d){return "Logické"};
 
-exports.colourTooltip = function(d){return "Changes the color of the pencil."};
+exports.colourTooltip = function(d){return "Zmení farbu pera."};
 
-exports.degrees = function(d){return "degrees"};
+exports.degrees = function(d){return "stupňov"};
 
-exports.dots = function(d){return "pixels"};
+exports.dots = function(d){return "pixelov"};
 
-exports.drawASquare = function(d){return "draw a square"};
+exports.drawASquare = function(d){return "nakresli štvorec"};
 
-exports.drawATriangle = function(d){return "draw a triangle"};
+exports.drawATriangle = function(d){return "nakresli trojuholník"};
 
-exports.drawACircle = function(d){return "draw a circle"};
+exports.drawACircle = function(d){return "nakresli kruh"};
 
-exports.drawAHouse = function(d){return "draw a house"};
+exports.drawAHouse = function(d){return "nakresli dom"};
 
-exports.drawATree = function(d){return "draw a tree"};
+exports.drawATree = function(d){return "nakresli strom"};
 
-exports.drawASnowman = function(d){return "draw a snowman"};
+exports.drawASnowman = function(d){return "nakresli snehuliaka"};
 
-exports.heightParameter = function(d){return "height"};
+exports.heightParameter = function(d){return "výška"};
 
-exports.hideTurtle = function(d){return "hide artist"};
+exports.hideTurtle = function(d){return "skry umelca"};
 
-exports.jumpBackward = function(d){return "jump backward by"};
+exports.jumpBackward = function(d){return "skoč naspať"};
 
-exports.jumpForward = function(d){return "jump forward by"};
+exports.jumpForward = function(d){return "skoč vpred"};
 
-exports.jumpTooltip = function(d){return "Moves the artist without leaving any marks."};
+exports.jumpTooltip = function(d){return "Umelec sa pohybuje bez toho, aby maľoval."};
 
-exports.lengthParameter = function(d){return "length"};
+exports.lengthParameter = function(d){return "dĺžka"};
 
-exports.loopVariable = function(d){return "counter"};
+exports.loopVariable = function(d){return "počítadlo"};
 
-exports.moveBackward = function(d){return "move backward by"};
+exports.moveBackward = function(d){return "pohnúť sa späť"};
 
-exports.moveForward = function(d){return "move forward by"};
+exports.moveForward = function(d){return "pohnúť sa vpred"};
 
-exports.moveForwardTooltip = function(d){return "Moves the artist forward."};
+exports.moveForwardTooltip = function(d){return "Presunie umelca vpred."};
 
-exports.moveTooltip = function(d){return "Moves the artist forward or backward by the specified amount."};
+exports.moveTooltip = function(d){return "Presunie umelca dopredu, alebo dozadu o určitú vzdialenosť."};
 
-exports.notBlackColour = function(d){return "You need to set a color other than black for this puzzle."};
+exports.notBlackColour = function(d){return "Budete musieť nastaviť inú farbu ako čiernu pre túto úlohu."};
 
-exports.numBlocksNeeded = function(d){return "This puzzle can be solved with %1 blocks.  You used %2."};
+exports.numBlocksNeeded = function(d){return "Tieto puzzle sa dajú vyriešiť pomocou %1 blokov. Použili ste %2 blokov."};
 
-exports.penDown = function(d){return "pencil down"};
+exports.penDown = function(d){return "Pero dole"};
 
-exports.penTooltip = function(d){return "Lifts or lowers the pencil, to start or stop drawing."};
+exports.penTooltip = function(d){return "Posúva pero hore, alebo dole, aby začal, alebo prestal kresliť."};
 
-exports.penUp = function(d){return "pencil up"};
+exports.penUp = function(d){return "pero hore"};
 
-exports.reinfFeedbackMsg = function(d){return "Does this look like what you want? You can press the \"Try again\" button to see your drawing."};
+exports.reinfFeedbackMsg = function(d){return "Vyzerá to ako ste chceli? Môžete stlačiť tlačidlo \"skúsiť znova\" aby ste videli Vašu kresbu."};
 
-exports.setColour = function(d){return "set color"};
+exports.setColour = function(d){return "nastaviť farbu"};
 
-exports.setWidth = function(d){return "set width"};
+exports.setWidth = function(d){return "nastaviť šírku"};
 
-exports.shareDrawing = function(d){return "Share your drawing:"};
+exports.shareDrawing = function(d){return "Zdielať Vašu kresbu:"};
 
-exports.showMe = function(d){return "Show me"};
+exports.showMe = function(d){return "Ukáž mi"};
 
-exports.showTurtle = function(d){return "show artist"};
+exports.showTurtle = function(d){return "Zobraziť umelca"};
 
-exports.tooFewColours = function(d){return "You need to use at least %1 different colors for this puzzle.  You used only %2."};
+exports.tooFewColours = function(d){return "Musíte použiť najmenej %1 odlišných farieb pre túto úlohu. Požili ste len %2."};
 
-exports.turnLeft = function(d){return "turn left by"};
+exports.turnLeft = function(d){return "otočiť vľavo"};
 
-exports.turnRight = function(d){return "turn right by"};
+exports.turnRight = function(d){return "otočiť vpravo"};
 
-exports.turnRightTooltip = function(d){return "Turns the artist right by the specified angle."};
+exports.turnRightTooltip = function(d){return "Otočiť umelca vpravo o konkrétny uhoľ."};
 
-exports.turnTooltip = function(d){return "Turns the artist left or right by the specified number of degrees."};
+exports.turnTooltip = function(d){return "Otočí umelca vľavo alebo vpravo podľa zadaného počtu stupňov."};
 
-exports.turtleVisibilityTooltip = function(d){return "Makes the artist visible or invisible."};
+exports.turtleVisibilityTooltip = function(d){return "Zviditeľniť, alebo zneviditeľniť umelca."};
 
-exports.widthTooltip = function(d){return "Changes the width of the pencil."};
+exports.widthTooltip = function(d){return "Zmení šírku ceruzky."};
 
-exports.wrongColour = function(d){return "Your picture is the wrong color.  For this puzzle, it needs to be %1."};
+exports.wrongColour = function(d){return "Tvoj obrázok je v nesprávnej farbe. Pre túto úlohu, musí byť %1."};
 
 
 },{"messageformat":40}],34:[function(require,module,exports){

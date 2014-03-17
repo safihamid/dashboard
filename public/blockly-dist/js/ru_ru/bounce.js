@@ -877,6 +877,26 @@ exports.setBallSpeed = function (id, value) {
   }
 };
 
+exports.setBackground = function (id, value) {
+  BlocklyApps.highlight(id);
+  Bounce.setBackground(value);
+};
+
+exports.setBall = function (id, value) {
+  BlocklyApps.highlight(id);
+  Bounce.setBall(value);
+};
+
+exports.setPaddle = function (id, value) {
+  BlocklyApps.highlight(id);
+  Bounce.setPaddle(value);
+};
+
+exports.setBackground = function (id, value) {
+  BlocklyApps.highlight(id);
+  Bounce.setBackground(value);
+};
+
 exports.setPaddleSpeed = function (id, value) {
   BlocklyApps.highlight(id);
   Bounce.paddleSpeed = value;
@@ -1383,6 +1403,90 @@ exports.install = function(blockly, skin) {
     return generateSetterCode(this, 'setPaddleSpeed');
   };
 
+  /**
+   * setBackground
+   */
+  blockly.Blocks.bounce_setBackground = {
+    helpUrl: '',
+    init: function() {
+      var dropdown = new blockly.FieldDropdown(this.VALUES);
+      dropdown.setValue(this.VALUES[1][1]);  // default to hardcourt
+
+      this.setHSV(312, 0.32, 0.62);
+      this.appendDummyInput()
+          .appendTitle(dropdown, 'VALUE');
+      this.setInputsInline(true);
+      this.setPreviousStatement(true);
+      this.setNextStatement(true);
+      this.setTooltip(msg.setBackgroundTooltip());
+    }
+  };
+
+  blockly.Blocks.bounce_setBackground.VALUES =
+      [[msg.setBackgroundRandom(), 'random'],
+       [msg.setBackgroundHardcourt(), '"hardcourt"'],
+       [msg.setBackgroundRetro(), '"retro"']];
+
+  generator.bounce_setBackground = function() {
+    return generateSetterCode(this, 'setBackground');
+  };
+
+  /**
+   * setBall
+   */
+  blockly.Blocks.bounce_setBall = {
+    helpUrl: '',
+    init: function() {
+      var dropdown = new blockly.FieldDropdown(this.VALUES);
+      dropdown.setValue(this.VALUES[1][1]);  // default to hardcourt
+
+      this.setHSV(312, 0.32, 0.62);
+      this.appendDummyInput()
+          .appendTitle(dropdown, 'VALUE');
+      this.setInputsInline(true);
+      this.setPreviousStatement(true);
+      this.setNextStatement(true);
+      this.setTooltip(msg.setBallTooltip());
+    }
+  };
+
+  blockly.Blocks.bounce_setBall.VALUES =
+      [[msg.setBallRandom(), 'random'],
+       [msg.setBallHardcourt(), '"hardcourt"'],
+       [msg.setBallRetro(), '"retro"']];
+
+  generator.bounce_setBall = function() {
+    return generateSetterCode(this, 'setBall');
+  };
+
+  /**
+   * setPaddle
+   */
+  blockly.Blocks.bounce_setPaddle = {
+    helpUrl: '',
+    init: function() {
+      var dropdown = new blockly.FieldDropdown(this.VALUES);
+      dropdown.setValue(this.VALUES[1][1]);  // default to hardcourt
+
+      this.setHSV(312, 0.32, 0.62);
+      this.appendDummyInput()
+          .appendTitle(dropdown, 'VALUE');
+      this.setInputsInline(true);
+      this.setPreviousStatement(true);
+      this.setNextStatement(true);
+      this.setTooltip(msg.setPaddleTooltip());
+    }
+  };
+
+  blockly.Blocks.bounce_setPaddle.VALUES =
+      [[msg.setPaddleRandom(), 'random'],
+       [msg.setPaddleHardcourt(), '"hardcourt"'],
+       [msg.setPaddleRetro(), '"retro"']];
+
+  generator.bounce_setPaddle = function() {
+    return generateSetterCode(this, 'setPaddle');
+  };
+  
   delete blockly.Blocks.procedures_defreturn;
   delete blockly.Blocks.procedures_ifreturn;
 };
@@ -1539,6 +1643,22 @@ var GOAL_TILE_SHAPES = {
   'null0': [1, 1],  // Empty
 };
 
+// Return a value of '0' if the specified square is not a wall, '1' for
+// a wall, 'X' for out of bounds
+var wallNormalize = function(x, y) {
+  return ((Bounce.map[y] === undefined) ||
+          (Bounce.map[y][x] === undefined)) ? 'X' :
+            (Bounce.map[y][x] & SquareType.WALL) ? '1' : '0';
+};
+
+// Return a value of '0' if the specified square is not a wall, '1' for
+// a wall, 'X' for out of bounds
+var goalNormalize = function(x, y) {
+  return ((Bounce.map[y] === undefined) ||
+          (Bounce.map[y][x] === undefined)) ? 'X' :
+            (Bounce.map[y][x] & SquareType.GOAL) ? '1' : '0';
+};
+
 var drawMap = function() {
   var svg = document.getElementById('svgBounce');
   var i, x, y, k, tile;
@@ -1573,6 +1693,7 @@ var drawMap = function() {
     tile = document.createElementNS(Blockly.SVG_NS, 'image');
     tile.setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:href',
                         skin.background);
+    tile.setAttribute('id', 'background');
     tile.setAttribute('height', Bounce.MAZE_HEIGHT);
     tile.setAttribute('width', Bounce.MAZE_WIDTH);
     tile.setAttribute('x', 0);
@@ -1607,22 +1728,6 @@ var drawMap = function() {
   }
 
   // Draw the tiles making up the maze map.
-
-  // Return a value of '0' if the specified square is not a wall, '1' for
-  // a wall, 'X' for out of bounds
-  var wallNormalize = function(x, y) {
-    return ((Bounce.map[y] === undefined) ||
-            (Bounce.map[y][x] === undefined)) ? 'X' :
-              (Bounce.map[y][x] & SquareType.WALL) ? '1' : '0';
-  };
-
-  // Return a value of '0' if the specified square is not a wall, '1' for
-  // a wall, 'X' for out of bounds
-  var goalNormalize = function(x, y) {
-    return ((Bounce.map[y] === undefined) ||
-            (Bounce.map[y][x] === undefined)) ? 'X' :
-              (Bounce.map[y][x] & SquareType.GOAL) ? '1' : '0';
-  };
 
   // Compute and draw the tile for each square.
   var tileId = 0;
@@ -2201,6 +2306,11 @@ BlocklyApps.reset = function(first) {
   Bounce.playerScore = 0;
   Bounce.opponentScore = 0;
   document.getElementById('score').setAttribute('visibility', 'hidden');
+
+  // Reset configurable variables
+  Bounce.setBackground('hardcourt');
+  Bounce.setBall('hardcourt');
+  Bounce.setPaddle('hardcourt');
   
   // Move Ball into position.
   if (Bounce.ballStart_) {
@@ -2589,6 +2699,75 @@ Bounce.displayScore = function() {
     playerScore: Bounce.playerScore,
     opponentScore: Bounce.opponentScore
   });
+};
+
+var skinTheme = function (value) {
+  if (value === 'hardcourt') {
+    return skin;
+  }
+  return skin[value];
+};
+
+Bounce.setBackground = function (value) {
+  var element = document.getElementById('background');
+  element.setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:href',
+    skinTheme(value).background);
+
+  // Recompute all of the tiles to determine if they are walls, goals, or empty
+  // TODO: do this once during init and cache the result
+  var tileId = 0;
+  for (var y = 0; y < Bounce.ROWS; y++) {
+    for (var x = 0; x < Bounce.COLS; x++) {
+      var empty = false;
+      var image;
+      // Compute the tile index.
+      var tile = wallNormalize(x, y) +
+          wallNormalize(x, y - 1) +  // North.
+          wallNormalize(x + 1, y) +  // East.
+          wallNormalize(x, y + 1) +  // South.
+          wallNormalize(x - 1, y);   // West.
+
+      // Draw the tile.
+      if (WALL_TILE_SHAPES[tile]) {
+        image = skinTheme(value).tiles;
+      }
+      else {
+        // Compute the tile index.
+        tile = goalNormalize(x, y) +
+            goalNormalize(x, y - 1) +  // North.
+            goalNormalize(x + 1, y) +  // East.
+            goalNormalize(x, y + 1) +  // South.
+            goalNormalize(x - 1, y);   // West.
+
+        if (!GOAL_TILE_SHAPES[tile]) {
+          empty = true;
+        }
+        image = skinTheme(value).goalTiles;
+      }
+      if (!empty) {
+        var element = document.getElementById('tileElement' + tileId);
+        element.setAttributeNS(
+            'http://www.w3.org/1999/xlink', 'xlink:href', image);
+      }
+      tileId++;
+    }
+  }
+};
+
+Bounce.setBall = function (value) {
+  if (Bounce.ballStart_) {
+    for (var i = 0; i < Bounce.ballCount; i++) {
+      var element = document.getElementById('ball' + i);
+      element.setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:href',
+        skinTheme(value).ball);
+    }
+  }
+};
+
+Bounce.setPaddle = function (value) {
+  var element = document.getElementById('paddle');
+  element.setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:href',
+    skinTheme(value).paddle);
 };
 
 Bounce.timedOut = function() {
@@ -3040,7 +3219,7 @@ module.exports = {
       <block type="bounce_whenBallMissesPaddle" deletable="false" x="20" y="340"></block>'
   },
   '11': {
-    'ideal': 19,
+    'ideal': 22,
     'requiredBlocks': [
       [{'test': 'moveLeft', 'type': 'bounce_moveLeft'}],
       [{'test': 'moveRight', 'type': 'bounce_moveRight'}],
@@ -3079,7 +3258,10 @@ module.exports = {
           <block type="bounce_incrementPlayerScore"></block> \
           <block type="bounce_incrementOpponentScore"></block> \
           <block type="bounce_setPaddleSpeed"></block> \
-          <block type="bounce_setBallSpeed"></block>'),
+          <block type="bounce_setBallSpeed"></block> \
+          <block type="bounce_setBackground"></block> \
+          <block type="bounce_setBall"></block> \
+          <block type="bounce_setPaddle"></block>'),
     'startBlocks':
      '<block type="bounce_whenGameStarts" deletable="false" x="20" y="20"></block> \
       <block type="bounce_whenLeft" deletable="false" x="20" y="110"></block> \
@@ -3134,6 +3316,15 @@ var CONFIGS = {
 exports.load = function(assetUrl, id) {
   var skin = skinsBase.load(assetUrl, id);
   var config = CONFIGS[skin.id];
+
+  skin.retro = {
+    background: skin.assetUrl('retro_background.png'),
+    tiles: skin.assetUrl('retro_tiles_wall.png'),
+    goalTiles: skin.assetUrl('retro_tiles_goal.png'),
+    paddle: skin.assetUrl('retro_paddle.png'),
+    ball: skin.assetUrl('retro_ball.png'),
+  };
+
   // Images
   skin.tiles = skin.assetUrl('tiles_wall.png');
   skin.goalTiles = skin.assetUrl('tiles_goal.png');
@@ -3728,7 +3919,7 @@ var createSharingDiv = function(options) {
   if (options.showingSharing &&
       exports.canContinueToNextLevel(options.feedbackType)) {
     var sharingDiv = document.createElement('div');
-    sharingDiv.className = 'shareDiv';
+    sharingDiv.setAttribute('style', 'display:inline-block');
     var sharingImage = document.createElement('div');
 
     var feedbackImage = createFeedbackImage(options);
@@ -3997,7 +4188,7 @@ var getEnabledBlocks = function() {
  * a set of blocks that at least one of them should be used. Each block is
  * represented as the prefix of an id in the corresponding template.soy.
  */
-var getMissingRequiredBlocks = function() {
+var getMissingRequiredBlocks = function () {
   var missingBlocks = [];
   var code = null;  // JavaScript code, which is initalized lazily.
   if (BlocklyApps.REQUIRED_BLOCKS && BlocklyApps.REQUIRED_BLOCKS.length) {
@@ -4080,7 +4271,7 @@ exports.getTestResults = function() {
   }
 };
 
-Keycodes = {
+var Keycodes = {
   ENTER: 13,
   SPACE: 32
 };
@@ -4157,6 +4348,7 @@ var generateXMLForBlocks = function(blocks) {
   }
   return blockXMLStrings.join('');
 };
+
 
 },{"../locale/ru_ru/common":31,"./codegen":13,"./dom":14,"./templates/buttons.html":19,"./templates/code.html":20,"./templates/readonly.html":25,"./templates/showCode.html":26,"./templates/trophy.html":27,"./utils":28}],16:[function(require,module,exports){
 // avatar: A 1029x51 set of 21 avatar images.
@@ -4428,7 +4620,7 @@ escape = escape || function (html){
 };
 var buf = [];
 with (locals || {}) { (function(){ 
- buf.push('');1; var msg = require('../../locale/ru_ru/common'); ; buf.push('\n\n');3; if (data.ok) {; buf.push('  <div class="farSide" style="padding: 1ex 3ex 0">\n    <button id="ok-button" class="secondary">\n      ', escape((5,  msg.dialogOK() )), '\n    </button>\n  </div>\n');8; };; buf.push('\n');9; if (data.previousLevel) {; buf.push('  <button id="back-button" class="launch">\n    ', escape((10,  msg.backToPreviousLevel() )), '\n  </button>\n');12; };; buf.push('\n');13; if (data.tryAgain) {; buf.push('  <button id="again-button" class="launch">\n    ', escape((14,  msg.tryAgain() )), '\n  </button>\n');16; };; buf.push('\n');17; if (data.nextLevel) {; buf.push('  <button id="continue-button" class="launch">\n    ', escape((18,  msg.continue() )), '\n  </button>\n');20; };; buf.push('\n');21; if (data.facebookUrl) {; buf.push('  <a href=', escape((21,  data.facebookUrl )), ' target="_blank">\n    <img src=', escape((22,  BlocklyApps.assetUrl("media/facebook_purple.png") )), '>\n  </a>\n');24; };; buf.push('\n');25; if (data.twitterUrl) {; buf.push('  <a href=', escape((25,  data.twitterUrl )), ' target="_blank">\n    <img src=', escape((26,  BlocklyApps.assetUrl("media/twitter_purple.png") )), ' >\n  </a>\n  <br>\n');29; };; buf.push('\n');30; if (data.sharingUrl) {; buf.push('  <input type="text" id="sharing-input" style="width:100%;" value=', escape((30,  data.sharingUrl )), ' >\n');31; };; buf.push(''); })();
+ buf.push('');1; var msg = require('../../locale/ru_ru/common'); ; buf.push('\n\n');3; if (data.ok) {; buf.push('  <div class="farSide" style="padding: 1ex 3ex 0">\n    <button id="ok-button" class="secondary">\n      ', escape((5,  msg.dialogOK() )), '\n    </button>\n  </div>\n');8; };; buf.push('\n');9; if (data.previousLevel) {; buf.push('  <button id="back-button" class="launch">\n    ', escape((10,  msg.backToPreviousLevel() )), '\n  </button>\n');12; };; buf.push('\n');13; if (data.tryAgain) {; buf.push('  <button id="again-button" class="launch">\n    ', escape((14,  msg.tryAgain() )), '\n  </button>\n');16; };; buf.push('\n');17; if (data.nextLevel) {; buf.push('  <button id="continue-button" class="launch">\n    ', escape((18,  msg.continue() )), '\n  </button>\n');20; };; buf.push('\n');21; if (data.facebookUrl) {; buf.push('  <a href=', escape((21,  data.facebookUrl )), ' target="_blank">\n    <img src=', escape((22,  BlocklyApps.assetUrl("media/facebook_purple.png") )), '>\n  </a>\n');24; };; buf.push('\n');25; if (data.twitterUrl) {; buf.push('  <a href=', escape((25,  data.twitterUrl )), ' target="_blank">\n    <img src=', escape((26,  BlocklyApps.assetUrl("media/twitter_purple.png") )), ' >\n  </a>\n  <br>\n');29; };; buf.push('\n');30; if (data.sharingUrl) {; buf.push('  <input type="text" id="sharing-input" value=', escape((30,  data.sharingUrl )), ' >\n');31; };; buf.push(''); })();
 } 
 return buf.join('');
 };
@@ -4804,33 +4996,57 @@ exports.repeatUntilFinish = function(d){return "повторять до окон
 
 exports.scoreText = function(d){return "Score: "+v(d,"playerScore")+" : "+v(d,"opponentScore")};
 
-exports.setBallSpeedRandom = function(d){return "set random ball speed"};
+exports.setBackgroundRandom = function(d){return "set random scene"};
 
-exports.setBallSpeedVerySlow = function(d){return "set very slow ball speed"};
+exports.setBackgroundHardcourt = function(d){return "set hardcourt scene"};
 
-exports.setBallSpeedSlow = function(d){return "set slow ball speed"};
+exports.setBackgroundRetro = function(d){return "set retro scene"};
 
-exports.setBallSpeedNormal = function(d){return "set normal ball speed"};
+exports.setBackgroundTooltip = function(d){return "Sets the background image"};
 
-exports.setBallSpeedFast = function(d){return "set fast ball speed"};
+exports.setBallRandom = function(d){return "set random ball"};
 
-exports.setBallSpeedVeryFast = function(d){return "set very fast ball speed"};
+exports.setBallHardcourt = function(d){return "set hardcourt ball"};
 
-exports.setBallSpeedTooltip = function(d){return "Sets the speed of the ball"};
+exports.setBallRetro = function(d){return "set retro ball"};
 
-exports.setPaddleSpeedRandom = function(d){return "set random paddle speed"};
+exports.setBallTooltip = function(d){return "Sets the ball image"};
 
-exports.setPaddleSpeedVerySlow = function(d){return "set very slow paddle speed"};
+exports.setBallSpeedRandom = function(d){return "присвоить случайную скорость мяча"};
 
-exports.setPaddleSpeedSlow = function(d){return "set slow paddle speed"};
+exports.setBallSpeedVerySlow = function(d){return "присвоить очень медленную  скорость мяча"};
 
-exports.setPaddleSpeedNormal = function(d){return "set normal paddle speed"};
+exports.setBallSpeedSlow = function(d){return "присвоить медленную скорость мяча"};
 
-exports.setPaddleSpeedFast = function(d){return "set fast paddle speed"};
+exports.setBallSpeedNormal = function(d){return "присвоить нормальную скорость мяча"};
 
-exports.setPaddleSpeedVeryFast = function(d){return "set very fast paddle speed"};
+exports.setBallSpeedFast = function(d){return "присвоить быструю скорость мяча"};
 
-exports.setPaddleSpeedTooltip = function(d){return "Sets the speed of the paddle"};
+exports.setBallSpeedVeryFast = function(d){return "присвоить очень быструю скорость мяча"};
+
+exports.setBallSpeedTooltip = function(d){return "Присвоить скорость мяча"};
+
+exports.setPaddleRandom = function(d){return "set random paddle"};
+
+exports.setPaddleHardcourt = function(d){return "set hardcourt paddle"};
+
+exports.setPaddleRetro = function(d){return "set retro paddle"};
+
+exports.setPaddleTooltip = function(d){return "Sets the ball paddle"};
+
+exports.setPaddleSpeedRandom = function(d){return "присвоить случайную скорость удара"};
+
+exports.setPaddleSpeedVerySlow = function(d){return "присвоить очень медленную скорость удара"};
+
+exports.setPaddleSpeedSlow = function(d){return "присвоить медленную скорость удара"};
+
+exports.setPaddleSpeedNormal = function(d){return "присвоить нормальную скорость удара"};
+
+exports.setPaddleSpeedFast = function(d){return "присвоить быструю скорость удара"};
+
+exports.setPaddleSpeedVeryFast = function(d){return "присвоить очень быструю скорость удара"};
+
+exports.setPaddleSpeedTooltip = function(d){return "Присвоить скорость удара"};
 
 exports.turnLeft = function(d){return "повернуть налево"};
 
@@ -4850,9 +5066,9 @@ exports.whenDown = function(d){return "when Down arrow"};
 
 exports.whenDownTooltip = function(d){return "Execute the actions below when the Down arrow button is pressed."};
 
-exports.whenGameStarts = function(d){return "when game starts"};
+exports.whenGameStarts = function(d){return "Когда игра начнется"};
 
-exports.whenGameStartsTooltip = function(d){return "Execute the actions below when the game starts."};
+exports.whenGameStartsTooltip = function(d){return "Выполните действия ниже, когда игра начнется."};
 
 exports.whenLeft = function(d){return "when Left arrow"};
 
@@ -4926,7 +5142,7 @@ exports.dialogOK = function(d){return "Продолжить"};
 
 exports.emptyBlocksErrorMsg = function(d){return "Блокам \"повторять\" или \"если\" необходимо иметь внутри другие блоки для работы. Убедись  в том, что внутренний блок должным образом подходит к блоку, в котором он содержится."};
 
-exports.extraTopBlocks = function(d){return "You have extra blocks that aren't attached to an event block."};
+exports.extraTopBlocks = function(d){return "У вас есть дополнительные блоки, которые не присоединены к основному блоку."};
 
 exports.finalStage = function(d){return "Поздравляю! Ты завершил последний этап."};
 
@@ -4944,7 +5160,7 @@ exports.levelIncompleteError = function(d){return "Ты используешь �
 
 exports.listVariable = function(d){return "список"};
 
-exports.makeYourOwnFlappy = function(d){return "Make Your Own Flappy Game"};
+exports.makeYourOwnFlappy = function(d){return "Создайте свою аркадную игру"};
 
 exports.missingBlocksErrorMsg = function(d){return "Для решения этой головоломки попробуй один или несколько из следующих блоков:"};
 
@@ -4982,7 +5198,7 @@ exports.tooManyBlocksMsg = function(d){return "Эта головоломка м�
 
 exports.tooMuchWork = function(d){return "Ты заставил меня попотеть! Может, будешь стараться делать меньше попыток?"};
 
-exports.flappySpecificFail = function(d){return "Your code looks good - it will flap with each click. But you need to click many times to flap to the target."};
+exports.flappySpecificFail = function(d){return "Ваш код выглядит хорошо - Она будет взлетать при клике мышкой. Но нужно будет нажимать на мышку до тех пор пока не достигнете цели."};
 
 exports.toolboxHeader = function(d){return "Блоки"};
 
@@ -5010,7 +5226,7 @@ exports.orientationLock = function(d){return "Выключите блокиро�
 
 exports.wantToLearn = function(d){return "Хотите научиться писать код?"};
 
-exports.watchVideo = function(d){return "Смотреть видео"};
+exports.watchVideo = function(d){return "Посмотрите видео"};
 
 exports.tryHOC = function(d){return "Попробуйте час кода"};
 

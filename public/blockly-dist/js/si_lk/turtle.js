@@ -1311,7 +1311,7 @@ var createSharingDiv = function(options) {
   if (options.showingSharing &&
       exports.canContinueToNextLevel(options.feedbackType)) {
     var sharingDiv = document.createElement('div');
-    sharingDiv.className = 'shareDiv';
+    sharingDiv.setAttribute('style', 'display:inline-block');
     var sharingImage = document.createElement('div');
 
     var feedbackImage = createFeedbackImage(options);
@@ -1580,7 +1580,7 @@ var getEnabledBlocks = function() {
  * a set of blocks that at least one of them should be used. Each block is
  * represented as the prefix of an id in the corresponding template.soy.
  */
-var getMissingRequiredBlocks = function() {
+var getMissingRequiredBlocks = function () {
   var missingBlocks = [];
   var code = null;  // JavaScript code, which is initalized lazily.
   if (BlocklyApps.REQUIRED_BLOCKS && BlocklyApps.REQUIRED_BLOCKS.length) {
@@ -1663,7 +1663,7 @@ exports.getTestResults = function() {
   }
 };
 
-Keycodes = {
+var Keycodes = {
   ENTER: 13,
   SPACE: 32
 };
@@ -1740,6 +1740,7 @@ var generateXMLForBlocks = function(blocks) {
   }
   return blockXMLStrings.join('');
 };
+
 
 },{"../locale/si_lk/common":32,"./codegen":4,"./dom":5,"./templates/buttons.html":11,"./templates/code.html":12,"./templates/readonly.html":17,"./templates/showCode.html":18,"./templates/trophy.html":19,"./utils":30}],7:[function(require,module,exports){
 // Functions for checking required blocks.
@@ -2070,7 +2071,7 @@ escape = escape || function (html){
 };
 var buf = [];
 with (locals || {}) { (function(){ 
- buf.push('');1; var msg = require('../../locale/si_lk/common'); ; buf.push('\n\n');3; if (data.ok) {; buf.push('  <div class="farSide" style="padding: 1ex 3ex 0">\n    <button id="ok-button" class="secondary">\n      ', escape((5,  msg.dialogOK() )), '\n    </button>\n  </div>\n');8; };; buf.push('\n');9; if (data.previousLevel) {; buf.push('  <button id="back-button" class="launch">\n    ', escape((10,  msg.backToPreviousLevel() )), '\n  </button>\n');12; };; buf.push('\n');13; if (data.tryAgain) {; buf.push('  <button id="again-button" class="launch">\n    ', escape((14,  msg.tryAgain() )), '\n  </button>\n');16; };; buf.push('\n');17; if (data.nextLevel) {; buf.push('  <button id="continue-button" class="launch">\n    ', escape((18,  msg.continue() )), '\n  </button>\n');20; };; buf.push('\n');21; if (data.facebookUrl) {; buf.push('  <a href=', escape((21,  data.facebookUrl )), ' target="_blank">\n    <img src=', escape((22,  BlocklyApps.assetUrl("media/facebook_purple.png") )), '>\n  </a>\n');24; };; buf.push('\n');25; if (data.twitterUrl) {; buf.push('  <a href=', escape((25,  data.twitterUrl )), ' target="_blank">\n    <img src=', escape((26,  BlocklyApps.assetUrl("media/twitter_purple.png") )), ' >\n  </a>\n  <br>\n');29; };; buf.push('\n');30; if (data.sharingUrl) {; buf.push('  <input type="text" id="sharing-input" style="width:100%;" value=', escape((30,  data.sharingUrl )), ' >\n');31; };; buf.push(''); })();
+ buf.push('');1; var msg = require('../../locale/si_lk/common'); ; buf.push('\n\n');3; if (data.ok) {; buf.push('  <div class="farSide" style="padding: 1ex 3ex 0">\n    <button id="ok-button" class="secondary">\n      ', escape((5,  msg.dialogOK() )), '\n    </button>\n  </div>\n');8; };; buf.push('\n');9; if (data.previousLevel) {; buf.push('  <button id="back-button" class="launch">\n    ', escape((10,  msg.backToPreviousLevel() )), '\n  </button>\n');12; };; buf.push('\n');13; if (data.tryAgain) {; buf.push('  <button id="again-button" class="launch">\n    ', escape((14,  msg.tryAgain() )), '\n  </button>\n');16; };; buf.push('\n');17; if (data.nextLevel) {; buf.push('  <button id="continue-button" class="launch">\n    ', escape((18,  msg.continue() )), '\n  </button>\n');20; };; buf.push('\n');21; if (data.facebookUrl) {; buf.push('  <a href=', escape((21,  data.facebookUrl )), ' target="_blank">\n    <img src=', escape((22,  BlocklyApps.assetUrl("media/facebook_purple.png") )), '>\n  </a>\n');24; };; buf.push('\n');25; if (data.twitterUrl) {; buf.push('  <a href=', escape((25,  data.twitterUrl )), ' target="_blank">\n    <img src=', escape((26,  BlocklyApps.assetUrl("media/twitter_purple.png") )), ' >\n  </a>\n  <br>\n');29; };; buf.push('\n');30; if (data.sharingUrl) {; buf.push('  <input type="text" id="sharing-input" value=', escape((30,  data.sharingUrl )), ' >\n');31; };; buf.push(''); })();
 } 
 return buf.join('');
 };
@@ -5199,13 +5200,13 @@ exports.parseElement = function(text) {
 var MessageFormat = require("messageformat");MessageFormat.locale.en=function(n){return n===1?"one":"other"}
 exports.blocklyMessage = function(d){return "Blockly"};
 
-exports.catActions = function(d){return "Actions"};
+exports.catActions = function(d){return "ක්‍රියාවන්"};
 
-exports.catColour = function(d){return "Colour"};
+exports.catColour = function(d){return "වර්ණය"};
 
 exports.catLogic = function(d){return "Logic"};
 
-exports.catLists = function(d){return "Lists"};
+exports.catLists = function(d){return "ලැයිස්තු"};
 
 exports.catLoops = function(d){return "Loops"};
 
@@ -5213,17 +5214,17 @@ exports.catMath = function(d){return "Math"};
 
 exports.catProcedures = function(d){return "Functions"};
 
-exports.catText = function(d){return "Text"};
+exports.catText = function(d){return "පෙළ"};
 
-exports.catVariables = function(d){return "Variables"};
+exports.catVariables = function(d){return "විචල්‍යන්"};
 
 exports.codeTooltip = function(d){return "See generated JavaScript code."};
 
-exports.continue = function(d){return "Continue"};
+exports.continue = function(d){return "ඉදිරියට යන්න"};
 
-exports.dialogCancel = function(d){return "Cancel"};
+exports.dialogCancel = function(d){return "අවලංගු කරන්න"};
 
-exports.dialogOK = function(d){return "OK"};
+exports.dialogOK = function(d){return "හරි"};
 
 exports.emptyBlocksErrorMsg = function(d){return "The \"Repeat\" or \"If\" block needs to have other blocks inside it to work. Make sure the inner block fits properly inside the containing block."};
 
@@ -5237,13 +5238,13 @@ exports.generatedCodeInfo = function(d){return "The blocks for your program can 
 
 exports.hashError = function(d){return "Sorry, '%1' doesn't correspond with any saved program."};
 
-exports.help = function(d){return "Help"};
+exports.help = function(d){return "උදව්"};
 
-exports.hintTitle = function(d){return "Hint:"};
+exports.hintTitle = function(d){return "ඉඟිය:"};
 
 exports.levelIncompleteError = function(d){return "You are using all of the necessary types of blocks but not in the right way."};
 
-exports.listVariable = function(d){return "list"};
+exports.listVariable = function(d){return "ලැයිස්තුව"};
 
 exports.makeYourOwnFlappy = function(d){return "Make Your Own Flappy Game"};
 
@@ -5269,13 +5270,13 @@ exports.runProgram = function(d){return "Run Program"};
 
 exports.runTooltip = function(d){return "Run the program defined by the blocks in the workspace."};
 
-exports.showCodeHeader = function(d){return "Show Code"};
+exports.showCodeHeader = function(d){return "කේතය පෙන්වන්න"};
 
-exports.showGeneratedCode = function(d){return "Show code"};
+exports.showGeneratedCode = function(d){return "කේතය පෙන්වන්න"};
 
 exports.subtitle = function(d){return "a visual programming environment"};
 
-exports.textVariable = function(d){return "text"};
+exports.textVariable = function(d){return "පෙළ"};
 
 exports.tooFewBlocksMsg = function(d){return "You are using all of the necessary types of blocks, but try using more  of these types of blocks to complete this puzzle."};
 
@@ -5291,7 +5292,7 @@ exports.openWorkspace = function(d){return "How It Works"};
 
 exports.totalNumLinesOfCodeWritten = function(d){return "All-time total: "+p(d,"numLines",0,"en",{"one":"1 line","other":n(d,"numLines")+" lines"})+" of code."};
 
-exports.tryAgain = function(d){return "Try again"};
+exports.tryAgain = function(d){return "නැවත උත්සාහ කරන්න"};
 
 exports.backToPreviousLevel = function(d){return "Back to previous level"};
 
