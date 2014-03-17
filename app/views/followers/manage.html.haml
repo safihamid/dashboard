@@ -51,6 +51,9 @@
             = followed.section.try(:name)
             = link_to("(remove from section)", remove_from_section_path(follower_id: followed.student_user_id, section_id: followed.section_id), method: :post) if followed.section.present?
 
+  %div{style: 'min-height: 40px; margin-top: 10px'}
+    = yield :section_assignment_dropdown
+
 %br/
 
 %h4{ id:'add_students' } Ask your students to register themselves
@@ -90,5 +93,8 @@
           });
           $('.manage_section_area').toggle(anyChecked);
           $('.manage_section_area_instructions').toggle(!anyChecked);
+      });
+      $('select[name="section_id"]').on('change', function() {
+        $('select[name="section_id"]').val($(this).val());
       });
   });
