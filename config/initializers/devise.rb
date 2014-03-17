@@ -229,11 +229,10 @@ Devise.setup do |config|
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', :scope => 'user,public_repo'
-
-  config.omniauth :twitter, ENV["TWITTER_CONSUMER_KEY"], ENV["TWITTER_CONSUMER_SECRET"]
-  config.omniauth :facebook, ENV['FACEBOOK_KEY'], ENV['FACEBOOK_SECRET'], :scope => 'email,user_birthday', :display => 'popup'
-  config.omniauth :google_oauth2, ENV["GOOGLE_KEY"], ENV["GOOGLE_SECRET"]
-  config.omniauth :windowslive, ENV['WINDOWSLIVE_CLIENT_ID'], ENV['WINDOWSLIVE_SECRET'], :scope => 'wl.basic'
+  config.omniauth :twitter, Deploy.config['dashboard_twitter_key'], Deploy.config['dashboard_twitter_secret']
+  config.omniauth :facebook, Deploy.config['dashboard_facebook_key'], Deploy.config['dashboard_facebook_secret'], :scope => 'email,user_birthday', :display => 'popup'
+  config.omniauth :google_oauth2, Deploy.config['dashboard_google_key'], Deploy.config['dashboard_google_secret']
+  config.omniauth :windowslive, Deploy.config['dashboard_windowslive_key'], Deploy.config['dashboard_windowslive_secret'], :scope => 'wl.basic'
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
