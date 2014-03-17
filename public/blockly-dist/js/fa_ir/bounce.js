@@ -877,6 +877,26 @@ exports.setBallSpeed = function (id, value) {
   }
 };
 
+exports.setBackground = function (id, value) {
+  BlocklyApps.highlight(id);
+  Bounce.setBackground(value);
+};
+
+exports.setBall = function (id, value) {
+  BlocklyApps.highlight(id);
+  Bounce.setBall(value);
+};
+
+exports.setPaddle = function (id, value) {
+  BlocklyApps.highlight(id);
+  Bounce.setPaddle(value);
+};
+
+exports.setBackground = function (id, value) {
+  BlocklyApps.highlight(id);
+  Bounce.setBackground(value);
+};
+
 exports.setPaddleSpeed = function (id, value) {
   BlocklyApps.highlight(id);
   Bounce.paddleSpeed = value;
@@ -1383,6 +1403,90 @@ exports.install = function(blockly, skin) {
     return generateSetterCode(this, 'setPaddleSpeed');
   };
 
+  /**
+   * setBackground
+   */
+  blockly.Blocks.bounce_setBackground = {
+    helpUrl: '',
+    init: function() {
+      var dropdown = new blockly.FieldDropdown(this.VALUES);
+      dropdown.setValue(this.VALUES[1][1]);  // default to hardcourt
+
+      this.setHSV(312, 0.32, 0.62);
+      this.appendDummyInput()
+          .appendTitle(dropdown, 'VALUE');
+      this.setInputsInline(true);
+      this.setPreviousStatement(true);
+      this.setNextStatement(true);
+      this.setTooltip(msg.setBackgroundTooltip());
+    }
+  };
+
+  blockly.Blocks.bounce_setBackground.VALUES =
+      [[msg.setBackgroundRandom(), 'random'],
+       [msg.setBackgroundHardcourt(), '"hardcourt"'],
+       [msg.setBackgroundRetro(), '"retro"']];
+
+  generator.bounce_setBackground = function() {
+    return generateSetterCode(this, 'setBackground');
+  };
+
+  /**
+   * setBall
+   */
+  blockly.Blocks.bounce_setBall = {
+    helpUrl: '',
+    init: function() {
+      var dropdown = new blockly.FieldDropdown(this.VALUES);
+      dropdown.setValue(this.VALUES[1][1]);  // default to hardcourt
+
+      this.setHSV(312, 0.32, 0.62);
+      this.appendDummyInput()
+          .appendTitle(dropdown, 'VALUE');
+      this.setInputsInline(true);
+      this.setPreviousStatement(true);
+      this.setNextStatement(true);
+      this.setTooltip(msg.setBallTooltip());
+    }
+  };
+
+  blockly.Blocks.bounce_setBall.VALUES =
+      [[msg.setBallRandom(), 'random'],
+       [msg.setBallHardcourt(), '"hardcourt"'],
+       [msg.setBallRetro(), '"retro"']];
+
+  generator.bounce_setBall = function() {
+    return generateSetterCode(this, 'setBall');
+  };
+
+  /**
+   * setPaddle
+   */
+  blockly.Blocks.bounce_setPaddle = {
+    helpUrl: '',
+    init: function() {
+      var dropdown = new blockly.FieldDropdown(this.VALUES);
+      dropdown.setValue(this.VALUES[1][1]);  // default to hardcourt
+
+      this.setHSV(312, 0.32, 0.62);
+      this.appendDummyInput()
+          .appendTitle(dropdown, 'VALUE');
+      this.setInputsInline(true);
+      this.setPreviousStatement(true);
+      this.setNextStatement(true);
+      this.setTooltip(msg.setPaddleTooltip());
+    }
+  };
+
+  blockly.Blocks.bounce_setPaddle.VALUES =
+      [[msg.setPaddleRandom(), 'random'],
+       [msg.setPaddleHardcourt(), '"hardcourt"'],
+       [msg.setPaddleRetro(), '"retro"']];
+
+  generator.bounce_setPaddle = function() {
+    return generateSetterCode(this, 'setPaddle');
+  };
+  
   delete blockly.Blocks.procedures_defreturn;
   delete blockly.Blocks.procedures_ifreturn;
 };
@@ -1539,6 +1643,22 @@ var GOAL_TILE_SHAPES = {
   'null0': [1, 1],  // Empty
 };
 
+// Return a value of '0' if the specified square is not a wall, '1' for
+// a wall, 'X' for out of bounds
+var wallNormalize = function(x, y) {
+  return ((Bounce.map[y] === undefined) ||
+          (Bounce.map[y][x] === undefined)) ? 'X' :
+            (Bounce.map[y][x] & SquareType.WALL) ? '1' : '0';
+};
+
+// Return a value of '0' if the specified square is not a wall, '1' for
+// a wall, 'X' for out of bounds
+var goalNormalize = function(x, y) {
+  return ((Bounce.map[y] === undefined) ||
+          (Bounce.map[y][x] === undefined)) ? 'X' :
+            (Bounce.map[y][x] & SquareType.GOAL) ? '1' : '0';
+};
+
 var drawMap = function() {
   var svg = document.getElementById('svgBounce');
   var i, x, y, k, tile;
@@ -1573,6 +1693,7 @@ var drawMap = function() {
     tile = document.createElementNS(Blockly.SVG_NS, 'image');
     tile.setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:href',
                         skin.background);
+    tile.setAttribute('id', 'background');
     tile.setAttribute('height', Bounce.MAZE_HEIGHT);
     tile.setAttribute('width', Bounce.MAZE_WIDTH);
     tile.setAttribute('x', 0);
@@ -1607,22 +1728,6 @@ var drawMap = function() {
   }
 
   // Draw the tiles making up the maze map.
-
-  // Return a value of '0' if the specified square is not a wall, '1' for
-  // a wall, 'X' for out of bounds
-  var wallNormalize = function(x, y) {
-    return ((Bounce.map[y] === undefined) ||
-            (Bounce.map[y][x] === undefined)) ? 'X' :
-              (Bounce.map[y][x] & SquareType.WALL) ? '1' : '0';
-  };
-
-  // Return a value of '0' if the specified square is not a wall, '1' for
-  // a wall, 'X' for out of bounds
-  var goalNormalize = function(x, y) {
-    return ((Bounce.map[y] === undefined) ||
-            (Bounce.map[y][x] === undefined)) ? 'X' :
-              (Bounce.map[y][x] & SquareType.GOAL) ? '1' : '0';
-  };
 
   // Compute and draw the tile for each square.
   var tileId = 0;
@@ -2201,6 +2306,11 @@ BlocklyApps.reset = function(first) {
   Bounce.playerScore = 0;
   Bounce.opponentScore = 0;
   document.getElementById('score').setAttribute('visibility', 'hidden');
+
+  // Reset configurable variables
+  Bounce.setBackground('hardcourt');
+  Bounce.setBall('hardcourt');
+  Bounce.setPaddle('hardcourt');
   
   // Move Ball into position.
   if (Bounce.ballStart_) {
@@ -2589,6 +2699,75 @@ Bounce.displayScore = function() {
     playerScore: Bounce.playerScore,
     opponentScore: Bounce.opponentScore
   });
+};
+
+var skinTheme = function (value) {
+  if (value === 'hardcourt') {
+    return skin;
+  }
+  return skin[value];
+};
+
+Bounce.setBackground = function (value) {
+  var element = document.getElementById('background');
+  element.setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:href',
+    skinTheme(value).background);
+
+  // Recompute all of the tiles to determine if they are walls, goals, or empty
+  // TODO: do this once during init and cache the result
+  var tileId = 0;
+  for (var y = 0; y < Bounce.ROWS; y++) {
+    for (var x = 0; x < Bounce.COLS; x++) {
+      var empty = false;
+      var image;
+      // Compute the tile index.
+      var tile = wallNormalize(x, y) +
+          wallNormalize(x, y - 1) +  // North.
+          wallNormalize(x + 1, y) +  // East.
+          wallNormalize(x, y + 1) +  // South.
+          wallNormalize(x - 1, y);   // West.
+
+      // Draw the tile.
+      if (WALL_TILE_SHAPES[tile]) {
+        image = skinTheme(value).tiles;
+      }
+      else {
+        // Compute the tile index.
+        tile = goalNormalize(x, y) +
+            goalNormalize(x, y - 1) +  // North.
+            goalNormalize(x + 1, y) +  // East.
+            goalNormalize(x, y + 1) +  // South.
+            goalNormalize(x - 1, y);   // West.
+
+        if (!GOAL_TILE_SHAPES[tile]) {
+          empty = true;
+        }
+        image = skinTheme(value).goalTiles;
+      }
+      if (!empty) {
+        var element = document.getElementById('tileElement' + tileId);
+        element.setAttributeNS(
+            'http://www.w3.org/1999/xlink', 'xlink:href', image);
+      }
+      tileId++;
+    }
+  }
+};
+
+Bounce.setBall = function (value) {
+  if (Bounce.ballStart_) {
+    for (var i = 0; i < Bounce.ballCount; i++) {
+      var element = document.getElementById('ball' + i);
+      element.setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:href',
+        skinTheme(value).ball);
+    }
+  }
+};
+
+Bounce.setPaddle = function (value) {
+  var element = document.getElementById('paddle');
+  element.setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:href',
+    skinTheme(value).paddle);
 };
 
 Bounce.timedOut = function() {
@@ -3040,7 +3219,7 @@ module.exports = {
       <block type="bounce_whenBallMissesPaddle" deletable="false" x="20" y="340"></block>'
   },
   '11': {
-    'ideal': 19,
+    'ideal': 22,
     'requiredBlocks': [
       [{'test': 'moveLeft', 'type': 'bounce_moveLeft'}],
       [{'test': 'moveRight', 'type': 'bounce_moveRight'}],
@@ -3079,7 +3258,10 @@ module.exports = {
           <block type="bounce_incrementPlayerScore"></block> \
           <block type="bounce_incrementOpponentScore"></block> \
           <block type="bounce_setPaddleSpeed"></block> \
-          <block type="bounce_setBallSpeed"></block>'),
+          <block type="bounce_setBallSpeed"></block> \
+          <block type="bounce_setBackground"></block> \
+          <block type="bounce_setBall"></block> \
+          <block type="bounce_setPaddle"></block>'),
     'startBlocks':
      '<block type="bounce_whenGameStarts" deletable="false" x="20" y="20"></block> \
       <block type="bounce_whenLeft" deletable="false" x="20" y="110"></block> \
@@ -3134,6 +3316,15 @@ var CONFIGS = {
 exports.load = function(assetUrl, id) {
   var skin = skinsBase.load(assetUrl, id);
   var config = CONFIGS[skin.id];
+
+  skin.retro = {
+    background: skin.assetUrl('retro_background.png'),
+    tiles: skin.assetUrl('retro_tiles_wall.png'),
+    goalTiles: skin.assetUrl('retro_tiles_goal.png'),
+    paddle: skin.assetUrl('retro_paddle.png'),
+    ball: skin.assetUrl('retro_ball.png'),
+  };
+
   // Images
   skin.tiles = skin.assetUrl('tiles_wall.png');
   skin.goalTiles = skin.assetUrl('tiles_goal.png');
@@ -3728,7 +3919,7 @@ var createSharingDiv = function(options) {
   if (options.showingSharing &&
       exports.canContinueToNextLevel(options.feedbackType)) {
     var sharingDiv = document.createElement('div');
-    sharingDiv.className = 'shareDiv';
+    sharingDiv.setAttribute('style', 'display:inline-block');
     var sharingImage = document.createElement('div');
 
     var feedbackImage = createFeedbackImage(options);
@@ -3997,7 +4188,7 @@ var getEnabledBlocks = function() {
  * a set of blocks that at least one of them should be used. Each block is
  * represented as the prefix of an id in the corresponding template.soy.
  */
-var getMissingRequiredBlocks = function() {
+var getMissingRequiredBlocks = function () {
   var missingBlocks = [];
   var code = null;  // JavaScript code, which is initalized lazily.
   if (BlocklyApps.REQUIRED_BLOCKS && BlocklyApps.REQUIRED_BLOCKS.length) {
@@ -4080,7 +4271,7 @@ exports.getTestResults = function() {
   }
 };
 
-Keycodes = {
+var Keycodes = {
   ENTER: 13,
   SPACE: 32
 };
@@ -4157,6 +4348,7 @@ var generateXMLForBlocks = function(blocks) {
   }
   return blockXMLStrings.join('');
 };
+
 
 },{"../locale/fa_ir/common":31,"./codegen":13,"./dom":14,"./templates/buttons.html":19,"./templates/code.html":20,"./templates/readonly.html":25,"./templates/showCode.html":26,"./templates/trophy.html":27,"./utils":28}],16:[function(require,module,exports){
 // avatar: A 1029x51 set of 21 avatar images.
@@ -4428,7 +4620,7 @@ escape = escape || function (html){
 };
 var buf = [];
 with (locals || {}) { (function(){ 
- buf.push('');1; var msg = require('../../locale/fa_ir/common'); ; buf.push('\n\n');3; if (data.ok) {; buf.push('  <div class="farSide" style="padding: 1ex 3ex 0">\n    <button id="ok-button" class="secondary">\n      ', escape((5,  msg.dialogOK() )), '\n    </button>\n  </div>\n');8; };; buf.push('\n');9; if (data.previousLevel) {; buf.push('  <button id="back-button" class="launch">\n    ', escape((10,  msg.backToPreviousLevel() )), '\n  </button>\n');12; };; buf.push('\n');13; if (data.tryAgain) {; buf.push('  <button id="again-button" class="launch">\n    ', escape((14,  msg.tryAgain() )), '\n  </button>\n');16; };; buf.push('\n');17; if (data.nextLevel) {; buf.push('  <button id="continue-button" class="launch">\n    ', escape((18,  msg.continue() )), '\n  </button>\n');20; };; buf.push('\n');21; if (data.facebookUrl) {; buf.push('  <a href=', escape((21,  data.facebookUrl )), ' target="_blank">\n    <img src=', escape((22,  BlocklyApps.assetUrl("media/facebook_purple.png") )), '>\n  </a>\n');24; };; buf.push('\n');25; if (data.twitterUrl) {; buf.push('  <a href=', escape((25,  data.twitterUrl )), ' target="_blank">\n    <img src=', escape((26,  BlocklyApps.assetUrl("media/twitter_purple.png") )), ' >\n  </a>\n  <br>\n');29; };; buf.push('\n');30; if (data.sharingUrl) {; buf.push('  <input type="text" id="sharing-input" style="width:100%;" value=', escape((30,  data.sharingUrl )), ' >\n');31; };; buf.push(''); })();
+ buf.push('');1; var msg = require('../../locale/fa_ir/common'); ; buf.push('\n\n');3; if (data.ok) {; buf.push('  <div class="farSide" style="padding: 1ex 3ex 0">\n    <button id="ok-button" class="secondary">\n      ', escape((5,  msg.dialogOK() )), '\n    </button>\n  </div>\n');8; };; buf.push('\n');9; if (data.previousLevel) {; buf.push('  <button id="back-button" class="launch">\n    ', escape((10,  msg.backToPreviousLevel() )), '\n  </button>\n');12; };; buf.push('\n');13; if (data.tryAgain) {; buf.push('  <button id="again-button" class="launch">\n    ', escape((14,  msg.tryAgain() )), '\n  </button>\n');16; };; buf.push('\n');17; if (data.nextLevel) {; buf.push('  <button id="continue-button" class="launch">\n    ', escape((18,  msg.continue() )), '\n  </button>\n');20; };; buf.push('\n');21; if (data.facebookUrl) {; buf.push('  <a href=', escape((21,  data.facebookUrl )), ' target="_blank">\n    <img src=', escape((22,  BlocklyApps.assetUrl("media/facebook_purple.png") )), '>\n  </a>\n');24; };; buf.push('\n');25; if (data.twitterUrl) {; buf.push('  <a href=', escape((25,  data.twitterUrl )), ' target="_blank">\n    <img src=', escape((26,  BlocklyApps.assetUrl("media/twitter_purple.png") )), ' >\n  </a>\n  <br>\n');29; };; buf.push('\n');30; if (data.sharingUrl) {; buf.push('  <input type="text" id="sharing-input" value=', escape((30,  data.sharingUrl )), ' >\n');31; };; buf.push(''); })();
 } 
 return buf.join('');
 };
@@ -4791,6 +4983,22 @@ exports.repeatUntilFinish = function(d){return "آنقدر تکرار کن تا 
 
 exports.scoreText = function(d){return "Score: "+v(d,"playerScore")+" : "+v(d,"opponentScore")};
 
+exports.setBackgroundRandom = function(d){return "set random scene"};
+
+exports.setBackgroundHardcourt = function(d){return "set hardcourt scene"};
+
+exports.setBackgroundRetro = function(d){return "set retro scene"};
+
+exports.setBackgroundTooltip = function(d){return "Sets the background image"};
+
+exports.setBallRandom = function(d){return "set random ball"};
+
+exports.setBallHardcourt = function(d){return "set hardcourt ball"};
+
+exports.setBallRetro = function(d){return "set retro ball"};
+
+exports.setBallTooltip = function(d){return "Sets the ball image"};
+
 exports.setBallSpeedRandom = function(d){return "set random ball speed"};
 
 exports.setBallSpeedVerySlow = function(d){return "set very slow ball speed"};
@@ -4804,6 +5012,14 @@ exports.setBallSpeedFast = function(d){return "set fast ball speed"};
 exports.setBallSpeedVeryFast = function(d){return "set very fast ball speed"};
 
 exports.setBallSpeedTooltip = function(d){return "Sets the speed of the ball"};
+
+exports.setPaddleRandom = function(d){return "set random paddle"};
+
+exports.setPaddleHardcourt = function(d){return "set hardcourt paddle"};
+
+exports.setPaddleRetro = function(d){return "set retro paddle"};
+
+exports.setPaddleTooltip = function(d){return "Sets the ball paddle"};
 
 exports.setPaddleSpeedRandom = function(d){return "set random paddle speed"};
 
@@ -4870,9 +5086,9 @@ exports.yes = function(d){return "بله"};
 
 },{"messageformat":38}],31:[function(require,module,exports){
 var MessageFormat = require("messageformat");MessageFormat.locale.fa=function(n){return "other"}
-exports.blocklyMessage = function(d){return "Blockly"};
+exports.blocklyMessage = function(d){return "بلاکلی"};
 
-exports.catActions = function(d){return "اقدامات"};
+exports.catActions = function(d){return "کارها"};
 
 exports.catColour = function(d){return "رنگ"};
 
@@ -4880,7 +5096,7 @@ exports.catLogic = function(d){return "منطق"};
 
 exports.catLists = function(d){return "لیست ها"};
 
-exports.catLoops = function(d){return "حلقه ها"};
+exports.catLoops = function(d){return "حلقه‌ها"};
 
 exports.catMath = function(d){return "ریاضی"};
 
@@ -4898,73 +5114,73 @@ exports.dialogCancel = function(d){return "لغو"};
 
 exports.dialogOK = function(d){return "Ok"};
 
-exports.emptyBlocksErrorMsg = function(d){return "بلوک های \"تکرار Repeat\" یا \"شرطی If \" برای کار کردن نیاز به بلوکهایی در داخل خود دارند.  اطمینان حاصل کنید که بلوک داخلی دارای تعریف درست بوده و در جای درستی از بلوک اصلی قرار گرفته است."};
+exports.emptyBlocksErrorMsg = function(d){return "بلوک‌های \"تکرار\" یا \"اگر\" برای کار کردن باید بلوک‌های دیگری در داخلشان باشد. اطمینان حاصل کنید که بلوک داخلی در جای درستی از بلوک اصلی قرار گرفته باشد."};
 
 exports.extraTopBlocks = function(d){return "You have extra blocks that aren't attached to an event block."};
 
-exports.finalStage = function(d){return "تبریک ! شما مرحلهٔ نهایی را به اتمام رسانده اید."};
+exports.finalStage = function(d){return "تبریک می‌گوییم! شما مرحله‌ی آخر را به پایان رساندید."};
 
-exports.finalStageTrophies = function(d){return "تبریک! شما مرحلهٔ نهایی را به پایان رساندید و برنده "+p(d,"numTrophies",0,"fa",{"one":"یک جایزه","other":"جوایز"+n(d,"numTrophies")})+" شدید."};
+exports.finalStageTrophies = function(d){return "تبریک می‌گوییم! شما مرحله‌ی آخر را به پایان رساندید و برنده‌ی "+p(d,"numTrophies",0,"fa",{"one":"یک جایزه","other":n(d,"numTrophies")+" جایزه"})+" شدید."};
 
-exports.generatedCodeInfo = function(d){return "بلوک های برنامه شما میتوانند در جاوا اسکریپت که مقبول ترین و فراگیرترین زبان برنامه نویسی در جهان است نیز به نمایش درآیند:"};
+exports.generatedCodeInfo = function(d){return "بلوک‌های برنامه‌ی شما همچنین می‌توانند در جاوا اسکریپت که فراگیرترین زبان برنامه نویسی در جهان است، به نمایش درآیند:"};
 
-exports.hashError = function(d){return "متاسفیم ! '1%' با هیچ کدام از برنامه های ذخیره شده مطابقت ندارد."};
+exports.hashError = function(d){return "با عرض پوزش، '%1' با هیچ کدام از برنامه‌های ذخیره شده مطابقت ندارد."};
 
 exports.help = function(d){return "راهنما"};
 
-exports.hintTitle = function(d){return "نکته:"};
+exports.hintTitle = function(d){return "راهنمایی:"};
 
-exports.levelIncompleteError = function(d){return "شما از تمام انواع بلوکهای لازم استفاده می‌کنید، اما نه به شکل درست."};
+exports.levelIncompleteError = function(d){return "شما همه‌ی بلوک‌های مورد نیاز را بکار بردید، ولی نه به روش درست."};
 
 exports.listVariable = function(d){return "لیست"};
 
-exports.makeYourOwnFlappy = function(d){return "Make Your Own Flappy Game"};
+exports.makeYourOwnFlappy = function(d){return "Flappy Bird خودتان را بسازید"};
 
-exports.missingBlocksErrorMsg = function(d){return "برای حل این معما از یکی یا بیشتر از یکی از بلوک های زیر استفاده کنید."};
+exports.missingBlocksErrorMsg = function(d){return "برای حل این معما، یکی یا چند تا از بلوک‌های زیر را بکار ببرید."};
 
 exports.nextLevel = function(d){return "تبریک ! شما پازل "+v(d,"puzzleNumber")+" را به پایان رساندید."};
 
-exports.nextLevelTrophies = function(d){return "Congratulations! You completed Puzzle "+v(d,"puzzleNumber")+" and won "+p(d,"numTrophies",0,"fa",{"one":"a trophy","other":n(d,"numTrophies")+" trophies"})+"."};
+exports.nextLevelTrophies = function(d){return "تبریک می‌گوییم! شما معمای "+v(d,"puzzleNumber")+" را به پایان رساندید و برنده‌ی "+p(d,"numTrophies",0,"fa",{"one":"یک جایزه","other":n(d,"numTrophies")+" جایزه"})+" شدید."};
 
-exports.nextStage = function(d){return "تبریک! شما مرحله "+v(d,"stageNumber")+"را به پایان رساندید."};
+exports.nextStage = function(d){return "تبریک می‌گوییم! شما مرحله‌ی "+v(d,"stageNumber")+" را به پایان رساندید."};
 
-exports.nextStageTrophies = function(d){return "Congratulations! You completed Stage "+v(d,"stageNumber")+" and won "+p(d,"numTrophies",0,"fa",{"one":"a trophy","other":n(d,"numTrophies")+" trophies"})+"."};
+exports.nextStageTrophies = function(d){return "تبریک می‌گوییم! شما مرحله‌ی "+v(d,"stageNumber")+" را به پایان رساندید و برنده‌ی "+p(d,"numTrophies",0,"fa",{"one":"یک جایزه","other":n(d,"numTrophies")+" جایزه"})+" شدید."};
 
-exports.numBlocksNeeded = function(d){return "Congratulations! You completed Puzzle "+v(d,"puzzleNumber")+". (However, you could have used only "+p(d,"numBlocks",0,"fa",{"one":"1 block","other":n(d,"numBlocks")+" blocks"})+".)"};
+exports.numBlocksNeeded = function(d){return "تبریک می‌گوییم! شما معمای "+v(d,"puzzleNumber")+" را به پایان رساندید. (اگرچه می‌توانستید تنها "+p(d,"numBlocks",0,"fa",{"one":"یک بلوک","other":n(d,"numBlocks")+" بلوک"})+" بکار ببرید.)"};
 
-exports.numLinesOfCodeWritten = function(d){return "شما همین الان  "+p(d,"numLines",0,"fa",{"one":"1 خط","other":n(d,"numLines")+" خط"})+" کد نوشتید!"};
+exports.numLinesOfCodeWritten = function(d){return "شما "+p(d,"numLines",0,"fa",{"one":"یک خط","other":n(d,"numLines")+" خط"})+" کد نوشتید!"};
 
-exports.puzzleTitle = function(d){return "پازل "+v(d,"puzzle_number")+"  از"+v(d,"stage_total")};
+exports.puzzleTitle = function(d){return "معمای "+v(d,"puzzle_number")+" از "+v(d,"stage_total")};
 
-exports.resetProgram = function(d){return "تنظیم مجدد"};
+exports.resetProgram = function(d){return "بازنشانی"};
 
-exports.runProgram = function(d){return "برنامه رو اجرا کن"};
+exports.runProgram = function(d){return "اجرای برنامه"};
 
-exports.runTooltip = function(d){return "اجرای برنامه توسط بلوک در فضای کار تعریف شده است."};
+exports.runTooltip = function(d){return "اجرای برنامه‌ی تعریف شده با بلوک‌های فضای کار."};
 
-exports.showCodeHeader = function(d){return "کد نمایش"};
+exports.showCodeHeader = function(d){return "نمایشِ کد"};
 
-exports.showGeneratedCode = function(d){return "کد نمایش"};
+exports.showGeneratedCode = function(d){return "نمایشِ کد"};
 
-exports.subtitle = function(d){return "محیط برنامه نویسی بصری"};
+exports.subtitle = function(d){return "یک محیط برنامه نویسیِ دیداری"};
 
 exports.textVariable = function(d){return "متن"};
 
-exports.tooFewBlocksMsg = function(d){return "شما از تمامی قطعه های لازم استفاده کرده اید، ولی برای تکمیل این پازل سعی کنید از تعداد بیشتری از این قطعه ها استفاده کنید."};
+exports.tooFewBlocksMsg = function(d){return "شما همه‌ی بلوک‌های مورد نیاز را بکار بردید، ولی برای حل این معما باید تعداد بیشتری از این بلوک‌ها را بکار ببرید."};
 
-exports.tooManyBlocksMsg = function(d){return "این پازل را میتوان با <x id='START_SPAN'/><x id='END_SPAN'/> قطعه حل کرد."};
+exports.tooManyBlocksMsg = function(d){return "این معما را می‌توان با <x id='START_SPAN'/><x id='END_SPAN'/> بلوک حل کرد."};
 
-exports.tooMuchWork = function(d){return "شما من را مجبور به انجام مقدار زیادی کار کردید. آیا میشود با تعداد تکرار کمتری سعی نمایید؟"};
+exports.tooMuchWork = function(d){return "شما منو مجبور به انجام مقدار زیادی کار کردید. میشه تعداد تکرار رو کمتر کنید؟"};
 
-exports.flappySpecificFail = function(d){return "Your code looks good - it will flap with each click. But you need to click many times to flap to the target."};
+exports.flappySpecificFail = function(d){return "کد شما خوب به نظر می‌رسد - پرنده با هر کلیک پر می‌زند. ولی برای پر زدن بسوی هدف باید چندین بار کلیک کنید."};
 
-exports.toolboxHeader = function(d){return "بلوک"};
+exports.toolboxHeader = function(d){return "بلوک‌ها"};
 
-exports.openWorkspace = function(d){return "چگونه کار می کند"};
+exports.openWorkspace = function(d){return "چگونگیِ کار"};
 
-exports.totalNumLinesOfCodeWritten = function(d){return "در مجموع: "+p(d,"numLines",0,"fa",{"one":"1 خط","other":n(d,"numLines")+" خط"})+" از کد."};
+exports.totalNumLinesOfCodeWritten = function(d){return "در مجموع: "+p(d,"numLines",0,"fa",{"one":"یک خط","other":n(d,"numLines")+" خط"})+" کد."};
 
-exports.tryAgain = function(d){return "دوباره تلاش کن"};
+exports.tryAgain = function(d){return "دوباره تلاش کنید"};
 
 exports.backToPreviousLevel = function(d){return "برگرد به سطح قبلی"};
 
@@ -4982,13 +5198,13 @@ exports.rotateText = function(d){return "بچرخان دستگاه خود را."
 
 exports.orientationLock = function(d){return "حالت افقی را در تنظیمات دستگاه خاموش کنید."};
 
-exports.wantToLearn = function(d){return "Want to learn to code?"};
+exports.wantToLearn = function(d){return "می‌خواید کد نویسی را یاد بگیرید؟"};
 
-exports.watchVideo = function(d){return "Watch the Video"};
+exports.watchVideo = function(d){return "ویدیو را ببینید"};
 
-exports.tryHOC = function(d){return "Try the Hour of Code"};
+exports.tryHOC = function(d){return "ساعتِ کد نویسی را امتحان کنید"};
 
-exports.signup = function(d){return "Sign up for the intro course"};
+exports.signup = function(d){return "برای دوره‌ی معرفی نام نویسی کنید"};
 
 
 },{"messageformat":38}],32:[function(require,module,exports){

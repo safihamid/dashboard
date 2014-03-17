@@ -1311,7 +1311,7 @@ var createSharingDiv = function(options) {
   if (options.showingSharing &&
       exports.canContinueToNextLevel(options.feedbackType)) {
     var sharingDiv = document.createElement('div');
-    sharingDiv.className = 'shareDiv';
+    sharingDiv.setAttribute('style', 'display:inline-block');
     var sharingImage = document.createElement('div');
 
     var feedbackImage = createFeedbackImage(options);
@@ -1580,7 +1580,7 @@ var getEnabledBlocks = function() {
  * a set of blocks that at least one of them should be used. Each block is
  * represented as the prefix of an id in the corresponding template.soy.
  */
-var getMissingRequiredBlocks = function() {
+var getMissingRequiredBlocks = function () {
   var missingBlocks = [];
   var code = null;  // JavaScript code, which is initalized lazily.
   if (BlocklyApps.REQUIRED_BLOCKS && BlocklyApps.REQUIRED_BLOCKS.length) {
@@ -1663,7 +1663,7 @@ exports.getTestResults = function() {
   }
 };
 
-Keycodes = {
+var Keycodes = {
   ENTER: 13,
   SPACE: 32
 };
@@ -1740,6 +1740,7 @@ var generateXMLForBlocks = function(blocks) {
   }
   return blockXMLStrings.join('');
 };
+
 
 },{"../locale/id_id/common":32,"./codegen":4,"./dom":5,"./templates/buttons.html":11,"./templates/code.html":12,"./templates/readonly.html":17,"./templates/showCode.html":18,"./templates/trophy.html":19,"./utils":30}],7:[function(require,module,exports){
 // Functions for checking required blocks.
@@ -2070,7 +2071,7 @@ escape = escape || function (html){
 };
 var buf = [];
 with (locals || {}) { (function(){ 
- buf.push('');1; var msg = require('../../locale/id_id/common'); ; buf.push('\n\n');3; if (data.ok) {; buf.push('  <div class="farSide" style="padding: 1ex 3ex 0">\n    <button id="ok-button" class="secondary">\n      ', escape((5,  msg.dialogOK() )), '\n    </button>\n  </div>\n');8; };; buf.push('\n');9; if (data.previousLevel) {; buf.push('  <button id="back-button" class="launch">\n    ', escape((10,  msg.backToPreviousLevel() )), '\n  </button>\n');12; };; buf.push('\n');13; if (data.tryAgain) {; buf.push('  <button id="again-button" class="launch">\n    ', escape((14,  msg.tryAgain() )), '\n  </button>\n');16; };; buf.push('\n');17; if (data.nextLevel) {; buf.push('  <button id="continue-button" class="launch">\n    ', escape((18,  msg.continue() )), '\n  </button>\n');20; };; buf.push('\n');21; if (data.facebookUrl) {; buf.push('  <a href=', escape((21,  data.facebookUrl )), ' target="_blank">\n    <img src=', escape((22,  BlocklyApps.assetUrl("media/facebook_purple.png") )), '>\n  </a>\n');24; };; buf.push('\n');25; if (data.twitterUrl) {; buf.push('  <a href=', escape((25,  data.twitterUrl )), ' target="_blank">\n    <img src=', escape((26,  BlocklyApps.assetUrl("media/twitter_purple.png") )), ' >\n  </a>\n  <br>\n');29; };; buf.push('\n');30; if (data.sharingUrl) {; buf.push('  <input type="text" id="sharing-input" style="width:100%;" value=', escape((30,  data.sharingUrl )), ' >\n');31; };; buf.push(''); })();
+ buf.push('');1; var msg = require('../../locale/id_id/common'); ; buf.push('\n\n');3; if (data.ok) {; buf.push('  <div class="farSide" style="padding: 1ex 3ex 0">\n    <button id="ok-button" class="secondary">\n      ', escape((5,  msg.dialogOK() )), '\n    </button>\n  </div>\n');8; };; buf.push('\n');9; if (data.previousLevel) {; buf.push('  <button id="back-button" class="launch">\n    ', escape((10,  msg.backToPreviousLevel() )), '\n  </button>\n');12; };; buf.push('\n');13; if (data.tryAgain) {; buf.push('  <button id="again-button" class="launch">\n    ', escape((14,  msg.tryAgain() )), '\n  </button>\n');16; };; buf.push('\n');17; if (data.nextLevel) {; buf.push('  <button id="continue-button" class="launch">\n    ', escape((18,  msg.continue() )), '\n  </button>\n');20; };; buf.push('\n');21; if (data.facebookUrl) {; buf.push('  <a href=', escape((21,  data.facebookUrl )), ' target="_blank">\n    <img src=', escape((22,  BlocklyApps.assetUrl("media/facebook_purple.png") )), '>\n  </a>\n');24; };; buf.push('\n');25; if (data.twitterUrl) {; buf.push('  <a href=', escape((25,  data.twitterUrl )), ' target="_blank">\n    <img src=', escape((26,  BlocklyApps.assetUrl("media/twitter_purple.png") )), ' >\n  </a>\n  <br>\n');29; };; buf.push('\n');30; if (data.sharingUrl) {; buf.push('  <input type="text" id="sharing-input" value=', escape((30,  data.sharingUrl )), ' >\n');31; };; buf.push(''); })();
 } 
 return buf.join('');
 };
@@ -5245,7 +5246,7 @@ exports.levelIncompleteError = function(d){return "Anda telah gunakan semua jeni
 
 exports.listVariable = function(d){return "list"};
 
-exports.makeYourOwnFlappy = function(d){return "Make Your Own Flappy Game"};
+exports.makeYourOwnFlappy = function(d){return "Buatlah permainan \"Flappy\" versi Anda sendiri"};
 
 exports.missingBlocksErrorMsg = function(d){return "Cobalah satu atau lebih blok di bawah untuk memecahkan teka-teki ini."};
 
@@ -5283,7 +5284,7 @@ exports.tooManyBlocksMsg = function(d){return "Teka-teki ini dapat diselesaikan 
 
 exports.tooMuchWork = function(d){return "Anda membuat saya melakukan terlalu banyak pekerjaan!  Bisakan Anda coba membuat pengulangan yang lebih sedikit?"};
 
-exports.flappySpecificFail = function(d){return "Kode kamu terlihat baik - itu akan mengepak setiap kliknya. tapi kamu perlu untuk klik sebanyak mungkin untuk mengepakkan obyek tersebut."};
+exports.flappySpecificFail = function(d){return "Kode kamu terlihat baik - Burung itu akan mengepak setiap kali diklik. Tapi kamu perlu mengklik sebanyak mungkin untuk terbang menuju target."};
 
 exports.toolboxHeader = function(d){return "Blok"};
 
@@ -5309,13 +5310,13 @@ exports.rotateText = function(d){return "Memutar perangkat anda."};
 
 exports.orientationLock = function(d){return "Matikan orientasi kunci dalam pengaturan perangkat."};
 
-exports.wantToLearn = function(d){return "Ingin belajar kode?"};
+exports.wantToLearn = function(d){return "Ingin belajar untuk mengkode?"};
 
-exports.watchVideo = function(d){return "Lihat Video"};
+exports.watchVideo = function(d){return "Tonton Videonya"};
 
-exports.tryHOC = function(d){return "Coba Hour of Code"};
+exports.tryHOC = function(d){return "Cobalah \"Hour of Code\""};
 
-exports.signup = function(d){return "Daftar untuk kursus awal"};
+exports.signup = function(d){return "Daftarlah untuk mengikuti kursus introduksi"};
 
 
 },{"messageformat":40}],33:[function(require,module,exports){
@@ -5386,13 +5387,13 @@ exports.penTooltip = function(d){return "Mengangkat atau menurunkan pensil, mula
 
 exports.penUp = function(d){return "pensil keatas"};
 
-exports.reinfFeedbackMsg = function(d){return "Does this look like what you want? You can press the \"Try again\" button to see your drawing."};
+exports.reinfFeedbackMsg = function(d){return "Apa hasilnya sudah seperti apa yang Anda inginkan? Tekan tombol \"Ayo coba lagi\" untuk melihat gambar Anda."};
 
 exports.setColour = function(d){return "Atur warna"};
 
 exports.setWidth = function(d){return "atur lebar"};
 
-exports.shareDrawing = function(d){return "Share your drawing:"};
+exports.shareDrawing = function(d){return "Bagikan gambar anda:"};
 
 exports.showMe = function(d){return "Tunjukkan padaku"};
 

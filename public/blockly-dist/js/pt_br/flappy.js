@@ -1311,7 +1311,7 @@ var createSharingDiv = function(options) {
   if (options.showingSharing &&
       exports.canContinueToNextLevel(options.feedbackType)) {
     var sharingDiv = document.createElement('div');
-    sharingDiv.className = 'shareDiv';
+    sharingDiv.setAttribute('style', 'display:inline-block');
     var sharingImage = document.createElement('div');
 
     var feedbackImage = createFeedbackImage(options);
@@ -1580,7 +1580,7 @@ var getEnabledBlocks = function() {
  * a set of blocks that at least one of them should be used. Each block is
  * represented as the prefix of an id in the corresponding template.soy.
  */
-var getMissingRequiredBlocks = function() {
+var getMissingRequiredBlocks = function () {
   var missingBlocks = [];
   var code = null;  // JavaScript code, which is initalized lazily.
   if (BlocklyApps.REQUIRED_BLOCKS && BlocklyApps.REQUIRED_BLOCKS.length) {
@@ -1663,7 +1663,7 @@ exports.getTestResults = function() {
   }
 };
 
-Keycodes = {
+var Keycodes = {
   ENTER: 13,
   SPACE: 32
 };
@@ -1741,11 +1741,8 @@ var generateXMLForBlocks = function(blocks) {
   return blockXMLStrings.join('');
 };
 
-},{"../locale/pt_br/common":30,"./codegen":4,"./dom":5,"./templates/buttons.html":19,"./templates/code.html":20,"./templates/readonly.html":25,"./templates/showCode.html":26,"./templates/trophy.html":27,"./utils":28}],7:[function(require,module,exports){
-var tiles = require('./tiles');
-var Direction = tiles.Direction;
-var SquareType = tiles.SquareType;
 
+},{"../locale/pt_br/common":30,"./codegen":4,"./dom":5,"./templates/buttons.html":19,"./templates/code.html":20,"./templates/readonly.html":25,"./templates/showCode.html":26,"./templates/trophy.html":27,"./utils":28}],7:[function(require,module,exports){
 exports.FlapHeight = {
   VERY_SMALL: -6,
   SMALL: -8,
@@ -1845,7 +1842,7 @@ exports.incrementPlayerScore = function(id) {
   Flappy.displayScore();
 };
 
-},{"./tiles":14}],8:[function(require,module,exports){
+},{}],8:[function(require,module,exports){
 /**
  * Blockly App: Bounce
  *
@@ -1855,7 +1852,6 @@ exports.incrementPlayerScore = function(id) {
 'use strict';
 
 var msg = require('../../locale/pt_br/flappy');
-var codegen = require('../codegen');
 
 var generateSetterCode = function (ctx, name) {
   var value = ctx.getTitleValue('VALUE');
@@ -2343,7 +2339,13 @@ exports.install = function(blockly, skin) {
   delete blockly.Blocks.procedures_ifreturn;
 };
 
-},{"../../locale/pt_br/flappy":31,"../codegen":4}],9:[function(require,module,exports){
+},{"../../locale/pt_br/flappy":31}],9:[function(require,module,exports){
+module.exports = {
+	WORKSPACE_BUFFER: 20,
+	WORKSPACE_COL_WIDTH: 210,
+	WORKSPACE_ROW_HEIGHT: 120
+};
+},{}],10:[function(require,module,exports){
 module.exports= (function() {
   var t = function anonymous(locals, filters, escape, rethrow) {
 escape = escape || function (html){
@@ -2364,7 +2366,7 @@ return buf.join('');
     return t(locals, require("ejs").filters);
   }
 }());
-},{"../../locale/pt_br/flappy":31,"ejs":32}],10:[function(require,module,exports){
+},{"../../locale/pt_br/flappy":31,"ejs":32}],11:[function(require,module,exports){
 /**
  * Blockly App: Flappy
  *
@@ -2378,14 +2380,12 @@ var BlocklyApps = require('../base');
 var commonMsg = require('../../locale/pt_br/common');
 var flappyMsg = require('../../locale/pt_br/flappy');
 var skins = require('../skins');
-var tiles = require('./tiles');
 var codegen = require('../codegen');
 var api = require('./api');
 var page = require('../templates/page.html');
 var feedback = require('../feedback.js');
 var dom = require('../dom');
-
-var SquareType = tiles.SquareType;
+var constants = require('./constants');
 
 /**
  * Create a namespace for the application.
@@ -2398,10 +2398,6 @@ Flappy.GameStates = {
   ENDING: 2,
   OVER: 3
 };
-
-Flappy.WORKSPACE_BUFFER = 20;
-Flappy.WORKSPACE_COL_WIDTH = 210;
-Flappy.WORKSPACE_ROW_HEIGHT = 120;
 
 Flappy.gameState = Flappy.GameStates.WAITING;
 
@@ -2955,11 +2951,11 @@ Flappy.init = function(config) {
   config.preventExtraTopLevelBlocks = true;
 
   // define how our blocks should be arranged
-  var col1 = Flappy.WORKSPACE_BUFFER;
-  var col2 = col1 + Flappy.WORKSPACE_COL_WIDTH;
-  var row1 = Flappy.WORKSPACE_BUFFER;
-  var row2 = row1 + Flappy.WORKSPACE_ROW_HEIGHT;
-  var row3 = row2 + Flappy.WORKSPACE_ROW_HEIGHT;
+  var col1 = constants.WORKSPACE_BUFFER;
+  var col2 = col1 + constants.WORKSPACE_COL_WIDTH;
+  var row1 = constants.WORKSPACE_BUFFER;
+  var row2 = row1 + constants.WORKSPACE_ROW_HEIGHT;
+  var row3 = row2 + constants.WORKSPACE_ROW_HEIGHT;
 
   config.blockArrangement = {
     'flappy_whenClick': { x: col1, y: row1},
@@ -3445,12 +3441,12 @@ var checkFinished = function () {
   return false;
 };
 
-},{"../../locale/pt_br/common":30,"../../locale/pt_br/flappy":31,"../base":2,"../codegen":4,"../dom":5,"../feedback.js":6,"../skins":16,"../templates/page.html":24,"./api":7,"./controls.html":9,"./tiles":14,"./visualization.html":15}],11:[function(require,module,exports){
+},{"../../locale/pt_br/common":30,"../../locale/pt_br/flappy":31,"../base":2,"../codegen":4,"../dom":5,"../feedback.js":6,"../skins":16,"../templates/page.html":24,"./api":7,"./constants":9,"./controls.html":10,"./visualization.html":15}],12:[function(require,module,exports){
 /*jshint multistr: true */
 
 // todo - i think our prepoluated code counts as LOCs
 
-var Direction = require('./tiles').Direction;
+var constants = require('./constants');
 
 var tb = function(blocks) {
   return '<xml id="toolbox" style="displastartY: none;">' + blocks + '</xml>';
@@ -3475,12 +3471,12 @@ var setGroundBlock = '<block type="flappy_setGround"></block>';
 var setGravityBlock = '<block type="flappy_setGravity"></block>';
 var setScoreBlock = '<block type="flappy_setScore"></block>';
 
-var COL_WIDTH = Flappy.WORKSPACE_COL_WIDTH;
-var COL1 = Flappy.WORKSPACE_BUFFER;
+var COL_WIDTH = constants.WORKSPACE_COL_WIDTH;
+var COL1 = constants.WORKSPACE_BUFFER;
 var COL2 = COL1 + COL_WIDTH;
 
-var ROW_HEIGHT = Flappy.WORKSPACE_ROW_HEIGHT;
-var ROW1 = Flappy.WORKSPACE_BUFFER;
+var ROW_HEIGHT = constants.WORKSPACE_ROW_HEIGHT;
+var ROW1 = constants.WORKSPACE_BUFFER;
 var ROW2 = ROW1 + ROW_HEIGHT;
 var ROW3 = ROW2 + ROW_HEIGHT;
 
@@ -3862,7 +3858,7 @@ module.exports = {
   }
 };
 
-},{"./tiles":14}],12:[function(require,module,exports){
+},{"./constants":9}],13:[function(require,module,exports){
 (function (global){
 var appMain = require('../appMain');
 window.Flappy = require('./flappy');
@@ -3880,7 +3876,7 @@ window.flappyMain = function(options) {
 };
 
 }).call(this,typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"../appMain":1,"./blocks":8,"./flappy":10,"./levels":11,"./skins":13}],13:[function(require,module,exports){
+},{"../appMain":1,"./blocks":8,"./flappy":11,"./levels":12,"./skins":14}],14:[function(require,module,exports){
 /**
  * Load Skin for Flappy.
  */
@@ -4058,40 +4054,7 @@ exports.load = function(assetUrl, id) {
   return skin;
 };
 
-},{"../skins":16}],14:[function(require,module,exports){
-'use strict';
-
-/**
- * Constants for cardinal directions.  Subsequent code assumes these are
- * in the range 0..3 and that opposites have an absolute difference of 2.
- * @enum {number}
- */
-exports.Direction = {
-  NORTH: 0,
-  EAST: 1,
-  SOUTH: 2,
-  WEST: 3
-};
-
-exports.PADDLE_BALL_COLLIDE_DISTANCE = 0.7;
-
-/**
- * The types of squares in the maze, which is represented
- * as a 2D array of SquareType values.
- * @enum {number}
- */
-exports.SquareType = {
-  WALL: 0,
-  OPEN: 1,
-  BALLFINISH: 2,
-  PADDLEFINISH: 3,
-  OBSTACLE: 4,
-  GOAL: 5,
-  BALLSTART: 6,
-  PADDLESTART: 7
-};
-
-},{}],15:[function(require,module,exports){
+},{"../skins":16}],15:[function(require,module,exports){
 module.exports= (function() {
   var t = function anonymous(locals, filters, escape, rethrow) {
 escape = escape || function (html){
@@ -4382,7 +4345,7 @@ escape = escape || function (html){
 };
 var buf = [];
 with (locals || {}) { (function(){ 
- buf.push('');1; var msg = require('../../locale/pt_br/common'); ; buf.push('\n\n');3; if (data.ok) {; buf.push('  <div class="farSide" style="padding: 1ex 3ex 0">\n    <button id="ok-button" class="secondary">\n      ', escape((5,  msg.dialogOK() )), '\n    </button>\n  </div>\n');8; };; buf.push('\n');9; if (data.previousLevel) {; buf.push('  <button id="back-button" class="launch">\n    ', escape((10,  msg.backToPreviousLevel() )), '\n  </button>\n');12; };; buf.push('\n');13; if (data.tryAgain) {; buf.push('  <button id="again-button" class="launch">\n    ', escape((14,  msg.tryAgain() )), '\n  </button>\n');16; };; buf.push('\n');17; if (data.nextLevel) {; buf.push('  <button id="continue-button" class="launch">\n    ', escape((18,  msg.continue() )), '\n  </button>\n');20; };; buf.push('\n');21; if (data.facebookUrl) {; buf.push('  <a href=', escape((21,  data.facebookUrl )), ' target="_blank">\n    <img src=', escape((22,  BlocklyApps.assetUrl("media/facebook_purple.png") )), '>\n  </a>\n');24; };; buf.push('\n');25; if (data.twitterUrl) {; buf.push('  <a href=', escape((25,  data.twitterUrl )), ' target="_blank">\n    <img src=', escape((26,  BlocklyApps.assetUrl("media/twitter_purple.png") )), ' >\n  </a>\n  <br>\n');29; };; buf.push('\n');30; if (data.sharingUrl) {; buf.push('  <input type="text" id="sharing-input" style="width:100%;" value=', escape((30,  data.sharingUrl )), ' >\n');31; };; buf.push(''); })();
+ buf.push('');1; var msg = require('../../locale/pt_br/common'); ; buf.push('\n\n');3; if (data.ok) {; buf.push('  <div class="farSide" style="padding: 1ex 3ex 0">\n    <button id="ok-button" class="secondary">\n      ', escape((5,  msg.dialogOK() )), '\n    </button>\n  </div>\n');8; };; buf.push('\n');9; if (data.previousLevel) {; buf.push('  <button id="back-button" class="launch">\n    ', escape((10,  msg.backToPreviousLevel() )), '\n  </button>\n');12; };; buf.push('\n');13; if (data.tryAgain) {; buf.push('  <button id="again-button" class="launch">\n    ', escape((14,  msg.tryAgain() )), '\n  </button>\n');16; };; buf.push('\n');17; if (data.nextLevel) {; buf.push('  <button id="continue-button" class="launch">\n    ', escape((18,  msg.continue() )), '\n  </button>\n');20; };; buf.push('\n');21; if (data.facebookUrl) {; buf.push('  <a href=', escape((21,  data.facebookUrl )), ' target="_blank">\n    <img src=', escape((22,  BlocklyApps.assetUrl("media/facebook_purple.png") )), '>\n  </a>\n');24; };; buf.push('\n');25; if (data.twitterUrl) {; buf.push('  <a href=', escape((25,  data.twitterUrl )), ' target="_blank">\n    <img src=', escape((26,  BlocklyApps.assetUrl("media/twitter_purple.png") )), ' >\n  </a>\n  <br>\n');29; };; buf.push('\n');30; if (data.sharingUrl) {; buf.push('  <input type="text" id="sharing-input" value=', escape((30,  data.sharingUrl )), ' >\n');31; };; buf.push(''); })();
 } 
 return buf.join('');
 };
@@ -4814,7 +4777,7 @@ exports.playSoundLaser = function(d){return "tocar um som de laser"};
 
 exports.playSoundTooltip = function(d){return "tocar o som escolhido."};
 
-exports.reinfFeedbackMsg = function(d){return "You can press the \"Try again\" button to go back to playing your game."};
+exports.reinfFeedbackMsg = function(d){return "Você pode pressionar o botão de \"Tentar novamente\" para voltar a jogar o seu jogo."};
 
 exports.scoreText = function(d){return "Pontuação: "+v(d,"playerScore")};
 
@@ -4848,19 +4811,19 @@ exports.setGapVeryLarge = function(d){return "configure uma lacuna muito grande"
 
 exports.setGapHeightTooltip = function(d){return "Defina o espaço vertical em um obstáculo"};
 
-exports.setGravityRandom = function(d){return "set gravity random"};
+exports.setGravityRandom = function(d){return "definir gravidade aleatório"};
 
-exports.setGravityVeryLow = function(d){return "set gravity very low"};
+exports.setGravityVeryLow = function(d){return "definir gravidade muito baixa"};
 
-exports.setGravityLow = function(d){return "set gravity low"};
+exports.setGravityLow = function(d){return "definir gravidade baixa"};
 
-exports.setGravityNormal = function(d){return "set gravity normal"};
+exports.setGravityNormal = function(d){return "definir gravidade normal"};
 
-exports.setGravityHigh = function(d){return "set gravity high"};
+exports.setGravityHigh = function(d){return "definir gravidade alta"};
 
-exports.setGravityVeryHigh = function(d){return "set gravity very high"};
+exports.setGravityVeryHigh = function(d){return "definir gravidade muito alta"};
 
-exports.setGravityTooltip = function(d){return "Sets the level's gravity"};
+exports.setGravityTooltip = function(d){return "definir nível de gravidade"};
 
 exports.setGroundRandom = function(d){return "defina terreno aleatório"};
 
@@ -4912,7 +4875,7 @@ exports.setPlayerShark = function(d){return "escolha o jogador Tubarão"};
 
 exports.setPlayerEaster = function(d){return "escolha o jogador Coelho da Páscoa"};
 
-exports.setPlayerBatman = function(d){return "set player Bat guy"};
+exports.setPlayerBatman = function(d){return "definir o jogador tipo morcego"};
 
 exports.setPlayerSubmarine = function(d){return "escolha o jogador Submarino"};
 
@@ -4926,19 +4889,19 @@ exports.setPlayerTurkey = function(d){return "escolha o jogador Peru"};
 
 exports.setPlayerTooltip = function(d){return "Define a imagem do(a) jogador(a)"};
 
-exports.setScore = function(d){return "set score"};
+exports.setScore = function(d){return "definir Pontuação"};
 
-exports.setScoreTooltip = function(d){return "Sets the player's score"};
+exports.setScoreTooltip = function(d){return "definir pontuação de jogador"};
 
 exports.setSpeed = function(d){return "definir a velocidade"};
 
-exports.setSpeedTooltip = function(d){return "Sets the levels speed"};
+exports.setSpeedTooltip = function(d){return "definir velocidade do nível"};
 
 exports.share = function(d){return "Compartilhar"};
 
 exports.shareFlappyTwitter = function(d){return "Confira o jogo Flappy que eu fiz. Eu escrevi sozinho com @codeorg"};
 
-exports.shareGame = function(d){return "Share your game:"};
+exports.shareGame = function(d){return "Compartilhe seu jogo:"};
 
 exports.speedRandom = function(d){return "escolha velocidade aleatória"};
 
@@ -4968,9 +4931,9 @@ exports.whenEnterObstacle = function(d){return "quando passar o obstáculo"};
 
 exports.whenEnterObstacleTooltip = function(d){return "Execute as ações abaixo quando Flappy atingir um obstáculo."};
 
-exports.whenRunButtonClick = function(d){return "when Run is clicked"};
+exports.whenRunButtonClick = function(d){return "Quando o jogo começa"};
 
-exports.whenRunButtonClickTooltip = function(d){return "Execute the actions below when the run button is pressed."};
+exports.whenRunButtonClickTooltip = function(d){return "Execute as ações abaixo quando o jogo começa."};
 
 exports.yes = function(d){return "Sim"};
 
@@ -7431,4 +7394,4 @@ var substr = 'ab'.substr(-1) === 'b'
 
 })( this );
 
-},{}]},{},[12])
+},{}]},{},[13])

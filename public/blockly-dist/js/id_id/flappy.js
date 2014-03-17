@@ -1311,7 +1311,7 @@ var createSharingDiv = function(options) {
   if (options.showingSharing &&
       exports.canContinueToNextLevel(options.feedbackType)) {
     var sharingDiv = document.createElement('div');
-    sharingDiv.className = 'shareDiv';
+    sharingDiv.setAttribute('style', 'display:inline-block');
     var sharingImage = document.createElement('div');
 
     var feedbackImage = createFeedbackImage(options);
@@ -1580,7 +1580,7 @@ var getEnabledBlocks = function() {
  * a set of blocks that at least one of them should be used. Each block is
  * represented as the prefix of an id in the corresponding template.soy.
  */
-var getMissingRequiredBlocks = function() {
+var getMissingRequiredBlocks = function () {
   var missingBlocks = [];
   var code = null;  // JavaScript code, which is initalized lazily.
   if (BlocklyApps.REQUIRED_BLOCKS && BlocklyApps.REQUIRED_BLOCKS.length) {
@@ -1663,7 +1663,7 @@ exports.getTestResults = function() {
   }
 };
 
-Keycodes = {
+var Keycodes = {
   ENTER: 13,
   SPACE: 32
 };
@@ -1741,11 +1741,8 @@ var generateXMLForBlocks = function(blocks) {
   return blockXMLStrings.join('');
 };
 
-},{"../locale/id_id/common":30,"./codegen":4,"./dom":5,"./templates/buttons.html":19,"./templates/code.html":20,"./templates/readonly.html":25,"./templates/showCode.html":26,"./templates/trophy.html":27,"./utils":28}],7:[function(require,module,exports){
-var tiles = require('./tiles');
-var Direction = tiles.Direction;
-var SquareType = tiles.SquareType;
 
+},{"../locale/id_id/common":30,"./codegen":4,"./dom":5,"./templates/buttons.html":19,"./templates/code.html":20,"./templates/readonly.html":25,"./templates/showCode.html":26,"./templates/trophy.html":27,"./utils":28}],7:[function(require,module,exports){
 exports.FlapHeight = {
   VERY_SMALL: -6,
   SMALL: -8,
@@ -1845,7 +1842,7 @@ exports.incrementPlayerScore = function(id) {
   Flappy.displayScore();
 };
 
-},{"./tiles":14}],8:[function(require,module,exports){
+},{}],8:[function(require,module,exports){
 /**
  * Blockly App: Bounce
  *
@@ -1855,7 +1852,6 @@ exports.incrementPlayerScore = function(id) {
 'use strict';
 
 var msg = require('../../locale/id_id/flappy');
-var codegen = require('../codegen');
 
 var generateSetterCode = function (ctx, name) {
   var value = ctx.getTitleValue('VALUE');
@@ -2343,7 +2339,13 @@ exports.install = function(blockly, skin) {
   delete blockly.Blocks.procedures_ifreturn;
 };
 
-},{"../../locale/id_id/flappy":31,"../codegen":4}],9:[function(require,module,exports){
+},{"../../locale/id_id/flappy":31}],9:[function(require,module,exports){
+module.exports = {
+	WORKSPACE_BUFFER: 20,
+	WORKSPACE_COL_WIDTH: 210,
+	WORKSPACE_ROW_HEIGHT: 120
+};
+},{}],10:[function(require,module,exports){
 module.exports= (function() {
   var t = function anonymous(locals, filters, escape, rethrow) {
 escape = escape || function (html){
@@ -2364,7 +2366,7 @@ return buf.join('');
     return t(locals, require("ejs").filters);
   }
 }());
-},{"../../locale/id_id/flappy":31,"ejs":32}],10:[function(require,module,exports){
+},{"../../locale/id_id/flappy":31,"ejs":32}],11:[function(require,module,exports){
 /**
  * Blockly App: Flappy
  *
@@ -2378,14 +2380,12 @@ var BlocklyApps = require('../base');
 var commonMsg = require('../../locale/id_id/common');
 var flappyMsg = require('../../locale/id_id/flappy');
 var skins = require('../skins');
-var tiles = require('./tiles');
 var codegen = require('../codegen');
 var api = require('./api');
 var page = require('../templates/page.html');
 var feedback = require('../feedback.js');
 var dom = require('../dom');
-
-var SquareType = tiles.SquareType;
+var constants = require('./constants');
 
 /**
  * Create a namespace for the application.
@@ -2398,10 +2398,6 @@ Flappy.GameStates = {
   ENDING: 2,
   OVER: 3
 };
-
-Flappy.WORKSPACE_BUFFER = 20;
-Flappy.WORKSPACE_COL_WIDTH = 210;
-Flappy.WORKSPACE_ROW_HEIGHT = 120;
 
 Flappy.gameState = Flappy.GameStates.WAITING;
 
@@ -2955,11 +2951,11 @@ Flappy.init = function(config) {
   config.preventExtraTopLevelBlocks = true;
 
   // define how our blocks should be arranged
-  var col1 = Flappy.WORKSPACE_BUFFER;
-  var col2 = col1 + Flappy.WORKSPACE_COL_WIDTH;
-  var row1 = Flappy.WORKSPACE_BUFFER;
-  var row2 = row1 + Flappy.WORKSPACE_ROW_HEIGHT;
-  var row3 = row2 + Flappy.WORKSPACE_ROW_HEIGHT;
+  var col1 = constants.WORKSPACE_BUFFER;
+  var col2 = col1 + constants.WORKSPACE_COL_WIDTH;
+  var row1 = constants.WORKSPACE_BUFFER;
+  var row2 = row1 + constants.WORKSPACE_ROW_HEIGHT;
+  var row3 = row2 + constants.WORKSPACE_ROW_HEIGHT;
 
   config.blockArrangement = {
     'flappy_whenClick': { x: col1, y: row1},
@@ -3445,12 +3441,12 @@ var checkFinished = function () {
   return false;
 };
 
-},{"../../locale/id_id/common":30,"../../locale/id_id/flappy":31,"../base":2,"../codegen":4,"../dom":5,"../feedback.js":6,"../skins":16,"../templates/page.html":24,"./api":7,"./controls.html":9,"./tiles":14,"./visualization.html":15}],11:[function(require,module,exports){
+},{"../../locale/id_id/common":30,"../../locale/id_id/flappy":31,"../base":2,"../codegen":4,"../dom":5,"../feedback.js":6,"../skins":16,"../templates/page.html":24,"./api":7,"./constants":9,"./controls.html":10,"./visualization.html":15}],12:[function(require,module,exports){
 /*jshint multistr: true */
 
 // todo - i think our prepoluated code counts as LOCs
 
-var Direction = require('./tiles').Direction;
+var constants = require('./constants');
 
 var tb = function(blocks) {
   return '<xml id="toolbox" style="displastartY: none;">' + blocks + '</xml>';
@@ -3475,12 +3471,12 @@ var setGroundBlock = '<block type="flappy_setGround"></block>';
 var setGravityBlock = '<block type="flappy_setGravity"></block>';
 var setScoreBlock = '<block type="flappy_setScore"></block>';
 
-var COL_WIDTH = Flappy.WORKSPACE_COL_WIDTH;
-var COL1 = Flappy.WORKSPACE_BUFFER;
+var COL_WIDTH = constants.WORKSPACE_COL_WIDTH;
+var COL1 = constants.WORKSPACE_BUFFER;
 var COL2 = COL1 + COL_WIDTH;
 
-var ROW_HEIGHT = Flappy.WORKSPACE_ROW_HEIGHT;
-var ROW1 = Flappy.WORKSPACE_BUFFER;
+var ROW_HEIGHT = constants.WORKSPACE_ROW_HEIGHT;
+var ROW1 = constants.WORKSPACE_BUFFER;
 var ROW2 = ROW1 + ROW_HEIGHT;
 var ROW3 = ROW2 + ROW_HEIGHT;
 
@@ -3862,7 +3858,7 @@ module.exports = {
   }
 };
 
-},{"./tiles":14}],12:[function(require,module,exports){
+},{"./constants":9}],13:[function(require,module,exports){
 (function (global){
 var appMain = require('../appMain');
 window.Flappy = require('./flappy');
@@ -3880,7 +3876,7 @@ window.flappyMain = function(options) {
 };
 
 }).call(this,typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"../appMain":1,"./blocks":8,"./flappy":10,"./levels":11,"./skins":13}],13:[function(require,module,exports){
+},{"../appMain":1,"./blocks":8,"./flappy":11,"./levels":12,"./skins":14}],14:[function(require,module,exports){
 /**
  * Load Skin for Flappy.
  */
@@ -4058,40 +4054,7 @@ exports.load = function(assetUrl, id) {
   return skin;
 };
 
-},{"../skins":16}],14:[function(require,module,exports){
-'use strict';
-
-/**
- * Constants for cardinal directions.  Subsequent code assumes these are
- * in the range 0..3 and that opposites have an absolute difference of 2.
- * @enum {number}
- */
-exports.Direction = {
-  NORTH: 0,
-  EAST: 1,
-  SOUTH: 2,
-  WEST: 3
-};
-
-exports.PADDLE_BALL_COLLIDE_DISTANCE = 0.7;
-
-/**
- * The types of squares in the maze, which is represented
- * as a 2D array of SquareType values.
- * @enum {number}
- */
-exports.SquareType = {
-  WALL: 0,
-  OPEN: 1,
-  BALLFINISH: 2,
-  PADDLEFINISH: 3,
-  OBSTACLE: 4,
-  GOAL: 5,
-  BALLSTART: 6,
-  PADDLESTART: 7
-};
-
-},{}],15:[function(require,module,exports){
+},{"../skins":16}],15:[function(require,module,exports){
 module.exports= (function() {
   var t = function anonymous(locals, filters, escape, rethrow) {
 escape = escape || function (html){
@@ -4382,7 +4345,7 @@ escape = escape || function (html){
 };
 var buf = [];
 with (locals || {}) { (function(){ 
- buf.push('');1; var msg = require('../../locale/id_id/common'); ; buf.push('\n\n');3; if (data.ok) {; buf.push('  <div class="farSide" style="padding: 1ex 3ex 0">\n    <button id="ok-button" class="secondary">\n      ', escape((5,  msg.dialogOK() )), '\n    </button>\n  </div>\n');8; };; buf.push('\n');9; if (data.previousLevel) {; buf.push('  <button id="back-button" class="launch">\n    ', escape((10,  msg.backToPreviousLevel() )), '\n  </button>\n');12; };; buf.push('\n');13; if (data.tryAgain) {; buf.push('  <button id="again-button" class="launch">\n    ', escape((14,  msg.tryAgain() )), '\n  </button>\n');16; };; buf.push('\n');17; if (data.nextLevel) {; buf.push('  <button id="continue-button" class="launch">\n    ', escape((18,  msg.continue() )), '\n  </button>\n');20; };; buf.push('\n');21; if (data.facebookUrl) {; buf.push('  <a href=', escape((21,  data.facebookUrl )), ' target="_blank">\n    <img src=', escape((22,  BlocklyApps.assetUrl("media/facebook_purple.png") )), '>\n  </a>\n');24; };; buf.push('\n');25; if (data.twitterUrl) {; buf.push('  <a href=', escape((25,  data.twitterUrl )), ' target="_blank">\n    <img src=', escape((26,  BlocklyApps.assetUrl("media/twitter_purple.png") )), ' >\n  </a>\n  <br>\n');29; };; buf.push('\n');30; if (data.sharingUrl) {; buf.push('  <input type="text" id="sharing-input" style="width:100%;" value=', escape((30,  data.sharingUrl )), ' >\n');31; };; buf.push(''); })();
+ buf.push('');1; var msg = require('../../locale/id_id/common'); ; buf.push('\n\n');3; if (data.ok) {; buf.push('  <div class="farSide" style="padding: 1ex 3ex 0">\n    <button id="ok-button" class="secondary">\n      ', escape((5,  msg.dialogOK() )), '\n    </button>\n  </div>\n');8; };; buf.push('\n');9; if (data.previousLevel) {; buf.push('  <button id="back-button" class="launch">\n    ', escape((10,  msg.backToPreviousLevel() )), '\n  </button>\n');12; };; buf.push('\n');13; if (data.tryAgain) {; buf.push('  <button id="again-button" class="launch">\n    ', escape((14,  msg.tryAgain() )), '\n  </button>\n');16; };; buf.push('\n');17; if (data.nextLevel) {; buf.push('  <button id="continue-button" class="launch">\n    ', escape((18,  msg.continue() )), '\n  </button>\n');20; };; buf.push('\n');21; if (data.facebookUrl) {; buf.push('  <a href=', escape((21,  data.facebookUrl )), ' target="_blank">\n    <img src=', escape((22,  BlocklyApps.assetUrl("media/facebook_purple.png") )), '>\n  </a>\n');24; };; buf.push('\n');25; if (data.twitterUrl) {; buf.push('  <a href=', escape((25,  data.twitterUrl )), ' target="_blank">\n    <img src=', escape((26,  BlocklyApps.assetUrl("media/twitter_purple.png") )), ' >\n  </a>\n  <br>\n');29; };; buf.push('\n');30; if (data.sharingUrl) {; buf.push('  <input type="text" id="sharing-input" value=', escape((30,  data.sharingUrl )), ' >\n');31; };; buf.push(''); })();
 } 
 return buf.join('');
 };
@@ -4671,7 +4634,7 @@ exports.levelIncompleteError = function(d){return "Anda telah gunakan semua jeni
 
 exports.listVariable = function(d){return "list"};
 
-exports.makeYourOwnFlappy = function(d){return "Make Your Own Flappy Game"};
+exports.makeYourOwnFlappy = function(d){return "Buatlah permainan \"Flappy\" versi Anda sendiri"};
 
 exports.missingBlocksErrorMsg = function(d){return "Cobalah satu atau lebih blok di bawah untuk memecahkan teka-teki ini."};
 
@@ -4709,7 +4672,7 @@ exports.tooManyBlocksMsg = function(d){return "Teka-teki ini dapat diselesaikan 
 
 exports.tooMuchWork = function(d){return "Anda membuat saya melakukan terlalu banyak pekerjaan!  Bisakan Anda coba membuat pengulangan yang lebih sedikit?"};
 
-exports.flappySpecificFail = function(d){return "Kode kamu terlihat baik - itu akan mengepak setiap kliknya. tapi kamu perlu untuk klik sebanyak mungkin untuk mengepakkan obyek tersebut."};
+exports.flappySpecificFail = function(d){return "Kode kamu terlihat baik - Burung itu akan mengepak setiap kali diklik. Tapi kamu perlu mengklik sebanyak mungkin untuk terbang menuju target."};
 
 exports.toolboxHeader = function(d){return "Blok"};
 
@@ -4735,46 +4698,46 @@ exports.rotateText = function(d){return "Memutar perangkat anda."};
 
 exports.orientationLock = function(d){return "Matikan orientasi kunci dalam pengaturan perangkat."};
 
-exports.wantToLearn = function(d){return "Ingin belajar kode?"};
+exports.wantToLearn = function(d){return "Ingin belajar untuk mengkode?"};
 
-exports.watchVideo = function(d){return "Lihat Video"};
+exports.watchVideo = function(d){return "Tonton Videonya"};
 
-exports.tryHOC = function(d){return "Coba Hour of Code"};
+exports.tryHOC = function(d){return "Cobalah \"Hour of Code\""};
 
-exports.signup = function(d){return "Daftar untuk kursus awal"};
+exports.signup = function(d){return "Daftarlah untuk mengikuti kursus introduksi"};
 
 
 },{"messageformat":38}],31:[function(require,module,exports){
 var MessageFormat = require("messageformat");MessageFormat.locale.id=function(n){return "other"}
-exports.continue = function(d){return "lanjut"};
+exports.continue = function(d){return "lanjutkan"};
 
-exports.doCode = function(d){return "mengerjakan"};
+exports.doCode = function(d){return "kerjakan"};
 
 exports.elseCode = function(d){return "jika tidak"};
 
 exports.endGame = function(d){return "akhir dari permainan"};
 
-exports.endGameTooltip = function(d){return "Akhir permainan."};
+exports.endGameTooltip = function(d){return "Akhiri permainan."};
 
-exports.finalLevel = function(d){return "selamat! anda telah menyelesaikan teka teki terakhir."};
+exports.finalLevel = function(d){return "Selamat! Anda telah menyelesaikan teka-teki terakhir."};
 
-exports.flap = function(d){return "mengepakkan"};
+exports.flap = function(d){return "kepakkan"};
 
-exports.flapRandom = function(d){return "kibaskan secara acak"};
+exports.flapRandom = function(d){return "Kepakkan secara acak"};
 
-exports.flapVerySmall = function(d){return "kibaskan dengan sangat perlahan"};
+exports.flapVerySmall = function(d){return "kepakkan dengan sangat perlahan"};
 
-exports.flapSmall = function(d){return "kibaskan dengan perlahan"};
+exports.flapSmall = function(d){return "kepakkan dengan perlahan"};
 
-exports.flapNormal = function(d){return "kibaskan dengan biasa"};
+exports.flapNormal = function(d){return "kepakkan dengan biasa"};
 
-exports.flapLarge = function(d){return "kibaskan dengan kuat"};
+exports.flapLarge = function(d){return "kepakkan dengan kuat"};
 
-exports.flapVeryLarge = function(d){return "kibaskan dengan sangat kuat"};
+exports.flapVeryLarge = function(d){return "kepakkan dengan sangat kuat"};
 
-exports.flapTooltip = function(d){return "Fly Flappy upwards."};
+exports.flapTooltip = function(d){return "Terbangkan Flappy keatas."};
 
-exports.incrementPlayerScore = function(d){return "raih sebuah point"};
+exports.incrementPlayerScore = function(d){return "raih point"};
 
 exports.incrementPlayerScoreTooltip = function(d){return "tambahkan satu pada pemain saat ini."};
 
@@ -4786,191 +4749,191 @@ exports.numBlocksNeeded = function(d){return "Teka-teki ini dapat diselesaikan d
 
 exports.oneTopBlock = function(d){return "untuk teka-teki ini, kamu perlu menyusun semua blok-blok di dalam lembar kerja putih."};
 
-exports.playSoundRandom = function(d){return "Mainkan musik secara acak"};
+exports.playSoundRandom = function(d){return "Mainkan bunyi secara acak"};
 
-exports.playSoundBounce = function(d){return "mainkan pantulan suara"};
+exports.playSoundBounce = function(d){return "mainkan bunyi \"pantulan\""};
 
-exports.playSoundCrunch = function(d){return "play crunch sound"};
+exports.playSoundCrunch = function(d){return "mainkan bunyi \"crunch\""};
 
-exports.playSoundDie = function(d){return "play sad sound"};
+exports.playSoundDie = function(d){return "mainkan bunyi \"sedih\""};
 
-exports.playSoundHit = function(d){return "play smash sound"};
+exports.playSoundHit = function(d){return "mainkan bunyi \"tabrakan\""};
 
-exports.playSoundPoint = function(d){return "play point sound"};
+exports.playSoundPoint = function(d){return "Mainkan bunyi \"point\""};
 
-exports.playSoundSwoosh = function(d){return "play swoosh sound"};
+exports.playSoundSwoosh = function(d){return "mainkan bunyi \"swoosh\""};
 
-exports.playSoundWing = function(d){return "play wing sound"};
+exports.playSoundWing = function(d){return "mainkan bunyi \"sayap\""};
 
-exports.playSoundJet = function(d){return "play jet sound"};
+exports.playSoundJet = function(d){return "mainkan bunyi \"jet\""};
 
-exports.playSoundCrash = function(d){return "play crash sound"};
+exports.playSoundCrash = function(d){return "mainkan bunyi \"tubrukan\""};
 
-exports.playSoundJingle = function(d){return "play jingle sound"};
+exports.playSoundJingle = function(d){return "mainkan bunyi \"berdentang\""};
 
-exports.playSoundSplash = function(d){return "play splash sound"};
+exports.playSoundSplash = function(d){return "mainkan bunyi \"cipratan\""};
 
-exports.playSoundLaser = function(d){return "play laser sound"};
+exports.playSoundLaser = function(d){return "mainkan bunyi \"laser\""};
 
-exports.playSoundTooltip = function(d){return "Play a sound."};
+exports.playSoundTooltip = function(d){return "mainkan bunyi pilihan."};
 
-exports.reinfFeedbackMsg = function(d){return "You can press the \"Try again\" button to go back to playing your game."};
+exports.reinfFeedbackMsg = function(d){return "Anda dapat menekan tombol \"Coba lagi\" untuk kembali bermain."};
 
-exports.scoreText = function(d){return "Score: "+v(d,"playerScore")+" : "+v(d,"opponentScore")};
+exports.scoreText = function(d){return "Skor: "+v(d,"playerScore")};
 
-exports.setBackgroundRandom = function(d){return "set scene Random"};
+exports.setBackgroundRandom = function(d){return "atur adegan secara acak"};
 
-exports.setBackgroundFlappy = function(d){return "set scene City (day)"};
+exports.setBackgroundFlappy = function(d){return "atur adegan kota (hari)"};
 
-exports.setBackgroundNight = function(d){return "set scene City (night)"};
+exports.setBackgroundNight = function(d){return "atur adegan kota (malam)"};
 
-exports.setBackgroundSciFi = function(d){return "set scene Sci-Fi"};
+exports.setBackgroundSciFi = function(d){return "atur adegan Sci-Fi"};
 
-exports.setBackgroundUnderwater = function(d){return "set scene Underwater"};
+exports.setBackgroundUnderwater = function(d){return "atur adegan dalam air"};
 
-exports.setBackgroundCave = function(d){return "set scene Cave"};
+exports.setBackgroundCave = function(d){return "atur adegan gua"};
 
-exports.setBackgroundSanta = function(d){return "set scene Santa"};
+exports.setBackgroundSanta = function(d){return "atur adegan Santa"};
 
-exports.setBackgroundTooltip = function(d){return "Sets the background image"};
+exports.setBackgroundTooltip = function(d){return "Atur gambar latar belakang"};
 
-exports.setGapRandom = function(d){return "set a random gap"};
+exports.setGapRandom = function(d){return "atur celah secara acak"};
 
-exports.setGapVerySmall = function(d){return "set a very small gap"};
+exports.setGapVerySmall = function(d){return "atur celah sangat kecil"};
 
-exports.setGapSmall = function(d){return "set a small gap"};
+exports.setGapSmall = function(d){return "atur celah kecil"};
 
-exports.setGapNormal = function(d){return "set a normal gap"};
+exports.setGapNormal = function(d){return "atur celah normal"};
 
-exports.setGapLarge = function(d){return "set a large gap"};
+exports.setGapLarge = function(d){return "atur celah besar"};
 
-exports.setGapVeryLarge = function(d){return "set a very large gap"};
+exports.setGapVeryLarge = function(d){return "atur celah sangat besar"};
 
-exports.setGapHeightTooltip = function(d){return "Sets the vertical gap in an obstacle"};
+exports.setGapHeightTooltip = function(d){return "atur celah vertikal dalam hambatan"};
 
-exports.setGravityRandom = function(d){return "set gravity random"};
+exports.setGravityRandom = function(d){return "atur gravitasi secara acak"};
 
-exports.setGravityVeryLow = function(d){return "set gravity very low"};
+exports.setGravityVeryLow = function(d){return "atur gravitasi sangat rendah"};
 
-exports.setGravityLow = function(d){return "set gravity low"};
+exports.setGravityLow = function(d){return "atur gravitasi rendah"};
 
-exports.setGravityNormal = function(d){return "set gravity normal"};
+exports.setGravityNormal = function(d){return "atur gravitasi normal"};
 
-exports.setGravityHigh = function(d){return "set gravity high"};
+exports.setGravityHigh = function(d){return "atur gravitasi tinggi"};
 
-exports.setGravityVeryHigh = function(d){return "set gravity very high"};
+exports.setGravityVeryHigh = function(d){return "atur gravitasi sangat tinggi"};
 
-exports.setGravityTooltip = function(d){return "Sets the level's gravity"};
+exports.setGravityTooltip = function(d){return "atur tingkat gravitasi"};
 
-exports.setGroundRandom = function(d){return "set ground Random"};
+exports.setGroundRandom = function(d){return "atur permukaan secara acak"};
 
-exports.setGroundFlappy = function(d){return "set ground Ground"};
+exports.setGroundFlappy = function(d){return "atur permukaan tanah "};
 
-exports.setGroundSciFi = function(d){return "set ground Sci-Fi"};
+exports.setGroundSciFi = function(d){return "atur permukaan Sci-Fi"};
 
-exports.setGroundUnderwater = function(d){return "set ground Underwater"};
+exports.setGroundUnderwater = function(d){return "atur permukaan \"dalam air\""};
 
-exports.setGroundCave = function(d){return "set ground Cave"};
+exports.setGroundCave = function(d){return "atur permukaan gua"};
 
-exports.setGroundSanta = function(d){return "set ground Santa"};
+exports.setGroundSanta = function(d){return "tetapkan permukaan Santa"};
 
-exports.setGroundLava = function(d){return "set ground Lava"};
+exports.setGroundLava = function(d){return "tetapkan permukaan lava"};
 
-exports.setGroundTooltip = function(d){return "Sets the ground image"};
+exports.setGroundTooltip = function(d){return "atur gambar permukaan"};
 
-exports.setObstacleRandom = function(d){return "set obstacle Random"};
+exports.setObstacleRandom = function(d){return "atur hambatan secara acak"};
 
 exports.setObstacleFlappy = function(d){return "tetapkan pipa penghalang"};
 
-exports.setObstacleSciFi = function(d){return "set obstacle Sci-Fi"};
+exports.setObstacleSciFi = function(d){return "tetapkan hambatan Sci-Fi"};
 
-exports.setObstacleUnderwater = function(d){return "set obstacle Plant"};
+exports.setObstacleUnderwater = function(d){return "tetapkan hambatan tanaman"};
 
-exports.setObstacleCave = function(d){return "set obstacle Cave"};
+exports.setObstacleCave = function(d){return "tetapkan hambatan gua"};
 
-exports.setObstacleSanta = function(d){return "set obstacle Chimney"};
+exports.setObstacleSanta = function(d){return "tetapkan hambatan cerobong asap"};
 
-exports.setObstacleLaser = function(d){return "set obstacle Laser"};
+exports.setObstacleLaser = function(d){return "tetapkan hambatan laser"};
 
-exports.setObstacleTooltip = function(d){return "Sets the obstacle image"};
+exports.setObstacleTooltip = function(d){return "atur gambar hambatan "};
 
-exports.setPlayerRandom = function(d){return "set player Random"};
+exports.setPlayerRandom = function(d){return "atur pemain secara acak"};
 
-exports.setPlayerFlappy = function(d){return "set player Yellow Bird"};
+exports.setPlayerFlappy = function(d){return "atur pemain \"burung kuning\""};
 
-exports.setPlayerRedBird = function(d){return "set player Red Bird"};
+exports.setPlayerRedBird = function(d){return "atur pemain \"burung merah\""};
 
-exports.setPlayerSciFi = function(d){return "set player Spaceship"};
+exports.setPlayerSciFi = function(d){return "atur pemain \"pesawat ruang angkasa\""};
 
-exports.setPlayerUnderwater = function(d){return "set player Fish"};
+exports.setPlayerUnderwater = function(d){return "atur pemain \"ikan\""};
 
-exports.setPlayerCave = function(d){return "set player Bat"};
+exports.setPlayerCave = function(d){return "atur pemain \"kelelawar\""};
 
-exports.setPlayerSanta = function(d){return "set player Santa"};
+exports.setPlayerSanta = function(d){return "atur pemain Santa"};
 
-exports.setPlayerShark = function(d){return "set player Shark"};
+exports.setPlayerShark = function(d){return "atur pemain hiu"};
 
-exports.setPlayerEaster = function(d){return "set player Easter Bunny"};
+exports.setPlayerEaster = function(d){return "atur pemain Kelinci Paskah"};
 
-exports.setPlayerBatman = function(d){return "set player Bat guy"};
+exports.setPlayerBatman = function(d){return "atur pemain kelelawar pria"};
 
-exports.setPlayerSubmarine = function(d){return "set player Submarine"};
+exports.setPlayerSubmarine = function(d){return "atur pemain kapal selam"};
 
-exports.setPlayerUnicorn = function(d){return "set player Unicorn"};
+exports.setPlayerUnicorn = function(d){return "atur pemain unicorn"};
 
-exports.setPlayerFairy = function(d){return "set player Fairy"};
+exports.setPlayerFairy = function(d){return "atur pemain peri"};
 
-exports.setPlayerSuperman = function(d){return "set player Flappyman"};
+exports.setPlayerSuperman = function(d){return "atur pemain Flappyman"};
 
-exports.setPlayerTurkey = function(d){return "set player Turkey"};
+exports.setPlayerTurkey = function(d){return "atur pemain Kalkun"};
 
-exports.setPlayerTooltip = function(d){return "Sets the player image"};
+exports.setPlayerTooltip = function(d){return "atur gambar pemain"};
 
-exports.setScore = function(d){return "set score"};
+exports.setScore = function(d){return "tetapkan skor"};
 
-exports.setScoreTooltip = function(d){return "Sets the player's score"};
+exports.setScoreTooltip = function(d){return "Tetapkan skor pemain"};
 
-exports.setSpeed = function(d){return "set speed"};
+exports.setSpeed = function(d){return "tetapkan kecepatan"};
 
-exports.setSpeedTooltip = function(d){return "Sets the levels speed"};
+exports.setSpeedTooltip = function(d){return "tetapkan tingkat kecepatan"};
 
-exports.share = function(d){return "Share"};
+exports.share = function(d){return "Bagikan"};
 
-exports.shareFlappyTwitter = function(d){return "Check out the Flappy game I made. I wrote it myself with @codeorg"};
+exports.shareFlappyTwitter = function(d){return "Ayo coba permainan Flappy yang kubuat. Saya menulis sendiri dengan @codeorg"};
 
-exports.shareGame = function(d){return "Share your game:"};
+exports.shareGame = function(d){return "Bagi permainanmu:"};
 
-exports.speedRandom = function(d){return "set speed random"};
+exports.speedRandom = function(d){return "tetapkan kecepatan secara acak"};
 
-exports.speedVerySlow = function(d){return "set speed very slow"};
+exports.speedVerySlow = function(d){return "tetapkan kecepatan sangat lambat"};
 
-exports.speedSlow = function(d){return "set speed slow"};
+exports.speedSlow = function(d){return "tetapkan kecepatan lambat"};
 
-exports.speedNormal = function(d){return "set speed normal"};
+exports.speedNormal = function(d){return "tetapkan kecepatan normal"};
 
-exports.speedFast = function(d){return "set speed fast"};
+exports.speedFast = function(d){return "tetapkan kecepatan cepat"};
 
-exports.speedVeryFast = function(d){return "set speed very fast"};
+exports.speedVeryFast = function(d){return "tetapkan kecepatan sangat cepat"};
 
-exports.whenClick = function(d){return "when click"};
+exports.whenClick = function(d){return "ketika menklik"};
 
-exports.whenClickTooltip = function(d){return "Execute the actions below when a click event occurs."};
+exports.whenClickTooltip = function(d){return "kerjakan tindakan dibawah ini ketika terjadi sebuah klik."};
 
-exports.whenCollideGround = function(d){return "when hit the ground"};
+exports.whenCollideGround = function(d){return "ketika jatuh ke permukaan"};
 
-exports.whenCollideGroundTooltip = function(d){return "Execute the actions below when Flappy hits the ground."};
+exports.whenCollideGroundTooltip = function(d){return "Jalankan aksi dibawah ketika Flappy jatuh ke permukaan."};
 
-exports.whenCollideObstacle = function(d){return "when hit an obstacle"};
+exports.whenCollideObstacle = function(d){return "ketika menabrak hambatan"};
 
-exports.whenCollideObstacleTooltip = function(d){return "Execute the actions below when Flappy hits an obstacle."};
+exports.whenCollideObstacleTooltip = function(d){return "Jalankan aksi dibawah ketika Flappy menabrak hambatan."};
 
-exports.whenEnterObstacle = function(d){return "when pass obstacle"};
+exports.whenEnterObstacle = function(d){return "ketika melalui hambatan"};
 
-exports.whenEnterObstacleTooltip = function(d){return "Execute the actions below when Flappy enters an obstacle."};
+exports.whenEnterObstacleTooltip = function(d){return "Jalankan aksi dibawah jika Flappy memasuki hambatan."};
 
-exports.whenRunButtonClick = function(d){return "when Run is clicked"};
+exports.whenRunButtonClick = function(d){return "ketika permainan dimulai"};
 
-exports.whenRunButtonClickTooltip = function(d){return "Execute the actions below when the run button is pressed."};
+exports.whenRunButtonClickTooltip = function(d){return "Jalankan aksi dibawah ketika permainan dimulai."};
 
 exports.yes = function(d){return "Ya"};
 
@@ -7431,4 +7394,4 @@ var substr = 'ab'.substr(-1) === 'b'
 
 })( this );
 
-},{}]},{},[12])
+},{}]},{},[13])

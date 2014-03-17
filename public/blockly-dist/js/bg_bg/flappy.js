@@ -1311,7 +1311,7 @@ var createSharingDiv = function(options) {
   if (options.showingSharing &&
       exports.canContinueToNextLevel(options.feedbackType)) {
     var sharingDiv = document.createElement('div');
-    sharingDiv.className = 'shareDiv';
+    sharingDiv.setAttribute('style', 'display:inline-block');
     var sharingImage = document.createElement('div');
 
     var feedbackImage = createFeedbackImage(options);
@@ -1580,7 +1580,7 @@ var getEnabledBlocks = function() {
  * a set of blocks that at least one of them should be used. Each block is
  * represented as the prefix of an id in the corresponding template.soy.
  */
-var getMissingRequiredBlocks = function() {
+var getMissingRequiredBlocks = function () {
   var missingBlocks = [];
   var code = null;  // JavaScript code, which is initalized lazily.
   if (BlocklyApps.REQUIRED_BLOCKS && BlocklyApps.REQUIRED_BLOCKS.length) {
@@ -1663,7 +1663,7 @@ exports.getTestResults = function() {
   }
 };
 
-Keycodes = {
+var Keycodes = {
   ENTER: 13,
   SPACE: 32
 };
@@ -1741,11 +1741,8 @@ var generateXMLForBlocks = function(blocks) {
   return blockXMLStrings.join('');
 };
 
-},{"../locale/bg_bg/common":30,"./codegen":4,"./dom":5,"./templates/buttons.html":19,"./templates/code.html":20,"./templates/readonly.html":25,"./templates/showCode.html":26,"./templates/trophy.html":27,"./utils":28}],7:[function(require,module,exports){
-var tiles = require('./tiles');
-var Direction = tiles.Direction;
-var SquareType = tiles.SquareType;
 
+},{"../locale/bg_bg/common":30,"./codegen":4,"./dom":5,"./templates/buttons.html":19,"./templates/code.html":20,"./templates/readonly.html":25,"./templates/showCode.html":26,"./templates/trophy.html":27,"./utils":28}],7:[function(require,module,exports){
 exports.FlapHeight = {
   VERY_SMALL: -6,
   SMALL: -8,
@@ -1845,7 +1842,7 @@ exports.incrementPlayerScore = function(id) {
   Flappy.displayScore();
 };
 
-},{"./tiles":14}],8:[function(require,module,exports){
+},{}],8:[function(require,module,exports){
 /**
  * Blockly App: Bounce
  *
@@ -1855,7 +1852,6 @@ exports.incrementPlayerScore = function(id) {
 'use strict';
 
 var msg = require('../../locale/bg_bg/flappy');
-var codegen = require('../codegen');
 
 var generateSetterCode = function (ctx, name) {
   var value = ctx.getTitleValue('VALUE');
@@ -2343,7 +2339,13 @@ exports.install = function(blockly, skin) {
   delete blockly.Blocks.procedures_ifreturn;
 };
 
-},{"../../locale/bg_bg/flappy":31,"../codegen":4}],9:[function(require,module,exports){
+},{"../../locale/bg_bg/flappy":31}],9:[function(require,module,exports){
+module.exports = {
+	WORKSPACE_BUFFER: 20,
+	WORKSPACE_COL_WIDTH: 210,
+	WORKSPACE_ROW_HEIGHT: 120
+};
+},{}],10:[function(require,module,exports){
 module.exports= (function() {
   var t = function anonymous(locals, filters, escape, rethrow) {
 escape = escape || function (html){
@@ -2364,7 +2366,7 @@ return buf.join('');
     return t(locals, require("ejs").filters);
   }
 }());
-},{"../../locale/bg_bg/flappy":31,"ejs":32}],10:[function(require,module,exports){
+},{"../../locale/bg_bg/flappy":31,"ejs":32}],11:[function(require,module,exports){
 /**
  * Blockly App: Flappy
  *
@@ -2378,14 +2380,12 @@ var BlocklyApps = require('../base');
 var commonMsg = require('../../locale/bg_bg/common');
 var flappyMsg = require('../../locale/bg_bg/flappy');
 var skins = require('../skins');
-var tiles = require('./tiles');
 var codegen = require('../codegen');
 var api = require('./api');
 var page = require('../templates/page.html');
 var feedback = require('../feedback.js');
 var dom = require('../dom');
-
-var SquareType = tiles.SquareType;
+var constants = require('./constants');
 
 /**
  * Create a namespace for the application.
@@ -2398,10 +2398,6 @@ Flappy.GameStates = {
   ENDING: 2,
   OVER: 3
 };
-
-Flappy.WORKSPACE_BUFFER = 20;
-Flappy.WORKSPACE_COL_WIDTH = 210;
-Flappy.WORKSPACE_ROW_HEIGHT = 120;
 
 Flappy.gameState = Flappy.GameStates.WAITING;
 
@@ -2955,11 +2951,11 @@ Flappy.init = function(config) {
   config.preventExtraTopLevelBlocks = true;
 
   // define how our blocks should be arranged
-  var col1 = Flappy.WORKSPACE_BUFFER;
-  var col2 = col1 + Flappy.WORKSPACE_COL_WIDTH;
-  var row1 = Flappy.WORKSPACE_BUFFER;
-  var row2 = row1 + Flappy.WORKSPACE_ROW_HEIGHT;
-  var row3 = row2 + Flappy.WORKSPACE_ROW_HEIGHT;
+  var col1 = constants.WORKSPACE_BUFFER;
+  var col2 = col1 + constants.WORKSPACE_COL_WIDTH;
+  var row1 = constants.WORKSPACE_BUFFER;
+  var row2 = row1 + constants.WORKSPACE_ROW_HEIGHT;
+  var row3 = row2 + constants.WORKSPACE_ROW_HEIGHT;
 
   config.blockArrangement = {
     'flappy_whenClick': { x: col1, y: row1},
@@ -3445,12 +3441,12 @@ var checkFinished = function () {
   return false;
 };
 
-},{"../../locale/bg_bg/common":30,"../../locale/bg_bg/flappy":31,"../base":2,"../codegen":4,"../dom":5,"../feedback.js":6,"../skins":16,"../templates/page.html":24,"./api":7,"./controls.html":9,"./tiles":14,"./visualization.html":15}],11:[function(require,module,exports){
+},{"../../locale/bg_bg/common":30,"../../locale/bg_bg/flappy":31,"../base":2,"../codegen":4,"../dom":5,"../feedback.js":6,"../skins":16,"../templates/page.html":24,"./api":7,"./constants":9,"./controls.html":10,"./visualization.html":15}],12:[function(require,module,exports){
 /*jshint multistr: true */
 
 // todo - i think our prepoluated code counts as LOCs
 
-var Direction = require('./tiles').Direction;
+var constants = require('./constants');
 
 var tb = function(blocks) {
   return '<xml id="toolbox" style="displastartY: none;">' + blocks + '</xml>';
@@ -3475,12 +3471,12 @@ var setGroundBlock = '<block type="flappy_setGround"></block>';
 var setGravityBlock = '<block type="flappy_setGravity"></block>';
 var setScoreBlock = '<block type="flappy_setScore"></block>';
 
-var COL_WIDTH = Flappy.WORKSPACE_COL_WIDTH;
-var COL1 = Flappy.WORKSPACE_BUFFER;
+var COL_WIDTH = constants.WORKSPACE_COL_WIDTH;
+var COL1 = constants.WORKSPACE_BUFFER;
 var COL2 = COL1 + COL_WIDTH;
 
-var ROW_HEIGHT = Flappy.WORKSPACE_ROW_HEIGHT;
-var ROW1 = Flappy.WORKSPACE_BUFFER;
+var ROW_HEIGHT = constants.WORKSPACE_ROW_HEIGHT;
+var ROW1 = constants.WORKSPACE_BUFFER;
 var ROW2 = ROW1 + ROW_HEIGHT;
 var ROW3 = ROW2 + ROW_HEIGHT;
 
@@ -3862,7 +3858,7 @@ module.exports = {
   }
 };
 
-},{"./tiles":14}],12:[function(require,module,exports){
+},{"./constants":9}],13:[function(require,module,exports){
 (function (global){
 var appMain = require('../appMain');
 window.Flappy = require('./flappy');
@@ -3880,7 +3876,7 @@ window.flappyMain = function(options) {
 };
 
 }).call(this,typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"../appMain":1,"./blocks":8,"./flappy":10,"./levels":11,"./skins":13}],13:[function(require,module,exports){
+},{"../appMain":1,"./blocks":8,"./flappy":11,"./levels":12,"./skins":14}],14:[function(require,module,exports){
 /**
  * Load Skin for Flappy.
  */
@@ -4058,40 +4054,7 @@ exports.load = function(assetUrl, id) {
   return skin;
 };
 
-},{"../skins":16}],14:[function(require,module,exports){
-'use strict';
-
-/**
- * Constants for cardinal directions.  Subsequent code assumes these are
- * in the range 0..3 and that opposites have an absolute difference of 2.
- * @enum {number}
- */
-exports.Direction = {
-  NORTH: 0,
-  EAST: 1,
-  SOUTH: 2,
-  WEST: 3
-};
-
-exports.PADDLE_BALL_COLLIDE_DISTANCE = 0.7;
-
-/**
- * The types of squares in the maze, which is represented
- * as a 2D array of SquareType values.
- * @enum {number}
- */
-exports.SquareType = {
-  WALL: 0,
-  OPEN: 1,
-  BALLFINISH: 2,
-  PADDLEFINISH: 3,
-  OBSTACLE: 4,
-  GOAL: 5,
-  BALLSTART: 6,
-  PADDLESTART: 7
-};
-
-},{}],15:[function(require,module,exports){
+},{"../skins":16}],15:[function(require,module,exports){
 module.exports= (function() {
   var t = function anonymous(locals, filters, escape, rethrow) {
 escape = escape || function (html){
@@ -4382,7 +4345,7 @@ escape = escape || function (html){
 };
 var buf = [];
 with (locals || {}) { (function(){ 
- buf.push('');1; var msg = require('../../locale/bg_bg/common'); ; buf.push('\n\n');3; if (data.ok) {; buf.push('  <div class="farSide" style="padding: 1ex 3ex 0">\n    <button id="ok-button" class="secondary">\n      ', escape((5,  msg.dialogOK() )), '\n    </button>\n  </div>\n');8; };; buf.push('\n');9; if (data.previousLevel) {; buf.push('  <button id="back-button" class="launch">\n    ', escape((10,  msg.backToPreviousLevel() )), '\n  </button>\n');12; };; buf.push('\n');13; if (data.tryAgain) {; buf.push('  <button id="again-button" class="launch">\n    ', escape((14,  msg.tryAgain() )), '\n  </button>\n');16; };; buf.push('\n');17; if (data.nextLevel) {; buf.push('  <button id="continue-button" class="launch">\n    ', escape((18,  msg.continue() )), '\n  </button>\n');20; };; buf.push('\n');21; if (data.facebookUrl) {; buf.push('  <a href=', escape((21,  data.facebookUrl )), ' target="_blank">\n    <img src=', escape((22,  BlocklyApps.assetUrl("media/facebook_purple.png") )), '>\n  </a>\n');24; };; buf.push('\n');25; if (data.twitterUrl) {; buf.push('  <a href=', escape((25,  data.twitterUrl )), ' target="_blank">\n    <img src=', escape((26,  BlocklyApps.assetUrl("media/twitter_purple.png") )), ' >\n  </a>\n  <br>\n');29; };; buf.push('\n');30; if (data.sharingUrl) {; buf.push('  <input type="text" id="sharing-input" style="width:100%;" value=', escape((30,  data.sharingUrl )), ' >\n');31; };; buf.push(''); })();
+ buf.push('');1; var msg = require('../../locale/bg_bg/common'); ; buf.push('\n\n');3; if (data.ok) {; buf.push('  <div class="farSide" style="padding: 1ex 3ex 0">\n    <button id="ok-button" class="secondary">\n      ', escape((5,  msg.dialogOK() )), '\n    </button>\n  </div>\n');8; };; buf.push('\n');9; if (data.previousLevel) {; buf.push('  <button id="back-button" class="launch">\n    ', escape((10,  msg.backToPreviousLevel() )), '\n  </button>\n');12; };; buf.push('\n');13; if (data.tryAgain) {; buf.push('  <button id="again-button" class="launch">\n    ', escape((14,  msg.tryAgain() )), '\n  </button>\n');16; };; buf.push('\n');17; if (data.nextLevel) {; buf.push('  <button id="continue-button" class="launch">\n    ', escape((18,  msg.continue() )), '\n  </button>\n');20; };; buf.push('\n');21; if (data.facebookUrl) {; buf.push('  <a href=', escape((21,  data.facebookUrl )), ' target="_blank">\n    <img src=', escape((22,  BlocklyApps.assetUrl("media/facebook_purple.png") )), '>\n  </a>\n');24; };; buf.push('\n');25; if (data.twitterUrl) {; buf.push('  <a href=', escape((25,  data.twitterUrl )), ' target="_blank">\n    <img src=', escape((26,  BlocklyApps.assetUrl("media/twitter_purple.png") )), ' >\n  </a>\n  <br>\n');29; };; buf.push('\n');30; if (data.sharingUrl) {; buf.push('  <input type="text" id="sharing-input" value=', escape((30,  data.sharingUrl )), ' >\n');31; };; buf.push(''); })();
 } 
 return buf.join('');
 };
@@ -4709,7 +4672,7 @@ exports.tooManyBlocksMsg = function(d){return "Този пъзел може да
 
 exports.tooMuchWork = function(d){return "Вие ме накарахте да свърша много работа! Може ли да повторите няколко пъти?"};
 
-exports.flappySpecificFail = function(d){return "Your code looks good - it will flap with each click. But you need to click many times to flap to the target."};
+exports.flappySpecificFail = function(d){return "Вашият код изглежда добре - героят ще пляска с всяко щракване. Но вие трябва да щракнете много пъти за да прелети до целта."};
 
 exports.toolboxHeader = function(d){return "Блокове"};
 
@@ -4746,231 +4709,231 @@ exports.signup = function(d){return "Регистрация във встъпи�
 
 },{"messageformat":38}],31:[function(require,module,exports){
 var MessageFormat = require("messageformat");MessageFormat.locale.bg=function(n){return n===1?"one":"other"}
-exports.continue = function(d){return "продължи"};
+exports.continue = function(d){return "Напред"};
 
 exports.doCode = function(d){return "направи"};
 
 exports.elseCode = function(d){return "иначе"};
 
-exports.endGame = function(d){return "end game"};
+exports.endGame = function(d){return "край на играта"};
 
-exports.endGameTooltip = function(d){return "Ends the game."};
+exports.endGameTooltip = function(d){return "Завършва играта."};
 
 exports.finalLevel = function(d){return "Поздравления! Вие решихте последния пъзел."};
 
-exports.flap = function(d){return "flap"};
+exports.flap = function(d){return "пляскам с криле"};
 
-exports.flapRandom = function(d){return "flap a random amount"};
+exports.flapRandom = function(d){return "пляскане с криле неопределен брой пъти"};
 
-exports.flapVerySmall = function(d){return "flap a very small amount"};
+exports.flapVerySmall = function(d){return "много малък брой пляскания"};
 
-exports.flapSmall = function(d){return "flap a small amount"};
+exports.flapSmall = function(d){return "малък брой пляскания"};
 
-exports.flapNormal = function(d){return "flap a normal amount"};
+exports.flapNormal = function(d){return "нормалното количество пляскания"};
 
-exports.flapLarge = function(d){return "flap a large amount"};
+exports.flapLarge = function(d){return "голямо количество пляскания"};
 
-exports.flapVeryLarge = function(d){return "flap a very large amount"};
+exports.flapVeryLarge = function(d){return "пляскане с крила много продължително"};
 
-exports.flapTooltip = function(d){return "Fly Flappy upwards."};
+exports.flapTooltip = function(d){return "Flappy лети нагоре."};
 
-exports.incrementPlayerScore = function(d){return "increment player score"};
+exports.incrementPlayerScore = function(d){return "въвежда точка"};
 
-exports.incrementPlayerScoreTooltip = function(d){return "Add one to the current player score."};
+exports.incrementPlayerScoreTooltip = function(d){return "Добавете една точка към текущия резултат на играча."};
 
 exports.nextLevel = function(d){return "Поздравления! Вие завършихте този пъзел."};
 
 exports.no = function(d){return "Не"};
 
-exports.numBlocksNeeded = function(d){return "Този пъзел може да бъде решен с %1 блока."};
+exports.numBlocksNeeded = function(d){return "Този пъзел може да бъде решен с %1 блокове."};
 
-exports.oneTopBlock = function(d){return "За този пъзел, трябва да съедините заедно всички блокове в бялото работно поле."};
+exports.oneTopBlock = function(d){return "За този пъзел, трябва да съедините заедно всички блокове в работното поле."};
 
-exports.playSoundRandom = function(d){return "play random sound"};
+exports.playSoundRandom = function(d){return "пусни случаен звук"};
 
-exports.playSoundBounce = function(d){return "play bounce sound"};
+exports.playSoundBounce = function(d){return "пусни звук \"Подскок\""};
 
-exports.playSoundCrunch = function(d){return "play crunch sound"};
+exports.playSoundCrunch = function(d){return "възпроизвеждане на звук на криза"};
 
-exports.playSoundDie = function(d){return "play sad sound"};
+exports.playSoundDie = function(d){return "възпроизвеждане тъжен звук"};
 
-exports.playSoundHit = function(d){return "play smash sound"};
+exports.playSoundHit = function(d){return "възпроизвеждане на smash звук"};
 
-exports.playSoundPoint = function(d){return "play point sound"};
+exports.playSoundPoint = function(d){return "възпроизвеждане на звук за точка"};
 
-exports.playSoundSwoosh = function(d){return "play swoosh sound"};
+exports.playSoundSwoosh = function(d){return "Възпроизвеждане на  swoosh звук"};
 
-exports.playSoundWing = function(d){return "play wing sound"};
+exports.playSoundWing = function(d){return "възпроизвеждане на звук на крило"};
 
-exports.playSoundJet = function(d){return "play jet sound"};
+exports.playSoundJet = function(d){return "Възпроизвеждане на звук за струя"};
 
-exports.playSoundCrash = function(d){return "play crash sound"};
+exports.playSoundCrash = function(d){return "възпроизвеждане на  звук за катастрофа"};
 
-exports.playSoundJingle = function(d){return "play jingle sound"};
+exports.playSoundJingle = function(d){return "Възпроизвеждане на звук за звънене"};
 
-exports.playSoundSplash = function(d){return "play splash sound"};
+exports.playSoundSplash = function(d){return "Възпроизвеждане на звук от плясък във вода"};
 
-exports.playSoundLaser = function(d){return "play laser sound"};
+exports.playSoundLaser = function(d){return "възпроизвеждане на звук от лазер"};
 
-exports.playSoundTooltip = function(d){return "Play a sound."};
+exports.playSoundTooltip = function(d){return "Възпроизведете избраният звук."};
 
-exports.reinfFeedbackMsg = function(d){return "You can press the \"Try again\" button to go back to playing your game."};
+exports.reinfFeedbackMsg = function(d){return "Може да натиснете бутона \"Опитай отново\", за да се върнете да играете играта си."};
 
-exports.scoreText = function(d){return "Score: "+v(d,"playerScore")+" : "+v(d,"opponentScore")};
+exports.scoreText = function(d){return "Резултат: "+v(d,"playerScore")};
 
-exports.setBackgroundRandom = function(d){return "set scene Random"};
+exports.setBackgroundRandom = function(d){return "Зареди сцена на случаен принцип"};
 
-exports.setBackgroundFlappy = function(d){return "set scene City (day)"};
+exports.setBackgroundFlappy = function(d){return "Задайте сцена \"Град\" (ден)"};
 
-exports.setBackgroundNight = function(d){return "set scene City (night)"};
+exports.setBackgroundNight = function(d){return "Задайте сцена \"Град\" (нощ)"};
 
-exports.setBackgroundSciFi = function(d){return "set scene Sci-Fi"};
+exports.setBackgroundSciFi = function(d){return "сцената Sci-Fi"};
 
-exports.setBackgroundUnderwater = function(d){return "set scene Underwater"};
+exports.setBackgroundUnderwater = function(d){return "Задаване сцена под водата"};
 
-exports.setBackgroundCave = function(d){return "set scene Cave"};
+exports.setBackgroundCave = function(d){return "Задайте сцена пещера"};
 
-exports.setBackgroundSanta = function(d){return "set scene Santa"};
+exports.setBackgroundSanta = function(d){return "Задайте сцена Дядо Коледа"};
 
-exports.setBackgroundTooltip = function(d){return "Sets the background image"};
+exports.setBackgroundTooltip = function(d){return "Задаване на фоновото изображение"};
 
-exports.setGapRandom = function(d){return "set a random gap"};
+exports.setGapRandom = function(d){return "Задаване на случайна дупка"};
 
-exports.setGapVerySmall = function(d){return "set a very small gap"};
+exports.setGapVerySmall = function(d){return "Задаване на много малки дупки"};
 
-exports.setGapSmall = function(d){return "set a small gap"};
+exports.setGapSmall = function(d){return "Задайте една малка дупка"};
 
-exports.setGapNormal = function(d){return "set a normal gap"};
+exports.setGapNormal = function(d){return "Задайте една нормална дупка"};
 
-exports.setGapLarge = function(d){return "set a large gap"};
+exports.setGapLarge = function(d){return "поставям голям интервал"};
 
-exports.setGapVeryLarge = function(d){return "set a very large gap"};
+exports.setGapVeryLarge = function(d){return "Задаване на много голяма разлика"};
 
-exports.setGapHeightTooltip = function(d){return "Sets the vertical gap in an obstacle"};
+exports.setGapHeightTooltip = function(d){return "Задава вертикална дупка между препятствията"};
 
-exports.setGravityRandom = function(d){return "set gravity random"};
+exports.setGravityRandom = function(d){return "Задаване гравитация на случаен принцип"};
 
-exports.setGravityVeryLow = function(d){return "set gravity very low"};
+exports.setGravityVeryLow = function(d){return "Задаване  на много ниска гравитация"};
 
-exports.setGravityLow = function(d){return "set gravity low"};
+exports.setGravityLow = function(d){return "Задаване ниска гравитация"};
 
-exports.setGravityNormal = function(d){return "set gravity normal"};
+exports.setGravityNormal = function(d){return "Задаване нормална гравитация"};
 
-exports.setGravityHigh = function(d){return "set gravity high"};
+exports.setGravityHigh = function(d){return "Задаване на силна гравитация"};
 
-exports.setGravityVeryHigh = function(d){return "set gravity very high"};
+exports.setGravityVeryHigh = function(d){return "Задаване на много силна гравитация"};
 
-exports.setGravityTooltip = function(d){return "Sets the level's gravity"};
+exports.setGravityTooltip = function(d){return "Задаване ниво на гравитацията"};
 
-exports.setGroundRandom = function(d){return "set ground Random"};
+exports.setGroundRandom = function(d){return "Задай  терена на случаен принцип"};
 
-exports.setGroundFlappy = function(d){return "set ground Ground"};
+exports.setGroundFlappy = function(d){return "Задаване терен Земя"};
 
-exports.setGroundSciFi = function(d){return "set ground Sci-Fi"};
+exports.setGroundSciFi = function(d){return "Задаване терен Sci-Fi"};
 
-exports.setGroundUnderwater = function(d){return "set ground Underwater"};
+exports.setGroundUnderwater = function(d){return "Задаване терен Под водата"};
 
-exports.setGroundCave = function(d){return "set ground Cave"};
+exports.setGroundCave = function(d){return "Задаване терен Пещера"};
 
-exports.setGroundSanta = function(d){return "set ground Santa"};
+exports.setGroundSanta = function(d){return "Задаване терен Дядо Коледа"};
 
-exports.setGroundLava = function(d){return "set ground Lava"};
+exports.setGroundLava = function(d){return "Задаване терен Лава"};
 
-exports.setGroundTooltip = function(d){return "Sets the ground image"};
+exports.setGroundTooltip = function(d){return "Задаване фон на терена"};
 
-exports.setObstacleRandom = function(d){return "set obstacle Random"};
+exports.setObstacleRandom = function(d){return "Задайте случайно препятствие"};
 
-exports.setObstacleFlappy = function(d){return "set obstacle Pipe"};
+exports.setObstacleFlappy = function(d){return "Задайте препятствие Тръба"};
 
-exports.setObstacleSciFi = function(d){return "set obstacle Sci-Fi"};
+exports.setObstacleSciFi = function(d){return "Задайте препятствие Sci-Fi"};
 
-exports.setObstacleUnderwater = function(d){return "set obstacle Plant"};
+exports.setObstacleUnderwater = function(d){return "Задайте препятствие Растение"};
 
-exports.setObstacleCave = function(d){return "set obstacle Cave"};
+exports.setObstacleCave = function(d){return "Задайте препятствие Пещера"};
 
-exports.setObstacleSanta = function(d){return "set obstacle Chimney"};
+exports.setObstacleSanta = function(d){return "Задайте препятствие комин"};
 
-exports.setObstacleLaser = function(d){return "set obstacle Laser"};
+exports.setObstacleLaser = function(d){return "Задайте препятствие лазер"};
 
-exports.setObstacleTooltip = function(d){return "Sets the obstacle image"};
+exports.setObstacleTooltip = function(d){return "Задайте фон на препятствието"};
 
-exports.setPlayerRandom = function(d){return "set player Random"};
+exports.setPlayerRandom = function(d){return "Задаване случаен герой"};
 
-exports.setPlayerFlappy = function(d){return "set player Yellow Bird"};
+exports.setPlayerFlappy = function(d){return "Задай като герой жълтата птица"};
 
-exports.setPlayerRedBird = function(d){return "set player Red Bird"};
+exports.setPlayerRedBird = function(d){return "Задай като герой червената птица"};
 
-exports.setPlayerSciFi = function(d){return "set player Spaceship"};
+exports.setPlayerSciFi = function(d){return "Задай като герой космически кораб"};
 
-exports.setPlayerUnderwater = function(d){return "set player Fish"};
+exports.setPlayerUnderwater = function(d){return "Задай герой риба"};
 
-exports.setPlayerCave = function(d){return "set player Bat"};
+exports.setPlayerCave = function(d){return "Задай герой прилеп"};
 
-exports.setPlayerSanta = function(d){return "set player Santa"};
+exports.setPlayerSanta = function(d){return "Задай като герой Дядо Коледа"};
 
-exports.setPlayerShark = function(d){return "set player Shark"};
+exports.setPlayerShark = function(d){return "Задай като герой акула"};
 
-exports.setPlayerEaster = function(d){return "set player Easter Bunny"};
+exports.setPlayerEaster = function(d){return "Задай като герой великденският заек"};
 
-exports.setPlayerBatman = function(d){return "set player Bat guy"};
+exports.setPlayerBatman = function(d){return "Задаване герой прилеп човек"};
 
-exports.setPlayerSubmarine = function(d){return "set player Submarine"};
+exports.setPlayerSubmarine = function(d){return "Задаване герой подводница"};
 
-exports.setPlayerUnicorn = function(d){return "set player Unicorn"};
+exports.setPlayerUnicorn = function(d){return "Задаване герой еднорог"};
 
-exports.setPlayerFairy = function(d){return "set player Fairy"};
+exports.setPlayerFairy = function(d){return "Задаване герой фея"};
 
-exports.setPlayerSuperman = function(d){return "set player Flappyman"};
+exports.setPlayerSuperman = function(d){return "Задаване герой Flappy мъжка птица"};
 
-exports.setPlayerTurkey = function(d){return "set player Turkey"};
+exports.setPlayerTurkey = function(d){return "Задаване герой пуйка"};
 
-exports.setPlayerTooltip = function(d){return "Sets the player image"};
+exports.setPlayerTooltip = function(d){return "Задаване изображение на герой"};
 
-exports.setScore = function(d){return "set score"};
+exports.setScore = function(d){return "постави резултат"};
 
-exports.setScoreTooltip = function(d){return "Sets the player's score"};
+exports.setScoreTooltip = function(d){return "Задава резултата на играча"};
 
-exports.setSpeed = function(d){return "set speed"};
+exports.setSpeed = function(d){return "задай скорост"};
 
-exports.setSpeedTooltip = function(d){return "Sets the levels speed"};
+exports.setSpeedTooltip = function(d){return "Задай нивото на скоростта"};
 
-exports.share = function(d){return "Share"};
+exports.share = function(d){return "Сподели"};
 
-exports.shareFlappyTwitter = function(d){return "Check out the Flappy game I made. I wrote it myself with @codeorg"};
+exports.shareFlappyTwitter = function(d){return "Вижте Flappy играта, която съм създал. Аз сам я написал с @codeorg"};
 
-exports.shareGame = function(d){return "Share your game:"};
+exports.shareGame = function(d){return "Споделете играта си:"};
 
-exports.speedRandom = function(d){return "set speed random"};
+exports.speedRandom = function(d){return "задаване на случайна скорост"};
 
-exports.speedVerySlow = function(d){return "set speed very slow"};
+exports.speedVerySlow = function(d){return "задай много бавна скорост"};
 
-exports.speedSlow = function(d){return "set speed slow"};
+exports.speedSlow = function(d){return "задай бавна скорост"};
 
-exports.speedNormal = function(d){return "set speed normal"};
+exports.speedNormal = function(d){return "задай нормална скорост"};
 
-exports.speedFast = function(d){return "set speed fast"};
+exports.speedFast = function(d){return "Задай бърза скорост"};
 
-exports.speedVeryFast = function(d){return "set speed very fast"};
+exports.speedVeryFast = function(d){return "задай много бърза скорост"};
 
-exports.whenClick = function(d){return "when click"};
+exports.whenClick = function(d){return "Когато кликнете върху"};
 
-exports.whenClickTooltip = function(d){return "Execute the actions below when a click event occurs."};
+exports.whenClickTooltip = function(d){return "За да се случи събитието изпълни действията по-долу с кликване."};
 
-exports.whenCollideGround = function(d){return "when hit the ground"};
+exports.whenCollideGround = function(d){return "когато се удари в земната повърхност"};
 
-exports.whenCollideGroundTooltip = function(d){return "Execute the actions below when Flappy hits the ground."};
+exports.whenCollideGroundTooltip = function(d){return "Изпълни действията по-долу когато Flappy удари на земята."};
 
-exports.whenCollideObstacle = function(d){return "when hit an obstacle"};
+exports.whenCollideObstacle = function(d){return "когато се удари в препятствие"};
 
-exports.whenCollideObstacleTooltip = function(d){return "Execute the actions below when Flappy hits an obstacle."};
+exports.whenCollideObstacleTooltip = function(d){return "Изпълни действията по-долу когато Flappy се удря в препятствие."};
 
-exports.whenEnterObstacle = function(d){return "when pass obstacle"};
+exports.whenEnterObstacle = function(d){return "когато премине препятствие"};
 
-exports.whenEnterObstacleTooltip = function(d){return "Execute the actions below when Flappy enters an obstacle."};
+exports.whenEnterObstacleTooltip = function(d){return "Изпълни действията по-долу когато Flappy се удря в препятствие."};
 
-exports.whenRunButtonClick = function(d){return "when Run is clicked"};
+exports.whenRunButtonClick = function(d){return "когато играта започва"};
 
-exports.whenRunButtonClickTooltip = function(d){return "Execute the actions below when the run button is pressed."};
+exports.whenRunButtonClickTooltip = function(d){return "Изпълни действията по-долу при стартиране на играта."};
 
 exports.yes = function(d){return "Да"};
 
@@ -7431,4 +7394,4 @@ var substr = 'ab'.substr(-1) === 'b'
 
 })( this );
 
-},{}]},{},[12])
+},{}]},{},[13])

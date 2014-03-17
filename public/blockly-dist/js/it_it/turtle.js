@@ -1311,7 +1311,7 @@ var createSharingDiv = function(options) {
   if (options.showingSharing &&
       exports.canContinueToNextLevel(options.feedbackType)) {
     var sharingDiv = document.createElement('div');
-    sharingDiv.className = 'shareDiv';
+    sharingDiv.setAttribute('style', 'display:inline-block');
     var sharingImage = document.createElement('div');
 
     var feedbackImage = createFeedbackImage(options);
@@ -1580,7 +1580,7 @@ var getEnabledBlocks = function() {
  * a set of blocks that at least one of them should be used. Each block is
  * represented as the prefix of an id in the corresponding template.soy.
  */
-var getMissingRequiredBlocks = function() {
+var getMissingRequiredBlocks = function () {
   var missingBlocks = [];
   var code = null;  // JavaScript code, which is initalized lazily.
   if (BlocklyApps.REQUIRED_BLOCKS && BlocklyApps.REQUIRED_BLOCKS.length) {
@@ -1663,7 +1663,7 @@ exports.getTestResults = function() {
   }
 };
 
-Keycodes = {
+var Keycodes = {
   ENTER: 13,
   SPACE: 32
 };
@@ -1740,6 +1740,7 @@ var generateXMLForBlocks = function(blocks) {
   }
   return blockXMLStrings.join('');
 };
+
 
 },{"../locale/it_it/common":32,"./codegen":4,"./dom":5,"./templates/buttons.html":11,"./templates/code.html":12,"./templates/readonly.html":17,"./templates/showCode.html":18,"./templates/trophy.html":19,"./utils":30}],7:[function(require,module,exports){
 // Functions for checking required blocks.
@@ -2070,7 +2071,7 @@ escape = escape || function (html){
 };
 var buf = [];
 with (locals || {}) { (function(){ 
- buf.push('');1; var msg = require('../../locale/it_it/common'); ; buf.push('\n\n');3; if (data.ok) {; buf.push('  <div class="farSide" style="padding: 1ex 3ex 0">\n    <button id="ok-button" class="secondary">\n      ', escape((5,  msg.dialogOK() )), '\n    </button>\n  </div>\n');8; };; buf.push('\n');9; if (data.previousLevel) {; buf.push('  <button id="back-button" class="launch">\n    ', escape((10,  msg.backToPreviousLevel() )), '\n  </button>\n');12; };; buf.push('\n');13; if (data.tryAgain) {; buf.push('  <button id="again-button" class="launch">\n    ', escape((14,  msg.tryAgain() )), '\n  </button>\n');16; };; buf.push('\n');17; if (data.nextLevel) {; buf.push('  <button id="continue-button" class="launch">\n    ', escape((18,  msg.continue() )), '\n  </button>\n');20; };; buf.push('\n');21; if (data.facebookUrl) {; buf.push('  <a href=', escape((21,  data.facebookUrl )), ' target="_blank">\n    <img src=', escape((22,  BlocklyApps.assetUrl("media/facebook_purple.png") )), '>\n  </a>\n');24; };; buf.push('\n');25; if (data.twitterUrl) {; buf.push('  <a href=', escape((25,  data.twitterUrl )), ' target="_blank">\n    <img src=', escape((26,  BlocklyApps.assetUrl("media/twitter_purple.png") )), ' >\n  </a>\n  <br>\n');29; };; buf.push('\n');30; if (data.sharingUrl) {; buf.push('  <input type="text" id="sharing-input" style="width:100%;" value=', escape((30,  data.sharingUrl )), ' >\n');31; };; buf.push(''); })();
+ buf.push('');1; var msg = require('../../locale/it_it/common'); ; buf.push('\n\n');3; if (data.ok) {; buf.push('  <div class="farSide" style="padding: 1ex 3ex 0">\n    <button id="ok-button" class="secondary">\n      ', escape((5,  msg.dialogOK() )), '\n    </button>\n  </div>\n');8; };; buf.push('\n');9; if (data.previousLevel) {; buf.push('  <button id="back-button" class="launch">\n    ', escape((10,  msg.backToPreviousLevel() )), '\n  </button>\n');12; };; buf.push('\n');13; if (data.tryAgain) {; buf.push('  <button id="again-button" class="launch">\n    ', escape((14,  msg.tryAgain() )), '\n  </button>\n');16; };; buf.push('\n');17; if (data.nextLevel) {; buf.push('  <button id="continue-button" class="launch">\n    ', escape((18,  msg.continue() )), '\n  </button>\n');20; };; buf.push('\n');21; if (data.facebookUrl) {; buf.push('  <a href=', escape((21,  data.facebookUrl )), ' target="_blank">\n    <img src=', escape((22,  BlocklyApps.assetUrl("media/facebook_purple.png") )), '>\n  </a>\n');24; };; buf.push('\n');25; if (data.twitterUrl) {; buf.push('  <a href=', escape((25,  data.twitterUrl )), ' target="_blank">\n    <img src=', escape((26,  BlocklyApps.assetUrl("media/twitter_purple.png") )), ' >\n  </a>\n  <br>\n');29; };; buf.push('\n');30; if (data.sharingUrl) {; buf.push('  <input type="text" id="sharing-input" value=', escape((30,  data.sharingUrl )), ' >\n');31; };; buf.push(''); })();
 } 
 return buf.join('');
 };
@@ -5229,9 +5230,9 @@ exports.emptyBlocksErrorMsg = function(d){return "Il blocco \"ripeti\" o \"se\" 
 
 exports.extraTopBlocks = function(d){return "You have extra blocks that aren't attached to an event block."};
 
-exports.finalStage = function(d){return "Complimenti! Hai completato la fase finale."};
+exports.finalStage = function(d){return "Complimenti! Hai completato l'ultima lezione."};
 
-exports.finalStageTrophies = function(d){return "Complimenti! Hai completato la fase finale e vinto "+p(d,"numTrophies",0,"it",{"one":"un trofeo","other":n(d,"numTrophies")+" trofei"})+"."};
+exports.finalStageTrophies = function(d){return "Complimenti! Hai completato l'ultima lezione e vinto "+p(d,"numTrophies",0,"it",{"one":"un trofeo","other":n(d,"numTrophies")+" trofei"})+"."};
 
 exports.generatedCodeInfo = function(d){return "I blocchi per il tuo programma possono essere rappresentati anche in JavaScript, uno dei linguaggi di programmazione più usati al mondo:"};
 
@@ -5253,9 +5254,9 @@ exports.nextLevel = function(d){return "Complimenti! Hai completato il puzzle "+
 
 exports.nextLevelTrophies = function(d){return "Complimenti! Hai completato il Puzzle "+v(d,"puzzleNumber")+" e vinto "+p(d,"numTrophies",0,"it",{"one":"un trofeo","other":n(d,"numTrophies")+" trofei"})+"."};
 
-exports.nextStage = function(d){return "Complimenti! Hai completato la fase "+v(d,"stageNumber")+"."};
+exports.nextStage = function(d){return "Complimenti! Hai completato la lezione "+v(d,"stageNumber")+"."};
 
-exports.nextStageTrophies = function(d){return "Complimenti! Hai completato la fase "+v(d,"stageNumber")+" e vinto "+p(d,"numTrophies",0,"it",{"one":"un trofeo","other":n(d,"numTrophies")+" trofei"})+"."};
+exports.nextStageTrophies = function(d){return "Complimenti! Hai completato la lezione "+v(d,"stageNumber")+" e vinto "+p(d,"numTrophies",0,"it",{"one":"un trofeo","other":n(d,"numTrophies")+" trofei"})+"."};
 
 exports.numBlocksNeeded = function(d){return "Complimenti! Hai completato il Puzzle "+v(d,"puzzleNumber")+". (Avresti però potuto usare solo "+p(d,"numBlocks",0,"it",{"one":"1 blocco","other":n(d,"numBlocks")+" blocchi"})+".)"};
 
@@ -5386,13 +5387,13 @@ exports.penTooltip = function(d){return "Alza o abbassa la matita, per avviare o
 
 exports.penUp = function(d){return "Alza la matita"};
 
-exports.reinfFeedbackMsg = function(d){return "Does this look like what you want? You can press the \"Try again\" button to see your drawing."};
+exports.reinfFeedbackMsg = function(d){return "Somiglia a quello che volevi? Se premi il pulsante \"Riprova\" puoi tornare indietro per modificare il tuo disegno."};
 
 exports.setColour = function(d){return "Imposta il colore"};
 
 exports.setWidth = function(d){return "imposta la larghezza"};
 
-exports.shareDrawing = function(d){return "Share your drawing:"};
+exports.shareDrawing = function(d){return "Condividi il tuo disegno:"};
 
 exports.showMe = function(d){return "Mostrami"};
 

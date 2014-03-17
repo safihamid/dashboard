@@ -1311,7 +1311,7 @@ var createSharingDiv = function(options) {
   if (options.showingSharing &&
       exports.canContinueToNextLevel(options.feedbackType)) {
     var sharingDiv = document.createElement('div');
-    sharingDiv.className = 'shareDiv';
+    sharingDiv.setAttribute('style', 'display:inline-block');
     var sharingImage = document.createElement('div');
 
     var feedbackImage = createFeedbackImage(options);
@@ -1580,7 +1580,7 @@ var getEnabledBlocks = function() {
  * a set of blocks that at least one of them should be used. Each block is
  * represented as the prefix of an id in the corresponding template.soy.
  */
-var getMissingRequiredBlocks = function() {
+var getMissingRequiredBlocks = function () {
   var missingBlocks = [];
   var code = null;  // JavaScript code, which is initalized lazily.
   if (BlocklyApps.REQUIRED_BLOCKS && BlocklyApps.REQUIRED_BLOCKS.length) {
@@ -1663,7 +1663,7 @@ exports.getTestResults = function() {
   }
 };
 
-Keycodes = {
+var Keycodes = {
   ENTER: 13,
   SPACE: 32
 };
@@ -1740,6 +1740,7 @@ var generateXMLForBlocks = function(blocks) {
   }
   return blockXMLStrings.join('');
 };
+
 
 },{"../locale/fa_ir/common":32,"./codegen":4,"./dom":5,"./templates/buttons.html":11,"./templates/code.html":12,"./templates/readonly.html":17,"./templates/showCode.html":18,"./templates/trophy.html":19,"./utils":30}],7:[function(require,module,exports){
 // Functions for checking required blocks.
@@ -2070,7 +2071,7 @@ escape = escape || function (html){
 };
 var buf = [];
 with (locals || {}) { (function(){ 
- buf.push('');1; var msg = require('../../locale/fa_ir/common'); ; buf.push('\n\n');3; if (data.ok) {; buf.push('  <div class="farSide" style="padding: 1ex 3ex 0">\n    <button id="ok-button" class="secondary">\n      ', escape((5,  msg.dialogOK() )), '\n    </button>\n  </div>\n');8; };; buf.push('\n');9; if (data.previousLevel) {; buf.push('  <button id="back-button" class="launch">\n    ', escape((10,  msg.backToPreviousLevel() )), '\n  </button>\n');12; };; buf.push('\n');13; if (data.tryAgain) {; buf.push('  <button id="again-button" class="launch">\n    ', escape((14,  msg.tryAgain() )), '\n  </button>\n');16; };; buf.push('\n');17; if (data.nextLevel) {; buf.push('  <button id="continue-button" class="launch">\n    ', escape((18,  msg.continue() )), '\n  </button>\n');20; };; buf.push('\n');21; if (data.facebookUrl) {; buf.push('  <a href=', escape((21,  data.facebookUrl )), ' target="_blank">\n    <img src=', escape((22,  BlocklyApps.assetUrl("media/facebook_purple.png") )), '>\n  </a>\n');24; };; buf.push('\n');25; if (data.twitterUrl) {; buf.push('  <a href=', escape((25,  data.twitterUrl )), ' target="_blank">\n    <img src=', escape((26,  BlocklyApps.assetUrl("media/twitter_purple.png") )), ' >\n  </a>\n  <br>\n');29; };; buf.push('\n');30; if (data.sharingUrl) {; buf.push('  <input type="text" id="sharing-input" style="width:100%;" value=', escape((30,  data.sharingUrl )), ' >\n');31; };; buf.push(''); })();
+ buf.push('');1; var msg = require('../../locale/fa_ir/common'); ; buf.push('\n\n');3; if (data.ok) {; buf.push('  <div class="farSide" style="padding: 1ex 3ex 0">\n    <button id="ok-button" class="secondary">\n      ', escape((5,  msg.dialogOK() )), '\n    </button>\n  </div>\n');8; };; buf.push('\n');9; if (data.previousLevel) {; buf.push('  <button id="back-button" class="launch">\n    ', escape((10,  msg.backToPreviousLevel() )), '\n  </button>\n');12; };; buf.push('\n');13; if (data.tryAgain) {; buf.push('  <button id="again-button" class="launch">\n    ', escape((14,  msg.tryAgain() )), '\n  </button>\n');16; };; buf.push('\n');17; if (data.nextLevel) {; buf.push('  <button id="continue-button" class="launch">\n    ', escape((18,  msg.continue() )), '\n  </button>\n');20; };; buf.push('\n');21; if (data.facebookUrl) {; buf.push('  <a href=', escape((21,  data.facebookUrl )), ' target="_blank">\n    <img src=', escape((22,  BlocklyApps.assetUrl("media/facebook_purple.png") )), '>\n  </a>\n');24; };; buf.push('\n');25; if (data.twitterUrl) {; buf.push('  <a href=', escape((25,  data.twitterUrl )), ' target="_blank">\n    <img src=', escape((26,  BlocklyApps.assetUrl("media/twitter_purple.png") )), ' >\n  </a>\n  <br>\n');29; };; buf.push('\n');30; if (data.sharingUrl) {; buf.push('  <input type="text" id="sharing-input" value=', escape((30,  data.sharingUrl )), ' >\n');31; };; buf.push(''); })();
 } 
 return buf.join('');
 };
@@ -5197,9 +5198,9 @@ exports.parseElement = function(text) {
 
 },{}],32:[function(require,module,exports){
 var MessageFormat = require("messageformat");MessageFormat.locale.fa=function(n){return "other"}
-exports.blocklyMessage = function(d){return "Blockly"};
+exports.blocklyMessage = function(d){return "بلاکلی"};
 
-exports.catActions = function(d){return "اقدامات"};
+exports.catActions = function(d){return "کارها"};
 
 exports.catColour = function(d){return "رنگ"};
 
@@ -5207,7 +5208,7 @@ exports.catLogic = function(d){return "منطق"};
 
 exports.catLists = function(d){return "لیست ها"};
 
-exports.catLoops = function(d){return "حلقه ها"};
+exports.catLoops = function(d){return "حلقه‌ها"};
 
 exports.catMath = function(d){return "ریاضی"};
 
@@ -5225,73 +5226,73 @@ exports.dialogCancel = function(d){return "لغو"};
 
 exports.dialogOK = function(d){return "Ok"};
 
-exports.emptyBlocksErrorMsg = function(d){return "بلوک های \"تکرار Repeat\" یا \"شرطی If \" برای کار کردن نیاز به بلوکهایی در داخل خود دارند.  اطمینان حاصل کنید که بلوک داخلی دارای تعریف درست بوده و در جای درستی از بلوک اصلی قرار گرفته است."};
+exports.emptyBlocksErrorMsg = function(d){return "بلوک‌های \"تکرار\" یا \"اگر\" برای کار کردن باید بلوک‌های دیگری در داخلشان باشد. اطمینان حاصل کنید که بلوک داخلی در جای درستی از بلوک اصلی قرار گرفته باشد."};
 
 exports.extraTopBlocks = function(d){return "You have extra blocks that aren't attached to an event block."};
 
-exports.finalStage = function(d){return "تبریک ! شما مرحلهٔ نهایی را به اتمام رسانده اید."};
+exports.finalStage = function(d){return "تبریک می‌گوییم! شما مرحله‌ی آخر را به پایان رساندید."};
 
-exports.finalStageTrophies = function(d){return "تبریک! شما مرحلهٔ نهایی را به پایان رساندید و برنده "+p(d,"numTrophies",0,"fa",{"one":"یک جایزه","other":"جوایز"+n(d,"numTrophies")})+" شدید."};
+exports.finalStageTrophies = function(d){return "تبریک می‌گوییم! شما مرحله‌ی آخر را به پایان رساندید و برنده‌ی "+p(d,"numTrophies",0,"fa",{"one":"یک جایزه","other":n(d,"numTrophies")+" جایزه"})+" شدید."};
 
-exports.generatedCodeInfo = function(d){return "بلوک های برنامه شما میتوانند در جاوا اسکریپت که مقبول ترین و فراگیرترین زبان برنامه نویسی در جهان است نیز به نمایش درآیند:"};
+exports.generatedCodeInfo = function(d){return "بلوک‌های برنامه‌ی شما همچنین می‌توانند در جاوا اسکریپت که فراگیرترین زبان برنامه نویسی در جهان است، به نمایش درآیند:"};
 
-exports.hashError = function(d){return "متاسفیم ! '1%' با هیچ کدام از برنامه های ذخیره شده مطابقت ندارد."};
+exports.hashError = function(d){return "با عرض پوزش، '%1' با هیچ کدام از برنامه‌های ذخیره شده مطابقت ندارد."};
 
 exports.help = function(d){return "راهنما"};
 
-exports.hintTitle = function(d){return "نکته:"};
+exports.hintTitle = function(d){return "راهنمایی:"};
 
-exports.levelIncompleteError = function(d){return "شما از تمام انواع بلوکهای لازم استفاده می‌کنید، اما نه به شکل درست."};
+exports.levelIncompleteError = function(d){return "شما همه‌ی بلوک‌های مورد نیاز را بکار بردید، ولی نه به روش درست."};
 
 exports.listVariable = function(d){return "لیست"};
 
-exports.makeYourOwnFlappy = function(d){return "Make Your Own Flappy Game"};
+exports.makeYourOwnFlappy = function(d){return "Flappy Bird خودتان را بسازید"};
 
-exports.missingBlocksErrorMsg = function(d){return "برای حل این معما از یکی یا بیشتر از یکی از بلوک های زیر استفاده کنید."};
+exports.missingBlocksErrorMsg = function(d){return "برای حل این معما، یکی یا چند تا از بلوک‌های زیر را بکار ببرید."};
 
 exports.nextLevel = function(d){return "تبریک ! شما پازل "+v(d,"puzzleNumber")+" را به پایان رساندید."};
 
-exports.nextLevelTrophies = function(d){return "Congratulations! You completed Puzzle "+v(d,"puzzleNumber")+" and won "+p(d,"numTrophies",0,"fa",{"one":"a trophy","other":n(d,"numTrophies")+" trophies"})+"."};
+exports.nextLevelTrophies = function(d){return "تبریک می‌گوییم! شما معمای "+v(d,"puzzleNumber")+" را به پایان رساندید و برنده‌ی "+p(d,"numTrophies",0,"fa",{"one":"یک جایزه","other":n(d,"numTrophies")+" جایزه"})+" شدید."};
 
-exports.nextStage = function(d){return "تبریک! شما مرحله "+v(d,"stageNumber")+"را به پایان رساندید."};
+exports.nextStage = function(d){return "تبریک می‌گوییم! شما مرحله‌ی "+v(d,"stageNumber")+" را به پایان رساندید."};
 
-exports.nextStageTrophies = function(d){return "Congratulations! You completed Stage "+v(d,"stageNumber")+" and won "+p(d,"numTrophies",0,"fa",{"one":"a trophy","other":n(d,"numTrophies")+" trophies"})+"."};
+exports.nextStageTrophies = function(d){return "تبریک می‌گوییم! شما مرحله‌ی "+v(d,"stageNumber")+" را به پایان رساندید و برنده‌ی "+p(d,"numTrophies",0,"fa",{"one":"یک جایزه","other":n(d,"numTrophies")+" جایزه"})+" شدید."};
 
-exports.numBlocksNeeded = function(d){return "Congratulations! You completed Puzzle "+v(d,"puzzleNumber")+". (However, you could have used only "+p(d,"numBlocks",0,"fa",{"one":"1 block","other":n(d,"numBlocks")+" blocks"})+".)"};
+exports.numBlocksNeeded = function(d){return "تبریک می‌گوییم! شما معمای "+v(d,"puzzleNumber")+" را به پایان رساندید. (اگرچه می‌توانستید تنها "+p(d,"numBlocks",0,"fa",{"one":"یک بلوک","other":n(d,"numBlocks")+" بلوک"})+" بکار ببرید.)"};
 
-exports.numLinesOfCodeWritten = function(d){return "شما همین الان  "+p(d,"numLines",0,"fa",{"one":"1 خط","other":n(d,"numLines")+" خط"})+" کد نوشتید!"};
+exports.numLinesOfCodeWritten = function(d){return "شما "+p(d,"numLines",0,"fa",{"one":"یک خط","other":n(d,"numLines")+" خط"})+" کد نوشتید!"};
 
-exports.puzzleTitle = function(d){return "پازل "+v(d,"puzzle_number")+"  از"+v(d,"stage_total")};
+exports.puzzleTitle = function(d){return "معمای "+v(d,"puzzle_number")+" از "+v(d,"stage_total")};
 
-exports.resetProgram = function(d){return "تنظیم مجدد"};
+exports.resetProgram = function(d){return "بازنشانی"};
 
-exports.runProgram = function(d){return "برنامه رو اجرا کن"};
+exports.runProgram = function(d){return "اجرای برنامه"};
 
-exports.runTooltip = function(d){return "اجرای برنامه توسط بلوک در فضای کار تعریف شده است."};
+exports.runTooltip = function(d){return "اجرای برنامه‌ی تعریف شده با بلوک‌های فضای کار."};
 
-exports.showCodeHeader = function(d){return "کد نمایش"};
+exports.showCodeHeader = function(d){return "نمایشِ کد"};
 
-exports.showGeneratedCode = function(d){return "کد نمایش"};
+exports.showGeneratedCode = function(d){return "نمایشِ کد"};
 
-exports.subtitle = function(d){return "محیط برنامه نویسی بصری"};
+exports.subtitle = function(d){return "یک محیط برنامه نویسیِ دیداری"};
 
 exports.textVariable = function(d){return "متن"};
 
-exports.tooFewBlocksMsg = function(d){return "شما از تمامی قطعه های لازم استفاده کرده اید، ولی برای تکمیل این پازل سعی کنید از تعداد بیشتری از این قطعه ها استفاده کنید."};
+exports.tooFewBlocksMsg = function(d){return "شما همه‌ی بلوک‌های مورد نیاز را بکار بردید، ولی برای حل این معما باید تعداد بیشتری از این بلوک‌ها را بکار ببرید."};
 
-exports.tooManyBlocksMsg = function(d){return "این پازل را میتوان با <x id='START_SPAN'/><x id='END_SPAN'/> قطعه حل کرد."};
+exports.tooManyBlocksMsg = function(d){return "این معما را می‌توان با <x id='START_SPAN'/><x id='END_SPAN'/> بلوک حل کرد."};
 
-exports.tooMuchWork = function(d){return "شما من را مجبور به انجام مقدار زیادی کار کردید. آیا میشود با تعداد تکرار کمتری سعی نمایید؟"};
+exports.tooMuchWork = function(d){return "شما منو مجبور به انجام مقدار زیادی کار کردید. میشه تعداد تکرار رو کمتر کنید؟"};
 
-exports.flappySpecificFail = function(d){return "Your code looks good - it will flap with each click. But you need to click many times to flap to the target."};
+exports.flappySpecificFail = function(d){return "کد شما خوب به نظر می‌رسد - پرنده با هر کلیک پر می‌زند. ولی برای پر زدن بسوی هدف باید چندین بار کلیک کنید."};
 
-exports.toolboxHeader = function(d){return "بلوک"};
+exports.toolboxHeader = function(d){return "بلوک‌ها"};
 
-exports.openWorkspace = function(d){return "چگونه کار می کند"};
+exports.openWorkspace = function(d){return "چگونگیِ کار"};
 
-exports.totalNumLinesOfCodeWritten = function(d){return "در مجموع: "+p(d,"numLines",0,"fa",{"one":"1 خط","other":n(d,"numLines")+" خط"})+" از کد."};
+exports.totalNumLinesOfCodeWritten = function(d){return "در مجموع: "+p(d,"numLines",0,"fa",{"one":"یک خط","other":n(d,"numLines")+" خط"})+" کد."};
 
-exports.tryAgain = function(d){return "دوباره تلاش کن"};
+exports.tryAgain = function(d){return "دوباره تلاش کنید"};
 
 exports.backToPreviousLevel = function(d){return "برگرد به سطح قبلی"};
 
@@ -5309,13 +5310,13 @@ exports.rotateText = function(d){return "بچرخان دستگاه خود را."
 
 exports.orientationLock = function(d){return "حالت افقی را در تنظیمات دستگاه خاموش کنید."};
 
-exports.wantToLearn = function(d){return "Want to learn to code?"};
+exports.wantToLearn = function(d){return "می‌خواید کد نویسی را یاد بگیرید؟"};
 
-exports.watchVideo = function(d){return "Watch the Video"};
+exports.watchVideo = function(d){return "ویدیو را ببینید"};
 
-exports.tryHOC = function(d){return "Try the Hour of Code"};
+exports.tryHOC = function(d){return "ساعتِ کد نویسی را امتحان کنید"};
 
-exports.signup = function(d){return "Sign up for the intro course"};
+exports.signup = function(d){return "برای دوره‌ی معرفی نام نویسی کنید"};
 
 
 },{"messageformat":40}],33:[function(require,module,exports){
