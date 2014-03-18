@@ -5395,7 +5395,7 @@ var createPegmanAnimation = function(options) {
   svg.appendChild(clip);
   // Create image.
   // Add a random number to force it to reload everytime.
-  var imgSrc = options.pegmanImage + '&time=' + (new Date()).getTime();
+  var imgSrc = options.pegmanImage + '?time=' + (new Date()).getTime();
   var img = document.createElementNS(Blockly.SVG_NS, 'image');
   img.setAttributeNS(
       'http://www.w3.org/1999/xlink', 'xlink:href', imgSrc);
