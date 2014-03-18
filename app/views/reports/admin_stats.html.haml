@@ -12,17 +12,29 @@
 #{@teacher_count}
 %br/
 %b Gender (when specified):
-Girls #{@girls * 100 / (@girls + @boys)}% /
-Boys #{@boys * 100 / (@girls + @boys)}%
+- if @girls + @boys > 0
+  Girls #{@girls * 100 / (@girls + @boys)}% /
+  Boys #{@boys * 100 / (@girls + @boys)}%
+- else 
+  0 users with specified gender
 %br/
 %b Users linked to a teacher
-#{@users_with_teachers} (#{@users_with_teachers * 100 / @user_count}%)
+- if @user_count > 0
+  #{@users_with_teachers} (#{@users_with_teachers * 100 / @user_count}%)
+- else
+  0
 %br/
 %b Users with an email address
-#{@users_with_email} (#{@users_with_email * 100 / @user_count}%)
+- if @user_count > 0
+  #{@users_with_email} (#{@users_with_email * 100 / @user_count}%)
+- else 
+  0
 %br/
 %b Teachers with a confirmed email address
-#{@users_with_confirmed_email} (#{@users_with_confirmed_email * 100 / @teacher_count}%)
+- if @teacher_count > 0
+  #{@users_with_confirmed_email} (#{@users_with_confirmed_email * 100 / @teacher_count}%)
+- else 
+  0
 %br/
 %br/
 

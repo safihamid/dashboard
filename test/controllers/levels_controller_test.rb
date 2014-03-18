@@ -7,6 +7,8 @@ class LevelsControllerTest < ActionController::TestCase
     @level = create(:level)
     @user = create(:admin)
     sign_in(@user)
+
+    @not_admin = create(:user)
   end
 
   test "should get index" do
@@ -20,6 +22,19 @@ class LevelsControllerTest < ActionController::TestCase
     assert_response :success
   end
 
+# this test is not working because Level::BUILDER is nil in tests
+#  test "should get builder" do
+#    get :builder, game_id: @level.game
+#
+#    assert_response :success
+#  end
+
+  test "should not get builder if not admin" do
+    sign_in @not_admin
+    get :new, game_id: @level.game
+    assert_response :forbidden
+  end
+
   test "should create level" do
     assert_difference('Level.count') do
       post :create_custom, :name => "NewCustomLevel", :program => "<hey>"
@@ -28,6 +43,15 @@ class LevelsControllerTest < ActionController::TestCase
     assert_equal "{ \"url\": \"http://test.host/s/5/level/#{assigns(:script_level).id}\"}", @response.body
 #    level = assigns(:level)
 #    assert_redirected_to game_level_path(level.game, level)
+  end
+
+  test "should not create level if not admin" do
+    sign_in @not_admin
+    assert_no_difference('Level.count') do
+      post :create_custom, :name => "NewCustomLevel", :program => "<hey>"
+    end
+
+    assert_response :forbidden
   end
 
   test "should show level" do

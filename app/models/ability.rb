@@ -9,7 +9,7 @@ class Ability
       can :manage, :all
     else
       can :read, :all
-      cannot :read, [PrizeProvider, Prize, TeacherPrize, TeacherBonusPrize]
+      cannot :read, [PrizeProvider, Prize, TeacherPrize, TeacherBonusPrize, :reports]
       can :claim_prize, PrizeProvider
     end
     if user.id
