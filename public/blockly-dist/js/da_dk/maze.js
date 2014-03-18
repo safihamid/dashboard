@@ -45,11 +45,11 @@ module.exports = function(app, levels, options) {
 
   BlocklyApps.assetUrl = function(path) {
     var url = options.baseUrl + path;
-    if (BlocklyApps.CACHE_BUST) {
+    /*if (BlocklyApps.CACHE_BUST) {
       return url + '?v=' + options.cacheBust;
-    } else {
+    } else {*/
       return url;
-    }
+    /*}*/
   };
 
   options.skin = options.skinsModule.load(BlocklyApps.assetUrl, options.skinId);
@@ -1306,7 +1306,7 @@ exports.createSharingButtons = function(options) {
 
 
 var createSharingDiv = function(options) {
-  // Creates the sharing div only when showingShring is set and the solution is
+  // Creates the sharing div only when showingSharing is set and the solution is
   // a passing solution.
   if (options.showingSharing &&
       exports.canContinueToNextLevel(options.feedbackType)) {

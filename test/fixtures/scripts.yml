@@ -1,5 +1,9 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
+twenty_hour:
+  id: 1
+  name: Twenty Hour
+
 builder:
   id: 5
   name: Builder
