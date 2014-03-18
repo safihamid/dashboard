@@ -43,6 +43,6 @@ class ScriptLevelsControllerTest < ActionController::TestCase
   test "should have global event bus" do
     create(:callout, script_level: @script_level)
     get :show, script_id: @script.id, id: @script_level.id
-    assert(@response.body.include?('cdo.events.modal_hidden'))
+    assert(@response.body.include?('cdo.eventType.MODAL_HIDDEN'))
   end
 end

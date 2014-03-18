@@ -66,8 +66,8 @@
             show: false
           });
           
-          cdo.events.modal_hidden.add(function() { calloutDomElement.qtip('show'); });
-          cdo.events.modal_shown.add(function() { calloutDomElement.qtip('hide'); });
+          cdo.events.one(cdo.eventType.MODAL_HIDDEN, function() { calloutDomElement.qtip('show'); });
+          cdo.events.on(cdo.eventType.MODAL_SHOWN, function() { calloutDomElement.qtip('hide'); });
           
           calloutDomElement.qtip('hide');
         });
