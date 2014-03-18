@@ -1,5 +1,6 @@
 #svgBounce {
-  border: solid 1px #dbdbdb; }
+  border: solid 1px #dbdbdb;
+  overflow: hidden; }
 
 /* 'Look' icon */
 #look > path {
