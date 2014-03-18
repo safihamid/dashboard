@@ -17,9 +17,8 @@ group :development, :test do
   gem 'binding_of_caller'
   gem 'ruby-prof'
   gem 'quiet_assets'
-end
 
-group :test do
+  # for unit testing
   gem 'factory_girl_rails'
   gem 'simplecov', require: false
 end
