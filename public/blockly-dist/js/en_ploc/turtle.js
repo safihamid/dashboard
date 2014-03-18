@@ -1306,7 +1306,7 @@ exports.createSharingButtons = function(options) {
 
 
 var createSharingDiv = function(options) {
-  // Creates the sharing div only when showingShring is set and the solution is
+  // Creates the sharing div only when showingSharing is set and the solution is
   // a passing solution.
   if (options.showingSharing &&
       exports.canContinueToNextLevel(options.feedbackType)) {
@@ -3690,7 +3690,8 @@ module.exports = {
     ideal: 7,
     toolbox: toolbox(2, 4),
     startBlocks: startBlocks(2, 4),
-    freePlay: false
+    freePlay: false,
+    impressive: true
   },
   // Level 5: Different size squares.
   '2_5': {
@@ -4062,9 +4063,10 @@ module.exports = {
     toolbox: toolbox(4, 4),
     startBlocks: startBlocks(4, 4),
     requiredBlocks: [
-      [repeat('???')],
+      [repeat('???')]
     ],
-    sliderSpeed: 0.7
+    sliderSpeed: 0.7,
+    impressive: true
   },
   // Level 5: 36 triangles with missing angle number.
   '4_5': {
@@ -4075,7 +4077,8 @@ module.exports = {
     requiredBlocks: [
       [turnRightByConstant('???')]
     ],
-    sliderSpeed: 0.9
+    sliderSpeed: 0.9,
+    impressive: true
   },
   // Level 6: 1 square.
   '4_6': {
@@ -4150,7 +4153,8 @@ module.exports = {
       [repeat('???')]
     ],
     startDirection: 0,
-    sliderSpeed: 0.9
+    sliderSpeed: 0.9,
+    impressive: true
   },
   // Level 11: playground.
   '4_11': {
@@ -4988,7 +4992,8 @@ var displayFeedback = function() {
     response: Turtle.response,
     level: level,
     feedbackImage: Turtle.ctxScratch.canvas.toDataURL("image/png"),
-    showingSharing: true,
+    // add 'impressive':true to non-freeplay levels that we deem are relatively impressive (see #66990480)
+    showingSharing: level.freePlay || level.impressive,
     appStrings: {
       reinfFeedbackMsg: msg.reinfFeedbackMsg(),
       sharingText: msg.shareDrawing()

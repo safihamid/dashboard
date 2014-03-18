@@ -3914,7 +3914,7 @@ exports.createSharingButtons = function(options) {
 
 
 var createSharingDiv = function(options) {
-  // Creates the sharing div only when showingShring is set and the solution is
+  // Creates the sharing div only when showingSharing is set and the solution is
   // a passing solution.
   if (options.showingSharing &&
       exports.canContinueToNextLevel(options.feedbackType)) {
