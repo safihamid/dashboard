@@ -154,4 +154,7 @@ class ApplicationController < ActionController::Base
     code_org_root_path
   end
 
+  def set_locale_cookie(locale)
+    cookies[:language_] = { value: locale, domain: :all }
+  end
 end
