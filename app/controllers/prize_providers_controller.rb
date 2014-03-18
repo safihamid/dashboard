@@ -42,10 +42,12 @@ class PrizeProvidersController < ApplicationController
         TeacherBonusPrize.assign_to_user(current_user, @prize_provider) if earned && !existing_prize_id
         # e-mail confirmation with code?
         # PrizeMailer.teacher_prize_redeemed(user).deliver
-      when 'student'
-        earned = current_user.prize_earned
-        existing_prize_id = current_user.prize_id
-        Prize.assign_to_user(current_user, @prize_provider) if earned && !existing_prize_id
+      # student prizes disabled
+      # when 'student'
+        # earned = current_user.prize_earned
+        # existing_prize_id = current_user.prize_id
+        # Prize.assign_to_user(current_user, @prize_provider) if earned && !existing_prize_id
+        
         # e-mail confirmation with code?
         # PrizeMailer.teacher_bonus_prize_redeemed(user).deliver
       else

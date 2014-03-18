@@ -225,7 +225,7 @@ SQL
   # this method should not be used for displaying or claiming prizes - only used as a quick
   # check to decide whether or not to hide UI elements from the pages
   def show_prize_ui?
-    true
+    false
   end
 
   def locale
