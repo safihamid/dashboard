@@ -10,8 +10,6 @@ gem 'seamless_database_pool'
 
 group :development, :test do
   gem 'capistrano'
-  # Use debugger
-  #gem 'debugger'
   gem 'haml-rails'
   gem 'better_errors'
   gem 'binding_of_caller'
@@ -22,6 +20,8 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'simplecov', require: false
 end
+
+gem 'debugger', :group => :development
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
