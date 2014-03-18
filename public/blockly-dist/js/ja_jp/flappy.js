@@ -45,11 +45,11 @@ module.exports = function(app, levels, options) {
 
   BlocklyApps.assetUrl = function(path) {
     var url = options.baseUrl + path;
-    if (BlocklyApps.CACHE_BUST) {
+    /*if (BlocklyApps.CACHE_BUST) {
       return url + '?v=' + options.cacheBust;
-    } else {
+    } else {*/
       return url;
-    }
+    /*}*/
   };
 
   options.skin = options.skinsModule.load(BlocklyApps.assetUrl, options.skinId);
