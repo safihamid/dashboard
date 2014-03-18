@@ -23,13 +23,37 @@ FactoryGirl.define do
 
   factory :game do
     sequence(:name) { |n| "game#{n}.com"}
+    app "maze"
   end
 
   factory :level do
     sequence(:name) { |n| "Level #{n}" }
-    #level_url "http://espn.com"
-    level_num 3
+    sequence(:level_num) {|n| "1_2_#{n}" }
+    
     game
+    
+    trait :blockly do
+      game {create(:game, app: "maze")}
+    end
+  
+    trait :unplugged do
+      game {create(:game, app: "unplug")}
+    end
+  end
+
+  factory :script do
+  end
+  
+  factory :script_level do
+    script
+    level
+    chapter 1
+  end
+  
+  factory :callout do
+    sequence(:element_id) { |n| "#pageElement#{n}" }
+    text 'Hey check this element out!'
+    script_level
   end
 
   factory :activity do

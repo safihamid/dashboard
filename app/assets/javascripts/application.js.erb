@@ -19,6 +19,13 @@
 
 var KEY_ESCAPE = 27;
 
+var cdo = {
+  events: {
+    modal_hidden: $.Callbacks(),
+    modal_shown: $.Callbacks()
+  }
+};
+
 // Prevent escape from canceling page loads.
 $(document).keydown(function(e) {
   if (e.keyCode === KEY_ESCAPE) {
@@ -223,11 +230,14 @@ Dialog.prototype.show = function(options) {
   }
 
   this.div.offset(options);
+
+  cdo.events.modal_shown.fire();
 }
 
 Dialog.prototype.hide = function() {
   // Hide let's bootstrap cleanup first, then we remove.
   $(this.div).modal('hide');
+  cdo.events.modal_hidden.fire();
 }
 
 function cache_bust_only() {

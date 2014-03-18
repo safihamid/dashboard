@@ -118,21 +118,11 @@ namespace :seed do
     end
   end
 
-  CALLOUT_ELEMENT_ID = 'element_id'
-  CALLOUT_TEXT = 'text'
-  CALLOUT_AT = 'at'
-  CALLOUT_MY = 'my'
-
   task callouts: :environment do
-    Trophy.connection.execute('truncate table callouts')
-
-    CSV.read('config/callouts.tsv', { col_sep: "\t", headers: true }).each do |row|
-      Callout.create!(element_id: row[CALLOUT_ELEMENT_ID],
-                      text: row[CALLOUT_TEXT],
-                      qtip_at: row[CALLOUT_AT],
-                      qtip_my: row[CALLOUT_MY])
-    end
+    Callout.connection.execute('truncate table callouts')
+    Callout.find_or_create_all_from_tsv!('config/callouts.tsv')        
   end
+  
   task trophies: :environment do
     # code in user.rb assumes that broze id: 1, silver id: 2 and gold id: 3.
     Trophy.connection.execute('truncate table trophies')
