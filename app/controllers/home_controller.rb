@@ -1,6 +1,6 @@
 class HomeController < ApplicationController
   def set_locale
-    cookies[:language_] = params[:locale] if params[:locale]
+    set_locale_cookie(params[:locale]) if params[:locale]
     redirect_to params[:return_to]
   end
 
