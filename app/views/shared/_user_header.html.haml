@@ -11,7 +11,7 @@
         %br/
         = link_to t('nav.user.settings'), edit_user_registration_url
         %br/
-        - if current_user.show_prize_ui?
+        - if current_user.teacher?
           = link_to t('nav.user.prizes'), my_prizes_path
           %br/
         = link_to t('nav.user.logout'), destroy_user_session_url

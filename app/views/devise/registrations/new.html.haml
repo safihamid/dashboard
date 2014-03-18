@@ -9,13 +9,6 @@
       %h4= t('signup_form.no_signup_header')
       = sanitize(t('signup_form.no_signup_message').html_safe, tags: %w(a), attributes: %w(href target))
 
-      - if eligible_for_prize?
-        %h4= t('signup_form.prizes_header')
-        = t('signup_form.prizes_message', num_trophies: Trophy::TROPHY_MAX)
-        %br/
-        %br/
-        = render partial: 'shared/student_prize_mini_grid'
-
       %br/
       %br/
 
