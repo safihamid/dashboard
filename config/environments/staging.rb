@@ -19,8 +19,9 @@ Dashboard::Application.configure do
   # For large-scale production use, consider using a caching reverse proxy like nginx, varnish or squid.
   # config.action_dispatch.rack_cache = true
 
-  # Disable Rails's static asset server (Apache or nginx will already do this).
-  config.serve_static_assets = false
+  # Serve static resources - these will be cached by Varnish (or a CDN)
+  config.serve_static_assets = true
+  config.static_cache_control = "public, max-age=3600"
 
   # Compress JavaScripts and CSS.
   config.assets.js_compressor = :uglifier
@@ -54,9 +55,6 @@ Dashboard::Application.configure do
   # Use a different cache store in production.
   # config.cache_store = :mem_cache_store
 
-  # Enable serving of images, stylesheets, and JavaScripts from an asset server.
-  config.action_controller.asset_host = "http://stage.cdn-code.org"
-
   # Use geocoder server that is "internal" to AWS to improve performance.
   config.geocoder_server = "ip-10-164-38-97.ec2.internal"
   config.geocoder_timeout = 0.5
@@ -68,16 +66,8 @@ Dashboard::Application.configure do
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
   # config.action_mailer.raise_delivery_errors = false
-  config.action_mailer.default_url_options = { :host => 'learn.dev-code.org' }
-  config.action_mailer.delivery_method = :smtp
-  config.action_mailer.smtp_settings = {
-      address:              'smtp.gmail.com',
-      port:                 587,
-      domain:               'code.org',
-      user_name:            'noreply@code.org',
-      password:             'lowsecurity',
-      authentication:       'plain',
-      enable_starttls_auto: true  }
+  config.action_mailer.default_url_options = { host: 'staging.learn.code.org' }
+  config.action_mailer.delivery_method = :sendmail
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation can not be found).

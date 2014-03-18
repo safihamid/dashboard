@@ -11,7 +11,7 @@ gem 'seamless_database_pool'
 group :development, :test do
   gem 'capistrano'
   # Use debugger
-  gem 'debugger'
+  #gem 'debugger'
   gem 'haml-rails'
   gem 'better_errors'
   gem 'binding_of_caller'

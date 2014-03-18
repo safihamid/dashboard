@@ -1,0 +1,33 @@
+#svgMaze {
+  border: solid 1px #dbdbdb; }
+
+/* 'Look' icon */
+#look > path {
+  display: none;
+  fill: none;
+  stroke-width: 10;
+  stroke-linecap: round;
+  stroke-opacity: 0.7; }
+
+/* Sprited icons. */
+.icon21 {
+  height: 21px;
+  width: 21px;
+  background-image: url("/blockly/media/maze/icons.png"); }
+
+.code {
+  background-position: -21px 0px; }
+
+.link {
+  background-position: 0px 0px; }
+
+.run {
+  background-position: 0px -21px;
+  margin-right: 3px; }
+
+.stop {
+  background-position: -21px -21px;
+  margin-right: 3px; }
+
+.hide {
+  display: none; }

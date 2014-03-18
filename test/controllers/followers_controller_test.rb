@@ -15,8 +15,4 @@ class FollowersControllerTest < ActionController::TestCase
 
     sign_in @laurel
   end
-
-  test "placeholder" do
-    assert true
-  end
 end
