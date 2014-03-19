@@ -111,7 +111,7 @@ ActiveRecord::Schema.define(version: 20140319211127) do
 
   create_table "level_source_images", force: true do |t|
     t.integer  "level_source_id"
-    t.binary   "image"
+    t.binary   "image",           limit: 16777215
     t.datetime "created_at"
     t.datetime "updated_at"
   end
