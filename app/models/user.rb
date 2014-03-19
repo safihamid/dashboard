@@ -49,6 +49,8 @@ class User < ActiveRecord::Base
   validates_uniqueness_of :teacher_prize_id, allow_nil: true
   validates_uniqueness_of :teacher_bonus_prize_id, allow_nil: true
 
+  validate :birthday_is_reasonable
+
   def self.from_omniauth(auth)
     where(auth.slice(:provider, :uid)).first_or_create do |user|
       user.provider = auth.provider
@@ -247,5 +249,11 @@ SQL
   def valid_prize_teacher
     return self.teachers.first if self.prize_teacher_id.blank? || self.teachers.first.try(:id) == self.prize_teacher_id
     nil
+  end
+
+  def birthday_is_reasonable
+    return unless birthday
+    
+    errors.add(:birthday, "can't be in the future") if birthday > Date.today
   end
 end
