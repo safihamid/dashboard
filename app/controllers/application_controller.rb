@@ -39,8 +39,11 @@ class ApplicationController < ActionController::Base
   # when CanCan denies access, send a 403 Forbidden response instead of causing a server error
   rescue_from CanCan::AccessDenied do
     head :forbidden
+    # TODO if users are actually seeing this (eg. because they cleared
+    # cookies and clicked on something), maybe we should render an
+    # actual page
   end
-
+  
   protected
 
   PERMITTED_USER_FIELDS = [:name, :username, :email, :password, :password_confirmation, :locale, :gender, :login,
