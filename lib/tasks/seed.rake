@@ -4,6 +4,7 @@ namespace :seed do
   task videos: :environment do
     Video.transaction do
       Video.delete_all # use delete instead of destroy so callbacks are not called
+      Video.connection.execute("ALTER TABLE videos auto_increment = 1")
 
       CSV.read('config/videos.csv', { col_sep: "\t", headers: true }).each do |row|
         Video.create!(key: row['Key'], youtube_code: row['YoutubeCode'], download: row['Download'])
@@ -16,6 +17,7 @@ namespace :seed do
   task concepts: :environment do
     Concept.transaction do
       Concept.delete_all # use delete instead of destroy so callbacks are not called
+      Concept.connection.execute("ALTER TABLE concepts auto_increment = 1")
       Concept.create!(name: 'sequence')
       Concept.create!(name: 'if', video: Video.find_by_key('if'))
       Concept.create!(name: 'if_else', video: Video.find_by_key('if_else'))
@@ -31,6 +33,8 @@ namespace :seed do
   task games: :environment do
     Game.transaction do 
       Game.delete_all # use delete instead of destroy so callbacks are not called
+      Game.connection.execute("ALTER TABLE games auto_increment = 1")
+
       Game.create!(name: 'Maze', app: 'maze', intro_video: Video.find_by_key('maze_intro'))
       Game.create!(name: 'Artist', app: 'turtle', intro_video: Video.find_by_key('artist_intro'))
       Game.create!(name: 'Artist2', app: 'turtle')
@@ -124,9 +128,15 @@ namespace :seed do
     end
   end
 
+  CALLOUT_ELEMENT_ID = 'element_id'
+  CALLOUT_TEXT = 'text'
+  CALLOUT_AT = 'at'
+  CALLOUT_MY = 'my'
+
   task callouts: :environment do
     Callout.transaction do
       Callout.delete_all # use delete instead of destroy so callbacks are not called
+      Callout.connection.execute("ALTER TABLE callouts auto_increment = 1")
       Callout.find_or_create_all_from_tsv!('config/callouts.tsv')
     end
   end
@@ -135,6 +145,7 @@ namespace :seed do
     # code in user.rb assumes that broze id: 1, silver id: 2 and gold id: 3.
     Trophy.transaction do
       Trophy.delete_all # use delete instead of destroy so callbacks are not called
+      Trophy.connection.execute("ALTER TABLE trophies auto_increment = 1")
       Trophy.create!(name: 'Bronze', image_name: 'bronzetrophy.png')
       Trophy.create!(name: 'Silver', image_name: 'silvertrophy.png')
       Trophy.create!(name: 'Gold', image_name: 'goldtrophy.png')
@@ -144,6 +155,8 @@ namespace :seed do
   task prize_providers: :environment do
     PrizeProvider.transaction do
       PrizeProvider.delete_all # use delete instead of destroy so callbacks are not called
+      PrizeProvider.connection.execute("ALTER TABLE prize_providers auto_increment = 1")
+      
       # placeholder data - id's are assumed to start at 1 so prizes below can be loaded properly
       PrizeProvider.create!(name: 'Apple iTunes', description_token: 'apple_itunes', url: 'http://www.apple.com/itunes/', image_name: 'itunes_card.jpg')
       PrizeProvider.create!(name: 'Dropbox', description_token: 'dropbox', url: 'http://www.dropbox.com/', image_name: 'dropbox_card.jpg')

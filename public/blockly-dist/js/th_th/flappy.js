@@ -1228,13 +1228,14 @@ var getFeedbackMessage = function(options) {
     case BlocklyApps.TestResults.ALL_PASS:
       var finalLevel = (options.response &&
           (options.response.message == "no more levels"));
-      var stageCompleted = 0;
+      var stageCompleted = null;
       if (options.response && options.response.stage_changing) {
-        stageCompleted = options.response.stage_changing.previous.number;
+        stageCompleted = options.response.stage_changing.previous.name;
       }
       var msgParams = {
         numTrophies: options.numTrophies,
-        stageNumber: stageCompleted,
+        stageNumber: 0, // TODO: remove once localized strings have been fixed
+        stageName: stageCompleted,
         puzzleNumber: options.level.puzzle_number || 0
       };
       if (options.numTrophies > 0) {
@@ -4643,7 +4644,7 @@ exports.nextLevelTrophies = function(d){return "Congratulations! You completed P
 
 exports.nextStage = function(d){return "ขอแสดงความยินดี คุณเสร็จสิ้นขั้นตอน "+v(d,"stageNumber")+"."};
 
-exports.nextStageTrophies = function(d){return "Congratulations! You completed Stage "+v(d,"stageNumber")+" and won "+p(d,"numTrophies",0,"th",{"one":"a trophy","other":n(d,"numTrophies")+" trophies"})+"."};
+exports.nextStageTrophies = function(d){return "Congratulations! You completed "+v(d,"stageName")+" and won "+p(d,"numTrophies",0,"th",{"one":"a trophy","other":n(d,"numTrophies")+" trophies"})+"."};
 
 exports.numBlocksNeeded = function(d){return "Congratulations! You completed Puzzle "+v(d,"puzzleNumber")+". (However, you could have used only "+p(d,"numBlocks",0,"th",{"one":"1 block","other":n(d,"numBlocks")+" blocks"})+".)"};
 

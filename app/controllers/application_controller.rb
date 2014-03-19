@@ -60,6 +60,7 @@ class ApplicationController < ActionController::Base
     response = {}
     script_level = options[:script_level]
     level = script_level.level
+    script = script_level.script
     # figure out the previous level
     previous_level = script_level.previous_level
     if previous_level
@@ -100,8 +101,8 @@ class ApplicationController < ActionController::Base
 
         if (level.game_id != next_level.level.game_id)
           response[:stage_changing] = {
-              previous: { number: level.game_id, name: level.game.name },
-              new: { number: next_level.level.game_id, name: next_level.level.game.name }
+              previous: { number: level.game_id, name: data_t_suffix('script.name', script.name, level.game.name) },
+              new: { number: next_level.level.game_id, name: data_t_suffix('script.name', script.name, next_level.level.game.name) }
           }
         end
 
