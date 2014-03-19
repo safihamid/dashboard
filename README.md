@@ -101,6 +101,14 @@ mailcatcher
 
 [These notes](https://github.com/code-dot-org/dashboard/blob/master/README_Windows.md) (unmaintained) may be useful for Windows 7/8 usage for those helping with IE 8/9/10 support.
 
+## Contributing
+
+We welcome and appreciate contributions to all of our projects.
+
+See the [CONTRIBUTING.md guide](https://github.com/code-dot-org/dashboard/blob/master/CONTRIBUTING.md) for details on finding tasks, submitting pull requests, and where to reach us.
+
+Join us in the [community contributors HipChat room](http://www.hipchat.com/gBebkHP6g) for help getting started!
+
 # Device support
 
 Here is a [list](https://github.com/code-dot-org/dashboard/wiki/Device-Support) of devices for which we are planning support.
