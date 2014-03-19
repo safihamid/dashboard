@@ -26,7 +26,7 @@ class Callout < ActiveRecord::Base
     script_level = (level ? ScriptLevel.where(:level_id => level.id, :script_id => row_data[CSV_HEADERS[:script_id]]).first : nil)
     
     unless level && script_level
-      Rails.logger.error "Error creating callout for level_num: #{row_data[CSV_HEADERS[:level_num]]} script_id: #{row_data[CSV_HEADERS[:script_id]]}"
+      puts "Error creating callout for level_num: #{row_data[CSV_HEADERS[:level_num]]} script_id: #{row_data[CSV_HEADERS[:script_id]]}"
       return nil
     end
     
