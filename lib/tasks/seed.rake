@@ -128,11 +128,6 @@ namespace :seed do
     end
   end
 
-  CALLOUT_ELEMENT_ID = 'element_id'
-  CALLOUT_TEXT = 'text'
-  CALLOUT_AT = 'at'
-  CALLOUT_MY = 'my'
-
   task callouts: :environment do
     Callout.transaction do
       Callout.delete_all # use delete instead of destroy so callbacks are not called
@@ -316,6 +311,6 @@ namespace :seed do
     ScriptLevel.where(script: script, level: level, chapter: 1, game_chapter: 1).first_or_create
   end
 
-  task all: [:videos, :concepts, :games, :callouts, :scripts, :trophies, :prize_providers, :builder_levels]
+  task all: [:videos, :concepts, :games, :scripts, :trophies, :prize_providers, :builder_levels, :callouts]
 
 end
