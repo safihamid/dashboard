@@ -35,6 +35,32 @@ class ActivitiesControllerTest < ActionController::TestCase
     assert_redirected_to activity_path(assigns(:activity))
   end
 
+  test "should create activity with milestone" do
+    script_level = ScriptLevel.find(2)
+    script_level_next = ScriptLevel.find(3)
+
+    assert_difference('Activity.count') do
+      post :milestone, user_id: @user, script_level_id: script_level, :lines => "1", :attempt => "1", :result => "true", :testResult => "100", :time => "1000", :app => "test", :program => "<hey>"
+    end
+    
+    assert_response :success
+    parsed_response = JSON.parse @response.body
+    assert_equal parsed_response["redirect"], script_level_path(script_level_next.script, script_level_next)
+  end
+
+  test "should log with anonymous milestone" do
+    sign_out @user
+    
+    script_level = ScriptLevel.find(2)
+    script_level_next = ScriptLevel.find(3)
+    
+    post :milestone, user_id: 0, script_level_id: script_level.id.to_s, :lines => "1", :attempt => "1", :result => "true", :testResult => "100", :time => "1000", :app => "test", :program => "<hey>"
+    
+    assert_response :success
+    parsed_response = JSON.parse @response.body
+    assert_equal parsed_response["redirect"], script_level_path(script_level_next.script, script_level_next)
+  end
+
   test "should show activity" do
     get :show, id: @activity
     assert_response :success
