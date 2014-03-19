@@ -103,12 +103,39 @@ mailcatcher
 
 ## Contributing
 
-We welcome and appreciate contributions to all of our projects.
+We'd love to have you join our group of contributors!
 
-See the [CONTRIBUTING.md guide](https://github.com/code-dot-org/dashboard/blob/master/CONTRIBUTING.md) for details on finding tasks, submitting pull requests, and where to reach us.
+### Before You Push
 
-Join us in the [community contributors HipChat room](http://www.hipchat.com/gBebkHP6g) for help getting started!
+Anyone who would like to contribute to **[code.org](https://github.com/code-dot-org/)** projects **must read and sign the Contribution License Agreement**. We aren't able to accept any pull requests from contributors who haven't signed the CLA first.
 
-# Device support
+For the time being—email [brian@code.org](mailto:brian@code.org) to get an electronic CLA to sign (takes less than a minute).
 
-Here is a [list](https://github.com/code-dot-org/dashboard/wiki/Device-Support) of devices for which we are planning support.
+### Getting Started Contributing
+
+#### HipChat room
+
+[Join our community development HipChat room](http://www.hipchat.com/gBebkHP6g) for help getting set up, picking a task, etc. We're happy to have you!
+
+If you want to make sure you get our attention, include an **@all** (everyone) or **@here** (everyone currently in the room) in your message.
+
+#### Pivotal Tracker
+
+We pull our tasks from a Pivotal Tracker and mark certain tickets as volunteer-friendly.
+
+For the time being—for access to Pivotal Tracker, email [brian@code.org](mailto:brian@code.org).
+
+## Submitting Pull Requests
+
+If you do not have repository privileges, you can [create a fork and issue a pull request](https://help.github.com/articles/using-pull-requests) from it.
+
+1. Checkout a new branch for a new feature
+    - `git checkout -b branch_name`
+2. Develop the new feature and push the changes to **your** repository
+    - `git add YYY`
+    - `git commit -m "ZZZ"`
+    - `git push origin branch_name`
+3. Go to the GitHub repository
+    - [https://github.com/code-dot-org/dashboard](https://github.com/code-dot-org/dashboard)
+4. Click on the "Pull Request" link, and send out a PR for others to review.
+
