@@ -2,56 +2,60 @@ require "csv"
 
 namespace :seed do
   task videos: :environment do
-    Video.connection.execute('truncate table videos')
+    Video.transaction do
+      Video.delete_all # use delete instead of destroy so callbacks are not called
 
-    CSV.read('config/videos.csv', { col_sep: "\t", headers: true }).each do |row|
-      Video.create!(key: row['Key'], youtube_code: row['YoutubeCode'], download: row['Download'])
+      CSV.read('config/videos.csv', { col_sep: "\t", headers: true }).each do |row|
+        Video.create!(key: row['Key'], youtube_code: row['YoutubeCode'], download: row['Download'])
+      end
     end
 
     Rake::Task["youtube:thumbnails"].invoke
   end
 
   task concepts: :environment do
-    Concept.connection.execute('truncate table concepts')
-    Concept.create!(name: 'sequence')
-    Concept.create!(name: 'if', video: Video.find_by_key('if'))
-    Concept.create!(name: 'if_else', video: Video.find_by_key('if_else'))
-    Concept.create!(name: 'loop_times', video: Video.find_by_key('loop_times'))
-    Concept.create!(name: 'loop_until', video: Video.find_by_key('loop_until'))
-    Concept.create!(name: 'loop_while', video: Video.find_by_key('loop_while'))
-    Concept.create!(name: 'loop_for', video: Video.find_by_key('loop_for'))
-    Concept.create!(name: 'function', video: Video.find_by_key('function'))
-    Concept.create!(name: 'parameters', video: Video.find_by_key('parameters'))
+    Concept.transaction do
+      Concept.delete_all # use delete instead of destroy so callbacks are not called
+      Concept.create!(name: 'sequence')
+      Concept.create!(name: 'if', video: Video.find_by_key('if'))
+      Concept.create!(name: 'if_else', video: Video.find_by_key('if_else'))
+      Concept.create!(name: 'loop_times', video: Video.find_by_key('loop_times'))
+      Concept.create!(name: 'loop_until', video: Video.find_by_key('loop_until'))
+      Concept.create!(name: 'loop_while', video: Video.find_by_key('loop_while'))
+      Concept.create!(name: 'loop_for', video: Video.find_by_key('loop_for'))
+      Concept.create!(name: 'function', video: Video.find_by_key('function'))
+      Concept.create!(name: 'parameters', video: Video.find_by_key('parameters'))
+    end
   end
 
   task games: :environment do
-    Concept.connection.execute('truncate table games')
-
-    Game.create!(name: 'Maze', app: 'maze', intro_video: Video.find_by_key('maze_intro'))
-    Game.create!(name: 'Artist', app: 'turtle', intro_video: Video.find_by_key('artist_intro'))
-    Game.create!(name: 'Artist2', app: 'turtle')
-    Game.create!(name: 'Farmer', app: 'maze', intro_video: Video.find_by_key('farmer_intro'))
-    Game.create!(name: 'Artist3', app: 'turtle')
-    Game.create!(name: 'Farmer2', app: 'maze')
-    Game.create!(name: 'Artist4', app: 'turtle')
-    Game.create!(name: 'Farmer3', app: 'maze')
-    Game.create!(name: 'Artist5', app: 'turtle')
-    Game.create!(name: 'MazeEC', app: 'maze', intro_video: Video.find_by_key('maze_intro'))
-    Game.create!(name: 'Unplug1', app: 'unplug')
-    Game.create!(name: 'Unplug2', app: 'unplug')
-    Game.create!(name: 'Unplug3', app: 'unplug')
-    Game.create!(name: 'Unplug4', app: 'unplug')
-    Game.create!(name: 'Unplug5', app: 'unplug')
-    Game.create!(name: 'Unplug6', app: 'unplug')
-    Game.create!(name: 'Unplug7', app: 'unplug')
-    Game.create!(name: 'Unplug8', app: 'unplug')
-    Game.create!(name: 'Unplug9', app: 'unplug')
-    Game.create!(name: 'Unplug10', app: 'unplug')
-    Game.create!(name: 'Unplug11', app: 'unplug')
-    Game.create!(name: 'Bounce', app: 'bounce')
-    Game.create!(name: "Custom", app: "turtle")
-    Game.create!(name: 'Flappy', app: 'flappy', intro_video: Video.find_by_key('flappy_intro'))
-
+    Game.transaction do 
+      Game.delete_all # use delete instead of destroy so callbacks are not called
+      Game.create!(name: 'Maze', app: 'maze', intro_video: Video.find_by_key('maze_intro'))
+      Game.create!(name: 'Artist', app: 'turtle', intro_video: Video.find_by_key('artist_intro'))
+      Game.create!(name: 'Artist2', app: 'turtle')
+      Game.create!(name: 'Farmer', app: 'maze', intro_video: Video.find_by_key('farmer_intro'))
+      Game.create!(name: 'Artist3', app: 'turtle')
+      Game.create!(name: 'Farmer2', app: 'maze')
+      Game.create!(name: 'Artist4', app: 'turtle')
+      Game.create!(name: 'Farmer3', app: 'maze')
+      Game.create!(name: 'Artist5', app: 'turtle')
+      Game.create!(name: 'MazeEC', app: 'maze', intro_video: Video.find_by_key('maze_intro'))
+      Game.create!(name: 'Unplug1', app: 'unplug')
+      Game.create!(name: 'Unplug2', app: 'unplug')
+      Game.create!(name: 'Unplug3', app: 'unplug')
+      Game.create!(name: 'Unplug4', app: 'unplug')
+      Game.create!(name: 'Unplug5', app: 'unplug')
+      Game.create!(name: 'Unplug6', app: 'unplug')
+      Game.create!(name: 'Unplug7', app: 'unplug')
+      Game.create!(name: 'Unplug8', app: 'unplug')
+      Game.create!(name: 'Unplug9', app: 'unplug')
+      Game.create!(name: 'Unplug10', app: 'unplug')
+      Game.create!(name: 'Unplug11', app: 'unplug')
+      Game.create!(name: 'Bounce', app: 'bounce')
+      Game.create!(name: "Custom", app: "turtle")
+      Game.create!(name: 'Flappy', app: 'flappy', intro_video: Video.find_by_key('flappy_intro'))
+   end
   end
 
   COL_GAME = 'Game'
@@ -62,88 +66,96 @@ namespace :seed do
   COL_SKIN = 'Skin'
 
   task scripts: :environment do
-    game_map = Game.all.index_by(&:name)
-    concept_map = Concept.all.index_by(&:name)
+    Script.transaction do
+      game_map = Game.all.index_by(&:name)
+      concept_map = Concept.all.index_by(&:name)
 
-    sources = [
-        { file: 'config/script.csv', params: { name: '20-hour', trophies: true, hidden: false }},
-        { file: 'config/hoc_script.csv', params: { name: 'Hour of Code', wrapup_video: Video.find_by_key('hoc_wrapup'), trophies: false, hidden: false }},
-        { file: 'config/ec_script.csv', params: { name: 'Edit Code', wrapup_video: Video.find_by_key('hoc_wrapup'), trophies: false, hidden: true }},
-        { file: 'config/2014_script.csv', params: { name: '2014 Levels', trophies: false, hidden: true }},
-        { file: 'config/builder_script.csv', params: { name: 'Builder Levels', trophies: false, hidden: true }},
-        { file: 'config/flappy_script.csv', params: { name: 'Flappy Levels', trophies: false, hidden: true }}
-    ]
-    sources.each do |source|
-      script = Script.where(source[:params]).first_or_create
-      old_script_levels = ScriptLevel.where(script: script).to_a  # tracks which levels are no longer included in script.
-      game_index = Hash.new{|h,k| h[k] = 0}
+      sources = [
+                 { file: 'config/script.csv', params: { name: '20-hour', trophies: true, hidden: false }},
+                 { file: 'config/hoc_script.csv', params: { name: 'Hour of Code', wrapup_video: Video.find_by_key('hoc_wrapup'), trophies: false, hidden: false }},
+                 { file: 'config/ec_script.csv', params: { name: 'Edit Code', wrapup_video: Video.find_by_key('hoc_wrapup'), trophies: false, hidden: true }},
+                 { file: 'config/2014_script.csv', params: { name: '2014 Levels', trophies: false, hidden: true }},
+                 { file: 'config/builder_script.csv', params: { name: 'Builder Levels', trophies: false, hidden: true }},
+                 { file: 'config/flappy_script.csv', params: { name: 'Flappy Levels', trophies: false, hidden: true }}
+                ]
+      sources.each do |source|
+        script = Script.where(source[:params]).first_or_create
+        old_script_levels = ScriptLevel.where(script: script).to_a  # tracks which levels are no longer included in script.
+        game_index = Hash.new{|h,k| h[k] = 0}
 
-      CSV.read(source[:file], { col_sep: "\t", headers: true }).each_with_index do |row, index|
-        game = game_map[row[COL_GAME].squish]
-        level = Level.find_by_game_id_and_level_num(game.id, row[COL_LEVEL])
-        if (level.nil?)
-          level = Level.create(:game_id => game.id, :level_num => row[COL_LEVEL], :name => row[COL_NAME])
-        end
-        level.name = row[COL_NAME]
-        level.level_url ||= row[COL_URL]
-        level.skin = row[COL_SKIN]
+        CSV.read(source[:file], { col_sep: "\t", headers: true }).each_with_index do |row, index|
+          game = game_map[row[COL_GAME].squish]
+          level = Level.find_by_game_id_and_level_num(game.id, row[COL_LEVEL])
+          if (level.nil?)
+            level = Level.create(:game_id => game.id, :level_num => row[COL_LEVEL], :name => row[COL_NAME])
+          end
+          level.name = row[COL_NAME]
+          level.level_url ||= row[COL_URL]
+          level.skin = row[COL_SKIN]
 
-        if level.concepts.empty?
-          if row[COL_CONCEPTS]
-            row[COL_CONCEPTS].split(',').each do |concept_name|
-              concept = concept_map[concept_name.squish]
-              if !concept
-                raise "missing concept '#{concept_name}'"
-              else
-                level.concepts << concept
+          if level.concepts.empty?
+            if row[COL_CONCEPTS]
+              row[COL_CONCEPTS].split(',').each do |concept_name|
+                concept = concept_map[concept_name.squish]
+                if !concept
+                  raise "missing concept '#{concept_name}'"
+                else
+                  level.concepts << concept
+                end
               end
             end
           end
+          level.save!
+          # Update script_level with script and chapter. Note: we should not have two script_levels associated with the
+          # same script and chapter ids.
+          script_level = ScriptLevel.where(script: script, chapter: (index + 1)).first
+          if (script_level)
+            script_level.level = level
+            script_level.game_chapter = (game_index[game.id] += 1)
+            script_level.save!
+            old_script_levels.delete(script_level)
+          else
+            ScriptLevel.where(script: script, level: level, chapter: (index + 1), game_chapter: (game_index[game.id] += 1)).first_or_create
+          end
         end
-        level.save!
-        # Update script_level with script and chapter. Note: we should not have two script_levels associated with the
-        # same script and chapter ids.
-        script_level = ScriptLevel.where(script: script, chapter: (index + 1)).first
-        if (script_level)
-          script_level.level = level
-          script_level.game_chapter = (game_index[game.id] += 1)
-          script_level.save!
-          old_script_levels.delete(script_level)
-        else
-          ScriptLevel.where(script: script, level: level, chapter: (index + 1), game_chapter: (game_index[game.id] += 1)).first_or_create
-        end
+        # old_script_levels now contains script_levels that were removed from this csv-based script - clean them up:
+        old_script_levels.each { |sl| ScriptLevel.delete(sl) }
       end
-      # old_script_levels now contains script_levels that were removed from this csv-based script - clean them up:
-      old_script_levels.each { |sl| ScriptLevel.delete(sl) }
     end
   end
 
   task callouts: :environment do
-    Callout.connection.execute('truncate table callouts')
-    Callout.find_or_create_all_from_tsv!('config/callouts.tsv')        
+    Callout.transaction do
+      Callout.delete_all # use delete instead of destroy so callbacks are not called
+      Callout.find_or_create_all_from_tsv!('config/callouts.tsv')
+    end
   end
   
   task trophies: :environment do
     # code in user.rb assumes that broze id: 1, silver id: 2 and gold id: 3.
-    Trophy.connection.execute('truncate table trophies')
-    Trophy.create!(name: 'Bronze', image_name: 'bronzetrophy.png')
-    Trophy.create!(name: 'Silver', image_name: 'silvertrophy.png')
-    Trophy.create!(name: 'Gold', image_name: 'goldtrophy.png')
+    Trophy.transaction do
+      Trophy.delete_all # use delete instead of destroy so callbacks are not called
+      Trophy.create!(name: 'Bronze', image_name: 'bronzetrophy.png')
+      Trophy.create!(name: 'Silver', image_name: 'silvertrophy.png')
+      Trophy.create!(name: 'Gold', image_name: 'goldtrophy.png')
+    end
   end
   
   task prize_providers: :environment do
-    # placeholder data - id's are assumed to start at 1 so prizes below can be loaded properly
-    PrizeProvider.connection.execute('truncate table prize_providers')
-    PrizeProvider.create!(name: 'Apple iTunes', description_token: 'apple_itunes', url: 'http://www.apple.com/itunes/', image_name: 'itunes_card.jpg')
-    PrizeProvider.create!(name: 'Dropbox', description_token: 'dropbox', url: 'http://www.dropbox.com/', image_name: 'dropbox_card.jpg')
-    PrizeProvider.create!(name: 'Valve Portal', description_token: 'valve', url: 'http://www.valvesoftware.com/games/portal.html', image_name: 'portal2_card.png')
-    PrizeProvider.create!(name: 'EA Origin Bejeweled 3', description_token: 'ea_bejeweled', url: 'https://www.origin.com/en-us/store/buy/181609/mac-pc-download/base-game/standard-edition-ANW.html', image_name: 'bejeweled_card.jpg')
-    PrizeProvider.create!(name: 'EA Origin FIFA Soccer 13', description_token: 'ea_fifa', url: 'https://www.origin.com/en-us/store/buy/fifa-2013/pc-download/base-game/standard-edition-ANW.html', image_name: 'fifa_card.jpg')
-    PrizeProvider.create!(name: 'EA Origin SimCity 4 Deluxe', description_token: 'ea_simcity', url: 'https://www.origin.com/en-us/store/buy/sim-city-4/pc-download/base-game/deluxe-edition-ANW.html', image_name: 'simcity_card.jpg')
-    PrizeProvider.create!(name: 'EA Origin Plants vs. Zombies', description_token: 'ea_pvz', url: 'https://www.origin.com/en-us/store/buy/plants-vs-zombies/mac-pc-download/base-game/standard-edition-ANW.html', image_name: 'pvz_card.jpg')
-    PrizeProvider.create!(name: 'DonorsChoose.org $750', description_token: 'donors_choose', url: 'http://www.donorschoose.org/', image_name: 'donorschoose_card.jpg')
-    PrizeProvider.create!(name: 'DonorsChoose.org $250', description_token: 'donors_choose_bonus', url: 'http://www.donorschoose.org/', image_name: 'donorschoose_card.jpg')
-    PrizeProvider.create!(name: 'Skype', description_token: 'skype', url: 'http://www.skype.com/', image_name: 'skype_card.jpg')
+    PrizeProvider.transaction do
+      PrizeProvider.delete_all # use delete instead of destroy so callbacks are not called
+      # placeholder data - id's are assumed to start at 1 so prizes below can be loaded properly
+      PrizeProvider.create!(name: 'Apple iTunes', description_token: 'apple_itunes', url: 'http://www.apple.com/itunes/', image_name: 'itunes_card.jpg')
+      PrizeProvider.create!(name: 'Dropbox', description_token: 'dropbox', url: 'http://www.dropbox.com/', image_name: 'dropbox_card.jpg')
+      PrizeProvider.create!(name: 'Valve Portal', description_token: 'valve', url: 'http://www.valvesoftware.com/games/portal.html', image_name: 'portal2_card.png')
+      PrizeProvider.create!(name: 'EA Origin Bejeweled 3', description_token: 'ea_bejeweled', url: 'https://www.origin.com/en-us/store/buy/181609/mac-pc-download/base-game/standard-edition-ANW.html', image_name: 'bejeweled_card.jpg')
+      PrizeProvider.create!(name: 'EA Origin FIFA Soccer 13', description_token: 'ea_fifa', url: 'https://www.origin.com/en-us/store/buy/fifa-2013/pc-download/base-game/standard-edition-ANW.html', image_name: 'fifa_card.jpg')
+      PrizeProvider.create!(name: 'EA Origin SimCity 4 Deluxe', description_token: 'ea_simcity', url: 'https://www.origin.com/en-us/store/buy/sim-city-4/pc-download/base-game/deluxe-edition-ANW.html', image_name: 'simcity_card.jpg')
+      PrizeProvider.create!(name: 'EA Origin Plants vs. Zombies', description_token: 'ea_pvz', url: 'https://www.origin.com/en-us/store/buy/plants-vs-zombies/mac-pc-download/base-game/standard-edition-ANW.html', image_name: 'pvz_card.jpg')
+      PrizeProvider.create!(name: 'DonorsChoose.org $750', description_token: 'donors_choose', url: 'http://www.donorschoose.org/', image_name: 'donorschoose_card.jpg')
+      PrizeProvider.create!(name: 'DonorsChoose.org $250', description_token: 'donors_choose_bonus', url: 'http://www.donorschoose.org/', image_name: 'donorschoose_card.jpg')
+      PrizeProvider.create!(name: 'Skype', description_token: 'skype', url: 'http://www.skype.com/', image_name: 'skype_card.jpg')
+    end
   end
 
   task ideal_solutions: :environment do

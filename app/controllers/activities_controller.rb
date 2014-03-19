@@ -203,7 +203,8 @@ class ActivitiesController < ApplicationController
       if !user.prize_earned
         user.prize_earned = true
         user.save!
-        PrizeMailer.prize_earned(user).deliver if user.email.present? && eligible_for_prize?
+        # student prizes disabled
+        # PrizeMailer.prize_earned(user).deliver if user.email.present? && eligible_for_prize?
       end
 
       # for awarding prizes, we only honor the first (primary) teacher

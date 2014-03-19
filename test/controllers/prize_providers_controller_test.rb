@@ -4,7 +4,7 @@ class PrizeProvidersControllerTest < ActionController::TestCase
   include Devise::TestHelpers
 
   setup do
-    @prize_provider = prize_providers(:one)
+    @prize_provider = create(:prize_provider)
     @user = create(:admin)
     sign_in(@user)
   end

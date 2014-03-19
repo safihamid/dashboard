@@ -2,7 +2,8 @@ class PrizeMailer < ActionMailer::Base
   default from: 'noreply@code.org'
 
   def prize_earned(student)
-    mail to: student.email, subject: I18n.t('prize_mail.prize_earned.subject')
+    # student prizes disabled
+    # mail to: student.email, subject: I18n.t('prize_mail.prize_earned.subject')
   end
 
   def teacher_prize_earned(teacher)

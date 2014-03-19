@@ -69,4 +69,12 @@ FactoryGirl.define do
     sequence(:key) { |n| "concept_#{n}" }
     youtube_code 'Bogus text'
   end
+
+  factory :prize do
+    prize_provider
+    sequence(:code) { |n| "prize_code_#{n}" }
+  end
+
+  factory :prize_provider do
+  end
 end

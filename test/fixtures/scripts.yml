@@ -1,8 +1,8 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
-twenty_hour:
+twenty_hour_script:
   id: 1
-  name: Twenty Hour
+  name: twenty_hour_script
 
 builder:
   id: 5

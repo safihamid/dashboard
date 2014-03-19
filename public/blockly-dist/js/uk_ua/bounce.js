@@ -872,6 +872,7 @@ exports.random = function (values) {
 
 exports.setBallSpeed = function (id, value) {
   BlocklyApps.highlight(id);
+  Bounce.currentBallSpeed = value;
   for (var i = 0; i < Bounce.ballCount; i++) {
     Bounce.ballSpeed[i] = value;
   }
@@ -951,44 +952,74 @@ exports.incrementPlayerScore = function(id) {
   Bounce.displayScore();
 };
 
+exports.launchBall = function(id) {
+  BlocklyApps.highlight(id);
+  
+  // look for an "out of play" ball to re-launch:
+  for (var i = 0; i < Bounce.ballCount; i++) {
+    if (Bounce.isBallOutOfBounds(i) &&
+        (0 === (Bounce.ballFlags[i] & Bounce.BallFlags.LAUNCHING))) {
+      // found an out-of-bounds ball that is not already launching...
+      //console.log("LB: relaunching ball " + i);
+      Bounce.launchBall(i);
+      return;
+    }
+  }
+  
+  // we didn't find an "out of play" ball, so create and launch a new one:
+  i = Bounce.ballCount;
+  Bounce.ballCount++;
+  Bounce.createBallElements(i);
+  //console.log("LB: created new ball " + i + " calling playSoundAndResetBall");
+  Bounce.playSoundAndResetBall(i);
+};
+
 exports.bounceBall = function(id) {
   BlocklyApps.highlight(id);
 
   var i;
   for (i = 0; i < Bounce.ballCount; i++) {
-    if (Bounce.ballX[i] < 0) {
-      Bounce.ballX[i] = 0;
-      Bounce.ballDir[i] = 2 * Math.PI - Bounce.ballDir[i];
-    } else if (Bounce.ballX[i] > (Bounce.COLS - 1)) {
-      Bounce.ballX[i] = Bounce.COLS - 1;
-      Bounce.ballDir[i] = 2 * Math.PI - Bounce.ballDir[i];
-    }
+    if (0 === (Bounce.ballFlags[i] &
+               (Bounce.BallFlags.MISSED_PADDLE | Bounce.BallFlags.IN_GOAL))) {
+      if (Bounce.ballX[i] < 0) {
+        Bounce.ballX[i] = 0;
+        Bounce.ballDir[i] = 2 * Math.PI - Bounce.ballDir[i];
+        //console.log("Bounced off left, ball " + i);
+      } else if (Bounce.ballX[i] > (Bounce.COLS - 1)) {
+        Bounce.ballX[i] = Bounce.COLS - 1;
+        Bounce.ballDir[i] = 2 * Math.PI - Bounce.ballDir[i];
+        //console.log("Bounced off right, ball " + i);
+      }
 
-    if (Bounce.ballY[i] < tiles.Y_TOP_BOUNDARY) {
-      Bounce.ballY[i] = tiles.Y_TOP_BOUNDARY;
-      Bounce.ballDir[i] = Math.PI - Bounce.ballDir[i];
-    }
+      if (Bounce.ballY[i] < tiles.Y_TOP_BOUNDARY) {
+        Bounce.ballY[i] = tiles.Y_TOP_BOUNDARY;
+        Bounce.ballDir[i] = Math.PI - Bounce.ballDir[i];
+        //console.log("Bounced off top, ball " + i);
+      }
 
-    var xPaddleBall = Bounce.ballX[i] - Bounce.paddleX;
-    var yPaddleBall = Bounce.ballY[i] - Bounce.paddleY;
-    var distPaddleBall = Bounce.calcDistance(xPaddleBall, yPaddleBall);
+      var xPaddleBall = Bounce.ballX[i] - Bounce.paddleX;
+      var yPaddleBall = Bounce.ballY[i] - Bounce.paddleY;
+      var distPaddleBall = Bounce.calcDistance(xPaddleBall, yPaddleBall);
 
-    if (distPaddleBall < tiles.PADDLE_BALL_COLLIDE_DISTANCE) {
-      // paddle ball collision
-      if (Math.cos(Bounce.ballDir[i]) < 0) {
-        // rather than just bounce the ball off a flat paddle, we offset the
-        // angle after collision based on whether you hit the left or right side
-        // of the paddle.  And then we cap the resulting angle to be in a
-        // certain range of radians so the resulting angle isn't too flat
-        var paddleAngleBias = (3 * Math.PI / 8) *
-            (xPaddleBall / tiles.PADDLE_BALL_COLLIDE_DISTANCE);
-        // Add 5 PI instead of PI to ensure that the resulting angle is positive
-        // to simplify the ternary operation in the next statement
-        Bounce.ballDir[i] =
-          ((Math.PI * 5) + paddleAngleBias - Bounce.ballDir[i]) % (Math.PI * 2);
-        Bounce.ballDir[i] = (Bounce.ballDir[i] < Math.PI) ?
-            Math.min((Math.PI / 2) - 0.2, Bounce.ballDir[i]) :
-            Math.max((3 * Math.PI / 2) + 0.2, Bounce.ballDir[i]);
+      if (distPaddleBall < tiles.PADDLE_BALL_COLLIDE_DISTANCE) {
+        // paddle ball collision
+        if (Math.cos(Bounce.ballDir[i]) < 0) {
+          // rather than just bounce the ball off a flat paddle, we offset the
+          // angle after collision based on whether you hit the left or right
+          // side of the paddle.  And then we cap the resulting angle to be in a
+          // certain range of radians so the resulting angle isn't too flat
+          var paddleAngleBias = (3 * Math.PI / 8) *
+              (xPaddleBall / tiles.PADDLE_BALL_COLLIDE_DISTANCE);
+          // Add 5 PI instead of PI to ensure that the resulting angle is
+          // positive to simplify the ternary operation in the next statement
+          Bounce.ballDir[i] =
+              ((Math.PI * 5) + paddleAngleBias - Bounce.ballDir[i]) %
+               (Math.PI * 2);
+          Bounce.ballDir[i] = (Bounce.ballDir[i] < Math.PI) ?
+              Math.min((Math.PI / 2) - 0.2, Bounce.ballDir[i]) :
+              Math.max((3 * Math.PI / 2) + 0.2, Bounce.ballDir[i]);
+          //console.log("Bounced off paddle, ball " + i);
+        }
       }
     }
   }
@@ -1330,7 +1361,7 @@ exports.install = function(blockly, skin) {
   };
   
   blockly.Blocks.bounce_bounceBall = {
-    // Block for bouncing the ball.
+    // Block for bouncing a ball.
     helpUrl: '',
     init: function() {
       this.setHSV(184, 1.00, 0.74);
@@ -1343,8 +1374,26 @@ exports.install = function(blockly, skin) {
   };
   
   generator.bounce_bounceBall = function() {
-    // Generate JavaScript for moving forward.
+    // Generate JavaScript for bouncing a ball.
     return 'Bounce.bounceBall(\'block_id_' + this.id + '\');\n';
+  };
+
+  blockly.Blocks.bounce_launchBall = {
+    // Block for launching a ball.
+    helpUrl: '',
+    init: function() {
+      this.setHSV(184, 1.00, 0.74);
+      this.appendDummyInput()
+        .appendTitle(msg.launchBall());
+      this.setPreviousStatement(true);
+      this.setNextStatement(true);
+      this.setTooltip(msg.launchBallTooltip());
+    }
+  };
+  
+  generator.bounce_launchBall = function() {
+    // Generate JavaScript for launching a ball.
+    return 'Bounce.launchBall(\'block_id_' + this.id + '\');\n';
   };
 
   blockly.Blocks.bounce_setBallSpeed = {
@@ -1528,6 +1577,12 @@ var ButtonState = {
   DOWN: 1
 };
 
+Bounce.BallFlags = {
+  MISSED_PADDLE: 1,
+  IN_GOAL: 2,
+  LAUNCHING: 4
+};
+
 var ArrowIds = {
   LEFT: 'leftButton',
   UP: 'upButton',
@@ -1657,6 +1712,39 @@ var goalNormalize = function(x, y) {
   return ((Bounce.map[y] === undefined) ||
           (Bounce.map[y][x] === undefined)) ? 'X' :
             (Bounce.map[y][x] & SquareType.GOAL) ? '1' : '0';
+};
+
+// Create ball elements
+Bounce.createBallElements = function (i) {
+  var svg = document.getElementById('svgBounce');
+  // Ball's clipPath element, whose (x, y) is reset by Bounce.displayBall
+  var ballClip = document.createElementNS(Blockly.SVG_NS, 'clipPath');
+  ballClip.setAttribute('id', 'ballClipPath' + i);
+  var ballClipRect = document.createElementNS(Blockly.SVG_NS, 'rect');
+  ballClipRect.setAttribute('id', 'ballClipRect' + i);
+  ballClipRect.setAttribute('width', Bounce.PEGMAN_WIDTH);
+  ballClipRect.setAttribute('height', Bounce.PEGMAN_HEIGHT);
+  ballClip.appendChild(ballClipRect);
+  svg.appendChild(ballClip);
+
+  // Add ball.
+  var ballIcon = document.createElementNS(Blockly.SVG_NS, 'image');
+  ballIcon.setAttribute('id', 'ball' + i);
+  ballIcon.setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:href',
+                          Bounce.ballImage);
+  ballIcon.setAttribute('height', Bounce.PEGMAN_HEIGHT);
+  ballIcon.setAttribute('width', Bounce.PEGMAN_WIDTH);
+  ballIcon.setAttribute('clip-path', 'url(#ballClipPath' + i + ')');
+  svg.appendChild(ballIcon);
+};
+
+// Delete ball elements
+Bounce.deleteBallElements = function (i) {
+  var ballClipPath = document.getElementById('ballClipPath' + i);
+  ballClipPath.parentNode.removeChild(ballClipPath);
+  
+  var ballIcon = document.getElementById('ball' + i);
+  ballIcon.parentNode.removeChild(ballIcon);
 };
 
 var drawMap = function() {
@@ -1808,28 +1896,9 @@ var drawMap = function() {
     }
   }
 
-  if (Bounce.ballStart_) {
-    for (i = 0; i < Bounce.ballCount; i++) {
-      // Ball's clipPath element, whose (x, y) is reset by Bounce.displayBall
-      var ballClip = document.createElementNS(Blockly.SVG_NS, 'clipPath');
-      ballClip.setAttribute('id', 'ballClipPath' + i);
-      var ballClipRect = document.createElementNS(Blockly.SVG_NS, 'rect');
-      ballClipRect.setAttribute('id', 'ballClipRect' + i);
-      ballClipRect.setAttribute('width', Bounce.PEGMAN_WIDTH);
-      ballClipRect.setAttribute('height', Bounce.PEGMAN_HEIGHT);
-      ballClip.appendChild(ballClipRect);
-      svg.appendChild(ballClip);
-      
-      // Add ball.
-      var ballIcon = document.createElementNS(Blockly.SVG_NS, 'image');
-      ballIcon.setAttribute('id', 'ball' + i);
-      ballIcon.setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:href',
-                              skin.ball);
-      ballIcon.setAttribute('height', Bounce.PEGMAN_HEIGHT);
-      ballIcon.setAttribute('width', Bounce.PEGMAN_WIDTH);
-      ballIcon.setAttribute('clip-path', 'url(#ballClipPath' + i + ')');
-      svg.appendChild(ballIcon);
-    }
+  Bounce.ballImage = skin.ball;
+  for (i = 0; i < Bounce.ballCount; i++) {
+    Bounce.createBallElements(i);
   }
 
   if (Bounce.paddleStart_) {
@@ -1932,6 +2001,22 @@ var essentiallyEqual = function(float1, float2, opt_variance) {
   return (Math.abs(float1 - float2) < variance);
 };
 
+Bounce.isBallOutOfBounds = function(i) {
+  if (Bounce.ballX[i] < 0) {
+    return true;
+  }
+  if (Bounce.ballX[i] > Bounce.COLS - 1) {
+    return true;
+  }
+  if (Bounce.ballY[i] < tiles.Y_TOP_BOUNDARY) {
+    return true;
+  }
+  if (Bounce.ballY[i] > Bounce.ROWS - 1) {
+    return true;
+  }
+  return false;
+};
+
 /**
  * @param scope Object :  The scope in which to execute the delegated function.
  * @param func Function : The function to execute
@@ -1994,38 +2079,44 @@ Bounce.onTick = function() {
     }
   }
 
-  if (Bounce.ballStart_) {
-    for (var i = 0; i < Bounce.ballCount; i++) {
-      var deltaX = Bounce.ballSpeed[i] * Math.sin(Bounce.ballDir[i]);
-      var deltaY = -Bounce.ballSpeed[i] * Math.cos(Bounce.ballDir[i]);
-      
-      var wasXOK = Bounce.ballX[i] >= 0 && Bounce.ballX[i] <= Bounce.COLS - 1;
-      var wasYOK = Bounce.ballY[i] >= tiles.Y_TOP_BOUNDARY;
-      var wasYAboveBottom = Bounce.ballY[i] <= Bounce.ROWS - 1;
+  for (var i = 0; i < Bounce.ballCount; i++) {
+    var deltaX = Bounce.ballSpeed[i] * Math.sin(Bounce.ballDir[i]);
+    var deltaY = -Bounce.ballSpeed[i] * Math.cos(Bounce.ballDir[i]);
+    
+    var wasXOK = Bounce.ballX[i] >= 0 && Bounce.ballX[i] <= Bounce.COLS - 1;
+    var wasYOK = Bounce.ballY[i] >= tiles.Y_TOP_BOUNDARY;
+    var wasYAboveBottom = Bounce.ballY[i] <= Bounce.ROWS - 1;
 
-      Bounce.ballX[i] += deltaX;
-      Bounce.ballY[i] += deltaY;
-      
+    Bounce.ballX[i] += deltaX;
+    Bounce.ballY[i] += deltaY;
+    
+    if (0 === (Bounce.ballFlags[i] &
+               (Bounce.BallFlags.MISSED_PADDLE | Bounce.BallFlags.IN_GOAL))) {
       var nowXOK = Bounce.ballX[i] >= 0 && Bounce.ballX[i] <= Bounce.COLS - 1;
       var nowYOK = Bounce.ballY[i] >= tiles.Y_TOP_BOUNDARY;
       var nowYAboveBottom = Bounce.ballY[i] <= Bounce.ROWS - 1;
       
       if (wasYOK && wasXOK && !nowXOK) {
+        //console.log("calling whenWallCollided for ball " + i +
+        //" x=" + Bounce.ballX[i] + " y=" + Bounce.ballY[i]);
         try { Bounce.whenWallCollided(BlocklyApps, api); } catch (e) { }
       }
       
       if (wasXOK && wasYOK && !nowYOK) {
         if (Bounce.map[0][Math.round(Bounce.ballX[i])] & SquareType.GOAL) {
+          //console.log("calling whenBallInGoal for ball " + i +
+          //" x=" + Bounce.ballX[i] + " y=" + Bounce.ballY[i]);
           try { Bounce.whenBallInGoal(BlocklyApps, api); } catch (e) { }
+          Bounce.ballFlags[i] |= Bounce.BallFlags.IN_GOAL;
           Bounce.pidList.push(window.setTimeout(
               delegate(this, Bounce.moveBallOffscreen, i),
               1000));
           if (Bounce.respawnBalls) {
-            Bounce.pidList.push(window.setTimeout(
-                delegate(this, Bounce.playSoundAndResetBall, i),
-                3000));
+            Bounce.launchBall(i);
           }
         } else {
+          //console.log("calling whenWallCollided for ball " + i +
+          //" x=" + Bounce.ballX[i] + " y=" + Bounce.ballY[i]);
           try { Bounce.whenWallCollided(BlocklyApps, api); } catch (e) { }
         }
       }
@@ -2036,25 +2127,28 @@ Bounce.onTick = function() {
       
       if (distPaddleBall < tiles.PADDLE_BALL_COLLIDE_DISTANCE) {
         // paddle ball collision
+        //console.log("calling whenPaddleCollided for ball " + i +
+        //" x=" + Bounce.ballX[i] + " y=" + Bounce.ballY[i]);
         try { Bounce.whenPaddleCollided(BlocklyApps, api); } catch (e) { }
       } else if (wasYAboveBottom && !nowYAboveBottom) {
         // ball missed paddle
+        //console.log("calling whenBallMissesPaddle for ball " + i +
+        //" x=" + Bounce.ballX[i] + " y=" + Bounce.ballY[i]);
         try { Bounce.whenBallMissesPaddle(BlocklyApps, api); } catch (e) { }
+        Bounce.ballFlags[i] |= Bounce.BallFlags.MISSED_PADDLE;
         Bounce.pidList.push(window.setTimeout(
             delegate(this, Bounce.moveBallOffscreen, i),
             1000));
         if (Bounce.respawnBalls) {
-          Bounce.pidList.push(window.setTimeout(
-              delegate(this, Bounce.playSoundAndResetBall, i),
-              3000));
+          Bounce.launchBall(i);
         } else if (Bounce.failOnBallExit) {
           Bounce.result = ResultType.FAILURE;
           Bounce.onPuzzleComplete();          
         }
       }
-    
-      Bounce.displayBall(i, Bounce.ballX[i], Bounce.ballY[i]);
     }
+  
+    Bounce.displayBall(i, Bounce.ballX[i], Bounce.ballY[i]);
   }
   
   Bounce.displayPaddle(Bounce.paddleX, Bounce.paddleY);
@@ -2159,8 +2253,17 @@ Bounce.init = function(config) {
 
     Blockly.SNAP_RADIUS *= Bounce.scale.snapRadius;
     
+    Bounce.ballStart_ = [];
+    Bounce.ballX = [];
+    Bounce.ballY = [];
+    Bounce.ballDir = [];
+    Bounce.ballSpeed = [];
+    Bounce.ballFlags = [];
     Bounce.ballCount = 0;
+    Bounce.originalBallCount = 0;
     Bounce.paddleFinishCount = 0;
+    Bounce.defaultBallSpeed = level.ballSpeed || tiles.DEFAULT_BALL_SPEED;
+    Bounce.defaultBallDir = level.ballDirection || tiles.DEFAULT_BALL_DIRECTION;
     
     // Locate the start and finish squares.
     for (var y = 0; y < Bounce.ROWS; y++) {
@@ -2172,19 +2275,7 @@ Bounce.init = function(config) {
           Bounce.paddleFinish_[Bounce.paddleFinishCount] = {x: x, y: y};
           Bounce.paddleFinishCount++;
         } else if (Bounce.map[y][x] & SquareType.BALLSTART) {
-          if (0 === Bounce.ballCount) {
-            Bounce.ballStart_ = [];
-            Bounce.ballX = [];
-            Bounce.ballY = [];
-            Bounce.ballDir = [];
-            Bounce.ballSpeed = [];
-          }
-          Bounce.ballStart_[Bounce.ballCount] = {
-              x: x,
-              y: y,
-              dir: level.ballDirection || tiles.DEFAULT_BALL_DIRECTION,
-              speed: level.ballSpeed || tiles.DEFAULT_BALL_SPEED
-          };
+          Bounce.ballStart_[Bounce.ballCount] = { x: x, y: y};
           Bounce.ballCount++;
         } else if (Bounce.map[y][x] & SquareType.PADDLESTART) {
           Bounce.paddleStart_ = {x: x, y: y};
@@ -2195,6 +2286,8 @@ Bounce.init = function(config) {
         }
       }
     }
+    
+    Bounce.originalBallCount = Bounce.ballCount;
 
     drawMap();
   };
@@ -2252,10 +2345,8 @@ Bounce.moveBallOffscreen = function(i) {
   Bounce.ballX[i] = 100;
   Bounce.ballY[i] = 100;
   Bounce.ballDir[i] = 0;
-  if (!Bounce.respawnBalls) {
-    // stop the ball from moving if we're not planning to respawn:
-    Bounce.ballSpeed[i] = 0;
-  }
+  // stop the ball from moving if we're not planning to respawn:
+  Bounce.ballSpeed[i] = 0;
 };
 
 /**
@@ -2263,22 +2354,39 @@ Bounce.moveBallOffscreen = function(i) {
  * @param {int} i Index of ball to be reset.
  */
 Bounce.playSoundAndResetBall = function(i) {
-  Bounce.resetBall(i);
+  //console.log("playSoundAndResetBall called for ball " + i);
+  Bounce.resetBall(i, { randomPosition: true } );
   BlocklyApps.playAudio('ballstart', {volume: 0.5});
+};
+
+/**
+ * Launch the ball from index i from a start position and launch it.
+ * @param {int} i Index of ball to be launched.
+ */
+Bounce.launchBall = function(i) {
+  Bounce.ballFlags[i] |= Bounce.BallFlags.LAUNCHING;
+  Bounce.pidList.push(
+      window.setTimeout(delegate(this, Bounce.playSoundAndResetBall, i), 3000));
 };
 
 /**
  * Reset the ball from index i to the start position and redraw it.
  * @param {int} i Index of ball to be reset.
- * @param {boolean} resetSpeed reset ball speed.
+ * @param {options} randomPosition: random start
  */
-Bounce.resetBall = function(i, resetSpeed) {
-  Bounce.ballX[i] = Bounce.ballStart_[i].x;
-  Bounce.ballY[i] = Bounce.ballStart_[i].y;
-  Bounce.ballDir[i] = Bounce.ballStart_[i].dir;
-  if (resetSpeed) {
-    Bounce.ballSpeed[i] = Bounce.ballStart_[i].speed;
-  }
+Bounce.resetBall = function(i, options) {
+  //console.log("resetBall called for ball " + i);
+  var randStart = options.randomPosition ||
+                  typeof Bounce.ballStart_[i] == 'undefined';
+  Bounce.ballX[i] =  randStart ? Math.floor(Math.random() * Bounce.COLS) :
+                                 Bounce.ballStart_[i].x;
+  Bounce.ballY[i] =  randStart ? tiles.DEFAULT_BALL_START_Y :
+                                 Bounce.ballStart_[i].y;
+  Bounce.ballDir[i] = randStart ?
+                        (Math.random() * Math.PI / 2) + Math.PI * 0.75 :
+                        Bounce.defaultBallDir;
+  Bounce.ballSpeed[i] = Bounce.currentBallSpeed;
+  Bounce.ballFlags[i] = 0;
   
   Bounce.displayBall(i, Bounce.ballX[i], Bounce.ballY[i]);
 };
@@ -2311,12 +2419,17 @@ BlocklyApps.reset = function(first) {
   Bounce.setBackground('hardcourt');
   Bounce.setBall('hardcourt');
   Bounce.setPaddle('hardcourt');
-  
-  // Move Ball into position.
-  if (Bounce.ballStart_) {
-    for (i = 0; i < Bounce.ballCount; i++) {
-      Bounce.resetBall(i, true);
-    }
+  Bounce.currentBallSpeed = Bounce.defaultBallSpeed;
+
+  // Remove any extra balls that were created dynamically.
+  for (i = Bounce.originalBallCount; i < Bounce.ballCount; i++) {
+    Bounce.deleteBallElements(i);
+  }
+  // Reset ballCount back to the original value
+  Bounce.ballCount = Bounce.originalBallCount;
+  // Move ball(s) into position.
+  for (i = 0; i < Bounce.ballCount; i++) {
+    Bounce.resetBall(i, {});
   }
   
   // Move Paddle into position.
@@ -2576,7 +2689,7 @@ Bounce.execute = function() {
                                       BlocklyApps: BlocklyApps,
                                       Bounce: api } );
 
-  BlocklyApps.playAudio(Bounce.ballStart_ ? 'ballstart' : 'start',
+  BlocklyApps.playAudio(Bounce.ballCount > 0 ? 'ballstart' : 'start',
                         {volume: 0.5});
 
   BlocklyApps.reset(false);
@@ -2745,7 +2858,7 @@ Bounce.setBackground = function (value) {
         image = skinTheme(value).goalTiles;
       }
       if (!empty) {
-        var element = document.getElementById('tileElement' + tileId);
+        element = document.getElementById('tileElement' + tileId);
         element.setAttributeNS(
             'http://www.w3.org/1999/xlink', 'xlink:href', image);
       }
@@ -2755,12 +2868,11 @@ Bounce.setBackground = function (value) {
 };
 
 Bounce.setBall = function (value) {
-  if (Bounce.ballStart_) {
-    for (var i = 0; i < Bounce.ballCount; i++) {
-      var element = document.getElementById('ball' + i);
-      element.setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:href',
-        skinTheme(value).ball);
-    }
+  Bounce.ballImage = skinTheme(value).ball;
+  for (var i = 0; i < Bounce.ballCount; i++) {
+    var element = document.getElementById('ball' + i);
+    element.setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:href',
+      Bounce.ballImage);
   }
 };
 
@@ -3196,9 +3308,9 @@ module.exports = {
     'map': [
       [1, 1, 2, 2, 2, 2, 1, 1],
       [1, 0, 0, 0, 0, 0, 0, 1],
-      [1, 0, 0, 0, 0, 0, 0, 1],
-      [1, 0, 0, 0, 0, 0, 0, 1],
       [1, 0, 0, 0, 0, 0, 4, 1],
+      [1, 0, 0, 0, 0, 0, 0, 1],
+      [1, 0, 0, 0, 0, 0, 0, 1],
       [1, 0, 0, 0, 0, 0, 0, 1],
       [1, 0, 0, 0, 0, 0, 0, 1],
       [1, 0,16, 0, 0, 0, 0, 1]
@@ -3225,7 +3337,8 @@ module.exports = {
       [{'test': 'moveRight', 'type': 'bounce_moveRight'}],
       [{'test': 'bounceBall', 'type': 'bounce_bounceBall'}],
       [{'test': 'incrementPlayerScore', 'type': 'bounce_incrementPlayerScore'}],
-      [{'test': 'incrementOpponentScore', 'type': 'bounce_incrementOpponentScore'}]
+      [{'test': 'incrementOpponentScore', 'type': 'bounce_incrementOpponentScore'}],
+      [{'test': 'launchBall', 'type': 'bounce_launchBall'}]
     ],
     'scale': {
       'snapRadius': 2
@@ -3239,13 +3352,12 @@ module.exports = {
         return (Bounce.opponentScore >= 2);
       }
     },
-    'respawnBalls' : true,
     'map': [
       [1, 1, 2, 2, 2, 2, 1, 1],
       [1, 0, 0, 0, 0, 0, 0, 1],
       [1, 0, 0, 0, 0, 0, 0, 1],
       [1, 0, 0, 0, 0, 0, 0, 1],
-      [1, 0, 0, 0, 0, 0, 4, 1],
+      [1, 0, 0, 0, 0, 0, 0, 1],
       [1, 0, 0, 0, 0, 0, 0, 1],
       [1, 0, 0, 0, 0, 0, 0, 1],
       [1, 0,16, 0, 0, 0, 0, 1]
@@ -3257,6 +3369,7 @@ module.exports = {
           <block type="bounce_playSound"></block> \
           <block type="bounce_incrementPlayerScore"></block> \
           <block type="bounce_incrementOpponentScore"></block> \
+          <block type="bounce_launchBall"></block> \
           <block type="bounce_setPaddleSpeed"></block> \
           <block type="bounce_setBallSpeed"></block> \
           <block type="bounce_setBackground"></block> \
@@ -3413,6 +3526,7 @@ exports.FINISH_COLLIDE_DISTANCE = 0.5;
 exports.DEFAULT_BALL_SPEED = 0.1;
 exports.DEFAULT_BALL_DIRECTION = 1.25 * Math.PI;
 exports.DEFAULT_PADDLE_SPEED = 0.1;
+exports.DEFAULT_BALL_START_Y = 2;
 exports.Y_TOP_BOUNDARY = -0.2;
 
 /**
@@ -4915,6 +5029,10 @@ exports.incrementPlayerScoreTooltip = function(d){return "Додати один 
 exports.isWall = function(d){return "це стіна"};
 
 exports.isWallTooltip = function(d){return "Повертає true, якщо тут стіна"};
+
+exports.launchBall = function(d){return "launch ball"};
+
+exports.launchBallTooltip = function(d){return "Launch a ball into play."};
 
 exports.moveDown = function(d){return "рухатися вниз"};
 

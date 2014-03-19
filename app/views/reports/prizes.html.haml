@@ -57,33 +57,8 @@
       %h4= sanitize(t('redeem_prizes.msg.teacher.bonus.not_earned_title').html_safe, tags: %w(a), attributes: %w(href target))
       = sanitize(t('redeem_prizes.msg.teacher.bonus.not_earned', num_trophies: Trophy::TROPHY_MAX).html_safe, tags: %w(a), attributes: %w(href target))
     %div{style:"clear:left;"}
-  %hr/
-%h4 #{t('home.student_progress')}:
-= t('home.student_stats', trophy_count: current_user.trophy_count, trophy_max: Trophy::TROPHY_MAX)
-%br/
-%br/
-
-- if current_user.prize_earned
-  %h4= t('redeem_prizes.msg.earned')
-  - if current_user.prize
-    = render partial: 'shared/redeemed_prize', locals: { prize: current_user.prize }
-  - else
-    = t('redeem_prizes.msg.choose')
-    %br/
-    %br/
-    = render partial: 'shared/choose_prize', locals: { prize_collection: Prize, prize_type: 'student' }
-  %div{style:"clear:left;"}
-    %br/
-    = render partial: 'shared/student_finished', locals: { include_prize_link: false }
 - else
-  %h4= t('redeem_prizes.msg.not_earned_title')
-  = t('redeem_prizes.msg.not_earned', num_trophies: Trophy::TROPHY_MAX)
-  %br/
-  %br/
-  = render partial: 'shared/student_prize_mini_grid'
-  %br/
-  %br/
-  = render partial: 'shared/student_continue', locals: { include_finished: false }
+  %h4= t('redeem_prizes.no_prizes_available')
 
 %br/
 :javascript
