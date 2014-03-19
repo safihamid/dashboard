@@ -1,9 +1,0 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
-
-twenty_hour_script:
-  id: 1
-  name: twenty_hour_script
-
-builder:
-  id: 5
-  name: Builder
