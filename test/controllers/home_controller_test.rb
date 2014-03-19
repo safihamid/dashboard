@@ -24,4 +24,19 @@ class HomeControllerTest < ActionController::TestCase
     assert_equal "language_=es-ES; domain=.code.org; path=/", @response.headers["Set-Cookie"]
   end
 
+  test "should get index with edmodo header" do
+    @request.headers["Accept"] = "image/*"
+    @request.headers["User-Agent"] = "Edmodo/14 CFNetwork/672.0.2 Darwin/14.0.0"
+    get :index
+    assert_response :success
+  end
+
+  test "should get index with weebly header" do
+    @request.headers["Accept"] = "image/*"
+    @request.headers["User-Agent"] = "weebly-agent"
+    get :index
+    assert_response :success
+  end
+
+
 end
