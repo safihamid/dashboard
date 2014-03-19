@@ -9,6 +9,7 @@ class Script < ActiveRecord::Base
   EDIT_CODE_ID = 3
   TWENTY_FOURTEEN_LEVELS_ID = 4
   BUILDER_ID = 5
+  FLAPPY_ID = 6
 
   def self.twenty_hour_script
     @@twenty_hour_script ||= Script.includes(script_levels: { level: [:game, :concepts] }).find(TWENTY_HOUR_ID)
