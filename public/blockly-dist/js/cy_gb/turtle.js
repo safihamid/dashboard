@@ -1228,13 +1228,14 @@ var getFeedbackMessage = function(options) {
     case BlocklyApps.TestResults.ALL_PASS:
       var finalLevel = (options.response &&
           (options.response.message == "no more levels"));
-      var stageCompleted = 0;
+      var stageCompleted = null;
       if (options.response && options.response.stage_changing) {
-        stageCompleted = options.response.stage_changing.previous.number;
+        stageCompleted = options.response.stage_changing.previous.name;
       }
       var msgParams = {
         numTrophies: options.numTrophies,
-        stageNumber: stageCompleted,
+        stageNumber: 0, // TODO: remove once localized strings have been fixed
+        stageName: stageCompleted,
         puzzleNumber: options.level.puzzle_number || 0
       };
       if (options.numTrophies > 0) {
