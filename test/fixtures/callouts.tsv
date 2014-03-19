@@ -1,4 +1,3 @@
 Name	script_id	level_num	text	my	at	element_id
 Run Button	333	level1_2_3	Click here to run your program.	bottom left	top right	#runButton
-Run Button	12345	invalid_level	Click here to run your program.	bottom left	top right	#runButton
 Repeat Block	321	level1_2_3	This is a repeat block.	bottom left	top right	#repeatBlock

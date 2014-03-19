@@ -11,7 +11,7 @@ class CalloutTest < ActiveSupport::TestCase
   end
   
   test "callouts should be generated from a tsv" do
-    assert_equal(3, @csv_callouts.length)
+    assert_equal(2, @csv_callouts.length)
   end
   
   test "callouts should have proper attributes after import" do
@@ -39,6 +39,12 @@ class CalloutTest < ActiveSupport::TestCase
   end
   
   test "callout lines with an invalid script / level pair should fail silently" do
-    assert_nil(@csv_callouts[1])
+    quietly do
+      content = capture(:stdout) do
+        @invalid_callout_import = Callout.find_or_create_all_from_tsv!('test/fixtures/callouts_invalid.tsv')
+        assert_nil(@invalid_callout_import[0])
+      end
+      assert(content.include?("Error creating callout"))
+    end
   end
 end
