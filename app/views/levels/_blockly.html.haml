@@ -6,9 +6,6 @@
     %a{href: 'javascript: location.reload();'}= t(:try_reloading)
 
 - content_for :body_scripts do
-  = javascript_include_tag "jquery.qtip.min.js"
-  = stylesheet_link_tag "jquery.qtip.min.css"
-
   -# Common scripts and styles
   - blockly_path = "#{ActionController::Base.asset_host}/blockly/"
   -# If no param, take default
