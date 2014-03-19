@@ -6,6 +6,9 @@
     %a{href: 'javascript: location.reload();'}= t(:try_reloading)
 
 - content_for :body_scripts do
+  = javascript_include_tag "//cdnjs.cloudflare.com/ajax/libs/qtip2/2.1.0/jquery.qtip.min.js"
+  = stylesheet_link_tag "//cdnjs.cloudflare.com/ajax/libs/qtip2/2.1.0/jquery.qtip.min.css"
+
   -# Common scripts and styles
   - blockly_path = "#{ActionController::Base.asset_host}/blockly/"
   -# If no param, take default
@@ -44,6 +47,32 @@
   :javascript
     // See assets/javascripts/sendReport for definition of nextRedirect etc.
     #{app}Main({
+      level: "#{@level.level_num}",
+      callouts: #{@callouts.to_json},
+      createCallouts: function() {
+        this.callouts.every(function(callout) {
+          var selector = callout.element_id; // jquery selector.
+          if ($(selector).length <= 0) { return true; }
+          
+          var calloutDomElement = $(selector).qtip({
+            content: callout.text,
+            position: {
+              my: callout.qtip_my,
+              at: callout.qtip_at
+            },
+            hide: {
+              event: 'unfocus click mouseleave'
+            },
+            show: false
+          });
+          
+          cdo.events.one(cdo.eventType.MODAL_HIDDEN, function() { calloutDomElement.qtip('show'); });
+          cdo.events.on(cdo.eventType.MODAL_SHOWN, function() { calloutDomElement.qtip('hide'); });
+          
+          calloutDomElement.qtip('hide');
+        });
+      },
+      onInitialize: function(){ this.createCallouts(); },
       locale: '#{js_locale}',
       containerId: 'blocklyApp',
       baseUrl: '#{blockly_path}',

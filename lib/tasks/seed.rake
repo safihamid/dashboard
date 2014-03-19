@@ -128,22 +128,11 @@ namespace :seed do
     end
   end
 
-  CALLOUT_ELEMENT_ID = 'element_id'
-  CALLOUT_TEXT = 'text'
-  CALLOUT_AT = 'at'
-  CALLOUT_MY = 'my'
-
   task callouts: :environment do
     Callout.transaction do
       Callout.delete_all # use delete instead of destroy so callbacks are not called
       Callout.connection.execute("ALTER TABLE callouts auto_increment = 1")
-
-      CSV.read('config/callouts.tsv', { col_sep: "\t", headers: true }).each do |row|
-        Callout.create!(element_id: row[CALLOUT_ELEMENT_ID],
-                        text: row[CALLOUT_TEXT],
-                        qtip_at: row[CALLOUT_AT],
-                        qtip_my: row[CALLOUT_MY])
-      end
+      Callout.find_or_create_all_from_tsv!('config/callouts.tsv')
     end
   end
   
@@ -322,6 +311,6 @@ namespace :seed do
     ScriptLevel.where(script: script, level: level, chapter: 1, game_chapter: 1).first_or_create
   end
 
-  task all: [:videos, :concepts, :games, :callouts, :scripts, :trophies, :prize_providers, :builder_levels]
+  task all: [:videos, :concepts, :games, :scripts, :trophies, :prize_providers, :builder_levels, :callouts]
 
 end

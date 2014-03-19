@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140303235248) do
+ActiveRecord::Schema.define(version: 20140314184624) do
 
   create_table "activities", force: true do |t|
     t.integer  "user_id"
@@ -41,12 +41,13 @@ ActiveRecord::Schema.define(version: 20140303235248) do
   add_index "activity_hints", ["level_source_hint_id"], name: "index_activity_hints_on_level_source_hint_id", using: :btree
 
   create_table "callouts", force: true do |t|
-    t.string   "element_id", limit: 1024, null: false
-    t.string   "text",       limit: 1024, null: false
+    t.string   "element_id",      limit: 1024, null: false
+    t.string   "text",            limit: 1024, null: false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "qtip_at"
     t.string   "qtip_my"
+    t.integer  "script_level_id"
   end
 
   create_table "concepts", force: true do |t|
@@ -110,7 +111,7 @@ ActiveRecord::Schema.define(version: 20140303235248) do
 
   create_table "level_source_images", force: true do |t|
     t.integer  "level_source_id"
-    t.binary   "image",           limit: 16777215
+    t.binary   "image"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -162,8 +163,8 @@ ActiveRecord::Schema.define(version: 20140303235248) do
   add_index "prizes", ["user_id"], name: "index_prizes_on_user_id", using: :btree
 
   create_table "script_levels", force: true do |t|
-    t.integer  "level_id"
-    t.integer  "script_id"
+    t.integer  "level_id",     null: false
+    t.integer  "script_id",    null: false
     t.integer  "chapter"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -217,39 +218,6 @@ ActiveRecord::Schema.define(version: 20140303235248) do
 
   add_index "teacher_prizes", ["prize_provider_id"], name: "index_teacher_prizes_on_prize_provider_id", using: :btree
   add_index "teacher_prizes", ["user_id"], name: "index_teacher_prizes_on_user_id", using: :btree
-
-  create_table "temp_logs", id: false, force: true do |t|
-    t.string  "head"
-    t.string  "user_key",        limit: 64
-    t.string  "ip_address",      limit: 64
-    t.string  "app",             limit: 16
-    t.string  "level_num"
-    t.string  "result",          limit: 16
-    t.integer "test_result"
-    t.integer "time"
-    t.integer "attempt"
-    t.integer "num_lines"
-    t.integer "level_source_id"
-    t.string  "user_agent"
-  end
-
-  add_index "temp_logs", ["user_key"], name: "temp_logs_user_key", using: :btree
-
-  create_table "temp_user_levelss", id: false, force: true do |t|
-    t.string  "user_key"
-    t.string  "app",          limit: 16
-    t.string  "level_num"
-    t.integer "levels_tried"
-    t.integer "num_lines"
-    t.integer "best_result"
-  end
-
-  create_table "temp_users", id: false, force: true do |t|
-    t.string  "user_key"
-    t.integer "num_attempts"
-    t.integer "levels_tried"
-    t.integer "num_lines"
-  end
 
   create_table "trophies", force: true do |t|
     t.string   "name"

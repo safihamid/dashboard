@@ -92,7 +92,7 @@ private
     @start_blocks = initial_blocks(current_user, @level)
     @callback = milestone_url(user_id: current_user.try(:id) || 0, script_level_id: @script_level)
     @full_width = true
-    @callouts = Callout.select(:element_id, :text, :qtip_at, :qtip_my)
+    @callouts = Callout.where(script_level: @script_level)
     @fallback_response = {
       success: milestone_response(script_level: @script_level, solved?: true),
       failure: milestone_response(script_level: @script_level, solved?: false)
