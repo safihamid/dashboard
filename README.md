@@ -1,9 +1,11 @@
-# Development Quick Start Readme
+# Dashboard: [learn.code.org](http://learn.code.org)
+
+<img src="http://i.imgur.com/b8UllKd.png" width=400/>
 
 ## Background
 
 We are building drag-drop programming tutorials to allow a beginner to learn very basic programming concepts (sequencing, if-then statements, for loops, variables, functions), but using drag-drop programming.
-The visual language we're using is based on Blockly (and open-source drag-drop language that spits out XML or JavaScript or Python). 
+The visual language we're using is based on Blockly (and open-source drag-drop language that spits out XML or JavaScript or Python).
 
 The end-product is a 1-hour tutorial to be used during the Hour of Code campaign, for anybody to get a basic intro to Computer Science, AND a 20-hour follow-on tutorial and teacher-dashboard, meant for use in K-8 (elementary and middle school) classrooms.
 
@@ -24,9 +26,11 @@ If you'll be making modifications to blockly code, you can set that up first. Fi
 
 Once that is done, continue following these instructions and we'll symlink your dev version of blockly along the way.
 
+If you won't be making modifications to blockly code, you can just skip the symlink step and the dashboard will use a pre-built version of blockly.
+
 ### Setting up Dashboard
 
-1. `cd <repo_dir>/projects/dashboard`
+1. `cd dashboard` (this repository's root)
 2. Install ruby build prerequisites (using [rbenv](https://github.com/sstephenson/rbenv#installation)) and MySQL
     - OSX: Using [Homebrew](http://brew.sh/) to install:
       + Install Homebrew:
@@ -95,11 +99,8 @@ mailcatcher
 
 ### Windows-specific notes
 
-[These notes][2] (unmaintained) may be useful for Windows 7/8 usage for those helping with IE 8/9/10 support.
+[These notes](https://github.com/code-dot-org/dashboard/blob/master/README_Windows.md) (unmaintained) may be useful for Windows 7/8 usage for those helping with IE 8/9/10 support.
 
 # Device support
 
 Here is a [list](https://github.com/code-dot-org/dashboard/wiki/Device-Support) of devices for which we are planning support.
-
-[1]: https://github.com/code-dot-org/blockly/blob/master/README.md
-[2]: https://github.com/code-dot-org/dashboard/blob/master/README_Windows.md
