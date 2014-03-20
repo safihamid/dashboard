@@ -844,7 +844,7 @@ var getIdealBlockNumberMsg = function() {
       msg.infinity() : BlocklyApps.IDEAL_BLOCK_NUM;
 };
 
-},{"../locale/sr_sp/common":32,"./builder":3,"./dom":5,"./feedback.js":6,"./slider":9,"./templates/buttons.html":11,"./templates/instructions.html":13,"./templates/learn.html":14,"./templates/makeYourOwn.html":15,"./utils":30,"./xml":31}],3:[function(require,module,exports){
+},{"../locale/sr_sp/common":33,"./builder":3,"./dom":5,"./feedback.js":6,"./slider":9,"./templates/buttons.html":11,"./templates/instructions.html":13,"./templates/learn.html":14,"./templates/makeYourOwn.html":15,"./utils":31,"./xml":32}],3:[function(require,module,exports){
 var feedback = require('./feedback.js');
 var dom = require('./dom.js');
 // Builds the dom to get more info from the user. After user enters info
@@ -1743,7 +1743,7 @@ var generateXMLForBlocks = function(blocks) {
 };
 
 
-},{"../locale/sr_sp/common":32,"./codegen":4,"./dom":5,"./templates/buttons.html":11,"./templates/code.html":12,"./templates/readonly.html":17,"./templates/showCode.html":18,"./templates/trophy.html":19,"./utils":30}],7:[function(require,module,exports){
+},{"../locale/sr_sp/common":33,"./codegen":4,"./dom":5,"./templates/buttons.html":11,"./templates/code.html":12,"./templates/readonly.html":17,"./templates/showCode.html":18,"./templates/trophy.html":19,"./utils":31}],7:[function(require,module,exports){
 // Functions for checking required blocks.
 
 /**
@@ -2059,7 +2059,7 @@ return buf.join('');
     return t(locals, require("ejs").filters);
   }
 }());
-},{"ejs":34}],11:[function(require,module,exports){
+},{"ejs":35}],11:[function(require,module,exports){
 module.exports= (function() {
   var t = function anonymous(locals, filters, escape, rethrow) {
 escape = escape || function (html){
@@ -2080,7 +2080,7 @@ return buf.join('');
     return t(locals, require("ejs").filters);
   }
 }());
-},{"../../locale/sr_sp/common":32,"ejs":34}],12:[function(require,module,exports){
+},{"../../locale/sr_sp/common":33,"ejs":35}],12:[function(require,module,exports){
 module.exports= (function() {
   var t = function anonymous(locals, filters, escape, rethrow) {
 escape = escape || function (html){
@@ -2101,7 +2101,7 @@ return buf.join('');
     return t(locals, require("ejs").filters);
   }
 }());
-},{"ejs":34}],13:[function(require,module,exports){
+},{"ejs":35}],13:[function(require,module,exports){
 module.exports= (function() {
   var t = function anonymous(locals, filters, escape, rethrow) {
 escape = escape || function (html){
@@ -2122,7 +2122,7 @@ return buf.join('');
     return t(locals, require("ejs").filters);
   }
 }());
-},{"../../locale/sr_sp/common":32,"ejs":34}],14:[function(require,module,exports){
+},{"../../locale/sr_sp/common":33,"ejs":35}],14:[function(require,module,exports){
 module.exports= (function() {
   var t = function anonymous(locals, filters, escape, rethrow) {
 escape = escape || function (html){
@@ -2145,7 +2145,7 @@ return buf.join('');
     return t(locals, require("ejs").filters);
   }
 }());
-},{"../../locale/sr_sp/common":32,"ejs":34}],15:[function(require,module,exports){
+},{"../../locale/sr_sp/common":33,"ejs":35}],15:[function(require,module,exports){
 module.exports= (function() {
   var t = function anonymous(locals, filters, escape, rethrow) {
 escape = escape || function (html){
@@ -2166,7 +2166,7 @@ return buf.join('');
     return t(locals, require("ejs").filters);
   }
 }());
-},{"../../locale/sr_sp/common":32,"ejs":34}],16:[function(require,module,exports){
+},{"../../locale/sr_sp/common":33,"ejs":35}],16:[function(require,module,exports){
 module.exports= (function() {
   var t = function anonymous(locals, filters, escape, rethrow) {
 escape = escape || function (html){
@@ -2188,7 +2188,7 @@ return buf.join('');
     return t(locals, require("ejs").filters);
   }
 }());
-},{"../../locale/sr_sp/common":32,"ejs":34}],17:[function(require,module,exports){
+},{"../../locale/sr_sp/common":33,"ejs":35}],17:[function(require,module,exports){
 module.exports= (function() {
   var t = function anonymous(locals, filters, escape, rethrow) {
 escape = escape || function (html){
@@ -2210,7 +2210,7 @@ return buf.join('');
     return t(locals, require("ejs").filters);
   }
 }());
-},{"ejs":34}],18:[function(require,module,exports){
+},{"ejs":35}],18:[function(require,module,exports){
 module.exports= (function() {
   var t = function anonymous(locals, filters, escape, rethrow) {
 escape = escape || function (html){
@@ -2231,7 +2231,7 @@ return buf.join('');
     return t(locals, require("ejs").filters);
   }
 }());
-},{"../../locale/sr_sp/common":32,"ejs":34}],19:[function(require,module,exports){
+},{"../../locale/sr_sp/common":33,"ejs":35}],19:[function(require,module,exports){
 module.exports= (function() {
   var t = function anonymous(locals, filters, escape, rethrow) {
 escape = escape || function (html){
@@ -2252,7 +2252,7 @@ return buf.join('');
     return t(locals, require("ejs").filters);
   }
 }());
-},{"ejs":34}],20:[function(require,module,exports){
+},{"ejs":35}],20:[function(require,module,exports){
 /**
  * Blockly Demo: Turtle Graphics
  *
@@ -3230,7 +3230,7 @@ exports.install = function(blockly, skin) {
 
 };
 
-},{"../../locale/sr_sp/turtle":33,"./core":24}],23:[function(require,module,exports){
+},{"../../locale/sr_sp/turtle":34,"./core":24}],23:[function(require,module,exports){
 module.exports= (function() {
   var t = function anonymous(locals, filters, escape, rethrow) {
 escape = escape || function (html){
@@ -3251,7 +3251,7 @@ return buf.join('');
     return t(locals, require("ejs").filters);
   }
 }());
-},{"ejs":34}],24:[function(require,module,exports){
+},{"ejs":35}],24:[function(require,module,exports){
 // Create a limited colour palette to avoid overwhelming new users
 // and to make colour checking easier.  These definitions cannot be
 // moved to blocks.js, which is loaded later, since they are used in
@@ -3294,216 +3294,26 @@ var startBlocks = function(page, level) {
   });
 };
 
-/**
- * Sets BlocklyApp constants that depend on the page and level.
- * This encapsulates many functions used for BlocklyApps.REQUIRED_BLOCKS.
- * In the future, some of these may be moved to common.js.
- */
-
-// The internal functions are used within BlocklyApps.REQUIRED_BLOCKS.
-// I've included jsdoc for some that I think would be good candidates
-// for moving to common.js.
-
-/**
- * Create the textual XML for a math_number block.
- * @param {number|string} number The numeric amount, expressed as a
- *     number or string.  Non-numeric strings may also be specified,
- *     such as '???'.
- * @return {string} The textual representation of a math_number block.
- */
-var makeMathNumber = function(number) {
-    return '<block type="math_number"><title name="NUM">' +
-          number + '</title></block>';
-};
-
-/**
- * Generate a required blocks dictionary for a simple block that does not
- * have any parameters or values.
- * @param {string} block_type The block type.
- * @return {Object} A required blocks dictionary able to check for and
- *     generate the specified block.
- */
-var simpleBlock = function(block_type) {
-  return {test: function(block) {return block.type == block_type; },
-          type: block_type};
-};
-
-/**
- * Generate a required blocks dictionary for a repeat loop.  This does not
- * test for the specified repeat count but includes it in the suggested block.
- * @param {number|string} count The suggested repeat count.
- * @return {Object} A required blocks dictionary able to check for and
- *     generate the specified block.
- */
-var repeat = function(count) {
-  // This checks for a controls_repeat block rather than looking for 'for',
-  // since the latter may be generated by Turtle 2's draw_a_square.
-  return {test: function(block) {return block.type == 'controls_repeat';},
-          type: 'controls_repeat', titles: {'TIMES': count}};
-};
-
-// The remaining internal functions are specific to Turtle.
-
-// This tests for and creates a draw_a_square block on page 2.
-function drawASquare(number) {
-  return {test: 'draw_a_square',
-          type: 'draw_a_square',
-          values: {'VALUE': makeMathNumber(number)}};
-}
-
-// This tests for and creates a draw_a_snowman block on page 2.
-function drawASnowman(number) {
-  return {test: 'draw_a_snowman',
-          type: 'draw_a_snowman',
-          values: {'VALUE': makeMathNumber(number)}};
-}
-
-// This tests for and creates the limited "move forward" block used on the
-// earlier levels of the tutorial.
-var MOVE_FORWARD_INLINE = {test: 'moveForward', type: 'draw_move_by_constant'};
-
-// allow move forward or backward, but show forward block if they've done neither
-var MOVE_FORWARD_OR_BACKWARD_INLINE = {
-  test: function(block) {
-    return block.type == 'draw_move_by_constant';
-  },
-  type: 'draw_move_by_constant'
-};
-
-// This tests for and creates the limited "move forward" block used on the
-// earlier levels of the tutorial with the given pixel number.
-var moveForwardInline = function(pixels) {
-  return {test: 'moveForward',
-          type: 'draw_move_by_constant',
-          titles: {'VALUE': pixels}};
-};
-
-// This tests for and creates the limited "move forward" block used on the
-// earlier levels of the tutorial.
-var MOVE_BACKWARD_INLINE = {test: 'moveBackward',
-                            type: 'draw_move_by_constant',
-                            titles: {'DIR': 'moveBackward'}};
-
-// This tests for a [right] draw_turn_by_constant_restricted block
-// and creates the block with the specified/recommended number of degrees as
-// its input.  The restricted turn is used on the earlier levels of the
-// tutorial.
-var turnRightRestricted = function(degrees) {
-  return {test: 'turnRight(',
-          type: 'draw_turn_by_constant_restricted',
-          titles: {'VALUE': degrees}};
-};
-
-// This tests for and creates a [right] draw_turn_by_constant block
-// with the specified number of degrees as its input.
-var turnRightByConstant = function(degrees) {
-  return {
-    test: function(block) {
-      return block.type == 'draw_turn_by_constant' &&
-          (degrees === '???' ||
-           Blockly.JavaScript.valueToCode(
-             block, 'VALUE', Blockly.JavaScript.ORDER_NONE) == degrees);
-    },
-    type: 'draw_turn_by_constant',
-    titles: {'VALUE': degrees}};
-};
-
-// This tests for and creates a [right] draw_turn block with the specified
-// number of degrees as its input.  For the earliest levels, the method
-// turnRightRestricted should be used instead.
-var turnRight = function(degrees) {
-  return {
-    test: function(block) {
-      return block.type == 'draw_turn' &&
-        block.getTitleValue('DIR') == 'turnRight';
-      },
-    type: 'draw_turn',
-    titles: {'DIR': 'turnRight'},
-    values: {'VALUE': makeMathNumber(degrees)}
-  };
-};
-
-// This tests for and creates a left draw_turn block with the specified
-// number of degrees as its input.  This method is not appropriate for the
-// earliest levels of the tutorial, which do not provide draw_turn.
-var turnLeft = function(degrees) {
-  return {
-    test: function(block) {
-      return block.type == 'draw_turn' &&
-        block.getTitleValue('DIR') == 'turnLeft';
-      },
-    type: 'draw_turn',
-    titles: {'DIR': 'turnLeft'},
-    values: {'VALUE': makeMathNumber(degrees)}
-  };
-};
-
-// This tests for any draw_move block and, if not present, creates
-// one with the specified distance.
-var move = function(distance) {
-  return {test: function(block) {return block.type == 'draw_move'; },
-          type: 'draw_move',
-          values: {'VALUE': makeMathNumber(distance)}};
-};
-
-// This tests for and creates a draw_turn_by_constant_restricted block.
-var drawTurnRestricted = function(degrees) {
-  return {
-    test: function(block) {
-      return block.type == 'draw_turn_by_constant_restricted';
-    },
-    type: 'draw_turn_by_constant_restricted',
-    titles: {'VALUE': degrees}
-  };
-};
-
-// This tests for and creates a draw_turn block.
-var drawTurn = function() {
-  return {
-    test: function(block) {
-      return block.type == 'draw_turn';
-    },
-    type: 'draw_turn',
-    values: {'VALUE': makeMathNumber('???')}
-  };
-};
-
-// This tests for and creates a "set colour" block with a colour picker
-// as its input.
-var SET_COLOUR_PICKER = {test: 'penColour(\'#',
-  type: 'draw_colour',
-  values: {'COLOUR': '<block type="colour_picker"></block>'}};
-
-// This tests for and creates a "set colour" block with a random colour
-// generator as its input.
-var SET_COLOUR_RANDOM = {test: 'penColour(colour_random',
-  type: 'draw_colour',
-  values: {'COLOUR': '<block type="colour_random"></block>'}};
-
-/**
- * Creates a required block specification for defining a function with an
- * argument.  Unlike the other functions to create required blocks, this
- * is defined outside of Turtle.setBlocklyAppConstants because it is accessed
- * when checking for a procedure on levels 8-9 of Turtle 3.
- * @param {string} func_name The name of the function.
- * @param {string} arg_name The name of the single argument.
- * @return A required block specification that tests for a call of the
- *     specified function with the specified argument name.  If not present,
- *     this contains the information to create such a block for display.
- */
-var defineWithArg = function(func_name, arg_name) {
-  return {
-    test: function(block) {
-      return block.type == 'procedures_defnoreturn' &&
-          block.getTitleValue('NAME') == func_name &&
-          block.arguments_ && block.arguments_.length &&
-          block.arguments_[0] == arg_name;
-    },
-    type: 'procedures_defnoreturn',
-    titles: {'NAME': func_name},
-    extra: '<mutation><arg name="' + arg_name + '"></arg></mutation>'
-  };
-};
+var req = require('./requiredBlocks');
+var makeMathNumber = req.makeMathNumber;
+var simpleBlock = req.simpleBlock;
+var repeat = req.repeat;
+var drawASquare = req.drawASquare;
+var drawASnowman = req.drawASnowman;
+var MOVE_FORWARD_INLINE = req.MOVE_FORWARD_INLINE;
+var MOVE_FORWARD_OR_BACKWARD_INLINE = req.MOVE_FORWARD_OR_BACKWARD_INLINE;
+var moveForwardInline = req.moveForwardInline;
+var MOVE_BACKWARD_INLINE = req.MOVE_BACKWARD_INLINE;
+var turnRightRestricted = req.turnRightRestricted;
+var turnRightByConstant = req.turnRightByConstant;
+var turnRight = req.turnRight;
+var turnLeft = req.turnLeft;
+var move = req.move;
+var drawTurnRestricted = req.drawTurnRestricted;
+var drawTurn = req.drawTurn;
+var SET_COLOUR_PICKER = req.SET_COLOUR_PICKER;
+var SET_COLOUR_RANDOM = req.SET_COLOUR_RANDOM;
+var defineWithArg = req.defineWithArg;
 
 /**
  * Information about level-specific requirements.
@@ -3620,6 +3430,7 @@ module.exports = {
     ideal: 5,
     toolbox: toolbox(1, 9),
     startBlocks: startBlocks(1, 9),
+    requiredBlocks: [],
     freePlay: false,
     sliderSpeed: 0.9,
     permittedErrors: 10,
@@ -3630,6 +3441,7 @@ module.exports = {
     answer: answer(1, 10),
     toolbox: toolbox(1, 10),
     startBlocks: startBlocks(1, 10),
+    requiredBlocks: [],
     freePlay: true
   },
   // Formerly Page 2.
@@ -4242,7 +4054,7 @@ module.exports = {
   }
 };
 
-},{"../../locale/sr_sp/turtle":33,"../level_base":7,"./answers":20,"./core":24,"./startBlocks.xml":27,"./toolbox.xml":28}],26:[function(require,module,exports){
+},{"../../locale/sr_sp/turtle":34,"../level_base":7,"./answers":20,"./core":24,"./requiredBlocks":27,"./startBlocks.xml":28,"./toolbox.xml":29}],26:[function(require,module,exports){
 var appMain = require('../appMain');
 window.Turtle = require('./turtle');
 var blocks = require('./blocks');
@@ -4255,7 +4067,240 @@ window.turtleMain = function(options) {
   appMain(window.Turtle, levels, options);
 };
 
-},{"../appMain":1,"../skins":8,"./blocks":22,"./levels":25,"./turtle":29}],27:[function(require,module,exports){
+},{"../appMain":1,"../skins":8,"./blocks":22,"./levels":25,"./turtle":30}],27:[function(require,module,exports){
+/**
+ * Sets BlocklyApp constants that depend on the page and level.
+ * This encapsulates many functions used for BlocklyApps.REQUIRED_BLOCKS.
+ * In the future, some of these may be moved to common.js.
+ */
+
+// The internal functions are used within BlocklyApps.REQUIRED_BLOCKS.
+// I've included jsdoc for some that I think would be good candidates
+// for moving to common.js.
+
+/**
+ * Create the textual XML for a math_number block.
+ * @param {number|string} number The numeric amount, expressed as a
+ *     number or string.  Non-numeric strings may also be specified,
+ *     such as '???'.
+ * @return {string} The textual representation of a math_number block.
+ */
+var makeMathNumber = function(number) {
+    return '<block type="math_number"><title name="NUM">' +
+          number + '</title></block>';
+};
+
+/**
+ * Generate a required blocks dictionary for a simple block that does not
+ * have any parameters or values.
+ * @param {string} block_type The block type.
+ * @return {Object} A required blocks dictionary able to check for and
+ *     generate the specified block.
+ */
+var simpleBlock = function(block_type) {
+  return {test: function(block) {return block.type == block_type; },
+          type: block_type};
+};
+
+/**
+ * Generate a required blocks dictionary for a repeat loop.  This does not
+ * test for the specified repeat count but includes it in the suggested block.
+ * @param {number|string} count The suggested repeat count.
+ * @return {Object} A required blocks dictionary able to check for and
+ *     generate the specified block.
+ */
+var repeat = function(count) {
+  // This checks for a controls_repeat block rather than looking for 'for',
+  // since the latter may be generated by Turtle 2's draw_a_square.
+  return {test: function(block) {return block.type == 'controls_repeat';},
+          type: 'controls_repeat', titles: {'TIMES': count}};
+};
+
+// The remaining internal functions are specific to Turtle.
+
+// This tests for and creates a draw_a_square block on page 2.
+function drawASquare(number) {
+  return {test: 'draw_a_square',
+          type: 'draw_a_square',
+          values: {'VALUE': makeMathNumber(number)}};
+}
+
+// This tests for and creates a draw_a_snowman block on page 2.
+function drawASnowman(number) {
+  return {test: 'draw_a_snowman',
+          type: 'draw_a_snowman',
+          values: {'VALUE': makeMathNumber(number)}};
+}
+
+// This tests for and creates the limited "move forward" block used on the
+// earlier levels of the tutorial.
+var MOVE_FORWARD_INLINE = {test: 'moveForward', type: 'draw_move_by_constant'};
+
+// allow move forward or backward, but show forward block if they've done neither
+var MOVE_FORWARD_OR_BACKWARD_INLINE = {
+  test: function(block) {
+    return block.type == 'draw_move_by_constant';
+  },
+  type: 'draw_move_by_constant'
+};
+
+// This tests for and creates the limited "move forward" block used on the
+// earlier levels of the tutorial with the given pixel number.
+var moveForwardInline = function(pixels) {
+  return {test: 'moveForward',
+          type: 'draw_move_by_constant',
+          titles: {'VALUE': pixels}};
+};
+
+// This tests for and creates the limited "move forward" block used on the
+// earlier levels of the tutorial.
+var MOVE_BACKWARD_INLINE = {test: 'moveBackward',
+                            type: 'draw_move_by_constant',
+                            titles: {'DIR': 'moveBackward'}};
+
+// This tests for a [right] draw_turn_by_constant_restricted block
+// and creates the block with the specified/recommended number of degrees as
+// its input.  The restricted turn is used on the earlier levels of the
+// tutorial.
+var turnRightRestricted = function(degrees) {
+  return {test: 'turnRight(',
+          type: 'draw_turn_by_constant_restricted',
+          titles: {'VALUE': degrees}};
+};
+
+// This tests for and creates a [right] draw_turn_by_constant block
+// with the specified number of degrees as its input.
+var turnRightByConstant = function(degrees) {
+  return {
+    test: function(block) {
+      return block.type == 'draw_turn_by_constant' &&
+          (degrees === '???' ||
+           Blockly.JavaScript.valueToCode(
+             block, 'VALUE', Blockly.JavaScript.ORDER_NONE) == degrees);
+    },
+    type: 'draw_turn_by_constant',
+    titles: {'VALUE': degrees}};
+};
+
+// This tests for and creates a [right] draw_turn block with the specified
+// number of degrees as its input.  For the earliest levels, the method
+// turnRightRestricted should be used instead.
+var turnRight = function(degrees) {
+  return {
+    test: function(block) {
+      return block.type == 'draw_turn' &&
+        block.getTitleValue('DIR') == 'turnRight';
+      },
+    type: 'draw_turn',
+    titles: {'DIR': 'turnRight'},
+    values: {'VALUE': makeMathNumber(degrees)}
+  };
+};
+
+// This tests for and creates a left draw_turn block with the specified
+// number of degrees as its input.  This method is not appropriate for the
+// earliest levels of the tutorial, which do not provide draw_turn.
+var turnLeft = function(degrees) {
+  return {
+    test: function(block) {
+      return block.type == 'draw_turn' &&
+        block.getTitleValue('DIR') == 'turnLeft';
+      },
+    type: 'draw_turn',
+    titles: {'DIR': 'turnLeft'},
+    values: {'VALUE': makeMathNumber(degrees)}
+  };
+};
+
+// This tests for any draw_move block and, if not present, creates
+// one with the specified distance.
+var move = function(distance) {
+  return {test: function(block) {return block.type == 'draw_move'; },
+          type: 'draw_move',
+          values: {'VALUE': makeMathNumber(distance)}};
+};
+
+// This tests for and creates a draw_turn_by_constant_restricted block.
+var drawTurnRestricted = function(degrees) {
+  return {
+    test: function(block) {
+      return block.type == 'draw_turn_by_constant_restricted';
+    },
+    type: 'draw_turn_by_constant_restricted',
+    titles: {'VALUE': degrees}
+  };
+};
+
+// This tests for and creates a draw_turn block.
+var drawTurn = function() {
+  return {
+    test: function(block) {
+      return block.type == 'draw_turn';
+    },
+    type: 'draw_turn',
+    values: {'VALUE': makeMathNumber('???')}
+  };
+};
+
+// This tests for and creates a "set colour" block with a colour picker
+// as its input.
+var SET_COLOUR_PICKER = {test: 'penColour(\'#',
+  type: 'draw_colour',
+  values: {'COLOUR': '<block type="colour_picker"></block>'}};
+
+// This tests for and creates a "set colour" block with a random colour
+// generator as its input.
+var SET_COLOUR_RANDOM = {test: 'penColour(colour_random',
+  type: 'draw_colour',
+  values: {'COLOUR': '<block type="colour_random"></block>'}};
+
+/**
+ * Creates a required block specification for defining a function with an
+ * argument.  Unlike the other functions to create required blocks, this
+ * is defined outside of Turtle.setBlocklyAppConstants because it is accessed
+ * when checking for a procedure on levels 8-9 of Turtle 3.
+ * @param {string} func_name The name of the function.
+ * @param {string} arg_name The name of the single argument.
+ * @return A required block specification that tests for a call of the
+ *     specified function with the specified argument name.  If not present,
+ *     this contains the information to create such a block for display.
+ */
+var defineWithArg = function(func_name, arg_name) {
+  return {
+    test: function(block) {
+      return block.type == 'procedures_defnoreturn' &&
+          block.getTitleValue('NAME') == func_name &&
+          block.arguments_ && block.arguments_.length &&
+          block.arguments_[0] == arg_name;
+    },
+    type: 'procedures_defnoreturn',
+    titles: {'NAME': func_name},
+    extra: '<mutation><arg name="' + arg_name + '"></arg></mutation>'
+  };
+};
+
+module.exports = {
+  makeMathNumber: makeMathNumber,
+  simpleBlock: simpleBlock,
+  repeat: repeat,
+  drawASquare: drawASquare,
+  drawASnowman: drawASnowman,
+  MOVE_FORWARD_INLINE: MOVE_FORWARD_INLINE,
+  MOVE_FORWARD_OR_BACKWARD_INLINE: MOVE_FORWARD_OR_BACKWARD_INLINE,
+  moveForwardInline: moveForwardInline,
+  MOVE_BACKWARD_INLINE: MOVE_BACKWARD_INLINE,
+  turnRightRestricted: turnRightRestricted,
+  turnRightByConstant: turnRightByConstant,
+  turnRight: turnRight,
+  turnLeft: turnLeft,
+  move: move,
+  drawTurnRestricted: drawTurnRestricted,
+  drawTurn: drawTurn,
+  SET_COLOUR_PICKER: SET_COLOUR_PICKER,
+  SET_COLOUR_RANDOM: SET_COLOUR_RANDOM,
+  defineWithArg: defineWithArg
+};
+},{}],28:[function(require,module,exports){
 module.exports= (function() {
   var t = function anonymous(locals, filters, escape, rethrow) {
 escape = escape || function (html){
@@ -4322,7 +4367,7 @@ return buf.join('');
     return t(locals, require("ejs").filters);
   }
 }());
-},{"../../locale/sr_sp/turtle":33,"ejs":34}],28:[function(require,module,exports){
+},{"../../locale/sr_sp/turtle":34,"ejs":35}],29:[function(require,module,exports){
 module.exports= (function() {
   var t = function anonymous(locals, filters, escape, rethrow) {
 escape = escape || function (html){
@@ -4446,7 +4491,7 @@ return buf.join('');
     return t(locals, require("ejs").filters);
   }
 }());
-},{"../../locale/sr_sp/turtle":33,"ejs":34}],29:[function(require,module,exports){
+},{"../../locale/sr_sp/turtle":34,"ejs":35}],30:[function(require,module,exports){
 /**
  * Blockly Demo: Turtle Graphics
  *
@@ -5143,7 +5188,7 @@ var getFeedbackImage = function() {
       feedbackCanvas.toDataURL("image/png").split(',')[1]);
 };
 
-},{"../../locale/sr_sp/turtle":33,"../base":2,"../codegen":4,"../skins":8,"../templates/page.html":16,"./api":21,"./controls.html":23,"./core":24,"./levels":25}],30:[function(require,module,exports){
+},{"../../locale/sr_sp/turtle":34,"../base":2,"../codegen":4,"../skins":8,"../templates/page.html":16,"./api":21,"./controls.html":23,"./core":24,"./levels":25}],31:[function(require,module,exports){
 exports.shallowCopy = function(source) {
   var result = {};
   for (var prop in source) {
@@ -5175,7 +5220,7 @@ exports.escapeHtml = function(unsafe) {
     .replace(/'/g, "&#039;");
 };
 
-},{}],31:[function(require,module,exports){
+},{}],32:[function(require,module,exports){
 // Serializes an XML DOM node to a string.
 exports.serialize = function(node) {
   var serializer = new XMLSerializer();
@@ -5202,7 +5247,7 @@ exports.parseElement = function(text) {
   return element;
 };
 
-},{}],32:[function(require,module,exports){
+},{}],33:[function(require,module,exports){
 var MessageFormat = require("messageformat");MessageFormat.locale.sr = function (n) {
   if ((n % 10) == 1 && (n % 100) != 11) {
     return 'one';
@@ -5338,7 +5383,7 @@ exports.tryHOC = function(d){return "Пробај Сат Програмирањ�
 exports.signup = function(d){return "Региструј се за почетни курс"};
 
 
-},{"messageformat":40}],33:[function(require,module,exports){
+},{"messageformat":41}],34:[function(require,module,exports){
 var MessageFormat = require("messageformat");MessageFormat.locale.sr = function (n) {
   if ((n % 10) == 1 && (n % 100) != 11) {
     return 'one';
@@ -5448,7 +5493,7 @@ exports.widthTooltip = function(d){return "Менја ширину оловке.
 exports.wrongColour = function(d){return "Ваша је слика погрешне боје. За пузлу, мора бити %1."};
 
 
-},{"messageformat":40}],34:[function(require,module,exports){
+},{"messageformat":41}],35:[function(require,module,exports){
 
 /*!
  * EJS
@@ -5807,7 +5852,7 @@ if (require.extensions) {
   });
 }
 
-},{"./filters":35,"./utils":36,"fs":37,"path":39}],35:[function(require,module,exports){
+},{"./filters":36,"./utils":37,"fs":38,"path":40}],36:[function(require,module,exports){
 /*!
  * EJS - Filters
  * Copyright(c) 2010 TJ Holowaychuk <tj@vision-media.ca>
@@ -6010,7 +6055,7 @@ exports.json = function(obj){
   return JSON.stringify(obj);
 };
 
-},{}],36:[function(require,module,exports){
+},{}],37:[function(require,module,exports){
 
 /*!
  * EJS
@@ -6036,9 +6081,9 @@ exports.escape = function(html){
 };
  
 
-},{}],37:[function(require,module,exports){
-
 },{}],38:[function(require,module,exports){
+
+},{}],39:[function(require,module,exports){
 // shim for using process in browser
 
 var process = module.exports = {};
@@ -6093,7 +6138,7 @@ process.chdir = function (dir) {
     throw new Error('process.chdir is not supported');
 };
 
-},{}],39:[function(require,module,exports){
+},{}],40:[function(require,module,exports){
 (function (process){
 // Copyright Joyent, Inc. and other Node contributors.
 //
@@ -6321,7 +6366,7 @@ var substr = 'ab'.substr(-1) === 'b'
 ;
 
 }).call(this,require("/home/ubuntu/tutorials-ci/blockly/node_modules/grunt-browserify/node_modules/browserify/node_modules/insert-module-globals/node_modules/process/browser.js"))
-},{"/home/ubuntu/tutorials-ci/blockly/node_modules/grunt-browserify/node_modules/browserify/node_modules/insert-module-globals/node_modules/process/browser.js":38}],40:[function(require,module,exports){
+},{"/home/ubuntu/tutorials-ci/blockly/node_modules/grunt-browserify/node_modules/browserify/node_modules/insert-module-globals/node_modules/process/browser.js":39}],41:[function(require,module,exports){
 /**
  * messageformat.js
  *
