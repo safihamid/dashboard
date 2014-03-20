@@ -844,7 +844,7 @@ var getIdealBlockNumberMsg = function() {
       msg.infinity() : BlocklyApps.IDEAL_BLOCK_NUM;
 };
 
-},{"../locale/ru_ru/common":37,"./builder":3,"./dom":5,"./feedback.js":6,"./slider":24,"./templates/buttons.html":26,"./templates/instructions.html":28,"./templates/learn.html":29,"./templates/makeYourOwn.html":30,"./utils":35,"./xml":36}],3:[function(require,module,exports){
+},{"../locale/ru_ru/common":38,"./builder":3,"./dom":5,"./feedback.js":6,"./slider":25,"./templates/buttons.html":27,"./templates/instructions.html":29,"./templates/learn.html":30,"./templates/makeYourOwn.html":31,"./utils":36,"./xml":37}],3:[function(require,module,exports){
 var feedback = require('./feedback.js');
 var dom = require('./dom.js');
 // Builds the dom to get more info from the user. After user enters info
@@ -871,7 +871,7 @@ exports.builderForm = function(onAttemptCallback) {
   dialog.show({ backdrop: 'static' });
 };
 
-},{"./dom.js":5,"./feedback.js":6,"./templates/builder.html":25}],4:[function(require,module,exports){
+},{"./dom.js":5,"./feedback.js":6,"./templates/builder.html":26}],4:[function(require,module,exports){
 var INFINITE_LOOP_TRAP = '  BlocklyApps.checkTimeout();\n';
 var INFINITE_LOOP_TRAP_RE =
     new RegExp(INFINITE_LOOP_TRAP.replace(/\(.*\)/, '\\(.*\\)'), 'g');
@@ -1743,7 +1743,7 @@ var generateXMLForBlocks = function(blocks) {
 };
 
 
-},{"../locale/ru_ru/common":37,"./codegen":4,"./dom":5,"./templates/buttons.html":26,"./templates/code.html":27,"./templates/readonly.html":32,"./templates/showCode.html":33,"./templates/trophy.html":34,"./utils":35}],7:[function(require,module,exports){
+},{"../locale/ru_ru/common":38,"./codegen":4,"./dom":5,"./templates/buttons.html":27,"./templates/code.html":28,"./templates/readonly.html":33,"./templates/showCode.html":34,"./templates/trophy.html":35,"./utils":36}],7:[function(require,module,exports){
 // Functions for checking required blocks.
 
 /**
@@ -1976,7 +1976,7 @@ exports.notFinished = function() {
   return !Maze.checkSuccess();
 };
 
-},{"./tiles":17}],9:[function(require,module,exports){
+},{"./tiles":18}],9:[function(require,module,exports){
 /**
  * Blockly Demo: Maze
  *
@@ -2343,7 +2343,7 @@ exports.install = function(blockly, skin) {
 
 };
 
-},{"../../locale/ru_ru/maze":38,"../codegen":4}],10:[function(require,module,exports){
+},{"../../locale/ru_ru/maze":39,"../codegen":4}],10:[function(require,module,exports){
 var levelBase = require('../level_base');
 var Direction = require('./tiles').Direction;
 var msg = require('../../locale/ru_ru/maze');
@@ -3454,46 +3454,6 @@ module.exports = {
     ]
   },
 
-  '2_11': {
-    'toolbox': toolbox(2, 11),
-    'startBlocks': startBlocks(2, 11),
-    'ideal': 25,
-    'scale': {
-      'stepSpeed': 3
-    },
-    'map': [
-      [ 1, 1, 1, 1, 1, 1, 1, 1 ],
-      [ 1, 1, 1, 1, 1, 1, 1, 1 ],
-      [ 1, 1, 1, 1, 1, 1, 1, 1 ],
-      [ 1, 1, 1, 1, 1, 1, 1, 1 ],
-      [ 1, 1, 1, 1, 1, 1, 1, 1 ],
-      [ 1, 1, 1, 1, 1, 1, 1, 1 ],
-      [ 1, 1, 1, 1, 1, 1, 1, 1 ],
-      [ 2, 4, 1, 1, 4, 1, 4, 1 ]
-    ],
-    'startDirection': Direction.EAST,
-    'initialDirt': [
-      [ 0, 0, 0, 0, 0, 0, 0, 0 ],
-      [ 0, 0, 0, 0, 0, 0, 0, 0 ],
-      [ 0, 0, 0, 0, 0, 0, 0, 0 ],
-      [ 0, 0, 0, 0, 0, 0, 0, 0 ],
-      [ 0, 0, 0, 0, 0, 0, 0, 0 ],
-      [ 0, 0, 0, 0, 0, 0, 0, 0 ],
-      [ 0, 0, 0, 0, 0, 0, 0, 0 ],
-      [ 1, 0, 1, 1, 0, 1, 0, 1 ]
-    ],
-    'finalDirt': [
-      [ 0, 0, 0, 0, 0, 0, 0, 0 ],
-      [ 0, 0, 0, 0, 0, 0, 0, 0 ],
-      [ 0, 0, 0, 0, 0, 0, 0, 0 ],
-      [ 0, 0, 0, 0, 0, 0, 0, 0 ],
-      [ 0, 0, 0, 0, 0, 0, 0, 0 ],
-      [ 0, 0, 0, 0, 0, 0, 0, 0 ],
-      [ 0, 0, 0, 0, 0, 0, 0, 0 ],
-      [ 0, 0, 0, 0, 0, 0, 0, 0 ]
-    ]
-  },
-
   // Page 3 to Debug
 
   'debug_seq_1': {
@@ -3884,7 +3844,7 @@ module.exports = {
   }
 };
 
-},{"../../locale/ru_ru/maze":38,"../level_base":7,"./karelStartBlocks.xml":11,"./tiles":17,"./toolboxes/karel1.xml":18,"./toolboxes/karel2.xml":19,"./toolboxes/karel3.xml":20}],11:[function(require,module,exports){
+},{"../../locale/ru_ru/maze":39,"../level_base":7,"./karelStartBlocks.xml":11,"./tiles":18,"./toolboxes/karel1.xml":19,"./toolboxes/karel2.xml":20,"./toolboxes/karel3.xml":21}],11:[function(require,module,exports){
 module.exports= (function() {
   var t = function anonymous(locals, filters, escape, rethrow) {
 escape = escape || function (html){
@@ -3916,9 +3876,10 @@ return buf.join('');
     return t(locals, require("ejs").filters);
   }
 }());
-},{"../../locale/ru_ru/maze":38,"ejs":39}],12:[function(require,module,exports){
+},{"../../locale/ru_ru/maze":39,"ejs":40}],12:[function(require,module,exports){
 var Direction = require('./tiles').Direction;
 var karelLevels = require('./karelLevels');
+var reqBlocks = require('./requiredBlocks');
 
 //TODO: Fix hacky level-number-dependent toolbox.
 var toolbox = function(page, level) {
@@ -3936,245 +3897,10 @@ var startBlocks = function(page, level) {
   });
 };
 
-
 /*
  * Configuration for all levels.
  */
 module.exports = {
-
-  // Formerly page 1
-
-  '1_1': {
-    'toolbox': toolbox(1, 1),
-    'ideal': 2,
-    'requiredBlocks': [
-      [{'test': 'moveForward', 'type': 'maze_moveForward'}]
-    ],
-    'scale': {
-      'snapRadius': 2,
-      'stepSpeed': 12
-    },
-    'startDirection': Direction.EAST,
-    'map': [
-      [0, 0, 0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0, 0, 0],
-      [0, 0, 2, 1, 3, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0, 0, 0]
-    ],
-    'singleTopBlock': true
-  },
-  '1_2': {
-    'toolbox': toolbox(1, 2),
-    'ideal': 5,
-    'requiredBlocks': [
-      [{'test': 'moveForward', 'type': 'maze_moveForward'}],
-      [{'test': 'turnLeft', 'type': 'maze_turn', 'titles': {'DIR': 'turnLeft'}}],
-      [{'test': 'turnRight', 'type': 'maze_turn', 'titles': {'DIR': 'turnRight'}}]
-    ],
-    'scale': {
-      'stepSpeed': 10
-    },
-    'startDirection': Direction.EAST,
-    'map': [
-      [0, 0, 0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 1, 3, 0, 0, 0],
-      [0, 0, 2, 1, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0, 0, 0]
-    ],
-    'singleTopBlock': true
-  },
-  '1_3': {
-    'toolbox': toolbox(1, 3),
-    'ideal': 2,
-    'requiredBlocks': [
-      [{'test': 'while', 'type': 'maze_forever'}],
-      [{'test': 'moveForward', 'type': 'maze_moveForward'}]
-    ],
-    'scale': {
-      'stepSpeed': 8
-    },
-    'startDirection': Direction.EAST,
-    'map': [
-      [0, 0, 0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0, 0, 0],
-      [0, 2, 1, 1, 1, 1, 3, 0],
-      [0, 0, 0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0, 0, 0]
-    ]
-  },
-  '1_4': {
-    'toolbox': toolbox(1, 4),
-    'ideal': 5,
-    'requiredBlocks': [
-      [{'test': 'while', 'type': 'maze_forever'}],
-      [{'test': 'turnLeft', 'type': 'maze_turn', 'titles': {'DIR': 'turnLeft'}}],
-      [{'test': 'turnRight', 'type': 'maze_turn', 'titles': {'DIR': 'turnRight'}}],
-      [{'test': 'moveForward', 'type': 'maze_moveForward'}]
-    ],
-    'scale': {
-      'stepSpeed': 6
-    },
-    'startDirection': Direction.EAST,
-    /**
-     *  Note, the path continues past the start and the goal in both directions.
-     *  This is intentional so kids see the maze is about getting from the start
-     *  to the finish and not necessarily about moving over every part of the maze,
-     *  'mowing the lawn' as Neil calls it.
-     */
-    'map': [
-      [0, 0, 0, 0, 0, 0, 0, 1],
-      [0, 0, 0, 0, 0, 0, 1, 1],
-      [0, 0, 0, 0, 0, 1, 3, 0],
-      [0, 0, 0, 0, 1, 1, 0, 0],
-      [0, 0, 0, 1, 1, 0, 0, 0],
-      [0, 0, 1, 1, 0, 0, 0, 0],
-      [0, 2, 1, 0, 0, 0, 0, 0],
-      [1, 1, 0, 0, 0, 0, 0, 0]
-    ]
-  },
-  '1_5': {
-    'toolbox': toolbox(1, 5),
-    'ideal': 4,
-    'requiredBlocks': [
-      [{'test': 'while', 'type': 'maze_forever'}],
-      [{'test': 'isPathLeft', 'type': 'maze_if', 'titles': {'DIR': 'isPathLeft'}}],
-      [{'test': 'turnLeft', 'type': 'maze_turn', 'titles': {'DIR': 'turnLeft'}}],
-      [{'test': 'moveForward', 'type': 'maze_moveForward'}]
-    ],
-    'scale': {
-      'stepSpeed': 6
-    },
-    'startDirection': Direction.EAST,
-    'map': [
-      [0, 0, 0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 3, 0, 0],
-      [0, 0, 0, 0, 0, 1, 0, 0],
-      [0, 0, 0, 0, 0, 1, 0, 0],
-      [0, 0, 0, 0, 0, 1, 0, 0],
-      [0, 0, 0, 0, 0, 1, 0, 0],
-      [0, 0, 0, 2, 1, 1, 0, 0],
-      [0, 0, 0, 0, 0, 0, 0, 0]
-    ]
-  },
-  '1_6': {
-    'toolbox': toolbox(1, 6),
-    'ideal': 4,
-    'requiredBlocks': [
-      [{'test': 'while', 'type': 'maze_forever'}],
-      [{'test': 'isPathLeft', 'type': 'maze_if', 'titles': {'DIR': 'isPathLeft'}}],
-      [{'test': 'turnLeft', 'type': 'maze_turn', 'titles': {'DIR': 'turnLeft'}}],
-      [{'test': 'moveForward', 'type': 'maze_moveForward'}]
-    ],
-    'startDirection': Direction.EAST,
-    'map': [
-      [0, 0, 0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0, 0, 0],
-      [0, 1, 1, 1, 1, 1, 0, 0],
-      [0, 1, 0, 0, 0, 1, 0, 0],
-      [0, 1, 1, 3, 0, 1, 0, 0],
-      [0, 0, 0, 0, 0, 1, 0, 0],
-      [0, 2, 1, 1, 1, 1, 0, 0],
-      [0, 0, 0, 0, 0, 0, 0, 0]
-    ]
-  },
-  '1_7': {
-    'toolbox': toolbox(1, 7),
-    'ideal': 4,
-    'requiredBlocks': [
-      [{'test': 'while', 'type': 'maze_forever'}],
-      [{'test': 'isPathRight', 'type': 'maze_if', 'titles': {'DIR': 'isPathRight'}}],
-      [{'test': 'moveForward', 'type': 'maze_moveForward'}]
-    ],
-    'startDirection': Direction.EAST,
-    'map': [
-      [0, 0, 0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0, 0, 0],
-      [0, 2, 1, 1, 1, 1, 0, 0],
-      [0, 0, 0, 0, 0, 1, 0, 0],
-      [0, 1, 1, 3, 0, 1, 0, 0],
-      [0, 1, 0, 0, 0, 1, 0, 0],
-      [0, 1, 1, 1, 1, 1, 0, 0],
-      [0, 0, 0, 0, 0, 0, 0, 0]
-    ]
-  },
-  '1_8': {
-    'toolbox': toolbox(1, 8),
-    'ideal': 6,
-    'requiredBlocks': [
-      [{'test': 'while', 'type': 'maze_forever'}],
-      [{'test': 'isPathRight', 'type': 'maze_if', 'titles': {'DIR': 'isPathRight'}}],
-      [{'test': 'isPathLeft', 'type': 'maze_if', 'titles': {'DIR': 'isPathLeft'}}],
-      [{'test': 'turnLeft', 'type': 'maze_turn', 'titles': {'DIR': 'turnLeft'}}],
-      [{'test': 'turnRight', 'type': 'maze_turn', 'titles': {'DIR': 'turnRight'}}],
-      [{'test': 'moveForward', 'type': 'maze_moveForward'}]
-    ],
-    'startDirection': Direction.EAST,
-    'map': [
-      [0, 0, 0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0, 0, 0],
-      [0, 1, 1, 1, 1, 0, 0, 0],
-      [0, 1, 0, 0, 1, 1, 0, 0],
-      [0, 1, 1, 1, 0, 1, 0, 0],
-      [0, 0, 0, 1, 0, 1, 0, 0],
-      [0, 2, 1, 1, 0, 3, 0, 0],
-      [0, 0, 0, 0, 0, 0, 0, 0]
-    ]
-  },
-  '1_9': {
-    'toolbox': toolbox(1, 9),
-    'ideal': 6,
-    'requiredBlocks': [
-      [{'test': 'while', 'type': 'maze_forever'}],
-      [{'test': 'isPathForward', 'type': 'maze_ifElse',
-                                'titles': {'DIR': 'isPathForward'}}],
-      [{'test': 'turnLeft', 'type': 'maze_turn', 'titles': {'DIR': 'turnLeft'}}],
-      [{'test': 'moveForward', 'type': 'maze_moveForward'}]
-    ],
-    'startDirection': Direction.EAST,
-    'map': [
-      [0, 0, 0, 0, 0, 0, 0, 0],
-      [0, 1, 1, 1, 1, 1, 0, 0],
-      [0, 0, 1, 0, 0, 0, 0, 0],
-      [3, 1, 1, 1, 1, 1, 1, 0],
-      [0, 1, 0, 1, 0, 1, 1, 0],
-      [1, 1, 1, 1, 1, 0, 1, 0],
-      [0, 1, 0, 1, 0, 2, 1, 0],
-      [0, 0, 0, 0, 0, 0, 0, 0]
-    ]
-  },
-  '1_10': {
-    'toolbox': toolbox(1, 10),
-    'ideal': 5,
-    'requiredBlocks': [
-      [{'test': 'while', 'type': 'maze_forever'}],
-      [{'test': 'isPathForward', 'type': 'maze_ifElse',
-                                'titles': {'DIR': 'isPathForward'}}],
-      [{'test': 'turnRight', 'type': 'maze_turn', 'titles': {'DIR': 'turnRight'}}],
-      [{'test': 'moveForward', 'type': 'maze_moveForward'}]
-    ],
-    'startDirection': Direction.EAST,
-    'map': [
-      [0, 0, 0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0, 0, 0],
-      [0, 2, 1, 1, 1, 1, 1, 0],
-      [0, 0, 1, 1, 0, 1, 1, 0],
-      [0, 0, 0, 0, 0, 0, 1, 0],
-      [0, 0, 1, 1, 0, 1, 1, 0],
-      [0, 1, 3, 1, 1, 1, 1, 0],
-      [0, 0, 0, 0, 0, 0, 0, 0]
-    ]
-  },
 
   // Formerly Page 2
 
@@ -4182,7 +3908,7 @@ module.exports = {
     'toolbox': toolbox(2, 1),
     'ideal': 3,
     'requiredBlocks': [
-      [{'test': 'moveForward', 'type': 'maze_moveForward'}],
+      [reqBlocks.MOVE_FORWARD],
     ],
     'startDirection': Direction.EAST,
     'map': [
@@ -4201,7 +3927,7 @@ module.exports = {
     'toolbox': toolbox(2, 2),
     'ideal': 2,
     'requiredBlocks': [
-      [{'test': 'moveForward', 'type': 'maze_moveForward'}],
+      [reqBlocks.MOVE_FORWARD],
     ],
     'startDirection': Direction.SOUTH,
     'map': [
@@ -4220,10 +3946,8 @@ module.exports = {
     'toolbox': toolbox(2, 3),
     'ideal': 4,
     'requiredBlocks': [
-      [{'test': 'moveForward', 'type': 'maze_moveForward'}],
-      [{'test': 'turnRight',
-        'type': 'maze_turn',
-        'titles': {'DIR': 'turnRight'}}]
+      [reqBlocks.MOVE_FORWARD],
+      [reqBlocks.TURN_RIGHT]
     ],
     'startDirection': Direction.EAST,
     'map': [
@@ -4242,13 +3966,9 @@ module.exports = {
     'toolbox': toolbox(2, 3),
     'ideal': 5,
     'requiredBlocks': [
-      [{'test': 'moveForward', 'type': 'maze_moveForward'}],
-      [{'test': 'turnLeft',
-        'type': 'maze_turn',
-        'titles': {'DIR': 'turnLeft'}}],
-      [{'test': 'turnRight',
-        'type': 'maze_turn',
-        'titles': {'DIR': 'turnRight'}}]
+      [reqBlocks.MOVE_FORWARD],
+      [reqBlocks.TURN_LEFT],
+      [reqBlocks.TURN_RIGHT]
     ],
     'startDirection': Direction.EAST,
     'map': [
@@ -4267,13 +3987,9 @@ module.exports = {
     'toolbox': toolbox(2, 4),
     'ideal': 8,
     'requiredBlocks': [
-      [{'test': 'moveForward', 'type': 'maze_moveForward'}],
-      [{'test': 'turnLeft',
-       'type': 'maze_turn',
-       'titles': {'DIR': 'turnLeft'}}],
-      [{'test': 'turnRight',
-        'type': 'maze_turn',
-        'titles': {'DIR': 'turnRight'}}]
+      [reqBlocks.MOVE_FORWARD],
+      [reqBlocks.TURN_LEFT],
+      [reqBlocks.TURN_RIGHT]
     ],
     'startDirection': Direction.EAST,
     'map': [
@@ -4291,8 +4007,8 @@ module.exports = {
     'toolbox': toolbox(2, 5),
     'ideal': 2,
     'requiredBlocks': [
-      [{'test': 'moveForward', 'type': 'maze_moveForward'}],
-      [{'test': 'for', 'type': 'controls_repeat', titles: {TIMES: '???'}}]
+      [reqBlocks.MOVE_FORWARD],
+      [reqBlocks.FOR_LOOP]
     ],
     'startDirection': Direction.EAST,
     'map': [
@@ -4310,11 +4026,9 @@ module.exports = {
     'toolbox': toolbox(2, 6),
     'ideal': 3,
     'requiredBlocks': [
-      [{'test': 'turnRight',
-        'type': 'maze_turn',
-        'titles': {'DIR': 'turnRight'}}],
-      [{'test': 'moveForward', 'type': 'maze_moveForward'}],
-      [{'test': 'for', 'type': 'controls_repeat', titles: {TIMES: '???'}}]
+      [reqBlocks.TURN_RIGHT],
+      [reqBlocks.MOVE_FORWARD],
+      [reqBlocks.FOR_LOOP]
     ],
     'startDirection': Direction.EAST,
     'map': [
@@ -4332,11 +4046,9 @@ module.exports = {
     'toolbox': toolbox(2, 7),
     'ideal': 5,
     'requiredBlocks': [
-      [{'test': 'moveForward', 'type': 'maze_moveForward'}],
-      [{'test': 'for', 'type': 'controls_repeat', titles: {TIMES: '???'}}],
-      [{'test': 'turnLeft',
-        'type': 'maze_turn',
-        'titles': {'DIR': 'turnLeft'}}]
+      [reqBlocks.MOVE_FORWARD],
+      [reqBlocks.FOR_LOOP],
+      [reqBlocks.TURN_LEFT]
     ],
     'startDirection': Direction.EAST,
     'map': [
@@ -4354,11 +4066,9 @@ module.exports = {
     'toolbox': toolbox(2, 8),
     'ideal': 4,
     'requiredBlocks': [
-      [{'test': 'moveForward', 'type': 'maze_moveForward'}],
-      [{'test': 'for', 'type': 'controls_repeat', titles: {TIMES: '???'}}],
-      [{'test': 'turnRight',
-        'type': 'maze_turn',
-        'titles': {'DIR': 'turnRight'}}]
+      [reqBlocks.MOVE_FORWARD],
+      [reqBlocks.FOR_LOOP],
+      [reqBlocks.TURN_RIGHT]
     ],
     'startDirection': Direction.EAST,
     'map': [
@@ -4377,8 +4087,8 @@ module.exports = {
     'toolbox': toolbox(2, 9),
     'ideal': 2,
     'requiredBlocks': [
-      [{'test': 'moveForward', 'type': 'maze_moveForward'}],
-      [{'test': 'while', 'type': 'maze_forever'}]
+      [reqBlocks.MOVE_FORWARD],
+      [reqBlocks.WHILE_LOOP]
     ],
     'startDirection': Direction.EAST,
     'map': [
@@ -4396,11 +4106,9 @@ module.exports = {
     'toolbox': toolbox(2, 10),
     'ideal': 4,
     'requiredBlocks': [
-      [{'test': 'moveForward', 'type': 'maze_moveForward'}],
-      [{'test': 'turnLeft',
-        'type': 'maze_turn',
-        'titles': {'DIR': 'turnLeft'}}],
-      [{'test': 'while', 'type': 'maze_forever'}]
+      [reqBlocks.MOVE_FORWARD],
+      [reqBlocks.TURN_LEFT],
+      [reqBlocks.WHILE_LOOP]
     ],
     'startDirection': Direction.EAST,
     'map': [
@@ -4421,14 +4129,10 @@ module.exports = {
       'stepSpeed': 3
     },
     'requiredBlocks': [
-      [{'test': 'moveForward', 'type': 'maze_moveForward'}],
-      [{'test': 'while', 'type': 'maze_forever'}],
-      [{'test': 'turnLeft',
-        'type': 'maze_turn',
-        'titles': {'DIR': 'turnLeft'}}],
-      [{'test': 'turnRight',
-        'type': 'maze_turn',
-        'titles': {'DIR': 'turnRight'}}]
+      [reqBlocks.MOVE_FORWARD],
+      [reqBlocks.WHILE_LOOP],
+      [reqBlocks.TURN_LEFT],
+      [reqBlocks.TURN_RIGHT]
     ],
     'startDirection': Direction.EAST,
     'map': [
@@ -4449,14 +4153,10 @@ module.exports = {
       'stepSpeed': 3
     },
     'requiredBlocks': [
-      [{'test': 'moveForward', 'type': 'maze_moveForward'}],
-      [{'test': 'while', 'type': 'maze_forever'}],
-      [{'test': 'turnLeft',
-        'type': 'maze_turn',
-        'titles': {'DIR': 'turnLeft'}}],
-      [{'test': 'turnRight',
-        'type': 'maze_turn',
-        'titles': {'DIR': 'turnRight'}}]
+      [reqBlocks.MOVE_FORWARD],
+      [reqBlocks.WHILE_LOOP],
+      [reqBlocks.TURN_LEFT],
+      [reqBlocks.TURN_RIGHT]
     ],
     'startDirection': Direction.EAST,
     'map': [
@@ -4474,9 +4174,7 @@ module.exports = {
     'toolbox': toolbox(2, 13),
     'ideal': 4,
     'requiredBlocks': [
-      [{'test': 'turnLeft',
-        'type': 'maze_turn',
-        'titles': {'DIR': 'turnLeft'}}]
+      [reqBlocks.TURN_LEFT]
     ],
     'startDirection': Direction.EAST,
     'map': [
@@ -4498,14 +4196,10 @@ module.exports = {
       'stepSpeed': 2
     },
     'requiredBlocks': [
-      [{'test': 'moveForward', 'type': 'maze_moveForward'}],
-      [{'test': 'turnRight',
-        'type': 'maze_turn',
-        'titles': {'DIR': 'turnRight'}}],
-      [{'test': 'isPathRight',
-        'type': 'maze_if',
-        'titles': {'DIR': 'isPathRight'}}],
-      [{'test': 'while', 'type': 'maze_forever'}]
+      [reqBlocks.MOVE_FORWARD],
+      [reqBlocks.TURN_RIGHT],
+      [reqBlocks.IS_PATH_RIGHT],
+      [reqBlocks.WHILE_LOOP]
     ],
     'startDirection': Direction.EAST,
     'map': [
@@ -4528,14 +4222,10 @@ module.exports = {
       'stepSpeed': 2
     },
     'requiredBlocks': [
-      [{'test': 'moveForward', 'type': 'maze_moveForward'}],
-      [{'test': 'turnLeft',
-        'type': 'maze_turn',
-        'titles': {'DIR': 'turnLeft'}}],
-      [{'test': 'isPathLeft',
-        'type': 'maze_if',
-        'titles': {'DIR': 'isPathLeft'}}],
-      [{'test': 'while', 'type': 'maze_forever'}]
+      [reqBlocks.MOVE_FORWARD],
+      [reqBlocks.TURN_LEFT],
+      [reqBlocks.IS_PATH_LEFT],
+      [reqBlocks.WHILE_LOOP]
     ],
     'startDirection': Direction.NORTH,
     'map': [
@@ -4556,14 +4246,10 @@ module.exports = {
       'stepSpeed': 2
     },
     'requiredBlocks': [
-      [{'test': 'moveForward', 'type': 'maze_moveForward'}],
-      [{'test': 'turnRight',
-        'type': 'maze_turn',
-        'titles': {'DIR': 'turnRight'}}],
-      [{'test': 'isPathRight',
-        'type': 'maze_if',
-        'titles': {'DIR': 'isPathRight'}}],
-      [{'test': 'while', 'type': 'maze_forever'}]
+      [reqBlocks.MOVE_FORWARD],
+      [reqBlocks.TURN_RIGHT],
+      [reqBlocks.IS_PATH_RIGHT],
+      [reqBlocks.WHILE_LOOP]
     ],
     'startDirection': Direction.SOUTH,
     'map': [
@@ -4584,14 +4270,10 @@ module.exports = {
       'stepSpeed': 2
     },
     'requiredBlocks': [
-      [{'test': 'moveForward', 'type': 'maze_moveForward'}],
-      [{'test': 'isPathForward',
-        'type': 'maze_ifElse',
-        'titles': {'DIR': 'isPathForward'}}],
-      [{'test': 'turnLeft',
-        'type': 'maze_turn',
-        'titles': {'DIR': 'turnLeft'}}],
-      [{'test': 'while', 'type': 'maze_forever'}]
+      [reqBlocks.MOVE_FORWARD],
+      [reqBlocks.IS_PATH_FORWARD],
+      [reqBlocks.TURN_LEFT],
+      [reqBlocks.WHILE_LOOP]
     ],
     'startDirection': Direction.EAST,
     'map': [
@@ -4612,14 +4294,10 @@ module.exports = {
       'stepSpeed': 2
     },
     'requiredBlocks': [
-      [{'test': 'moveForward', 'type': 'maze_moveForward'}],
-      [{'test': 'isPathForward',
-        'type': 'maze_ifElse',
-        'titles': {'DIR': 'isPathForward'}}],
-      [{'test': 'turnRight',
-        'type': 'maze_turn',
-        'titles': {'DIR': 'turnRight'}}],
-      [{'test': 'while', 'type': 'maze_forever'}]
+      [reqBlocks.MOVE_FORWARD],
+      [reqBlocks.IS_PATH_FORWARD],
+      [reqBlocks.TURN_RIGHT],
+      [reqBlocks.WHILE_LOOP]
     ],
     'startDirection': Direction.EAST,
     'map': [
@@ -4640,13 +4318,9 @@ module.exports = {
       'stepSpeed': 2
     },
     'requiredBlocks': [
-      [{'test': 'moveForward', 'type': 'maze_moveForward'}],
-      [{'test': 'turnLeft',
-        'type': 'maze_turn',
-        'titles': {'DIR': 'turnLeft'}}],
-      [{'test': 'turnRight',
-        'type': 'maze_turn',
-        'titles': {'DIR': 'turnRight'}}]
+      [reqBlocks.MOVE_FORWARD],
+      [reqBlocks.TURN_LEFT],
+      [reqBlocks.TURN_RIGHT]
     ],
     'startDirection': Direction.NORTH,
     'map': [
@@ -4673,7 +4347,7 @@ module.exports = {
       {'func': 'turnright', 'alias': 'Maze.turnRight();'},
     ],
     'requiredBlocks': [
-       [{'test': 'moveForward', 'type': 'maze_moveForward'}],
+       [reqBlocks.MOVE_FORWARD],
      ],
     'startDirection': Direction.EAST,
     'map': [
@@ -4697,7 +4371,7 @@ module.exports = {
       {'func': 'turnright', 'alias': 'Maze.turnRight();'},
     ],
     'requiredBlocks': [
-       [{'test': 'moveForward', 'type': 'maze_moveForward'}],
+       [reqBlocks.MOVE_FORWARD],
      ],
     'startDirection': Direction.SOUTH,
     'map': [
@@ -4721,13 +4395,9 @@ module.exports = {
       {'func': 'turnright', 'alias': 'Maze.turnRight();'},
     ],
     'requiredBlocks': [
-      [{'test': 'moveForward', 'type': 'maze_moveForward'}],
-      [{'test': 'turnLeft',
-        'type': 'maze_turn',
-        'titles': {'DIR': 'turnLeft'}}],
-      [{'test': 'turnRight',
-        'type': 'maze_turn',
-        'titles': {'DIR': 'turnRight'}}]
+      [reqBlocks.MOVE_FORWARD],
+      [reqBlocks.TURN_LEFT],
+      [reqBlocks.TURN_RIGHT]
     ],
     'startDirection': Direction.EAST,
     'map': [
@@ -4751,10 +4421,8 @@ module.exports = {
       {'func': 'turnright', 'alias': 'Maze.turnRight();'},
     ],
     'requiredBlocks': [
-      [{'test': 'moveForward', 'type': 'maze_moveForward'}],
-      [{'test': 'turnLeft',
-       'type': 'maze_turn',
-       'titles': {'DIR': 'turnLeft'}}]
+      [reqBlocks.MOVE_FORWARD],
+      [reqBlocks.TURN_LEFT]
     ],
     'startDirection': Direction.EAST,
     'map': [
@@ -4775,7 +4443,7 @@ for (var levelId in karelLevels) {
   module.exports['karel_' + levelId] = karelLevels[levelId];
 }
 
-},{"./karelLevels":10,"./startBlocks.xml":16,"./tiles":17,"./toolboxes/maze.xml":21}],13:[function(require,module,exports){
+},{"./karelLevels":10,"./requiredBlocks":15,"./startBlocks.xml":17,"./tiles":18,"./toolboxes/maze.xml":22}],13:[function(require,module,exports){
 (function (global){
 var appMain = require('../appMain');
 window.Maze = require('./maze');
@@ -4793,7 +4461,7 @@ window.mazeMain = function(options) {
 };
 
 }).call(this,typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"../appMain":1,"./blocks":9,"./levels":12,"./maze":14,"./skins":15}],14:[function(require,module,exports){
+},{"../appMain":1,"./blocks":9,"./levels":12,"./maze":14,"./skins":16}],14:[function(require,module,exports){
 /**
  * Blockly Apps: Maze
  *
@@ -6328,7 +5996,27 @@ Maze.checkSuccess = function() {
   return false;
 };
 
-},{"../../locale/ru_ru/common":37,"../../locale/ru_ru/maze":38,"../base":2,"../codegen":4,"../dom":5,"../feedback.js":6,"../skins":23,"../templates/page.html":31,"./api":8,"./tiles":17,"./visualization.html":22}],15:[function(require,module,exports){
+},{"../../locale/ru_ru/common":38,"../../locale/ru_ru/maze":39,"../base":2,"../codegen":4,"../dom":5,"../feedback.js":6,"../skins":24,"../templates/page.html":32,"./api":8,"./tiles":18,"./visualization.html":23}],15:[function(require,module,exports){
+var MOVE_FORWARD = {'test': 'moveForward', 'type': 'maze_moveForward'};
+var TURN_LEFT = {'test': 'turnLeft', 'type': 'maze_turn', 'titles': {'DIR': 'turnLeft'}};
+var TURN_RIGHT = {'test': 'turnRight', 'type': 'maze_turn', 'titles': {'DIR': 'turnRight'}};
+var WHILE_LOOP = {'test': 'while', 'type': 'maze_forever'};
+var IS_PATH_LEFT = {'test': 'isPathLeft', 'type': 'maze_if', 'titles': {'DIR': 'isPathLeft'}};
+var IS_PATH_RIGHT = {'test': 'isPathRight', 'type': 'maze_if', 'titles': {'DIR': 'isPathRight'}};
+var IS_PATH_FORWARD = {'test': 'isPathForward', 'type': 'maze_ifElse', 'titles': {'DIR': 'isPathForward'}};
+var FOR_LOOP = {'test': 'for', 'type': 'controls_repeat', titles: {TIMES: '???'}};
+
+module.exports = {
+  MOVE_FORWARD: MOVE_FORWARD,
+  TURN_LEFT: TURN_LEFT,
+  TURN_RIGHT: TURN_RIGHT,
+  WHILE_LOOP: WHILE_LOOP,
+  IS_PATH_LEFT: IS_PATH_LEFT,
+  IS_PATH_RIGHT: IS_PATH_RIGHT,
+  IS_PATH_FORWARD: IS_PATH_FORWARD,
+  FOR_LOOP: FOR_LOOP
+};
+},{}],16:[function(require,module,exports){
 /**
  * Load Skin for Maze.
  */
@@ -6451,7 +6139,7 @@ exports.load = function(assetUrl, id) {
   return skin;
 };
 
-},{"../skins":23}],16:[function(require,module,exports){
+},{"../skins":24}],17:[function(require,module,exports){
 module.exports= (function() {
   var t = function anonymous(locals, filters, escape, rethrow) {
 escape = escape || function (html){
@@ -6472,7 +6160,7 @@ return buf.join('');
     return t(locals, require("ejs").filters);
   }
 }());
-},{"ejs":39}],17:[function(require,module,exports){
+},{"ejs":40}],18:[function(require,module,exports){
 'use strict';
 
 /**
@@ -6501,7 +6189,7 @@ exports.SquareType = {
   STARTANDFINISH: 5
 };
 
-},{}],18:[function(require,module,exports){
+},{}],19:[function(require,module,exports){
 module.exports= (function() {
   var t = function anonymous(locals, filters, escape, rethrow) {
 escape = escape || function (html){
@@ -6522,7 +6210,7 @@ return buf.join('');
     return t(locals, require("ejs").filters);
   }
 }());
-},{"ejs":39}],19:[function(require,module,exports){
+},{"ejs":40}],20:[function(require,module,exports){
 module.exports= (function() {
   var t = function anonymous(locals, filters, escape, rethrow) {
 escape = escape || function (html){
@@ -6548,7 +6236,7 @@ return buf.join('');
     return t(locals, require("ejs").filters);
   }
 }());
-},{"../../../locale/ru_ru/common":37,"../../../locale/ru_ru/maze":38,"ejs":39}],20:[function(require,module,exports){
+},{"../../../locale/ru_ru/common":38,"../../../locale/ru_ru/maze":39,"ejs":40}],21:[function(require,module,exports){
 module.exports= (function() {
   var t = function anonymous(locals, filters, escape, rethrow) {
 escape = escape || function (html){
@@ -6582,7 +6270,7 @@ return buf.join('');
     return t(locals, require("ejs").filters);
   }
 }());
-},{"../../../locale/ru_ru/common":37,"ejs":39}],21:[function(require,module,exports){
+},{"../../../locale/ru_ru/common":38,"ejs":40}],22:[function(require,module,exports){
 module.exports= (function() {
   var t = function anonymous(locals, filters, escape, rethrow) {
 escape = escape || function (html){
@@ -6603,7 +6291,7 @@ return buf.join('');
     return t(locals, require("ejs").filters);
   }
 }());
-},{"ejs":39}],22:[function(require,module,exports){
+},{"ejs":40}],23:[function(require,module,exports){
 module.exports= (function() {
   var t = function anonymous(locals, filters, escape, rethrow) {
 escape = escape || function (html){
@@ -6624,7 +6312,7 @@ return buf.join('');
     return t(locals, require("ejs").filters);
   }
 }());
-},{"ejs":39}],23:[function(require,module,exports){
+},{"ejs":40}],24:[function(require,module,exports){
 // avatar: A 1029x51 set of 21 avatar images.
 
 exports.load = function(assetUrl, id) {
@@ -6655,7 +6343,7 @@ exports.load = function(assetUrl, id) {
   return skin;
 };
 
-},{}],24:[function(require,module,exports){
+},{}],25:[function(require,module,exports){
 /**
  * Blockly Apps: SVG Slider
  *
@@ -6860,7 +6548,7 @@ Slider.bindEvent_ = function(element, name, func) {
 
 module.exports = Slider;
 
-},{}],25:[function(require,module,exports){
+},{}],26:[function(require,module,exports){
 module.exports= (function() {
   var t = function anonymous(locals, filters, escape, rethrow) {
 escape = escape || function (html){
@@ -6881,7 +6569,7 @@ return buf.join('');
     return t(locals, require("ejs").filters);
   }
 }());
-},{"ejs":39}],26:[function(require,module,exports){
+},{"ejs":40}],27:[function(require,module,exports){
 module.exports= (function() {
   var t = function anonymous(locals, filters, escape, rethrow) {
 escape = escape || function (html){
@@ -6902,7 +6590,7 @@ return buf.join('');
     return t(locals, require("ejs").filters);
   }
 }());
-},{"../../locale/ru_ru/common":37,"ejs":39}],27:[function(require,module,exports){
+},{"../../locale/ru_ru/common":38,"ejs":40}],28:[function(require,module,exports){
 module.exports= (function() {
   var t = function anonymous(locals, filters, escape, rethrow) {
 escape = escape || function (html){
@@ -6923,7 +6611,7 @@ return buf.join('');
     return t(locals, require("ejs").filters);
   }
 }());
-},{"ejs":39}],28:[function(require,module,exports){
+},{"ejs":40}],29:[function(require,module,exports){
 module.exports= (function() {
   var t = function anonymous(locals, filters, escape, rethrow) {
 escape = escape || function (html){
@@ -6944,7 +6632,7 @@ return buf.join('');
     return t(locals, require("ejs").filters);
   }
 }());
-},{"../../locale/ru_ru/common":37,"ejs":39}],29:[function(require,module,exports){
+},{"../../locale/ru_ru/common":38,"ejs":40}],30:[function(require,module,exports){
 module.exports= (function() {
   var t = function anonymous(locals, filters, escape, rethrow) {
 escape = escape || function (html){
@@ -6967,7 +6655,7 @@ return buf.join('');
     return t(locals, require("ejs").filters);
   }
 }());
-},{"../../locale/ru_ru/common":37,"ejs":39}],30:[function(require,module,exports){
+},{"../../locale/ru_ru/common":38,"ejs":40}],31:[function(require,module,exports){
 module.exports= (function() {
   var t = function anonymous(locals, filters, escape, rethrow) {
 escape = escape || function (html){
@@ -6988,7 +6676,7 @@ return buf.join('');
     return t(locals, require("ejs").filters);
   }
 }());
-},{"../../locale/ru_ru/common":37,"ejs":39}],31:[function(require,module,exports){
+},{"../../locale/ru_ru/common":38,"ejs":40}],32:[function(require,module,exports){
 module.exports= (function() {
   var t = function anonymous(locals, filters, escape, rethrow) {
 escape = escape || function (html){
@@ -7010,7 +6698,7 @@ return buf.join('');
     return t(locals, require("ejs").filters);
   }
 }());
-},{"../../locale/ru_ru/common":37,"ejs":39}],32:[function(require,module,exports){
+},{"../../locale/ru_ru/common":38,"ejs":40}],33:[function(require,module,exports){
 module.exports= (function() {
   var t = function anonymous(locals, filters, escape, rethrow) {
 escape = escape || function (html){
@@ -7032,7 +6720,7 @@ return buf.join('');
     return t(locals, require("ejs").filters);
   }
 }());
-},{"ejs":39}],33:[function(require,module,exports){
+},{"ejs":40}],34:[function(require,module,exports){
 module.exports= (function() {
   var t = function anonymous(locals, filters, escape, rethrow) {
 escape = escape || function (html){
@@ -7053,7 +6741,7 @@ return buf.join('');
     return t(locals, require("ejs").filters);
   }
 }());
-},{"../../locale/ru_ru/common":37,"ejs":39}],34:[function(require,module,exports){
+},{"../../locale/ru_ru/common":38,"ejs":40}],35:[function(require,module,exports){
 module.exports= (function() {
   var t = function anonymous(locals, filters, escape, rethrow) {
 escape = escape || function (html){
@@ -7074,7 +6762,7 @@ return buf.join('');
     return t(locals, require("ejs").filters);
   }
 }());
-},{"ejs":39}],35:[function(require,module,exports){
+},{"ejs":40}],36:[function(require,module,exports){
 exports.shallowCopy = function(source) {
   var result = {};
   for (var prop in source) {
@@ -7106,7 +6794,7 @@ exports.escapeHtml = function(unsafe) {
     .replace(/'/g, "&#039;");
 };
 
-},{}],36:[function(require,module,exports){
+},{}],37:[function(require,module,exports){
 // Serializes an XML DOM node to a string.
 exports.serialize = function(node) {
   var serializer = new XMLSerializer();
@@ -7133,7 +6821,7 @@ exports.parseElement = function(text) {
   return element;
 };
 
-},{}],37:[function(require,module,exports){
+},{}],38:[function(require,module,exports){
 var MessageFormat = require("messageformat");MessageFormat.locale.ru = function (n) {
   if ((n % 10) == 1 && (n % 100) != 11) {
     return 'one';
@@ -7269,7 +6957,7 @@ exports.tryHOC = function(d){return "Попробуйте час кода"};
 exports.signup = function(d){return "Подпишитесь на вводный курс"};
 
 
-},{"messageformat":45}],38:[function(require,module,exports){
+},{"messageformat":46}],39:[function(require,module,exports){
 var MessageFormat = require("messageformat");MessageFormat.locale.ru = function (n) {
   if ((n % 10) == 1 && (n % 100) != 11) {
     return 'one';
@@ -7385,7 +7073,7 @@ exports.whileTooltip = function(d){return "Повторяет действия �
 exports.yes = function(d){return "Да"};
 
 
-},{"messageformat":45}],39:[function(require,module,exports){
+},{"messageformat":46}],40:[function(require,module,exports){
 
 /*!
  * EJS
@@ -7744,7 +7432,7 @@ if (require.extensions) {
   });
 }
 
-},{"./filters":40,"./utils":41,"fs":42,"path":44}],40:[function(require,module,exports){
+},{"./filters":41,"./utils":42,"fs":43,"path":45}],41:[function(require,module,exports){
 /*!
  * EJS - Filters
  * Copyright(c) 2010 TJ Holowaychuk <tj@vision-media.ca>
@@ -7947,7 +7635,7 @@ exports.json = function(obj){
   return JSON.stringify(obj);
 };
 
-},{}],41:[function(require,module,exports){
+},{}],42:[function(require,module,exports){
 
 /*!
  * EJS
@@ -7973,9 +7661,9 @@ exports.escape = function(html){
 };
  
 
-},{}],42:[function(require,module,exports){
-
 },{}],43:[function(require,module,exports){
+
+},{}],44:[function(require,module,exports){
 // shim for using process in browser
 
 var process = module.exports = {};
@@ -8030,7 +7718,7 @@ process.chdir = function (dir) {
     throw new Error('process.chdir is not supported');
 };
 
-},{}],44:[function(require,module,exports){
+},{}],45:[function(require,module,exports){
 (function (process){
 // Copyright Joyent, Inc. and other Node contributors.
 //
@@ -8258,7 +7946,7 @@ var substr = 'ab'.substr(-1) === 'b'
 ;
 
 }).call(this,require("/home/ubuntu/tutorials-ci/blockly/node_modules/grunt-browserify/node_modules/browserify/node_modules/insert-module-globals/node_modules/process/browser.js"))
-},{"/home/ubuntu/tutorials-ci/blockly/node_modules/grunt-browserify/node_modules/browserify/node_modules/insert-module-globals/node_modules/process/browser.js":43}],45:[function(require,module,exports){
+},{"/home/ubuntu/tutorials-ci/blockly/node_modules/grunt-browserify/node_modules/browserify/node_modules/insert-module-globals/node_modules/process/browser.js":44}],46:[function(require,module,exports){
 /**
  * messageformat.js
  *
