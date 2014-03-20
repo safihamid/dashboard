@@ -80,6 +80,8 @@ Dashboard::Application.routes.draw do
   get '/admin/usage', to: 'reports#all_usage', as: 'all_usage'
   get '/admin/stats', to: 'reports#admin_stats', as: 'admin_stats'
   get '/admin/progress', to: 'reports#admin_progress', as: 'admin_progress'
+  get '/admin/assume_identity', to: 'reports#assume_identity_form', as: 'assume_identity_form'
+  post '/admin/assume_identity', to: 'reports#assume_identity', as: 'assume_identity'
   get '/stats/usage/:user_id', to: 'reports#usage', as: 'usage'
   get '/stats/students', to: 'reports#students', as: 'student_usage'
   get '/stats/:user_id', to: 'reports#user_stats', as: 'user_stats'
