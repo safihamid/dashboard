@@ -11,7 +11,7 @@ gem 'seamless_database_pool'
 group :development, :test do
   gem 'capistrano'
   # Use debugger
-  #gem 'debugger'
+  #gem 'debugger' unless ENV['RM_INFO']
   gem 'haml-rails'
   gem 'better_errors'
   gem 'binding_of_caller'
@@ -75,6 +75,8 @@ gem 'nokogiri'
 gem 'honeybadger'
 
 gem 'redcarpet'
+
+gem 'newrelic_rpm'
 
 gem 'geocoder'
 
