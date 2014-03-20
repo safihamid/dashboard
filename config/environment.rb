@@ -2,6 +2,7 @@
 deployment_path = File.expand_path('../../../deployment.rb', __FILE__)
 if File.file?(deployment_path)
   require deployment_path
+  ENV['NEWRELIC_SECRET']=Deploy.config['newrelic_secret']
 else
   module Deploy
     def self.config()
