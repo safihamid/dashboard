@@ -26,10 +26,10 @@ there_can_be_only_one_pid("sync_dash")
 DIR = '/mnt/backups/'
 SSH="ssh -q -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -i /home/ubuntu/.ssh/production-code-org.pem"
 
-servers = ["b1", "c1", "d1"].map {|i| "dashboard-production-#{i}" }
+servers = ["1b", "1c", "1d"].map {|i| "production-#{i}" }
 servers.each do |m|
   `mkdir -p #{DIR}#{m}/log`
-  `rsync -avz -e "#{SSH}" #{m}.code.org:/home/ubuntu/apps/dashboard/shared/log/*.gz #{DIR}#{m}/log`
+  `rsync -avz -e "#{SSH}" #{m}.code.org:/home/ubuntu/website-ci/dashboard/log/*.gz #{DIR}#{m}/log`
   recent_log = Dir.glob("#{DIR}/#{m}/log/milestone*.gz").sort.last
   current_log = "#{DIR}/#{m}/log/milestone.log"
 
@@ -38,7 +38,7 @@ servers.each do |m|
     append = '--append'
   end
 
-  `rsync -avz #{append} -e "#{SSH}" #{m}.code.org:/home/ubuntu/apps/dashboard/shared/log/*.log #{DIR}#{m}/log`
+  `rsync -avz #{append} -e "#{SSH}" #{m}.code.org:/home/ubuntu/website-ci/dashboard/log/*.log #{DIR}#{m}/log`
   puts "#{m}.code.org #{append}"
 end
 
