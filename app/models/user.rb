@@ -254,6 +254,6 @@ SQL
   def birthday_is_reasonable
     return unless birthday
     
-    errors.add(:birthday, "can't be in the future") if birthday > Date.today
+    errors.add(:birthday, I18n.t('activerecord.attributes.user.error.future')) if birthday > Date.today
   end
 end

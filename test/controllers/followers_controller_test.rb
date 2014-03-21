@@ -28,7 +28,7 @@ class FollowersControllerTest < ActionController::TestCase
 
 
   test "remove from section pretends to succeed when user has already been removed" do
-    assert_no_difference('@laurel_section_1.reload.followers.count', -1) do # not actually removing anything
+    assert_no_difference('@laurel_section_1.reload.followers.count') do # not actually removing anything
       post :remove_from_section, :section_id => @laurel_section_1.id, :follower_id => @student.id
     end
 

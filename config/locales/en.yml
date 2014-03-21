@@ -32,6 +32,9 @@ en:
         locale: 'Language'
         gender: 'Gender'
         edit_header: 'Edit Account Details'
+        error:
+          future: can't be in the future
+
   hello: "Hello world"
   welcome_back: "Welcome back, %{name}"
   add_teacher_form:
