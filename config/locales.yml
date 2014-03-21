@@ -22,18 +22,6 @@
   dir: 'rtl'
   webfonts: false
 
-"as": "as-IN"
-"as-IN":
-  english: "Assamese"
-  native: "অসমীয়া Ôxômiya"
-  debug: true
-
-"az": "az-AZ"
-"az-AZ":
-  english: "Azerbaijani"
-  native: "Azərbaycan dili"
-  webfonts: false
-
 "bg": "bg-BG"
 "bg-BG":
   english: "Bulgarian"
@@ -87,12 +75,6 @@
 "en-PLOC":
   english: "Pseudoloc"
   native: "Pseudoloc"
-  debug: true
-
-"eo": "eo-UY"
-"eo-UY":
-  english: "Esperanto"
-  native: "Esperanto"
   debug: true
 
 "es": "es-ES"
@@ -192,19 +174,6 @@
   debug: true
   webfonts: false
 
-"my": "my-MM"
-"my-MM":
-  english: "Burmese"
-  native: "ဗမာစာ"
-  debug: true
-  webfonts: false
-
-"ne": "ne-NP"
-"ne-NP":
-  english: "Nepali"
-  native: "नेपाली"
-  debug: true
-
 "nl-NL":
   english: "Dutch"
   native: "Nederlands"
@@ -239,12 +208,6 @@
   english: "Russian"
   native: "русский язык"
   webfonts: false
-
-"si": "si-LK"
-"si-LK":
-  english: "Sinhala"
-  native: "සිංහල"
-  debug: true
 
 "sk": "sk-SK"
 "sk-SK":
