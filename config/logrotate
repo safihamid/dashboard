@@ -1,4 +1,4 @@
-/home/ubuntu/apps/dashboard/shared/log/*.log {
+/home/ubuntu/website-ci/dashboard/log/*.log {
 daily
 missingok
 dateext
