@@ -24,4 +24,28 @@ class HomeControllerTest < ActionController::TestCase
     assert_equal "language_=es-ES; domain=.code.org; path=/", @response.headers["Set-Cookie"]
   end
 
+  test "should get index with edmodo header" do
+    @request.headers["Accept"] = "image/*"
+    @request.headers["User-Agent"] = "Edmodo/14 CFNetwork/672.0.2 Darwin/14.0.0"
+    get :index
+    assert_response :success
+  end
+
+  test "should get index with weebly header" do
+    @request.headers["Accept"] = "image/*"
+    @request.headers["User-Agent"] = "weebly-agent"
+    get :index
+    assert_response :success
+  end
+
+# this exception is actually annoying to handle because it never gets
+# to ActionController (so we can't use the rescue in
+# ApplicationController)
+#  test "bad http methods are rejected" do
+#    process :index, 'APOST' # use an APOST instead of get/post/etc
+#
+#    assert_response 400
+#  end
+
+
 end
