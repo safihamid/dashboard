@@ -143,7 +143,7 @@ SQL
     
     follower = Follower.find_by_student_user_id_and_section_id(params[:follower_id], section)
     
-    follower.update_attributes!(:section_id => nil)
+    follower.update_attributes!(:section_id => nil) if follower
 
     redirect_to manage_followers_path, notice: "Updated class assignments"
   end

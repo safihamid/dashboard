@@ -14,10 +14,12 @@ class ApplicationController < ActionController::Base
 
   around_filter :with_locale
 
-  # Edmodo fix: append text/html as an acceptable response type for Edmodo's malformed HTTP_ACCEPT header.
-  before_action :fix_edmodo_header
-  def fix_edmodo_header
-    if request.formats.include?("image/*") && request.user_agent.include?("Edmodo")
+  before_action :fix_crawlers_with_bad_accept_headers
+  def fix_crawlers_with_bad_accept_headers
+    # append text/html as an acceptable response type for Edmodo and weebly-agent's malformed HTTP_ACCEPT header.
+
+    if request.formats.include?("image/*") &&
+        (request.user_agent.include?("Edmodo") || request.user_agent.include?("weebly-agent"))
       request.formats.append Mime::HTML
     end
   end
@@ -37,8 +39,11 @@ class ApplicationController < ActionController::Base
   # when CanCan denies access, send a 403 Forbidden response instead of causing a server error
   rescue_from CanCan::AccessDenied do
     head :forbidden
+    # TODO if users are actually seeing this (eg. because they cleared
+    # cookies and clicked on something), maybe we should render an
+    # actual page
   end
-
+  
   protected
 
   PERMITTED_USER_FIELDS = [:name, :username, :email, :password, :password_confirmation, :locale, :gender, :login,
