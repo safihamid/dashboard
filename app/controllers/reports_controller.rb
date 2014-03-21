@@ -157,6 +157,26 @@ SQL
 
   end
 
+  def assume_identity_form
+    authorize! :manage, :all
+  end
+
+  def assume_identity
+    authorize! :manage, :all
+
+    user = User.where(:id => params[:user_id]).first
+    user ||= User.where(:username => params[:user_id]).first
+    user ||= User.where(:email => params[:user_id]).first
+
+    if user
+      sign_in user, :bypass => true
+      redirect_to '/'
+    else
+      flash[:error] = "I can't find that user"
+      render :assume_identity_form
+    end
+  end
+
   private
   def get_base_usage_activity
     Activity.all.order('id desc').includes([:user, :level_source, {level: :game}]).limit(50)
