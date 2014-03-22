@@ -14,8 +14,8 @@ The 1-hour tutorial should work on any browser (including tablets, smartphones),
 
 Our code is segmented into three parts, each a separate git repository:
 
-1. [blockly-core](https://github.com/code-dot-org/blockly-core): **Blockly Core** is the underlying language platform.
-2. [blockly](https://github.com/code-dot-org/blockly): **Blockly** includes *apps*—blockly puzzle types built based on Blockly Core. It includes all of the apps used in the dashboard's 1-Hour and a 20-Hour curricula.
+1. [blockly-core](https://github.com/code-dot-org/blockly-core): **Blockly Core** is the visual programming language platform used for the interactive tutorials.
+2. [blockly](https://github.com/code-dot-org/blockly): **Blockly** includes *apps*—blockly puzzles built based on Blockly Core. It includes all of the apps used in the dashboard's 1-Hour and a 20-Hour curricula.
 3. [dashboard](https://github.com/code-dot-org/dashboard): **Dashboard** (this repository), is the tutorial platform which organizes blockly levels into tutorials, and includes support for teachers to track student progress.
 
 ## Setting up for development
