@@ -75,7 +75,7 @@ If you won't be making modifications to blockly code, you can just skip the syml
     - `rake seed:all`
 
 8. If you'll be modifying blockly as well (see above), you can use this take task to symlink Dashboard to use your development version of Blockly
-    - `rake blockly:dev['../blockly']`
+    - `rake 'blockly:dev[../blockly]'`
 
 ### Starting the Server
 
