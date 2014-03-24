@@ -7,8 +7,15 @@ else
     def self.config()
       {}
     end
+    def self.slog(h)
+      h.to_json # No slog is set up, but make sure h can convert to JSON if one were.
+    end
   end
 end
+def slog(h)
+  Deploy.slog ({ src: :dashboard }).merge(h)
+end
+
 require File.expand_path('../application', __FILE__)
 
 # Force UTF-8 Encodings.
