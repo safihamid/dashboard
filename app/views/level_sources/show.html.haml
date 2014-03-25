@@ -8,12 +8,12 @@ js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=544354895612633";
 fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));
 </script>
-- if @game.app == 'flappy' && safari?
+- if (@game.app == 'flappy' || @game.app == 'bounce') && safari?
   <script>
   if (!window.navigator.standalone) { window.addEventListener("load", function() { addToHome.show(true); }, false); }
   </script>
 - content_for :head do
-  - if @game.app == 'flappy' || @game.app == 'turtle'
+  - if @game.app == 'flappy' || @game.app == 'bounce' || @game.app == 'turtle'
     = tag('meta', :name => 'twitter:card', :content => "photo")
     = tag('meta', :property => 'og:description', :content => t('share_code.og_description'))
     = tag('meta', :property => 'og:image', :content => show_image(:id => @level_source_id))
@@ -21,10 +21,15 @@ fjs.parentNode.insertBefore(js, fjs);
     
     - if @game.app == "flappy"
       = tag('meta', :property => 'og:title', :content => t('share_code.flappy_og_title'))
+    
+    - if @game.app == "bounce"
+      = tag('meta', :property => 'og:title', :content => t('share_code.bounce_og_title'))
+
+    - if @game.app == "flappy" || @game.app == "bounce"
       = tag :meta, name: "apple-mobile-web-app-capable", content: "yes"
       = tag :meta, name: "apple-mobile-web-app-status-bar-style", content: "black-translucent"
 
-- if @game.app != "flappy"
+- if @game.app != "flappy" && @game.app != "bounce"
   - @page_title = t('share_code.title')
   %h1= @page_title
 = render partial: "levels/blockly", locals: { start_blocks: @start_blocks, app: @game.app, hide_source: @hide_source, share: @share, slider_speed: "0.9", no_padding: @no_padding }
