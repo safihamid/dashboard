@@ -25,5 +25,6 @@ class LevelSourcesController < ApplicationController
     @hide_source = hide_source
     @share = true
     @no_padding = @share && phone? && (@game.app == "flappy" || @game.app == "bounce")
+    @callouts = []
   end
 end

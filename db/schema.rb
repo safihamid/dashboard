@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140319211127) do
+ActiveRecord::Schema.define(version: 20140321234151) do
 
   create_table "activities", force: true do |t|
     t.integer  "user_id"
@@ -115,6 +115,8 @@ ActiveRecord::Schema.define(version: 20140319211127) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "level_source_images", ["level_source_id"], name: "index_level_source_images_on_level_source_id", using: :btree
 
   create_table "level_sources", force: true do |t|
     t.integer  "level_id"
