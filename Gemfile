@@ -8,6 +8,8 @@ gem 'rails-i18n', '~> 4.0.0'
 gem 'mysql2', '0.3.13'
 gem 'seamless_database_pool'
 
+gem 'le'
+
 group :development, :test do
   gem 'capistrano'
   # Use debugger
