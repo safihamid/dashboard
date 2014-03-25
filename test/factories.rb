@@ -41,6 +41,12 @@ FactoryGirl.define do
     end
   end
 
+  factory :level_source do
+    level
+    data '<xml/>'
+    md5 -> { Digest::MD5.hexdigest(data) }
+  end
+
   factory :script do
   end
   
