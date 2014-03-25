@@ -2342,9 +2342,13 @@ exports.install = function(blockly, skin) {
 
 },{"../../locale/lt_lt/flappy":31}],9:[function(require,module,exports){
 module.exports = {
-	WORKSPACE_BUFFER: 20,
-	WORKSPACE_COL_WIDTH: 210,
-	WORKSPACE_ROW_HEIGHT: 120
+  WORKSPACE_BUFFER: 20,
+  WORKSPACE_COL_WIDTH: 210,
+  WORKSPACE_ROW_HEIGHT: 120,
+
+  AVATAR_HEIGHT: 24,
+  AVATAR_WIDTH: 34,
+  AVATAR_Y_OFFSET: 0
 };
 },{}],10:[function(require,module,exports){
 module.exports= (function() {
@@ -2443,6 +2447,10 @@ var twitterOptions = {
   hashtag: "FlappyCode"
 };
 
+var AVATAR_HEIGHT = constants.AVATAR_HEIGHT;
+var AVATAR_WIDTH = constants.AVATAR_WIDTH;
+var AVATAR_Y_OFFSET = constants.AVATAR_Y_OFFSET;
+
 var loadLevel = function() {
   // Load maps.
   BlocklyApps.IDEAL_BLOCK_NUM = level.ideal || Infinity;
@@ -2458,10 +2466,6 @@ var loadLevel = function() {
     Flappy.scale[key] = level.scale[key];
   }
 
-  // Measure maze dimensions and set sizes.
-  Flappy.AVATAR_HEIGHT = skin.pegmanHeight;
-  Flappy.AVATAR_WIDTH = skin.pegmanWidth;
-  Flappy.AVATAR_Y_OFFSET = skin.pegmanYOffset;
   // Height and width of the goal and obstacles.
   Flappy.MARKER_HEIGHT = 43;
   Flappy.MARKER_WIDTH = 50;
@@ -2494,8 +2498,8 @@ var loadLevel = function() {
   };
 
   var containsAvatar = function () {
-    var flappyRight = Flappy.avatarX + Flappy.AVATAR_WIDTH;
-    var flappyBottom = Flappy.avatarY + Flappy.AVATAR_HEIGHT;
+    var flappyRight = Flappy.avatarX + AVATAR_WIDTH;
+    var flappyBottom = Flappy.avatarY + AVATAR_HEIGHT;
     var obstacleRight = this.x + Flappy.OBSTACLE_WIDTH;
     var obstacleBottom = this.gapStart + Flappy.GAP_SIZE;
     return (flappyRight > this.x &&
@@ -2514,11 +2518,6 @@ var loadLevel = function() {
     });
   }
 };
-
-/**
- * PIDs of async tasks currently executing.
- */
-Flappy.pidList = [];
 
 var drawMap = function() {
   var svg = document.getElementById('svgFlappy');
@@ -2621,8 +2620,8 @@ var drawMap = function() {
   avatarIcon.setAttribute('id', 'avatar');
   avatarIcon.setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:href',
                           skin.avatar);
-  avatarIcon.setAttribute('height', Flappy.AVATAR_HEIGHT);
-  avatarIcon.setAttribute('width', Flappy.AVATAR_WIDTH);
+  avatarIcon.setAttribute('height', AVATAR_HEIGHT);
+  avatarIcon.setAttribute('width', AVATAR_WIDTH);
   if (level.ground) {
     avatarIcon.setAttribute('clip-path', 'url(#avatArclipPath)');
   }
@@ -2723,10 +2722,10 @@ var delegate = function(scope, func, data)
  * @param obstacle Object : The obstacle object we're checking
  */
 var checkForObstacleCollision = function (obstacle) {
-  var insideObstacleColumn = Flappy.avatarX + Flappy.AVATAR_WIDTH >= obstacle.x &&
+  var insideObstacleColumn = Flappy.avatarX + AVATAR_WIDTH >= obstacle.x &&
     Flappy.avatarX <= obstacle.x + Flappy.OBSTACLE_WIDTH;
   if (insideObstacleColumn && (Flappy.avatarY <= obstacle.gapStart ||
-    Flappy.avatarY + Flappy.AVATAR_HEIGHT >= obstacle.gapStart + Flappy.GAP_SIZE)) {
+    Flappy.avatarY + AVATAR_HEIGHT >= obstacle.gapStart + Flappy.GAP_SIZE)) {
     return true;
   }
   return false;
@@ -2759,7 +2758,7 @@ Flappy.onTick = function() {
     Flappy.clickPending = false;
   }
 
-  avatarWasAboveGround = (Flappy.avatarY + Flappy.AVATAR_HEIGHT) <
+  avatarWasAboveGround = (Flappy.avatarY + AVATAR_HEIGHT) <
     (Flappy.MAZE_HEIGHT - Flappy.GROUND_HEIGHT);
 
   // Action doesn't start until user's first click
@@ -2770,7 +2769,7 @@ Flappy.onTick = function() {
 
     // never let the avatar go too far off the top or bottom
     var bottomLimit = level.ground ?
-      (Flappy.MAZE_HEIGHT - Flappy.GROUND_HEIGHT - Flappy.AVATAR_HEIGHT + 1) :
+      (Flappy.MAZE_HEIGHT - Flappy.GROUND_HEIGHT - AVATAR_HEIGHT + 1) :
       (Flappy.MAZE_HEIGHT * 1.5);
 
     Flappy.avatarY = Math.min(Flappy.avatarY, bottomLimit);
@@ -2778,14 +2777,14 @@ Flappy.onTick = function() {
 
     // Update obstacles
     Flappy.obstacles.forEach(function (obstacle, index) {
-      var wasRightOfAvatar = obstacle.x > (Flappy.avatarX + Flappy.AVATAR_WIDTH);
+      var wasRightOfAvatar = obstacle.x > (Flappy.avatarX + AVATAR_WIDTH);
 
       obstacle.x -= Flappy.SPEED;
 
-      var isRightOfAvatar = obstacle.x > (Flappy.avatarX + Flappy.AVATAR_WIDTH);
+      var isRightOfAvatar = obstacle.x > (Flappy.avatarX + AVATAR_WIDTH);
       if (wasRightOfAvatar && !isRightOfAvatar) {
         if (Flappy.avatarY > obstacle.gapStart &&
-          (Flappy.avatarY + Flappy.AVATAR_HEIGHT < obstacle.gapStart + Flappy.GAP_SIZE)) {
+          (Flappy.avatarY + AVATAR_HEIGHT < obstacle.gapStart + Flappy.GAP_SIZE)) {
           try { Flappy.whenEnterObstacle(BlocklyApps, api); } catch (e) { }
         }
       }
@@ -2804,7 +2803,7 @@ Flappy.onTick = function() {
     });
 
     // check for ground collision
-    avatarIsAboveGround = (Flappy.avatarY + Flappy.AVATAR_HEIGHT) <
+    avatarIsAboveGround = (Flappy.avatarY + AVATAR_HEIGHT) <
       (Flappy.MAZE_HEIGHT - Flappy.GROUND_HEIGHT);
     if (avatarWasAboveGround && !avatarIsAboveGround) {
       try { Flappy.whenCollideGround(BlocklyApps, api); } catch (e) { }
@@ -2825,7 +2824,7 @@ Flappy.onTick = function() {
 
     // we use avatar width instead of height bc he is rotating
     // the extra 4 is so that he buries his beak (similar to mobile game)
-    var max = Flappy.MAZE_HEIGHT - Flappy.GROUND_HEIGHT - Flappy.AVATAR_WIDTH + 4;
+    var max = Flappy.MAZE_HEIGHT - Flappy.GROUND_HEIGHT - AVATAR_WIDTH + 4;
     if (Flappy.avatarY >= max) {
       Flappy.avatarY = max;
       Flappy.gameState = Flappy.GameStates.OVER;
@@ -2833,7 +2832,7 @@ Flappy.onTick = function() {
     }
 
     document.getElementById('avatar').setAttribute('transform',
-      'translate(' + Flappy.AVATAR_WIDTH + ', 0) ' +
+      'translate(' + AVATAR_WIDTH + ', 0) ' +
       'rotate(90, ' + Flappy.avatarX + ', ' + Flappy.avatarY + ')');
     if (infoText) {
       document.getElementById('gameover').setAttribute('visibility', 'visibile');
@@ -2910,15 +2909,8 @@ Flappy.init = function(config) {
     Blockly.loadAudio_(skin.crashSound, 'crash');
     Blockly.loadAudio_(skin.laserSound, 'laser');
     Blockly.loadAudio_(skin.splashSound, 'splash');
-    // Load wall sounds.
     Blockly.loadAudio_(skin.wallSound, 'wall');
-    if (skin.additionalSound) {
-      Blockly.loadAudio_(skin.wall0Sound, 'wall0');
-      Blockly.loadAudio_(skin.wall1Sound, 'wall1');
-      Blockly.loadAudio_(skin.wall2Sound, 'wall2');
-      Blockly.loadAudio_(skin.wall3Sound, 'wall3');
-      Blockly.loadAudio_(skin.wall4Sound, 'wall4');
-    }
+    Blockly.loadAudio_(skin.wall0Sound, 'wall0');
   };
 
   config.afterInject = function() {
@@ -2998,12 +2990,6 @@ BlocklyApps.reset = function(first) {
   Flappy.clearEventHandlersKillTickLoop();
 
   Flappy.gameState = Flappy.GameStates.WAITING;
-
-  // Kill all tasks.
-  for (i = 0; i < Flappy.pidList.length; i++) {
-    window.clearTimeout(Flappy.pidList[i]);
-  }
-  Flappy.pidList = [];
 
   // Reset the score.
   Flappy.playerScore = 0;
@@ -3480,6 +3466,10 @@ var ROW1 = constants.WORKSPACE_BUFFER;
 var ROW2 = ROW1 + ROW_HEIGHT;
 var ROW3 = ROW2 + ROW_HEIGHT;
 
+var AVATAR_HEIGHT = constants.AVATAR_HEIGHT;
+var AVATAR_WIDTH = constants.AVATAR_WIDTH;
+var AVATAR_Y_OFFSET = constants.AVATAR_Y_OFFSET;
+
 var eventBlock = function (type, x, y, child) {
   return '<block type="' + type + '" deletable="false"' +
     ' x="' + x + '"' +
@@ -3551,7 +3541,7 @@ module.exports = {
         return (Flappy.avatarY  === 322 && Flappy.avatarX === 110);
       },
       failureCondition: function () {
-        var avatarBottom = Flappy.avatarY + Flappy.AVATAR_HEIGHT;
+        var avatarBottom = Flappy.avatarY + AVATAR_HEIGHT;
         var ground = Flappy.MAZE_HEIGHT - Flappy.GROUND_HEIGHT;
         return (avatarBottom >= ground && Flappy.gameState === Flappy.GameStates.ACTIVE);
       }
@@ -3580,8 +3570,8 @@ module.exports = {
       moving: true,
       successCondition: function () {
         var avatarCenter = {
-          x: (Flappy.avatarX + Flappy.AVATAR_WIDTH) / 2,
-          y: (Flappy.avatarY + Flappy.AVATAR_HEIGHT) / 2
+          x: (Flappy.avatarX + AVATAR_WIDTH) / 2,
+          y: (Flappy.avatarY + AVATAR_HEIGHT) / 2
         };
         var goalCenter = {
           x: (Flappy.goalX + Flappy.GOAL_SIZE) / 2,
@@ -3880,8 +3870,6 @@ window.flappyMain = function(options) {
 /**
  * Load Skin for Flappy.
  */
-// tiles: A 250x200 set of 20 map images.
-// goal: A 20x34 goal image.
 // background: Number of 400x400 background images. Randomly select one if
 // specified, otherwise, use background.png.
 // graph: Colour of optional grid lines, or false.
@@ -3891,10 +3879,6 @@ var skinsBase = require('../skins');
 var CONFIGS = {
 
   flappy: {
-    transparentTileEnding: true,
-    nonDisappearingPegmanHittingObstacle: true,
-    additionalSound: true,
-    background: 4
   }
 
 };
@@ -4003,16 +3987,6 @@ exports.load = function(assetUrl, id) {
   skin.goalAnimation = skin.assetUrl('goal.gif');
   skin.obstacle = skin.assetUrl('obstacle.png');
   skin.obstacleAnimation = skin.assetUrl('obstacle.gif');
-  if (config.transparentTileEnding) {
-    skin.transparentTileEnding = true;
-  } else {
-    skin.transparentTileEnding = false;
-  }
-  if (config.nonDisappearingPegmanHittingObstacle) {
-    skin.nonDisappearingPegmanHittingObstacle = true;
-  } else {
-    skin.nonDisappearingPegmanHittingObstacle = false;
-  }
   skin.obstacleScale = config.obstacleScale || 1.0;
   skin.largerObstacleAnimationTiles =
       skin.assetUrl(config.largerObstacleAnimationTiles);
@@ -4027,10 +4001,6 @@ exports.load = function(assetUrl, id) {
   skin.winGoalSound = [skin.assetUrl('win_goal.mp3'),
                        skin.assetUrl('win_goal.ogg')];
   skin.wall0Sound = [skin.assetUrl('wall0.mp3'), skin.assetUrl('wall0.ogg')];
-  skin.wall1Sound = [skin.assetUrl('wall1.mp3'), skin.assetUrl('wall1.ogg')];
-  skin.wall2Sound = [skin.assetUrl('wall2.mp3'), skin.assetUrl('wall2.ogg')];
-  skin.wall3Sound = [skin.assetUrl('wall3.mp3'), skin.assetUrl('wall3.ogg')];
-  skin.wall4Sound = [skin.assetUrl('wall4.mp3'), skin.assetUrl('wall4.ogg')];
 
   skin.dieSound = [skin.assetUrl('sfx_die.mp3'), skin.assetUrl('sfx_die.ogg')];
   skin.hitSound = [skin.assetUrl('sfx_hit.mp3'), skin.assetUrl('sfx_hit.ogg')];
@@ -4044,13 +4014,10 @@ exports.load = function(assetUrl, id) {
   skin.laserSound = [skin.assetUrl('laser.mp3'), skin.assetUrl('laser.ogg')];
   skin.splashSound = [skin.assetUrl('splash.mp3'), skin.assetUrl('splash.ogg')];
 
-  skin.additionalSound = config.additionalSound;
   // Settings
   skin.graph = config.graph;
   skin.background = skin.assetUrl('background.png');
-  skin.pegmanHeight = config.pegmanHeight || 24;
-  skin.pegmanWidth = config.pegmanWidth || 34;
-  skin.pegmanYOffset = config.pegmanYOffset || 0;
+
   return skin;
 };
 
