@@ -13,7 +13,7 @@ else
   end
 end
 def slog(h)
-  Deploy.slog ({ src: :dashboard }).merge(h)
+  Deploy.slog ({ application: :dashboard }).merge(h)
 end
 
 require File.expand_path('../application', __FILE__)
