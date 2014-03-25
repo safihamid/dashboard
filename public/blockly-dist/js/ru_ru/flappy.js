@@ -232,7 +232,13 @@ BlocklyApps.init = function(config) {
   if (BlocklyApps.share) {
     var upSale = document.createElement('div');
     if (config.makeYourOwn) {
-      upSale.innerHTML = require('./templates/makeYourOwn.html')();
+      upSale.innerHTML = require('./templates/makeYourOwn.html')({
+        data: {
+          makeUrl: config.makeUrl,
+          makeString: config.makeString,
+          makeImage: config.makeImage
+        }
+      });
       if (BlocklyApps.noPadding) {
         upSale.style.marginLeft = '30px';
       }
@@ -2523,15 +2529,6 @@ var drawMap = function() {
   var svg = document.getElementById('svgFlappy');
   var i, x, y, k, tile;
 
-  // Draw the outer square.
-  var square = document.createElementNS(Blockly.SVG_NS, 'rect');
-  square.setAttribute('width', Flappy.MAZE_WIDTH);
-  square.setAttribute('height', Flappy.MAZE_HEIGHT);
-  square.setAttribute('fill', '#F1EEE7');
-  square.setAttribute('stroke-width', 1);
-  square.setAttribute('stroke', '#CCB');
-  svg.appendChild(square);
-
   // Adjust outer element size.
   svg.setAttribute('width', Flappy.MAZE_WIDTH);
   svg.setAttribute('height', Flappy.MAZE_HEIGHT);
@@ -2938,6 +2935,10 @@ Flappy.init = function(config) {
 
   // for flappy show make your own button if on share page
   config.makeYourOwn = config.share;
+  
+  config.makeString = commonMsg.makeYourOwnFlappy();
+  config.makeUrl = "http://code.org/flappy";
+  config.makeImage = BlocklyApps.assetUrl('media/flappy_promo.png');
 
   config.hideShowCode = true;
 
@@ -4398,7 +4399,7 @@ escape = escape || function (html){
 };
 var buf = [];
 with (locals || {}) { (function(){ 
- buf.push('');1; var msg = require('../../locale/ru_ru/common') ; buf.push('\n\n<div id="make-your-own">\n\n  <h1><a href="http://code.org/flappy">', escape((5,  msg.makeYourOwnFlappy() )), '</a></h1>\n  <a href="http://code.org/flappy"><img src="', escape((6,  BlocklyApps.assetUrl('media/flappy_promo.png') )), '"></a>\n\n</div>\n'); })();
+ buf.push('');1; var msg = require('../../locale/ru_ru/common') ; buf.push('\n\n<div id="make-your-own">\n\n  <h1><a href=', escape((5,  data.makeUrl )), '>', escape((5,  data.makeString )), '</a></h1>\n  <a href=', escape((6,  data.makeUrl )), '><img src=', escape((6,  data.makeImage )), '></a>\n\n</div>\n'); })();
 } 
 return buf.join('');
 };

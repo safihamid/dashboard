@@ -2,7 +2,6 @@
   width: 1024px; }
 
 #svgFlappy {
-  border: solid 1px #dbdbdb;
   overflow: hidden; }
 
 /* 'Look' icon */
@@ -57,7 +56,8 @@ button.share {
   background-color: #ffa000;
   color: white;
   margin-left: 0px;
-  margin-right: 5px; }
+  margin-right: 5px;
+  padding-top: 11px; }
 
 button.share:focus {
   outline-style: none; }

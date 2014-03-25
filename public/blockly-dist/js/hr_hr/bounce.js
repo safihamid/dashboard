@@ -232,7 +232,13 @@ BlocklyApps.init = function(config) {
   if (BlocklyApps.share) {
     var upSale = document.createElement('div');
     if (config.makeYourOwn) {
-      upSale.innerHTML = require('./templates/makeYourOwn.html')();
+      upSale.innerHTML = require('./templates/makeYourOwn.html')({
+        data: {
+          makeUrl: config.makeUrl,
+          makeString: config.makeString,
+          makeImage: config.makeImage
+        }
+      });
       if (BlocklyApps.noPadding) {
         upSale.style.marginLeft = '30px';
       }
@@ -1599,6 +1605,7 @@ var Keycodes = {
 
 var level;
 var skin;
+var onSharePage;
 
 /**
  * Milliseconds between each animation frame.
@@ -1621,6 +1628,11 @@ BlocklyApps.NUM_REQUIRED_BLOCKS_TO_FLAG = 1;
 Bounce.scale = {
   'snapRadius': 1,
   'stepSpeed': 33
+};
+
+var twitterOptions = {
+  text: bounceMsg.shareBounceTwitter(),
+  hashtag: "PongCode"
 };
 
 var loadLevel = function() {
@@ -1750,15 +1762,6 @@ Bounce.deleteBallElements = function (i) {
 var drawMap = function() {
   var svg = document.getElementById('svgBounce');
   var i, x, y, k, tile;
-
-  // Draw the outer square.
-  var square = document.createElementNS(Blockly.SVG_NS, 'rect');
-  square.setAttribute('width', Bounce.MAZE_WIDTH);
-  square.setAttribute('height', Bounce.MAZE_HEIGHT);
-  square.setAttribute('fill', '#F1EEE7');
-  square.setAttribute('stroke-width', 1);
-  square.setAttribute('stroke', '#CCB');
-  svg.appendChild(square);
 
   // Adjust outer element size.
   svg.setAttribute('width', Bounce.MAZE_WIDTH);
@@ -2192,6 +2195,7 @@ Bounce.init = function(config) {
   Bounce.clearEventHandlersKillTickLoop();
   skin = config.skin;
   level = config.level;
+  onSharePage = config.share;
   loadLevel();
   
   window.addEventListener("keydown", Bounce.onKey, false);
@@ -2308,9 +2312,23 @@ Bounce.init = function(config) {
     'bounce_whenBallMissesPaddle': { x: 20, y: 430},
   };
 
+  config.twitter = twitterOptions;
+
+  // for this app, show make your own button if on share page
+  config.makeYourOwn = config.share;
+
+  config.makeString = bounceMsg.makeYourOwn();
+  config.makeUrl = "http://code.org/pong";
+  config.makeImage = BlocklyApps.assetUrl('media/promo.png');
+  
   config.preventExtraTopLevelBlocks = true;
 
   BlocklyApps.init(config);
+
+  if (!onSharePage) {
+    var shareButton = document.getElementById('shareButton');
+    dom.addClickTouchEvent(shareButton, Bounce.onPuzzleComplete);
+  }
 };
 
 /**
@@ -2536,6 +2554,11 @@ BlocklyApps.runButtonClick = function() {
   BlocklyApps.reset(false);
   BlocklyApps.attempts++;
   Bounce.execute();
+  
+  if (level.freePlay && !onSharePage) {
+    var shareCell = document.getElementById('share-cell');
+    shareCell.className = 'share-cell-enabled';
+  }
   if (Bounce.goalLocated_) {
     document.getElementById('score').setAttribute('visibility', 'visible');
     Bounce.displayScore();
@@ -2564,7 +2587,13 @@ var displayFeedback = function() {
       skin: skin.id,
       feedbackType: Bounce.testResults,
       response: Bounce.response,
-      level: level
+      level: level,
+      showingSharing: level.freePlay,
+      twitter: twitterOptions,
+      appStrings: {
+        reinfFeedbackMsg: bounceMsg.reinfFeedbackMsg(),
+        sharingText: bounceMsg.shareGame()
+      }
     });
   }
 };
@@ -2709,6 +2738,10 @@ Bounce.execute = function() {
 };
 
 Bounce.onPuzzleComplete = function() {
+  if (level.freePlay) {
+    Bounce.result = ResultType.SUCCESS;
+  }
+
   // Stop everything on screen
   Bounce.clearEventHandlersKillTickLoop();
 
@@ -2716,7 +2749,13 @@ Bounce.onPuzzleComplete = function() {
   // Note that we have not yet animated the succesful run
   BlocklyApps.levelComplete = (Bounce.result == ResultType.SUCCESS);
   
-  Bounce.testResults = BlocklyApps.getTestResults();
+  // If the current level is a free play, always return the free play
+  // result type
+  if (level.freePlay) {
+    Bounce.testResults = BlocklyApps.TestResults.FREE_PLAY;
+  } else {
+    Bounce.testResults = BlocklyApps.getTestResults();
+  }
 
   if (Bounce.testResults >= BlocklyApps.TestResults.FREE_PLAY) {
     BlocklyApps.playAudio('win', {volume : 0.5});
@@ -2979,7 +3018,7 @@ escape = escape || function (html){
 };
 var buf = [];
 with (locals || {}) { (function(){ 
- buf.push('<td id="soft-buttons" class="soft-buttons-none">\n  <button id="leftButton" class="arrow">\n    <img src="', escape((3,  assetUrl('media/1x1.gif') )), '" class="left-btn icon21">\n  <button id="rightButton" class="arrow">\n    <img src="', escape((5,  assetUrl('media/1x1.gif') )), '" class="right-btn icon21">\n  <button id="upButton" class="arrow">\n    <img src="', escape((7,  assetUrl('media/1x1.gif') )), '" class="up-btn icon21">\n  <button id="downButton" class="arrow">\n    <img src="', escape((9,  assetUrl('media/1x1.gif') )), '" class="down-btn icon21">\n</td>\n'); })();
+ buf.push('');1; var msg = require('../../locale/hr_hr/bounce') ; buf.push('\n\n<td id="share-cell" class="share-cell-none">\n  <button id="shareButton" class="share">\n    <img src="', escape((5,  assetUrl('media/1x1.gif') )), '">\n    ', escape((6,  msg.share() )), '\n  </button>\n</td>\n<td id="soft-buttons" class="soft-buttons-none">\n  <button id="leftButton" class="arrow">\n    <img src="', escape((11,  assetUrl('media/1x1.gif') )), '" class="left-btn icon21">\n  <button id="rightButton" class="arrow">\n    <img src="', escape((13,  assetUrl('media/1x1.gif') )), '" class="right-btn icon21">\n  <button id="upButton" class="arrow">\n    <img src="', escape((15,  assetUrl('media/1x1.gif') )), '" class="up-btn icon21">\n  <button id="downButton" class="arrow">\n    <img src="', escape((17,  assetUrl('media/1x1.gif') )), '" class="down-btn icon21">\n</td>\n'); })();
 } 
 return buf.join('');
 };
@@ -2987,7 +3026,7 @@ return buf.join('');
     return t(locals, require("ejs").filters);
   }
 }());
-},{"ejs":32}],7:[function(require,module,exports){
+},{"../../locale/hr_hr/bounce":30,"ejs":32}],7:[function(require,module,exports){
 /*jshint multistr: true */
 
 var Direction = require('./tiles').Direction;
@@ -3352,6 +3391,50 @@ module.exports = {
         return (Bounce.opponentScore >= 2);
       }
     },
+    'map': [
+      [1, 1, 2, 2, 2, 2, 1, 1],
+      [1, 0, 0, 0, 0, 0, 0, 1],
+      [1, 0, 0, 0, 0, 0, 0, 1],
+      [1, 0, 0, 0, 0, 0, 0, 1],
+      [1, 0, 0, 0, 0, 0, 0, 1],
+      [1, 0, 0, 0, 0, 0, 0, 1],
+      [1, 0, 0, 0, 0, 0, 0, 1],
+      [1, 0,16, 0, 0, 0, 0, 1]
+    ],
+    'toolbox':
+      tb('<block type="bounce_moveLeft"></block> \
+          <block type="bounce_moveRight"></block> \
+          <block type="bounce_bounceBall"></block> \
+          <block type="bounce_playSound"></block> \
+          <block type="bounce_incrementPlayerScore"></block> \
+          <block type="bounce_incrementOpponentScore"></block> \
+          <block type="bounce_launchBall"></block> \
+          <block type="bounce_setPaddleSpeed"></block> \
+          <block type="bounce_setBallSpeed"></block> \
+          <block type="bounce_setBackground"></block> \
+          <block type="bounce_setBall"></block> \
+          <block type="bounce_setPaddle"></block>'),
+    'startBlocks':
+     '<block type="bounce_whenGameStarts" deletable="false" x="20" y="20"></block> \
+      <block type="bounce_whenLeft" deletable="false" x="20" y="110"></block> \
+      <block type="bounce_whenRight" deletable="false" x="180" y="110"></block> \
+      <block type="bounce_whenPaddleCollided" deletable="false" x="20" y="190"></block> \
+      <block type="bounce_whenWallCollided" deletable="false" x="20" y="270"></block> \
+      <block type="bounce_whenBallInGoal" deletable="false" x="20" y="350"></block> \
+      <block type="bounce_whenBallMissesPaddle" deletable="false" x="20" y="430"></block>'
+  },
+  '12': {
+    'ideal': 22,
+    'requiredBlocks': [
+    ],
+    'scale': {
+      'snapRadius': 2
+    },
+    'softButtons': [
+      'leftButton',
+      'rightButton'
+    ],
+    'freePlay': true,
     'map': [
       [1, 1, 2, 2, 2, 2, 1, 1],
       [1, 0, 0, 0, 0, 0, 0, 1],
@@ -4821,7 +4904,7 @@ escape = escape || function (html){
 };
 var buf = [];
 with (locals || {}) { (function(){ 
- buf.push('');1; var msg = require('../../locale/hr_hr/common') ; buf.push('\n\n<div id="make-your-own">\n\n  <h1><a href="http://code.org/flappy">', escape((5,  msg.makeYourOwnFlappy() )), '</a></h1>\n  <a href="http://code.org/flappy"><img src="', escape((6,  BlocklyApps.assetUrl('media/flappy_promo.png') )), '"></a>\n\n</div>\n'); })();
+ buf.push('');1; var msg = require('../../locale/hr_hr/common') ; buf.push('\n\n<div id="make-your-own">\n\n  <h1><a href=', escape((5,  data.makeUrl )), '>', escape((5,  data.makeString )), '</a></h1>\n  <a href=', escape((6,  data.makeUrl )), '><img src=', escape((6,  data.makeImage )), '></a>\n\n</div>\n'); })();
 } 
 return buf.join('');
 };
@@ -5035,6 +5118,8 @@ exports.launchBall = function(d){return "launch ball"};
 
 exports.launchBallTooltip = function(d){return "Launch a ball into play."};
 
+exports.makeYourOwn = function(d){return "Make Your Own Pong Game"};
+
 exports.moveDown = function(d){return "move down"};
 
 exports.moveDownTooltip = function(d){return "Move the paddle down."};
@@ -5105,6 +5190,8 @@ exports.playSoundWood = function(d){return "play wood sound"};
 
 exports.putdownTower = function(d){return "spusti kulu"};
 
+exports.reinfFeedbackMsg = function(d){return "You can press the \"Try again\" button to go back to playing your game."};
+
 exports.removeSquare = function(d){return "ukloni kvadrat"};
 
 exports.repeatUntil = function(d){return "ponavljaj dok ne bude"};
@@ -5166,6 +5253,12 @@ exports.setPaddleSpeedFast = function(d){return "set fast paddle speed"};
 exports.setPaddleSpeedVeryFast = function(d){return "set very fast paddle speed"};
 
 exports.setPaddleSpeedTooltip = function(d){return "Sets the speed of the paddle"};
+
+exports.share = function(d){return "Share"};
+
+exports.shareBounceTwitter = function(d){return "Check out the Pong game I made. I wrote it myself with @codeorg"};
+
+exports.shareGame = function(d){return "Share your game:"};
 
 exports.turnLeft = function(d){return "okreni ulijevo"};
 
