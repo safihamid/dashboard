@@ -1,4 +1,3 @@
 = content_tag_for :li, level do
-  %div
-    %span=level.game.name + " " + level.name
-    =link_to t("builder.view"), "#", class: "sl-edit-level-link", data: {url: "/games/1/levels/#{level.id}"}
+  %span=level.game.name + " " + level.name
+  =link_to t("builder.view"), "#", class: "sl-edit-level-link", data: {url: "/games/1/levels/#{level.id}"}
