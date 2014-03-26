@@ -23,6 +23,7 @@ group :development, :test do
   # for unit testing
   gem 'factory_girl_rails'
   gem 'simplecov', require: false
+  gem 'mocha', require: false
 end
 
 group :doc do
