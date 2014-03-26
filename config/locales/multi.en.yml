@@ -1,0 +1,9 @@
+en:
+  data:
+    multi:
+      'Multi1':
+        title: 'My first multi'
+        desc: 'This lesson is a multi'
+        video: 'HsXaVV6fFDY'
+        download: 'https://s3.amazonaws.com/cdo-videos/new/1-whatisCS-unpluggedactivity.mp4'
+        pdfs: ['multi1']

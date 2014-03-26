@@ -56,6 +56,7 @@ namespace :seed do
       Game.create!(name: 'Unplug9', app: 'unplug')
       Game.create!(name: 'Unplug10', app: 'unplug')
       Game.create!(name: 'Unplug11', app: 'unplug')
+      Game.create!(name: 'Multi1', app: 'multi')
       Game.create!(name: 'Bounce', app: 'bounce')
       Game.create!(name: "Custom", app: "turtle")
       Game.create!(name: 'Flappy', app: 'flappy', intro_video: Video.find_by_key('flappy_intro'))
