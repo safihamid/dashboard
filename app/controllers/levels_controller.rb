@@ -4,7 +4,6 @@ class LevelsController < ApplicationController
   include LevelsHelper
   include ActiveSupport::Inflector
   before_filter :authenticate_user!
-  skip_before_filter :verify_authenticity_token, :only => [:create]
   skip_before_filter :verify_params_before_cancan_loads_model, :only => [:create]
   load_and_authorize_resource :except => [:create]
   check_authorization
@@ -97,7 +96,7 @@ class LevelsController < ApplicationController
   # DELETE /levels/1.json
   def destroy
     @level.destroy
-    redirect_to(params[:redirect].nil?? game_levels_url : params[:redirect])
+    redirect_to(params[:redirect] || game_levels_url)
   end
 
   def new
