@@ -5101,7 +5101,7 @@ exports.isWall = function(d){return "האם זה קיר?"};
 
 exports.isWallTooltip = function(d){return "מחזיר נכון אם יש כאן קיר"};
 
-exports.launchBall = function(d){return "launch ball"};
+exports.launchBall = function(d){return "launch new ball"};
 
 exports.launchBallTooltip = function(d){return "Launch a ball into play."};
 

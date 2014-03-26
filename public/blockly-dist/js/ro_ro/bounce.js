@@ -5110,7 +5110,7 @@ exports.isWall = function(d){return "este acesta un perete"};
 
 exports.isWallTooltip = function(d){return "Revine adevarat daca este un perete aici"};
 
-exports.launchBall = function(d){return "launch ball"};
+exports.launchBall = function(d){return "launch new ball"};
 
 exports.launchBallTooltip = function(d){return "Launch a ball into play."};
 

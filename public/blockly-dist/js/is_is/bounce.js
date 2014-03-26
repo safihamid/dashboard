@@ -5101,7 +5101,7 @@ exports.isWall = function(d){return "er þetta veggur"};
 
 exports.isWallTooltip = function(d){return "Skilar gildinu satt ef það er veggur hér"};
 
-exports.launchBall = function(d){return "launch ball"};
+exports.launchBall = function(d){return "launch new ball"};
 
 exports.launchBallTooltip = function(d){return "Launch a ball into play."};
 
