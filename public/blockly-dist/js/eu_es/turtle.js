@@ -3983,6 +3983,7 @@ module.exports = {
     initialY: 300,
     toolbox: toolbox(4, 11),
     startBlocks: startBlocks(4, 11),
+    requiredBlocks : [],
     startDirection: 0,
     sliderSpeed: 0.9
    },
