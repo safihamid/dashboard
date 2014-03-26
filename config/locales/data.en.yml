@@ -40,7 +40,7 @@ en:
           desc: 'Edit Code (beta)'
           'MazeEC': 'Stage 1'
         '2014 Levels':
-          desc: 'Pong (beta)'
+          desc: 'Bounce (beta)'
           'Bounce': 'Stage 1'
         'Builder Levels':
           desc: 'User-Created Puzzles (beta)'
@@ -203,8 +203,8 @@ en:
         'bounce_6': "Now the finish target is on the top. You need to attach blocks to both of the \"when ball hits\" blocks to solve this puzzle."
         'bounce_7': "Attach blocks to each of the \"when\" blocks. Bounce the ball until it hits the finish target."
         'bounce_10': "There is a now a goal at the top. Attach the \"score point\" and \"score opponent point\" blocks to the \"when ball in goal\" and \"when ball misses paddle\" blocks to make a game. See how many points you can score before your opponent scores twice."
-        'bounce_11': "You can now attach blocks to the \"when game starts\" block. You have to attach the new \"launch ball\" block in more than one place. Also, try changing the scene or the speed of the paddle and the ball and see how many points you can score before your opponent scores twice."
-        'bounce_12': "Create your own Pong game. You can change all the visuals and the rules. When you're done, click Share to let friends try your game on their phones."
+        'bounce_11': "You can now attach blocks to the \"when game starts\" block. You have to attach the new \"launch new ball\" block in more than one place. Also, try changing the scene or the speed of the paddle and the ball and see how many points you can score before your opponent scores twice."
+        'bounce_12': "Create your own Bounce game. You can change all the visuals and the rules. When you're done, click Share to let friends try your game on their phones."
         'Custom_builder': "Drag blocks from the toolbox to the workspace to draw the level you wish to create. Press \"Run Program\" when you are ready."
         'flappy_1': "Attach a block to the \"when click\" block, then press \"Run Program\". Click or tap the screen to move Flappy to the target."
         'flappy_2': "Now we've added some ground.  Attach a block to the \"when hit the ground\" block.  Your code needs to 'END GAME' when Flappy crashes."
