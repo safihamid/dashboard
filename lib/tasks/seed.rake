@@ -6,8 +6,9 @@ namespace :seed do
       Video.delete_all # use delete instead of destroy so callbacks are not called
       Video.connection.execute("ALTER TABLE videos auto_increment = 1")
 
+      video_id = 0
       CSV.read('config/videos.csv', { col_sep: "\t", headers: true }).each do |row|
-        Video.create!(key: row['Key'], youtube_code: row['YoutubeCode'], download: row['Download'])
+        Video.create!(key: row['Key'], youtube_code: row['YoutubeCode'], download: row['Download'], :id => video_id += 1)
       end
     end
 
@@ -18,47 +19,47 @@ namespace :seed do
     Concept.transaction do
       Concept.delete_all # use delete instead of destroy so callbacks are not called
       Concept.connection.execute("ALTER TABLE concepts auto_increment = 1")
-      Concept.create!(name: 'sequence')
-      Concept.create!(name: 'if', video: Video.find_by_key('if'))
-      Concept.create!(name: 'if_else', video: Video.find_by_key('if_else'))
-      Concept.create!(name: 'loop_times', video: Video.find_by_key('loop_times'))
-      Concept.create!(name: 'loop_until', video: Video.find_by_key('loop_until'))
-      Concept.create!(name: 'loop_while', video: Video.find_by_key('loop_while'))
-      Concept.create!(name: 'loop_for', video: Video.find_by_key('loop_for'))
-      Concept.create!(name: 'function', video: Video.find_by_key('function'))
-      Concept.create!(name: 'parameters', video: Video.find_by_key('parameters'))
+      concept_id = 0
+      Concept.create!(id: concept_id += 1, name: 'sequence')
+      Concept.create!(id: concept_id += 1, name: 'if', video: Video.find_by_key('if'))
+      Concept.create!(id: concept_id += 1, name: 'if_else', video: Video.find_by_key('if_else'))
+      Concept.create!(id: concept_id += 1, name: 'loop_times', video: Video.find_by_key('loop_times'))
+      Concept.create!(id: concept_id += 1, name: 'loop_until', video: Video.find_by_key('loop_until'))
+      Concept.create!(id: concept_id += 1, name: 'loop_while', video: Video.find_by_key('loop_while'))
+      Concept.create!(id: concept_id += 1, name: 'loop_for', video: Video.find_by_key('loop_for'))
+      Concept.create!(id: concept_id += 1, name: 'function', video: Video.find_by_key('function'))
+      Concept.create!(id: concept_id += 1, name: 'parameters', video: Video.find_by_key('parameters'))
     end
   end
-
   task games: :environment do
     Game.transaction do 
       Game.delete_all # use delete instead of destroy so callbacks are not called
       Game.connection.execute("ALTER TABLE games auto_increment = 1")
-
-      Game.create!(name: 'Maze', app: 'maze', intro_video: Video.find_by_key('maze_intro'))
-      Game.create!(name: 'Artist', app: 'turtle', intro_video: Video.find_by_key('artist_intro'))
-      Game.create!(name: 'Artist2', app: 'turtle')
-      Game.create!(name: 'Farmer', app: 'maze', intro_video: Video.find_by_key('farmer_intro'))
-      Game.create!(name: 'Artist3', app: 'turtle')
-      Game.create!(name: 'Farmer2', app: 'maze')
-      Game.create!(name: 'Artist4', app: 'turtle')
-      Game.create!(name: 'Farmer3', app: 'maze')
-      Game.create!(name: 'Artist5', app: 'turtle')
-      Game.create!(name: 'MazeEC', app: 'maze', intro_video: Video.find_by_key('maze_intro'))
-      Game.create!(name: 'Unplug1', app: 'unplug')
-      Game.create!(name: 'Unplug2', app: 'unplug')
-      Game.create!(name: 'Unplug3', app: 'unplug')
-      Game.create!(name: 'Unplug4', app: 'unplug')
-      Game.create!(name: 'Unplug5', app: 'unplug')
-      Game.create!(name: 'Unplug6', app: 'unplug')
-      Game.create!(name: 'Unplug7', app: 'unplug')
-      Game.create!(name: 'Unplug8', app: 'unplug')
-      Game.create!(name: 'Unplug9', app: 'unplug')
-      Game.create!(name: 'Unplug10', app: 'unplug')
-      Game.create!(name: 'Unplug11', app: 'unplug')
-      Game.create!(name: 'Bounce', app: 'bounce')
-      Game.create!(name: "Custom", app: "turtle")
-      Game.create!(name: 'Flappy', app: 'flappy', intro_video: Video.find_by_key('flappy_intro'))
+      game_id = 0
+      Game.create!(id: game_id += 1, name: 'Maze', app: 'maze', intro_video: Video.find_by_key('maze_intro'))
+      Game.create!(id: game_id += 1, name: 'Artist', app: 'turtle', intro_video: Video.find_by_key('artist_intro'))
+      Game.create!(id: game_id += 1, name: 'Artist2', app: 'turtle')
+      Game.create!(id: game_id += 1, name: 'Farmer', app: 'maze', intro_video: Video.find_by_key('farmer_intro'))
+      Game.create!(id: game_id += 1, name: 'Artist3', app: 'turtle')
+      Game.create!(id: game_id += 1, name: 'Farmer2', app: 'maze')
+      Game.create!(id: game_id += 1, name: 'Artist4', app: 'turtle')
+      Game.create!(id: game_id += 1, name: 'Farmer3', app: 'maze')
+      Game.create!(id: game_id += 1, name: 'Artist5', app: 'turtle')
+      Game.create!(id: game_id += 1, name: 'MazeEC', app: 'maze', intro_video: Video.find_by_key('maze_intro'))
+      Game.create!(id: game_id += 1, name: 'Unplug1', app: 'unplug')
+      Game.create!(id: game_id += 1, name: 'Unplug2', app: 'unplug')
+      Game.create!(id: game_id += 1, name: 'Unplug3', app: 'unplug')
+      Game.create!(id: game_id += 1, name: 'Unplug4', app: 'unplug')
+      Game.create!(id: game_id += 1, name: 'Unplug5', app: 'unplug')
+      Game.create!(id: game_id += 1, name: 'Unplug6', app: 'unplug')
+      Game.create!(id: game_id += 1, name: 'Unplug7', app: 'unplug')
+      Game.create!(id: game_id += 1, name: 'Unplug8', app: 'unplug')
+      Game.create!(id: game_id += 1, name: 'Unplug9', app: 'unplug')
+      Game.create!(id: game_id += 1, name: 'Unplug10', app: 'unplug')
+      Game.create!(id: game_id += 1, name: 'Unplug11', app: 'unplug')
+      Game.create!(id: game_id += 1, name: 'Bounce', app: 'bounce')
+      Game.create!(id: game_id += 1, name: "Custom", app: "turtle")
+      Game.create!(id: game_id += 1, name: 'Flappy', app: 'flappy', intro_video: Video.find_by_key('flappy_intro'))
    end
   end
 
@@ -132,6 +133,8 @@ namespace :seed do
     Callout.transaction do
       Callout.delete_all # use delete instead of destroy so callbacks are not called
       Callout.connection.execute("ALTER TABLE callouts auto_increment = 1")
+      # TODO if the id of the callout is important, specify it in the tsv
+      # preferably the id of the callout is not important ;)
       Callout.find_or_create_all_from_tsv!('config/callouts.tsv')
     end
   end
@@ -141,9 +144,10 @@ namespace :seed do
     Trophy.transaction do
       Trophy.delete_all # use delete instead of destroy so callbacks are not called
       Trophy.connection.execute("ALTER TABLE trophies auto_increment = 1")
-      Trophy.create!(name: 'Bronze', image_name: 'bronzetrophy.png')
-      Trophy.create!(name: 'Silver', image_name: 'silvertrophy.png')
-      Trophy.create!(name: 'Gold', image_name: 'goldtrophy.png')
+      trophy_id = 0
+      Trophy.create!(id: trophy_id += 1, name: 'Bronze', image_name: 'bronzetrophy.png')
+      Trophy.create!(id: trophy_id += 1, name: 'Silver', image_name: 'silvertrophy.png')
+      Trophy.create!(id: trophy_id += 1, name: 'Gold', image_name: 'goldtrophy.png')
     end
   end
   
@@ -153,16 +157,17 @@ namespace :seed do
       PrizeProvider.connection.execute("ALTER TABLE prize_providers auto_increment = 1")
       
       # placeholder data - id's are assumed to start at 1 so prizes below can be loaded properly
-      PrizeProvider.create!(name: 'Apple iTunes', description_token: 'apple_itunes', url: 'http://www.apple.com/itunes/', image_name: 'itunes_card.jpg')
-      PrizeProvider.create!(name: 'Dropbox', description_token: 'dropbox', url: 'http://www.dropbox.com/', image_name: 'dropbox_card.jpg')
-      PrizeProvider.create!(name: 'Valve Portal', description_token: 'valve', url: 'http://www.valvesoftware.com/games/portal.html', image_name: 'portal2_card.png')
-      PrizeProvider.create!(name: 'EA Origin Bejeweled 3', description_token: 'ea_bejeweled', url: 'https://www.origin.com/en-us/store/buy/181609/mac-pc-download/base-game/standard-edition-ANW.html', image_name: 'bejeweled_card.jpg')
-      PrizeProvider.create!(name: 'EA Origin FIFA Soccer 13', description_token: 'ea_fifa', url: 'https://www.origin.com/en-us/store/buy/fifa-2013/pc-download/base-game/standard-edition-ANW.html', image_name: 'fifa_card.jpg')
-      PrizeProvider.create!(name: 'EA Origin SimCity 4 Deluxe', description_token: 'ea_simcity', url: 'https://www.origin.com/en-us/store/buy/sim-city-4/pc-download/base-game/deluxe-edition-ANW.html', image_name: 'simcity_card.jpg')
-      PrizeProvider.create!(name: 'EA Origin Plants vs. Zombies', description_token: 'ea_pvz', url: 'https://www.origin.com/en-us/store/buy/plants-vs-zombies/mac-pc-download/base-game/standard-edition-ANW.html', image_name: 'pvz_card.jpg')
-      PrizeProvider.create!(name: 'DonorsChoose.org $750', description_token: 'donors_choose', url: 'http://www.donorschoose.org/', image_name: 'donorschoose_card.jpg')
-      PrizeProvider.create!(name: 'DonorsChoose.org $250', description_token: 'donors_choose_bonus', url: 'http://www.donorschoose.org/', image_name: 'donorschoose_card.jpg')
-      PrizeProvider.create!(name: 'Skype', description_token: 'skype', url: 'http://www.skype.com/', image_name: 'skype_card.jpg')
+      prize_provider_id = 0
+      PrizeProvider.create!(id: prize_provider_id += 1, name: 'Apple iTunes', description_token: 'apple_itunes', url: 'http://www.apple.com/itunes/', image_name: 'itunes_card.jpg')
+      PrizeProvider.create!(id: prize_provider_id += 1, name: 'Dropbox', description_token: 'dropbox', url: 'http://www.dropbox.com/', image_name: 'dropbox_card.jpg')
+      PrizeProvider.create!(id: prize_provider_id += 1, name: 'Valve Portal', description_token: 'valve', url: 'http://www.valvesoftware.com/games/portal.html', image_name: 'portal2_card.png')
+      PrizeProvider.create!(id: prize_provider_id += 1, name: 'EA Origin Bejeweled 3', description_token: 'ea_bejeweled', url: 'https://www.origin.com/en-us/store/buy/181609/mac-pc-download/base-game/standard-edition-ANW.html', image_name: 'bejeweled_card.jpg')
+      PrizeProvider.create!(id: prize_provider_id += 1, name: 'EA Origin FIFA Soccer 13', description_token: 'ea_fifa', url: 'https://www.origin.com/en-us/store/buy/fifa-2013/pc-download/base-game/standard-edition-ANW.html', image_name: 'fifa_card.jpg')
+      PrizeProvider.create!(id: prize_provider_id += 1, name: 'EA Origin SimCity 4 Deluxe', description_token: 'ea_simcity', url: 'https://www.origin.com/en-us/store/buy/sim-city-4/pc-download/base-game/deluxe-edition-ANW.html', image_name: 'simcity_card.jpg')
+      PrizeProvider.create!(id: prize_provider_id += 1, name: 'EA Origin Plants vs. Zombies', description_token: 'ea_pvz', url: 'https://www.origin.com/en-us/store/buy/plants-vs-zombies/mac-pc-download/base-game/standard-edition-ANW.html', image_name: 'pvz_card.jpg')
+      PrizeProvider.create!(id: prize_provider_id += 1, name: 'DonorsChoose.org $750', description_token: 'donors_choose', url: 'http://www.donorschoose.org/', image_name: 'donorschoose_card.jpg')
+      PrizeProvider.create!(id: prize_provider_id += 1, name: 'DonorsChoose.org $250', description_token: 'donors_choose_bonus', url: 'http://www.donorschoose.org/', image_name: 'donorschoose_card.jpg')
+      PrizeProvider.create!(id: prize_provider_id += 1, name: 'Skype', description_token: 'skype', url: 'http://www.skype.com/', image_name: 'skype_card.jpg')
     end
   end
 
