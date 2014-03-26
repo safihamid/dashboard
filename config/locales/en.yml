@@ -330,7 +330,7 @@ en:
   download_pdf: 'Open Lesson Plan'
   share_code:
     title: "Click 'Run program' to see my program in action"
-    bounce_og_title: "Check out my Pong Game"
+    bounce_og_title: "Check out my Bounce Game"
     flappy_og_title: "Check out my Flappy Game"
     og_description: "I wrote the code myself with Code.org"
   builder:
