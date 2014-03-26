@@ -5,7 +5,7 @@ class LevelsController < ApplicationController
   include ActiveSupport::Inflector
   before_filter :authenticate_user!
   skip_before_filter :verify_authenticity_token, :only => [:create]
-  skip_before_filter :verify_params_before_cancan_loads_mode, :only => [:create]
+  skip_before_filter :verify_params_before_cancan_loads_model, :only => [:create]
   load_and_authorize_resource :except => [:create]
   check_authorization
 
