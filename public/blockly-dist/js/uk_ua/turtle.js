@@ -3983,6 +3983,7 @@ module.exports = {
     initialY: 300,
     toolbox: toolbox(4, 11),
     startBlocks: startBlocks(4, 11),
+    requiredBlocks : [],
     startDirection: 0,
     sliderSpeed: 0.9
    },
@@ -6371,8 +6372,8 @@ var substr = 'ab'.substr(-1) === 'b'
     }
 ;
 
-}).call(this,require("/home/ubuntu/website-ci/tutorials-ci/blockly/node_modules/grunt-browserify/node_modules/browserify/node_modules/insert-module-globals/node_modules/process/browser.js"))
-},{"/home/ubuntu/website-ci/tutorials-ci/blockly/node_modules/grunt-browserify/node_modules/browserify/node_modules/insert-module-globals/node_modules/process/browser.js":39}],41:[function(require,module,exports){
+}).call(this,require("/home/ubuntu/website-ci/blockly/node_modules/grunt-browserify/node_modules/browserify/node_modules/insert-module-globals/node_modules/process/browser.js"))
+},{"/home/ubuntu/website-ci/blockly/node_modules/grunt-browserify/node_modules/browserify/node_modules/insert-module-globals/node_modules/process/browser.js":39}],41:[function(require,module,exports){
 /**
  * messageformat.js
  *

@@ -1632,7 +1632,7 @@ Bounce.scale = {
 
 var twitterOptions = {
   text: bounceMsg.shareBounceTwitter(),
-  hashtag: "PongCode"
+  hashtag: "BounceCode"
 };
 
 var loadLevel = function() {
@@ -2318,7 +2318,7 @@ Bounce.init = function(config) {
   config.makeYourOwn = config.share;
 
   config.makeString = bounceMsg.makeYourOwn();
-  config.makeUrl = "http://code.org/pong";
+  config.makeUrl = "http://code.org/bounce";
   config.makeImage = BlocklyApps.assetUrl('media/promo.png');
   
   config.preventExtraTopLevelBlocks = true;
@@ -5115,7 +5115,7 @@ exports.isWall = function(d){return "czy jest to ściana"};
 
 exports.isWallTooltip = function(d){return "Zwraca prawdę, jeżeli tutaj jest ściana"};
 
-exports.launchBall = function(d){return "launch ball"};
+exports.launchBall = function(d){return "launch new ball"};
 
 exports.launchBallTooltip = function(d){return "Launch a ball into play."};
 
@@ -6319,8 +6319,8 @@ var substr = 'ab'.substr(-1) === 'b'
     }
 ;
 
-}).call(this,require("/home/ubuntu/website-ci/tutorials-ci/blockly/node_modules/grunt-browserify/node_modules/browserify/node_modules/insert-module-globals/node_modules/process/browser.js"))
-},{"/home/ubuntu/website-ci/tutorials-ci/blockly/node_modules/grunt-browserify/node_modules/browserify/node_modules/insert-module-globals/node_modules/process/browser.js":36}],38:[function(require,module,exports){
+}).call(this,require("/home/ubuntu/website-ci/blockly/node_modules/grunt-browserify/node_modules/browserify/node_modules/insert-module-globals/node_modules/process/browser.js"))
+},{"/home/ubuntu/website-ci/blockly/node_modules/grunt-browserify/node_modules/browserify/node_modules/insert-module-globals/node_modules/process/browser.js":36}],38:[function(require,module,exports){
 /**
  * messageformat.js
  *
