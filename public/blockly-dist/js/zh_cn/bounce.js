@@ -5102,7 +5102,7 @@ exports.launchBall = function(d){return "launch new ball"};
 
 exports.launchBallTooltip = function(d){return "Launch a ball into play."};
 
-exports.makeYourOwn = function(d){return "Make Your Own Pong Game"};
+exports.makeYourOwn = function(d){return "Make Your Own Bounce Game"};
 
 exports.moveDown = function(d){return "move down"};
 
@@ -5240,7 +5240,7 @@ exports.setPaddleSpeedTooltip = function(d){return "设置球拍的速度"};
 
 exports.share = function(d){return "Share"};
 
-exports.shareBounceTwitter = function(d){return "Check out the Pong game I made. I wrote it myself with @codeorg"};
+exports.shareBounceTwitter = function(d){return "Check out the Bounce game I made. I wrote it myself with @codeorg"};
 
 exports.shareGame = function(d){return "Share your game:"};
 
