@@ -80,7 +80,7 @@ en:
     prizes_header: 'The first students to complete the course win prizes! (U.S. students only)'
     prizes_message: 'U.S. students who earn all %{num_trophies} concept trophies can select a variety of prizes including free Dropbox space, Skype credits, and downloadable games from Electronic Arts.'
     teacher_educator_guide: 'See educator guide'
-    teacher_prize_header: 'Win $1,000 in <a target="_blank" href="http://DonorsChoose.org">DonorsChoose.org</a> rewards'
+    teacher_prize_header: 'Win $1,000 in <a target="_blank" href="http://DonorsChoose.org">DonorsChoose.org</a> rewards (through June 15, 2014, until supplies last)'
     teacher_prize_message: 'In partnership with <a target="_blank" href="http://DonorsChoose.org">DonorsChoose.org</a>, Code.org will offer up to $1,000 in classroom funding to U.S. public school teachers who lead at least 15 students through this course. <a href="http://code.org/educate/20hr">See educator guide for more info.</a> '
     teacher_prize_limits: '(Limit: $1,000 per teacher. <a target="_blank" href="http://help.donorschoose.org/app/answers/detail/a_id/454/kw/code.org">See FAQ for more limits</a>)'
     teacher_pitch: "Teach the K-8 Intro to Computer Science in your classroom"
@@ -330,7 +330,7 @@ en:
   download_pdf: 'Open Lesson Plan'
   share_code:
     title: "Click 'Run program' to see my program in action"
-    bounce_og_title: "Check out my Pong Game"
+    bounce_og_title: "Check out my Bounce Game"
     flappy_og_title: "Check out my Flappy Game"
     og_description: "I wrote the code myself with Code.org"
   builder:

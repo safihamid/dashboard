@@ -151,6 +151,9 @@ BlocklyApps.init = function(config) {
 
   BlocklyApps.share = config.share;
   BlocklyApps.noPadding = config.no_padding;
+  
+  // enableShowCode defaults to true if not defined
+  BlocklyApps.enableShowCode = (config.enableShowCode === false) ? false : true;
 
   // Store configuration.
   onAttempt = config.onAttempt || function(report) {
@@ -300,9 +303,7 @@ BlocklyApps.init = function(config) {
 
   var showCode = document.getElementById('show-code-header');  
   if (showCode) {
-    if (config.hideShowCode) {
-      showCode.style.display = 'none';
-    } else {
+    if (BlocklyApps.enableShowCode) {
       dom.addClickTouchEvent(showCode, function() {
         feedback.showGeneratedCode(BlocklyApps.Dialog);
       });
@@ -599,9 +600,15 @@ BlocklyApps.resizeHeaders = function() {
   var toolboxHeader = document.getElementById('toolbox-header');
   var showCodeHeader = document.getElementById('show-code-header');
 
-  var showCodeWidth = parseInt(window.getComputedStyle(showCodeHeader).width,
-                               10);
-
+  var showCodeWidth;
+  if (BlocklyApps.enableShowCode) {
+    showCodeWidth = parseInt(window.getComputedStyle(showCodeHeader).width, 10);
+  }
+  else {
+    showCodeWidth = 0;
+    showCodeHeader.style.display = "none";
+  }
+  
   toolboxHeader.style.width = (categoriesWidth + toolboxWidth) + 'px';
   workspaceHeader.style.width = (workspaceWidth -
                                  toolboxWidth -
@@ -1404,13 +1411,12 @@ var getShowCodeElement = function(options) {
       button.style.display = 'none';
     });
 
-    // For now we want to hide lines of code for flappy app
-    if (options.app === 'flappy') {
-      lines.innerHTML = '<br>';
-      showCodeDiv.appendChild(lines);
-    } else {
+    if (BlocklyApps.enableShowCode) {
       showCodeDiv.appendChild(lines);
       showCodeDiv.appendChild(showCodeLink);
+    } else {
+      lines.innerHTML = '<br>';
+      showCodeDiv.appendChild(lines);
     }
 
     return showCodeDiv;
@@ -7959,8 +7965,8 @@ var substr = 'ab'.substr(-1) === 'b'
     }
 ;
 
-}).call(this,require("/home/ubuntu/website-ci/tutorials-ci/blockly/node_modules/grunt-browserify/node_modules/browserify/node_modules/insert-module-globals/node_modules/process/browser.js"))
-},{"/home/ubuntu/website-ci/tutorials-ci/blockly/node_modules/grunt-browserify/node_modules/browserify/node_modules/insert-module-globals/node_modules/process/browser.js":44}],46:[function(require,module,exports){
+}).call(this,require("/home/ubuntu/website-ci/blockly/node_modules/grunt-browserify/node_modules/browserify/node_modules/insert-module-globals/node_modules/process/browser.js"))
+},{"/home/ubuntu/website-ci/blockly/node_modules/grunt-browserify/node_modules/browserify/node_modules/insert-module-globals/node_modules/process/browser.js":44}],46:[function(require,module,exports){
 /**
  * messageformat.js
  *

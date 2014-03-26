@@ -14,6 +14,9 @@ class Callout < ActiveRecord::Base
   CSV_IMPORT_OPTIONS = { col_sep: "\t", headers: true }
   
   def self.find_or_create_all_from_tsv!(filename)
+    # TODO if the id of the callout is important, specify it in the tsv.
+    # preferably the id of the callout is not important ;)
+
     created = []
     CSV.read(filename, CSV_IMPORT_OPTIONS).each do |row|
       created << self.first_or_create_from_tsv_row!(row)

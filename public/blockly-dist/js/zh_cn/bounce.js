@@ -151,6 +151,9 @@ BlocklyApps.init = function(config) {
 
   BlocklyApps.share = config.share;
   BlocklyApps.noPadding = config.no_padding;
+  
+  // enableShowCode defaults to true if not defined
+  BlocklyApps.enableShowCode = (config.enableShowCode === false) ? false : true;
 
   // Store configuration.
   onAttempt = config.onAttempt || function(report) {
@@ -300,9 +303,7 @@ BlocklyApps.init = function(config) {
 
   var showCode = document.getElementById('show-code-header');  
   if (showCode) {
-    if (config.hideShowCode) {
-      showCode.style.display = 'none';
-    } else {
+    if (BlocklyApps.enableShowCode) {
       dom.addClickTouchEvent(showCode, function() {
         feedback.showGeneratedCode(BlocklyApps.Dialog);
       });
@@ -599,9 +600,15 @@ BlocklyApps.resizeHeaders = function() {
   var toolboxHeader = document.getElementById('toolbox-header');
   var showCodeHeader = document.getElementById('show-code-header');
 
-  var showCodeWidth = parseInt(window.getComputedStyle(showCodeHeader).width,
-                               10);
-
+  var showCodeWidth;
+  if (BlocklyApps.enableShowCode) {
+    showCodeWidth = parseInt(window.getComputedStyle(showCodeHeader).width, 10);
+  }
+  else {
+    showCodeWidth = 0;
+    showCodeHeader.style.display = "none";
+  }
+  
   toolboxHeader.style.width = (categoriesWidth + toolboxWidth) + 'px';
   workspaceHeader.style.width = (workspaceWidth -
                                  toolboxWidth -
@@ -1632,7 +1639,7 @@ Bounce.scale = {
 
 var twitterOptions = {
   text: bounceMsg.shareBounceTwitter(),
-  hashtag: "PongCode"
+  hashtag: "BounceCode"
 };
 
 var loadLevel = function() {
@@ -2318,9 +2325,11 @@ Bounce.init = function(config) {
   config.makeYourOwn = config.share;
 
   config.makeString = bounceMsg.makeYourOwn();
-  config.makeUrl = "http://code.org/pong";
+  config.makeUrl = "http://code.org/bounce";
   config.makeImage = BlocklyApps.assetUrl('media/promo.png');
-  
+
+  config.enableShowCode = false;
+
   config.preventExtraTopLevelBlocks = true;
 
   BlocklyApps.init(config);
@@ -3041,7 +3050,6 @@ var tb = function(blocks) {
 module.exports = {
 
   '1': {
-    'ideal': 2,
     'requiredBlocks': [
       [{'test': 'moveLeft', 'type': 'bounce_moveLeft'}]
     ],
@@ -3098,7 +3106,6 @@ module.exports = {
       <block type="bounce_whenRight" deletable="false" x="180" y="20"></block>'
   },
   '3': {
-    'ideal': 2,
     'requiredBlocks': [
       [{'test': 'moveUp', 'type': 'bounce_moveUp'}]
     ],
@@ -3127,7 +3134,6 @@ module.exports = {
      '<block type="bounce_whenUp" deletable="false" x="20" y="20"></block>'
   },
   '4': {
-    'ideal': 8,
     'requiredBlocks': [
       [{'test': 'moveRight', 'type': 'bounce_moveRight'}],
       [{'test': 'moveLeft', 'type': 'bounce_moveLeft'}],
@@ -3165,7 +3171,6 @@ module.exports = {
       <block type="bounce_whenDown" deletable="false" x="180" y="120"></block>'
   },
   '5': {
-    'ideal': 3,
     'timeoutFailureTick': 100,
     'requiredBlocks': [
       [{'test': 'bounceBall', 'type': 'bounce_bounceBall'}]
@@ -3191,7 +3196,6 @@ module.exports = {
      '<block type="bounce_whenPaddleCollided" deletable="false" x="20" y="20"></block>'
   },
   '6': {
-    'ideal': 6,
     'timeoutFailureTick': 140,
     'requiredBlocks': [
       [{'test': 'bounceBall', 'type': 'bounce_bounceBall'}]
@@ -3218,7 +3222,6 @@ module.exports = {
       <block type="bounce_whenWallCollided" deletable="false" x="20" y="120"></block>'
   },
   '7': {
-    'ideal': 10,
     'timeoutFailureTick': 900,
     'requiredBlocks': [
       [{'test': 'moveLeft', 'type': 'bounce_moveLeft'}],
@@ -3256,7 +3259,6 @@ module.exports = {
   },
 /*
   '8': {
-    'ideal': 8,
     'requiredBlocks': [
       [{'test': 'moveRight', 'type': 'bounce_moveRight'}]
     ],
@@ -3289,7 +3291,6 @@ module.exports = {
       <block type="bounce_whenWallCollided" deletable="false" x="20" y="220"></block>'
   },
   '9': {
-    'ideal': 8,
     'requiredBlocks': [
       [{'test': 'moveRight', 'type': 'bounce_moveRight'}]
     ],
@@ -3323,7 +3324,6 @@ module.exports = {
   },
 */
   '10': {
-    'ideal': 16,
     'requiredBlocks': [
       [{'test': 'moveLeft', 'type': 'bounce_moveLeft'}],
       [{'test': 'moveRight', 'type': 'bounce_moveRight'}],
@@ -3370,7 +3370,6 @@ module.exports = {
       <block type="bounce_whenBallMissesPaddle" deletable="false" x="20" y="340"></block>'
   },
   '11': {
-    'ideal': 22,
     'requiredBlocks': [
       [{'test': 'moveLeft', 'type': 'bounce_moveLeft'}],
       [{'test': 'moveRight', 'type': 'bounce_moveRight'}],
@@ -3424,7 +3423,6 @@ module.exports = {
       <block type="bounce_whenBallMissesPaddle" deletable="false" x="20" y="430"></block>'
   },
   '12': {
-    'ideal': 22,
     'requiredBlocks': [
     ],
     'scale': {
@@ -4203,13 +4201,12 @@ var getShowCodeElement = function(options) {
       button.style.display = 'none';
     });
 
-    // For now we want to hide lines of code for flappy app
-    if (options.app === 'flappy') {
-      lines.innerHTML = '<br>';
-      showCodeDiv.appendChild(lines);
-    } else {
+    if (BlocklyApps.enableShowCode) {
       showCodeDiv.appendChild(lines);
       showCodeDiv.appendChild(showCodeLink);
+    } else {
+      lines.innerHTML = '<br>';
+      showCodeDiv.appendChild(lines);
     }
 
     return showCodeDiv;
@@ -5101,11 +5098,11 @@ exports.isWall = function(d){return "is this a wall"};
 
 exports.isWallTooltip = function(d){return "Returns true if there is a wall here"};
 
-exports.launchBall = function(d){return "launch ball"};
+exports.launchBall = function(d){return "launch new ball"};
 
 exports.launchBallTooltip = function(d){return "Launch a ball into play."};
 
-exports.makeYourOwn = function(d){return "Make Your Own Pong Game"};
+exports.makeYourOwn = function(d){return "Make Your Own Bounce Game"};
 
 exports.moveDown = function(d){return "move down"};
 
@@ -5243,7 +5240,7 @@ exports.setPaddleSpeedTooltip = function(d){return "设置球拍的速度"};
 
 exports.share = function(d){return "Share"};
 
-exports.shareBounceTwitter = function(d){return "Check out the Pong game I made. I wrote it myself with @codeorg"};
+exports.shareBounceTwitter = function(d){return "Check out the Bounce game I made. I wrote it myself with @codeorg"};
 
 exports.shareGame = function(d){return "Share your game:"};
 
@@ -6291,8 +6288,8 @@ var substr = 'ab'.substr(-1) === 'b'
     }
 ;
 
-}).call(this,require("/home/ubuntu/website-ci/tutorials-ci/blockly/node_modules/grunt-browserify/node_modules/browserify/node_modules/insert-module-globals/node_modules/process/browser.js"))
-},{"/home/ubuntu/website-ci/tutorials-ci/blockly/node_modules/grunt-browserify/node_modules/browserify/node_modules/insert-module-globals/node_modules/process/browser.js":36}],38:[function(require,module,exports){
+}).call(this,require("/home/ubuntu/website-ci/blockly/node_modules/grunt-browserify/node_modules/browserify/node_modules/insert-module-globals/node_modules/process/browser.js"))
+},{"/home/ubuntu/website-ci/blockly/node_modules/grunt-browserify/node_modules/browserify/node_modules/insert-module-globals/node_modules/process/browser.js":36}],38:[function(require,module,exports){
 /**
  * messageformat.js
  *

@@ -12,6 +12,13 @@
     %br/
     %br/
 
+  - if current_user.teacher_prize.nil? || current_user.teacher_bonus_prize.nil?
+    %h4
+      %b
+        DonorsChoose.org rewards are still available, but running out. We will offer rewards through June 15, 2014, or sooner, until supplies last.
+      %br/
+      %br/
+
   - if current_user.teacher_prize_earned
     %h4= t('redeem_prizes.msg.teacher.earned', num_trophies: Trophy::TROPHY_MAX)
     - if current_user.teacher_prize
