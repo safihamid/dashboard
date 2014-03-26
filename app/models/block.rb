@@ -1,5 +1,4 @@
 class Block < ActiveRecord::Base
-  has_and_belongs_to_many :toolboxes, join_table: :toolbox_blocks
 
   def apps
     # Blocks with no app are assumed to be for all apps.
