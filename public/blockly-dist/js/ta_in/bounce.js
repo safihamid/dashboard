@@ -1632,7 +1632,7 @@ Bounce.scale = {
 
 var twitterOptions = {
   text: bounceMsg.shareBounceTwitter(),
-  hashtag: "PongCode"
+  hashtag: "BounceCode"
 };
 
 var loadLevel = function() {
@@ -2318,7 +2318,7 @@ Bounce.init = function(config) {
   config.makeYourOwn = config.share;
 
   config.makeString = bounceMsg.makeYourOwn();
-  config.makeUrl = "http://code.org/pong";
+  config.makeUrl = "http://code.org/bounce";
   config.makeImage = BlocklyApps.assetUrl('media/promo.png');
   
   config.preventExtraTopLevelBlocks = true;
