@@ -51,6 +51,7 @@ class LevelsControllerTest < ActionController::TestCase
 
   test "should create artist level" do
     game = Game.find_by_name("Custom")
+    @request.env['HTTP_REFERER'] = 'http://test.com/levels/new?type=artist&x=200&y=200'
     assert_difference('Level.count') do
       post :create, :game_id => game.id, :name => "NewCustomLevel", :program => "<hey>", :level_type => 'artist'
     end

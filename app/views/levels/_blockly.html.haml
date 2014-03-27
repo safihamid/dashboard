@@ -69,7 +69,12 @@
           calloutDomElement.qtip('hide');
         });
       },
-      onInitialize: function(){ this.createCallouts(); },
+      onInitialize: function() {
+        this.createCallouts();
+        onInitializeListeners.forEach(function(listener) {
+          listener();
+        });
+      },
       locale: '#{js_locale}',
       containerId: 'blocklyApp',
       baseUrl: '#{blockly_path}',
@@ -141,6 +146,8 @@
         #{("sliderSpeed: '" + slider_speed + "',") if slider_speed}
         #{("maze: '" + maze + "',") if maze}
         #{("toolbox: '" + @toolbox_blocks + "',") if @toolbox_blocks}
+        #{("initialX: #{@level[:x]},") if @level[:x]}
+        #{("initialY: #{@level[:y]},") if @level[:y]}
       },
       skinId: '#{@level.skin}'
     });

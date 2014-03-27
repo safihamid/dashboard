@@ -62,7 +62,8 @@ class LevelsController < ApplicationController
 
   def create_artist
     game = Game.find(params[:game_id])
-    @level = Level.new(game: game, level_num: 'custom', skin: 'artist_zombie', user: current_user, instructions: params[:instructions], name: params[:name])
+    x, y = parse_coordinates_from_request(request)
+    @level = Level.new(game: game, level_num: 'custom', skin: 'artist_zombie', user: current_user, instructions: params[:instructions], name: params[:name], x: x, y: y)
     solution = LevelSource.lookup(@level, params[:program])
     @level.update(solution_level_source: solution)
     render json: { redirect: game_level_url(game, @level) }
@@ -118,6 +119,8 @@ class LevelsController < ApplicationController
     @full_width = true
     @artist_builder = true
     @callback = game_levels_path @game
+    @level.x = params[:x]
+    @level.y = params[:y]
     show
     render :show
   end
@@ -134,4 +137,10 @@ class LevelsController < ApplicationController
     def level_params
       params[:level].permit([:name, :level_url, :level_num, :skin, {concept_ids: []}])
     end
+
+    def parse_coordinates_from_request(request)
+      query_params = CGI::parse(URI::parse(request.referer).query || "")
+      ["x", "y"].map { |i| query_params[i].first.to_i if query_params[i] }
+    end
+
 end
