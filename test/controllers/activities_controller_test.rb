@@ -39,6 +39,9 @@ class ActivitiesControllerTest < ActionController::TestCase
     script_level = ScriptLevel.find(2)
     script_level_next = ScriptLevel.find(3)
 
+    @controller.expects :log_milestone
+    @controller.expects :slog
+
     assert_difference('Activity.count') do
       post :milestone, user_id: @user, script_level_id: script_level, :lines => "1", :attempt => "1", :result => "true", :testResult => "100", :time => "1000", :app => "test", :program => "<hey>"
     end
@@ -53,6 +56,9 @@ class ActivitiesControllerTest < ActionController::TestCase
     
     script_level = ScriptLevel.find(2)
     script_level_next = ScriptLevel.find(3)
+
+    @controller.expects :log_milestone
+    @controller.expects :slog
     
     post :milestone, user_id: 0, script_level_id: script_level.id.to_s, :lines => "1", :attempt => "1", :result => "true", :testResult => "100", :time => "1000", :app => "test", :program => "<hey>"
     

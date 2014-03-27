@@ -65,6 +65,12 @@ class ScriptLevelsController < ApplicationController
     raise ActiveRecord::RecordNotFound unless @script_level
 
     present_level(@script_level)
+
+    # TODO should we filter out robot user agents?
+    slog(:tag => 'activity_start',
+         :script_level_id => @script_level.id,
+         :user_agent => request.user_agent,
+         :locale => locale)
   end
 
 private
