@@ -43,7 +43,7 @@ class ApplicationController < ActionController::Base
     # cookies and clicked on something), maybe we should render an
     # actual page
   end
-  
+
   protected
 
   PERMITTED_USER_FIELDS = [:name, :username, :email, :password, :password_confirmation, :locale, :gender, :login,
@@ -124,7 +124,7 @@ class ApplicationController < ActionController::Base
     end
 
     # Check if the current level_source has program specific hint, use it if use is set.
-    if options[:level_source]
+    if ActivityHint.is_experimenting_feedback? && options[:level_source]
       experiment_hints = []
       options[:level_source].level_source_hints.each do |hint|
         if hint.selected?
@@ -150,6 +150,11 @@ class ApplicationController < ActionController::Base
         end
         response[:hint] = response[:hint].hint
       end
+    end
+
+    # Set up hint design experiment
+    if ExperimentActivity.is_experimenting_feedback_design?
+      response[:design] = ExperimentActivity.get_feedback_design(options[:activity_id])
     end
 
     response

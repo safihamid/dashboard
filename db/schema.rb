@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140321234151) do
+ActiveRecord::Schema.define(version: 20140326010029) do
 
   create_table "activities", force: true do |t|
     t.integer  "user_id"
@@ -66,6 +66,13 @@ ActiveRecord::Schema.define(version: 20140321234151) do
 
   add_index "concepts_levels", ["concept_id"], name: "index_concepts_levels_on_concept_id", using: :btree
   add_index "concepts_levels", ["level_id"], name: "index_concepts_levels_on_level_id", using: :btree
+
+  create_table "experiment_activities", force: true do |t|
+    t.integer  "activity_id",     null: false
+    t.string   "feedback_design"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "followers", force: true do |t|
     t.integer  "user_id",         null: false
