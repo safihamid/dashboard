@@ -20,8 +20,8 @@ namespace :seed do
       Block.delete_all # use delete instead of destroy so callbacks are not called
       Block.connection.execute("ALTER TABLE blocks auto_increment = 1")
 
+      blocks_id = 0
       CSV.read('config/blocks.csv', { headers: true }).each do |row|
-        blocks_id = 0
         Block.create!(name: row['Name'], xml: row['Xml'], app: row['App'], id: blocks_id += 1)
       end
     end
