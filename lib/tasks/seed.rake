@@ -21,7 +21,8 @@ namespace :seed do
       Block.connection.execute("ALTER TABLE blocks auto_increment = 1")
 
       CSV.read('config/blocks.csv', { headers: true }).each do |row|
-        Block.create!(name: row['Name'], xml: row['Xml'], app: row['App'])
+        blocks_id = 0
+        Block.create!(name: row['Name'], xml: row['Xml'], app: row['App'], id: blocks_id += 1)
       end
     end
   end
