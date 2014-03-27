@@ -36,7 +36,7 @@ If you won't be making modifications to blockly code, you can just skip the syml
       + Install Homebrew:
         - `ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"`
       + Install packages using Homebrew:
-        - `brew install rbenv git ruby-build mysql`
+        - `brew install rbenv git ruby-build mysql imagemagick`
       + Configure mysql:
         1. To have launchd start mysql at login:
             + `ln -sfv /usr/local/opt/mysql/*.plist ~/Library/LaunchAgents`
@@ -46,9 +46,8 @@ If you won't be making modifications to blockly code, you can just skip the syml
             + `mysql.server start`
         4. To connect:
             + `mysql -uroot`
-      + Configure rbenv, adding this to ~/.profile
-        1. `if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi`
-        2. then `source ~/.profile`
+      + Add this line to your ~/.profile to configure rbenv: `if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi`
+      + `source ~/.profile`
     - Ubuntu: using apt-get
       + install MySQL packages (leave root password blank when prompted): `sudo apt-get install mysql-client mysql-server libmysqlclient-dev`
       + Start service (should auto-start on system boot): `sudo start mysql`
@@ -70,9 +69,9 @@ If you won't be making modifications to blockly code, you can just skip the syml
     - Note: if you hadn’t installed rails before this, you may need another `rbenv rehash` here.
 
 7. Setup database:
-    - `rake db:create`
-    - `rake db:migrate`
-    - `rake seed:all`
+    - `bundle exec rake db:create`
+    - `bundle exec rake db:migrate`
+    - `bundle exec rake seed:all`
 
 8. If you'll be modifying blockly as well (see above), you can use this take task to symlink Dashboard to use your development version of Blockly
     - `rake 'blockly:dev[../blockly]'`
