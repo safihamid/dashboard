@@ -12,6 +12,10 @@
     %br/
     = f.text_field :name
   .field
+    = f.label :instructions
+    %br/
+    = f.text_area :instructions
+  .field
     = f.label :level_url
     %br/
     = f.text_field :level_url
@@ -26,12 +30,26 @@
   .field
     = f.label :skin
     %br/
-    = f.number_field :skin
+    = f.text_field :skin
   .field
     = f.label 'concepts'
     %br/
     = f.collection_select :concept_ids, Concept.cached, :id, :name, { :selected => @level.concept_ids }, { :multiple => true, :name => 'level[concept_ids][]', :style => 'height: 160px' }
     %br/
     (shift-click to select multiple)
+  .field
+    = f.label 'toolboxblocks'
+    %br/
+    - @blocks.each do |block|
+      - if @game.should_show_block?(block)
+        = check_box_tag "toolbox_level_block_ids[]", block.id, @toolbox_blocks.include?(block), id: "toolbox_level_blocks_#{block.id}", class: "block-checkbox"
+        = label_tag block.name
+  .field
+    = f.label 'startblocks'
+    %br/
+    - @blocks.each do |block|
+      - if @game.should_show_block?(block)
+        = check_box_tag "start_level_block_ids[]", block.id, @start_blocks.include?(block), id: "start_level_blocks_#{block.id}", class: "block-checkbox"
+        = label_tag block.name
   .actions
     = f.submit

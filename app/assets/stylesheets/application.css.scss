@@ -883,3 +883,19 @@ a.download-video {
 #script_name {
   margin: 0px 10px 0px 0px;
 }
+#edit-script-nav {
+  a {
+    display: block;
+    padding: 2px;
+    color: $dark_color;
+    font-size: 125%;
+  }
+}
+.edit_level {
+  #toolbox_name {
+    display: block;
+  }
+  .block-checkbox {
+    float: left;
+  }
+}
