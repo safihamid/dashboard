@@ -41,8 +41,8 @@ ActiveRecord::Schema.define(version: 20140321234151) do
   add_index "activity_hints", ["level_source_hint_id"], name: "index_activity_hints_on_level_source_hint_id", using: :btree
 
   create_table "blocks", force: true do |t|
-    t.string   "name"
-    t.string   "xml",        limit: 20000
+    t.string   "name",                     null: false
+    t.string   "xml",        limit: 20000, null: false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "app"
@@ -109,10 +109,12 @@ ActiveRecord::Schema.define(version: 20140321234151) do
   create_table "level_blocks", force: true do |t|
     t.integer  "level_id",   null: false
     t.integer  "block_id",   null: false
-    t.string   "type"
+    t.string   "type",       null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "level_blocks", ["level_id"], name: "index_level_blocks_on_level_id", using: :btree
 
   create_table "level_source_hints", force: true do |t|
     t.integer  "level_source_id"

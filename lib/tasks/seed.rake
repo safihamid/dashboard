@@ -16,10 +16,13 @@ namespace :seed do
   end
 
   task blocks: :environment do
-    Block.connection.execute('truncate table blocks')
+    Block.transaction do
+      Block.delete_all # use delete instead of destroy so callbacks are not called
+      Block.connection.execute("ALTER TABLE blocks auto_increment = 1")
 
-    CSV.read('config/blocks.csv', { headers: true }).each do |row|
-      Block.create!(name: row['Name'], xml: row['Xml'], app: row['App'])
+      CSV.read('config/blocks.csv', { headers: true }).each do |row|
+        Block.create!(name: row['Name'], xml: row['Xml'], app: row['App'])
+      end
     end
   end
 
