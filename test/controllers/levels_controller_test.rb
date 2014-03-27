@@ -2,6 +2,7 @@ require 'test_helper'
 
 class LevelsControllerTest < ActionController::TestCase
   include Devise::TestHelpers
+  include LevelsHelper
 
   setup do
     @level = create(:level)
@@ -47,7 +48,6 @@ class LevelsControllerTest < ActionController::TestCase
 
   test "should create artist level" do
     game = Game.find_by_name("Custom")
-    require 'json'
     assert_difference('Level.count') do
       post :create, :game_id => game.id, :name => "NewCustomLevel", :program => "<hey>", :level_type => 'artist'
     end
@@ -112,4 +112,5 @@ class LevelsControllerTest < ActionController::TestCase
   test "should route new to levels" do
     assert_routing({method: "post", path: "/games/1/levels"}, {controller: "levels", action: "create", game_id: "1"})
   end
+
 end

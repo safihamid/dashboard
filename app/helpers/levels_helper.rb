@@ -33,15 +33,11 @@ module LevelsHelper
     end
 
     @toolbox_blocks = Block.xml(@level.toolbox_level_blocks.collect(&:block)) if !@level.toolbox_level_blocks.empty?
-    @start_blocks = Block.xml(@level.start_level_blocks.collect(&:block), false) if !@level.start_level_blocks.empty?
+    @start_blocks = initial_blocks(current_user, @level) || (Block.xml(@level.start_level_blocks.collect(&:block), false) if !@level.start_level_blocks.empty?)
   end
 
   # this defines which levels should be seeded with th last result from a different level
   def initial_blocks(user, level)
-    if level.start_blocks
-      return level.start_blocks.xml
-    end
-
     if params[:initial_code]
       return params[:initial_code]
     end
