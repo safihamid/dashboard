@@ -1,3 +1,14 @@
-%h1= t('crud.new_model', model: Level.model_name.human)
-= render 'form'
-= link_to t('crud.back'), game_levels_path(@game)
+%h2 Choose a type of level to build.
+
+%ul
+  %li= link_to "Build a Maze Level", levels_new_path(type: "maze")
+  %li= link_to "Build an Artist Level", levels_new_path(type: "artist")
+
+%h3 Your Levels
+- @levels.each do |level|
+  %li
+    = level.name
+    = link_to t('crud.show'), game_level_path(level.game, level)
+    = link_to t('crud.edit'), edit_game_level_path(level.game, level)
+    = link_to t('crud.delete'), game_level_path(level.game, level, redirect: levels_new_path), method: :delete
+

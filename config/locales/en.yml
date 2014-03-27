@@ -336,7 +336,7 @@ en:
   builder:
     created: "You created a new script."
     destroyed: "You destroyed a script."
-    manage: "Manage Scripts"
+    manage: "Build Levels"
     view: "View"
     back: "Back to scripts"
     level:

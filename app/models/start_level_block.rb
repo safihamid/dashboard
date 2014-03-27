@@ -1,0 +1,2 @@
+class StartLevelBlock < LevelBlock
+end

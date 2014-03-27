@@ -1,0 +1,2 @@
+class ToolboxLevelBlock < LevelBlock
+end

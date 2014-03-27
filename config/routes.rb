@@ -41,11 +41,14 @@ Dashboard::Application.routes.draw do
   resources :games do
     resources :levels
   end
+
   get 'builder', to: 'levels#builder'
+  post 'upload_maze_level', to: 'levels#upload_maze_level'
   post 'create_custom', to: 'levels#create_custom'
+  get 'levels/new', to: 'levels#new'
 
   resources :scripts, path: '/s/' do
-      post 'sort', to: 'scripts#sort'
+    post 'sort', to: 'scripts#sort'
     resources :script_levels, as: :levels, only: [:show], path: "/level", format: false do
       get 'solution', to: 'script_levels#solution'
     end

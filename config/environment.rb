@@ -8,7 +8,9 @@ else
       {}
     end
     def self.slog(h)
-      h.to_json # No slog is set up, but make sure h can convert to JSON if one were.
+      # if we don't have a config file we just write to a file
+      @@structured_logger ||= Logger.new("#{Rails.root}/log/structured.log")
+      @@structured_logger.info h.to_json
     end
   end
 end
