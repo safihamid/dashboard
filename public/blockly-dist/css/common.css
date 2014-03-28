@@ -346,6 +346,31 @@ input[type="radio"] {
     border-style: solid; }
   .modal-content .feedback-links {
     margin-top: 15px; }
+  .modal-content .feedback-callout {
+    border: solid;
+    border-radius: 10px;
+    border-color: red; }
+    .modal-content .feedback-callout p {
+      margin: 15px;
+      color: red;
+      padding-right: 20%; }
+    .modal-content .feedback-callout .congrats {
+      font-size: 24px;
+      line-height: 27px; }
+    .modal-content .feedback-callout .hint-header {
+      font-weight: bold; }
+    .modal-content .feedback-callout .hint-image {
+      float: right;
+      width: 20%; }
+
+.yellow-background {
+  background-color: #ffc459; }
+
+.light-yellow-background {
+  background-color: #fff7df; }
+
+.white-background {
+  background-color: white; }
 
 .dialog-title {
   font-weight: bold; }

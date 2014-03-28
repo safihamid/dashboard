@@ -25,7 +25,7 @@ class User < ActiveRecord::Base
   has_many :trophies, through: :user_trophies, source: :trophy
 
   has_many :followers
-  has_many :followeds, -> { order 'id'}, :class_name => 'Follower', :foreign_key => 'student_user_id'
+  has_many :followeds, -> {order 'id'}, class_name: 'Follower', foreign_key: 'student_user_id'
 
   has_many :students, through: :followers, source: :student_user
   has_many :teachers, through: :followeds, source: :user
@@ -125,7 +125,7 @@ SQL
   def progress(script)
     #trophy_id summing is a little hacky, but efficient. It takes advantage of the fact that:
     #broze id: 1, silver id: 2 and gold id: 3
-    self.connection.select_one(<<SQL)
+    User.connection.select_one(<<SQL)
 select
   count(case when ul.best_result >= #{Activity::MINIMUM_PASS_RESULT} then 1 else null end) as current_levels,
   count(*) as max_levels,
