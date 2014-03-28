@@ -77,7 +77,6 @@ class UserTest < ActiveSupport::TestCase
   test "cannot create teacher without email" do
     assert_no_difference('User.count') do
       user = User.create(username: 'badteacher', user_type: 'teacher', name: 'Bad Teacher', password: 'xxxxxxxx', provider: 'manual')
-      p user.errors.messages
     end
   end
 
@@ -98,8 +97,7 @@ class UserTest < ActiveSupport::TestCase
 
   test "cannot create admin without email" do
     assert_no_difference('User.count') do
-      user = User.create(username: 'badteacher', user_type: 'student', admin: true, name: 'Wannabe admin', password: 'xxxxxxxx', provider: 'manual')
-      p user.errors.messages
+      User.create(username: 'badteacher', user_type: 'student', admin: true, name: 'Wannabe admin', password: 'xxxxxxxx', provider: 'manual')
     end
   end
 
