@@ -1,11 +1,28 @@
-.multi
+.unplugged
   %h2 #{data_t('multi', @game.name)[:title]}
-
   %p #{data_t('multi', @game.name)[:desc]}
 
-  .buttons
-    %a.btn.btn-primary.next-stage
-      = t('next_stage')
+  %div{:style=>'margin-left:20px'}
+    %b My favorite color:
+    %form#voteform{onsubmit: "return doVote()"}
+
+      %input{id: "choice_1", name: "vote", type: "radio", value: "blue"}
+        %label{style: "display:inline", for: "choice_1"} Blue
+      %br
+      %input{id: "choice_2", name: "vote", type: "radio", value: "green"}
+        %label{style: "display:inline", for: "choice_2"} Green
+      %br
+      %input{id: "choice_3", name: "vote", type: "radio", value: "yellow"}
+        %label{style: "display:inline", for: "choice_3"} Yellow
+      %br
+      %input{id: "choice_4", name: "vote", type: "radio", value: "purple"}
+        %label{style: "display:inline", for: "choice_4"} Purple
+      %br
+      %br
+
+    .buttons
+      %a.btn.btn-primary.next-stage
+        Submit
 
 
 :javascript
@@ -16,7 +33,7 @@
       sendReport({
         fallbackResponse: '#{@fallback_response.to_json}',
         callback: '#{@callback}',
-        app: 'unplug',
+        app: 'multi',
         level: '#{@level.level_num}',
         result: true,
         testResult: 100,
