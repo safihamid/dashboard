@@ -349,21 +349,19 @@ input[type="radio"] {
   .modal-content .feedback-callout {
     border: solid;
     border-radius: 10px;
-    border-color: red;
-    padding: 15px; }
+    border-color: red; }
     .modal-content .feedback-callout p {
-      margin: 0px;
-      color: red; }
+      margin: 15px;
+      color: red;
+      padding-right: 20%; }
     .modal-content .feedback-callout .congrats {
       font-size: 24px;
       line-height: 27px; }
     .modal-content .feedback-callout .hint-header {
       font-weight: bold; }
-    .modal-content .feedback-callout .feedback-image {
+    .modal-content .feedback-callout .hint-image {
       float: right;
-      border: none;
-      width: 20%;
-      margin: 0px; }
+      width: 20%; }
 
 .yellow-background {
   background-color: #ffc459; }
