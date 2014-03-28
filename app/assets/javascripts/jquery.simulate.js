@@ -350,6 +350,10 @@ $.extend( $.simulate.prototype, {
       simulateEvent(this, target.ownerDocument, "mousemove", coord );
     }
 
+    if (options.skipDrop) {
+      return;
+    }
+
     if ( $.contains( document, target ) ) {
       simulateEvent(this, target, "mouseup", coord );
       simulateEvent(this, target, "click", coord );
