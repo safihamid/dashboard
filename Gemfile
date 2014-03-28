@@ -58,6 +58,7 @@ gem 'unicorn'
 # authentication and permissions
 gem 'devise'
 gem 'cancan'
+
 gem 'omniauth-twitter'
 gem 'omniauth-facebook'
 gem 'omniauth-google-oauth2'
