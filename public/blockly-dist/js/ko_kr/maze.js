@@ -495,6 +495,7 @@ BlocklyApps.BLOCK_Y_COORDINATE_INTERVAL = 200;
 BlocklyApps.arrangeBlockPosition = function(startBlocks, arrangement) {
   var type, arrangeX, arrangeY;
   var xml = parseXmlElement(startBlocks);
+  var numberOfPlacedBlocks = 0;
   for (var x = 0, xmlChild; xml.childNodes && x < xml.childNodes.length; x++) {
     xmlChild = xml.childNodes[x];
 
@@ -509,7 +510,8 @@ BlocklyApps.arrangeBlockPosition = function(startBlocks, arrangement) {
                             BlocklyApps.BLOCK_X_COORDINATE);
       xmlChild.setAttribute('y', xmlChild.getAttribute('y') || arrangeY ||
                             BlocklyApps.BLOCK_Y_COORDINATE +
-                            BlocklyApps.BLOCK_Y_COORDINATE_INTERVAL * x);
+                            BlocklyApps.BLOCK_Y_COORDINATE_INTERVAL * numberOfPlacedBlocks);
+      numberOfPlacedBlocks += 1;
     }
   }
   return Blockly.Xml.domToText(xml);
@@ -6816,6 +6818,7 @@ exports.serialize = function(node) {
 // Parses a single root element string.
 exports.parseElement = function(text) {
   var parser = new DOMParser();
+  text = text.trim();
   var dom = text.indexOf('<xml') === 0 ?
       parser.parseFromString(text, 'text/xml') :
       parser.parseFromString('<xml>' + text + '</xml>', 'text/xml');
