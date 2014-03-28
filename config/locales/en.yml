@@ -343,3 +343,5 @@ en:
       create: "Create new level"
       current: "Current Levels"
       unused: "Unused Levels"
+  upsell:
+    flappy: 'Wanna write your own game in less than 10 minutes? Check out our Flappy Bird tutorial!'
