@@ -109,6 +109,7 @@ en:
     remember: 'Remember me'
     submit: 'Sign in'
   signin:
+    try_heading: 'Want to try coding without signing up?'
     try_hoc: 'Try one Hour of Code first'
     try_20hours: 'Try our 20 hour Intro to Computer Science'
   password:
@@ -343,3 +344,5 @@ en:
       create: "Create new level"
       current: "Current Levels"
       unused: "Unused Levels"
+  upsell:
+    flappy: 'Wanna write your own game in less than 10 minutes? Check out our Flappy Bird tutorial!'

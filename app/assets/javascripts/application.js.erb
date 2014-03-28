@@ -158,7 +158,7 @@ var addClickTouchEvent = function(element, handler) {
  * Create a custom modal dialog box which takes a configurable options object.
  * Currently supported options include 'header' and 'body', which are DOM
  * elements; 'redirect', which specifies the redirect page after the video is
- * dismissed if provided.
+ * dismissed if provided; 'id', which specifies the id of the dialog.
  */
 function Dialog(options) {
   var body = options.body;
@@ -168,6 +168,9 @@ function Dialog(options) {
                          .attr('data-dismiss', 'modal');
   this.div = $('<div tabindex="-1"/>').addClass('modal');
   this.div.addClass('dash_modal');
+  if (options.id) {
+    this.div.attr('id', options.id);
+  }
   var modalBody = $('<div/>').addClass('modal-body');
   modalBody.addClass('dash_modal_body');
   if (header) {

@@ -1,5 +1,5 @@
 %h2= t('signin_form.title')
-.row
+.row#signin
   .span8
     = form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
       = f.text_field :login, autofocus: true, placeholder: t('signin_form.login')
@@ -14,16 +14,25 @@
     %br/
     %br/
     
-    .row
-      .span3
-        %a{:href=>hoc_reset_path}
-          %button.btn.btn-info.medium-height-button #{t('signin.try_hoc')}
-      .span3
+    %h3= t('signin.try_heading')
+    .row.tryfirst
+      .span7
+        %a{:href=>hoc_reset_path, :style=>'font-size:20px; font-weight:400'}
+          #{t('signin.try_hoc')}
+    .row.tryfirst
+      .span7
         %a{:href=>root_path}
-          %button.btn.btn-info.medium-height-button #{t('signin.try_20hours')}
+          #{t('signin.try_20hours')}
 
   .span4
     %div{ style: 'padding-left: 20px;  border-left: 1px solid black;' }= render "devise/shared/links"
 
+%br/
+%br/
+%br/
+%br/
+%br/
+%br/
+  
 :javascript
   $( "#user_login" ).placeholder();

@@ -862,6 +862,17 @@ a.download-video {
     }
   }
 }
+
+#signin {
+  .tryfirst {
+    margin-bottom:10px;
+    a {
+      font-size:18px; 
+      font-weight:400;
+    }
+  }
+}
+
 #current-script-levels, #all-levels {
   min-height: 50px;
   li {

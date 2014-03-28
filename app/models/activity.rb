@@ -8,6 +8,7 @@ class Activity < ActiveRecord::Base
   belongs_to :user
   belongs_to :level_source
   has_one :activity_hint
+  has_many :experiment_activities
 
   def best?
     (test_result == BEST_PASS_RESULT)
