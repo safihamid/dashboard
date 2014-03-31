@@ -186,14 +186,12 @@ namespace :seed do
 
   task ideal_solutions: :environment do
     Level.all.map do |level|
-      level_source_id_count_map = Hash.new{|h,k| h[k] = {:level_source_id => k, :count => 0} }
-
+      level_source_id_count_map = Hash.new(0)
       Activity.all.where(['level_id = ?', level.id]).order('id desc').limit(10000).each do |activity|
-        level_source_id_count_map[activity.level_source_id][:count] += 1 if activity.test_result >= Activity::FREE_PLAY_RESULT
+        level_source_id_count_map[activity.level_source_id] += 1 if activity.test_result >= Activity::FREE_PLAY_RESULT
       end
-      sorted_activities = level_source_id_count_map.values.sort_by {|v| -v[:count] }
-      best = sorted_activities[0] if sorted_activities && sorted_activities.length > 0
-      level.update_attributes(ideal_level_source_id: best[:level_source_id]) if best && best[:level_source_id]
+      best =  level_source_id_count_map.max_by{ |k, v| v};
+      level.update_attributes(ideal_level_source_id: best[0]) if best
     end
   end
 
