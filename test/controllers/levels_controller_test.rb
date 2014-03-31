@@ -38,9 +38,13 @@ class LevelsControllerTest < ActionController::TestCase
   test "should create maze level" do
     maze = fixture_file_upload("maze_level.csv", "r")
     game = Game.find_by_name("CustomMaze")
+
     assert_difference('Level.count') do
       post :create, :game_id => game.id, :name => "NewCustomLevel", :program => "<hey>", :level_type => 'maze', :level => maze, :size => 8
     end
+
+    assert assigns(:level)
+    assert assigns(:level).game
 
     assert_redirected_to game_level_path(assigns(:level).game, assigns(:level))
   end

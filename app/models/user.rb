@@ -25,7 +25,7 @@ class User < ActiveRecord::Base
   has_many :trophies, through: :user_trophies, source: :trophy
 
   has_many :followers
-  has_many :followeds, order: 'id', class_name: 'Follower', foreign_key: 'student_user_id'
+  has_many :followeds, -> {order 'id'}, class_name: 'Follower', foreign_key: 'student_user_id'
 
   has_many :students, through: :followers, source: :student_user
   has_many :teachers, through: :followeds, source: :user
@@ -34,17 +34,19 @@ class User < ActiveRecord::Base
   has_one :teacher_prize
   has_one :teacher_bonus_prize
 
-  validates_format_of :email, with: Devise::email_regexp, allow_blank: true, on: :create
-  #validates_length_of :first_name, maximum: 35
-  #validates_length_of :last_name, maximum: 35
   validates_length_of :name, within: 1..70
-  validates_length_of :email, maximum: 255
+
+  validates_format_of :email, with: Devise::email_regexp, allow_blank: true, on: :create
+  validates_length_of :email, maximum: 255, allow_blank: true, on: :create
   # this is redundant to devise, but required for tests?
   validates_uniqueness_of :email, allow_nil: true, allow_blank: true, case_sensitive: false
+
   validates_length_of :parent_email, maximum: 255
+
   validates_length_of :username, within: 5..20
   validates_format_of :username, with: /\A[a-z0-9\-\_\.]+\z/i, on: :create
   validates_uniqueness_of :username, allow_nil: false, allow_blank: false, case_sensitive: false
+
   validates_uniqueness_of :prize_id, allow_nil: true
   validates_uniqueness_of :teacher_prize_id, allow_nil: true
   validates_uniqueness_of :teacher_bonus_prize_id, allow_nil: true
@@ -77,7 +79,8 @@ class User < ActiveRecord::Base
   end
 
   def email_required?
-    User::PROVIDER_MANUAL != provider
+    (User::PROVIDER_MANUAL != provider) ||
+      teacher? || admin?
   end
 
   def update_with_password(params, *options)
@@ -125,7 +128,7 @@ SQL
   def progress(script)
     #trophy_id summing is a little hacky, but efficient. It takes advantage of the fact that:
     #broze id: 1, silver id: 2 and gold id: 3
-    self.connection.select_one(<<SQL)
+    User.connection.select_one(<<SQL)
 select
   count(case when ul.best_result >= #{Activity::MINIMUM_PASS_RESULT} then 1 else null end) as current_levels,
   count(*) as max_levels,

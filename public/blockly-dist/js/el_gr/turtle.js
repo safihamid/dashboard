@@ -1098,19 +1098,18 @@ exports.displayFeedback = function(options) {
   });
 
   // Update the background color if it is set to be in special design.
-  if (options.response && options.response.design) {
-    if (isFeedbackMessageCustomized(options)) {
-      if (options.response.design == "yellow_background") {
-        document.getElementById('feedback-dialog')
-            .className += " yellow-background";
-        document.getElementById('feedback-content')
-            .className += " white-background";
-      } else if (options.response.design == "white_background") {
-        document.getElementById('feedback-dialog')
-            .className += " white-background";
-        document.getElementById('feedback-content')
-            .className += " light-yellow-background";
-      }
+  if (options.response && options.response.design &&
+      isFeedbackMessageCustomized(options)) {
+    if (options.response.design == "yellow_background") {
+      document.getElementById('feedback-dialog')
+          .className += " yellow-background";
+      document.getElementById('feedback-content')
+          .className += " white-background";
+    } else if (options.response.design == "white_background") {
+      document.getElementById('feedback-dialog')
+          .className += " white-background";
+      document.getElementById('feedback-content')
+          .className += " light-yellow-background";
     }
   }
 
@@ -1295,28 +1294,27 @@ var getFeedbackMessage = function(options) {
   dom.setText(feedback, message);
 
   // Update the feedback box design, if the hint message is customized.
-   if (options.response && options.response.design) {
-    if (isFeedbackMessageCustomized(options)) {
-      // Setup a new div
-      var feedbackDiv = document.createElement('div');
-      feedbackDiv.className = 'feedback-callout';
-      feedbackDiv.id = 'feedback-content';
+   if (options.response && options.response.design &&
+       isFeedbackMessageCustomized(options)) {
+    // Setup a new div
+    var feedbackDiv = document.createElement('div');
+    feedbackDiv.className = 'feedback-callout';
+    feedbackDiv.id = 'feedback-content';
 
-      // Insert an image
-      var imageDiv = document.createElement('img');
-      imageDiv.className = "feedback-image";
-      imageDiv.src = BlocklyApps.assetUrl(
-        'media/lightbulb_for_' + options.response.design + '.png');
-      feedbackDiv.appendChild(imageDiv);
-      // Add new text
-      var hintHeader = document.createElement('p');
-      dom.setText(hintHeader, msg.hintHeader());
-      feedbackDiv.appendChild(hintHeader);
-      hintHeader.className = 'hint-header';
-      // Append the original text
-      feedbackDiv.appendChild(feedback);
-      return feedbackDiv;
-    }
+    // Insert an image
+    var imageDiv = document.createElement('img');
+    imageDiv.className = "hint-image";
+    imageDiv.src = BlocklyApps.assetUrl(
+      'media/lightbulb_for_' + options.response.design + '.png');
+    feedbackDiv.appendChild(imageDiv);
+    // Add new text
+    var hintHeader = document.createElement('p');
+    dom.setText(hintHeader, msg.hintHeader());
+    feedbackDiv.appendChild(hintHeader);
+    hintHeader.className = 'hint-header';
+    // Append the original text
+    feedbackDiv.appendChild(feedback);
+    return feedbackDiv;
   }
   return feedback;
 };
@@ -4848,7 +4846,7 @@ BlocklyApps.reset = function(ignore) {
 Turtle.display = function() {
   Turtle.ctxDisplay.globalCompositeOperation = 'copy';
   // Draw the answer layer.
-  Turtle.ctxDisplay.globalAlpha = 0.1;
+  Turtle.ctxDisplay.globalAlpha = 0.15;
   Turtle.ctxDisplay.drawImage(Turtle.ctxAnswer.canvas, 0, 0);
   Turtle.ctxDisplay.globalAlpha = 1;
 
