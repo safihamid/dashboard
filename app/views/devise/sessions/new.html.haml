@@ -12,17 +12,15 @@
       = f.submit t('signin_form.submit'), class: "btn btn-primary"
 
     %br/
-    %br/
     
     %h3= t('signin.try_heading')
-    .row.tryfirst
-      .span7
-        %a{:href=>hoc_reset_path, :style=>'font-size:20px; font-weight:400'}
-          #{t('signin.try_hoc')}
-    .row.tryfirst
-      .span7
-        %a{:href=>root_path}
-          #{t('signin.try_20hours')}
+    .tryfirst
+      = render partial: 'shared/course_mini_block', locals: { id: "hoc" }
+    %div{style: "clear:both"}
+    %br/
+
+    .tryfirst
+      = render partial: 'shared/course_mini_block', locals: { id: "20hour" }
 
   .span4
     %div{ style: 'padding-left: 20px;  border-left: 1px solid black;' }= render "devise/shared/links"
