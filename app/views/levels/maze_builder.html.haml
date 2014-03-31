@@ -3,10 +3,10 @@
 
 = link_to "Maze Builder Form", "https://docs.google.com/a/code.org/spreadsheet/ccc?key=0AiC6nqpbvNmgdDZJMy1NdkhrQW5jVThreDlKRzYwTXc&usp=drive_web#gid=0"
 
-= form_tag("/games/#{@game.id}/levels", method: :post, multipart: true) do
+= form_for [@game, @level], html: {multipart: true} do |level_form|
   = hidden_field_tag :size, 8
   = hidden_field_tag :level_type, "maze"
-  = file_field_tag "level"
-  = text_area_tag "instructions", nil, placeholder: "Instructions", rows: 4
-  = text_area_tag "name", nil, placeholder: "Level Name", rows: 4
-  = submit_tag "Create Level"
+  = file_field_tag "maze_source"
+  = level_form.text_area :instructions, placeholder: "Instructions", rows: 4
+  = level_form.text_area "name", placeholder: "Level Name", rows: 4
+  = level_form.submit "Create Level"

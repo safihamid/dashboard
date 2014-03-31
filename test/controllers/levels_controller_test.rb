@@ -40,7 +40,7 @@ class LevelsControllerTest < ActionController::TestCase
     game = Game.find_by_name("CustomMaze")
 
     assert_difference('Level.count') do
-      post :create, :game_id => game.id, :name => "NewCustomLevel", :program => "<hey>", :level_type => 'maze', :level => maze, :size => 8
+      post :create, :level => {:name => "NewCustomLevel", :instructions => "Some Instructions"}, :game_id => game.id, :program => "<hey>", :level_type => 'maze', :maze_source => maze, :size => 8
     end
 
     assert assigns(:level)
@@ -51,7 +51,6 @@ class LevelsControllerTest < ActionController::TestCase
 
   test "should create artist level" do
     game = Game.find_by_name("Custom")
-    @request.env['HTTP_REFERER'] = 'http://test.com/levels/new?type=artist&x=200&y=200'
     assert_difference('Level.count') do
       post :create, :game_id => game.id, :name => "NewCustomLevel", :program => "<hey>", :level_type => 'artist'
     end
