@@ -4846,7 +4846,7 @@ BlocklyApps.reset = function(ignore) {
 Turtle.display = function() {
   Turtle.ctxDisplay.globalCompositeOperation = 'copy';
   // Draw the answer layer.
-  Turtle.ctxDisplay.globalAlpha = 0.1;
+  Turtle.ctxDisplay.globalAlpha = 0.15;
   Turtle.ctxDisplay.drawImage(Turtle.ctxAnswer.canvas, 0, 0);
   Turtle.ctxDisplay.globalAlpha = 1;
 
