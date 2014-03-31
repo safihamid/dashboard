@@ -317,6 +317,7 @@ en:
     subtitle: 'See these videos and hints'
     teacher: 'See the solution'
     auth_error: 'You are not authorized to see the solution.'
+    submit: 'Update Artist Location'
   video:
     tab: 'Video.'
     notes: 'No video? Show notes.'
