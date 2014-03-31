@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 ruby '2.0.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.0.0'
+gem 'rails', '4.0.3'
 gem 'rails-i18n', '~> 4.0.0'
 
 gem 'mysql2', '0.3.13'
@@ -11,10 +11,9 @@ gem 'seamless_database_pool'
 gem 'le'
 
 group :development, :test do
-  gem 'capistrano'
   # Use debugger
   #gem 'debugger' unless ENV['RM_INFO']
-  gem 'haml-rails'
+  gem 'haml-rails' # haml (instead of erb) generators
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'ruby-prof'
@@ -56,17 +55,17 @@ gem 'jbuilder', '~> 1.2'
 # Use unicorn as the app server
 gem 'unicorn'
 
+# authentication and permissions
 gem 'devise'
 gem 'cancan'
-
-gem 'bootstrap-sass'
-gem 'haml'
-gem 'figaro'
 
 gem 'omniauth-twitter'
 gem 'omniauth-facebook'
 gem 'omniauth-google-oauth2'
 gem 'omniauth-windowslive'
+
+gem 'bootstrap-sass', '~> 2.3.2.2'
+gem 'haml'
 
 gem 'execjs'
 gem 'therubyracer', :platforms => :ruby

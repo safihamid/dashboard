@@ -55,7 +55,7 @@ class LevelsController < ApplicationController
   def create_maze
     contents = CSV.new(params[:level].read)
     maze = contents.read[0...params[:size].to_i].to_s
-    game = Game::CUSTOM_MAZE
+    game = Game.custom_maze
     @level = Level.create(maze: maze, game: game, level_num: 'custom', skin: 'birds', user: current_user, instructions: params[:instructions], name: params[:name])
     redirect_to game_level_url(game, @level)
   end
@@ -105,7 +105,7 @@ class LevelsController < ApplicationController
     when 'artist'
       artist_builder
     when 'maze'
-      @game = Game::CUSTOM_MAZE
+      @game = Game.custom_maze
       render :maze_builder
     end
     @levels = Level.where(user: current_user)
