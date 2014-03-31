@@ -189,7 +189,7 @@ namespace :seed do
       level_source_id_count_map = Hash.new{|h,k| h[k] = {:level_source_id => k, :count => 0} }
 
       Activity.all.where(['level_id = ?', level.id]).order('id desc').limit(10000).each do |activity|
-        level_source_id_count_map[activity.level_source_id][:count] += 1 if activity.best?
+        level_source_id_count_map[activity.level_source_id][:count] += 1 if activity.test_result >= Activity::FREE_PLAY_RESULT
       end
       sorted_activities = level_source_id_count_map.values.sort_by {|v| -v[:count] }
       best = sorted_activities[0] if sorted_activities && sorted_activities.length > 0
