@@ -15,6 +15,18 @@ namespace :seed do
     Rake::Task["youtube:thumbnails"].invoke
   end
 
+  task blocks: :environment do
+    Block.transaction do
+      Block.delete_all # use delete instead of destroy so callbacks are not called
+      Block.connection.execute("ALTER TABLE blocks auto_increment = 1")
+
+      blocks_id = 0
+      CSV.read('config/blocks.csv', { headers: true }).each do |row|
+        Block.create!(name: row['Name'], xml: row['Xml'], app: row['App'], id: blocks_id += 1)
+      end
+    end
+  end
+
   task concepts: :environment do
     Concept.transaction do
       Concept.delete_all # use delete instead of destroy so callbacks are not called
@@ -60,6 +72,7 @@ namespace :seed do
       Game.create!(id: game_id += 1, name: 'Bounce', app: 'bounce')
       Game.create!(id: game_id += 1, name: "Custom", app: "turtle")
       Game.create!(id: game_id += 1, name: 'Flappy', app: 'flappy', intro_video: Video.find_by_key('flappy_intro'))
+      Game.create!(id: game_id += 1, name: "CustomMaze", app: "maze")
    end
   end
 
@@ -173,14 +186,12 @@ namespace :seed do
 
   task ideal_solutions: :environment do
     Level.all.map do |level|
-      level_source_id_count_map = Hash.new{|h,k| h[k] = {:level_source_id => k, :count => 0} }
-
+      level_source_id_count_map = Hash.new(0)
       Activity.all.where(['level_id = ?', level.id]).order('id desc').limit(10000).each do |activity|
-        level_source_id_count_map[activity.level_source_id][:count] += 1 if activity.best?
+        level_source_id_count_map[activity.level_source_id] += 1 if activity.test_result >= Activity::FREE_PLAY_RESULT
       end
-      sorted_activities = level_source_id_count_map.values.sort_by {|v| -v[:count] }
-      best = sorted_activities[0] if sorted_activities && sorted_activities.length > 0
-      level.update_attributes(ideal_level_source_id: best[:level_source_id]) if best && best[:level_source_id]
+      best =  level_source_id_count_map.max_by{ |k, v| v};
+      level.update_attributes(ideal_level_source_id: best[0]) if best
     end
   end
 
@@ -309,6 +320,6 @@ namespace :seed do
 
   task analyze_data: [:ideal_solutions, :frequent_level_sources]
 
-  task all: [:videos, :concepts, :games, :scripts, :trophies, :prize_providers, :callouts]
+  task all: [:videos, :concepts, :games, :scripts, :trophies, :prize_providers, :callouts, :blocks]
 
 end

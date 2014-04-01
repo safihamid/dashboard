@@ -495,6 +495,7 @@ BlocklyApps.BLOCK_Y_COORDINATE_INTERVAL = 200;
 BlocklyApps.arrangeBlockPosition = function(startBlocks, arrangement) {
   var type, arrangeX, arrangeY;
   var xml = parseXmlElement(startBlocks);
+  var numberOfPlacedBlocks = 0;
   for (var x = 0, xmlChild; xml.childNodes && x < xml.childNodes.length; x++) {
     xmlChild = xml.childNodes[x];
 
@@ -509,7 +510,8 @@ BlocklyApps.arrangeBlockPosition = function(startBlocks, arrangement) {
                             BlocklyApps.BLOCK_X_COORDINATE);
       xmlChild.setAttribute('y', xmlChild.getAttribute('y') || arrangeY ||
                             BlocklyApps.BLOCK_Y_COORDINATE +
-                            BlocklyApps.BLOCK_Y_COORDINATE_INTERVAL * x);
+                            BlocklyApps.BLOCK_Y_COORDINATE_INTERVAL * numberOfPlacedBlocks);
+      numberOfPlacedBlocks += 1;
     }
   }
   return Blockly.Xml.domToText(xml);
@@ -3881,8 +3883,25 @@ exports.displayFeedback = function(options) {
     contentDiv: feedback,
     icon: icon,
     defaultBtnSelector: defaultBtnSelector,
-    onHidden: onHidden
+    onHidden: onHidden,
+    id: 'feedback-dialog'
   });
+
+  // Update the background color if it is set to be in special design.
+  if (options.response && options.response.design &&
+      isFeedbackMessageCustomized(options)) {
+    if (options.response.design == "yellow_background") {
+      document.getElementById('feedback-dialog')
+          .className += " yellow-background";
+      document.getElementById('feedback-content')
+          .className += " white-background";
+    } else if (options.response.design == "white_background") {
+      document.getElementById('feedback-dialog')
+          .className += " white-background";
+      document.getElementById('feedback-content')
+          .className += " light-yellow-background";
+    }
+  }
 
   if (againButton) {
     dom.addClickTouchEvent(againButton, function() {
@@ -4063,7 +4082,41 @@ var getFeedbackMessage = function(options) {
     message = options.response.hint;
   }
   dom.setText(feedback, message);
+
+  // Update the feedback box design, if the hint message is customized.
+   if (options.response && options.response.design &&
+       isFeedbackMessageCustomized(options)) {
+    // Setup a new div
+    var feedbackDiv = document.createElement('div');
+    feedbackDiv.className = 'feedback-callout';
+    feedbackDiv.id = 'feedback-content';
+
+    // Insert an image
+    var imageDiv = document.createElement('img');
+    imageDiv.className = "hint-image";
+    imageDiv.src = BlocklyApps.assetUrl(
+      'media/lightbulb_for_' + options.response.design + '.png');
+    feedbackDiv.appendChild(imageDiv);
+    // Add new text
+    var hintHeader = document.createElement('p');
+    dom.setText(hintHeader, msg.hintHeader());
+    feedbackDiv.appendChild(hintHeader);
+    hintHeader.className = 'hint-header';
+    // Append the original text
+    feedbackDiv.appendChild(feedback);
+    return feedbackDiv;
+  }
   return feedback;
+};
+
+var isFeedbackMessageCustomized = function(options) {
+  return options.response.hint ||
+      (options.feedbackType == BlocklyApps.TestResults.TOO_FEW_BLOCKS_FAIL &&
+       options.level.tooFewBlocksMsg) ||
+      (options.feedbackType == BlocklyApps.TestResults.LEVEL_INCOMPLETE_FAIL &&
+       options.level.levelIncompleteError) ||
+      (options.feedbackType == BlocklyApps.TestResults.OTHER_1_STAR_FAIL &&
+       options.level.other1StarError);
 };
 
 exports.createSharingButtons = function(options) {
@@ -4493,7 +4546,8 @@ exports.createModalDialogWithIcon = function(options) {
   return new options.Dialog({
     body: modalBody,
     onHidden: options.onHidden,
-    onKeydown: btn ? keydownHandler : undefined
+    onKeydown: btn ? keydownHandler : undefined,
+    id: options.id
   });
 };
 
@@ -5037,6 +5091,7 @@ exports.serialize = function(node) {
 // Parses a single root element string.
 exports.parseElement = function(text) {
   var parser = new DOMParser();
+  text = text.trim();
   var dom = text.indexOf('<xml') === 0 ?
       parser.parseFromString(text, 'text/xml') :
       parser.parseFromString('<xml>' + text + '</xml>', 'text/xml');
@@ -5436,6 +5491,8 @@ exports.watchVideo = function(d){return "Glej video"};
 exports.tryHOC = function(d){return "Poizkusi Uro za programiranje (Hour to Code)"};
 
 exports.signup = function(d){return "Vpiši se za uvodni tečaj"};
+
+exports.hintHeader = function(d){return "Here's a tip:"};
 
 
 },{"messageformat":38}],32:[function(require,module,exports){

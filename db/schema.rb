@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140321234151) do
+ActiveRecord::Schema.define(version: 20140326010029) do
 
   create_table "activities", force: true do |t|
     t.integer  "user_id"
@@ -40,6 +40,14 @@ ActiveRecord::Schema.define(version: 20140321234151) do
   add_index "activity_hints", ["activity_id"], name: "index_activity_hints_on_activity_id", using: :btree
   add_index "activity_hints", ["level_source_hint_id"], name: "index_activity_hints_on_level_source_hint_id", using: :btree
 
+  create_table "blocks", force: true do |t|
+    t.string   "name",                     null: false
+    t.string   "xml",        limit: 20000, null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "app"
+  end
+
   create_table "callouts", force: true do |t|
     t.string   "element_id",      limit: 1024, null: false
     t.string   "text",            limit: 1024, null: false
@@ -66,6 +74,13 @@ ActiveRecord::Schema.define(version: 20140321234151) do
 
   add_index "concepts_levels", ["concept_id"], name: "index_concepts_levels_on_concept_id", using: :btree
   add_index "concepts_levels", ["level_id"], name: "index_concepts_levels_on_level_id", using: :btree
+
+  create_table "experiment_activities", force: true do |t|
+    t.integer  "activity_id",     null: false
+    t.string   "feedback_design"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "followers", force: true do |t|
     t.integer  "user_id",         null: false
@@ -97,6 +112,16 @@ ActiveRecord::Schema.define(version: 20140321234151) do
   end
 
   add_index "games", ["intro_video_id"], name: "index_games_on_intro_video_id", using: :btree
+
+  create_table "level_blocks", force: true do |t|
+    t.integer  "level_id",   null: false
+    t.integer  "block_id",   null: false
+    t.string   "type",       null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "level_blocks", ["level_id"], name: "index_level_blocks_on_level_id", using: :btree
 
   create_table "level_source_hints", force: true do |t|
     t.integer  "level_source_id"
@@ -130,7 +155,7 @@ ActiveRecord::Schema.define(version: 20140321234151) do
 
   create_table "levels", force: true do |t|
     t.integer  "game_id"
-    t.string   "name",                     null: false
+    t.string   "name",                                   null: false
     t.string   "level_url"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -140,6 +165,7 @@ ActiveRecord::Schema.define(version: 20140321234151) do
     t.integer  "solution_level_source_id"
     t.integer  "user_id"
     t.string   "instructions"
+    t.string   "maze",                     limit: 20000
   end
 
   add_index "levels", ["game_id"], name: "index_levels_on_game_id", using: :btree

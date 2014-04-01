@@ -99,6 +99,11 @@ class ActivitiesController < ApplicationController
                                     solved?: solved,
                                     level_source: level_source,
                                     activity_id: activity_id)
+
+    slog(:tag => 'activity_finish',
+         :script_level_id => script_level.id,
+         :user_agent => request.user_agent,
+         :locale => locale)
   end
 
   # GET /activities

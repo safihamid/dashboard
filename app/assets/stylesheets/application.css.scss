@@ -821,8 +821,9 @@ a.download-video {
   .padtopbottom {
     padding-top:10px; padding-bottom:10px;
   }
+
   #signup {
-    background-color:#eee; padding-top:10px;
+    padding-top:10px;
     .medium-size-text {
       font-size:18px; line-height:30px;
     }  
@@ -833,6 +834,7 @@ a.download-video {
       text-align:right; padding-right:20px; color:#888;
     }
   }
+
   #lesson {
     background-color:rgb(88, 103, 113);
     #heading {
@@ -862,6 +864,42 @@ a.download-video {
     }
   }
 }
+
+.miniblock {
+  background-color:rgb(88, 103, 113);
+  height:100px;
+  margin-left:0px;
+  .heading {
+    -moz-box-sizing:border-box; box-sizing:border-box; padding: 10px 0px 10px 0px;
+    .whitetext {
+      color:white;
+    }
+  }
+  h3 {
+    margin: 0
+  }
+  .smallwhitetext {
+    color:white; font-size:15px; font-size:13px; padding-right:10px; font-weight:normal;
+  }   
+  .imgspan {
+    margin-left: 0px;
+  }
+}
+
+.miniblock + .miniblock {
+  margin-left:40px;
+}
+
+#signin {
+  .tryfirst {
+    margin-bottom:10px;
+    a {
+      font-size:18px; 
+      font-weight:400;
+    }
+  }
+}
+
 #current-script-levels, #all-levels {
   min-height: 50px;
   li {
@@ -882,4 +920,20 @@ a.download-video {
 }
 #script_name {
   margin: 0px 10px 0px 0px;
+}
+#edit-script-nav {
+  a {
+    display: block;
+    padding: 2px;
+    color: $dark_color;
+    font-size: 125%;
+  }
+}
+.edit_level {
+  #toolbox_name {
+    display: block;
+  }
+  .block-checkbox {
+    float: left;
+  }
 }
