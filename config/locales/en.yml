@@ -350,10 +350,10 @@ en:
     hoc:
       title: 'The Hour of Code'
       body: 'Try the basics of computer science. Millions have given it a shot.'
-    flappy: 
-      title: 'Flappy Bird'
-      body: 'Wanna write your own game in less than 10 minutes? Check out our Flappy Bird tutorial!'
+    flappy:
+      title: 'Flappy Code'
+      body: 'Wanna write your own game in less than 10 minutes? Try our Flappy Code tutorial!'
     20hour:
-      title: 'Intro to CS'
-      body: 'Try our 20 hour Intro to Computer Science course.'
+      title: 'Intro Course'
+      body: 'Try our 20-hour Intro to Computer Science course.'
 
