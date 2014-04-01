@@ -21,6 +21,9 @@ class Ability
       can :create, UserLevel
       can :create, Follower
     end
+    if user.hint_access?
+      can :manage, [LevelSourceHint, FrequentUnsuccessfulLevelSource]
+    end
 
     #
     # The first argument to `can` is the action you are giving the user 
