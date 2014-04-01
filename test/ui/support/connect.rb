@@ -1,5 +1,24 @@
 require 'selenium/webdriver'
 
+deployment_path = File.expand_path('../../../../../deployment.rb', __FILE__)
+if File.file?(deployment_path)
+  require deployment_path
+else
+  module Deploy
+    def self.config()
+      {}
+    end
+  end
+end
+
+def browserstack_username
+  Deploy.config['browserstack_username']
+end
+
+def browserstack_authkey
+  Deploy.config['browserstack_authkey']
+end
+
 class Object
   def nil_or_empty?()
     self.nil? || self.empty?
@@ -16,11 +35,11 @@ if ENV['TEST_LOCAL'] == 'true'
   end
 else
   # BrowserStack
-  if ENV['BROWSERSTACK_USERNAME'].nil_or_empty? || ENV['BROWSERSTACK_AUTHKEY'].nil_or_empty?
+  if browserstack_username.nil_or_empty? || browserstack_authkey.nil_or_empty?
     raise "Missing BrowserStack credentials in environment."
   end
 
-  url = "http://#{ENV['BROWSERSTACK_USERNAME']}:#{ENV['BROWSERSTACK_AUTHKEY']}@hub.browserstack.com/wd/hub"
+  url = "http://#{browserstack_username}:#{browserstack_authkey}@hub.browserstack.com/wd/hub"
 
   capabilities = Selenium::WebDriver::Remote::Capabilities.new
   capabilities['os'] = ENV['BS_AUTOMATE_OS'] || 'windows'
