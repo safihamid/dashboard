@@ -233,12 +233,7 @@ namespace :seed do
   end
 
   def is_targeted_game(game_name, level_id)
-    if game_name
-      Level.find(level_id).game.name == game_name
-    else
-      # if no targeted game, then all is fine
-      true
-    end
+    !game_name || Level.find(level_id).game.name == game_name
   end
 
   task dummy_prizes: :environment do
