@@ -318,6 +318,7 @@ en:
     teacher: 'See the solution'
     auth_error: 'You are not authorized to see the solution.'
     submit: 'Update Artist Location'
+    direction: 'Start Direction'
   video:
     tab: 'Video.'
     notes: 'No video? Show notes.'

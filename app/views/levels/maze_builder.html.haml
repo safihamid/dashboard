@@ -8,5 +8,6 @@
   = hidden_field_tag :level_type, "maze"
   = file_field_tag "maze_source"
   = level_form.text_area :instructions, placeholder: "Instructions", rows: 4
-  = level_form.text_area "name", placeholder: "Level Name", rows: 4
+  = level_form.text_area :name, placeholder: "Level Name", rows: 4
+  = level_form.select :start_direction, options_for_select([['Up', 0], ['Right', 1], ['Down', 2], ['Left', 3]])
   = level_form.submit "Create Level"

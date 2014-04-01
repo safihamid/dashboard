@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140327210419) do
+ActiveRecord::Schema.define(version: 20140401010539) do
 
   create_table "activities", force: true do |t|
     t.integer  "user_id"
@@ -168,6 +168,7 @@ ActiveRecord::Schema.define(version: 20140327210419) do
     t.string   "maze",                     limit: 20000
     t.integer  "x"
     t.integer  "y"
+    t.string   "start_direction"
   end
 
   add_index "levels", ["game_id"], name: "index_levels_on_game_id", using: :btree

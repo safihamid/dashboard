@@ -121,6 +121,7 @@ class LevelsController < ApplicationController
     @callback = game_levels_path @game
     @level.x = params[:x]
     @level.y = params[:y]
+    @level.start_direction = params[:start_direction]
     show
     render :show
   end
@@ -135,6 +136,6 @@ class LevelsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def level_params
-      params[:level].permit([:name, :level_url, :level_num, :skin, :instructions, :x, :y, {concept_ids: []}])
+      params[:level].permit([:name, :level_url, :level_num, :skin, :instructions, :x, :y, :start_direction, {concept_ids: []}])
     end
 end

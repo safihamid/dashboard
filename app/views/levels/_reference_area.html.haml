@@ -1,10 +1,12 @@
 - if @artist_builder
   = form_tag('#') do |f|
-    = label_tag "x"
+    = label_tag 'x'
     = text_field_tag 'x'
-    = label_tag "y"
+    = label_tag 'y'
     = text_field_tag 'y'
-    = submit_tag t('reference_area.submit'), id: "builder-coordinate-submit"
+    = label_tag t('reference_area.direction')
+    = text_field_tag 'start_direction'
+    = submit_tag t('reference_area.submit'), id: 'builder-coordinate-submit'
 - else
   .reference_area
     - if current_user && (current_user.teacher? || current_user.admin?) && @level.ideal_level_source_id && !@script.nil? && !@level.nil?

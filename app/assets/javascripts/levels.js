@@ -5,6 +5,7 @@ onInitializeListeners.push(function() {
     var form = $(this).closest('form');
     var x = form.find('input[name="x"]').val();
     var y = form.find('input[name="y"]').val();
-    window.location.href = jQuery.query.set("x", x).set("y", y).toString();
+    var start_direction = form.find('#start_direction').val();
+    window.location.href = jQuery.query.set("x", x).set("y", y).set("start_direction", start_direction).toString();
   });
 });
