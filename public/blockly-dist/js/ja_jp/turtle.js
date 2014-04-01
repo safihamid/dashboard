@@ -151,6 +151,9 @@ BlocklyApps.init = function(config) {
 
   BlocklyApps.share = config.share;
   BlocklyApps.noPadding = config.no_padding;
+  
+  // enableShowCode defaults to true if not defined
+  BlocklyApps.enableShowCode = (config.enableShowCode === false) ? false : true;
 
   // Store configuration.
   onAttempt = config.onAttempt || function(report) {
@@ -300,9 +303,7 @@ BlocklyApps.init = function(config) {
 
   var showCode = document.getElementById('show-code-header');  
   if (showCode) {
-    if (config.hideShowCode) {
-      showCode.style.display = 'none';
-    } else {
+    if (BlocklyApps.enableShowCode) {
       dom.addClickTouchEvent(showCode, function() {
         feedback.showGeneratedCode(BlocklyApps.Dialog);
       });
@@ -494,6 +495,7 @@ BlocklyApps.BLOCK_Y_COORDINATE_INTERVAL = 200;
 BlocklyApps.arrangeBlockPosition = function(startBlocks, arrangement) {
   var type, arrangeX, arrangeY;
   var xml = parseXmlElement(startBlocks);
+  var numberOfPlacedBlocks = 0;
   for (var x = 0, xmlChild; xml.childNodes && x < xml.childNodes.length; x++) {
     xmlChild = xml.childNodes[x];
 
@@ -508,7 +510,8 @@ BlocklyApps.arrangeBlockPosition = function(startBlocks, arrangement) {
                             BlocklyApps.BLOCK_X_COORDINATE);
       xmlChild.setAttribute('y', xmlChild.getAttribute('y') || arrangeY ||
                             BlocklyApps.BLOCK_Y_COORDINATE +
-                            BlocklyApps.BLOCK_Y_COORDINATE_INTERVAL * x);
+                            BlocklyApps.BLOCK_Y_COORDINATE_INTERVAL * numberOfPlacedBlocks);
+      numberOfPlacedBlocks += 1;
     }
   }
   return Blockly.Xml.domToText(xml);
@@ -599,9 +602,15 @@ BlocklyApps.resizeHeaders = function() {
   var toolboxHeader = document.getElementById('toolbox-header');
   var showCodeHeader = document.getElementById('show-code-header');
 
-  var showCodeWidth = parseInt(window.getComputedStyle(showCodeHeader).width,
-                               10);
-
+  var showCodeWidth;
+  if (BlocklyApps.enableShowCode) {
+    showCodeWidth = parseInt(window.getComputedStyle(showCodeHeader).width, 10);
+  }
+  else {
+    showCodeWidth = 0;
+    showCodeHeader.style.display = "none";
+  }
+  
   toolboxHeader.style.width = (categoriesWidth + toolboxWidth) + 'px';
   workspaceHeader.style.width = (workspaceWidth -
                                  toolboxWidth -
@@ -1084,8 +1093,25 @@ exports.displayFeedback = function(options) {
     contentDiv: feedback,
     icon: icon,
     defaultBtnSelector: defaultBtnSelector,
-    onHidden: onHidden
+    onHidden: onHidden,
+    id: 'feedback-dialog'
   });
+
+  // Update the background color if it is set to be in special design.
+  if (options.response && options.response.design &&
+      isFeedbackMessageCustomized(options)) {
+    if (options.response.design == "yellow_background") {
+      document.getElementById('feedback-dialog')
+          .className += " yellow-background";
+      document.getElementById('feedback-content')
+          .className += " white-background";
+    } else if (options.response.design == "white_background") {
+      document.getElementById('feedback-dialog')
+          .className += " white-background";
+      document.getElementById('feedback-content')
+          .className += " light-yellow-background";
+    }
+  }
 
   if (againButton) {
     dom.addClickTouchEvent(againButton, function() {
@@ -1266,7 +1292,41 @@ var getFeedbackMessage = function(options) {
     message = options.response.hint;
   }
   dom.setText(feedback, message);
+
+  // Update the feedback box design, if the hint message is customized.
+   if (options.response && options.response.design &&
+       isFeedbackMessageCustomized(options)) {
+    // Setup a new div
+    var feedbackDiv = document.createElement('div');
+    feedbackDiv.className = 'feedback-callout';
+    feedbackDiv.id = 'feedback-content';
+
+    // Insert an image
+    var imageDiv = document.createElement('img');
+    imageDiv.className = "hint-image";
+    imageDiv.src = BlocklyApps.assetUrl(
+      'media/lightbulb_for_' + options.response.design + '.png');
+    feedbackDiv.appendChild(imageDiv);
+    // Add new text
+    var hintHeader = document.createElement('p');
+    dom.setText(hintHeader, msg.hintHeader());
+    feedbackDiv.appendChild(hintHeader);
+    hintHeader.className = 'hint-header';
+    // Append the original text
+    feedbackDiv.appendChild(feedback);
+    return feedbackDiv;
+  }
   return feedback;
+};
+
+var isFeedbackMessageCustomized = function(options) {
+  return options.response.hint ||
+      (options.feedbackType == BlocklyApps.TestResults.TOO_FEW_BLOCKS_FAIL &&
+       options.level.tooFewBlocksMsg) ||
+      (options.feedbackType == BlocklyApps.TestResults.LEVEL_INCOMPLETE_FAIL &&
+       options.level.levelIncompleteError) ||
+      (options.feedbackType == BlocklyApps.TestResults.OTHER_1_STAR_FAIL &&
+       options.level.other1StarError);
 };
 
 exports.createSharingButtons = function(options) {
@@ -1404,13 +1464,12 @@ var getShowCodeElement = function(options) {
       button.style.display = 'none';
     });
 
-    // For now we want to hide lines of code for flappy app
-    if (options.app === 'flappy') {
-      lines.innerHTML = '<br>';
-      showCodeDiv.appendChild(lines);
-    } else {
+    if (BlocklyApps.enableShowCode) {
       showCodeDiv.appendChild(lines);
       showCodeDiv.appendChild(showCodeLink);
+    } else {
+      lines.innerHTML = '<br>';
+      showCodeDiv.appendChild(lines);
     }
 
     return showCodeDiv;
@@ -1485,7 +1544,12 @@ FeedbackBlocks.prototype.show = function() {
 };
 
 var getGeneratedCodeElement = function() {
-  var infoMessage = BlocklyApps.editCode ?  "" : msg.generatedCodeInfo();
+  var codeInfoMsgParams = {
+    berkeleyLink: "<a href='http://bjc.berkeley.edu/' target='_blank'>Berkeley</a>",
+    harvardLink: "<a href='https://cs50.harvard.edu/' target='_blank'>Harvard</a>"
+  };
+
+  var infoMessage = BlocklyApps.editCode ?  "" : msg.generatedCodeInfo(codeInfoMsgParams);
   var code = getGeneratedCodeString();
 
   var codeDiv = document.createElement('div');
@@ -1697,7 +1761,8 @@ exports.createModalDialogWithIcon = function(options) {
   return new options.Dialog({
     body: modalBody,
     onHidden: options.onHidden,
-    onKeydown: btn ? keydownHandler : undefined
+    onKeydown: btn ? keydownHandler : undefined,
+    id: options.id
   });
 };
 
@@ -2099,7 +2164,7 @@ escape = escape || function (html){
 };
 var buf = [];
 with (locals || {}) { (function(){ 
- buf.push('<div class="generated-code-container">\n  <p class="generatedCodeMessage">', escape((2,  message )), '</p>\n  <pre class="generatedCode">', escape((3,  code )), '</pre>\n</div>\n\n'); })();
+ buf.push('<div class="generated-code-container">\n  <p class="generatedCodeMessage">', (2,  message ), '</p>\n  <pre class="generatedCode">', escape((3,  code )), '</pre>\n</div>\n\n'); })();
 } 
 return buf.join('');
 };
@@ -4345,8 +4410,8 @@ var spiral = function(i) {; buf.push('  ');50; if (i <= 60) {; buf.push('    <bl
  */
 ; buf.push('\n');78; if (page == 1) {; buf.push('  ');78; if (level == 1) {; buf.push('    <block type="draw_move_by_constant" x="20" y="20"></block>\n  ');79; } else if (level == 2) {; buf.push('    <block type="draw_colour" inline="true" x="20" y="20">\n      <value name="COLOUR">\n        <block type="colour_picker">\n          <title name="COLOUR">#ff0000</title>\n        </block>\n      </value>\n      <next>\n        <block type="draw_move_by_constant"></block>\n      </next>\n    </block>\n  ');89; } else if (level == 4) {; buf.push('    <block type="controls_repeat" x="20" y="20">\n      <title name="TIMES">3</title>\n      <statement name="DO">\n        <block type="draw_colour" inline="true">\n          <value name="COLOUR">\n            <block type="colour_random"></block>\n          </value>\n        </block>\n      </statement>\n    </block>\n  ');99; } else if (level == 3 || level == 5 || level == 6) {; buf.push('    <block type="controls_repeat" x="20" y="20">\n      <title name="TIMES">');100; if (level == 3) { ; buf.push('4');100; } else { ; buf.push('3');100; } ; buf.push('</title>\n    </block>\n  ');102; } else if (level == 7) {; buf.push('    <block type="draw_turn_by_constant_restricted" x="20" y="20">\n      <title name="DIR">turnRight</title>\n      <title name="VALUE">90</title>\n    </block>\n  ');106; } else if (level == 8) {; buf.push('    <block id="set-color" type="draw_colour" x="20" y="100">\n      <value name="COLOUR">\n        <block type="colour_random"></block>\n      </value>\n      <next>\n        <block type="draw_move_by_constant">\n          <title name="DIR">moveForward</title>\n          <title name="VALUE">100</title>\n          <next>\n            <block type="draw_move_by_constant">\n              <title name="DIR">moveBackward</title>\n              <title name="VALUE">100</title>\n              <next>\n                <block type="draw_turn_by_constant">\n                  <title name="DIR">turnRight</title>\n                  <title name="VALUE">45</title>\n                </block>\n              </next>\n            </block>\n          </next>\n        </block>\n      </next>\n    </block>\n  ');129; } else if (level == 9) {; buf.push('    <block type="controls_repeat" deletable="false" movable="false" x="20" y="20">\n      <title name="TIMES">??</title>\n      <statement name="DO">\n        <block type="draw_move" editable="false" deletable="false" movable="false">\n          <value name="VALUE">\n            <block type="math_number" editable="false" deletable="false" movable="false">\n              <title name="NUM">1</title>\n            </block>\n          </value>\n          <next>\n            <block type="draw_turn" editable="false" deletable="false" movable="false">\n              <value name="VALUE">\n                <block type="math_number" editable="false" deletable="false" movable="false">\n                  <title name="NUM">1</title>\n                </block>\n              </value>\n            </block>\n          </next>\n        </block>\n      </statement>\n    </block>\n  ');150; } else if (level == 10) {; buf.push('    <block type="draw_move_by_constant" x="20" y="20">\n      <title name="DIR">moveForward</title>\n      <title name="VALUE">100</title>\n    </block>\n  ');154; }; buf.push('');154; } else if (page == 2) {; buf.push('  ');154; // No blocks are provided for levels 1 and 2.
 ; buf.push('  ');154; if (level == 3 || level == 5) {; buf.push('    ');154; // Call "draw a square".
-; buf.push('    <block type="draw_a_square" inline="true">\n      <value name="VALUE">\n        <block type="math_number">\n          <title name="NUM">');157; if (level == 3) { ; buf.push('100');157; } else { ; buf.push('50');157; } ; buf.push('</title>\n        </block>\n      </value>\n    </block>\n  ');161; } else if (level == 4) {; buf.push('    ');161; // Three-square code.
-; buf.push('    <block type="controls_repeat" deletable="false" movable="false">\n      <title name="TIMES">???</title>\n      <statement name="DO">\n        <block id="set-color" type="draw_colour" deletable="false" movable="false">\n          <value name="COLOUR">\n            <block type="colour_random" deletable="false" movable="false">\n            </block>\n          </value>\n          <next>\n            <block type="draw_a_square" inline="true" editable="false" deletable="false" movable="false">\n              <value name="VALUE">\n                <block type="math_number" deletable="false" movable="false">\n                  <title name="NUM">???</title>\n                </block>\n              </value>\n              <next>\n                <block type="draw_turn" editable="false" deletable="false" movable="false">\n                  <value name="VALUE">\n                    <block type="math_number" deletable="false" movable="false">\n                      <title name="NUM">???</title>\n                    </block>\n                  </value>\n                </block>\n              </next>\n            </block>\n          </next>\n        </block>\n      </statement>\n    </block>\n  ');190; } else if (level == 6) {; buf.push('    <block type="controls_for_counter" inline="true" x="20" y="20">\n    <title name="VAR">', escape((191,  msg.loopVariable() )), '</title>\n      <value name="FROM">\n        <block type="math_number">\n          <title name="NUM">');194; if (level == 6) { ; buf.push('50');194; } else { ; buf.push('10');194; } ; buf.push('</title>\n        </block>\n      </value>\n      <value name="TO">\n        <block type="math_number">\n          <title name="NUM">');199; if (level == 6) { ; buf.push('90');199; } else { ; buf.push('100');199; } ; buf.push('</title>\n        </block>\n      </value>\n      <value name="BY">\n        <block type="math_number">\n          <title name="NUM">10</title>\n        </block>\n      </value>\n      <statement name="DO">\n        <block type="draw_a_square" inline="true">\n        </block>\n      </statement>\n    </block>\n  ');212; } else if (level == 7) {; buf.push('    ');212; spiral(25); buf.push('  ');212; } else if (level == 7.5) {; buf.push('    <block type="draw_a_snowman" x="20" y="20" inline="true">\n      <value name="VALUE">\n        <block type="math_number">\n          <title name="NUM">250</title>\n        </block>\n      </value>\n    </block>\n  ');219; } else if (level == 8 || level == 9) {; buf.push('    <block type="draw_a_snowman" x="20" y="20" inline="true">\n      <value name="VALUE">\n        <block type="math_number">\n          <title name="NUM">150</title>\n        </block>\n      </value>\n    </block>\n  ');226; } else if (level == 10) {; buf.push('    <block id="draw-width" type="draw_width" inline="false" x="158" y="67">\n      <value name="WIDTH">\n        <block type="math_number">\n          <title name="NUM">1</title>\n        </block>\n      </value>\n      <next>\n        <block type="controls_for_counter" inline="true">\n          <value name="FROM">\n            <block type="math_number">\n              <title name="NUM">1</title>\n            </block>\n          </value>\n          <value name="TO">\n            <block type="math_number">\n              <title name="NUM">100</title>\n            </block>\n          </value>\n          <value name="BY">\n            <block type="math_number">\n              <title name="NUM">1</title>\n            </block>\n          </value>\n          <statement name="DO">\n            <block type="draw_move" inline="false">\n              <title name="DIR">moveForward</title>\n              <value name="VALUE">\n                <block type="variables_get_counter"></block>\n              </value>\n              <next>\n                <block type="draw_turn" inline="false">\n                  <title name="DIR">turnRight</title>\n                  <value name="VALUE">\n                    <block type="math_number">\n                      <title name="NUM">91</title>\n                    </block>\n                  </value>\n                </block>\n              </next>\n            </block>\n          </statement>\n        </block>\n      </next>\n    </block>\n  ');270; }; buf.push('');270; } else if (page == 3) {; buf.push('  ');270; // Define "draw a square".
+; buf.push('    <block type="draw_a_square" inline="true" x="20" y="20">\n      <value name="VALUE">\n        <block type="math_number">\n          <title name="NUM">');157; if (level == 3) { ; buf.push('100');157; } else { ; buf.push('50');157; } ; buf.push('</title>\n        </block>\n      </value>\n    </block>\n  ');161; } else if (level == 4) {; buf.push('    ');161; // Three-square code.
+; buf.push('    <block type="controls_repeat" deletable="false" movable="false" x="20" y="20">\n      <title name="TIMES">???</title>\n      <statement name="DO">\n        <block id="set-color" type="draw_colour" deletable="false" movable="false">\n          <value name="COLOUR">\n            <block type="colour_random" deletable="false" movable="false">\n            </block>\n          </value>\n          <next>\n            <block type="draw_a_square" inline="true" editable="false" deletable="false" movable="false">\n              <value name="VALUE">\n                <block type="math_number" deletable="false" movable="false">\n                  <title name="NUM">???</title>\n                </block>\n              </value>\n              <next>\n                <block type="draw_turn" editable="false" deletable="false" movable="false">\n                  <value name="VALUE">\n                    <block type="math_number" deletable="false" movable="false">\n                      <title name="NUM">???</title>\n                    </block>\n                  </value>\n                </block>\n              </next>\n            </block>\n          </next>\n        </block>\n      </statement>\n    </block>\n  ');190; } else if (level == 6) {; buf.push('    <block type="controls_for_counter" inline="true" x="20" y="20">\n    <title name="VAR">', escape((191,  msg.loopVariable() )), '</title>\n      <value name="FROM">\n        <block type="math_number">\n          <title name="NUM">');194; if (level == 6) { ; buf.push('50');194; } else { ; buf.push('10');194; } ; buf.push('</title>\n        </block>\n      </value>\n      <value name="TO">\n        <block type="math_number">\n          <title name="NUM">');199; if (level == 6) { ; buf.push('90');199; } else { ; buf.push('100');199; } ; buf.push('</title>\n        </block>\n      </value>\n      <value name="BY">\n        <block type="math_number">\n          <title name="NUM">10</title>\n        </block>\n      </value>\n      <statement name="DO">\n        <block type="draw_a_square" inline="true">\n        </block>\n      </statement>\n    </block>\n  ');212; } else if (level == 7) {; buf.push('    ');212; spiral(25); buf.push('  ');212; } else if (level == 7.5) {; buf.push('    <block type="draw_a_snowman" x="20" y="20" inline="true">\n      <value name="VALUE">\n        <block type="math_number">\n          <title name="NUM">250</title>\n        </block>\n      </value>\n    </block>\n  ');219; } else if (level == 8 || level == 9) {; buf.push('    <block type="draw_a_snowman" x="20" y="20" inline="true">\n      <value name="VALUE">\n        <block type="math_number">\n          <title name="NUM">150</title>\n        </block>\n      </value>\n    </block>\n  ');226; } else if (level == 10) {; buf.push('    <block id="draw-width" type="draw_width" inline="false" x="158" y="67">\n      <value name="WIDTH">\n        <block type="math_number">\n          <title name="NUM">1</title>\n        </block>\n      </value>\n      <next>\n        <block type="controls_for_counter" inline="true">\n          <value name="FROM">\n            <block type="math_number">\n              <title name="NUM">1</title>\n            </block>\n          </value>\n          <value name="TO">\n            <block type="math_number">\n              <title name="NUM">100</title>\n            </block>\n          </value>\n          <value name="BY">\n            <block type="math_number">\n              <title name="NUM">1</title>\n            </block>\n          </value>\n          <statement name="DO">\n            <block type="draw_move" inline="false">\n              <title name="DIR">moveForward</title>\n              <value name="VALUE">\n                <block type="variables_get_counter"></block>\n              </value>\n              <next>\n                <block type="draw_turn" inline="false">\n                  <title name="DIR">turnRight</title>\n                  <value name="VALUE">\n                    <block type="math_number">\n                      <title name="NUM">91</title>\n                    </block>\n                  </value>\n                </block>\n              </next>\n            </block>\n          </statement>\n        </block>\n      </next>\n    </block>\n  ');270; }; buf.push('');270; } else if (page == 3) {; buf.push('  ');270; // Define "draw a square".
 ; buf.push('  ', (270,  polygon({
     title: msg.drawASquare(),
     modifiers: ' x="20" y="20" editable="false" deletable="false" movable="false"',
@@ -4786,7 +4851,7 @@ BlocklyApps.reset = function(ignore) {
 Turtle.display = function() {
   Turtle.ctxDisplay.globalCompositeOperation = 'copy';
   // Draw the answer layer.
-  Turtle.ctxDisplay.globalAlpha = 0.1;
+  Turtle.ctxDisplay.globalAlpha = 0.15;
   Turtle.ctxDisplay.drawImage(Turtle.ctxAnswer.canvas, 0, 0);
   Turtle.ctxDisplay.globalAlpha = 1;
 
@@ -5237,6 +5302,7 @@ exports.serialize = function(node) {
 // Parses a single root element string.
 exports.parseElement = function(text) {
   var parser = new DOMParser();
+  text = text.trim();
   var dom = text.indexOf('<xml') === 0 ?
       parser.parseFromString(text, 'text/xml') :
       parser.parseFromString('<xml>' + text + '</xml>', 'text/xml');
@@ -5375,6 +5441,8 @@ exports.watchVideo = function(d){return "ビデオを見る"};
 exports.tryHOC = function(d){return "コードの時間を試してください。"};
 
 exports.signup = function(d){return "イントロのコースに申し込む"};
+
+exports.hintHeader = function(d){return "Here's a tip:"};
 
 
 },{"messageformat":41}],34:[function(require,module,exports){

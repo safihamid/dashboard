@@ -43,6 +43,13 @@
           = render partial: 'shared/student_continue', locals: { include_finished: true }
           - if !current_user.teacher? && current_user.teachers.length == 0
             = link_to t('add_teacher_form.submit'), "#" + :teacher_email_or_code.to_s
+
+    %br/
+
+    .row#lesson
+      .span9#heading
+        %h3.whitetext= t('k8intro') 
+
   - else
     - unless Rails.configuration.minimal_mode
       .row#signup
@@ -60,6 +67,12 @@
             %span>= sanitize(t('home.signin_directions'), tags: %w(br))
 
       %br/
+
+    .row
+      = render partial: 'shared/course_mini_block', locals: { id: "hoc" }
+      = render partial: 'shared/course_mini_block', locals: { id: "flappy" }
+
+    %br/
 
     .row#lesson
       .span9#heading
@@ -96,6 +109,8 @@
           = hidden_field_tag :redirect, root_path
         .actions
           = f.submit t('add_teacher_form.submit')
+    %br/
+    %br/
   %br/
 
   - if current_user && current_user.admin?
@@ -104,8 +119,17 @@
       %li= link_to 'Feedback System', frequent_unsuccessful_level_sources_path
       - Script.all.each do |script|
         %li= link_to(data_t_suffix('script.name', script.name, 'desc'), script_level_path(script, ScriptLevel::NEXT))
-    = link_to t("builder.manage"), scripts_path
+    = link_to t("builder.manage"), levels_new_path
     %h3= link_to 'Admin Stats', admin_stats_path
+
+  - if current_user
+    .row
+      = render partial: 'shared/course_mini_block', locals: { id: "hoc" }
+      = render partial: 'shared/course_mini_block', locals: { id: "flappy" }
+
+    %br/
+    %br/
+    %br/
 
   :javascript
     $( "#teacher_email_or_code" ).placeholder();

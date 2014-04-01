@@ -151,6 +151,9 @@ BlocklyApps.init = function(config) {
 
   BlocklyApps.share = config.share;
   BlocklyApps.noPadding = config.no_padding;
+  
+  // enableShowCode defaults to true if not defined
+  BlocklyApps.enableShowCode = (config.enableShowCode === false) ? false : true;
 
   // Store configuration.
   onAttempt = config.onAttempt || function(report) {
@@ -300,9 +303,7 @@ BlocklyApps.init = function(config) {
 
   var showCode = document.getElementById('show-code-header');  
   if (showCode) {
-    if (config.hideShowCode) {
-      showCode.style.display = 'none';
-    } else {
+    if (BlocklyApps.enableShowCode) {
       dom.addClickTouchEvent(showCode, function() {
         feedback.showGeneratedCode(BlocklyApps.Dialog);
       });
@@ -494,6 +495,7 @@ BlocklyApps.BLOCK_Y_COORDINATE_INTERVAL = 200;
 BlocklyApps.arrangeBlockPosition = function(startBlocks, arrangement) {
   var type, arrangeX, arrangeY;
   var xml = parseXmlElement(startBlocks);
+  var numberOfPlacedBlocks = 0;
   for (var x = 0, xmlChild; xml.childNodes && x < xml.childNodes.length; x++) {
     xmlChild = xml.childNodes[x];
 
@@ -508,7 +510,8 @@ BlocklyApps.arrangeBlockPosition = function(startBlocks, arrangement) {
                             BlocklyApps.BLOCK_X_COORDINATE);
       xmlChild.setAttribute('y', xmlChild.getAttribute('y') || arrangeY ||
                             BlocklyApps.BLOCK_Y_COORDINATE +
-                            BlocklyApps.BLOCK_Y_COORDINATE_INTERVAL * x);
+                            BlocklyApps.BLOCK_Y_COORDINATE_INTERVAL * numberOfPlacedBlocks);
+      numberOfPlacedBlocks += 1;
     }
   }
   return Blockly.Xml.domToText(xml);
@@ -599,9 +602,15 @@ BlocklyApps.resizeHeaders = function() {
   var toolboxHeader = document.getElementById('toolbox-header');
   var showCodeHeader = document.getElementById('show-code-header');
 
-  var showCodeWidth = parseInt(window.getComputedStyle(showCodeHeader).width,
-                               10);
-
+  var showCodeWidth;
+  if (BlocklyApps.enableShowCode) {
+    showCodeWidth = parseInt(window.getComputedStyle(showCodeHeader).width, 10);
+  }
+  else {
+    showCodeWidth = 0;
+    showCodeHeader.style.display = "none";
+  }
+  
   toolboxHeader.style.width = (categoriesWidth + toolboxWidth) + 'px';
   workspaceHeader.style.width = (workspaceWidth -
                                  toolboxWidth -
@@ -2320,7 +2329,9 @@ Bounce.init = function(config) {
   config.makeString = bounceMsg.makeYourOwn();
   config.makeUrl = "http://code.org/bounce";
   config.makeImage = BlocklyApps.assetUrl('media/promo.png');
-  
+
+  config.enableShowCode = false;
+
   config.preventExtraTopLevelBlocks = true;
 
   BlocklyApps.init(config);
@@ -3041,7 +3052,6 @@ var tb = function(blocks) {
 module.exports = {
 
   '1': {
-    'ideal': 2,
     'requiredBlocks': [
       [{'test': 'moveLeft', 'type': 'bounce_moveLeft'}]
     ],
@@ -3098,7 +3108,6 @@ module.exports = {
       <block type="bounce_whenRight" deletable="false" x="180" y="20"></block>'
   },
   '3': {
-    'ideal': 2,
     'requiredBlocks': [
       [{'test': 'moveUp', 'type': 'bounce_moveUp'}]
     ],
@@ -3127,7 +3136,6 @@ module.exports = {
      '<block type="bounce_whenUp" deletable="false" x="20" y="20"></block>'
   },
   '4': {
-    'ideal': 8,
     'requiredBlocks': [
       [{'test': 'moveRight', 'type': 'bounce_moveRight'}],
       [{'test': 'moveLeft', 'type': 'bounce_moveLeft'}],
@@ -3165,7 +3173,6 @@ module.exports = {
       <block type="bounce_whenDown" deletable="false" x="180" y="120"></block>'
   },
   '5': {
-    'ideal': 3,
     'timeoutFailureTick': 100,
     'requiredBlocks': [
       [{'test': 'bounceBall', 'type': 'bounce_bounceBall'}]
@@ -3191,7 +3198,6 @@ module.exports = {
      '<block type="bounce_whenPaddleCollided" deletable="false" x="20" y="20"></block>'
   },
   '6': {
-    'ideal': 6,
     'timeoutFailureTick': 140,
     'requiredBlocks': [
       [{'test': 'bounceBall', 'type': 'bounce_bounceBall'}]
@@ -3218,7 +3224,6 @@ module.exports = {
       <block type="bounce_whenWallCollided" deletable="false" x="20" y="120"></block>'
   },
   '7': {
-    'ideal': 10,
     'timeoutFailureTick': 900,
     'requiredBlocks': [
       [{'test': 'moveLeft', 'type': 'bounce_moveLeft'}],
@@ -3256,7 +3261,6 @@ module.exports = {
   },
 /*
   '8': {
-    'ideal': 8,
     'requiredBlocks': [
       [{'test': 'moveRight', 'type': 'bounce_moveRight'}]
     ],
@@ -3289,7 +3293,6 @@ module.exports = {
       <block type="bounce_whenWallCollided" deletable="false" x="20" y="220"></block>'
   },
   '9': {
-    'ideal': 8,
     'requiredBlocks': [
       [{'test': 'moveRight', 'type': 'bounce_moveRight'}]
     ],
@@ -3323,7 +3326,6 @@ module.exports = {
   },
 */
   '10': {
-    'ideal': 16,
     'requiredBlocks': [
       [{'test': 'moveLeft', 'type': 'bounce_moveLeft'}],
       [{'test': 'moveRight', 'type': 'bounce_moveRight'}],
@@ -3370,7 +3372,6 @@ module.exports = {
       <block type="bounce_whenBallMissesPaddle" deletable="false" x="20" y="340"></block>'
   },
   '11': {
-    'ideal': 22,
     'requiredBlocks': [
       [{'test': 'moveLeft', 'type': 'bounce_moveLeft'}],
       [{'test': 'moveRight', 'type': 'bounce_moveRight'}],
@@ -3424,7 +3425,6 @@ module.exports = {
       <block type="bounce_whenBallMissesPaddle" deletable="false" x="20" y="430"></block>'
   },
   '12': {
-    'ideal': 22,
     'requiredBlocks': [
     ],
     'scale': {
@@ -3883,8 +3883,25 @@ exports.displayFeedback = function(options) {
     contentDiv: feedback,
     icon: icon,
     defaultBtnSelector: defaultBtnSelector,
-    onHidden: onHidden
+    onHidden: onHidden,
+    id: 'feedback-dialog'
   });
+
+  // Update the background color if it is set to be in special design.
+  if (options.response && options.response.design &&
+      isFeedbackMessageCustomized(options)) {
+    if (options.response.design == "yellow_background") {
+      document.getElementById('feedback-dialog')
+          .className += " yellow-background";
+      document.getElementById('feedback-content')
+          .className += " white-background";
+    } else if (options.response.design == "white_background") {
+      document.getElementById('feedback-dialog')
+          .className += " white-background";
+      document.getElementById('feedback-content')
+          .className += " light-yellow-background";
+    }
+  }
 
   if (againButton) {
     dom.addClickTouchEvent(againButton, function() {
@@ -4065,7 +4082,41 @@ var getFeedbackMessage = function(options) {
     message = options.response.hint;
   }
   dom.setText(feedback, message);
+
+  // Update the feedback box design, if the hint message is customized.
+   if (options.response && options.response.design &&
+       isFeedbackMessageCustomized(options)) {
+    // Setup a new div
+    var feedbackDiv = document.createElement('div');
+    feedbackDiv.className = 'feedback-callout';
+    feedbackDiv.id = 'feedback-content';
+
+    // Insert an image
+    var imageDiv = document.createElement('img');
+    imageDiv.className = "hint-image";
+    imageDiv.src = BlocklyApps.assetUrl(
+      'media/lightbulb_for_' + options.response.design + '.png');
+    feedbackDiv.appendChild(imageDiv);
+    // Add new text
+    var hintHeader = document.createElement('p');
+    dom.setText(hintHeader, msg.hintHeader());
+    feedbackDiv.appendChild(hintHeader);
+    hintHeader.className = 'hint-header';
+    // Append the original text
+    feedbackDiv.appendChild(feedback);
+    return feedbackDiv;
+  }
   return feedback;
+};
+
+var isFeedbackMessageCustomized = function(options) {
+  return options.response.hint ||
+      (options.feedbackType == BlocklyApps.TestResults.TOO_FEW_BLOCKS_FAIL &&
+       options.level.tooFewBlocksMsg) ||
+      (options.feedbackType == BlocklyApps.TestResults.LEVEL_INCOMPLETE_FAIL &&
+       options.level.levelIncompleteError) ||
+      (options.feedbackType == BlocklyApps.TestResults.OTHER_1_STAR_FAIL &&
+       options.level.other1StarError);
 };
 
 exports.createSharingButtons = function(options) {
@@ -4203,13 +4254,12 @@ var getShowCodeElement = function(options) {
       button.style.display = 'none';
     });
 
-    // For now we want to hide lines of code for flappy app
-    if (options.app === 'flappy') {
-      lines.innerHTML = '<br>';
-      showCodeDiv.appendChild(lines);
-    } else {
+    if (BlocklyApps.enableShowCode) {
       showCodeDiv.appendChild(lines);
       showCodeDiv.appendChild(showCodeLink);
+    } else {
+      lines.innerHTML = '<br>';
+      showCodeDiv.appendChild(lines);
     }
 
     return showCodeDiv;
@@ -4284,7 +4334,12 @@ FeedbackBlocks.prototype.show = function() {
 };
 
 var getGeneratedCodeElement = function() {
-  var infoMessage = BlocklyApps.editCode ?  "" : msg.generatedCodeInfo();
+  var codeInfoMsgParams = {
+    berkeleyLink: "<a href='http://bjc.berkeley.edu/' target='_blank'>Berkeley</a>",
+    harvardLink: "<a href='https://cs50.harvard.edu/' target='_blank'>Harvard</a>"
+  };
+
+  var infoMessage = BlocklyApps.editCode ?  "" : msg.generatedCodeInfo(codeInfoMsgParams);
   var code = getGeneratedCodeString();
 
   var codeDiv = document.createElement('div');
@@ -4496,7 +4551,8 @@ exports.createModalDialogWithIcon = function(options) {
   return new options.Dialog({
     body: modalBody,
     onHidden: options.onHidden,
-    onKeydown: btn ? keydownHandler : undefined
+    onKeydown: btn ? keydownHandler : undefined,
+    id: options.id
   });
 };
 
@@ -4839,7 +4895,7 @@ escape = escape || function (html){
 };
 var buf = [];
 with (locals || {}) { (function(){ 
- buf.push('<div class="generated-code-container">\n  <p class="generatedCodeMessage">', escape((2,  message )), '</p>\n  <pre class="generatedCode">', escape((3,  code )), '</pre>\n</div>\n\n'); })();
+ buf.push('<div class="generated-code-container">\n  <p class="generatedCodeMessage">', (2,  message ), '</p>\n  <pre class="generatedCode">', escape((3,  code )), '</pre>\n</div>\n\n'); })();
 } 
 return buf.join('');
 };
@@ -5040,6 +5096,7 @@ exports.serialize = function(node) {
 // Parses a single root element string.
 exports.parseElement = function(text) {
   var parser = new DOMParser();
+  text = text.trim();
   var dom = text.indexOf('<xml') === 0 ?
       parser.parseFromString(text, 'text/xml') :
       parser.parseFromString('<xml>' + text + '</xml>', 'text/xml');
@@ -5105,7 +5162,7 @@ exports.launchBall = function(d){return "launch new ball"};
 
 exports.launchBallTooltip = function(d){return "Launch a ball into play."};
 
-exports.makeYourOwn = function(d){return "Make Your Own Pong Game"};
+exports.makeYourOwn = function(d){return "Make Your Own Bounce Game"};
 
 exports.moveDown = function(d){return "move down"};
 
@@ -5243,7 +5300,7 @@ exports.setPaddleSpeedTooltip = function(d){return "Sets the speed of the paddle
 
 exports.share = function(d){return "Share"};
 
-exports.shareBounceTwitter = function(d){return "Check out the Pong game I made. I wrote it myself with @codeorg"};
+exports.shareBounceTwitter = function(d){return "Check out the Bounce game I made. I wrote it myself with @codeorg"};
 
 exports.shareGame = function(d){return "Share your game:"};
 
@@ -5417,6 +5474,8 @@ exports.watchVideo = function(d){return "觀看影片"};
 exports.tryHOC = function(d){return "試試 Hour of Code (一時編程網)"};
 
 exports.signup = function(d){return "報名參加簡介課程"};
+
+exports.hintHeader = function(d){return "Here's a tip:"};
 
 
 },{"messageformat":38}],32:[function(require,module,exports){

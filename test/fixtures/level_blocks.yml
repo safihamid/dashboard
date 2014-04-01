@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  block: one
+  level_id: 1
+  type: StartLevelBlock
+
+two:
+  block: two
+  level_id: 1
+  type: ToolboxLevelBlock

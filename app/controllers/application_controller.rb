@@ -11,6 +11,7 @@ class ApplicationController < ActionController::Base
 
   # this is needed to avoid devise breaking on email param
   before_filter :configure_permitted_parameters, if: :devise_controller?
+  before_filter :verify_params_before_cancan_loads_model
 
   around_filter :with_locale
 
@@ -26,7 +27,7 @@ class ApplicationController < ActionController::Base
 
 # we need the following to fix a problem with the interaction between CanCan and strong_parameters
 # https://github.com/ryanb/cancan/issues/835
-  before_filter do
+  def verify_params_before_cancan_loads_model
     resource = controller_name.singularize.to_sym
     method = "#{resource}_params"
     params[resource] &&= send(method) if respond_to?(method, true)
@@ -43,7 +44,7 @@ class ApplicationController < ActionController::Base
     # cookies and clicked on something), maybe we should render an
     # actual page
   end
-  
+
   protected
 
   PERMITTED_USER_FIELDS = [:name, :username, :email, :password, :password_confirmation, :locale, :gender, :login,
@@ -124,7 +125,7 @@ class ApplicationController < ActionController::Base
     end
 
     # Check if the current level_source has program specific hint, use it if use is set.
-    if options[:level_source]
+    if ActivityHint.is_experimenting_feedback? && options[:level_source]
       experiment_hints = []
       options[:level_source].level_source_hints.each do |hint|
         if hint.selected?
@@ -150,6 +151,11 @@ class ApplicationController < ActionController::Base
         end
         response[:hint] = response[:hint].hint
       end
+    end
+
+    # Set up hint design experiment
+    if ExperimentActivity.is_experimenting_feedback_design?
+      response[:design] = ExperimentActivity.get_feedback_design(options[:activity_id])
     end
 
     response

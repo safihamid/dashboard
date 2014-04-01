@@ -1,5 +1,5 @@
 %h2= t('signin_form.title')
-.row
+.row#signin
   .span8
     = form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
       = f.text_field :login, autofocus: true, placeholder: t('signin_form.login')
@@ -12,18 +12,25 @@
       = f.submit t('signin_form.submit'), class: "btn btn-primary"
 
     %br/
-    %br/
     
-    .row
-      .span3
-        %a{:href=>hoc_reset_path}
-          %button.btn.btn-info.medium-height-button #{t('signin.try_hoc')}
-      .span3
-        %a{:href=>root_path}
-          %button.btn.btn-info.medium-height-button #{t('signin.try_20hours')}
+    %h3= t('signin.try_heading')
+    .tryfirst
+      = render partial: 'shared/course_mini_block', locals: { id: "hoc" }
+    %div{style: "clear:both"}
+    %br/
+
+    .tryfirst
+      = render partial: 'shared/course_mini_block', locals: { id: "20hour" }
 
   .span4
     %div{ style: 'padding-left: 20px;  border-left: 1px solid black;' }= render "devise/shared/links"
 
+%br/
+%br/
+%br/
+%br/
+%br/
+%br/
+  
 :javascript
   $( "#user_login" ).placeholder();
