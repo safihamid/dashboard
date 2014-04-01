@@ -1544,7 +1544,12 @@ FeedbackBlocks.prototype.show = function() {
 };
 
 var getGeneratedCodeElement = function() {
-  var infoMessage = BlocklyApps.editCode ?  "" : msg.generatedCodeInfo();
+  var codeInfoMsgParams = {
+    berkeleyLink: "<a href='http://bjc.berkeley.edu/' target='_blank'>Berkeley</a>",
+    harvardLink: "<a href='https://cs50.harvard.edu/' target='_blank'>Harvard</a>"
+  };
+
+  var infoMessage = BlocklyApps.editCode ?  "" : msg.generatedCodeInfo(codeInfoMsgParams);
   var code = getGeneratedCodeString();
 
   var codeDiv = document.createElement('div');
@@ -2159,7 +2164,7 @@ escape = escape || function (html){
 };
 var buf = [];
 with (locals || {}) { (function(){ 
- buf.push('<div class="generated-code-container">\n  <p class="generatedCodeMessage">', escape((2,  message )), '</p>\n  <pre class="generatedCode">', escape((3,  code )), '</pre>\n</div>\n\n'); })();
+ buf.push('<div class="generated-code-container">\n  <p class="generatedCodeMessage">', (2,  message ), '</p>\n  <pre class="generatedCode">', escape((3,  code )), '</pre>\n</div>\n\n'); })();
 } 
 return buf.join('');
 };
@@ -5353,7 +5358,7 @@ exports.finalStage = function(d){return "!!-Congratulations! You have completed 
 
 exports.finalStageTrophies = function(d){return "!!-Congratulations! You have completed the final stage and won "+p(d,"numTrophies",0,"en",{"one":"a trophy","other":n(d,"numTrophies")+" trophies"})+".-!!"};
 
-exports.generatedCodeInfo = function(d){return "!!-The blocks for your program can also be represented in JavaScript, the world's most widely adopted programming language:-!!"};
+exports.generatedCodeInfo = function(d){return "!!-Even top universities use block-based coding (e.g., "+v(d,"berkeleyLink")+", "+v(d,"harvardLink")+"). But under the hood, the blocks you have assembled can also be shown in JavaScript, the world's most widely used coding language:-!!"};
 
 exports.hashError = function(d){return "!!-Sorry, '%1' doesn't correspond with any saved program.-!!"};
 
