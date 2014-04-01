@@ -1,7 +1,8 @@
 class FrequentUnsuccessfulLevelSourcesController < ApplicationController
   before_filter :authenticate_user!
+  load_and_authorize_resource
+  check_authorization
 
   def index
-    raise "unauthorized" if !current_user.admin? && !current_user.hint_access?
   end
 end

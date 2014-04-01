@@ -9,7 +9,7 @@ class Ability
       can :manage, :all
     else
       can :read, :all
-      cannot :read, [PrizeProvider, Prize, TeacherPrize, TeacherBonusPrize, :reports]
+      cannot :read, [PrizeProvider, Prize, TeacherPrize, TeacherBonusPrize, LevelSourceHint, FrequentUnsuccessfulLevelSource, :reports]
       can :claim_prize, PrizeProvider
     end
     if user.id
@@ -20,6 +20,9 @@ class Ability
       can :create, Activity
       can :create, UserLevel
       can :create, Follower
+    end
+    if user.hint_access? || user.teacher?
+      can :manage, [LevelSourceHint, FrequentUnsuccessfulLevelSource]
     end
 
     #
