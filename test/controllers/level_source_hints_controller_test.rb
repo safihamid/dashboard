@@ -9,6 +9,9 @@ class LevelSourceHintsControllerTest < ActionController::TestCase
     @hint_accessor = create(:user)
     @hint_accessor.hint_access = true
     @hint_accessor.save!
+    @teacher = create(:user)
+    @teacher.user_type = User::TYPE_TEACHER
+    @teacher.save!
 
     @not_hint_accessor = create(:user)
     @not_hint_accessor.hint_access = false
@@ -29,6 +32,12 @@ class LevelSourceHintsControllerTest < ActionController::TestCase
 
   test "should get_add_pop_hint_if_hint_access" do
     sign_in(@hint_accessor)
+    get :add_hint, level_source_id: @level_source.id
+    assert_response :success
+  end
+
+  test "should get_add_pop_hint_if_teacher" do
+    sign_in(@teacher)
     get :add_hint, level_source_id: @level_source.id
     assert_response :success
   end

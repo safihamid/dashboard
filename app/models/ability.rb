@@ -21,7 +21,7 @@ class Ability
       can :create, UserLevel
       can :create, Follower
     end
-    if user.hint_access?
+    if user.hint_access? || user.teacher?
       can :manage, [LevelSourceHint, FrequentUnsuccessfulLevelSource]
     end
 
