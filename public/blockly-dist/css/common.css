@@ -314,8 +314,7 @@ input[type="radio"] {
 
 .goog-menu {
   box-shadow: 4px 4px 6px #bbbbbb;
-  border-width: 2px;
-  border-color: rgba(158, 107, 148, 0.5); }
+  border-width: 2px; }
 
 .goog-menuitem {
   height: 20px;
