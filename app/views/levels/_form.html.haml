@@ -45,11 +45,6 @@
         = check_box_tag "toolbox_level_block_ids[]", block.id, @toolbox_blocks.include?(block), id: "toolbox_level_blocks_#{block.id}", class: "block-checkbox"
         = label_tag block.name
   .field
-    = f.label 'startblocks'
-    %br/
-    - @blocks.each do |block|
-      - if @game.should_show_block?(block)
-        = check_box_tag "start_level_block_ids[]", block.id, @start_blocks.include?(block), id: "start_level_blocks_#{block.id}", class: "block-checkbox"
-        = label_tag block.name
+    = link_to "Edit Start Blocks", game_level_edit_start_blocks_path(@game, @level)
   .actions
     = f.submit

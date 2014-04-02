@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140401010539) do
+ActiveRecord::Schema.define(version: 20140401205816) do
 
   create_table "activities", force: true do |t|
     t.integer  "user_id"
@@ -41,7 +41,7 @@ ActiveRecord::Schema.define(version: 20140401010539) do
   add_index "activity_hints", ["level_source_hint_id"], name: "index_activity_hints_on_level_source_hint_id", using: :btree
 
   create_table "blocks", force: true do |t|
-    t.string   "name",                     null: false
+    t.string   "name"
     t.string   "xml",        limit: 20000, null: false
     t.datetime "created_at"
     t.datetime "updated_at"

@@ -4,7 +4,7 @@ class LevelsController < ApplicationController
   include LevelsHelper
   include ActiveSupport::Inflector
   before_filter :authenticate_user!
-  skip_before_filter :verify_params_before_cancan_loads_model, :only => [:create]
+  skip_before_filter :verify_params_before_cancan_loads_model, :only => [:create, :update_start_blocks]
   load_and_authorize_resource :except => [:create]
   check_authorization
 
@@ -36,6 +36,27 @@ class LevelsController < ApplicationController
     @blocks = Block.all
     @start_blocks = level.start_level_blocks.collect(&:block)
     @toolbox_blocks = level.toolbox_level_blocks.collect(&:block)
+  end
+
+  def edit_start_blocks
+    authorize! :manage, :level
+    @level = Level.find(params[:level_id])
+    @start_blocks = @level.start_level_blocks.collect(&:block)
+    @game = @level.game
+    @force_success = true
+    @full_width = true
+    @callback = game_level_update_start_blocks_path @game, @level
+    show
+    render :show
+  end
+
+  def update_start_blocks
+    authorize! :manage, :level
+    @level = Level.find(params[:level_id])
+    @blocks = Block.where(xml: params[:program]).first_or_create
+    LevelBlock.where(block: @blocks, level: @level)
+    @level.update(start_level_blocks: @blocks)
+    render json: { redirect: game_level_url(@level.game, @level) }
   end
 
   # POST /levels
