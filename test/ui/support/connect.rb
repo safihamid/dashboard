@@ -6,7 +6,10 @@ if File.file?(deployment_path)
 else
   module Deploy
     def self.config()
-      {}
+      {
+        'browserstack_username' => ENV['BROWSERSTACK_USERNAME'],
+        'browserstack_authkey' => ENV['BROWSERSTACK_AUTHKEY']
+      }
     end
   end
 end
