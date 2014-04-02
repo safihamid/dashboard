@@ -1,9 +1,10 @@
 class LevelSourceHintsController < ApplicationController
   before_filter :authenticate_user!
   before_action :set_level_source_hint, only: [:update]
+  load_and_authorize_resource
+  check_authorization
 
   def index
-    raise "unauthorized" if !current_user.admin?
     @level_source_hints = []
     LevelSourceHint.select('user_id, count(*) as count').group('user_id').order('count desc').each do |user|
       @level_source_hints = @level_source_hints + LevelSourceHint.where(:user_id => user.user_id)
@@ -25,21 +26,17 @@ class LevelSourceHintsController < ApplicationController
   end
 
   def add_hint
-    raise "unauthorized" if !current_user.admin? && !current_user.hint_access?
     @level_source_id = params[:level_source_id]
     common(@level_source_id)
   end
 
   def show_hints
-    raise "unauthorized" if !current_user.admin? && !current_user.hint_access?
-
     @level_source_id = params[:level_source_id]
     @hints = LevelSourceHint.where(level_source_id: @level_source_id).sort_by { |hint| -hint.times_proposed}
     common(@level_source_id)
   end
 
   def add_pop_hint
-    raise "unauthorized" if !current_user.admin? && !current_user.hint_access?
     unsuccessful_level_sources = FrequentUnsuccessfulLevelSource.where(active: true).order('num_of_attempts desc')
     idx = params[:idx].to_i
     if (idx >= 0 && unsuccessful_level_sources.length > idx)
@@ -76,7 +73,6 @@ class LevelSourceHintsController < ApplicationController
   end
 
   def add_pop_hint_per_level
-    raise "unauthorized" if !current_user.admin? && !current_user.hint_access?
     unsuccessful_level_sources = FrequentUnsuccessfulLevelSource.where(active: true, level_id: params[:level_id].to_i).order('num_of_attempts desc')
     idx = params[:idx].to_i
     level_idx = params[:level_id].to_i
@@ -117,7 +113,6 @@ class LevelSourceHintsController < ApplicationController
   end
 
   def create
-    raise "unauthorized" if !current_user.admin? && !current_user.hint_access?
     # Find or create the hint data
     level_source_hint =
         LevelSourceHint.where(level_source_id: params[:level_source_id], hint: params[:hint_content]).first_or_create

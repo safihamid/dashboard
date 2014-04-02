@@ -1,0 +1,170 @@
+/* full list of browsers at https://github.com/browserstack/automate-ruby-samples/blob/master/parallel-tests-cucumber/browsers.all.json */
+
+[
+  /* our top browsers by analytics */
+
+  {
+    "description": "Chrome 31 on Win7",
+    "browser": "chrome",
+    "browser_version": "31",
+    "device": null,
+    "os": "Windows",
+    "os_version": "7"
+  },
+  {
+    "description": "Chrome 31 on XP",
+    "browser": "chrome",
+    "browser_version": "31",
+    "device": null,
+    "os": "Windows",
+    "os_version": "XP"
+  },
+  {
+    "description": "Safari on Mavericks",
+    "browser": "Safari",
+    "browser_version": "7",
+    "device": null,
+    "os": "OS X",
+    "os_version": "Mavericks"
+  },
+  {
+    "description": "IE 9 on Win 7",
+    "browser": "Internet Explorer",
+    "browser_version": "9",
+    "device": null,
+    "os": "Windows",
+    "os_version": "7"
+  },
+  {
+    "description": "IE 10 on Win7",
+    "browser": "Internet Explorer",
+    "browser_version": "10",
+    "device": null,
+    "os": "Windows",
+    "os_version": "7"
+  },
+  /* Selenium doesn't yet support IE11.
+  {
+    "description": "IE 11 on Win7",
+    "browser": "Internet Explorer",
+    "browser_version": "11",
+    "device": null,
+    "os": "Windows",
+    "os_version": "7"
+  }, */
+  /* Firefox 26 fails.
+  {
+    "description": "Firefox 26 on Win7",
+    "browser": "Firefox",
+    "browser_version": "26.0",
+    "device": null,
+    "os": "Windows",
+    "os_version": "7"
+  }, */
+
+  /* browserstack sample list */
+  {
+    "description": "iPhone 5",
+    "browser": "iPhone",
+    "platform": "MAC",
+    "device": "iPhone 5",
+    "deviceOrientation": "landscape",
+    "mobile": true,
+    "realMobile": false
+  },
+  {
+    "description": "Firefox 15 on Snow Leopard",
+    "browser": "firefox",
+    "browser_version": "15.0",
+    "device": null,
+    "os": "OS X",
+    "os_version": "Snow Leopard"
+  },
+  {
+    "description": "Firefox 16 on Win7",
+    "browser": "firefox",
+    "browser_version": "16.0",
+    "device": null,
+    "os": "Windows",
+    "os_version": "7"
+  },
+  {
+    "description": "Firefox 17 on Win8",
+    "browser": "firefox",
+    "browser_version": "17.0",
+    "device": null,
+    "os": "Windows",
+    "os_version": "8"
+  },
+  /* We don't work on IE8.
+  {
+    "description": "IE 8 on Win7",
+    "browser": "ie",
+    "browser_version": "8.0",
+    "device": null,
+    "os": "Windows",
+    "os_version": "7"
+  }, */
+  {
+    "description": "IE 10 on Win8",
+    "browser": "ie",
+    "browser_version": "10.0",
+    "device": null,
+    "os": "Windows",
+    "os_version": "8"
+  },
+
+  /* mobile browsers */
+  {
+    "description": "Galaxy S3",
+    "browser": "android",
+    "browser_version": null,
+    "device": "Samsung Galaxy S III",
+    "os": "android",
+    "os_version": "4.1",
+    "rotatable": true,
+    "mobile": true
+  },
+  {
+    "description": "Nexus 7",
+    "browser": "android",
+    "browser_version": null,
+    "device": "Google Nexus 7",
+    "os": "android",
+    "os_version": "4.1",
+    "rotatable": true,
+    "mobile": true
+  },
+  {
+    "description": "Note 2",
+    "browser": "android",
+    "browser_version": null,
+    "device": "Samsung Galaxy Note II",
+    "os": "android",
+    "os_version": "4.1",
+    "rotatable": true,
+    "mobile": true
+  },
+  {
+    "description": "iPad 3",
+    "browser": "iPad",
+    "browser_version": null,
+    "device": "iPad 3rd (6.0)",
+    "os": "ios",
+    "os_version": "6.0",
+    "deviceOrientation": "landscape",
+    "mobile": true,
+    "realMobile": false
+  },
+  {
+    "description": "iPad Mini",
+    "browser": "iPad",
+    "browser_version": null,
+    "device": "iPad Mini",
+    "os": "ios",
+    "os_version": "6.0",
+    "deviceOrientation": "landscape",
+    "mobile": true,
+    "realMobile": false
+  }
+]

@@ -20,7 +20,9 @@
             |
             %a{:href=>'http://codecurriculum.tumblr.com/', :target=>'_blank'} #{t('home.teacher_read_blog')}
           %p
-            %a{:href=>'https://www.surveymonkey.com/s/XH62Q83', :target=>'_blank'} #{t('home.teacher_survey')}
+            %a{:href=>'https://www.surveymonkey.com/s/5HP8JFJ', :target=>'_blank'} #{t('home.teacher_survey')}
+
+          = link_to t('home.add_hint_help'), @_controller.code_org_root_path + "/hints"
 
           %form#printcertificatesform{:action=>"http://code.org/certificates", :method=>"POST"}
             %input{:type=>'hidden', :name=>'course', :value=>'20hours'}
