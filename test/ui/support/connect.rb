@@ -1,18 +1,6 @@
 require 'selenium/webdriver'
 
-deployment_path = File.expand_path('../../../../../deployment.rb', __FILE__)
-if File.file?(deployment_path)
-  require deployment_path
-else
-  module Deploy
-    def self.config()
-      {
-        'browserstack_username' => ENV['BROWSERSTACK_USERNAME'],
-        'browserstack_authkey' => ENV['BROWSERSTACK_AUTHKEY']
-      }
-    end
-  end
-end
+require_relative '../../config/deployment.rb'
 
 def browserstack_username
   Deploy.config['browserstack_username']
