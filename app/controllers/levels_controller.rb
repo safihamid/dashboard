@@ -53,16 +53,16 @@ class LevelsController < ApplicationController
   end
 
   def create_maze
-    contents = CSV.new(params[:level].read)
+    contents = CSV.new(params[:maze_source].read)
     maze = contents.read[0...params[:size].to_i].to_s
     game = Game.custom_maze
-    @level = Level.create(maze: maze, game: game, level_num: 'custom', skin: 'birds', user: current_user, instructions: params[:instructions], name: params[:name])
+    @level = Level.create(level_params.merge(maze: maze, game: game, user: current_user, level_num: 'custom', skin: 'birds'))
     redirect_to game_level_url(game, @level)
   end
 
   def create_artist
     game = Game.find(params[:game_id])
-    @level = Level.new(game: game, level_num: 'custom', skin: 'artist_zombie', user: current_user, instructions: params[:instructions], name: params[:name])
+    @level = Level.create(instructions: params[:instructions], name: params[:name], x: params[:x], y: params[:y], game: game, user: current_user, level_num: 'custom', skin: 'artist')
     solution = LevelSource.lookup(@level, params[:program])
     @level.update(solution_level_source: solution)
     render json: { redirect: game_level_url(game, @level) }
@@ -106,6 +106,7 @@ class LevelsController < ApplicationController
       artist_builder
     when 'maze'
       @game = Game.custom_maze
+      @level = Level.new
       render :maze_builder
     end
     @levels = Level.where(user: current_user)
@@ -118,6 +119,9 @@ class LevelsController < ApplicationController
     @full_width = true
     @artist_builder = true
     @callback = game_levels_path @game
+    @level.x = params[:x]
+    @level.y = params[:y]
+    @level.start_direction = params[:start_direction]
     show
     render :show
   end
@@ -132,6 +136,6 @@ class LevelsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def level_params
-      params[:level].permit([:name, :level_url, :level_num, :skin, {concept_ids: []}])
+      params[:level].permit([:name, :level_url, :level_num, :skin, :instructions, :x, :y, :start_direction, {concept_ids: []}])
     end
 end

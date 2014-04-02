@@ -1544,7 +1544,12 @@ FeedbackBlocks.prototype.show = function() {
 };
 
 var getGeneratedCodeElement = function() {
-  var infoMessage = BlocklyApps.editCode ?  "" : msg.generatedCodeInfo();
+  var codeInfoMsgParams = {
+    berkeleyLink: "<a href='http://bjc.berkeley.edu/' target='_blank'>Berkeley</a>",
+    harvardLink: "<a href='https://cs50.harvard.edu/' target='_blank'>Harvard</a>"
+  };
+
+  var infoMessage = BlocklyApps.editCode ?  "" : msg.generatedCodeInfo(codeInfoMsgParams);
   var code = getGeneratedCodeString();
 
   var codeDiv = document.createElement('div');
@@ -4394,7 +4399,7 @@ escape = escape || function (html){
 };
 var buf = [];
 with (locals || {}) { (function(){ 
- buf.push('<div class="generated-code-container">\n  <p class="generatedCodeMessage">', escape((2,  message )), '</p>\n  <pre class="generatedCode">', escape((3,  code )), '</pre>\n</div>\n\n'); })();
+ buf.push('<div class="generated-code-container">\n  <p class="generatedCodeMessage">', (2,  message ), '</p>\n  <pre class="generatedCode">', escape((3,  code )), '</pre>\n</div>\n\n'); })();
 } 
 return buf.join('');
 };

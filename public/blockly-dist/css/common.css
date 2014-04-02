@@ -318,6 +318,11 @@ input[type="radio"] {
     font-size: 14px;
     line-height: inherit;
     color: #5b6770; }
+    .generated-code-container .generatedCodeMessage a {
+      font-weight: bold;
+      color: #7665a0; }
+      .generated-code-container .generatedCodeMessage a:hover {
+        text-decoration: underline; }
   .generated-code-container .generatedCode {
     font-size: 14px; }
 
