@@ -38,14 +38,7 @@ export BROWSERSTACK_USERNAME='your username'
 export BROWSERSTACK_AUTHKEY='your authkey'
 ```
 
-For our shared credentials, you can do something like:
-
-```
-cd cdo-secrets
-. exports 
-```
-
-To run tests simply run `./runner.rb`
+Code.org shared credentials can be used by placing the dashboard directory directly within the `website-ci` repository.
 
 #### Testing your local site copy: Browserstack tunnel
 

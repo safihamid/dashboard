@@ -309,8 +309,30 @@ input[type="radio"] {
     #rotateContainer {
       display: block; } }
 
-.blocklyText, .blocklyMenuText, .blocklyTreeLabel, .blocklyHtmlInput, .blocklyIconMark, .blocklyTooltipText {
+.blocklyText, .blocklyMenuText, .blocklyTreeLabel, .blocklyHtmlInput, .blocklyIconMark, .blocklyTooltipText, .goog-menuitem-content {
   font-family: 'Gotham A', 'Gotham B', sans-serif; }
+
+.goog-menu {
+  box-shadow: 4px 4px 6px #bbbbbb;
+  border-width: 2px; }
+
+.goog-menuitem {
+  height: 20px;
+  padding-top: 0;
+  padding-bottom: 0; }
+
+.goog-menuitem-highlight, .goog-menuitem-hover {
+  border-width: 0;
+  background-color: #5577ee; }
+
+.goog-menuitem-highlight .goog-menuitem-content {
+  color: white; }
+
+.goog-option-selected .goog-menuitem-checkbox:before {
+  content: "✓"; }
+
+.goog-menuitem-checkbox {
+  background: ""; }
 
 .generated-code-container {
   margin-top: 10px; }
