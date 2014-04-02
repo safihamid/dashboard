@@ -96,6 +96,12 @@ mailcatcher
 ```
 (Note that you might need to open a new shell session for it to be found in the path.)
 
+### Adding an Admin Account
+
+1. Create a user
+2. `rails c`
+3. `User.first.update(admin: true)`
+
 ### Windows-specific notes
 
 [These notes](https://github.com/code-dot-org/dashboard/blob/master/README_Windows.md) (unmaintained) may be useful for Windows 7/8 usage for those helping with IE 8/9/10 support.
