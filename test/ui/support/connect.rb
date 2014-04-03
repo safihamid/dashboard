@@ -1,6 +1,6 @@
 require 'selenium/webdriver'
 
-require_relative '../../config/deployment.rb'
+require_relative '../../../config/deployment.rb'
 
 def browserstack_username
   Deploy.config['browserstack_username']
