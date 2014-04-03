@@ -94,27 +94,6 @@ class LevelsControllerTest < ActionController::TestCase
     assert_redirected_to game_level_path(level.game, level)
   end
 
-  test "should update add level blocks" do
-    level_id = 2
-    assert_difference("Level.find(#{level_id}).toolbox_level_blocks.count", 1) do
-      @level = Level.find(level_id)
-      patch :update, id: @level, game_id: @level.game, level: {  }, toolbox_level_block_ids: [2]
-    end
-  end
-
-  test "should update remove level blocks" do
-    assert_difference("Level.find(1).toolbox_level_blocks.count", -1) do
-      @level = Level.find(1)
-      patch :update, id: @level, game_id: @level.game, level: {  }, toolbox_level_block_ids: []
-    end
-  end
-
-  test "should get blocks from level" do
-    level = Level.find(1)
-    assert_equal level.start_level_blocks.count, 1
-    assert_equal level.toolbox_level_blocks.count, 1
-  end
-
   test "should destroy level" do
     assert_difference('Level.count', -1) do
       delete :destroy, id: @level, game_id: @level.game
