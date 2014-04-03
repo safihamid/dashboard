@@ -1,4 +1,4 @@
-.unplugged
+.unplugged.multi
   %h2 #{data_t('multi', @game.name)[:title]}
   %p #{data_t('multi', @game.name)[:desc]}
 
@@ -24,8 +24,47 @@
       %a.btn.btn-primary.next-stage
         Submit
 
+  %br/
+  %br/
+  %br/
+
+  %div{:style=>'margin-left:20px'}
+    %div{:style=>'height:40px'}
+      %b Match the questions with the answers
+    
+    
+    %div{:style=>'width: 220px; float:left'}
+      %ul.sortableq
+        %li What color is the sky?
+        %li What's in the ocean?
+        %li What's Brent's last name?
+        %li Where is Brendan from?
+    %div{:style=>'width: 220px; float:left'}
+      %ul.sortable{:style=>'cursor:default'}
+        %li Sydney
+        %li salt
+        %li blue
+        %li Van Minnen
+
+    %div{:style=>'clear:both'}
+
+    %br/
+
+    %div
+      .buttons
+        %a.btn.btn-primary.next-stage
+          Submit
+
+  %div{:style=>'clear:both'}
 
 :javascript
+
+  $(function() {
+    $( ".sortable" ).sortable();
+    $( ".sortable" ).disableSelection();
+  });
+
+
   var clickedNext = false;
   $('a.next-stage').click(function() {
     if (!clickedNext) {

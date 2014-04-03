@@ -900,6 +900,36 @@ a.download-video {
   }
 }
 
+.multi {
+  .sortableq {
+    list-style-type: none;
+    margin-left:0px;
+    li {
+      height: 20px;
+      padding-top: 7px;
+      padding-bottom: 7px;
+      background-color: lightgrey;
+      padding-left: 10px;
+      width: 200px;
+      margin-top:2px;
+      margin-bottom:2px;  
+    } 
+  }
+  .sortable {
+    list-style-type: none;
+    li {
+      height: 20px;
+      padding-top: 7px;
+      padding-bottom: 7px;
+      background-color: lightblue;
+      padding-left: 10px;
+      width: 200px;
+      margin-top:2px;
+      margin-bottom:2px;
+    }
+  }
+}
+
 #current-script-levels, #all-levels {
   min-height: 50px;
   li {
