@@ -56,6 +56,14 @@ class LevelsController < ApplicationController
     render json: { redirect: game_level_url(@level.game, @level) }
   end
 
+  def update
+    if @level.update(level_params)
+      redirect_to game_level_url(@level.game, @level)
+    else
+      render json: @level.errors, status: :unprocessable_entity
+    end
+  end
+
   # POST /levels
   # POST /levels.json
   def create
