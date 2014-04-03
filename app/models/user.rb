@@ -100,11 +100,13 @@ class User < ActiveRecord::Base
     end
   end
 
-  def levels_from_script(script, game_index=nil)
+  def levels_from_script(script, game_index=nil, stage=nil)
     ul_map = self.user_levels.includes({level: [:game, :concepts]}).index_by(&:level_id)
-    q = script.script_levels.includes({ level: :game }, :script).order(:chapter)
+    q = script.script_levels.includes({ level: :game }, :script, :stage).order(:chapter)
 
-    if game_index
+    if stage
+      q = q.where(['stages.id = :index', { :index => stage}]).references(:stage)
+    elsif game_index
       q = q.where(['games.id = :index', { :index => game_index}]).references(:game)
     end
 

@@ -68,6 +68,7 @@ namespace :seed do
   end
 
   COL_GAME = 'Game'
+  COL_STAGE = 'Stage'
   COL_NAME = 'Name'
   COL_LEVEL = 'Level'
   COL_CONCEPTS = 'Concepts'
@@ -85,7 +86,8 @@ namespace :seed do
                  { file: 'config/ec_script.csv', params: { name: 'Edit Code', wrapup_video: Video.find_by_key('hoc_wrapup'), trophies: false, hidden: true }},
                  { file: 'config/2014_script.csv', params: { name: '2014 Levels', trophies: false, hidden: true }},
                  { file: 'config/builder_script.csv', params: { name: 'Builder Levels', trophies: false, hidden: true }},
-                 { file: 'config/flappy_script.csv', params: { name: 'Flappy Levels', trophies: false, hidden: true }}
+                 { file: 'config/flappy_script.csv', params: { name: 'Flappy Levels', trophies: false, hidden: true }},
+                 { file: 'config/stages_script.csv', params: { name: 'StageTest Levels', trophies: false, hidden: true }}
                 ]
       sources.each do |source|
         script = Script.where(source[:params]).first_or_create
@@ -124,7 +126,12 @@ namespace :seed do
             script_level.save!
             old_script_levels.delete(script_level)
           else
-            ScriptLevel.where(script: script, level: level, chapter: (index + 1), game_chapter: (game_index[game.id] += 1)).first_or_create
+            script_level = ScriptLevel.where(script: script, level: level, chapter: (index + 1), game_chapter: (game_index[game.id] += 1)).first_or_create
+            if row[COL_STAGE]
+              stage = Stage.where(name: row[COL_STAGE], script: script).first_or_create
+              script_level.update(stage: stage)
+              script_level.move_to_bottom
+            end
           end
         end
         # old_script_levels now contains script_levels that were removed from this csv-based script - clean them up:

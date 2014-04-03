@@ -1,5 +1,5 @@
 - script = @script || Script.twenty_hour_script
-- script_levels = user ? user.levels_from_script(Script.twenty_hour_script) : script.script_levels
+- script_levels = user ? user.levels_from_script(script) : script.script_levels
 - concept_progress = user ? user.concept_progress : nil
 
 -if (!defined? trophies_on_right) || !trophies_on_right
@@ -8,8 +8,8 @@
 %div{style:"display:inline-block;width:315px;position:relative;overflow:hidden;float:left;"}
   %h4 #{t('nav.popup.puzzle_map')}
 
-  - script_levels.group_by{ |sl| sl.level.game }.each_pair do |game, sl_group|
-    - title = data_t_suffix('script.name', script.name, game.name) + ' ' + data_t('game.name', game.name)
+  - script_levels.group_by{ |sl| sl.stage ? sl.stage : sl.level.game }.each_pair do |game, sl_group|
+    - title = data_t_suffix('script.name', script.name, game.name) + ' ' + (data_t('game.name', game.name) || game.name)
     .game-group
       - if sl_group.length == 1
         .single-game
@@ -28,7 +28,7 @@
               = check_mark_html
           - else
             %a{ href: link, class: "level_link"}
-              #{sl.game_chapter}
+              #{sl.position || sl.game_chapter}
 
     .stage_separator
 
