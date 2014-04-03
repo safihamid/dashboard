@@ -9,14 +9,14 @@ class Callout < ActiveRecord::Base
       :my => 'my',
       :script_id => 'script_id',
       :level_num => 'level_num',
+      :qtip_config => 'qtip_config'
   }
   
-  CSV_IMPORT_OPTIONS = { col_sep: "\t", headers: true }
+  # Use the zero byte as the quote character to allow importing double quotes
+  #   via http://stackoverflow.com/questions/8073920/importing-csv-quoting-error-is-driving-me-nuts
+  CSV_IMPORT_OPTIONS = { col_sep: "\t", headers: true, :quote_char => "\x00" }
   
   def self.find_or_create_all_from_tsv!(filename)
-    # TODO if the id of the callout is important, specify it in the tsv.
-    # preferably the id of the callout is not important ;)
-
     created = []
     CSV.read(filename, CSV_IMPORT_OPTIONS).each do |row|
       created << self.first_or_create_from_tsv_row!(row)
@@ -37,6 +37,7 @@ class Callout < ActiveRecord::Base
             text: row_data[CSV_HEADERS[:text]],
             qtip_at: row_data[CSV_HEADERS[:at]],
             qtip_my: row_data[CSV_HEADERS[:my]],
+            qtip_config: row_data[CSV_HEADERS[:qtip_config]],
             script_level: script_level}
     Callout.where(params).first_or_create!
   end

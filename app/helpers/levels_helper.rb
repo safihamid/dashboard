@@ -34,6 +34,8 @@ module LevelsHelper
 
     @toolbox_blocks = Block.xml(@level.toolbox_level_blocks.collect(&:block)) if !@level.toolbox_level_blocks.empty?
     @start_blocks = initial_blocks(current_user, @level) || (Block.xml(@level.start_level_blocks.collect(&:block), false) if !@level.start_level_blocks.empty?)
+    
+    @callouts = Callout.where(script_level: @script_level)
   end
 
   # this defines which levels should be seeded with th last result from a different level

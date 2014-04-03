@@ -47,26 +47,37 @@
       level: "#{@level.level_num}",
       callouts: #{@callouts.to_json} || [],
       createCallouts: function() {
+        $.fn.qtip.zindex = 500;
         this.callouts.every(function(callout) {
           var selector = callout.element_id; // jquery selector.
-          if ($(selector).length <= 0) { return true; }
+          if ($(selector).length <= 0) { console.log("Couldn't find callout target."); return true;}
           
-          var calloutDomElement = $(selector).qtip({
-            content: callout.text,
+          var defaultConfig = {
+            content: {
+              text: callout.text,
+              title: {
+                button: $('<div class="tooltip-x-close"/>').append($('<img src="#{asset_path 'x_button.png'}"/>'))
+              }
+            },
+            style: { classes: "" },
             position: {
-              my: callout.qtip_my,
-              at: callout.qtip_at
+              my: "bottom left", 
+              at: "top right"
             },
             hide: {
-              event: 'unfocus click mouseleave'
+              event: 'click mousedown touchstart'
             },
-            show: false
-          });
+            show: false // don't show on mouseover
+          };
           
-          cdo.events.one(cdo.eventType.MODAL_HIDDEN, function() { calloutDomElement.qtip('show'); });
-          cdo.events.on(cdo.eventType.MODAL_SHOWN, function() { calloutDomElement.qtip('hide'); });
+          var customConfig = $.parseJSON(callout.qtip_config);
+          var config = $.extend(true, {}, defaultConfig, customConfig);
+          config.style.classes = config.style.classes.concat(" cdo-qtips");
           
-          calloutDomElement.qtip('hide');
+          var calloutDomElement = $(selector).qtip(config);
+          calloutDomElement.qtip('show');
+          
+          return true;
         });
       },
       onInitialize: function() {
@@ -74,6 +85,7 @@
         onInitializeListeners.forEach(function(listener) {
           listener();
         });
+        $('#qtip-0').qtip('show');
       },
       locale: '#{js_locale}',
       containerId: 'blocklyApp',
@@ -118,6 +130,7 @@
         return referenceDiv[0];
       },
       levelId: '#{@level.level_num}',
+      scriptId: '#{@script.id}',
       showInstructionsWrapper: function(showInstructions) {
         if (#{not share}) {
           if ('#{@autoplay_video_info}') {

@@ -9,6 +9,7 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require jquery.ui.all
+ *= require jquery.qtip.min
  *= require_self
  *= require_tree .
  */
@@ -754,19 +755,49 @@ tr.manage-tr {
   }
 }
 
-.x-close {
+@mixin close-button($cornerOffset) {
+  $startWidth: 61px;
+  $startHeight: 59px;
+  $growth: 3px;
+  $movement: 1px;
+  
   position: absolute;
-  top: -20px;
-  right: -20px;
-  width: 60px;
-  height: 60px;
-  z-index: 1;
   cursor: pointer;
+  z-index: 1;
+  
+  top: $cornerOffset;
+  right: $cornerOffset;
   &:hover {
-    width: 62px;
-    height: 62px;
-    top: -21px;
-    right: -21px;
+    top: $cornerOffset - $movement;
+    right: $cornerOffset - $movement;
+  }
+  
+  img {
+    width: $startWidth;
+    height: $startHeight;
+    &:hover {
+      width: $startWidth + $growth;
+      height: $startHeight + $growth;
+    }
+  }  
+}
+
+.x-close {
+  @include close-button($cornerOffset: -20px);
+}
+
+.no-tip .qtip-tip {
+  visibility: hidden;
+}
+
+.cdo-qtips {
+  z-index: 1;
+  
+  
+  .tooltip-x-close {
+    @include close-button($cornerOffset: -35px);
+    background: none;
+    color: none;
   }
 }
 

@@ -236,12 +236,14 @@ Dialog.prototype.show = function(options) {
   this.div.offset(options);
 
   cdo.events.trigger(cdo.eventType.MODAL_SHOWN);
+  console.log("Shown");
 }
 
 Dialog.prototype.hide = function() {
   // Hide let's bootstrap cleanup first, then we remove.
   $(this.div).modal('hide');
   cdo.events.trigger(cdo.eventType.MODAL_HIDDEN);
+  console.log("hidden");
 }
 
 function cache_bust_only() {
