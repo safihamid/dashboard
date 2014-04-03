@@ -16,7 +16,7 @@ class CalloutTest < ActiveSupport::TestCase
   
   test "callouts should have proper attributes after import" do
     assert_equal('#runButton', @csv_callouts.first.element_id)
-    assert_equal('Click here to run your program.', @csv_callouts.first.text)
+    assert_equal('run', @csv_callouts.first.text)
     assert_nil(@csv_callouts.first.qtip_config)
     assert_equal(@csv_callouts.last.qtip_config, '{position: {my: "bottom left", at: "top right", adjust: {x: 297, y:70}}}')
   end

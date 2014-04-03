@@ -44,7 +44,8 @@
   :javascript
     // See assets/javascripts/sendReport for definition of nextRedirect etc.
     #{app}Main({
-      level: "#{@level.level_num}",
+      levelId: '#{@level.level_num}',
+      #{ "scriptId: '#{@script.id}'," if @script }
       callouts: #{@callouts.to_json} || [],
       createCallouts: function() {
         $.fn.qtip.zindex = 500;
@@ -54,7 +55,7 @@
           
           var defaultConfig = {
             content: {
-              text: callout.text,
+              text: callout.localized_text,
               title: {
                 button: $('<div class="tooltip-x-close"/>').append($('<img src="#{asset_path 'x_button.png'}"/>'))
               }
@@ -129,8 +130,6 @@
         });
         return referenceDiv[0];
       },
-      levelId: '#{@level.level_num}',
-      scriptId: '#{@script.id}',
       showInstructionsWrapper: function(showInstructions) {
         if (#{not share}) {
           if ('#{@autoplay_video_info}') {

@@ -58,7 +58,7 @@ FactoryGirl.define do
   
   factory :callout do
     sequence(:element_id) { |n| "#pageElement#{n}" }
-    text 'Hey check this element out!'
+    text 'drag_blocks'
     script_level
   end
 
