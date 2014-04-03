@@ -132,6 +132,7 @@
       hide_source: #{hide_source},
       share: #{share},
       no_padding: #{no_padding},
+      #{("forceSuccess: #{@force_success},") if @force_success}
       position: { blockYCoordinateInterval: 25 },
       level: {
         puzzle_number: #{@script_level ? @script_level.game_chapter : 1},

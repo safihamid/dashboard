@@ -18,4 +18,7 @@ class Level < ActiveRecord::Base
   def videos
     ([game.intro_video] + concepts.map(&:video)).reject(&:nil?)
   end
+  def complete_toolbox
+    @@complete_toolbox ||= '<xml id="toolbox" style="display: none;"> <block type="maze_moveForward"></block> <block type="maze_turn"><title name="DIR">turnLeft</title></block> <block type="maze_turn"><title name="DIR">turnRight</title></block> <block type="maze_forever"></block> <block type="maze_if"><title name="DIR">isPathLeft</title></block> <block type="maze_if"></block> <block type="maze_ifElse"></block> <block type="controls_repeat"> <title name="TIMES">5</title> </block> <block type="maze_forever"></block> <block type="maze_if"><title name="DIR">isPathLeft</title></block> <block type="maze_if"><title name="DIR">isPathRight</title></block> <block type="maze_ifElse"></block> </xml>'
+  end
 end

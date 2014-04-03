@@ -49,6 +49,17 @@ class LevelsControllerTest < ActionController::TestCase
     assert_redirected_to game_level_path(assigns(:level).game, assigns(:level))
   end
 
+  test "should not create invalid maze level" do
+    maze = fixture_file_upload("maze_level_invalid.csv", "r")
+    game = Game.find_by_name("CustomMaze")
+
+    assert_no_difference('Level.count') do
+      post :create, :level => {:name => "NewCustomLevel", :instructions => "Some Instructions"}, :game_id => game.id, :program => "<hey>", :level_type => 'maze', :maze_source => maze, :size => 8
+    end
+
+    assert_response :not_acceptable
+  end
+
   test "should create artist level" do
     game = Game.find_by_name("Custom")
     assert_difference('Level.count') do

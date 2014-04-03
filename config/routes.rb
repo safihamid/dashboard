@@ -40,8 +40,8 @@ Dashboard::Application.routes.draw do
 
   resources :games do
     resources :levels do
-      get 'edit_start_blocks', to: 'levels#edit_start_blocks'
-      post 'update_start_blocks', to: 'levels#update_start_blocks'
+      get 'edit_blocks/:type', to: 'levels#edit_blocks', as: 'edit_blocks'
+      post 'update_blocks/:type', to: 'levels#update_blocks', as: 'update_blocks'
     end
   end
 
