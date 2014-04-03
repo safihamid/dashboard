@@ -102,7 +102,6 @@ Then /^there's an image "([^"]*)"$/ do |path|
   exists.should eq true
 end
 
-
 Then(/^"([^"]*)" should be in front of "([^"]*)"$/) do |selector_front, selector_behind|
   front_z_index = @browser.execute_script("return $('#{selector_front}').css('z-index')").to_i
   behind_z_index = @browser.execute_script("return $('#{selector_behind}').css('z-index')").to_i

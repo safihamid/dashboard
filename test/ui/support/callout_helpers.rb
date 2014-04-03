@@ -5,5 +5,3 @@ module CalloutHelpers
 end
 
 World(CalloutHelpers)
-
-
