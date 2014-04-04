@@ -22,25 +22,33 @@ module LevelsHelper
     @videos = @level.videos
 
     # todo: make this based on which videos the user/session has already seen
-    seen = session[:videos_seen] || Set.new()
+    seen_videos = session[:videos_seen] || Set.new()
     @videos.each do |v|
-      if !seen.include?(v.key)
+      if !seen_videos.include?(v.key)
         @autoplay_video_info = params[:noautoplay] ? nil : video_info(v)
-        seen.add(v.key)
-        session[:videos_seen] = seen
+        seen_videos.add(v.key)
+        session[:videos_seen] = seen_videos
         break
       end
     end
 
     @toolbox_blocks = Block.xml(@level.toolbox_level_blocks.collect(&:block)) if !@level.toolbox_level_blocks.empty?
     @start_blocks = initial_blocks(current_user, @level) || (Block.xml(@level.start_level_blocks.collect(&:block), false) if !@level.start_level_blocks.empty?)
-    
-    @callouts = localized_callouts_for_script_level(@script_level) if @script_level
+
+    select_and_remember_callouts if @script_level
   end
 
-  def localized_callouts_for_script_level(script_level)
-    @unlocalized_callouts = Callout.where(script_level: script_level)
-    @unlocalized_callouts.select(:element_id, :qtip_config, :localization_key).map do |callout|
+  def select_and_remember_callouts
+    session[:callouts_seen] ||= Set.new()
+    @callouts_to_show = Callout.where(script_level: @script_level)
+      .select(:id, :element_id, :qtip_config, :localization_key)
+      .reject { |c| session[:callouts_seen].include?(c.id) }
+      .each { |c| session[:callouts_seen].add(c.id) }
+    @callouts = make_localized_hash_of_callouts(@callouts_to_show)
+  end
+
+  def make_localized_hash_of_callouts(callouts)
+    callouts.map do |callout|
       callout_hash = callout.attributes
       callout_hash.delete('localization_key')
       callout_hash['localized_text'] = data_t('callout.text', callout.localization_key)

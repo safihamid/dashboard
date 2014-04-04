@@ -1,6 +1,7 @@
 Feature: Callouts
 
   Background:
+    Given I am on "http://learn.code.org/hoc/reset"
 
   Scenario: Modal ordering
     Given I am on "http://learn.code.org/s/1/level/2?noautoplay=true"
@@ -51,6 +52,9 @@ Feature: Callouts
     And callout "0" is hidden
 
   Scenario: Opening the Show Code dialog
+    Given I am on "http://learn.code.org/s/1/level/2?noautoplay=true"
+    And I rotate to landscape
+    And I press "x-close"
     When I press "show-code-header"
     Then ".modal-backdrop" should be in front of "#qtip-0"
   

@@ -25,9 +25,9 @@ class ScriptLevelsControllerTest < ActionController::TestCase
     callout2 = create(:callout, script_level: @script_level)
     irrelevant_callout = create(:callout)
     get :show, script_id: @script.id, id: @script_level.id
-    assert(assigns(:unlocalized_callouts).include?(callout1))
-    assert(assigns(:unlocalized_callouts).include?(callout2))
-    assert(!assigns(:unlocalized_callouts).include?(irrelevant_callout))
+    assert(assigns(:callouts_to_show).include?(callout1))
+    assert(assigns(:callouts_to_show).include?(callout2))
+    assert(!assigns(:callouts_to_show).include?(irrelevant_callout))
   end
 
   test "should localize callouts" do
