@@ -61,7 +61,13 @@
                 button: $('<div class="tooltip-x-close"/>').append($('<img src="#{asset_path 'x_button.png'}"/>'))
               }
             },
-            style: { classes: "" },
+            style: {
+              classes: "",
+              tip: {
+                width: 20,
+                height: 20
+              }
+            },
             position: {
               my: "bottom left", 
               at: "top right"
