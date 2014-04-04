@@ -33,7 +33,7 @@ class ScriptLevelsControllerTest < ActionController::TestCase
   test "should localize callouts" do
     @controller.expects :slog
 
-    create(:callout, script_level: @script_level, text: 'run')
+    create(:callout, script_level: @script_level, localization_key: 'run')
     get :show, script_id: @script.id, id: @script_level.id
     assert_not_nil(assigns(:callouts).find{|c| c['localized_text'] == 'Hit "Run" to try your program'})
   end

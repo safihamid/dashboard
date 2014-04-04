@@ -4,7 +4,7 @@ class Callout < ActiveRecord::Base
   CSV_HEADERS = 
   {
       :element_id => 'element_id',
-      :text => 'text',
+      :localization_key => 'localization_key',
       :script_id => 'script_id',
       :level_num => 'level_num',
       :game_name => 'game_name',
@@ -37,7 +37,7 @@ class Callout < ActiveRecord::Base
     end
     
     params = {element_id: row_data[CSV_HEADERS[:element_id]],
-            text: row_data[CSV_HEADERS[:text]],
+            localization_key: row_data[CSV_HEADERS[:localization_key]],
             qtip_config: row_data[CSV_HEADERS[:qtip_config]],
             script_level: script_level.first}
     Callout.where(params).first_or_create!

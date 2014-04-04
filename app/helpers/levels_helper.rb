@@ -40,10 +40,10 @@ module LevelsHelper
 
   def localized_callouts_for_script_level(script_level)
     @unlocalized_callouts = Callout.where(script_level: script_level)
-    @unlocalized_callouts.select(:element_id, :qtip_config, :text).map do |callout|
+    @unlocalized_callouts.select(:element_id, :qtip_config, :localization_key).map do |callout|
       callout_hash = callout.attributes
-      callout_hash.delete('text')
-      callout_hash['localized_text'] = data_t('callout.text', callout.text)
+      callout_hash.delete('localization_key')
+      callout_hash['localized_text'] = data_t('callout.text', callout.localization_key)
       callout_hash
     end
   end

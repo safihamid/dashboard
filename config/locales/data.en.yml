@@ -244,7 +244,7 @@ en:
         '20_wrapup': "20-Hour Wrapup"
     callout:
       text:
-        # Keyed by #{callout.text}
+        # Keyed by #{callout.localization_key}
         drag_blocks: 'Drag a "move" block and snap it below the other block'
         run: 'Hit "Run" to try your program'
         watch_again: 'Click here to watch the video again'

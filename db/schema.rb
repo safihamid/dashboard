@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140401200822) do
+ActiveRecord::Schema.define(version: 20140404172409) do
 
   create_table "activities", force: true do |t|
     t.integer  "user_id"
@@ -49,12 +49,10 @@ ActiveRecord::Schema.define(version: 20140401200822) do
   end
 
   create_table "callouts", force: true do |t|
-    t.string   "element_id",      limit: 1024, null: false
-    t.string   "text",            limit: 1024, null: false
+    t.string   "element_id",       limit: 1024, null: false
+    t.string   "localization_key", limit: 1024, null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "qtip_at"
-    t.string   "qtip_my"
     t.integer  "script_level_id"
     t.text     "qtip_config"
   end

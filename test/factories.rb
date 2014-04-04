@@ -58,7 +58,7 @@ FactoryGirl.define do
   
   factory :callout do
     sequence(:element_id) { |n| "#pageElement#{n}" }
-    text 'drag_blocks'
+    localization_key 'drag_blocks'
     script_level
   end
 

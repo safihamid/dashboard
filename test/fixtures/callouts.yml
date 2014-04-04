@@ -2,8 +2,8 @@
 
 one:
   element_id: "#resetButton"
-  text: "run"
+  localization_key: "run"
 
 two:
   element_id: "#runButton"
-  text: "run"
+  localization_key: "run"

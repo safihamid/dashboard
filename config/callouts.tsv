@@ -1,4 +1,4 @@
-Name	script_id	level_num	game_name	text	element_id	qtip_config
+Name	script_id	level_num	game_name	localization_key	element_id	qtip_config
 Drag Blocks 20	1	2_2	Maze	drag_blocks	[block-id='1']	{"position": {"my": "top left", "at": "bottom right", "adjust": {"x": 22, "y":60}}, "style": { "classes": "no-tip" }}
 Run 20	1	2_2	Maze	run	#runButton	
 Watch Video Again 20	1	2_5	Maze	watch_again	[data-key='loop_times']	{"position": {"my": "bottom left", "at": "top right"}}
