@@ -18,3 +18,11 @@ And(/^I close callout "([^"]*)"$/) do |callout_id|
   @button.click
   short_wait.until { !is_callout_visible(callout_id) }
 end
+
+And(/^callout "([^"]*)" does not exist$/) do |callout_id|
+  callout_exists(callout_id).should eq false
+  end
+
+And(/^callout "([^"]*)" exists$/) do |callout_id|
+  callout_exists(callout_id).should eq true
+end

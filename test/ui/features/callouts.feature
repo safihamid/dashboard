@@ -44,12 +44,16 @@ Feature: Callouts
     Given I am on "http://learn.code.org/s/1/level/2?noautoplay=true"
     And I rotate to landscape
     And I press "x-close"
-    And callout "0" is visible
-    And callout "1" is visible
-    And I press "runButton"
-    And callout "1" is hidden
-    And I click block "1"
-    And callout "0" is hidden
+    And callout "0" exists
+    Given I am on "http://learn.code.org/s/1/level/2?noautoplay=true"
+    And I rotate to landscape
+    And I press "x-close"
+    And callout "0" does not exist
+
+  Scenario: Only showing seen callouts once
+    Given I am on "http://learn.code.org/s/1/level/2?noautoplay=true"
+    And I rotate to landscape
+    And I press "x-close"
 
   Scenario: Opening the Show Code dialog
     Given I am on "http://learn.code.org/s/1/level/2?noautoplay=true"
