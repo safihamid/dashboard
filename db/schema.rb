@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140401010539) do
+ActiveRecord::Schema.define(version: 20140403001037) do
 
   create_table "activities", force: true do |t|
     t.integer  "user_id"
@@ -39,14 +39,6 @@ ActiveRecord::Schema.define(version: 20140401010539) do
 
   add_index "activity_hints", ["activity_id"], name: "index_activity_hints_on_activity_id", using: :btree
   add_index "activity_hints", ["level_source_hint_id"], name: "index_activity_hints_on_level_source_hint_id", using: :btree
-
-  create_table "blocks", force: true do |t|
-    t.string   "name",                     null: false
-    t.string   "xml",        limit: 20000, null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "app"
-  end
 
   create_table "callouts", force: true do |t|
     t.string   "element_id",      limit: 1024, null: false
@@ -113,16 +105,6 @@ ActiveRecord::Schema.define(version: 20140401010539) do
 
   add_index "games", ["intro_video_id"], name: "index_games_on_intro_video_id", using: :btree
 
-  create_table "level_blocks", force: true do |t|
-    t.integer  "level_id",   null: false
-    t.integer  "block_id",   null: false
-    t.string   "type",       null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "level_blocks", ["level_id"], name: "index_level_blocks_on_level_id", using: :btree
-
   create_table "level_source_hints", force: true do |t|
     t.integer  "level_source_id"
     t.text     "hint"
@@ -169,6 +151,8 @@ ActiveRecord::Schema.define(version: 20140401010539) do
     t.integer  "x"
     t.integer  "y"
     t.string   "start_direction"
+    t.text     "start_blocks"
+    t.text     "toolbox_blocks"
   end
 
   add_index "levels", ["game_id"], name: "index_levels_on_game_id", using: :btree

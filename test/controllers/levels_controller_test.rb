@@ -7,6 +7,7 @@ class LevelsControllerTest < ActionController::TestCase
     @level = create(:level)
     @user = create(:admin)
     sign_in(@user)
+    @program = "<hey>"
 
     @not_admin = create(:user)
   end
@@ -40,7 +41,7 @@ class LevelsControllerTest < ActionController::TestCase
     game = Game.find_by_name("CustomMaze")
 
     assert_difference('Level.count') do
-      post :create, :level => {:name => "NewCustomLevel", :instructions => "Some Instructions"}, :game_id => game.id, :program => "<hey>", :level_type => 'maze', :maze_source => maze, :size => 8
+      post :create, :level => {:name => "NewCustomLevel", :instructions => "Some Instructions"}, :game_id => game.id, :program => @program, :level_type => 'maze', :maze_source => maze, :size => 8
     end
 
     assert assigns(:level)
@@ -49,19 +50,42 @@ class LevelsControllerTest < ActionController::TestCase
     assert_redirected_to game_level_path(assigns(:level).game, assigns(:level))
   end
 
+  test "should not create invalid maze level" do
+    maze = fixture_file_upload("maze_level_invalid.csv", "r")
+    game = Game.find_by_name("CustomMaze")
+
+    assert_no_difference('Level.count') do
+      post :create, :level => {:name => "NewCustomLevel", :instructions => "Some Instructions"}, :game_id => game.id, :program => @program, :level_type => 'maze', :maze_source => maze, :size => 8
+    end
+
+    assert_response :not_acceptable
+  end
+
   test "should create artist level" do
     game = Game.find_by_name("Custom")
     assert_difference('Level.count') do
-      post :create, :game_id => game.id, :name => "NewCustomLevel", :program => "<hey>", :level_type => 'artist'
+      post :create, :game_id => game.id, :name => "NewCustomLevel", :program => @program, :level_type => 'artist'
     end
 
     assert_equal game_level_url(assigns(:level).game, assigns(:level)), JSON.parse(@response.body)["redirect"]
   end
 
+  test "should update blocks" do
+    post :update_blocks, :level_id => @level.id, :game_id => @level.game.id, :type => 'toolbox_blocks', :program => @program
+    level = assigns(:level)
+    assert_equal level.toolbox_blocks, @program
+  end
+
+  test "should not update blocks if not admin" do
+    sign_in @not_admin
+    post :update_blocks, :level_id => @level.id, :game_id => @level.game.id, :type => 'toolbox_blocks', :program => @program
+    assert_response :forbidden
+  end
+
   test "should not create level if not admin" do
     sign_in @not_admin
     assert_no_difference('Level.count') do
-      post :create, :name => "NewCustomLevel", :program => "<hey>", game_id: 1
+      post :create, :name => "NewCustomLevel", :program => @program, game_id: 1
     end
 
     assert_response :forbidden
@@ -77,31 +101,16 @@ class LevelsControllerTest < ActionController::TestCase
     assert_response :success
   end
 
+  test "should get edit blocks" do
+    @level.update(toolbox_blocks: @program)
+    get :edit_blocks, level_id: @level.id, game_id: @level.game, type: 'toolbox_blocks'
+    assert_equal @program, assigns[:start_blocks]
+  end
+
   test "should update level" do
     patch :update, id: @level, game_id: @level.game, level: {  }
     level = assigns(:level)
     assert_redirected_to game_level_path(level.game, level)
-  end
-
-  test "should update add level blocks" do
-    level_id = 2
-    assert_difference("Level.find(#{level_id}).toolbox_level_blocks.count", 1) do
-      @level = Level.find(level_id)
-      patch :update, id: @level, game_id: @level.game, level: {  }, toolbox_level_block_ids: [2]
-    end
-  end
-
-  test "should update remove level blocks" do
-    assert_difference("Level.find(1).toolbox_level_blocks.count", -1) do
-      @level = Level.find(1)
-      patch :update, id: @level, game_id: @level.game, level: {  }, toolbox_level_block_ids: []
-    end
-  end
-
-  test "should get blocks from level" do
-    level = Level.find(1)
-    assert_equal level.start_level_blocks.count, 1
-    assert_equal level.toolbox_level_blocks.count, 1
   end
 
   test "should destroy level" do
