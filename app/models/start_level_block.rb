@@ -1,2 +1,0 @@
-class StartLevelBlock < LevelBlock
-end
