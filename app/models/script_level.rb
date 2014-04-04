@@ -11,7 +11,7 @@ class ScriptLevel < ActiveRecord::Base
 
   def next_level
     if self.stage
-      self.higher_item
+      self.lower_item  # Last level is at position 1
     else
       self.script.try(:get_script_level_by_chapter, self.chapter + 1)
     end
@@ -19,7 +19,7 @@ class ScriptLevel < ActiveRecord::Base
 
   def previous_level
     if self.stage
-      self.lower_item
+      self.higher_item
     else
       self.script.try(:get_script_level_by_chapter, self.chapter - 1)
     end

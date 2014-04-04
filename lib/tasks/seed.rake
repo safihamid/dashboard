@@ -86,8 +86,7 @@ namespace :seed do
                  { file: 'config/ec_script.csv', params: { name: 'Edit Code', wrapup_video: Video.find_by_key('hoc_wrapup'), trophies: false, hidden: true }},
                  { file: 'config/2014_script.csv', params: { name: '2014 Levels', trophies: false, hidden: true }},
                  { file: 'config/builder_script.csv', params: { name: 'Builder Levels', trophies: false, hidden: true }},
-                 { file: 'config/flappy_script.csv', params: { name: 'Flappy Levels', trophies: false, hidden: true }},
-                 { file: 'config/stages_script.csv', params: { name: 'StageTest Levels', trophies: false, hidden: true }}
+                 { file: 'config/flappy_script.csv', params: { name: 'Flappy Levels', trophies: false, hidden: true }}
                 ]
       sources.each do |source|
         script = Script.where(source[:params]).first_or_create

@@ -8,6 +8,11 @@ class ReportsControllerTest < ActionController::TestCase
     sign_in(@admin)
 
     @not_admin = create(:user)
+
+    @script_level = create(:script_level)
+    @script_level2 = create(:script_level)
+    @stage = create(:stage)
+    @stage2 = create(:stage)
   end
 
   test "should get user_stats" do
@@ -38,6 +43,35 @@ class ReportsControllerTest < ActionController::TestCase
     assert_response :forbidden
   end
 
+  test "should have 2 separators if 2 stages" do
+    @script_level.update(stage: @stage)
+    @script_level.move_to_bottom
+    @script_level2.update(stage: @stage2)
+    @script_level2.move_to_bottom
+    @script_level2.update(script: @script_level.script)
+
+    get :header_stats, script_id: @script_level.script.id, user_id: @not_admin.id
+    css = css_select "div.stage_separator"
+    assert_equal 2, css.count
+  end
+
+  test "should have 1 separator if one stage" do
+    @script_level.update(stage: @stage)
+    @script_level.move_to_bottom
+    @script_level2.update(stage: @stage)
+    @script_level2.move_to_bottom
+    @script_level2.update(script: @script_level.script)
+
+    get :user_stats, script_id: @script_level.script.id, user_id: @not_admin.id
+    css = css_select "div.stage_separator"
+    assert_equal 1, css.count
+  end
+
+  test "should return 20h curriculum by default" do
+    get :user_stats, user_id: @not_admin.id
+    css = css_select "div.stage_separator"
+    assert_equal 20, css.count
+  end
 
   test "should get header_stats" do
     get :header_stats

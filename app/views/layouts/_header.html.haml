@@ -6,6 +6,8 @@
 - elsif ie_version > 0 && ie_version < 8
   #warning-banner= t("compatability.upgrade")
 
+- script = @script || Script.twenty_hour_script
+
 .navbar-static-top.header
   .container{style:(@full_width ? "width: 880px;" : "")}
     .navbar-header
@@ -17,8 +19,7 @@
           - if @script_level
             .header_level
               %div{class: "header_level_container"}
-                - script = @script || Script.twenty_hour_script
-                - game_script_levels = (@stage && @stage.script_levels) || @script.script_levels_from_game(@game.id)
+                - game_script_levels = (@stage && @stage.script_levels) || script.script_levels_from_game(@game.id)
                 - count = game_script_levels.count
                 - game_levels = current_user ? current_user.levels_from_script(script, @game.id, @stage) : game_script_levels
                 - multiple_puzzles = game_levels.count > 1
@@ -116,7 +117,7 @@
     if (!loadedPopup) {
       loadedPopup = true;
       togglePopup();
-      $.ajax({url:'#{header_stats_path()}', data: { script_id: #{@script.id} }, success:function(result) {
+      $.ajax({url:'#{header_stats_path()}', data: { script_id: #{script.id} }, success:function(result) {
           $("#headerPopupBody").html(result);
         }
       });

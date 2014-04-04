@@ -55,6 +55,10 @@ FactoryGirl.define do
     level
     chapter 1
   end
+
+  factory :stage do
+    name "Bogus Stage"
+  end
   
   factory :callout do
     sequence(:element_id) { |n| "#pageElement#{n}" }
