@@ -39,7 +39,10 @@ Dashboard::Application.routes.draw do
   post '/locale', to: 'home#set_locale', as: 'locale'
 
   resources :games do
-    resources :levels
+    resources :levels do
+      get 'edit_blocks/:type', to: 'levels#edit_blocks', as: 'edit_blocks'
+      post 'update_blocks/:type', to: 'levels#update_blocks', as: 'update_blocks'
+    end
   end
 
   get 'builder', to: 'levels#builder'
