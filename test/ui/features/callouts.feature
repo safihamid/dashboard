@@ -1,7 +1,7 @@
 Feature: Callouts
 
   Background:
-    Given I am on "http://learn.code.org/hoc/reset"
+    Given I am on "http://learn.code.org/reset_session"
 
   Scenario: Modal ordering
     Given I am on "http://learn.code.org/s/1/level/2?noautoplay=true"
@@ -40,7 +40,7 @@ Feature: Callouts
     | http://learn.code.org/s/1/level/16?noautoplay=true | 0          | The instructions for each puzzle are repeated here                               | #prompt                |
     | http://learn.code.org/s/1/level/59?noautoplay=true | 0          | You have all the same blocks but they've now been arranged in categories         | .blocklyTreeLabel      |
 
-  Scenario: Closing using clicks on targets
+  Scenario: Only showing seen callouts once
     Given I am on "http://learn.code.org/s/1/level/2?noautoplay=true"
     And I rotate to landscape
     And I press "x-close"
@@ -49,11 +49,6 @@ Feature: Callouts
     And I rotate to landscape
     And I press "x-close"
     And callout "0" does not exist
-
-  Scenario: Only showing seen callouts once
-    Given I am on "http://learn.code.org/s/1/level/2?noautoplay=true"
-    And I rotate to landscape
-    And I press "x-close"
 
   Scenario: Opening the Show Code dialog
     Given I am on "http://learn.code.org/s/1/level/2?noautoplay=true"
