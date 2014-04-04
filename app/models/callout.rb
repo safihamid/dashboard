@@ -5,10 +5,9 @@ class Callout < ActiveRecord::Base
   {
       :element_id => 'element_id',
       :text => 'text',
-      :at => 'at',
-      :my => 'my',
       :script_id => 'script_id',
       :level_num => 'level_num',
+      :game_name => 'game_name',
       :qtip_config => 'qtip_config'
   }
   
@@ -25,20 +24,22 @@ class Callout < ActiveRecord::Base
   end
 
   def self.first_or_create_from_tsv_row!(row_data)
-    level = Level.where(:level_num => row_data[CSV_HEADERS[:level_num]]).first
-    script_level = (level ? ScriptLevel.where(:level_id => level.id, :script_id => row_data[CSV_HEADERS[:script_id]]).first : nil)
+    script_level_search_conditions = {
+      'scripts.id' => row_data[CSV_HEADERS[:script_id]],
+      'levels.level_num' => row_data[CSV_HEADERS[:level_num]],
+      'games.name' => row_data[CSV_HEADERS[:game_name]]
+    }
+    script_level = ScriptLevel.joins(level: :game).joins(:script).where(script_level_search_conditions)
     
-    unless level && script_level
-      puts "Error creating callout for level_num: #{row_data[CSV_HEADERS[:level_num]]} script_id: #{row_data[CSV_HEADERS[:script_id]]}"
+    unless script_level && script_level.count > 0
+      puts "Error finding script level with search conditions: #{script_level_search_conditions}"
       return nil
     end
     
     params = {element_id: row_data[CSV_HEADERS[:element_id]],
             text: row_data[CSV_HEADERS[:text]],
-            qtip_at: row_data[CSV_HEADERS[:at]],
-            qtip_my: row_data[CSV_HEADERS[:my]],
             qtip_config: row_data[CSV_HEADERS[:qtip_config]],
-            script_level: script_level}
+            script_level: script_level.first}
     Callout.where(params).first_or_create!
   end
 end

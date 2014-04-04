@@ -46,6 +46,7 @@
     #{app}Main({
       levelId: '#{@level.level_num}',
       #{ "scriptId: '#{@script.id}'," if @script }
+      #{ "levelGameName: '#{@level.game.name}'," if @level.game }
       callouts: #{@callouts.to_json} || [],
       createCallouts: function() {
         $.fn.qtip.zindex = 500;

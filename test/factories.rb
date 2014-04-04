@@ -33,7 +33,7 @@ FactoryGirl.define do
     game
     
     trait :blockly do
-      game {create(:game, app: "maze")}
+      game {create(:game, app: "maze", name: "Maze")}
     end
   
     trait :unplugged do

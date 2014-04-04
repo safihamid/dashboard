@@ -2,7 +2,7 @@ require 'test_helper'
 
 class CalloutTest < ActiveSupport::TestCase
   setup do
-    @level = create(:level, :level_num => 'level1_2_3')
+    @level = create(:level, :blockly, :level_num => 'level1_2_3')
     @script = create(:script, :id => 333)
     @script2 = create(:script, :id => 321)
     @script_level = create(:script_level, :script => @script, :level => @level)
@@ -44,7 +44,7 @@ class CalloutTest < ActiveSupport::TestCase
         @invalid_callout_import = Callout.find_or_create_all_from_tsv!('test/fixtures/callouts_invalid.tsv')
         assert_nil(@invalid_callout_import[0])
       end
-      assert(content.include?("Error creating callout"))
+      assert(content.include?("Error finding script level "))
     end
   end
 end

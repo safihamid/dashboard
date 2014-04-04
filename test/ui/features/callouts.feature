@@ -37,6 +37,7 @@ Feature: Callouts
     | http://learn.code.org/s/1/level/10?noautoplay=true | 0          | Blocks that are grey can't be moved or deleted. Can you solve the puzzle anyway? | g                      |
     | http://learn.code.org/s/1/level/12?noautoplay=true | 0          | Click here to see the code for the program you're making                         | #show-code-header      |
     | http://learn.code.org/s/1/level/16?noautoplay=true | 0          | The instructions for each puzzle are repeated here                               | #prompt                |
+    | http://learn.code.org/s/1/level/59?noautoplay=true | 0          | You have all the same blocks but they've now been arranged in categories         | .blocklyTreeLabel      |
 
   Scenario: Closing using clicks on targets
     Given I am on "http://learn.code.org/s/1/level/2?noautoplay=true"
