@@ -42,8 +42,8 @@ module LevelsHelper
     session[:callouts_seen] ||= Set.new()
     @callouts_to_show = Callout.where(script_level: @script_level)
       .select(:id, :element_id, :qtip_config, :localization_key)
-      .reject { |c| session[:callouts_seen].include?(c.id) }
-      .each { |c| session[:callouts_seen].add(c.id) }
+      .reject { |c| session[:callouts_seen].include?(c.localization_key) }
+      .each { |c| session[:callouts_seen].add(c.localization_key) }
     @callouts = make_localized_hash_of_callouts(@callouts_to_show)
   end
 
