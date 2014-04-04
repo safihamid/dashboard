@@ -25,6 +25,10 @@ class ScriptLevel < ActiveRecord::Base
     end
   end
 
+  def stage_or_game_position
+    self.position || self.game_chapter
+  end
+
   def self.cache_find(id)
     @@script_level_map ||= ScriptLevel.includes(:level, :script).index_by(&:id)
     @@script_level_map[id]

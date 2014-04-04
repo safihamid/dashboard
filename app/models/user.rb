@@ -102,12 +102,12 @@ class User < ActiveRecord::Base
 
   def levels_from_script(script, game_index=nil, stage=nil)
     ul_map = self.user_levels.includes({level: [:game, :concepts]}).index_by(&:level_id)
-    q = script.script_levels.includes({ level: :game }, :script, :stage).order(:chapter)
+    q = script.script_levels.includes({ level: :game }, :script, :stage).order((stage ? :position : :chapter))
 
     if stage
-      q = q.where(['stages.id = :index', { :index => stage}]).references(:stage)
+      q = q.where(['stages.id = :stage_id', { :stage_id => stage}]).references(:stage)
     elsif game_index
-      q = q.where(['games.id = :index', { :index => game_index}]).references(:game)
+      q = q.where(['games.id = :game_id', { :game_id => game_index}]).references(:game)
     end
 
     q.each do |sl|

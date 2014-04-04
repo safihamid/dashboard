@@ -58,6 +58,7 @@ FactoryGirl.define do
 
   factory :stage do
     name "Bogus Stage"
+    script
   end
   
   factory :callout do

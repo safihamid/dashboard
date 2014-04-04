@@ -35,8 +35,8 @@
 
                     - if sl.level_id == @script_level.level_id
                       .level_current_header{class: "level_highlight"}
-                        = @script_level.position || @script_level.game_chapter
-                    - elsif (sl.position || sl.game_chapter) == count
+                        = @script_level.stage_or_game_position
+                    - elsif sl.stage_or_game_position == count
                       %a.level_highlight{class: passed ? "level_aced" : "level_undone", href: build_script_level_path(sl)}
                         = count
                     - else

@@ -216,9 +216,9 @@ ActiveRecord::Schema.define(version: 20140403195947) do
   add_index "sections", ["user_id", "name"], name: "index_sections_on_user_id_and_name", unique: true, using: :btree
 
   create_table "stages", force: true do |t|
-    t.string   "name"
+    t.string   "name",       null: false
     t.integer  "position"
-    t.integer  "script_id"
+    t.integer  "script_id",  null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
