@@ -38,6 +38,35 @@ class HomeControllerTest < ActionController::TestCase
     assert_response :success
   end
 
+  test "logged in user with gallery activities shows gallery" do
+    user = create(:user)
+    activity1 = create(:activity, user: user, saved_to_gallery: true)
+    activity2 = create(:activity, user: user, saved_to_gallery: true)
+    sign_in user
+
+    get :index
+
+    assert_select 'h4', "Gallery:" # title of the gallery section
+    assert_select 'ul.gallery li', 2 # 2 gallery items
+
+  end
+
+  test "logged in user without gallery activities does not show gallery" do
+    user = create(:user)
+    create(:activity, user: user, saved_to_gallery: false)
+    sign_in user
+
+    get :index
+
+    assert_response :success
+    assert_select 'h4', text: "Gallery", count: 0
+  end
+
+  test "do not show gallery when not logged in" do
+    get :index
+    assert_select 'h4', text: "Gallery", count: 0
+  end
+
 # this exception is actually annoying to handle because it never gets
 # to ActionController (so we can't use the rescue in
 # ApplicationController)

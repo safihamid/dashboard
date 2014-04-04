@@ -65,6 +65,7 @@ FactoryGirl.define do
   factory :activity do
     level
     user
+    level_source
   end
 
   factory :concept do
