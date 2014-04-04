@@ -19,6 +19,8 @@ class User < ActiveRecord::Base
   attr_accessor :login
 
   has_many :user_levels
+  has_many :activities
+
   has_many :sections
 
   has_many :user_trophies
@@ -260,5 +262,9 @@ SQL
     return unless birthday
     
     errors.add(:birthday, I18n.t('activerecord.attributes.user.error.future')) if birthday > Date.today
+  end
+
+  def gallery
+    activities.where(saved_to_gallery: true).where.not(level_source_id:nil).order(id: :desc)
   end
 end

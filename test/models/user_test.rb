@@ -101,4 +101,26 @@ class UserTest < ActiveSupport::TestCase
     end
   end
 
+  test "gallery" do
+    user = create(:user)
+    assert_equal [], user.gallery
+
+    create(:activity, user: user) # saved_to_gallery defaults to false; not saved to gallery
+    assert_equal [], user.gallery
+
+    activity2 = create(:activity, user: user, saved_to_gallery: true)
+    assert_equal [activity2], user.gallery
+
+    create(:activity, user: user, saved_to_gallery: false) # not saved to gallery
+    assert_equal [activity2], user.gallery
+
+    activity4 = create(:activity, user: user, saved_to_gallery: true)
+    assert_equal [activity4, activity2], user.gallery
+
+    # make sure we do not include activities with no level source
+    create(:activity, user: user, saved_to_gallery: true, level_source_id: nil)
+    assert_equal [activity4, activity2], user.gallery
+
+  end
+
 end
