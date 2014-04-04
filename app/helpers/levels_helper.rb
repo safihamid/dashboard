@@ -21,7 +21,6 @@ module LevelsHelper
 
     @videos = @level.videos
 
-    # todo: make this based on which videos the user/session has already seen
     seen_videos = session[:videos_seen] || Set.new()
     @videos.each do |v|
       if !seen_videos.include?(v.key)
