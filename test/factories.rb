@@ -57,7 +57,7 @@ FactoryGirl.define do
   end
 
   factory :stage do
-    name "Bogus Stage"
+    sequence(:name) { |n| "Bogus Stage #{n}" }
     script
   end
   

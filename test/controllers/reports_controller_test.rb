@@ -9,10 +9,17 @@ class ReportsControllerTest < ActionController::TestCase
 
     @not_admin = create(:user)
 
-    @script_level = create(:script_level)
-    @script_level2 = create(:script_level)
-    @stage = create(:stage)
-    @stage2 = create(:stage)
+    @script = create(:script)
+    @stage = create(:stage, script: @script)
+    @stage2 = create(:stage, script: @script)
+    @script_level = create(:script_level, script: @script, stage: @stage)
+    @script_level2 = create(:script_level, script: @script, stage: @stage2)
+    @script_level.move_to_bottom
+    @script_level2.move_to_bottom
+  end
+
+  test "should setup properly" do
+    assert_equal @script_level.script, @script_level2.script
   end
 
   test "should get user_stats" do
@@ -43,24 +50,15 @@ class ReportsControllerTest < ActionController::TestCase
     assert_response :forbidden
   end
 
-  test "should have 2 separators if 2 stages" do
-    @script_level.update(stage: @stage)
-    @script_level.move_to_bottom
-    @script_level2.update(stage: @stage2)
-    @script_level2.move_to_bottom
-    @script_level2.update(script: @script_level.script)
-
+  test "should have two separators if two stages" do
     get :header_stats, script_id: @script_level.script.id, user_id: @not_admin.id
     css = css_select "div.stage_separator"
     assert_equal 2, css.count
   end
 
-  test "should have 1 separator if one stage" do
-    @script_level.update(stage: @stage)
-    @script_level.move_to_bottom
+  test "should have one separator if one stage" do
     @script_level2.update(stage: @stage)
     @script_level2.move_to_bottom
-    @script_level2.update(script: @script_level.script)
 
     get :user_stats, script_id: @script_level.script.id, user_id: @not_admin.id
     css = css_select "div.stage_separator"
