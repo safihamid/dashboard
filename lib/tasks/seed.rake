@@ -12,7 +12,9 @@ namespace :seed do
       end
     end
 
-    Rake::Task["youtube:thumbnails"].invoke
+    if !Rails.env.test?
+      Rake::Task["youtube:thumbnails"].invoke
+    end
   end
 
   task concepts: :environment do
