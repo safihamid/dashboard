@@ -18,6 +18,7 @@ class Ability
       # can :manage, user.students.where("email = ''")
       can :manage, Section
       can :create, Activity
+      can :update, Activity, user_id: user.id
       can :create, UserLevel
       can :create, Follower
     end
