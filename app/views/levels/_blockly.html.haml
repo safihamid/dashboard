@@ -69,11 +69,24 @@
           calloutDomElement.qtip('hide');
         });
       },
+      chromeVersion: function() {
+        var match = window.navigator.appVersion.match(/Chrome\/(\d+)\./);
+        if (!match || match.length < 2) {
+          return -1;
+        }
+        return parseInt(match[1], 10);
+      },
+      showMessageIfChromeBroken: function() {
+        if (this.chromeVersion() === 34) {
+          console.log('Show message');
+        }
+      },
       onInitialize: function() {
         this.createCallouts();
         onInitializeListeners.forEach(function(listener) {
           listener();
         });
+        this.showMessageIfChromeBroken();
       },
       locale: '#{js_locale}',
       containerId: 'blocklyApp',
