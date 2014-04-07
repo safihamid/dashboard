@@ -25,6 +25,13 @@ group :development, :test do
   gem 'mocha', require: false
 end
 
+group :test do
+  gem 'cucumber'
+  gem 'selenium-webdriver'
+  gem 'rspec'
+  gem 'chromedriver-helper'
+end
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false

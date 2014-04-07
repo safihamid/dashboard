@@ -32,8 +32,8 @@ module LevelsHelper
       end
     end
 
-    @toolbox_blocks = Block.xml(@level.toolbox_level_blocks.collect(&:block)) if !@level.toolbox_level_blocks.empty?
-    @start_blocks = initial_blocks(current_user, @level) || (Block.xml(@level.start_level_blocks.collect(&:block), false) if !@level.start_level_blocks.empty?)
+    @toolbox_blocks = @toolbox_blocks || @level.toolbox_blocks
+    @start_blocks = initial_blocks(current_user, @level) || @start_blocks || @level.start_blocks
   end
 
   # this defines which levels should be seeded with th last result from a different level
@@ -91,13 +91,5 @@ module LevelsHelper
         request.protocol + request.host_with_port + ActionController::Base.helpers.asset_path('sharing_drawing.png')
       end
     end
-  end
-
-  def generate_image
-    background_url = 'app/assets/images/blank_sharing_drawing.png'
-    level_source_id = LevelSource.find(params[:id]).id
-    drawing_blob = LevelSourceImage.find_by_level_source_id(level_source_id).image
-    drawing_on_background = ImageLib::overlay_image(:background_url => background_url, :foreground_blob => drawing_blob)
-    send_data drawing_on_background.to_blob, :stream => 'false', :type => 'image/png', :disposition => 'inline'
   end
 end

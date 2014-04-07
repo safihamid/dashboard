@@ -1,6 +1,0 @@
-= form_for [@game, @level, @toolbox] do |f|
-  - @blocks.each do |block|
-    = check_box_tag "toolbox[block_ids][]", block.id, @toolbox.blocks.include?(block), id: "toolbox_blocks_#{block.id}", class: "block-checkbox"
-    = label_tag block.name
-  = f.hidden_field :toolbox_type, value: params[:toolbox_type]
-  = f.submit "Create Toolbox"

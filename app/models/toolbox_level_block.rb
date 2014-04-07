@@ -1,2 +1,0 @@
-class ToolboxLevelBlock < LevelBlock
-end

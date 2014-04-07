@@ -12,18 +12,8 @@ namespace :seed do
       end
     end
 
-    Rake::Task["youtube:thumbnails"].invoke
-  end
-
-  task blocks: :environment do
-    Block.transaction do
-      Block.delete_all # use delete instead of destroy so callbacks are not called
-      Block.connection.execute("ALTER TABLE blocks auto_increment = 1")
-
-      blocks_id = 0
-      CSV.read('config/blocks.csv', { headers: true }).each do |row|
-        Block.create!(name: row['Name'], xml: row['Xml'], app: row['App'], id: blocks_id += 1)
-      end
+    if !Rails.env.test?
+      Rake::Task["youtube:thumbnails"].invoke
     end
   end
 
@@ -329,6 +319,6 @@ namespace :seed do
 
   task analyze_data: [:ideal_solutions, :frequent_level_sources]
 
-  task all: [:videos, :concepts, :games, :scripts, :trophies, :prize_providers, :callouts, :blocks]
+  task all: [:videos, :concepts, :games, :scripts, :trophies, :prize_providers, :callouts]
 
 end

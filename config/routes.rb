@@ -7,9 +7,13 @@ Dashboard::Application.routes.draw do
   resources :concepts
   resources :activities
   resources :sections, only: [:new, :create, :edit, :update, :destroy]
-  resources :level_sources, path: '/sh/', only: [:show, :edit]
+  resources :level_sources, path: '/sh/', only: [:show, :edit] do
+    member do
+      get 'generate_image'
+      get 'original_image'
+    end
+  end
   get '/share/:id', to: redirect('/sh/%{id}')
-  get '/sh/:id/generate_image', to: 'level_sources#generate_image'
 
   resources :level_source_hints
   get '/add_hint/:level_source_id', :to => 'level_source_hints#add_hint', as: 'add_hint'
@@ -39,7 +43,10 @@ Dashboard::Application.routes.draw do
   post '/locale', to: 'home#set_locale', as: 'locale'
 
   resources :games do
-    resources :levels
+    resources :levels do
+      get 'edit_blocks/:type', to: 'levels#edit_blocks', as: 'edit_blocks'
+      post 'update_blocks/:type', to: 'levels#update_blocks', as: 'update_blocks'
+    end
   end
 
   get 'builder', to: 'levels#builder'

@@ -3,9 +3,12 @@ require 'test_helper'
 class ActivitiesControllerTest < ActionController::TestCase
   include Devise::TestHelpers
   setup do
-    @activity = create(:activity)
-    @user = create(:admin)
+    @user = create(:user)
     sign_in(@user)
+
+    @activity = create(:activity, user: @user)
+
+    @admin = create(:admin)
   end
 
   test "should get index" do
@@ -72,21 +75,54 @@ class ActivitiesControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test "should get edit" do
+  test "admin should get edit" do
+    sign_in @admin
+
     get :edit, id: @activity
     assert_response :success
   end
 
-  test "should update activity" do
+  test "admin should update activity" do
+    sign_in @admin
     patch :update, id: @activity, activity: {  }
     assert_redirected_to activity_path(assigns(:activity))
   end
 
-  test "should destroy activity" do
+  test "user can save an activity to their gallery" do
+    sign_in @user
+    patch :update, id: @activity, activity: { :saved_to_gallery => true }
+    assert_redirected_to activity_path(assigns(:activity))
+
+    assert @activity.reload.saved_to_gallery?
+  end
+
+  test "user cannot update another user's activity" do
+    another_user = create(:user)
+    sign_in another_user
+    assert another_user != @activity.user
+    patch :update, id: @activity, activity: { :saved_to_gallery => true }
+
+    assert_response 403
+
+    assert !@activity.reload.saved_to_gallery?
+  end
+
+  test "admin should destroy activity" do
+    sign_in @admin
     assert_difference('Activity.count', -1) do
       delete :destroy, id: @activity
     end
 
     assert_redirected_to activities_path
   end
+
+  test "user cannot destroy activity" do
+    sign_in @user
+    assert_no_difference('Activity.count') do
+      delete :destroy, id: @activity
+    end
+
+    assert_response 403
+  end
+
 end

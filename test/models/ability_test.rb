@@ -27,6 +27,7 @@ class ActivityTest < ActiveSupport::TestCase
     assert !ability.can?(:destroy, Game)
     assert !ability.can?(:destroy, Level)
     assert !ability.can?(:destroy, Activity)
+    assert ability.can?(:update, Activity)
   end
 
   test "as admin" do

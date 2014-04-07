@@ -23,8 +23,6 @@
     %h4= t('redeem_prizes.msg.teacher.earned', num_trophies: Trophy::TROPHY_MAX)
     - if current_user.teacher_prize
       = render partial: 'shared/redeemed_prize', locals: { prize: current_user.teacher_prize }
-      
-      = link_to t('redeem_prizes.donorschoose_how_to'), 'http://www.donorschoose.org/docs/how-to-use-gift-code-2.pdf', target: "_blank"
     - elsif !current_user.confirmed?
       %h5
         #{t('redeem_prizes.teacher_email_required')} #{link_to t('nav.user.settings'), edit_user_registration_url}
@@ -47,8 +45,6 @@
       %h4= t('redeem_prizes.msg.teacher.bonus.earned', num_trophies: Trophy::TROPHY_MAX)
       - if current_user.teacher_bonus_prize
         = render partial: 'shared/redeemed_prize', locals: { prize: current_user.teacher_bonus_prize }
-      
-        = link_to t('redeem_prizes.donorschoose_how_to'), 'http://www.donorschoose.org/docs/how-to-use-gift-code-2.pdf', target: "_blank"
       - elsif !current_user.confirmed?
         %h5
           #{t('redeem_prizes.teacher_email_required')} #{link_to t('nav.user.settings'), edit_user_registration_url}

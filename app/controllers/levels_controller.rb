@@ -4,7 +4,7 @@ class LevelsController < ApplicationController
   include LevelsHelper
   include ActiveSupport::Inflector
   before_filter :authenticate_user!
-  skip_before_filter :verify_params_before_cancan_loads_model, :only => [:create]
+  skip_before_filter :verify_params_before_cancan_loads_model, :only => [:create, :update_blocks]
   load_and_authorize_resource :except => [:create]
   check_authorization
 
@@ -33,9 +33,36 @@ class LevelsController < ApplicationController
   # GET /levels/1/edit
   def edit
     level = Level.find(params[:id])
-    @blocks = Block.all
-    @start_blocks = level.start_level_blocks.collect(&:block)
-    @toolbox_blocks = level.toolbox_level_blocks.collect(&:block)
+  end
+
+  # Action for using blockly workspace as a toolbox/startblock editor.
+  # Expects params[:type] which can be either 'toolbox_blocks' or 'start_blocks'
+  def edit_blocks
+    authorize! :manage, :level
+    @level = Level.find(params[:level_id])
+    @start_blocks = @level[params[:type]]
+    @toolbox_blocks = @level.complete_toolbox  # Provide complete toolbox for editing start/toolbox blocks.
+    @game = @level.game
+    @full_width = true
+    @callback = game_level_update_blocks_path @game, @level, params[:type]
+    show
+    render :show
+  end
+
+  def update_blocks
+    authorize! :manage, :level
+    @level = Level.find(params[:level_id])
+    @level[params[:type]] = params[:program]
+    @level.save
+    render json: { redirect: game_level_url(@level.game, @level) }
+  end
+
+  def update
+    if @level.update(level_params)
+      redirect_to game_level_url(@level.game, @level)
+    else
+      render json: @level.errors, status: :unprocessable_entity
+    end
   end
 
   # POST /levels
@@ -54,9 +81,14 @@ class LevelsController < ApplicationController
 
   def create_maze
     contents = CSV.new(params[:maze_source].read)
-    maze = contents.read[0...params[:size].to_i].to_s
+    raw_maze = contents.read[0...params[:size].to_i]
+    begin
+      maze = raw_maze.map {|row| row.map {|cell| Integer(cell)}}
+    rescue ArgumentError
+      render status: :not_acceptable, text: "There is a non integer value in the grid." and return
+    end
     game = Game.custom_maze
-    @level = Level.create(level_params.merge(maze: maze, game: game, user: current_user, level_num: 'custom', skin: 'birds'))
+    @level = Level.create(level_params.merge(maze: maze.to_s, game: game, user: current_user, level_num: 'custom', skin: 'birds'))
     redirect_to game_level_url(game, @level)
   end
 
@@ -66,30 +98,6 @@ class LevelsController < ApplicationController
     solution = LevelSource.lookup(@level, params[:program])
     @level.update(solution_level_source: solution)
     render json: { redirect: game_level_url(game, @level) }
-  end
-
-  # PATCH/PUT /levels/1
-  def update
-    if @level.update(level_params)
-      update_blocks ToolboxLevelBlock, StartLevelBlock
-      redirect_to [@level.game, @level], notice: I18n.t('crud.updated', Level.model_name.human)
-    else
-      edit
-      render 'edit'
-    end
-  end
-
-  def update_blocks(*block_models)
-    block_models.each do |block_model|
-      old_blocks = block_model.where(level: @level)
-      block_attribute = underscore(block_model)  # ToolboxLevelBlock => toolbox_level_block
-      params[block_attribute + '_ids'] ||= []
-
-      level_blocks = params[block_attribute + '_ids'].collect do |block_id|
-        block_model.where(level: @level, block_id: block_id).first_or_create
-      end
-      block_model.delete(old_blocks - level_blocks)
-    end
   end
 
   # DELETE /levels/1

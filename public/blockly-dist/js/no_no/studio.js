@@ -1140,6 +1140,20 @@ exports.displayFeedback = function(options) {
     });
   }
 
+  // set up the Save To Gallery button if necessary
+  var saveToGalleryButton = feedback.querySelector('#save-to-gallery-button');
+  if (saveToGalleryButton && options.response && options.response.save_to_gallery_url) {
+    dom.addClickTouchEvent(saveToGalleryButton, function() {
+      $.ajax({
+        type: 'PUT',
+        dataType: 'json',
+        url: options.response.save_to_gallery_url,
+        data: { activity: { saved_to_gallery: true } },
+        success: function() { $('#save-to-gallery-button').prop('disabled', true).text("Saved!"); }
+      });
+    });
+  }
+
   feedbackDialog.show({
     backdrop: (options.app === 'flappy' ? 'static' : true)
   });
@@ -1360,7 +1374,8 @@ exports.createSharingButtons = function(options) {
       facebookUrl: "https://www.facebook.com/sharer/sharer.php?u=" +
                     options.response.level_source,
       twitterUrl: twitterUrl,
-      makeYourOwn: options.makeYourOwn
+      makeYourOwn: options.makeYourOwn,
+      saveToGalleryUrl: options.saveToGalleryUrl
     }
   });
   var sharingInput = sharingUrl.querySelector('#sharing-input');
@@ -2303,6 +2318,73 @@ exports.install = function(blockly, skin) {
     return '\n';
   };
 
+  blockly.Blocks.studio_whenSpriteClicked = {
+    // Block to handle event when sprite is clicked.
+    helpUrl: '',
+    init: function() {
+      this.setHSV(140, 1.00, 0.74);
+      this.appendDummyInput()
+        .appendTitle(new blockly.FieldDropdown(this.SPRITE), 'SPRITE');
+      this.setPreviousStatement(false);
+      this.setInputsInline(true);
+      this.setNextStatement(true);
+      this.setTooltip(msg.whenSpriteClickedTooltip());
+    }
+  };
+
+  blockly.Blocks.studio_whenSpriteClicked.SPRITE =
+      [[msg.whenSpriteClicked1(), '0'],
+       [msg.whenSpriteClicked2(), '1'],
+       [msg.whenSpriteClicked3(), '2'],
+       [msg.whenSpriteClicked4(), '3'],
+       [msg.whenSpriteClicked5(), '4'],
+       [msg.whenSpriteClicked6(), '5']];
+  
+  generator.studio_whenSpriteClicked = function() {
+    // Generate JavaScript for handle when a sprite is clicked event.
+    return '\n';
+  };
+
+  blockly.Blocks.studio_whenSpriteCollided = {
+    // Block to handle event when sprite collides with another sprite.
+    helpUrl: '',
+    init: function() {
+      var dropdown = new blockly.FieldDropdown(this.SPRITE2);
+      dropdown.setValue(this.SPRITE2[1][1]); // default to 2
+
+      this.setHSV(140, 1.00, 0.74);
+      this.appendDummyInput()
+        .appendTitle(new blockly.FieldDropdown(this.SPRITE1), 'SPRITE1');
+      this.appendDummyInput()
+        .appendTitle(dropdown, 'SPRITE2');
+      this.setPreviousStatement(false);
+      this.setInputsInline(true);
+      this.setNextStatement(true);
+      this.setTooltip(msg.whenSpriteCollidedTooltip());
+    }
+  };
+
+  blockly.Blocks.studio_whenSpriteCollided.SPRITE1 =
+      [[msg.whenSpriteCollided1(), '0'],
+       [msg.whenSpriteCollided2(), '1'],
+       [msg.whenSpriteCollided3(), '2'],
+       [msg.whenSpriteCollided4(), '3'],
+       [msg.whenSpriteCollided5(), '4'],
+       [msg.whenSpriteCollided6(), '5']];
+  
+  blockly.Blocks.studio_whenSpriteCollided.SPRITE2 =
+      [[msg.whenSpriteCollidedWith1(), '0'],
+       [msg.whenSpriteCollidedWith2(), '1'],
+       [msg.whenSpriteCollidedWith3(), '2'],
+       [msg.whenSpriteCollidedWith4(), '3'],
+       [msg.whenSpriteCollidedWith5(), '4'],
+       [msg.whenSpriteCollidedWith6(), '5']];
+  
+  generator.studio_whenSpriteCollided = function() {
+    // Generate JavaScript for handle when a sprite collision event.
+    return '\n';
+  };
+
   blockly.Blocks.studio_move = {
     // Block for moving left.
     helpUrl: '',
@@ -2310,6 +2392,8 @@ exports.install = function(blockly, skin) {
       this.setHSV(184, 1.00, 0.74);
       this.appendDummyInput()
         .appendTitle(new blockly.FieldDropdown(this.SPRITE), 'SPRITE');
+      this.appendDummyInput()
+        .appendTitle(msg.moveSeparator());
       this.appendDummyInput()
         .appendTitle(new blockly.FieldDropdown(this.DIR), 'DIR');
       this.setPreviousStatement(true);
@@ -2675,7 +2759,9 @@ module.exports = {
       [1, 0,16, 0, 0,16, 0, 1]
     ],
     'toolbox':
-      tb('<block type="studio_move"></block> \
+      tb('<block type="studio_whenSpriteClicked"></block> \
+          <block type="studio_whenSpriteCollided"></block> \
+          <block type="studio_move"></block> \
           <block type="studio_playSound"></block> \
           <block type="studio_incrementScore"></block> \
           <block type="studio_setSpriteSpeed"></block> \
@@ -3125,6 +3211,11 @@ var drawMap = function() {
       spriteIcon.setAttribute('width', Studio.PEGMAN_WIDTH);
       spriteIcon.setAttribute('clip-path', 'url(#spriteClipPath' + i + ')');
       svg.appendChild(spriteIcon);
+      
+      dom.addMouseDownTouchEvent(spriteIcon,
+                                 delegate(this,
+                                          Studio.onSpriteClicked,
+                                          i));
     }
   }
   
@@ -3234,6 +3325,26 @@ Studio.onTick = function() {
   }
 
   for (var i = 0; i < Studio.spriteCount; i++) {
+    for (var j = 0; j < Studio.spriteCount; j++) {
+      if (i == j) {
+        continue;
+      }
+      if (essentiallyEqual(Studio.sprite[i].x,
+                           Studio.sprite[j].x,
+                           tiles.SPRITE_COLLIDE_DISTANCE) &&
+          essentiallyEqual(Studio.sprite[i].y,
+                           Studio.sprite[j].y,
+                           tiles.SPRITE_COLLIDE_DISTANCE)) {
+        if (0 === (Studio.sprite[i].collisionMask & Math.pow(2, j))) {
+          Studio.sprite[i].collisionMask |= Math.pow(2, j);
+          try {
+            Studio.whenSpriteCollided[i][j](BlocklyApps, api);
+          } catch (e) { }
+        }
+       } else {
+          Studio.sprite[i].collisionMask &= ~(Math.pow(2, j));
+        }
+     }
     Studio.displaySprite(i);
   }
   
@@ -3257,6 +3368,14 @@ Studio.onArrowButtonDown = function(e, idBtn) {
   // Store the most recent event type per-button
   Studio.btnState[idBtn] = ButtonState.DOWN;
   e.preventDefault();  // Stop normal events so we see mouseup later.
+};
+
+Studio.onSpriteClicked = function(e, sprite) {
+  // If we are "running", call the event handler if registered.
+  if (Studio.intervalId) {
+    try { Studio.whenSpriteClicked[sprite](BlocklyApps, api); } catch (e) { }
+  }
+  e.preventDefault();  // Stop normal events.
 };
 
 Studio.onArrowButtonUp = function(e, idBtn) {
@@ -3412,6 +3531,8 @@ Studio.clearEventHandlersKillTickLoop = function() {
   Studio.whenRight = null;
   Studio.whenUp = null;
   Studio.whenGameStarts = null;
+  Studio.whenSpriteClicked = [];
+  Studio.whenSpriteCollided = [];
   if (Studio.intervalId) {
     window.clearInterval(Studio.intervalId);
   }
@@ -3455,6 +3576,7 @@ BlocklyApps.reset = function(first) {
     Studio.sprite[i].x = Studio.spriteStart_[i].x;
     Studio.sprite[i].y = Studio.spriteStart_[i].y;
     Studio.sprite[i].speed = tiles.DEFAULT_SPRITE_SPEED;
+    Studio.sprite[i].collisionMask = 0;
 
     Studio.setSprite(i, 'hardcourt');
     Studio.displaySprite(i);
@@ -3589,11 +3711,12 @@ Studio.onReportComplete = function(response) {
 Studio.execute = function() {
   BlocklyApps.log = [];
   BlocklyApps.ticks = 100; //TODO: Set higher for some levels
-  var code = Blockly.Generator.workspaceToCode('JavaScript', 'studio_whenRun');
+  var code;
   Studio.result = ResultType.UNSET;
   Studio.testResults = BlocklyApps.TestResults.NO_TESTS_RUN;
   Studio.waitingForReport = false;
   Studio.response = null;
+  var i;
 
   // Check for empty top level blocks to warn user about bugs,
   // especially ones that lead to infinite loops.
@@ -3608,7 +3731,7 @@ Studio.execute = function() {
     code = dom.getText(codeTextbox);
     // Insert aliases from level codeBlocks into code
     if (level.codeFunctions) {
-      for (var i = 0; i < level.codeFunctions.length; i++) {
+      for (i = 0; i < level.codeFunctions.length; i++) {
         var codeFunction = level.codeFunctions[i];
         if (codeFunction.alias) {
           code = codeFunction.func +
@@ -3618,62 +3741,103 @@ Studio.execute = function() {
     }
   }
   
-  var codeWallCollided = Blockly.Generator.workspaceToCode(
+  code = Blockly.Generator.workspaceToCode(
                                     'JavaScript',
                                     'studio_whenWallCollided');
   var whenWallCollidedFunc = codegen.functionFromCode(
-                                     codeWallCollided, {
+                                     code, {
                                       BlocklyApps: BlocklyApps,
                                       Studio: api } );
 
-  var codePaddleCollided = Blockly.Generator.workspaceToCode(
+  code = Blockly.Generator.workspaceToCode(
                                     'JavaScript',
                                     'studio_whenPaddleCollided');
   var whenPaddleCollidedFunc = codegen.functionFromCode(
-                                     codePaddleCollided, {
+                                     code, {
                                       BlocklyApps: BlocklyApps,
                                       Studio: api } );
 
-  var codeLeft = Blockly.Generator.workspaceToCode(
+  code = Blockly.Generator.workspaceToCode(
                                     'JavaScript',
                                     'studio_whenLeft');
   var whenLeftFunc = codegen.functionFromCode(
-                                     codeLeft, {
+                                     code, {
                                       BlocklyApps: BlocklyApps,
                                       Studio: api } );
 
-  var codeRight = Blockly.Generator.workspaceToCode(
+  code = Blockly.Generator.workspaceToCode(
                                     'JavaScript',
                                     'studio_whenRight');
   var whenRightFunc = codegen.functionFromCode(
-                                     codeRight, {
+                                     code, {
                                       BlocklyApps: BlocklyApps,
                                       Studio: api } );
 
-  var codeUp = Blockly.Generator.workspaceToCode(
+  code = Blockly.Generator.workspaceToCode(
                                     'JavaScript',
                                     'studio_whenUp');
   var whenUpFunc = codegen.functionFromCode(
-                                     codeUp, {
+                                     code, {
                                       BlocklyApps: BlocklyApps,
                                       Studio: api } );
 
-  var codeDown = Blockly.Generator.workspaceToCode(
+  code = Blockly.Generator.workspaceToCode(
                                     'JavaScript',
                                     'studio_whenDown');
   var whenDownFunc = codegen.functionFromCode(
-                                     codeDown, {
+                                     code, {
                                       BlocklyApps: BlocklyApps,
                                       Studio: api } );
 
-  var codeGameStarts = Blockly.Generator.workspaceToCode(
+  code = Blockly.Generator.workspaceToCode(
                                     'JavaScript',
                                     'studio_whenGameStarts');
   var whenGameStartsFunc = codegen.functionFromCode(
-                                     codeGameStarts, {
+                                     code, {
                                       BlocklyApps: BlocklyApps,
                                       Studio: api } );
 
+  var x;
+  var block;
+  var blocks = Blockly.mainWorkspace.getTopBlocks(true);
+
+  var whenSpriteClickedFunc = [];
+  for (i = 0; i < Studio.spriteCount; i++) {
+    for (x = 0; blocks[x]; x++) {
+      block = blocks[x];
+      if (block.type == 'studio_whenSpriteClicked' &&
+          i == parseInt(block.getTitleValue('SPRITE'), 10)) {
+        code = Blockly.Generator.blocksToCode('JavaScript', [ block ]);
+        whenSpriteClickedFunc[i] = codegen.functionFromCode(
+                                           code, {
+                                            BlocklyApps: BlocklyApps,
+                                            Studio: api } );
+      }
+    }
+  }
+
+  var whenSpriteCollidedFunc = [];
+  for (i = 0; i < Studio.spriteCount; i++) {
+    whenSpriteCollidedFunc[i] = [];
+    for (var j = 0; j < Studio.spriteCount; j++) {
+      if (i == j) {
+        continue;
+      }
+      for (x = 0; blocks[x]; x++) {
+        block = blocks[x];
+        if (block.type == 'studio_whenSpriteCollided' &&
+            i == parseInt(block.getTitleValue('SPRITE1'), 10) &&
+            j == parseInt(block.getTitleValue('SPRITE2'), 10)) {
+          code = Blockly.Generator.blocksToCode('JavaScript', [ block ]);
+          whenSpriteCollidedFunc[i][j] = codegen.functionFromCode(
+                                             code, {
+                                              BlocklyApps: BlocklyApps,
+                                              Studio: api } );
+        }
+      }
+    }
+  }
+  
   BlocklyApps.playAudio('start', {volume: 0.5});
 
   BlocklyApps.reset(false);
@@ -3686,6 +3850,8 @@ Studio.execute = function() {
   Studio.whenUp = whenUpFunc;
   Studio.whenDown = whenDownFunc;
   Studio.whenGameStarts = whenGameStartsFunc;
+  Studio.whenSpriteClicked = whenSpriteClickedFunc;
+  Studio.whenSpriteCollided = whenSpriteCollidedFunc;
   Studio.tickCount = 0;
   Studio.intervalId = window.setInterval(Studio.onTick, Studio.scale.stepSpeed);
 };
@@ -3926,6 +4092,7 @@ exports.Direction = {
 
 exports.PADDLE_BALL_COLLIDE_DISTANCE = 0.7;
 exports.FINISH_COLLIDE_DISTANCE = 0.5;
+exports.SPRITE_COLLIDE_DISTANCE = 0.5;
 exports.DEFAULT_SPRITE_SPEED = 0.1;
 exports.Y_TOP_BOUNDARY = -0.2;
 
@@ -3997,7 +4164,7 @@ escape = escape || function (html){
 };
 var buf = [];
 with (locals || {}) { (function(){ 
- buf.push('');1; var msg = require('../../locale/no_no/common'); ; buf.push('\n\n');3; if (data.ok) {; buf.push('  <div class="farSide" style="padding: 1ex 3ex 0">\n    <button id="ok-button" class="secondary">\n      ', escape((5,  msg.dialogOK() )), '\n    </button>\n  </div>\n');8; };; buf.push('\n');9; if (data.previousLevel) {; buf.push('  <button id="back-button" class="launch">\n    ', escape((10,  msg.backToPreviousLevel() )), '\n  </button>\n');12; };; buf.push('\n');13; if (data.tryAgain) {; buf.push('  <button id="again-button" class="launch">\n    ', escape((14,  msg.tryAgain() )), '\n  </button>\n');16; };; buf.push('\n');17; if (data.nextLevel) {; buf.push('  <button id="continue-button" class="launch">\n    ', escape((18,  msg.continue() )), '\n  </button>\n');20; };; buf.push('\n');21; if (data.facebookUrl) {; buf.push('  <a href=', escape((21,  data.facebookUrl )), ' target="_blank">\n    <img src=', escape((22,  BlocklyApps.assetUrl("media/facebook_purple.png") )), '>\n  </a>\n');24; };; buf.push('\n');25; if (data.twitterUrl) {; buf.push('  <a href=', escape((25,  data.twitterUrl )), ' target="_blank">\n    <img src=', escape((26,  BlocklyApps.assetUrl("media/twitter_purple.png") )), ' >\n  </a>\n  <br>\n');29; };; buf.push('\n');30; if (data.sharingUrl) {; buf.push('  <input type="text" id="sharing-input" value=', escape((30,  data.sharingUrl )), ' >\n');31; };; buf.push(''); })();
+ buf.push('');1; var msg = require('../../locale/no_no/common'); ; buf.push('\n\n');3; if (data.ok) {; buf.push('  <div class="farSide" style="padding: 1ex 3ex 0">\n    <button id="ok-button" class="secondary">\n      ', escape((5,  msg.dialogOK() )), '\n    </button>\n  </div>\n');8; };; buf.push('\n');9; if (data.previousLevel) {; buf.push('  <button id="back-button" class="launch">\n    ', escape((10,  msg.backToPreviousLevel() )), '\n  </button>\n');12; };; buf.push('\n');13; if (data.tryAgain) {; buf.push('  <button id="again-button" class="launch">\n    ', escape((14,  msg.tryAgain() )), '\n  </button>\n');16; };; buf.push('\n');17; if (data.nextLevel) {; buf.push('  <button id="continue-button" class="launch">\n    ', escape((18,  msg.continue() )), '\n  </button>\n');20; };; buf.push('\n');21; if (data.facebookUrl) {; buf.push('  <a href=', escape((21,  data.facebookUrl )), ' target="_blank">\n    <img src=', escape((22,  BlocklyApps.assetUrl("media/facebook_purple.png") )), '>\n  </a>\n');24; };; buf.push('\n');25; if (data.twitterUrl) {; buf.push('  <a href=', escape((25,  data.twitterUrl )), ' target="_blank">\n    <img src=', escape((26,  BlocklyApps.assetUrl("media/twitter_purple.png") )), ' >\n  </a>\n  <br>\n');29; };; buf.push('\n');30; if (data.sharingUrl) {; buf.push('  <input type="text" id="sharing-input" value=', escape((30,  data.sharingUrl )), ' >\n');31; };; buf.push('\n');32; if (data.saveToGalleryUrl) {; buf.push('  <button id="save-to-gallery-button" class="launch">\n    ', escape((33,  msg.saveToGallery() )), '\n  </button>\n');35; };; buf.push(''); })();
 } 
 return buf.join('');
 };
@@ -4337,6 +4504,8 @@ exports.tryAgain = function(d){return "Forsøk igjen"};
 
 exports.backToPreviousLevel = function(d){return "Tilbake til forrige nivå"};
 
+exports.saveToGallery = function(d){return "Save to your gallery"};
+
 exports.typeCode = function(d){return "Skriv din JavaScript-kode under disse instruksjonene."};
 
 exports.typeFuncs = function(d){return "Tilgjengelige funksjoner: %1"};
@@ -4403,6 +4572,8 @@ exports.moveLeftTooltip = function(d){return "Move the paddle to the left."};
 exports.moveRight = function(d){return "move right"};
 
 exports.moveRightTooltip = function(d){return "Move the paddle to the right."};
+
+exports.moveSeparator = function(d){return " "};
 
 exports.moveUp = function(d){return "move up"};
 
@@ -4531,6 +4702,46 @@ exports.whenPaddleCollidedTooltip = function(d){return "Execute the actions belo
 exports.whenRight = function(d){return "when Right arrow"};
 
 exports.whenRightTooltip = function(d){return "Execute the actions below when the Right arrow button is pressed."};
+
+exports.whenSpriteClicked1 = function(d){return "when character 1 clicked"};
+
+exports.whenSpriteClicked2 = function(d){return "when character 2 clicked"};
+
+exports.whenSpriteClicked3 = function(d){return "when character 3 clicked"};
+
+exports.whenSpriteClicked4 = function(d){return "when character 4 clicked"};
+
+exports.whenSpriteClicked5 = function(d){return "when character 5 clicked"};
+
+exports.whenSpriteClicked6 = function(d){return "when character 6 clicked"};
+
+exports.whenSpriteClickedTooltip = function(d){return "Execute the actions below when a character is clicked."};
+
+exports.whenSpriteCollided1 = function(d){return "when character 1"};
+
+exports.whenSpriteCollided2 = function(d){return "when character 2"};
+
+exports.whenSpriteCollided3 = function(d){return "when character 3"};
+
+exports.whenSpriteCollided4 = function(d){return "when character 4"};
+
+exports.whenSpriteCollided5 = function(d){return "when character 5"};
+
+exports.whenSpriteCollided6 = function(d){return "when character 6"};
+
+exports.whenSpriteCollidedTooltip = function(d){return "Execute the actions below when a character touches another character."};
+
+exports.whenSpriteCollidedWith1 = function(d){return "touches character 1"};
+
+exports.whenSpriteCollidedWith2 = function(d){return "touches character 2"};
+
+exports.whenSpriteCollidedWith3 = function(d){return "touches character 3"};
+
+exports.whenSpriteCollidedWith4 = function(d){return "touches character 4"};
+
+exports.whenSpriteCollidedWith5 = function(d){return "touches character 5"};
+
+exports.whenSpriteCollidedWith6 = function(d){return "touches character 6"};
 
 exports.whenUp = function(d){return "when Up arrow"};
 
