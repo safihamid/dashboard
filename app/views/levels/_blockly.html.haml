@@ -1,3 +1,6 @@
+- if chrome_version == 34
+  #warning-banner-chrome= "Please try a different browser. Chrome 34 has a Blockly bug. We will support Chrome again soon."
+
 #blocklyApp
   .loading
   .slow_load
@@ -69,24 +72,11 @@
           calloutDomElement.qtip('hide');
         });
       },
-      chromeVersion: function() {
-        var match = window.navigator.appVersion.match(/Chrome\/(\d+)\./);
-        if (!match || match.length < 2) {
-          return -1;
-        }
-        return parseInt(match[1], 10);
-      },
-      showMessageIfChromeBroken: function() {
-        if (this.chromeVersion() === 34) {
-          console.log('Show message');
-        }
-      },
       onInitialize: function() {
         this.createCallouts();
         onInitializeListeners.forEach(function(listener) {
           listener();
         });
-        this.showMessageIfChromeBroken();
       },
       locale: '#{js_locale}',
       containerId: 'blocklyApp',
