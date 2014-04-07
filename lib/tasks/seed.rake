@@ -126,11 +126,11 @@ namespace :seed do
             old_script_levels.delete(script_level)
           else
             script_level = ScriptLevel.where(script: script, level: level, chapter: (index + 1), game_chapter: (game_index[game.id] += 1)).first_or_create
-            if row[COL_STAGE]
-              stage = Stage.where(name: row[COL_STAGE], script: script).first_or_create
-              script_level.update(stage: stage)
-              script_level.move_to_bottom
-            end
+          end
+          if row[COL_STAGE]
+            stage = Stage.where(name: row[COL_STAGE], script: script).first_or_create
+            script_level.update(stage: stage)
+            script_level.move_to_bottom
           end
         end
         # old_script_levels now contains script_levels that were removed from this csv-based script - clean them up:
