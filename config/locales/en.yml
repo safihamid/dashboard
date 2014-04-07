@@ -158,6 +158,8 @@ en:
     provider: 'Provider:'
     code: 'Code:'
     redeem_header: 'To redeem:'
+    donorschoose_register: 'Register as a teacher on DonorsChoose.org'
+    donorschoose_project: 'Post a project'
     donorschoose_how_to: 'How to use your code'
     success: 'Your prize was succesfully redeemed, see code below.'
     error: 'Your prize could not be redeemed, please try again.'
@@ -294,6 +296,7 @@ en:
     prize_info: 'Prizes for participation (U.S. public school teachers only): Up to $1,000 in classroom rewards.'
     tryfirst: 'Or, you can try it first, and sign up later:'
     trynow: 'Try now'
+    add_hint_help: 'Please help us to add smart hints to Code.org tutorials'
   gender:
     male: 'Male'
     female: 'Female'

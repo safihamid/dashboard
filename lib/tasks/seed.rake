@@ -12,18 +12,8 @@ namespace :seed do
       end
     end
 
-    Rake::Task["youtube:thumbnails"].invoke
-  end
-
-  task blocks: :environment do
-    Block.transaction do
-      Block.delete_all # use delete instead of destroy so callbacks are not called
-      Block.connection.execute("ALTER TABLE blocks auto_increment = 1")
-
-      blocks_id = 0
-      CSV.read('config/blocks.csv', { headers: true }).each do |row|
-        Block.create!(name: row['Name'], xml: row['Xml'], app: row['App'], id: blocks_id += 1)
-      end
+    if !Rails.env.test?
+      Rake::Task["youtube:thumbnails"].invoke
     end
   end
 
@@ -196,7 +186,12 @@ namespace :seed do
     end
   end
 
-  task :frequent_level_sources, [:freq_cutoff] => :environment do |t, args|
+  task :frequent_level_sources, [:freq_cutoff, :game_name] => :environment do |t, args|
+    if args[:game_name]
+      puts "Only crowdsourcing hints for " + args[:game_name]
+    else
+      puts "Crowdsourcing hints for all games."
+    end
     # Among all the level_sources, find the ones that are submitted more than freq_cutoff times.
     FrequentUnsuccessfulLevelSource.update_all('active = false')
     freq_cutoff = args[:freq_cutoff].to_i > 0 ? args[:freq_cutoff].to_i : 100
@@ -204,7 +199,7 @@ namespace :seed do
     Activity.connection.execute('select level_source_id, level_id, count(*) as num_of_attempts from activities where test_result < 30 group by level_source_id order by num_of_attempts DESC').each do |level_source|
       if !level_source.nil? && !level_source[0].nil? && !level_source[1].nil? && !level_source[2].nil?
         if level_source[2] >= freq_cutoff
-          if is_standardized_level_source(level_source[0])
+          if is_standardized_level_source(level_source[0]) && is_targeted_game(args[:game_name], level_source[1])
             unsuccessful_level_source = FrequentUnsuccessfulLevelSource.where(
                 level_source_id: level_source[0],
                 level_id: level_source[1]).first_or_create
@@ -226,6 +221,10 @@ namespace :seed do
     if level_source
       !level_source.data.include? "xmlns=\"http://www.w3.org/1999/xhtml\""
     end
+  end
+
+  def is_targeted_game(game_name, level_id)
+    !game_name || (Level.find(level_id) && Level.find(level_id).game.name == game_name)
   end
 
   task dummy_prizes: :environment do
@@ -321,6 +320,6 @@ namespace :seed do
 
   task analyze_data: [:ideal_solutions, :frequent_level_sources]
 
-  task all: [:videos, :concepts, :games, :scripts, :trophies, :prize_providers, :callouts, :blocks]
+  task all: [:videos, :concepts, :games, :scripts, :trophies, :prize_providers, :callouts]
 
 end

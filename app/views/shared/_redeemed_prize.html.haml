@@ -8,3 +8,9 @@
   %span{class: 'prize-code'} #{prize.code}
 %p
   %span{class: 'prize-redemption'} #{Dashboard::Application::config.prize_providers[provider.description_token]['redemption']}
+- if prize.class == TeacherPrize || prize.class == TeacherBonusPrize
+  = link_to t('redeem_prizes.donorschoose_register'), 'http://www.donorschoose.org/teachers', target: "_blank"
+  %br/
+  = link_to t('redeem_prizes.donorschoose_project'), 'http://www.donorschoose.org/docs/How-to-Submit-a-Project.pdf', target: "_blank"
+  %br/
+  = link_to t('redeem_prizes.donorschoose_how_to'), 'http://www.donorschoose.org/docs/how-to-use-gift-code-2.pdf', target: "_blank"
