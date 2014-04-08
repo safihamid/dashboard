@@ -21,8 +21,7 @@ class Level < ActiveRecord::Base
   def complete_toolbox
     case self.game.app
     when 'turtle'
-      '
-      <xml id="toolbox" style="display: none;">
+      '<xml id="toolbox" style="display: none;">
         <category id="actions" name="Actions">
           <block type="draw_move">
             <value name="VALUE">
@@ -99,11 +98,9 @@ class Level < ActiveRecord::Base
           <block type="math_random_float"></block>
         </category>
         <category name="Variables" custom="VARIABLE"></category>
-      </xml>
-      '
+      </xml>'.gsub("\n", "\\n")
     when 'maze'
-      '
-      <xml id="toolbox" style="display: none;">
+      '<xml id="toolbox" style="display: none;">
         <block type="maze_moveForward"></block>
         <block type="maze_turn">
           <title name="DIR">turnLeft</title>
@@ -128,8 +125,7 @@ class Level < ActiveRecord::Base
           <title name="DIR">isPathRight</title>
         </block>
         <block type="maze_ifElse"></block>
-      </xml>
-      '
+      </xml>'.gsub("\n", "\\n")
     else
       '<xml></xml>'
     end
