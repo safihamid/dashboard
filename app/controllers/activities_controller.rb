@@ -43,7 +43,7 @@ class ActivitiesController < ApplicationController
       authorize! :create, Activity
       authorize! :create, UserLevel
 
-      activity = Activity.create!(
+      @activity = Activity.create!(
           user: current_user,
           level: level,
           action: solved,
@@ -97,7 +97,7 @@ class ActivitiesController < ApplicationController
                                     trophy_updates: trophy_updates,
                                     solved?: solved,
                                     level_source: level_source,
-                                    activity: activity)
+                                    activity: @activity)
 
     slog(:tag => 'activity_finish',
          :script_level_id => script_level.id,

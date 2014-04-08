@@ -52,6 +52,7 @@ class ActivitiesControllerTest < ActionController::TestCase
     assert_response :success
     parsed_response = JSON.parse @response.body
     assert_equal parsed_response["redirect"], script_level_path(script_level_next.script, script_level_next)
+    assert_equal parsed_response["save_to_gallery_url"], "/gallery_activities?gallery_activity%5Bactivity_id%5D=#{assigns(:activity).id}"
   end
 
   test "should log with anonymous milestone" do
@@ -88,23 +89,11 @@ class ActivitiesControllerTest < ActionController::TestCase
     assert_redirected_to activity_path(assigns(:activity))
   end
 
-  test "user can save an activity to their gallery" do
+  test "user cannot update activity" do
     sign_in @user
-    patch :update, id: @activity, activity: { :saved_to_gallery => true }
-    assert_redirected_to activity_path(assigns(:activity))
+    patch :update, id: @activity, activity: { }
 
-    assert @activity.reload.saved_to_gallery?
-  end
-
-  test "user cannot update another user's activity" do
-    another_user = create(:user)
-    sign_in another_user
-    assert another_user != @activity.user
-    patch :update, id: @activity, activity: { :saved_to_gallery => true }
-
-    assert_response 403
-
-    assert !@activity.reload.saved_to_gallery?
+    assert_response :forbidden
   end
 
   test "admin should destroy activity" do

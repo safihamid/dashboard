@@ -1,4 +1,6 @@
 Dashboard::Application.routes.draw do
+  resources :gallery_activities
+
   resources :teacher_bonus_prizes
   resources :teacher_prizes
   resources :prizes

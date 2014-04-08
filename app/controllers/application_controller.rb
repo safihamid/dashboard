@@ -127,8 +127,8 @@ class ApplicationController < ActionController::Base
     # logged in users can save solved levels to a gallery (subject to
     # additional logic in the blockly code because blockly owns
     # which levels are worth saving)
-    if current_user && options[:level_source] && options[:solved?]
-      response[:save_to_gallery_url] = activity_path(options[:activity])
+    if current_user && options[:level_source] && options[:solved?] && options[:activity]
+      response[:save_to_gallery_url] = gallery_activities_path(gallery_activity: {activity_id: options[:activity].id})
     end
 
     # Check if the current level_source has program specific hint, use it if use is set.

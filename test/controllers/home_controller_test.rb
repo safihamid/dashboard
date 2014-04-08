@@ -40,8 +40,10 @@ class HomeControllerTest < ActionController::TestCase
 
   test "logged in user with gallery activities shows gallery" do
     user = create(:user)
-    activity1 = create(:activity, user: user, saved_to_gallery: true)
-    activity2 = create(:activity, user: user, saved_to_gallery: true)
+    activity1 = create(:activity, user: user)
+    GalleryActivity.create!(activity: activity1, user: user)
+    activity2 = create(:activity, user: user)
+    GalleryActivity.create!(activity: activity2, user: user)
     sign_in user
 
     get :index
