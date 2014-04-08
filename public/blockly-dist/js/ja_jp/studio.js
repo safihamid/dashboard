@@ -2249,42 +2249,6 @@ exports.install = function(blockly, skin) {
     return '\n';
   };
   
-  blockly.Blocks.studio_whenWallCollided = {
-    // Block to handle event when a wall/ball collision occurs.
-    helpUrl: '',
-    init: function() {
-      this.setHSV(140, 1.00, 0.74);
-      this.appendDummyInput()
-        .appendTitle(msg.whenWallCollided());
-      this.setPreviousStatement(false);
-      this.setNextStatement(true);
-      this.setTooltip(msg.whenWallCollidedTooltip());
-    }
-  };
-  
-  generator.studio_whenWallCollided = function() {
-    // Generate JavaScript for handling when a wall/ball collision occurs.
-    return '\n';
-  };
-  
-  blockly.Blocks.studio_whenPaddleCollided = {
-    // Block to handle event when a paddle/ball collision occurs.
-    helpUrl: '',
-    init: function() {
-      this.setHSV(140, 1.00, 0.74);
-      this.appendDummyInput()
-        .appendTitle(msg.whenPaddleCollided());
-      this.setPreviousStatement(false);
-      this.setNextStatement(true);
-      this.setTooltip(msg.whenPaddleCollidedTooltip());
-    }
-  };
-  
-  generator.studio_whenPaddleCollided = function() {
-    // Generate JavaScript for handling when a paddle/ball collision occurs.
-    return '\n';
-  };
-  
   blockly.Blocks.studio_whenGameStarts = {
     // Block to handle event when the game starts
     helpUrl: '',
@@ -2513,7 +2477,7 @@ exports.install = function(blockly, skin) {
     helpUrl: '',
     init: function() {
       var dropdown = new blockly.FieldDropdown(this.VALUES);
-      dropdown.setValue(this.VALUES[1][1]);  // default to hardcourt
+      dropdown.setValue(this.VALUES[1][1]);  // default to cave
 
       this.setHSV(312, 0.32, 0.62);
       this.appendDummyInput()
@@ -2527,6 +2491,10 @@ exports.install = function(blockly, skin) {
 
   blockly.Blocks.studio_setBackground.VALUES =
       [[msg.setBackgroundRandom(), 'random'],
+       [msg.setBackgroundCave(), '"cave"'],
+       [msg.setBackgroundSanta(), '"santa"'],
+       [msg.setBackgroundScifi(), '"scifi"'],
+       [msg.setBackgroundUnderwater(), '"underwater"'],
        [msg.setBackgroundHardcourt(), '"hardcourt"'],
        [msg.setBackgroundRetro(), '"retro"']];
 
@@ -2733,15 +2701,16 @@ module.exports = {
       'upButton'
     ],
     'freePlay': true,
+    'showScore': true,
     'map': [
-      [1, 1, 2, 2, 2, 2, 1, 1],
-      [1, 0,16, 0, 0,16, 0, 1],
-      [1, 0, 0, 0, 0, 0, 0, 1],
-      [1, 0, 0, 0, 0, 0, 0, 1],
-      [1, 0,16, 0, 0,16, 0, 1],
-      [1, 0, 0, 0, 0, 0, 0, 1],
-      [1, 0, 0, 0, 0, 0, 0, 1],
-      [1, 0,16, 0, 0,16, 0, 1]
+      [0, 0, 0, 0, 0, 0, 0, 0],
+      [0, 0,16, 0, 0,16, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0, 0],
+      [0, 0,16, 0, 0,16, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0, 0],
+      [0, 0,16, 0, 0,16, 0, 0]
     ],
     'toolbox':
       tb('<block type="studio_whenSpriteClicked"></block> \
@@ -2755,11 +2724,9 @@ module.exports = {
     'startBlocks':
      '<block type="studio_whenGameStarts" deletable="false" x="20" y="20"></block> \
       <block type="studio_whenLeft" deletable="false" x="20" y="120"></block> \
-      <block type="studio_whenRight" deletable="false" x="180" y="120"></block> \
-      <block type="studio_whenUp" deletable="false" x="20" y="220"></block> \
-      <block type="studio_whenDown" deletable="false" x="180" y="220"></block> \
-      <block type="studio_whenPaddleCollided" deletable="false" x="20" y="320"></block> \
-      <block type="studio_whenWallCollided" deletable="false" x="180" y="320"></block>'
+      <block type="studio_whenRight" deletable="false" x="20" y="200"></block> \
+      <block type="studio_whenUp" deletable="false" x="20" y="280"></block> \
+      <block type="studio_whenDown" deletable="false" x="20" y="360"></block>'
   },
 };
 
@@ -2785,11 +2752,9 @@ window.studioMain = function(options) {
 /**
  * Load Skin for Studio.
  */
-// tiles: A 250x200 set of 20 map images.
 // goal: A 20x34 goal image.
 // background: Number of 400x400 background images. Randomly select one if
 // specified, otherwise, use background.png.
-// graph: Colour of optional grid lines, or false.
 
 var skinsBase = require('../skins');
 
@@ -2804,14 +2769,22 @@ exports.load = function(assetUrl, id) {
 
   skin.retro = {
     background: skin.assetUrl('retro_background.png'),
-    tiles: skin.assetUrl('retro_tiles_wall.png'),
-    goalTiles: skin.assetUrl('retro_tiles_goal.png'),
     sprite: skin.assetUrl('retro_paddle.png'),
+  };
+  skin.cave = {
+    background: skin.assetUrl('background_cave.png'),
+  };
+  skin.santa = {
+    background: skin.assetUrl('background_santa.png'),
+  };
+  skin.scifi = {
+    background: skin.assetUrl('background_scifi.png'),
+  };
+  skin.underwater = {
+    background: skin.assetUrl('background_underwater.png'),
   };
 
   // Images
-  skin.tiles = skin.assetUrl('tiles_wall.png');
-  skin.goalTiles = skin.assetUrl('tiles_goal.png');
   skin.goal = skin.assetUrl('goal.png');
   skin.goalSuccess = skin.assetUrl('goal_success.png');
   skin.sprite = skin.assetUrl('paddle.png');
@@ -2845,7 +2818,6 @@ exports.load = function(assetUrl, id) {
                    skin.assetUrl('2_wall_bounce.ogg')];
   
   // Settings
-  skin.graph = config.graph;
   if (config.background !== undefined) {
     var index = Math.floor(Math.random() * config.background);
     skin.background = skin.assetUrl('background' + index + '.png');
@@ -2965,8 +2937,6 @@ var loadLevel = function() {
   Studio.ROWS = Studio.map.length;
   // COLS: Number of tiles across.
   Studio.COLS = Studio.map[0].length;
-  // Initialize the wallMap.
-  initWallMap();
   // Pixel height and width of each maze square (i.e. tile).
   Studio.SQUARE_SIZE = 50;
   Studio.PEGMAN_HEIGHT = skin.pegmanHeight;
@@ -2981,59 +2951,10 @@ var loadLevel = function() {
   Studio.PATH_WIDTH = Studio.SQUARE_SIZE / 3;
 };
 
-
-var initWallMap = function() {
-  Studio.wallMap = new Array(Studio.ROWS);
-  for (var y = 0; y < Studio.ROWS; y++) {
-    Studio.wallMap[y] = new Array(Studio.COLS);
-  }
-};
-
 /**
  * PIDs of async tasks currently executing.
  */
 Studio.pidList = [];
-
-// Map each possible shape to a sprite.
-// Input: Binary string representing Centre/North/East/South/West squares.
-// Output: [x, y] coordinates of each tile's sprite in tiles.png.
-var WALL_TILE_SHAPES = {
-  '1X101': [1, 0],  // Horiz top
-  '11X10': [2, 1],  // Vert right
-  '11XX0': [2, 1],  // Bottom right corner
-  '1XX11': [2, 0],  // Top right corner
-  '1X001': [1, 0],  // Top horiz right end
-  '1X100': [1, 0],  // Top horiz left end
-  '1101X': [0, 1],  // Vert left
-  '110XX': [0, 1],  // Bottom left corner
-  '1X11X': [0, 0],  // Top left corner
-  'null0': [1, 1],  // Empty
-};
-
-var GOAL_TILE_SHAPES = {
-  '1X101': [2, 3],  // Horiz top
-  '1XX11': [3, 3],  // Top right corner
-  '1X001': [3, 3],  // Top horiz right end
-  '1X11X': [0, 2],  // Top left corner
-  '1X100': [0, 2],  // Top horiz left end
-  'null0': [1, 1],  // Empty
-};
-
-// Return a value of '0' if the specified square is not a wall, '1' for
-// a wall, 'X' for out of bounds
-var wallNormalize = function(x, y) {
-  return ((Studio.map[y] === undefined) ||
-          (Studio.map[y][x] === undefined)) ? 'X' :
-            (Studio.map[y][x] & SquareType.WALL) ? '1' : '0';
-};
-
-// Return a value of '0' if the specified square is not a wall, '1' for
-// a wall, 'X' for out of bounds
-var goalNormalize = function(x, y) {
-  return ((Studio.map[y] === undefined) ||
-          (Studio.map[y][x] === undefined)) ? 'X' :
-            (Studio.map[y][x] & SquareType.GOAL) ? '1' : '0';
-};
 
 var drawMap = function() {
   var svg = document.getElementById('svgStudio');
@@ -3066,113 +2987,6 @@ var drawMap = function() {
     tile.setAttribute('x', 0);
     tile.setAttribute('y', 0);
     svg.appendChild(tile);
-  }
-
-  if (skin.graph) {
-    // Draw the grid lines.
-    // The grid lines are offset so that the lines pass through the centre of
-    // each square.  A half-pixel offset is also added to as standard SVG
-    // practice to avoid blurriness.
-    var offset = Studio.SQUARE_SIZE / 2 + 0.5;
-    for (k = 0; k < Studio.ROWS; k++) {
-      var h_line = document.createElementNS(Blockly.SVG_NS, 'line');
-      h_line.setAttribute('y1', k * Studio.SQUARE_SIZE + offset);
-      h_line.setAttribute('x2', Studio.MAZE_WIDTH);
-      h_line.setAttribute('y2', k * Studio.SQUARE_SIZE + offset);
-      h_line.setAttribute('stroke', skin.graph);
-      h_line.setAttribute('stroke-width', 1);
-      svg.appendChild(h_line);
-    }
-    for (k = 0; k < Studio.COLS; k++) {
-      var v_line = document.createElementNS(Blockly.SVG_NS, 'line');
-      v_line.setAttribute('x1', k * Studio.SQUARE_SIZE + offset);
-      v_line.setAttribute('x2', k * Studio.SQUARE_SIZE + offset);
-      v_line.setAttribute('y2', Studio.MAZE_HEIGHT);
-      v_line.setAttribute('stroke', skin.graph);
-      v_line.setAttribute('stroke-width', 1);
-      svg.appendChild(v_line);
-    }
-  }
-
-  // Draw the tiles making up the maze map.
-
-  // Compute and draw the tile for each square.
-  var tileId = 0;
-  for (y = 0; y < Studio.ROWS; y++) {
-    for (x = 0; x < Studio.COLS; x++) {
-      var left;
-      var top;
-      var image;
-      // Compute the tile index.
-      tile = wallNormalize(x, y) +
-          wallNormalize(x, y - 1) +  // North.
-          wallNormalize(x + 1, y) +  // East.
-          wallNormalize(x, y + 1) +  // South.
-          wallNormalize(x - 1, y);   // West.
-
-      // Draw the tile.
-      if (WALL_TILE_SHAPES[tile]) {
-        left = WALL_TILE_SHAPES[tile][0];
-        top = WALL_TILE_SHAPES[tile][1];
-        image = skin.tiles;
-      }
-      else {
-        // Compute the tile index.
-        tile = goalNormalize(x, y) +
-            goalNormalize(x, y - 1) +  // North.
-            goalNormalize(x + 1, y) +  // East.
-            goalNormalize(x, y + 1) +  // South.
-            goalNormalize(x - 1, y);   // West.
-
-        if (!GOAL_TILE_SHAPES[tile]) {
-          // Empty square.  Use null0.
-          tile = 'null0';
-        }
-        left = GOAL_TILE_SHAPES[tile][0];
-        top = GOAL_TILE_SHAPES[tile][1];
-        image = skin.goalTiles;
-      }
-      if (tile != 'null0') {
-        // Tile's clipPath element.
-        var tileClip = document.createElementNS(Blockly.SVG_NS, 'clipPath');
-        tileClip.setAttribute('id', 'tileClipPath' + tileId);
-        var tileClipRect = document.createElementNS(Blockly.SVG_NS, 'rect');
-        tileClipRect.setAttribute('width', Studio.SQUARE_SIZE);
-        tileClipRect.setAttribute('height', Studio.SQUARE_SIZE);
-
-        tileClipRect.setAttribute('x', x * Studio.SQUARE_SIZE);
-        tileClipRect.setAttribute('y', y * Studio.SQUARE_SIZE);
-
-        tileClip.appendChild(tileClipRect);
-        svg.appendChild(tileClip);
-        // Tile sprite.
-        var tileElement = document.createElementNS(Blockly.SVG_NS, 'image');
-        tileElement.setAttribute('id', 'tileElement' + tileId);
-        tileElement.setAttributeNS('http://www.w3.org/1999/xlink',
-                                   'xlink:href',
-                                   image);
-        tileElement.setAttribute('height', Studio.SQUARE_SIZE * 4);
-        tileElement.setAttribute('width', Studio.SQUARE_SIZE * 5);
-        tileElement.setAttribute('clip-path',
-                                 'url(#tileClipPath' + tileId + ')');
-        tileElement.setAttribute('x', (x - left) * Studio.SQUARE_SIZE);
-        tileElement.setAttribute('y', (y - top) * Studio.SQUARE_SIZE);
-        svg.appendChild(tileElement);
-        // Tile animation
-        var tileAnimation = document.createElementNS(Blockly.SVG_NS,
-                                                     'animate');
-        tileAnimation.setAttribute('id', 'tileAnimation' + tileId);
-        tileAnimation.setAttribute('attributeType', 'CSS');
-        tileAnimation.setAttribute('attributeName', 'opacity');
-        tileAnimation.setAttribute('from', 1);
-        tileAnimation.setAttribute('to', 0);
-        tileAnimation.setAttribute('dur', '1s');
-        tileAnimation.setAttribute('begin', 'indefinite');
-        tileElement.appendChild(tileAnimation);
-      }
-
-      tileId++;
-    }
   }
 
   if (Studio.spriteStart_) {
@@ -3236,10 +3050,6 @@ var drawMap = function() {
     wallAnimationIcon.setAttribute('visibility', 'hidden');
     svg.appendChild(wallAnimationIcon);
   }
-};
-
-Studio.calcDistance = function(xDist, yDist) {
-  return Math.sqrt(xDist * xDist + yDist * yDist);
 };
 
 var essentiallyEqual = function(float1, float2, opt_variance) {
@@ -3461,8 +3271,6 @@ Studio.init = function(config) {
           Studio.sprite[Studio.spriteCount] = [];
           Studio.spriteStart_[Studio.spriteCount] = {x: x, y: y};
           Studio.spriteCount++;
-        } else if (Studio.map[y][x] & SquareType.GOAL) {
-          Studio.goalLocated_ = true;
         }
       }
     }
@@ -3475,13 +3283,12 @@ Studio.init = function(config) {
     return visualization.getBoundingClientRect().width;
   };
 
+  // TODO: update this for Studio
   // Block placement default (used as fallback in the share levels)
   config.blockArrangement = {
     'studio_whenGameStarts': { x: 20, y: 20},
     'studio_whenLeft': { x: 20, y: 110},
     'studio_whenRight': { x: 180, y: 110},
-    'studio_whenPaddleCollided': { x: 20, y: 190},
-    'studio_whenWallCollided': { x: 20, y: 270},
   };
 
   config.twitter = twitterOptions;
@@ -3509,8 +3316,6 @@ Studio.init = function(config) {
  * Clear the event handlers and stop the onTick timer.
  */
 Studio.clearEventHandlersKillTickLoop = function() {
-  Studio.whenWallCollided = null;
-  Studio.whenPaddleCollided = null;
   Studio.whenDown = null;
   Studio.whenLeft = null;
   Studio.whenRight = null;
@@ -3554,7 +3359,7 @@ BlocklyApps.reset = function(first) {
   document.getElementById('score').setAttribute('visibility', 'hidden');
 
   // Reset configurable variables
-  Studio.setBackground('hardcourt');
+  Studio.setBackground('cave');
 
   // Move sprites into position.
   for (i = 0; i < Studio.spriteCount; i++) {
@@ -3590,24 +3395,6 @@ BlocklyApps.reset = function(first) {
           skin.goal);
     }
   }
-
-  // Reset the tiles
-  var tileId = 0;
-  for (var y = 0; y < Studio.ROWS; y++) {
-    for (var x = 0; x < Studio.COLS; x++) {
-      // Tile's clipPath element.
-      var tileClip = document.getElementById('tileClipPath' + tileId);
-      if (tileClip) {
-        tileClip.setAttribute('visibility', 'visible');
-      }
-      // Tile sprite.
-      var tileElement = document.getElementById('tileElement' + tileId);
-      if (tileElement) {
-        tileElement.setAttribute('opacity', 1);
-      }
-      tileId++;
-    }
-  }
 };
 
 /**
@@ -3638,7 +3425,8 @@ BlocklyApps.runButtonClick = function() {
     var shareCell = document.getElementById('share-cell');
     shareCell.className = 'share-cell-enabled';
   }
-  if (Studio.goalLocated_) {
+  
+  if (level.showScore) {
     document.getElementById('score').setAttribute('visibility', 'visible');
     Studio.displayScore();
   }
@@ -3728,22 +3516,6 @@ Studio.execute = function() {
   
   code = Blockly.Generator.workspaceToCode(
                                     'JavaScript',
-                                    'studio_whenWallCollided');
-  var whenWallCollidedFunc = codegen.functionFromCode(
-                                     code, {
-                                      BlocklyApps: BlocklyApps,
-                                      Studio: api } );
-
-  code = Blockly.Generator.workspaceToCode(
-                                    'JavaScript',
-                                    'studio_whenPaddleCollided');
-  var whenPaddleCollidedFunc = codegen.functionFromCode(
-                                     code, {
-                                      BlocklyApps: BlocklyApps,
-                                      Studio: api } );
-
-  code = Blockly.Generator.workspaceToCode(
-                                    'JavaScript',
                                     'studio_whenLeft');
   var whenLeftFunc = codegen.functionFromCode(
                                      code, {
@@ -3828,8 +3600,6 @@ Studio.execute = function() {
   BlocklyApps.reset(false);
   
   // Set event handlers and start the onTick timer
-  Studio.whenWallCollided = whenWallCollidedFunc;
-  Studio.whenPaddleCollided = whenPaddleCollidedFunc;
   Studio.whenLeft = whenLeftFunc;
   Studio.whenRight = whenRightFunc;
   Studio.whenUp = whenUpFunc;
@@ -3946,46 +3716,6 @@ Studio.setBackground = function (value) {
   var element = document.getElementById('background');
   element.setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:href',
     skinTheme(value).background);
-
-  // Recompute all of the tiles to determine if they are walls, goals, or empty
-  // TODO: do this once during init and cache the result
-  var tileId = 0;
-  for (var y = 0; y < Studio.ROWS; y++) {
-    for (var x = 0; x < Studio.COLS; x++) {
-      var empty = false;
-      var image;
-      // Compute the tile index.
-      var tile = wallNormalize(x, y) +
-          wallNormalize(x, y - 1) +  // North.
-          wallNormalize(x + 1, y) +  // East.
-          wallNormalize(x, y + 1) +  // South.
-          wallNormalize(x - 1, y);   // West.
-
-      // Draw the tile.
-      if (WALL_TILE_SHAPES[tile]) {
-        image = skinTheme(value).tiles;
-      }
-      else {
-        // Compute the tile index.
-        tile = goalNormalize(x, y) +
-            goalNormalize(x, y - 1) +  // North.
-            goalNormalize(x + 1, y) +  // East.
-            goalNormalize(x, y + 1) +  // South.
-            goalNormalize(x - 1, y);   // West.
-
-        if (!GOAL_TILE_SHAPES[tile]) {
-          empty = true;
-        }
-        image = skinTheme(value).goalTiles;
-      }
-      if (!empty) {
-        element = document.getElementById('tileElement' + tileId);
-        element.setAttributeNS(
-            'http://www.w3.org/1999/xlink', 'xlink:href', image);
-      }
-      tileId++;
-    }
-  }
 };
 
 Studio.setSprite = function (index, value) {
@@ -4075,7 +3805,6 @@ exports.Direction = {
   WEST: 3
 };
 
-exports.PADDLE_BALL_COLLIDE_DISTANCE = 0.7;
 exports.FINISH_COLLIDE_DISTANCE = 0.5;
 exports.SPRITE_COLLIDE_DISTANCE = 0.5;
 exports.DEFAULT_SPRITE_SPEED = 0.1;
@@ -4088,8 +3817,6 @@ exports.Y_TOP_BOUNDARY = -0.2;
  */
 exports.SquareType = {
   OPEN: 0,
-  WALL: 1,
-  GOAL: 2,
   PADDLEFINISH: 8,
   SPRITESTART: 16,
 };
@@ -4610,9 +4337,17 @@ exports.scoreText = function(d){return "Score: "+v(d,"playerScore")+" : "+v(d,"o
 
 exports.setBackgroundRandom = function(d){return "set random scene"};
 
+exports.setBackgroundCave = function(d){return "set cave background"};
+
 exports.setBackgroundHardcourt = function(d){return "set hardcourt scene"};
 
 exports.setBackgroundRetro = function(d){return "set retro scene"};
+
+exports.setBackgroundSanta = function(d){return "set santa background"};
+
+exports.setBackgroundScifi = function(d){return "set sci-fi background"};
+
+exports.setBackgroundUnderwater = function(d){return "set underwater background"};
 
 exports.setBackgroundTooltip = function(d){return "Sets the background image"};
 
@@ -4658,14 +4393,6 @@ exports.setSprite6 = function(d){return "set character 6"};
 
 exports.up = function(d){return "up"};
 
-exports.whenBallInGoal = function(d){return "when ball in goal"};
-
-exports.whenBallInGoalTooltip = function(d){return "Execute the actions below when a ball enters the goal."};
-
-exports.whenBallMissesPaddle = function(d){return "when ball misses paddle"};
-
-exports.whenBallMissesPaddleTooltip = function(d){return "Execute the actions below when a ball misses the paddle."};
-
 exports.whenDown = function(d){return "when Down arrow"};
 
 exports.whenDownTooltip = function(d){return "Execute the actions below when the Down arrow button is pressed."};
@@ -4677,10 +4404,6 @@ exports.whenGameStartsTooltip = function(d){return "Execute the actions below wh
 exports.whenLeft = function(d){return "when Left arrow"};
 
 exports.whenLeftTooltip = function(d){return "Execute the actions below when the Left arrow button is pressed."};
-
-exports.whenPaddleCollided = function(d){return "when ball hits paddle"};
-
-exports.whenPaddleCollidedTooltip = function(d){return "Execute the actions below when a ball collides with a paddle."};
 
 exports.whenRight = function(d){return "when Right arrow"};
 
@@ -4729,10 +4452,6 @@ exports.whenSpriteCollidedWith6 = function(d){return "touches character 6"};
 exports.whenUp = function(d){return "when Up arrow"};
 
 exports.whenUpTooltip = function(d){return "Execute the actions below when the Up arrow button is pressed."};
-
-exports.whenWallCollided = function(d){return "when ball hits wall"};
-
-exports.whenWallCollidedTooltip = function(d){return "Execute the actions below when a ball collides with a wall."};
 
 exports.yes = function(d){return "はい"};
 
