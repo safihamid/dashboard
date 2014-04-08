@@ -127,9 +127,9 @@ class LevelsController < ApplicationController
     @full_width = true
     @artist_builder = true
     @callback = game_levels_path @game
-    @level.x = params[:x]
-    @level.y = params[:y]
-    @level.start_direction = params[:start_direction]
+    @level.x = params[:x].to_i
+    @level.y = params[:y].to_i
+    @level.start_direction = params[:start_direction].to_i
     show
     render :show
   end
