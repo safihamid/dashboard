@@ -69,6 +69,20 @@ class HomeControllerTest < ActionController::TestCase
     assert_select 'h4', text: "Gallery", count: 0
   end
 
+  test "do not show admin links when not admin" do
+    sign_in create(:user)
+
+    get :index
+    assert_select 'a[href=/admin/stats]', 0
+  end
+
+  test "do show admin links when admin" do
+    sign_in create(:admin)
+
+    get :index
+    assert_select 'a[href=/admin/stats]'
+  end
+
 # this exception is actually annoying to handle because it never gets
 # to ActionController (so we can't use the rescue in
 # ApplicationController)

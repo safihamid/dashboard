@@ -133,6 +133,20 @@ class ReportsControllerTest < ActionController::TestCase
 
   generate_admin_only_tests_for :admin_stats
 
+  generate_admin_only_tests_for :admin_gallery
+
+  test "admin_gallery shows most recent 50 gallery items" do
+    sign_in @admin
+
+    100.times do
+      create(:activity, :saved_to_gallery => true)
+    end
+
+    get :admin_gallery
+
+    assert_equal 50, assigns(:activities).count
+  end
+
   test "should get students" do
     get :students
     assert_response :success
