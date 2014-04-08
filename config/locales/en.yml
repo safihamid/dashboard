@@ -83,9 +83,9 @@ en:
     teacher_prize_header: 'Win $1,000 in <a target="_blank" href="http://DonorsChoose.org">DonorsChoose.org</a> rewards (through June 15, 2014, until supplies last)'
     teacher_prize_message: 'In partnership with <a target="_blank" href="http://DonorsChoose.org">DonorsChoose.org</a>, Code.org will offer up to $1,000 in classroom funding to U.S. public school teachers who lead at least 15 students through this course. <a href="http://code.org/educate/20hr">See educator guide for more info.</a> '
     teacher_prize_limits: '(Limit: $1,000 per teacher. <a target="_blank" href="http://help.donorschoose.org/app/answers/detail/a_id/454/kw/code.org">See FAQ for more limits</a>)'
-    teacher_pitch: "Teach the K-8 Intro to Computer Science in your classroom"
+    teacher_pitch: "Teach computer science in your classroom"
     teacher_title: 'Teacher sign up'
-    student_pitch: "Beyond 1 hour: try our K-8 Intro to Computer Science"
+    student_pitch: "Try K-8 Intro to Computer Science"
     student_title: 'Student sign up'
     school_name: 'School Name (optional)'
     school_address: 'School Address (optional)'
