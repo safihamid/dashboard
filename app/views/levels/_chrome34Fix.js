@@ -1,8 +1,14 @@
 /**
- * Fix for Chrome 34 SVG bug
- *  1. Wrap any existing clippath/image pairs in empty svg elements
- *  2. Wrap new clippath/image pairs once added, remove empty wrappers once removed
- *  3. Farmer special case: give the farmer's wrapper svg the "pegman-location" attribute
+ * Workaround for Chrome 34 SVG bug #349701
+ *
+ * Bug details: https://code.google.com/p/chromium/issues/detail?id=349701
+ *   tl;dr: only the first clippath in a given svg element renders
+ *
+ * Workaround: wrap all clippath/image pairs into their own svg elements
+ *
+ * 1. Wrap any existing clippath/image pairs in empty svg elements
+ * 2. Wrap new clippath/image pairs once added, remove empty wrappers once removed
+ * 3. Farmer special case: give the farmer's wrapper svg the "pegman-location" attribute
  */
 
 PEGMAN_ID = 'pegman';
