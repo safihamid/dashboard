@@ -1,4 +1,0 @@
-%ul.gallery
-  - current_user.gallery.limit(5).each do |activity|
-    %li
-      = link_to image_tag(original_image_level_source_path(activity.level_source)), activity.level_source

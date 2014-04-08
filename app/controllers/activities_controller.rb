@@ -92,12 +92,13 @@ class ActivitiesController < ApplicationController
       end
     end
 
+    activity_id = activity.id if activity
     render json: milestone_response(script_level: script_level,
                                     total_lines: total_lines,
                                     trophy_updates: trophy_updates,
                                     solved?: solved,
                                     level_source: level_source,
-                                    activity: activity)
+                                    activity_id: activity_id)
 
     slog(:tag => 'activity_finish',
          :script_level_id => script_level.id,
@@ -239,7 +240,7 @@ class ActivitiesController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def activity_params
-    params[:activity].permit(:saved_to_gallery)
+    params[:activity]
   end
 
   def log_milestone(level_source, params)

@@ -19,9 +19,4 @@ class LevelSourcesControllerTest < ActionController::TestCase
     assert_response :success
     assert_equal([], assigns(:callouts))
   end
-
-  test "generate image routing" do
-    assert_routing({method: "get", path: "/sh/1/generate_image"}, {controller: "level_sources", action: "generate_image", id: "1"})
-  end
-
 end
