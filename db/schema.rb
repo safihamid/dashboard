@@ -24,13 +24,11 @@ ActiveRecord::Schema.define(version: 20140403001037) do
     t.integer  "time"
     t.integer  "test_result"
     t.integer  "level_source_id"
-    t.integer  "lines",            default: 0, null: false
-    t.boolean  "saved_to_gallery"
+    t.integer  "lines",           default: 0, null: false
   end
 
   add_index "activities", ["level_source_id"], name: "index_activities_on_level_source_id", using: :btree
   add_index "activities", ["user_id", "level_id"], name: "index_activities_on_user_id_and_level_id", using: :btree
-  add_index "activities", ["user_id", "saved_to_gallery"], name: "index_activities_on_user_id_and_saved_to_gallery", using: :btree
 
   create_table "activity_hints", force: true do |t|
     t.integer  "activity_id",          null: false
