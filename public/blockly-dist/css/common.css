@@ -99,12 +99,10 @@ button:active {
 button:hover {
   box-shadow: 2px 2px 5px #888888; }
 
-button.disabled, button[disabled=disabled], button:disabled {
+button.disabled, button[disabled=disabled] {
   border: 1px solid #c7c7c7;
   background-color: #c7c7c7;
   box-shadow: none; }
-  button.disabled:hover, button[disabled=disabled]:hover, button:disabled:hover {
-    box-shadow: none; }
 
 button.disabled:hover > img {
   opacity: 0.6; }
@@ -406,31 +404,20 @@ input[type="radio"] {
 
 #ok-button {
   background-color: #ffa400;
-  border: 1px solid #ffa400;
   color: white;
   min-width: 100px; }
 
 #again-button {
   background-color: #b9bf15;
-  border: 1px solid #b9bf15;
   color: white;
   margin-left: 0px;
   margin-right: 10px; }
 
 #continue-button {
   background-color: #ffa400;
-  border: 1px solid #ffa400;
   color: white;
   margin-left: 0px;
   margin-right: 10px; }
-
-#save-to-gallery-button {
-  background-color: #7665a0;
-  border: 1px solid #7665a0;
-  color: white; }
-  #save-to-gallery-button:disabled {
-    color: #7665a0;
-    background-color: lightgrey; }
 
 .modal-image {
   width: 100px;
