@@ -63,6 +63,7 @@ namespace :seed do
       Game.create!(id: game_id += 1, name: "Custom", app: "turtle")
       Game.create!(id: game_id += 1, name: 'Flappy', app: 'flappy', intro_video: Video.find_by_key('flappy_intro'))
       Game.create!(id: game_id += 1, name: "CustomMaze", app: "maze")
+      Game.create!(id: game_id += 1, name: "Studio", app: "studio")
    end
   end
 
