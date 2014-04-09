@@ -1,0 +1,28 @@
+#!/usr/bin/env ruby
+$stage = nil
+$level = 0
+$concepts = []
+$skin = nil
+
+def stage(name)
+  $stage = name
+  $level = 0
+  $concepts = []
+  $skin = nil
+end
+
+def concepts(*items)
+  $concepts = items
+end
+
+def skin(name)
+  $skin = name
+end
+
+def level(uri)
+  $level += 1
+  game, level = uri.split('://')
+  puts "#{game}\tLevel#{$level}\t#{level}\t#{$skin}\t#{$concepts.join(',')}\t"
+end
+
+Dir.glob('*.script').each { |script| load script }
