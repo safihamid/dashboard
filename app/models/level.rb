@@ -98,7 +98,7 @@ class Level < ActiveRecord::Base
           <block type="math_random_float"></block>
         </category>
         <category name="Variables" custom="VARIABLE"></category>
-      </xml>'.gsub("\n", "\\n")
+      </xml>'
     when 'maze'
       '<xml id="toolbox" style="display: none;">
         <block type="maze_moveForward"></block>
@@ -125,7 +125,7 @@ class Level < ActiveRecord::Base
           <title name="DIR">isPathRight</title>
         </block>
         <block type="maze_ifElse"></block>
-      </xml>'.gsub("\n", "\\n")
+      </xml>'
     else
       '<xml></xml>'
     end
