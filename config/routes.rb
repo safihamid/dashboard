@@ -1,4 +1,6 @@
 Dashboard::Application.routes.draw do
+  resources :gallery_activities
+
   resources :teacher_bonus_prizes
   resources :teacher_prizes
   resources :prizes
@@ -7,9 +9,13 @@ Dashboard::Application.routes.draw do
   resources :concepts
   resources :activities
   resources :sections, only: [:new, :create, :edit, :update, :destroy]
-  resources :level_sources, path: '/sh/', only: [:show, :edit]
+  resources :level_sources, path: '/sh/', only: [:show, :edit] do
+    member do
+      get 'generate_image'
+      get 'original_image'
+    end
+  end
   get '/share/:id', to: redirect('/sh/%{id}')
-  get '/sh/:id/generate_image', to: 'level_sources#generate_image'
 
   resources :level_source_hints
   get '/add_hint/:level_source_id', :to => 'level_source_hints#add_hint', as: 'add_hint'
@@ -90,6 +96,7 @@ Dashboard::Application.routes.draw do
   get '/admin/usage', to: 'reports#all_usage', as: 'all_usage'
   get '/admin/stats', to: 'reports#admin_stats', as: 'admin_stats'
   get '/admin/progress', to: 'reports#admin_progress', as: 'admin_progress'
+  get '/admin/gallery', to: 'reports#admin_gallery', as: 'admin_gallery'
   get '/admin/assume_identity', to: 'reports#assume_identity_form', as: 'assume_identity_form'
   post '/admin/assume_identity', to: 'reports#assume_identity', as: 'assume_identity'
   get '/stats/usage/:user_id', to: 'reports#usage', as: 'usage'

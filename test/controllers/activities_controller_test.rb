@@ -3,9 +3,12 @@ require 'test_helper'
 class ActivitiesControllerTest < ActionController::TestCase
   include Devise::TestHelpers
   setup do
-    @activity = create(:activity)
-    @user = create(:admin)
+    @user = create(:user)
     sign_in(@user)
+
+    @activity = create(:activity, user: @user)
+
+    @admin = create(:admin)
   end
 
   test "should get index" do
@@ -49,6 +52,7 @@ class ActivitiesControllerTest < ActionController::TestCase
     assert_response :success
     parsed_response = JSON.parse @response.body
     assert_equal parsed_response["redirect"], script_level_path(script_level_next.script, script_level_next)
+    assert_equal parsed_response["save_to_gallery_url"], "/gallery_activities?gallery_activity%5Bactivity_id%5D=#{assigns(:activity).id}"
   end
 
   test "should log with anonymous milestone" do
@@ -72,21 +76,42 @@ class ActivitiesControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test "should get edit" do
+  test "admin should get edit" do
+    sign_in @admin
+
     get :edit, id: @activity
     assert_response :success
   end
 
-  test "should update activity" do
+  test "admin should update activity" do
+    sign_in @admin
     patch :update, id: @activity, activity: {  }
     assert_redirected_to activity_path(assigns(:activity))
   end
 
-  test "should destroy activity" do
+  test "user cannot update activity" do
+    sign_in @user
+    patch :update, id: @activity, activity: { }
+
+    assert_response :forbidden
+  end
+
+  test "admin should destroy activity" do
+    sign_in @admin
     assert_difference('Activity.count', -1) do
       delete :destroy, id: @activity
     end
 
     assert_redirected_to activities_path
   end
+
+  test "user cannot destroy activity" do
+    sign_in @user
+    assert_no_difference('Activity.count') do
+      delete :destroy, id: @activity
+    end
+
+    assert_response 403
+  end
+
 end

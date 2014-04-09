@@ -43,7 +43,7 @@ class ActivitiesController < ApplicationController
       authorize! :create, Activity
       authorize! :create, UserLevel
 
-      activity = Activity.create!(
+      @activity = Activity.create!(
           user: current_user,
           level: level,
           action: solved,
@@ -92,13 +92,12 @@ class ActivitiesController < ApplicationController
       end
     end
 
-    activity_id = activity.id if activity
     render json: milestone_response(script_level: script_level,
                                     total_lines: total_lines,
                                     trophy_updates: trophy_updates,
                                     solved?: solved,
                                     level_source: level_source,
-                                    activity_id: activity_id)
+                                    activity: @activity)
 
     slog(:tag => 'activity_finish',
          :script_level_id => script_level.id,

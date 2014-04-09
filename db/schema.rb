@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140403195947) do
+ActiveRecord::Schema.define(version: 20140408202946) do
 
   create_table "activities", force: true do |t|
     t.integer  "user_id"
@@ -94,6 +94,15 @@ ActiveRecord::Schema.define(version: 20140403195947) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "gallery_activities", force: true do |t|
+    t.integer  "user_id",     null: false
+    t.integer  "activity_id", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "gallery_activities", ["user_id", "activity_id"], name: "index_gallery_activities_on_user_id_and_activity_id", unique: true, using: :btree
 
   create_table "games", force: true do |t|
     t.string   "name"

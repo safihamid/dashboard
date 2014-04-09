@@ -19,6 +19,10 @@ class User < ActiveRecord::Base
   attr_accessor :login
 
   has_many :user_levels
+  has_many :activities
+
+  has_many :gallery_activities, -> {order 'id desc'}
+
   has_many :sections
 
   has_many :user_trophies
