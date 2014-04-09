@@ -12,7 +12,9 @@ namespace :seed do
       end
     end
 
-    Rake::Task["youtube:thumbnails"].invoke
+    if !Rails.env.test?
+      Rake::Task["youtube:thumbnails"].invoke
+    end
   end
 
   task concepts: :environment do
@@ -61,10 +63,12 @@ namespace :seed do
       Game.create!(id: game_id += 1, name: "Custom", app: "turtle")
       Game.create!(id: game_id += 1, name: 'Flappy', app: 'flappy', intro_video: Video.find_by_key('flappy_intro'))
       Game.create!(id: game_id += 1, name: "CustomMaze", app: "maze")
+      Game.create!(id: game_id += 1, name: "Studio", app: "studio")
    end
   end
 
   COL_GAME = 'Game'
+  COL_STAGE = 'Stage'
   COL_NAME = 'Name'
   COL_LEVEL = 'Level'
   COL_CONCEPTS = 'Concepts'
@@ -121,7 +125,12 @@ namespace :seed do
             script_level.save!
             old_script_levels.delete(script_level)
           else
-            ScriptLevel.where(script: script, level: level, chapter: (index + 1), game_chapter: (game_index[game.id] += 1)).first_or_create
+            script_level = ScriptLevel.where(script: script, level: level, chapter: (index + 1), game_chapter: (game_index[game.id] += 1)).first_or_create
+          end
+          if row[COL_STAGE]
+            stage = Stage.where(name: row[COL_STAGE], script: script).first_or_create
+            script_level.update(stage: stage)
+            script_level.move_to_bottom
           end
         end
         # old_script_levels now contains script_levels that were removed from this csv-based script - clean them up:

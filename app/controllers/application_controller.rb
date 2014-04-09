@@ -129,6 +129,13 @@ class ApplicationController < ActionController::Base
       response[:level_source] = level_source_url(options[:level_source])
     end
 
+    # logged in users can save solved levels to a gallery (subject to
+    # additional logic in the blockly code because blockly owns
+    # which levels are worth saving)
+    if current_user && options[:level_source] && options[:solved?] && options[:activity]
+      response[:save_to_gallery_url] = gallery_activities_path(gallery_activity: {activity_id: options[:activity].id})
+    end
+
     # Check if the current level_source has program specific hint, use it if use is set.
     if ActivityHint.is_experimenting_feedback? && options[:level_source]
       experiment_hints = []
@@ -148,9 +155,9 @@ class ApplicationController < ActionController::Base
 
       # Record this activity
       if response[:hint]
-        if options[:activity_id]
+        if options[:activity]
           ActivityHint.create!(
-              activity_id: options[:activity_id],
+              activity_id: options[:activity].id,
               level_source_hint_id: response[:hint].id
           )
         end
@@ -159,8 +166,8 @@ class ApplicationController < ActionController::Base
     end
 
     # Set up hint design experiment
-    if ExperimentActivity.is_experimenting_feedback_design?
-      response[:design] = ExperimentActivity.get_feedback_design(options[:activity_id])
+    if ExperimentActivity.is_experimenting_feedback_design? && options[:activity]
+      response[:design] = ExperimentActivity.get_feedback_design(options[:activity].id)
     end
 
     response

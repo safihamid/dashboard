@@ -1140,6 +1140,15 @@ exports.displayFeedback = function(options) {
     });
   }
 
+  // set up the Save To Gallery button if necessary
+  var saveToGalleryButton = feedback.querySelector('#save-to-gallery-button');
+  if (saveToGalleryButton && options.response && options.response.save_to_gallery_url) {
+    dom.addClickTouchEvent(saveToGalleryButton, function() {
+      $.post(options.response.save_to_gallery_url,
+             function() { $('#save-to-gallery-button').prop('disabled', true).text("Saved!"); });
+    });
+  }
+
   feedbackDialog.show({
     backdrop: (options.app === 'flappy' ? 'static' : true)
   });
@@ -1360,7 +1369,8 @@ exports.createSharingButtons = function(options) {
       facebookUrl: "https://www.facebook.com/sharer/sharer.php?u=" +
                     options.response.level_source,
       twitterUrl: twitterUrl,
-      makeYourOwn: options.makeYourOwn
+      makeYourOwn: options.makeYourOwn,
+      saveToGalleryUrl: options.saveToGalleryUrl
     }
   });
   var sharingInput = sharingUrl.querySelector('#sharing-input');
@@ -4875,6 +4885,7 @@ var drawMap = function() {
   // Add pegman.
   var pegmanIcon = document.createElementNS(Blockly.SVG_NS, 'image');
   pegmanIcon.setAttribute('id', 'pegman');
+  pegmanIcon.setAttribute('class', 'pegman-location');
   pegmanIcon.setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:href',
                             skin.avatar);
   pegmanIcon.setAttribute('height', Maze.PEGMAN_HEIGHT);
@@ -5057,7 +5068,7 @@ var dirtPositionToIndex = function(row, col) {
 };
 
 var createDirt = function(row, col) {
-  var pegmanIcon = document.getElementById('pegman');
+  var pegmanElement = document.getElementsByClassName('pegman-location')[0];
   var svg = document.getElementById('svgMaze');
   var index = dirtPositionToIndex(row, col);
   // Create clip path.
@@ -5069,7 +5080,7 @@ var createDirt = function(row, col) {
   rect.setAttribute('width', Maze.DIRT_WIDTH);
   rect.setAttribute('height', Maze.DIRT_HEIGHT);
   clip.appendChild(rect);
-  svg.insertBefore(clip, pegmanIcon);
+  svg.insertBefore(clip, pegmanElement);
   // Create image.
   var img = document.createElementNS(Blockly.SVG_NS, 'image');
   img.setAttributeNS(
@@ -5078,7 +5089,7 @@ var createDirt = function(row, col) {
   img.setAttribute('width', Maze.DIRT_WIDTH * Maze.DIRT_COUNT);
   img.setAttribute('clip-path', 'url(#dirtClip' + index + ')');
   img.setAttribute('id', 'dirt' + index);
-  svg.insertBefore(img, pegmanIcon);
+  svg.insertBefore(img, pegmanElement);
 };
 
 /**
@@ -5111,15 +5122,14 @@ var updateDirt = function(row, col) {
 };
 
 var removeDirt = function(row, col) {
-  var svg = document.getElementById('svgMaze');
   var index = dirtPositionToIndex(row, col);
   var img = document.getElementById('dirt' + index);
   if (img) {
-    svg.removeChild(img);
+    img.parentNode.removeChild(img);
   }
   var clip = document.getElementById('dirtClip' + index);
   if (clip) {
-    svg.removeChild(clip);
+    clip.parentNode.removeChild(clip);
   }
 };
 
@@ -6683,7 +6693,7 @@ escape = escape || function (html){
 };
 var buf = [];
 with (locals || {}) { (function(){ 
- buf.push('');1; var msg = require('../../locale/da_dk/common'); ; buf.push('\n\n');3; if (data.ok) {; buf.push('  <div class="farSide" style="padding: 1ex 3ex 0">\n    <button id="ok-button" class="secondary">\n      ', escape((5,  msg.dialogOK() )), '\n    </button>\n  </div>\n');8; };; buf.push('\n');9; if (data.previousLevel) {; buf.push('  <button id="back-button" class="launch">\n    ', escape((10,  msg.backToPreviousLevel() )), '\n  </button>\n');12; };; buf.push('\n');13; if (data.tryAgain) {; buf.push('  <button id="again-button" class="launch">\n    ', escape((14,  msg.tryAgain() )), '\n  </button>\n');16; };; buf.push('\n');17; if (data.nextLevel) {; buf.push('  <button id="continue-button" class="launch">\n    ', escape((18,  msg.continue() )), '\n  </button>\n');20; };; buf.push('\n');21; if (data.facebookUrl) {; buf.push('  <a href=', escape((21,  data.facebookUrl )), ' target="_blank">\n    <img src=', escape((22,  BlocklyApps.assetUrl("media/facebook_purple.png") )), '>\n  </a>\n');24; };; buf.push('\n');25; if (data.twitterUrl) {; buf.push('  <a href=', escape((25,  data.twitterUrl )), ' target="_blank">\n    <img src=', escape((26,  BlocklyApps.assetUrl("media/twitter_purple.png") )), ' >\n  </a>\n  <br>\n');29; };; buf.push('\n');30; if (data.sharingUrl) {; buf.push('  <input type="text" id="sharing-input" value=', escape((30,  data.sharingUrl )), ' >\n');31; };; buf.push(''); })();
+ buf.push('');1; var msg = require('../../locale/da_dk/common'); ; buf.push('\n\n');3; if (data.ok) {; buf.push('  <div class="farSide" style="padding: 1ex 3ex 0">\n    <button id="ok-button" class="secondary">\n      ', escape((5,  msg.dialogOK() )), '\n    </button>\n  </div>\n');8; };; buf.push('\n');9; if (data.previousLevel) {; buf.push('  <button id="back-button" class="launch">\n    ', escape((10,  msg.backToPreviousLevel() )), '\n  </button>\n');12; };; buf.push('\n');13; if (data.tryAgain) {; buf.push('  <button id="again-button" class="launch">\n    ', escape((14,  msg.tryAgain() )), '\n  </button>\n');16; };; buf.push('\n');17; if (data.nextLevel) {; buf.push('  <button id="continue-button" class="launch">\n    ', escape((18,  msg.continue() )), '\n  </button>\n');20; };; buf.push('\n');21; if (data.facebookUrl) {; buf.push('  <a href=', escape((21,  data.facebookUrl )), ' target="_blank">\n    <img src=', escape((22,  BlocklyApps.assetUrl("media/facebook_purple.png") )), '>\n  </a>\n');24; };; buf.push('\n');25; if (data.twitterUrl) {; buf.push('  <a href=', escape((25,  data.twitterUrl )), ' target="_blank">\n    <img src=', escape((26,  BlocklyApps.assetUrl("media/twitter_purple.png") )), ' >\n  </a>\n  <br>\n');29; };; buf.push('\n');30; if (data.sharingUrl) {; buf.push('  <input type="text" id="sharing-input" value=', escape((30,  data.sharingUrl )), ' >\n');31; };; buf.push('\n');32; if (data.saveToGalleryUrl) {; buf.push('  <button id="save-to-gallery-button" class="launch">\n    ', escape((33,  msg.saveToGallery() )), '\n  </button>\n');35; };; buf.push(''); })();
 } 
 return buf.join('');
 };
@@ -7022,6 +7032,8 @@ exports.totalNumLinesOfCodeWritten = function(d){return "I alt: "+p(d,"numLines"
 exports.tryAgain = function(d){return "Prøv igen"};
 
 exports.backToPreviousLevel = function(d){return "Tilbage til forrige niveau"};
+
+exports.saveToGallery = function(d){return "Save to your gallery"};
 
 exports.typeCode = function(d){return "Skriv din JavaScript kode under disse instruktioner."};
 

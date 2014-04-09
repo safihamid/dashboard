@@ -822,7 +822,7 @@ a.download-video {
   }
 }
 
-#warning-banner {
+@mixin warning-banner {
   font-size: 36px;
   line-height: 36px;
   background-color: $dark_color;
@@ -835,6 +835,19 @@ a.download-video {
       background-color: $dark_color;
     }
   }
+}
+
+#warning-banner {
+  @include warning-banner;
+}
+
+#warning-banner-chrome {
+  @include warning-banner;
+  color: white;
+  font-size: 22px;
+  line-height: 22px;
+  margin-bottom: 5px;
+  padding: 5px;
 }
 
 .quiet_links {
@@ -968,3 +981,16 @@ a.download-video {
     float: left;
   }
 }
+
+ul.gallery {
+  margin-left: 0;
+  li {
+    float: left;
+    list-style-type: none;
+    img {
+      border: 10px groove lightgray;
+      margin: 5px;
+    }
+  }
+}
+

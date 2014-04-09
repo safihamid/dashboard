@@ -93,6 +93,7 @@
         onInitializeListeners.forEach(function(listener) {
           listener();
         });
+        #{render(partial: 'levels/chrome34Fix', formats: :js) if chrome_version == 34}
       },
       locale: '#{js_locale}',
       containerId: 'blocklyApp',

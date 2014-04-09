@@ -78,6 +78,7 @@ private
   def present_level(script_level)
     @level = script_level.level
     @game = @level.game
+    @stage = script_level.stage
 
     set_videos_and_blocks_and_callouts
 

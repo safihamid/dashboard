@@ -48,6 +48,13 @@ module ApplicationHelper
     match ? match[1].to_i : 0
   end
 
+  # Returns Chrome version or 0 if not Chrome
+  def chrome_version
+    browser = request.user_agent
+    match = /Chrome\/(\d+)\./.match(browser)
+    match ? match[1].to_i : 0
+  end
+
   def youtube_url(code, args={})
     defaults = {
       v: code,
