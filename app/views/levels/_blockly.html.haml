@@ -165,6 +165,7 @@
         #{("sliderSpeed: '" + slider_speed + "',") if slider_speed}
         #{("maze: '" + maze + "',") if maze}
         #{("toolbox: '" + escape_javascript(@toolbox_blocks) + "',") if @toolbox_blocks}
+        #{("blockEditor: '" + @block_editor.to_json + "',") if @block_editor}
         #{("initialX: #{@level[:x]},") if @level[:x]}
         #{("initialY: #{@level[:y]},") if @level[:y]}
         #{("startDirection: #{@level[:start_direction]},") if @level[:start_direction]}

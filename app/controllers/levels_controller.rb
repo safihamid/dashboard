@@ -37,6 +37,7 @@ class LevelsController < ApplicationController
 
   # Action for using blockly workspace as a toolbox/startblock editor.
   # Expects params[:type] which can be either 'toolbox_blocks' or 'start_blocks'
+  # TODO(toby): Support required blocks editor as well.
   def edit_blocks
     authorize! :manage, :level
     @level = Level.find(params[:level_id])
@@ -44,6 +45,7 @@ class LevelsController < ApplicationController
     @toolbox_blocks = @level.complete_toolbox  # Provide complete toolbox for editing start/toolbox blocks.
     @game = @level.game
     @full_width = true
+    @block_editor = true
     @callback = game_level_update_blocks_path @game, @level, params[:type]
     show
     render :show
