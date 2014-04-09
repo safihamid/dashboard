@@ -1,0 +1,32 @@
+#!/usr/bin/env ruby
+
+require 'uri'
+
+$stage = nil
+$level = 0
+$concepts = []
+$skin = nil
+
+def stage(name)
+  $stage = name
+end
+
+def concepts(*items)
+  $concepts = items
+end
+
+def skin(name)
+  $skin = name
+end
+
+def level(uri)
+  $level += 1
+  game, level = uri.split('://')
+  puts "#{game}\tLevel#{$level}\t#{level}\t#{$skin}\t#{$concepts.join(',')}\t"
+end
+
+[
+  'sample.script',
+].each do |script|
+  load script
+end
