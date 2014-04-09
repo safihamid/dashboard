@@ -27,7 +27,7 @@ class LevelSourcesController < ApplicationController
   end
   
   def original_image
-    send_data LevelSourceImage.find_by_level_source_id(params[:id]).image
+    send_data LevelSourceImage.find_by_level_source_id(params[:id]).image, :stream => 'false', :type => 'image/png', :disposition => 'inline'
   end
 
   protected
