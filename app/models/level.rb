@@ -11,9 +11,11 @@ class Level < ActiveRecord::Base
   belongs_to :user
   #accepts_nested_attributes_for :concepts
 
-  BUILDER = self.find_by_name('builder')
-
   validates_length_of :name, within: 1..70
+
+  def self.builder
+    @@level_builder ||= find_by_name('builder')
+  end
 
   def videos
     ([game.intro_video] + concepts.map(&:video)).reject(&:nil?)

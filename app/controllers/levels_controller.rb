@@ -122,7 +122,7 @@ class LevelsController < ApplicationController
 
   def artist_builder
     authorize! :create, :level
-    @level = Level::BUILDER
+    @level = Level.builder
     @game = @level.game
     @full_width = true
     @artist_builder = true
