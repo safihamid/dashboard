@@ -9,6 +9,9 @@ $skin = nil
 
 def stage(name)
   $stage = name
+  $level = 0
+  $concepts = []
+  $skin = nil
 end
 
 def concepts(*items)
@@ -25,8 +28,4 @@ def level(uri)
   puts "#{game}\tLevel#{$level}\t#{level}\t#{$skin}\t#{$concepts.join(',')}\t"
 end
 
-[
-  'sample.script',
-].each do |script|
-  load script
-end
+Dir.glob('*.script').each { |script| load script }
