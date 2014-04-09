@@ -1,7 +1,4 @@
 #!/usr/bin/env ruby
-
-require 'uri'
-
 $stage = nil
 $level = 0
 $concepts = []
