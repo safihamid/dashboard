@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140403001037) do
+ActiveRecord::Schema.define(version: 20140408202946) do
 
   create_table "activities", force: true do |t|
     t.integer  "user_id"
@@ -94,6 +94,15 @@ ActiveRecord::Schema.define(version: 20140403001037) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "gallery_activities", force: true do |t|
+    t.integer  "user_id",     null: false
+    t.integer  "activity_id", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "gallery_activities", ["user_id", "activity_id"], name: "index_gallery_activities_on_user_id_and_activity_id", unique: true, using: :btree
 
   create_table "games", force: true do |t|
     t.string   "name"
@@ -184,10 +193,13 @@ ActiveRecord::Schema.define(version: 20140403001037) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "game_chapter"
+    t.integer  "stage_id"
+    t.integer  "position"
   end
 
   add_index "script_levels", ["level_id"], name: "index_script_levels_on_level_id", using: :btree
   add_index "script_levels", ["script_id"], name: "index_script_levels_on_script_id", using: :btree
+  add_index "script_levels", ["stage_id"], name: "index_script_levels_on_stage_id", using: :btree
 
   create_table "scripts", force: true do |t|
     t.string   "name"
@@ -211,6 +223,14 @@ ActiveRecord::Schema.define(version: 20140403001037) do
 
   add_index "sections", ["code"], name: "index_sections_on_code", unique: true, using: :btree
   add_index "sections", ["user_id", "name"], name: "index_sections_on_user_id_and_name", unique: true, using: :btree
+
+  create_table "stages", force: true do |t|
+    t.string   "name",       null: false
+    t.integer  "position"
+    t.integer  "script_id",  null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "teacher_bonus_prizes", force: true do |t|
     t.integer  "prize_provider_id", null: false

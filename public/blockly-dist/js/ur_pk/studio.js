@@ -1140,6 +1140,15 @@ exports.displayFeedback = function(options) {
     });
   }
 
+  // set up the Save To Gallery button if necessary
+  var saveToGalleryButton = feedback.querySelector('#save-to-gallery-button');
+  if (saveToGalleryButton && options.response && options.response.save_to_gallery_url) {
+    dom.addClickTouchEvent(saveToGalleryButton, function() {
+      $.post(options.response.save_to_gallery_url,
+             function() { $('#save-to-gallery-button').prop('disabled', true).text("Saved!"); });
+    });
+  }
+
   feedbackDialog.show({
     backdrop: (options.app === 'flappy' ? 'static' : true)
   });
@@ -1360,7 +1369,8 @@ exports.createSharingButtons = function(options) {
       facebookUrl: "https://www.facebook.com/sharer/sharer.php?u=" +
                     options.response.level_source,
       twitterUrl: twitterUrl,
-      makeYourOwn: options.makeYourOwn
+      makeYourOwn: options.makeYourOwn,
+      saveToGalleryUrl: options.saveToGalleryUrl
     }
   });
   var sharingInput = sharingUrl.querySelector('#sharing-input');
@@ -2082,6 +2092,11 @@ exports.setSprite = function (id, spriteIndex, value) {
   Studio.setSprite(spriteIndex, value);
 };
 
+exports.saySprite = function (id, spriteIndex, text) {
+  BlocklyApps.highlight(id);
+  Studio.saySprite(spriteIndex, text);
+};
+
 exports.setBackground = function (id, value) {
   BlocklyApps.highlight(id);
   Studio.setBackground(value);
@@ -2154,7 +2169,8 @@ var codegen = require('../codegen');
 var generateSetterCode = function (opts) {
   var value = opts.ctx.getTitleValue('VALUE');
   if (value === "random") {
-    var allValues = opts.ctx.VALUES.slice(1).map(function (item) {
+    var randomIndex = opts.random || 1;
+    var allValues = opts.ctx.VALUES.slice(randomIndex).map(function (item) {
       return item[1];
     });
     value = 'Studio.random([' + allValues + '])';
@@ -2162,13 +2178,16 @@ var generateSetterCode = function (opts) {
 
   if (opts.index) {
     return 'Studio.' + opts.name + '(\'block_id_' + opts.ctx.id + '\', ' +
-      opts.ctx[opts.index + 'S'][opts.ctx.getTitleValue(opts.index)][1] +
-      ', ' + value + ');\n';
+      opts.ctx.getTitleValue(opts.index) + ', ' + value + ');\n';
   }
   else {
     return 'Studio.' + opts.name + '(\'block_id_' + opts.ctx.id + '\', ' +
       value + ');\n';
   }
+};
+
+exports.setSpriteCount = function(blockly, count) {
+  blockly.Blocks.studio_spriteCount = count;
 };
 
 // Install extensions to Blockly's language and JavaScript generator.
@@ -2177,6 +2196,8 @@ exports.install = function(blockly, skin) {
   var generator = blockly.Generator.get('JavaScript');
   blockly.JavaScript = generator;
 
+  blockly.Blocks.studio_spriteCount = 6;
+  
   blockly.Blocks.studio_whenLeft = {
     // Block to handle event when the Left arrow button is pressed.
     helpUrl: '',
@@ -2249,42 +2270,6 @@ exports.install = function(blockly, skin) {
     return '\n';
   };
   
-  blockly.Blocks.studio_whenWallCollided = {
-    // Block to handle event when a wall/ball collision occurs.
-    helpUrl: '',
-    init: function() {
-      this.setHSV(140, 1.00, 0.74);
-      this.appendDummyInput()
-        .appendTitle(msg.whenWallCollided());
-      this.setPreviousStatement(false);
-      this.setNextStatement(true);
-      this.setTooltip(msg.whenWallCollidedTooltip());
-    }
-  };
-  
-  generator.studio_whenWallCollided = function() {
-    // Generate JavaScript for handling when a wall/ball collision occurs.
-    return '\n';
-  };
-  
-  blockly.Blocks.studio_whenPaddleCollided = {
-    // Block to handle event when a paddle/ball collision occurs.
-    helpUrl: '',
-    init: function() {
-      this.setHSV(140, 1.00, 0.74);
-      this.appendDummyInput()
-        .appendTitle(msg.whenPaddleCollided());
-      this.setPreviousStatement(false);
-      this.setNextStatement(true);
-      this.setTooltip(msg.whenPaddleCollidedTooltip());
-    }
-  };
-  
-  generator.studio_whenPaddleCollided = function() {
-    // Generate JavaScript for handling when a paddle/ball collision occurs.
-    return '\n';
-  };
-  
   blockly.Blocks.studio_whenGameStarts = {
     // Block to handle event when the game starts
     helpUrl: '',
@@ -2314,16 +2299,21 @@ exports.install = function(blockly, skin) {
       this.setInputsInline(true);
       this.setNextStatement(true);
       this.setTooltip(msg.whenSpriteClickedTooltip());
-    }
+    },
   };
 
-  blockly.Blocks.studio_whenSpriteClicked.SPRITE =
-      [[msg.whenSpriteClicked1(), '0'],
-       [msg.whenSpriteClicked2(), '1'],
-       [msg.whenSpriteClicked3(), '2'],
-       [msg.whenSpriteClicked4(), '3'],
-       [msg.whenSpriteClicked5(), '4'],
-       [msg.whenSpriteClicked6(), '5']];
+  blockly.Blocks.studio_whenSpriteClicked.SPRITE = function () {
+    var array = [[msg.whenSpriteClicked1(), '0'],
+                 [msg.whenSpriteClicked2(), '1'],
+                 [msg.whenSpriteClicked3(), '2'],
+                 [msg.whenSpriteClicked4(), '3'],
+                 [msg.whenSpriteClicked5(), '4'],
+                 [msg.whenSpriteClicked6(), '5']];
+    // Access private menuGenerator_ and trimOptions_ to guarantee trimming.
+    this.menuGenerator_ = array.slice(0, blockly.Blocks.studio_spriteCount);
+    this.trimOptions_();
+    return this.menuGenerator_;
+  };
   
   generator.studio_whenSpriteClicked = function() {
     // Generate JavaScript for handle when a sprite is clicked event.
@@ -2335,7 +2325,7 @@ exports.install = function(blockly, skin) {
     helpUrl: '',
     init: function() {
       var dropdown = new blockly.FieldDropdown(this.SPRITE2);
-      dropdown.setValue(this.SPRITE2[1][1]); // default to 2
+      dropdown.setValue('1'); // default to 2
 
       this.setHSV(140, 1.00, 0.74);
       this.appendDummyInput()
@@ -2349,21 +2339,31 @@ exports.install = function(blockly, skin) {
     }
   };
 
-  blockly.Blocks.studio_whenSpriteCollided.SPRITE1 =
-      [[msg.whenSpriteCollided1(), '0'],
-       [msg.whenSpriteCollided2(), '1'],
-       [msg.whenSpriteCollided3(), '2'],
-       [msg.whenSpriteCollided4(), '3'],
-       [msg.whenSpriteCollided5(), '4'],
-       [msg.whenSpriteCollided6(), '5']];
-  
-  blockly.Blocks.studio_whenSpriteCollided.SPRITE2 =
-      [[msg.whenSpriteCollidedWith1(), '0'],
-       [msg.whenSpriteCollidedWith2(), '1'],
-       [msg.whenSpriteCollidedWith3(), '2'],
-       [msg.whenSpriteCollidedWith4(), '3'],
-       [msg.whenSpriteCollidedWith5(), '4'],
-       [msg.whenSpriteCollidedWith6(), '5']];
+  blockly.Blocks.studio_whenSpriteCollided.SPRITE1 = function () {
+    var array = [[msg.whenSpriteCollided1(), '0'],
+                 [msg.whenSpriteCollided2(), '1'],
+                 [msg.whenSpriteCollided3(), '2'],
+                 [msg.whenSpriteCollided4(), '3'],
+                 [msg.whenSpriteCollided5(), '4'],
+                 [msg.whenSpriteCollided6(), '5']];
+    // Access private menuGenerator_ and trimOptions_ to guarantee trimming.
+    this.menuGenerator_ = array.slice(0, blockly.Blocks.studio_spriteCount);
+    this.trimOptions_();
+    return this.menuGenerator_;
+  };
+
+  blockly.Blocks.studio_whenSpriteCollided.SPRITE2 = function () {
+    var array = [[msg.whenSpriteCollidedWith1(), '0'],
+                 [msg.whenSpriteCollidedWith2(), '1'],
+                 [msg.whenSpriteCollidedWith3(), '2'],
+                 [msg.whenSpriteCollidedWith4(), '3'],
+                 [msg.whenSpriteCollidedWith5(), '4'],
+                 [msg.whenSpriteCollidedWith6(), '5']];
+    // Access private menuGenerator_ and trimOptions_ to guarantee trimming.
+    this.menuGenerator_ = array.slice(0, blockly.Blocks.studio_spriteCount);
+    this.trimOptions_();
+    return this.menuGenerator_;
+  };
   
   generator.studio_whenSpriteCollided = function() {
     // Generate JavaScript for handle when a sprite collision event.
@@ -2388,13 +2388,18 @@ exports.install = function(blockly, skin) {
     }
   };
 
-  blockly.Blocks.studio_move.SPRITE =
-      [[msg.moveSprite1(), '0'],
-       [msg.moveSprite2(), '1'],
-       [msg.moveSprite3(), '2'],
-       [msg.moveSprite4(), '3'],
-       [msg.moveSprite5(), '4'],
-       [msg.moveSprite6(), '5']];
+  blockly.Blocks.studio_move.SPRITE = function () {
+    var array = [[msg.moveSprite1(), '0'],
+                 [msg.moveSprite2(), '1'],
+                 [msg.moveSprite3(), '2'],
+                 [msg.moveSprite4(), '3'],
+                 [msg.moveSprite5(), '4'],
+                 [msg.moveSprite6(), '5']];
+    // Access private menuGenerator_ and trimOptions_ to guarantee trimming.
+    this.menuGenerator_ = array.slice(0, blockly.Blocks.studio_spriteCount);
+    this.trimOptions_();
+    return this.menuGenerator_;
+  };
   
   blockly.Blocks.studio_move.DIR =
       [[msg.up(), 'moveUp'],
@@ -2473,7 +2478,7 @@ exports.install = function(blockly, skin) {
 
       this.setHSV(184, 1.00, 0.74);
       this.appendDummyInput()
-        .appendTitle(new blockly.FieldDropdown(this.SPRITES), 'SPRITE');
+        .appendTitle(new blockly.FieldDropdown(this.SPRITE), 'SPRITE');
       this.appendDummyInput()
         .appendTitle(dropdown, 'VALUE');
       this.setInputsInline(true);
@@ -2491,13 +2496,18 @@ exports.install = function(blockly, skin) {
        [msg.setSpriteSpeedFast(), 'Studio.SpriteSpeed.FAST'],
        [msg.setSpriteSpeedVeryFast(), 'Studio.SpriteSpeed.VERY_FAST']];
 
-  blockly.Blocks.studio_setSpriteSpeed.SPRITES =
-      [[msg.setSprite1(), '0'],
-       [msg.setSprite2(), '1'],
-       [msg.setSprite3(), '2'],
-       [msg.setSprite4(), '3'],
-       [msg.setSprite5(), '4'],
-       [msg.setSprite6(), '5']];
+  blockly.Blocks.studio_setSpriteSpeed.SPRITE = function () {
+    var array = [[msg.setSprite1(), '0'],
+                 [msg.setSprite2(), '1'],
+                 [msg.setSprite3(), '2'],
+                 [msg.setSprite4(), '3'],
+                 [msg.setSprite5(), '4'],
+                 [msg.setSprite6(), '5']];
+    // Access private menuGenerator_ and trimOptions_ to guarantee trimming.
+    this.menuGenerator_ = array.slice(0, blockly.Blocks.studio_spriteCount);
+    this.trimOptions_();
+    return this.menuGenerator_;
+  };
 
   generator.studio_setSpriteSpeed = function () {
     return generateSetterCode({
@@ -2513,7 +2523,7 @@ exports.install = function(blockly, skin) {
     helpUrl: '',
     init: function() {
       var dropdown = new blockly.FieldDropdown(this.VALUES);
-      dropdown.setValue(this.VALUES[1][1]);  // default to hardcourt
+      dropdown.setValue(this.VALUES[1][1]);  // default to cave
 
       this.setHSV(312, 0.32, 0.62);
       this.appendDummyInput()
@@ -2527,6 +2537,10 @@ exports.install = function(blockly, skin) {
 
   blockly.Blocks.studio_setBackground.VALUES =
       [[msg.setBackgroundRandom(), 'random'],
+       [msg.setBackgroundCave(), '"cave"'],
+       [msg.setBackgroundSanta(), '"santa"'],
+       [msg.setBackgroundScifi(), '"scifi"'],
+       [msg.setBackgroundUnderwater(), '"underwater"'],
        [msg.setBackgroundHardcourt(), '"hardcourt"'],
        [msg.setBackgroundRetro(), '"retro"']];
 
@@ -2541,11 +2555,11 @@ exports.install = function(blockly, skin) {
     helpUrl: '',
     init: function() {
       var dropdown = new blockly.FieldDropdown(this.VALUES);
-      dropdown.setValue(this.VALUES[1][1]);  // default to hardcourt
+      dropdown.setValue(this.VALUES[2][1]);  // default to hardcourt
 
       this.setHSV(312, 0.32, 0.62);
       this.appendDummyInput()
-        .appendTitle(new blockly.FieldDropdown(this.SPRITES), 'SPRITE');
+        .appendTitle(new blockly.FieldDropdown(this.SPRITE), 'SPRITE');
       this.appendDummyInput()
         .appendTitle(dropdown, 'VALUE');
       this.setInputsInline(true);
@@ -2555,21 +2569,67 @@ exports.install = function(blockly, skin) {
     }
   };
 
-  blockly.Blocks.studio_setSprite.SPRITES =
-      [[msg.setSprite1(), '0'],
-       [msg.setSprite2(), '1'],
-       [msg.setSprite3(), '2'],
-       [msg.setSprite4(), '3'],
-       [msg.setSprite5(), '4'],
-       [msg.setSprite6(), '5']];
+  blockly.Blocks.studio_setSprite.SPRITE = function () {
+    var array = [[msg.setSprite1(), '0'],
+                 [msg.setSprite2(), '1'],
+                 [msg.setSprite3(), '2'],
+                 [msg.setSprite4(), '3'],
+                 [msg.setSprite5(), '4'],
+                 [msg.setSprite6(), '5']];
+    // Access private menuGenerator_ and trimOptions_ to guarantee trimming.
+    this.menuGenerator_ = array.slice(0, blockly.Blocks.studio_spriteCount);
+    this.trimOptions_();
+    return this.menuGenerator_;
+  };
 
   blockly.Blocks.studio_setSprite.VALUES =
-      [[msg.setSpriteRandom(), 'random'],
+      [[msg.setSpriteHidden(), '"hidden"'],
+       [msg.setSpriteRandom(), 'random'],
        [msg.setSpriteHardcourt(), '"hardcourt"'],
        [msg.setSpriteRetro(), '"retro"']];
 
-  generator.studio_setSprite = function(i) {
-    return generateSetterCode({ctx: this, index: 'SPRITE', name: 'setSprite'});
+  generator.studio_setSprite = function() {
+    return generateSetterCode(
+              {ctx: this, random: 2, index: 'SPRITE', name: 'setSprite'});
+  };
+
+  blockly.Blocks.studio_saySprite = {
+    helpUrl: '',
+    init: function() {
+      this.setHSV(184, 1.00, 0.74);
+      this.appendDummyInput()
+        .appendTitle(new blockly.FieldDropdown(this.SPRITE), 'SPRITE');
+      this.appendDummyInput()
+        .appendTitle(new Blockly.FieldImage(
+                Blockly.assetUrl('media/quote0.png'), 12, 12))
+        .appendTitle(new Blockly.FieldTextInput(''), 'TEXT')
+        .appendTitle(new Blockly.FieldImage(
+                Blockly.assetUrl('media/quote1.png'), 12, 12));
+      this.setInputsInline(true);
+      this.setPreviousStatement(true);
+      this.setNextStatement(true);
+      this.setTooltip(msg.saySpriteTooltip());
+    }
+  };
+
+  blockly.Blocks.studio_saySprite.SPRITE = function () {
+    var array = [[msg.saySprite1(), '0'],
+                 [msg.saySprite2(), '1'],
+                 [msg.saySprite3(), '2'],
+                 [msg.saySprite4(), '3'],
+                 [msg.saySprite5(), '4'],
+                 [msg.saySprite6(), '5']];
+    // Access private menuGenerator_ and trimOptions_ to guarantee trimming.
+    this.menuGenerator_ = array.slice(0, blockly.Blocks.studio_spriteCount);
+    this.trimOptions_();
+    return this.menuGenerator_;
+  };
+
+  generator.studio_saySprite = function() {
+    // Generate JavaScript for saying.
+    return 'Studio.saySprite(\'block_id_' + this.id + '\', ' +
+               this.getTitleValue('SPRITE') + ', ' + '\'' +
+               this.getTitleValue('TEXT') + '\');\n';
   };
   
   delete blockly.Blocks.procedures_defreturn;
@@ -2733,15 +2793,16 @@ module.exports = {
       'upButton'
     ],
     'freePlay': true,
+    'showScore': true,
     'map': [
-      [1, 1, 2, 2, 2, 2, 1, 1],
-      [1, 0,16, 0, 0,16, 0, 1],
-      [1, 0, 0, 0, 0, 0, 0, 1],
-      [1, 0, 0, 0, 0, 0, 0, 1],
-      [1, 0,16, 0, 0,16, 0, 1],
-      [1, 0, 0, 0, 0, 0, 0, 1],
-      [1, 0, 0, 0, 0, 0, 0, 1],
-      [1, 0,16, 0, 0,16, 0, 1]
+      [0, 0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0, 0],
+      [0, 0,16, 0, 0,16, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0, 0],
+      [0, 0,16, 0, 0,16, 0, 0]
     ],
     'toolbox':
       tb('<block type="studio_whenSpriteClicked"></block> \
@@ -2749,17 +2810,16 @@ module.exports = {
           <block type="studio_move"></block> \
           <block type="studio_playSound"></block> \
           <block type="studio_incrementScore"></block> \
+          <block type="studio_saySprite"></block> \
           <block type="studio_setSpriteSpeed"></block> \
           <block type="studio_setBackground"></block> \
           <block type="studio_setSprite"></block>'),
     'startBlocks':
      '<block type="studio_whenGameStarts" deletable="false" x="20" y="20"></block> \
       <block type="studio_whenLeft" deletable="false" x="20" y="120"></block> \
-      <block type="studio_whenRight" deletable="false" x="180" y="120"></block> \
-      <block type="studio_whenUp" deletable="false" x="20" y="220"></block> \
-      <block type="studio_whenDown" deletable="false" x="180" y="220"></block> \
-      <block type="studio_whenPaddleCollided" deletable="false" x="20" y="320"></block> \
-      <block type="studio_whenWallCollided" deletable="false" x="180" y="320"></block>'
+      <block type="studio_whenRight" deletable="false" x="20" y="200"></block> \
+      <block type="studio_whenUp" deletable="false" x="20" y="280"></block> \
+      <block type="studio_whenDown" deletable="false" x="20" y="360"></block>'
   },
 };
 
@@ -2785,11 +2845,9 @@ window.studioMain = function(options) {
 /**
  * Load Skin for Studio.
  */
-// tiles: A 250x200 set of 20 map images.
 // goal: A 20x34 goal image.
 // background: Number of 400x400 background images. Randomly select one if
 // specified, otherwise, use background.png.
-// graph: Colour of optional grid lines, or false.
 
 var skinsBase = require('../skins');
 
@@ -2804,14 +2862,22 @@ exports.load = function(assetUrl, id) {
 
   skin.retro = {
     background: skin.assetUrl('retro_background.png'),
-    tiles: skin.assetUrl('retro_tiles_wall.png'),
-    goalTiles: skin.assetUrl('retro_tiles_goal.png'),
     sprite: skin.assetUrl('retro_paddle.png'),
+  };
+  skin.cave = {
+    background: skin.assetUrl('background_cave.png'),
+  };
+  skin.santa = {
+    background: skin.assetUrl('background_santa.png'),
+  };
+  skin.scifi = {
+    background: skin.assetUrl('background_scifi.png'),
+  };
+  skin.underwater = {
+    background: skin.assetUrl('background_underwater.png'),
   };
 
   // Images
-  skin.tiles = skin.assetUrl('tiles_wall.png');
-  skin.goalTiles = skin.assetUrl('tiles_goal.png');
   skin.goal = skin.assetUrl('goal.png');
   skin.goalSuccess = skin.assetUrl('goal_success.png');
   skin.sprite = skin.assetUrl('paddle.png');
@@ -2845,7 +2911,6 @@ exports.load = function(assetUrl, id) {
                    skin.assetUrl('2_wall_bounce.ogg')];
   
   // Settings
-  skin.graph = config.graph;
   if (config.background !== undefined) {
     var index = Math.floor(Math.random() * config.background);
     skin.background = skin.assetUrl('background' + index + '.png');
@@ -2875,6 +2940,7 @@ var skins = require('../skins');
 var tiles = require('./tiles');
 var codegen = require('../codegen');
 var api = require('./api');
+var blocks = require('./blocks');
 var page = require('../templates/page.html');
 var feedback = require('../feedback.js');
 var dom = require('../dom');
@@ -2927,12 +2993,6 @@ var stepSpeed;
 //TODO: Make configurable.
 BlocklyApps.CHECK_FOR_EMPTY_BLOCKS = true;
 
-var getTile = function(map, x, y) {
-  if (map && map[y]) {
-    return map[y][x];
-  }
-};
-
 //The number of blocks to show as feedback.
 BlocklyApps.NUM_REQUIRED_BLOCKS_TO_FLAG = 1;
 
@@ -2965,8 +3025,6 @@ var loadLevel = function() {
   Studio.ROWS = Studio.map.length;
   // COLS: Number of tiles across.
   Studio.COLS = Studio.map[0].length;
-  // Initialize the wallMap.
-  initWallMap();
   // Pixel height and width of each maze square (i.e. tile).
   Studio.SQUARE_SIZE = 50;
   Studio.PEGMAN_HEIGHT = skin.pegmanHeight;
@@ -2981,63 +3039,14 @@ var loadLevel = function() {
   Studio.PATH_WIDTH = Studio.SQUARE_SIZE / 3;
 };
 
-
-var initWallMap = function() {
-  Studio.wallMap = new Array(Studio.ROWS);
-  for (var y = 0; y < Studio.ROWS; y++) {
-    Studio.wallMap[y] = new Array(Studio.COLS);
-  }
-};
-
 /**
  * PIDs of async tasks currently executing.
  */
 Studio.pidList = [];
 
-// Map each possible shape to a sprite.
-// Input: Binary string representing Centre/North/East/South/West squares.
-// Output: [x, y] coordinates of each tile's sprite in tiles.png.
-var WALL_TILE_SHAPES = {
-  '1X101': [1, 0],  // Horiz top
-  '11X10': [2, 1],  // Vert right
-  '11XX0': [2, 1],  // Bottom right corner
-  '1XX11': [2, 0],  // Top right corner
-  '1X001': [1, 0],  // Top horiz right end
-  '1X100': [1, 0],  // Top horiz left end
-  '1101X': [0, 1],  // Vert left
-  '110XX': [0, 1],  // Bottom left corner
-  '1X11X': [0, 0],  // Top left corner
-  'null0': [1, 1],  // Empty
-};
-
-var GOAL_TILE_SHAPES = {
-  '1X101': [2, 3],  // Horiz top
-  '1XX11': [3, 3],  // Top right corner
-  '1X001': [3, 3],  // Top horiz right end
-  '1X11X': [0, 2],  // Top left corner
-  '1X100': [0, 2],  // Top horiz left end
-  'null0': [1, 1],  // Empty
-};
-
-// Return a value of '0' if the specified square is not a wall, '1' for
-// a wall, 'X' for out of bounds
-var wallNormalize = function(x, y) {
-  return ((Studio.map[y] === undefined) ||
-          (Studio.map[y][x] === undefined)) ? 'X' :
-            (Studio.map[y][x] & SquareType.WALL) ? '1' : '0';
-};
-
-// Return a value of '0' if the specified square is not a wall, '1' for
-// a wall, 'X' for out of bounds
-var goalNormalize = function(x, y) {
-  return ((Studio.map[y] === undefined) ||
-          (Studio.map[y][x] === undefined)) ? 'X' :
-            (Studio.map[y][x] & SquareType.GOAL) ? '1' : '0';
-};
-
 var drawMap = function() {
   var svg = document.getElementById('svgStudio');
-  var i, x, y, k, tile;
+  var i, x, y, k;
 
   // Adjust outer element size.
   svg.setAttribute('width', Studio.MAZE_WIDTH);
@@ -3057,7 +3066,7 @@ var drawMap = function() {
   hintBubble.style.width = Studio.MAZE_WIDTH + 'px';
 
   if (skin.background) {
-    tile = document.createElementNS(Blockly.SVG_NS, 'image');
+    var tile = document.createElementNS(Blockly.SVG_NS, 'image');
     tile.setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:href',
                         skin.background);
     tile.setAttribute('id', 'background');
@@ -3066,113 +3075,6 @@ var drawMap = function() {
     tile.setAttribute('x', 0);
     tile.setAttribute('y', 0);
     svg.appendChild(tile);
-  }
-
-  if (skin.graph) {
-    // Draw the grid lines.
-    // The grid lines are offset so that the lines pass through the centre of
-    // each square.  A half-pixel offset is also added to as standard SVG
-    // practice to avoid blurriness.
-    var offset = Studio.SQUARE_SIZE / 2 + 0.5;
-    for (k = 0; k < Studio.ROWS; k++) {
-      var h_line = document.createElementNS(Blockly.SVG_NS, 'line');
-      h_line.setAttribute('y1', k * Studio.SQUARE_SIZE + offset);
-      h_line.setAttribute('x2', Studio.MAZE_WIDTH);
-      h_line.setAttribute('y2', k * Studio.SQUARE_SIZE + offset);
-      h_line.setAttribute('stroke', skin.graph);
-      h_line.setAttribute('stroke-width', 1);
-      svg.appendChild(h_line);
-    }
-    for (k = 0; k < Studio.COLS; k++) {
-      var v_line = document.createElementNS(Blockly.SVG_NS, 'line');
-      v_line.setAttribute('x1', k * Studio.SQUARE_SIZE + offset);
-      v_line.setAttribute('x2', k * Studio.SQUARE_SIZE + offset);
-      v_line.setAttribute('y2', Studio.MAZE_HEIGHT);
-      v_line.setAttribute('stroke', skin.graph);
-      v_line.setAttribute('stroke-width', 1);
-      svg.appendChild(v_line);
-    }
-  }
-
-  // Draw the tiles making up the maze map.
-
-  // Compute and draw the tile for each square.
-  var tileId = 0;
-  for (y = 0; y < Studio.ROWS; y++) {
-    for (x = 0; x < Studio.COLS; x++) {
-      var left;
-      var top;
-      var image;
-      // Compute the tile index.
-      tile = wallNormalize(x, y) +
-          wallNormalize(x, y - 1) +  // North.
-          wallNormalize(x + 1, y) +  // East.
-          wallNormalize(x, y + 1) +  // South.
-          wallNormalize(x - 1, y);   // West.
-
-      // Draw the tile.
-      if (WALL_TILE_SHAPES[tile]) {
-        left = WALL_TILE_SHAPES[tile][0];
-        top = WALL_TILE_SHAPES[tile][1];
-        image = skin.tiles;
-      }
-      else {
-        // Compute the tile index.
-        tile = goalNormalize(x, y) +
-            goalNormalize(x, y - 1) +  // North.
-            goalNormalize(x + 1, y) +  // East.
-            goalNormalize(x, y + 1) +  // South.
-            goalNormalize(x - 1, y);   // West.
-
-        if (!GOAL_TILE_SHAPES[tile]) {
-          // Empty square.  Use null0.
-          tile = 'null0';
-        }
-        left = GOAL_TILE_SHAPES[tile][0];
-        top = GOAL_TILE_SHAPES[tile][1];
-        image = skin.goalTiles;
-      }
-      if (tile != 'null0') {
-        // Tile's clipPath element.
-        var tileClip = document.createElementNS(Blockly.SVG_NS, 'clipPath');
-        tileClip.setAttribute('id', 'tileClipPath' + tileId);
-        var tileClipRect = document.createElementNS(Blockly.SVG_NS, 'rect');
-        tileClipRect.setAttribute('width', Studio.SQUARE_SIZE);
-        tileClipRect.setAttribute('height', Studio.SQUARE_SIZE);
-
-        tileClipRect.setAttribute('x', x * Studio.SQUARE_SIZE);
-        tileClipRect.setAttribute('y', y * Studio.SQUARE_SIZE);
-
-        tileClip.appendChild(tileClipRect);
-        svg.appendChild(tileClip);
-        // Tile sprite.
-        var tileElement = document.createElementNS(Blockly.SVG_NS, 'image');
-        tileElement.setAttribute('id', 'tileElement' + tileId);
-        tileElement.setAttributeNS('http://www.w3.org/1999/xlink',
-                                   'xlink:href',
-                                   image);
-        tileElement.setAttribute('height', Studio.SQUARE_SIZE * 4);
-        tileElement.setAttribute('width', Studio.SQUARE_SIZE * 5);
-        tileElement.setAttribute('clip-path',
-                                 'url(#tileClipPath' + tileId + ')');
-        tileElement.setAttribute('x', (x - left) * Studio.SQUARE_SIZE);
-        tileElement.setAttribute('y', (y - top) * Studio.SQUARE_SIZE);
-        svg.appendChild(tileElement);
-        // Tile animation
-        var tileAnimation = document.createElementNS(Blockly.SVG_NS,
-                                                     'animate');
-        tileAnimation.setAttribute('id', 'tileAnimation' + tileId);
-        tileAnimation.setAttribute('attributeType', 'CSS');
-        tileAnimation.setAttribute('attributeName', 'opacity');
-        tileAnimation.setAttribute('from', 1);
-        tileAnimation.setAttribute('to', 0);
-        tileAnimation.setAttribute('dur', '1s');
-        tileAnimation.setAttribute('begin', 'indefinite');
-        tileElement.appendChild(tileAnimation);
-      }
-
-      tileId++;
-    }
   }
 
   if (Studio.spriteStart_) {
@@ -3201,6 +3103,13 @@ var drawMap = function() {
                                  delegate(this,
                                           Studio.onSpriteClicked,
                                           i));
+
+      var spriteSpeechBubble = document.createElementNS(Blockly.SVG_NS, 'text');
+      spriteSpeechBubble.setAttribute('id', 'speechBubble' + i);
+      spriteSpeechBubble.setAttribute('class', 'studio-speech-bubble');
+      spriteSpeechBubble.appendChild(document.createTextNode(''));
+      spriteSpeechBubble.setAttribute('visibility', 'hidden');
+      svg.appendChild(spriteSpeechBubble);
     }
   }
   
@@ -3223,7 +3132,7 @@ var drawMap = function() {
   score.setAttribute('class', 'studio-score');
   score.setAttribute('x', Studio.MAZE_WIDTH / 2);
   score.setAttribute('y', 60);
-  score.appendChild(document.createTextNode('0'));
+  score.appendChild(document.createTextNode(''));
   score.setAttribute('visibility', 'hidden');
   svg.appendChild(score);
 
@@ -3236,10 +3145,6 @@ var drawMap = function() {
     wallAnimationIcon.setAttribute('visibility', 'hidden');
     svg.appendChild(wallAnimationIcon);
   }
-};
-
-Studio.calcDistance = function(xDist, yDist) {
-  return Math.sqrt(xDist * xDist + yDist * yDist);
 };
 
 var essentiallyEqual = function(float1, float2, opt_variance) {
@@ -3441,32 +3346,6 @@ Studio.init = function(config) {
 
     Blockly.SNAP_RADIUS *= Studio.scale.snapRadius;
     
-    Studio.paddleFinishCount = 0;
-    Studio.spriteCount = 0;
-    Studio.sprite = [];
-    
-    // Locate the start and finish squares.
-    for (var y = 0; y < Studio.ROWS; y++) {
-      for (var x = 0; x < Studio.COLS; x++) {
-        if (Studio.map[y][x] & SquareType.PADDLEFINISH) {
-          if (0 === Studio.paddleFinishCount) {
-            Studio.paddleFinish_ = [];
-          }
-          Studio.paddleFinish_[Studio.paddleFinishCount] = {x: x, y: y};
-          Studio.paddleFinishCount++;
-        } else if (Studio.map[y][x] & SquareType.SPRITESTART) {
-          if (0 === Studio.spriteCount) {
-            Studio.spriteStart_ = [];
-          }
-          Studio.sprite[Studio.spriteCount] = [];
-          Studio.spriteStart_[Studio.spriteCount] = {x: x, y: y};
-          Studio.spriteCount++;
-        } else if (Studio.map[y][x] & SquareType.GOAL) {
-          Studio.goalLocated_ = true;
-        }
-      }
-    }
-    
     drawMap();
   };
 
@@ -3475,13 +3354,12 @@ Studio.init = function(config) {
     return visualization.getBoundingClientRect().width;
   };
 
+  // TODO: update this for Studio
   // Block placement default (used as fallback in the share levels)
   config.blockArrangement = {
     'studio_whenGameStarts': { x: 20, y: 20},
     'studio_whenLeft': { x: 20, y: 110},
     'studio_whenRight': { x: 180, y: 110},
-    'studio_whenPaddleCollided': { x: 20, y: 190},
-    'studio_whenWallCollided': { x: 20, y: 270},
   };
 
   config.twitter = twitterOptions;
@@ -3497,6 +3375,33 @@ Studio.init = function(config) {
 
   config.preventExtraTopLevelBlocks = true;
 
+  Studio.paddleFinishCount = 0;
+  Studio.spriteCount = 0;
+  Studio.sprite = [];
+  
+  // Locate the start and finish squares.
+  for (var y = 0; y < Studio.ROWS; y++) {
+    for (var x = 0; x < Studio.COLS; x++) {
+      if (Studio.map[y][x] & SquareType.PADDLEFINISH) {
+        if (0 === Studio.paddleFinishCount) {
+          Studio.paddleFinish_ = [];
+        }
+        Studio.paddleFinish_[Studio.paddleFinishCount] = {x: x, y: y};
+        Studio.paddleFinishCount++;
+      } else if (Studio.map[y][x] & SquareType.SPRITESTART) {
+        if (0 === Studio.spriteCount) {
+          Studio.spriteStart_ = [];
+        }
+        Studio.sprite[Studio.spriteCount] = [];
+        Studio.spriteStart_[Studio.spriteCount] = {x: x, y: y};
+        Studio.spriteCount++;
+      }
+    }
+  }
+  
+  // Update the sprite count in the blocks:
+  blocks.setSpriteCount(Blockly, Studio.spriteCount);
+    
   BlocklyApps.init(config);
 
   if (!onSharePage) {
@@ -3509,8 +3414,6 @@ Studio.init = function(config) {
  * Clear the event handlers and stop the onTick timer.
  */
 Studio.clearEventHandlersKillTickLoop = function() {
-  Studio.whenWallCollided = null;
-  Studio.whenPaddleCollided = null;
   Studio.whenDown = null;
   Studio.whenLeft = null;
   Studio.whenRight = null;
@@ -3527,6 +3430,9 @@ Studio.clearEventHandlersKillTickLoop = function() {
     window.clearTimeout(Studio.pidList[i]);
   }
   Studio.pidList = [];
+  for (i = 0; i < Studio.spriteCount; i++) {
+    window.clearTimeout(Studio.sprite[i].bubbleTimeout);
+  }
 };
 
 /**
@@ -3554,7 +3460,7 @@ BlocklyApps.reset = function(first) {
   document.getElementById('score').setAttribute('visibility', 'hidden');
 
   // Reset configurable variables
-  Studio.setBackground('hardcourt');
+  Studio.setBackground('cave');
 
   // Move sprites into position.
   for (i = 0; i < Studio.spriteCount; i++) {
@@ -3565,6 +3471,8 @@ BlocklyApps.reset = function(first) {
 
     Studio.setSprite(i, 'hardcourt');
     Studio.displaySprite(i);
+    document.getElementById('speechBubble' + i)
+      .setAttribute('visibility', 'hidden');
   }
 
   var svg = document.getElementById('svgStudio');
@@ -3588,24 +3496,6 @@ BlocklyApps.reset = function(first) {
           'http://www.w3.org/1999/xlink',
           'xlink:href',
           skin.goal);
-    }
-  }
-
-  // Reset the tiles
-  var tileId = 0;
-  for (var y = 0; y < Studio.ROWS; y++) {
-    for (var x = 0; x < Studio.COLS; x++) {
-      // Tile's clipPath element.
-      var tileClip = document.getElementById('tileClipPath' + tileId);
-      if (tileClip) {
-        tileClip.setAttribute('visibility', 'visible');
-      }
-      // Tile sprite.
-      var tileElement = document.getElementById('tileElement' + tileId);
-      if (tileElement) {
-        tileElement.setAttribute('opacity', 1);
-      }
-      tileId++;
     }
   }
 };
@@ -3638,7 +3528,8 @@ BlocklyApps.runButtonClick = function() {
     var shareCell = document.getElementById('share-cell');
     shareCell.className = 'share-cell-enabled';
   }
-  if (Studio.goalLocated_) {
+  
+  if (level.showScore) {
     document.getElementById('score').setAttribute('visibility', 'visible');
     Studio.displayScore();
   }
@@ -3728,22 +3619,6 @@ Studio.execute = function() {
   
   code = Blockly.Generator.workspaceToCode(
                                     'JavaScript',
-                                    'studio_whenWallCollided');
-  var whenWallCollidedFunc = codegen.functionFromCode(
-                                     code, {
-                                      BlocklyApps: BlocklyApps,
-                                      Studio: api } );
-
-  code = Blockly.Generator.workspaceToCode(
-                                    'JavaScript',
-                                    'studio_whenPaddleCollided');
-  var whenPaddleCollidedFunc = codegen.functionFromCode(
-                                     code, {
-                                      BlocklyApps: BlocklyApps,
-                                      Studio: api } );
-
-  code = Blockly.Generator.workspaceToCode(
-                                    'JavaScript',
                                     'studio_whenLeft');
   var whenLeftFunc = codegen.functionFromCode(
                                      code, {
@@ -3828,8 +3703,6 @@ Studio.execute = function() {
   BlocklyApps.reset(false);
   
   // Set event handlers and start the onTick timer
-  Studio.whenWallCollided = whenWallCollidedFunc;
-  Studio.whenPaddleCollided = whenPaddleCollidedFunc;
   Studio.whenLeft = whenLeftFunc;
   Studio.whenRight = whenRightFunc;
   Studio.whenUp = whenUpFunc;
@@ -3893,27 +3766,6 @@ Studio.onPuzzleComplete = function() {
                      });
 };
 
-/**
- * Set the tiles to be transparent gradually.
- */
-Studio.setTileTransparent = function() {
-  var tileId = 0;
-  for (var y = 0; y < Studio.ROWS; y++) {
-    for (var x = 0; x < Studio.COLS; x++) {
-      // Tile sprite.
-      var tileElement = document.getElementById('tileElement' + tileId);
-      var tileAnimation = document.getElementById('tileAnimation' + tileId);
-      if (tileElement) {
-        tileElement.setAttribute('opacity', 0);
-      }
-      if (tileAnimation) {
-        tileAnimation.beginElement();
-      }
-      tileId++;
-    }
-  }
-};
-
 Studio.displaySprite = function(i) {
   var xCoord = Studio.sprite[i].x * Studio.SQUARE_SIZE;
   var yCoord = Studio.sprite[i].y * Studio.SQUARE_SIZE + Studio.SPRITE_Y_OFFSET;
@@ -3925,6 +3777,10 @@ Studio.displaySprite = function(i) {
   var spriteClipRect = document.getElementById('spriteClipRect' + i);
   spriteClipRect.setAttribute('x', xCoord);
   spriteClipRect.setAttribute('y', yCoord);
+
+  var speechBubble = document.getElementById('speechBubble' + i);
+  speechBubble.setAttribute('x', xCoord);
+  speechBubble.setAttribute('y', yCoord);
 };
 
 Studio.displayScore = function() {
@@ -3946,52 +3802,31 @@ Studio.setBackground = function (value) {
   var element = document.getElementById('background');
   element.setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:href',
     skinTheme(value).background);
-
-  // Recompute all of the tiles to determine if they are walls, goals, or empty
-  // TODO: do this once during init and cache the result
-  var tileId = 0;
-  for (var y = 0; y < Studio.ROWS; y++) {
-    for (var x = 0; x < Studio.COLS; x++) {
-      var empty = false;
-      var image;
-      // Compute the tile index.
-      var tile = wallNormalize(x, y) +
-          wallNormalize(x, y - 1) +  // North.
-          wallNormalize(x + 1, y) +  // East.
-          wallNormalize(x, y + 1) +  // South.
-          wallNormalize(x - 1, y);   // West.
-
-      // Draw the tile.
-      if (WALL_TILE_SHAPES[tile]) {
-        image = skinTheme(value).tiles;
-      }
-      else {
-        // Compute the tile index.
-        tile = goalNormalize(x, y) +
-            goalNormalize(x, y - 1) +  // North.
-            goalNormalize(x + 1, y) +  // East.
-            goalNormalize(x, y + 1) +  // South.
-            goalNormalize(x - 1, y);   // West.
-
-        if (!GOAL_TILE_SHAPES[tile]) {
-          empty = true;
-        }
-        image = skinTheme(value).goalTiles;
-      }
-      if (!empty) {
-        element = document.getElementById('tileElement' + tileId);
-        element.setAttributeNS(
-            'http://www.w3.org/1999/xlink', 'xlink:href', image);
-      }
-      tileId++;
-    }
-  }
 };
 
 Studio.setSprite = function (index, value) {
   var element = document.getElementById('sprite' + index);
-  element.setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:href',
-    skinTheme(value).sprite);
+  element.setAttribute('visibility',
+                       (value === 'hidden') ? 'hidden' : 'visible');
+  if (value != 'hidden') {
+    element.setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:href',
+                           skinTheme(value).sprite);
+ }
+};
+
+Studio.hideSpeechBubble = function (index) {
+  var speechBubble = document.getElementById('speechBubble' + index);
+  speechBubble.setAttribute('visibility', 'hidden');
+};
+
+Studio.saySprite = function (index, text) {
+  var speechBubble = document.getElementById('speechBubble' + index);
+  speechBubble.textContent = text;
+  speechBubble.setAttribute('visibility', 'visible');
+  window.clearTimeout(Studio.sprite[index].bubbleTimeout);
+  Studio.sprite[index].bubbleTimeout = window.setTimeout(
+      delegate(this, Studio.hideSpeechBubble, index),
+      3000);
 };
 
 Studio.timedOut = function() {
@@ -4060,7 +3895,7 @@ var checkFinished = function () {
   return false;
 };
 
-},{"../../locale/ur_pk/common":30,"../../locale/ur_pk/studio":31,"../base":2,"../codegen":4,"../dom":5,"../feedback.js":6,"../skins":7,"../templates/page.html":24,"./api":9,"./controls.html":11,"./tiles":16,"./visualization.html":17}],16:[function(require,module,exports){
+},{"../../locale/ur_pk/common":30,"../../locale/ur_pk/studio":31,"../base":2,"../codegen":4,"../dom":5,"../feedback.js":6,"../skins":7,"../templates/page.html":24,"./api":9,"./blocks":10,"./controls.html":11,"./tiles":16,"./visualization.html":17}],16:[function(require,module,exports){
 'use strict';
 
 /**
@@ -4075,7 +3910,6 @@ exports.Direction = {
   WEST: 3
 };
 
-exports.PADDLE_BALL_COLLIDE_DISTANCE = 0.7;
 exports.FINISH_COLLIDE_DISTANCE = 0.5;
 exports.SPRITE_COLLIDE_DISTANCE = 0.5;
 exports.DEFAULT_SPRITE_SPEED = 0.1;
@@ -4088,8 +3922,6 @@ exports.Y_TOP_BOUNDARY = -0.2;
  */
 exports.SquareType = {
   OPEN: 0,
-  WALL: 1,
-  GOAL: 2,
   PADDLEFINISH: 8,
   SPRITESTART: 16,
 };
@@ -4149,7 +3981,7 @@ escape = escape || function (html){
 };
 var buf = [];
 with (locals || {}) { (function(){ 
- buf.push('');1; var msg = require('../../locale/ur_pk/common'); ; buf.push('\n\n');3; if (data.ok) {; buf.push('  <div class="farSide" style="padding: 1ex 3ex 0">\n    <button id="ok-button" class="secondary">\n      ', escape((5,  msg.dialogOK() )), '\n    </button>\n  </div>\n');8; };; buf.push('\n');9; if (data.previousLevel) {; buf.push('  <button id="back-button" class="launch">\n    ', escape((10,  msg.backToPreviousLevel() )), '\n  </button>\n');12; };; buf.push('\n');13; if (data.tryAgain) {; buf.push('  <button id="again-button" class="launch">\n    ', escape((14,  msg.tryAgain() )), '\n  </button>\n');16; };; buf.push('\n');17; if (data.nextLevel) {; buf.push('  <button id="continue-button" class="launch">\n    ', escape((18,  msg.continue() )), '\n  </button>\n');20; };; buf.push('\n');21; if (data.facebookUrl) {; buf.push('  <a href=', escape((21,  data.facebookUrl )), ' target="_blank">\n    <img src=', escape((22,  BlocklyApps.assetUrl("media/facebook_purple.png") )), '>\n  </a>\n');24; };; buf.push('\n');25; if (data.twitterUrl) {; buf.push('  <a href=', escape((25,  data.twitterUrl )), ' target="_blank">\n    <img src=', escape((26,  BlocklyApps.assetUrl("media/twitter_purple.png") )), ' >\n  </a>\n  <br>\n');29; };; buf.push('\n');30; if (data.sharingUrl) {; buf.push('  <input type="text" id="sharing-input" value=', escape((30,  data.sharingUrl )), ' >\n');31; };; buf.push(''); })();
+ buf.push('');1; var msg = require('../../locale/ur_pk/common'); ; buf.push('\n\n');3; if (data.ok) {; buf.push('  <div class="farSide" style="padding: 1ex 3ex 0">\n    <button id="ok-button" class="secondary">\n      ', escape((5,  msg.dialogOK() )), '\n    </button>\n  </div>\n');8; };; buf.push('\n');9; if (data.previousLevel) {; buf.push('  <button id="back-button" class="launch">\n    ', escape((10,  msg.backToPreviousLevel() )), '\n  </button>\n');12; };; buf.push('\n');13; if (data.tryAgain) {; buf.push('  <button id="again-button" class="launch">\n    ', escape((14,  msg.tryAgain() )), '\n  </button>\n');16; };; buf.push('\n');17; if (data.nextLevel) {; buf.push('  <button id="continue-button" class="launch">\n    ', escape((18,  msg.continue() )), '\n  </button>\n');20; };; buf.push('\n');21; if (data.facebookUrl) {; buf.push('  <a href=', escape((21,  data.facebookUrl )), ' target="_blank">\n    <img src=', escape((22,  BlocklyApps.assetUrl("media/facebook_purple.png") )), '>\n  </a>\n');24; };; buf.push('\n');25; if (data.twitterUrl) {; buf.push('  <a href=', escape((25,  data.twitterUrl )), ' target="_blank">\n    <img src=', escape((26,  BlocklyApps.assetUrl("media/twitter_purple.png") )), ' >\n  </a>\n  <br>\n');29; };; buf.push('\n');30; if (data.sharingUrl) {; buf.push('  <input type="text" id="sharing-input" value=', escape((30,  data.sharingUrl )), ' >\n');31; };; buf.push('\n');32; if (data.saveToGalleryUrl) {; buf.push('  <button id="save-to-gallery-button" class="launch">\n    ', escape((33,  msg.saveToGallery() )), '\n  </button>\n');35; };; buf.push(''); })();
 } 
 return buf.join('');
 };
@@ -4489,6 +4321,8 @@ exports.tryAgain = function(d){return "Try again"};
 
 exports.backToPreviousLevel = function(d){return "Back to previous level"};
 
+exports.saveToGallery = function(d){return "Save to your gallery"};
+
 exports.typeCode = function(d){return "Type your JavaScript code below these instructions."};
 
 exports.typeFuncs = function(d){return "Available functions:%1"};
@@ -4606,19 +4440,43 @@ exports.repeatUntilFinish = function(d){return "repeat until finish"};
 
 exports.right = function(d){return "right"};
 
+exports.saySprite1 = function(d){return "character 1 say"};
+
+exports.saySprite2 = function(d){return "character 2 say"};
+
+exports.saySprite3 = function(d){return "character 3 say"};
+
+exports.saySprite4 = function(d){return "character 4 say"};
+
+exports.saySprite5 = function(d){return "character 5 say"};
+
+exports.saySprite6 = function(d){return "character 6 say"};
+
+exports.saySpriteTooltip = function(d){return "Pop up a speech bubble with the associated text from the specified character."};
+
 exports.scoreText = function(d){return "Score: "+v(d,"playerScore")+" : "+v(d,"opponentScore")};
 
 exports.setBackgroundRandom = function(d){return "set random scene"};
 
+exports.setBackgroundCave = function(d){return "set cave background"};
+
 exports.setBackgroundHardcourt = function(d){return "set hardcourt scene"};
 
 exports.setBackgroundRetro = function(d){return "set retro scene"};
+
+exports.setBackgroundSanta = function(d){return "set santa background"};
+
+exports.setBackgroundScifi = function(d){return "set sci-fi background"};
+
+exports.setBackgroundUnderwater = function(d){return "set underwater background"};
 
 exports.setBackgroundTooltip = function(d){return "Sets the background image"};
 
 exports.setSpriteRandom = function(d){return "to a random image"};
 
 exports.setSpriteHardcourt = function(d){return "to a hardcourt image"};
+
+exports.setSpriteHidden = function(d){return "to a hidden image"};
 
 exports.setSpriteRetro = function(d){return "to a retro image"};
 
@@ -4658,14 +4516,6 @@ exports.setSprite6 = function(d){return "set character 6"};
 
 exports.up = function(d){return "up"};
 
-exports.whenBallInGoal = function(d){return "when ball in goal"};
-
-exports.whenBallInGoalTooltip = function(d){return "Execute the actions below when a ball enters the goal."};
-
-exports.whenBallMissesPaddle = function(d){return "when ball misses paddle"};
-
-exports.whenBallMissesPaddleTooltip = function(d){return "Execute the actions below when a ball misses the paddle."};
-
 exports.whenDown = function(d){return "when Down arrow"};
 
 exports.whenDownTooltip = function(d){return "Execute the actions below when the Down arrow button is pressed."};
@@ -4677,10 +4527,6 @@ exports.whenGameStartsTooltip = function(d){return "Execute the actions below wh
 exports.whenLeft = function(d){return "when Left arrow"};
 
 exports.whenLeftTooltip = function(d){return "Execute the actions below when the Left arrow button is pressed."};
-
-exports.whenPaddleCollided = function(d){return "when ball hits paddle"};
-
-exports.whenPaddleCollidedTooltip = function(d){return "Execute the actions below when a ball collides with a paddle."};
 
 exports.whenRight = function(d){return "when Right arrow"};
 
@@ -4729,10 +4575,6 @@ exports.whenSpriteCollidedWith6 = function(d){return "touches character 6"};
 exports.whenUp = function(d){return "when Up arrow"};
 
 exports.whenUpTooltip = function(d){return "Execute the actions below when the Up arrow button is pressed."};
-
-exports.whenWallCollided = function(d){return "when ball hits wall"};
-
-exports.whenWallCollidedTooltip = function(d){return "Execute the actions below when a ball collides with a wall."};
 
 exports.yes = function(d){return "Yes"};
 

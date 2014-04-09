@@ -93,6 +93,13 @@ SQL
     end
   end
 
+  def admin_gallery
+    authorize! :read, :reports
+
+    @activities = GalleryActivity.order(id: :desc).limit(50).collect(&:activity)
+  end
+
+
   def students
     @recent_activities = current_user.students.blank? ? [] : get_base_usage_activity.where("user_id in (#{current_user.students.map(&:id).join(',')})")
     render 'usage', formats: [:html]

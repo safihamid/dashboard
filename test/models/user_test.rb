@@ -101,4 +101,23 @@ class UserTest < ActiveSupport::TestCase
     end
   end
 
+  test "gallery" do
+    user = create(:user)
+    assert_equal [], user.gallery_activities
+
+    create(:activity, user: user) # not saved to gallery
+    assert_equal [], user.gallery_activities
+
+    activity2 = create(:activity, user: user)
+    ga2 = GalleryActivity.create!(activity: activity2, user: user)
+    assert_equal [ga2], user.reload.gallery_activities
+
+    create(:activity, user: user) # not saved to gallery
+    assert_equal [ga2], user.reload.gallery_activities
+
+    activity4 = create(:activity, user: user)
+    ga4 = GalleryActivity.create!(activity: activity4, user: user)
+    assert_equal [ga4, ga2], user.reload.gallery_activities
+  end
+
 end
