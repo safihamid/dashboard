@@ -20,6 +20,13 @@ class ActiveSupport::TestCase
   # Add more helper methods to be used by all tests here...
   include FactoryGirl::Syntax::Methods
 
+end
+
+
+# Helpers for all controller test cases
+class ActionController::TestCase 
+  include Devise::TestHelpers
+
   def assert_redirected_to_sign_in
     assert_response :redirect
     assert_redirected_to "http://test.host/users/sign_in"
@@ -44,5 +51,4 @@ class ActiveSupport::TestCase
       assert_response :forbidden
     end
   end
-
 end

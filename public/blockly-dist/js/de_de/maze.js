@@ -1144,13 +1144,8 @@ exports.displayFeedback = function(options) {
   var saveToGalleryButton = feedback.querySelector('#save-to-gallery-button');
   if (saveToGalleryButton && options.response && options.response.save_to_gallery_url) {
     dom.addClickTouchEvent(saveToGalleryButton, function() {
-      $.ajax({
-        type: 'PUT',
-        dataType: 'json',
-        url: options.response.save_to_gallery_url,
-        data: { activity: { saved_to_gallery: true } },
-        success: function() { $('#save-to-gallery-button').prop('disabled', true).text("Saved!"); }
-      });
+      $.post(options.response.save_to_gallery_url,
+             function() { $('#save-to-gallery-button').prop('disabled', true).text("Saved!"); });
     });
   }
 
@@ -4890,6 +4885,7 @@ var drawMap = function() {
   // Add pegman.
   var pegmanIcon = document.createElementNS(Blockly.SVG_NS, 'image');
   pegmanIcon.setAttribute('id', 'pegman');
+  pegmanIcon.setAttribute('class', 'pegman-location');
   pegmanIcon.setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:href',
                             skin.avatar);
   pegmanIcon.setAttribute('height', Maze.PEGMAN_HEIGHT);
@@ -5072,7 +5068,7 @@ var dirtPositionToIndex = function(row, col) {
 };
 
 var createDirt = function(row, col) {
-  var pegmanIcon = document.getElementById('pegman');
+  var pegmanElement = document.getElementsByClassName('pegman-location')[0];
   var svg = document.getElementById('svgMaze');
   var index = dirtPositionToIndex(row, col);
   // Create clip path.
@@ -5084,7 +5080,7 @@ var createDirt = function(row, col) {
   rect.setAttribute('width', Maze.DIRT_WIDTH);
   rect.setAttribute('height', Maze.DIRT_HEIGHT);
   clip.appendChild(rect);
-  svg.insertBefore(clip, pegmanIcon);
+  svg.insertBefore(clip, pegmanElement);
   // Create image.
   var img = document.createElementNS(Blockly.SVG_NS, 'image');
   img.setAttributeNS(
@@ -5093,7 +5089,7 @@ var createDirt = function(row, col) {
   img.setAttribute('width', Maze.DIRT_WIDTH * Maze.DIRT_COUNT);
   img.setAttribute('clip-path', 'url(#dirtClip' + index + ')');
   img.setAttribute('id', 'dirt' + index);
-  svg.insertBefore(img, pegmanIcon);
+  svg.insertBefore(img, pegmanElement);
 };
 
 /**
@@ -5126,15 +5122,14 @@ var updateDirt = function(row, col) {
 };
 
 var removeDirt = function(row, col) {
-  var svg = document.getElementById('svgMaze');
   var index = dirtPositionToIndex(row, col);
   var img = document.getElementById('dirt' + index);
   if (img) {
-    svg.removeChild(img);
+    img.parentNode.removeChild(img);
   }
   var clip = document.getElementById('dirtClip' + index);
   if (clip) {
-    svg.removeChild(clip);
+    clip.parentNode.removeChild(clip);
   }
 };
 

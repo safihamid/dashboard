@@ -90,3 +90,5 @@ gem 'newrelic_rpm'
 gem 'geocoder'
 
 gem 'rmagick'
+
+gem 'acts_as_list'

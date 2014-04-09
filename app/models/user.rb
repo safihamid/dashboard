@@ -19,6 +19,10 @@ class User < ActiveRecord::Base
   attr_accessor :login
 
   has_many :user_levels
+  has_many :activities
+
+  has_many :gallery_activities, -> {order 'id desc'}
+
   has_many :sections
 
   has_many :user_trophies
@@ -100,12 +104,14 @@ class User < ActiveRecord::Base
     end
   end
 
-  def levels_from_script(script, game_index=nil)
+  def levels_from_script(script, game_index=nil, stage=nil)
     ul_map = self.user_levels.includes({level: [:game, :concepts]}).index_by(&:level_id)
-    q = script.script_levels.includes({ level: :game }, :script).order(:chapter)
+    q = script.script_levels.includes({ level: :game }, :script, :stage).order((stage ? :position : :chapter))
 
-    if game_index
-      q = q.where(['games.id = :index', { :index => game_index}]).references(:game)
+    if stage
+      q = q.where(['stages.id = :stage_id', { :stage_id => stage}]).references(:stage)
+    elsif game_index
+      q = q.where(['games.id = :game_id', { :game_id => game_index}]).references(:game)
     end
 
     q.each do |sl|
