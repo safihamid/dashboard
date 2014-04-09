@@ -34,7 +34,7 @@ namespace :seed do
     end
   end
   task games: :environment do
-    Game.transaction do 
+    Game.transaction do
       Game.delete_all # use delete instead of destroy so callbacks are not called
       Game.connection.execute("ALTER TABLE games auto_increment = 1")
       game_id = 0
@@ -64,6 +64,7 @@ namespace :seed do
       Game.create!(id: game_id += 1, name: 'Flappy', app: 'flappy', intro_video: Video.find_by_key('flappy_intro'))
       Game.create!(id: game_id += 1, name: "CustomMaze", app: "maze")
       Game.create!(id: game_id += 1, name: "Studio", app: "studio")
+      Game.create!(id: game_id += 1, name: "Jigsaw", app: 'jigsaw')
    end
   end
 
@@ -86,7 +87,8 @@ namespace :seed do
                  { file: 'config/ec_script.csv', params: { name: 'Edit Code', wrapup_video: Video.find_by_key('hoc_wrapup'), trophies: false, hidden: true }},
                  { file: 'config/2014_script.csv', params: { name: '2014 Levels', trophies: false, hidden: true }},
                  { file: 'config/builder_script.csv', params: { name: 'Builder Levels', trophies: false, hidden: true }},
-                 { file: 'config/flappy_script.csv', params: { name: 'Flappy Levels', trophies: false, hidden: true }}
+                 { file: 'config/flappy_script.csv', params: { name: 'Flappy Levels', trophies: false, hidden: true }},
+                 { file: 'config/jigsaw_script.csv', params: { name: 'Jigsaw Levels', trophies: false, hidden: true }}
                 ]
       sources.each do |source|
         script = Script.where(source[:params]).first_or_create
@@ -148,7 +150,7 @@ namespace :seed do
       Callout.find_or_create_all_from_tsv!('config/callouts.tsv')
     end
   end
-  
+
   task trophies: :environment do
     # code in user.rb assumes that broze id: 1, silver id: 2 and gold id: 3.
     Trophy.transaction do
@@ -160,12 +162,12 @@ namespace :seed do
       Trophy.create!(id: trophy_id += 1, name: 'Gold', image_name: 'goldtrophy.png')
     end
   end
-  
+
   task prize_providers: :environment do
     PrizeProvider.transaction do
       PrizeProvider.delete_all # use delete instead of destroy so callbacks are not called
       PrizeProvider.connection.execute("ALTER TABLE prize_providers auto_increment = 1")
-      
+
       # placeholder data - id's are assumed to start at 1 so prizes below can be loaded properly
       prize_provider_id = 0
       PrizeProvider.create!(id: prize_provider_id += 1, name: 'Apple iTunes', description_token: 'apple_itunes', url: 'http://www.apple.com/itunes/', image_name: 'itunes_card.jpg')
@@ -264,7 +266,7 @@ namespace :seed do
           birthday: row['Birthday'].blank? ? nil : Date.parse(row['Birthday']))
     end
   end
-  
+
   def import_prize_from_text(file, provider_id, col_sep)
     Rails.logger.info "Importing prize codes from: " + file + " for provider id " + provider_id.to_s
     CSV.read(file, { col_sep: col_sep, headers: false }).each do |row|
