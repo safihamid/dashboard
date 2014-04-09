@@ -1,12 +1,28 @@
+:css
+  div.gallery_activity {
+    float: left;
+    width: 200px;
+    padding-bottom: 5px;
+  }
+  .gallery_activity img {
+    border: 10px groove lightgray;
+    margin: 5px;
+  }
+  .gallery_activity span {
+    color: #666;
+    margin: auto;
+  }
+
 %h3 Recent drawings that students have saved to their gallery
-%table
-  %tr
-    - @activities.each do |activity|
-      %tr
-        %td
-          = link_to image_tag(original_image_level_source_path(activity.level_source)), activity.level_source
-        %td
-          by
-          = activity.user.name
-          = time_ago_in_words activity.created_at
-          ago
+= paginate @gallery_activities
+- @gallery_activities.each do |gallery_activity|
+  %div.gallery_activity
+    - activity = gallery_activity.activity
+    - level_source = activity.level_source
+    = link_to image_tag(original_image_level_source_path(level_source)), level_source
+    %br/
+    %span
+      by
+      = activity.user.name
+      = time_ago_in_words activity.created_at
+      ago
