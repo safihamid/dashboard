@@ -239,7 +239,7 @@ class ActivitiesController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def activity_params
-    params[:activity].permit(:saved_to_gallery)
+    params[:activity]
   end
 
   def log_milestone(level_source, params)
