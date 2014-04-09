@@ -139,7 +139,7 @@ class ReportsControllerTest < ActionController::TestCase
     sign_in @admin
 
     100.times do
-      create(:activity, :saved_to_gallery => true)
+      create(:gallery_activity)
     end
 
     get :admin_gallery

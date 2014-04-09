@@ -96,7 +96,7 @@ SQL
   def admin_gallery
     authorize! :read, :reports
 
-    @activities = Activity.where(saved_to_gallery: true).where.not(level_source_id:nil).order(id: :desc).limit(50)
+    @activities = GalleryActivity.order(id: :desc).limit(50).collect(&:activity)
   end
 
 

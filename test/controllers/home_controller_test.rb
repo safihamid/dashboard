@@ -55,7 +55,7 @@ class HomeControllerTest < ActionController::TestCase
 
   test "logged in user without gallery activities does not show gallery" do
     user = create(:user)
-    create(:activity, user: user, saved_to_gallery: false)
+    create(:activity, user: user)
     sign_in user
 
     get :index
