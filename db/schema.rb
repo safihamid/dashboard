@@ -41,13 +41,12 @@ ActiveRecord::Schema.define(version: 20140408202946) do
   add_index "activity_hints", ["level_source_hint_id"], name: "index_activity_hints_on_level_source_hint_id", using: :btree
 
   create_table "callouts", force: true do |t|
-    t.string   "element_id",      limit: 1024, null: false
-    t.string   "text",            limit: 1024, null: false
+    t.string   "element_id",       limit: 1024, null: false
+    t.string   "localization_key", limit: 1024, null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "qtip_at"
-    t.string   "qtip_my"
     t.integer  "script_level_id"
+    t.text     "qtip_config"
   end
 
   create_table "concepts", force: true do |t|

@@ -21,19 +21,38 @@ module LevelsHelper
 
     @videos = @level.videos
 
-    # todo: make this based on which videos the user/session has already seen
-    seen = session[:videos_seen] || Set.new()
+    seen_videos = session[:videos_seen] || Set.new()
     @videos.each do |v|
-      if !seen.include?(v.key)
+      if !seen_videos.include?(v.key)
         @autoplay_video_info = params[:noautoplay] ? nil : video_info(v)
-        seen.add(v.key)
-        session[:videos_seen] = seen
+        seen_videos.add(v.key)
+        session[:videos_seen] = seen_videos
         break
       end
     end
 
     @toolbox_blocks = @toolbox_blocks || @level.toolbox_blocks
     @start_blocks = initial_blocks(current_user, @level) || @start_blocks || @level.start_blocks
+
+    select_and_remember_callouts if @script_level
+  end
+
+  def select_and_remember_callouts
+    session[:callouts_seen] ||= Set.new()
+    @callouts_to_show = Callout.where(script_level: @script_level)
+      .select(:id, :element_id, :qtip_config, :localization_key)
+      .reject { |c| session[:callouts_seen].include?(c.localization_key) }
+      .each { |c| session[:callouts_seen].add(c.localization_key) }
+    @callouts = make_localized_hash_of_callouts(@callouts_to_show)
+  end
+
+  def make_localized_hash_of_callouts(callouts)
+    callouts.map do |callout|
+      callout_hash = callout.attributes
+      callout_hash.delete('localization_key')
+      callout_hash['localized_text'] = data_t('callout.text', callout.localization_key)
+      callout_hash
+    end
   end
 
   # this defines which levels should be seeded with th last result from a different level

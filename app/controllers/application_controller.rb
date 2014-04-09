@@ -25,6 +25,11 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def reset_session_endpoint
+    reset_session
+    render text: "OK"
+  end
+
 # we need the following to fix a problem with the interaction between CanCan and strong_parameters
 # https://github.com/ryanb/cancan/issues/835
   def verify_params_before_cancan_loads_model
