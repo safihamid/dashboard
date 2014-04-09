@@ -25,9 +25,17 @@ class ScriptLevelsControllerTest < ActionController::TestCase
     callout2 = create(:callout, script_level: @script_level)
     irrelevant_callout = create(:callout)
     get :show, script_id: @script.id, id: @script_level.id
-    assert(assigns(:callouts).include?(callout1))
-    assert(assigns(:callouts).include?(callout2))
-    assert(!assigns(:callouts).include?(irrelevant_callout))
+    assert(assigns(:callouts_to_show).include?(callout1))
+    assert(assigns(:callouts_to_show).include?(callout2))
+    assert(!assigns(:callouts_to_show).include?(irrelevant_callout))
+  end
+
+  test "should localize callouts" do
+    @controller.expects :slog
+
+    create(:callout, script_level: @script_level, localization_key: 'run')
+    get :show, script_id: @script.id, id: @script_level.id
+    assert_not_nil(assigns(:callouts).find{|c| c['localized_text'] == 'Hit "Run" to try your program'})
   end
   
   test "should render blockly partial for blockly levels" do
@@ -43,17 +51,9 @@ class ScriptLevelsControllerTest < ActionController::TestCase
   test "with callout defined should define callout JS" do
     @controller.expects :slog
 
-    callout = create(:callout, script_level: @script_level)
-    get :show, script_id: @script.id, id: @script_level.id
-    assert(@response.body.include?(callout.text))
-  end
-
-  test "should have global event bus" do
-    @controller.expects :slog
-
     create(:callout, script_level: @script_level)
     get :show, script_id: @script.id, id: @script_level.id
-    assert(@response.body.include?('cdo.eventType.MODAL_HIDDEN'))
+    assert(@response.body.include?('Drag a \"move\" block and snap it below the other block'))
   end
 
   test "should carry over previous blocks" do

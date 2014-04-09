@@ -19,14 +19,6 @@
 
 var KEY_ESCAPE = 27;
 
-var cdo = {
-  events: $('<div>'), // global jquery event handler
-  eventType: {
-    MODAL_SHOWN: 'cdo.popup_shown',
-    MODAL_HIDDEN: 'cdo.popup_hidden'
-  }
-};
-
 // Prevent escape from canceling page loads.
 $(document).keydown(function(e) {
   if (e.keyCode === KEY_ESCAPE) {
@@ -234,14 +226,11 @@ Dialog.prototype.show = function(options) {
   }
 
   this.div.offset(options);
-
-  cdo.events.trigger(cdo.eventType.MODAL_SHOWN);
 }
 
 Dialog.prototype.hide = function() {
   // Hide let's bootstrap cleanup first, then we remove.
   $(this.div).modal('hide');
-  cdo.events.trigger(cdo.eventType.MODAL_HIDDEN);
 }
 
 function cache_bust_only() {
