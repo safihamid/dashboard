@@ -60,7 +60,7 @@ gem 'jbuilder', '~> 1.2'
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
 # Use unicorn as the app server
-gem 'unicorn'
+gem 'unicorn', :platforms => :ruby # Windows not supported
 
 # authentication and permissions
 gem 'devise'
