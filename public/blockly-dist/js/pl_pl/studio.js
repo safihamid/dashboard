@@ -2268,6 +2268,24 @@ exports.install = function(blockly, skin) {
     return '\n';
   };
 
+  blockly.Blocks.studio_whenGameIsRunning = {
+    // Block to handle the repeating tick event while the game is running.
+    helpUrl: '',
+    init: function () {
+      this.setHSV(140, 1.00, 0.74);
+      this.appendDummyInput()
+        .appendTitle(msg.whenGameIsRunning());
+      this.setPreviousStatement(false);
+      this.setNextStatement(true);
+      this.setTooltip(msg.whenGameIsRunningTooltip());
+    }
+  };
+
+  generator.studio_whenGameIsRunning = function () {
+    // Generate JavaScript for handling the repeating tick event
+    return '\n';
+  };
+
   blockly.Blocks.studio_whenSpriteClicked = {
     // Block to handle event when sprite is clicked.
     helpUrl: '',
@@ -2822,6 +2840,7 @@ module.exports = {
     'toolbox':
       tb('<block type="studio_whenSpriteClicked"></block> \
           <block type="studio_whenSpriteCollided"></block> \
+          <block type="studio_whenGameIsRunning"></block> \
           <block type="studio_move"></block> \
           <block type="studio_moveDistance"></block> \
           <block type="studio_playSound"></block> \
@@ -3233,6 +3252,8 @@ Studio.onTick = function() {
   if (Studio.tickCount === 1) {
     try { Studio.whenGameStarts(BlocklyApps, api); } catch (e) { }
   }
+
+  try { Studio.whenGameIsRunning(BlocklyApps, api); } catch (e) { }
   
   // Run key event handlers for any keys that are down:
   for (var key in Keycodes) {
@@ -3484,6 +3505,7 @@ Studio.clearEventHandlersKillTickLoop = function() {
   Studio.whenLeft = null;
   Studio.whenRight = null;
   Studio.whenUp = null;
+  Studio.whenGameIsRunning = null;
   Studio.whenGameStarts = null;
   Studio.whenSpriteClicked = [];
   Studio.whenSpriteCollided = [];
@@ -3719,6 +3741,14 @@ Studio.execute = function() {
 
   code = Blockly.Generator.workspaceToCode(
                                     'JavaScript',
+                                    'studio_whenGameIsRunning');
+  var whenGameIsRunningFunc = codegen.functionFromCode(
+                                     code, {
+                                      BlocklyApps: BlocklyApps,
+                                      Studio: api } );
+
+  code = Blockly.Generator.workspaceToCode(
+                                    'JavaScript',
                                     'studio_whenGameStarts');
   var whenGameStartsFunc = codegen.functionFromCode(
                                      code, {
@@ -3775,6 +3805,7 @@ Studio.execute = function() {
   Studio.whenRight = whenRightFunc;
   Studio.whenUp = whenUpFunc;
   Studio.whenDown = whenDownFunc;
+  Studio.whenGameIsRunning = whenGameIsRunningFunc;
   Studio.whenGameStarts = whenGameStartsFunc;
   Studio.whenSpriteClicked = whenSpriteClickedFunc;
   Studio.whenSpriteCollided = whenSpriteCollidedFunc;
@@ -4673,6 +4704,10 @@ exports.up = function(d){return "up"};
 exports.whenDown = function(d){return "kiedy strzałka w dół"};
 
 exports.whenDownTooltip = function(d){return "Wykonaj poniższe czynności, gdy wciśnięty jest klawisz strzałki w dół."};
+
+exports.whenGameIsRunning = function(d){return "when story is running"};
+
+exports.whenGameIsRunningTooltip = function(d){return "Execute the actions below repeatedly while the story is running."};
 
 exports.whenGameStarts = function(d){return "when game starts"};
 
