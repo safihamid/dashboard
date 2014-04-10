@@ -865,6 +865,7 @@ var getIdealBlockNumberMsg = function() {
 },{"../locale/it_it/common":27,"./builder":3,"./dom":5,"./feedback.js":6,"./slider":14,"./templates/buttons.html":16,"./templates/instructions.html":18,"./templates/learn.html":19,"./templates/makeYourOwn.html":20,"./utils":25,"./xml":26}],3:[function(require,module,exports){
 var feedback = require('./feedback.js');
 var dom = require('./dom.js');
+var utils = require('./utils.js');
 var url = require('url');
 // Builds the dom to get more info from the user. After user enters info
 // and click "create level" onAttemptCallback is called to deliver the info
@@ -882,18 +883,16 @@ exports.builderForm = function(onAttemptCallback) {
     var instructions = builderDetails.querySelector('[name="instructions"]').value;
     var name = builderDetails.querySelector('[name="level_name"]').value;
     var query = url.parse(window.location.href, true).query;
-    onAttemptCallback({
+    onAttemptCallback(utils.extend({
       "instructions": instructions,
-      "name": name,
-      "x": query.x,
-      "y": query.y
-    });
+      "name": name
+    }, query));
   });
 
   dialog.show({ backdrop: 'static' });
 };
 
-},{"./dom.js":5,"./feedback.js":6,"./templates/builder.html":15,"url":39}],4:[function(require,module,exports){
+},{"./dom.js":5,"./feedback.js":6,"./templates/builder.html":15,"./utils.js":25,"url":39}],4:[function(require,module,exports){
 var INFINITE_LOOP_TRAP = '  BlocklyApps.checkTimeout();\n';
 var INFINITE_LOOP_TRAP_RE =
     new RegExp(INFINITE_LOOP_TRAP.replace(/\(.*\)/, '\\(.*\\)'), 'g');
