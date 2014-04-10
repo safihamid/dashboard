@@ -2593,7 +2593,7 @@ exports.install = function(blockly, skin) {
     helpUrl: '',
     init: function() {
       var dropdown = new blockly.FieldDropdown(this.VALUES);
-      dropdown.setValue(this.VALUES[2][1]);  // default to hardcourt
+      dropdown.setValue(this.VALUES[2][1]);  // default to green
 
       var dropdownArray =
           this.SPRITE.slice(0, blockly.Blocks.studio_spriteCount);
@@ -2621,8 +2621,10 @@ exports.install = function(blockly, skin) {
   blockly.Blocks.studio_setSprite.VALUES =
       [[msg.setSpriteHidden(), '"hidden"'],
        [msg.setSpriteRandom(), 'random'],
-       [msg.setSpriteHardcourt(), '"hardcourt"'],
-       [msg.setSpriteRetro(), '"retro"']];
+       [msg.setSpriteGreen(), '"green"'],
+       [msg.setSpritePurple(), '"purple"'],
+       [msg.setSpritePink(), '"pink"'],
+       [msg.setSpriteOrange(), '"orange"']];
 
   generator.studio_setSprite = function() {
     return generateSetterCode(
@@ -2831,11 +2833,11 @@ module.exports = {
       [0, 0, 0, 0, 0, 0, 0, 0],
       [0, 0, 0, 0, 0, 0, 0, 0],
       [0, 0, 0, 0, 0, 0, 0, 0],
+      [0,16, 0, 0, 0,16, 0, 0],
       [0, 0, 0, 0, 0, 0, 0, 0],
-      [0, 0,16, 0, 0,16, 0, 0],
       [0, 0, 0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0, 0, 0],
-      [0, 0,16, 0, 0,16, 0, 0]
+      [0,16, 0, 0, 0,16, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0, 0]
     ],
     'toolbox':
       tb('<block type="studio_whenSpriteClicked"></block> \
@@ -2897,7 +2899,6 @@ exports.load = function(assetUrl, id) {
 
   skin.retro = {
     background: skin.assetUrl('retro_background.png'),
-    sprite: skin.assetUrl('retro_paddle.png'),
   };
   skin.cave = {
     background: skin.assetUrl('background_cave.png'),
@@ -2911,14 +2912,21 @@ exports.load = function(assetUrl, id) {
   skin.underwater = {
     background: skin.assetUrl('background_underwater.png'),
   };
+  skin.purple = {
+    sprite: skin.assetUrl('avatar2.png'),
+  };
+  skin.orange = {
+    sprite: skin.assetUrl('avatar3.png'),
+  };
+  skin.pink = {
+    sprite: skin.assetUrl('avatar4.png'),
+  };
 
   // Images
   skin.goal = skin.assetUrl('goal.png');
   skin.goalSuccess = skin.assetUrl('goal_success.png');
-  skin.sprite = skin.assetUrl('paddle.png');
+  skin.sprite = skin.assetUrl('avatar1.png');
   skin.goalAnimation = skin.assetUrl('goal.gif');
-  skin.hittingWallAnimation =
-      skin.assetUrl(config.hittingWallAnimation);
   skin.approachingGoalAnimation =
       skin.assetUrl(config.approachingGoalAnimation);
   // Sounds
@@ -2952,8 +2960,8 @@ exports.load = function(assetUrl, id) {
   } else {
     skin.background = skin.assetUrl('background.png');
   }
-  skin.pegmanHeight = config.pegmanHeight || 52;
-  skin.pegmanWidth = config.pegmanWidth || 49;
+  skin.spriteHeight = config.spriteHeight || 100;
+  skin.spriteWidth = config.spriteWidth || 100;
   skin.spriteYOffset = config.spriteYOffset || 0;
   return skin;
 };
@@ -3062,8 +3070,8 @@ var loadLevel = function() {
   Studio.COLS = Studio.map[0].length;
   // Pixel height and width of each maze square (i.e. tile).
   Studio.SQUARE_SIZE = 50;
-  Studio.PEGMAN_HEIGHT = skin.pegmanHeight;
-  Studio.PEGMAN_WIDTH = skin.pegmanWidth;
+  Studio.SPRITE_HEIGHT = skin.spriteHeight;
+  Studio.SPRITE_WIDTH = skin.spriteWidth;
   Studio.SPRITE_Y_OFFSET = skin.spriteYOffset;
   // Height and width of the goal and obstacles.
   Studio.MARKER_HEIGHT = 43;
@@ -3119,8 +3127,8 @@ var drawMap = function() {
       spriteClip.setAttribute('id', 'spriteClipPath' + i);
       var spriteClipRect = document.createElementNS(Blockly.SVG_NS, 'rect');
       spriteClipRect.setAttribute('id', 'spriteClipRect' + i);
-      spriteClipRect.setAttribute('width', Studio.PEGMAN_WIDTH);
-      spriteClipRect.setAttribute('height', Studio.PEGMAN_HEIGHT);
+      spriteClipRect.setAttribute('width', Studio.SPRITE_WIDTH);
+      spriteClipRect.setAttribute('height', Studio.SPRITE_HEIGHT);
       spriteClip.appendChild(spriteClipRect);
       svg.appendChild(spriteClip);
       
@@ -3129,8 +3137,8 @@ var drawMap = function() {
       spriteIcon.setAttribute('id', 'sprite' + i);
       spriteIcon.setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:href',
                                 skin.sprite);
-      spriteIcon.setAttribute('height', Studio.PEGMAN_HEIGHT);
-      spriteIcon.setAttribute('width', Studio.PEGMAN_WIDTH);
+      spriteIcon.setAttribute('height', Studio.SPRITE_HEIGHT);
+      spriteIcon.setAttribute('width', Studio.SPRITE_WIDTH);
       spriteIcon.setAttribute('clip-path', 'url(#spriteClipPath' + i + ')');
       svg.appendChild(spriteIcon);
       
@@ -3138,7 +3146,8 @@ var drawMap = function() {
                                  delegate(this,
                                           Studio.onSpriteClicked,
                                           i));
-
+    }
+    for (i = 0; i < Studio.spriteCount; i++) {
       var spriteSpeechBubble = document.createElementNS(Blockly.SVG_NS, 'text');
       spriteSpeechBubble.setAttribute('id', 'speechBubble' + i);
       spriteSpeechBubble.setAttribute('class', 'studio-speech-bubble');
@@ -3170,16 +3179,6 @@ var drawMap = function() {
   score.appendChild(document.createTextNode(''));
   score.setAttribute('visibility', 'hidden');
   svg.appendChild(score);
-
-  // Add wall hitting animation
-  if (skin.hittingWallAnimation) {
-    var wallAnimationIcon = document.createElementNS(Blockly.SVG_NS, 'image');
-    wallAnimationIcon.setAttribute('id', 'wallAnimation');
-    wallAnimationIcon.setAttribute('height', Studio.SQUARE_SIZE);
-    wallAnimationIcon.setAttribute('width', Studio.SQUARE_SIZE);
-    wallAnimationIcon.setAttribute('visibility', 'hidden');
-    svg.appendChild(wallAnimationIcon);
-  }
 };
 
 var essentiallyEqual = function(float1, float2, opt_variance) {
@@ -3216,7 +3215,7 @@ var performQueuedMoves = function(i)
       nextX += Math.min(Studio.sprite[i].queuedX, Studio.sprite[i].speed);
     }
     // Clamp nextX to boundaries as newX:
-    var newX = Math.min(Studio.COLS - 1, Math.max(0, nextX));
+    var newX = Math.min(Studio.COLS - 2, Math.max(0, nextX));
     if (nextX != newX) {
       Studio.sprite[i].queuedX = 0;
     } else {
@@ -3235,7 +3234,7 @@ var performQueuedMoves = function(i)
       nextY += Math.min(Studio.sprite[i].queuedY, Studio.sprite[i].speed);
     }
     // Clamp nextY to boundaries as newY:
-    var newY = Math.min(Studio.ROWS - 1, Math.max(0, nextY));
+    var newY = Math.min(Studio.ROWS - 2, Math.max(0, nextY));
     if (nextY != newY) {
       Studio.sprite[i].queuedY = 0;
     } else {
@@ -3550,6 +3549,9 @@ BlocklyApps.reset = function(first) {
   // Reset configurable variables
   Studio.setBackground('cave');
 
+  var spriteStartingSkins = [ "green", "purple", "pink", "orange" ];
+  var numStartingSkins = spriteStartingSkins.length;
+
   // Move sprites into position.
   for (i = 0; i < Studio.spriteCount; i++) {
     Studio.sprite[i].x = Studio.spriteStart_[i].x;
@@ -3558,8 +3560,8 @@ BlocklyApps.reset = function(first) {
     Studio.sprite[i].collisionMask = 0;
     Studio.sprite[i].queuedX = 0;
     Studio.sprite[i].queuedY = 0;
-
-    Studio.setSprite(i, 'hardcourt');
+    
+    Studio.setSprite(i, spriteStartingSkins[i % numStartingSkins]);
     Studio.displaySprite(i);
     document.getElementById('speechBubble' + i)
       .setAttribute('visibility', 'hidden');
@@ -3891,7 +3893,7 @@ Studio.displayScore = function() {
 };
 
 var skinTheme = function (value) {
-  if (value === 'hardcourt') {
+  if (value === 'green') {
     return skin;
   }
   return skin[value];
@@ -3938,14 +3940,14 @@ Studio.moveSingle = function (spriteIndex, dir) {
       break;
     case Direction.EAST:
       Studio.sprite[spriteIndex].x += Studio.sprite[spriteIndex].speed;
-      if (Studio.sprite[spriteIndex].x > (Studio.COLS - 1)) {
-        Studio.sprite[spriteIndex].x = Studio.COLS - 1;
+      if (Studio.sprite[spriteIndex].x > (Studio.COLS - 2)) {
+        Studio.sprite[spriteIndex].x = Studio.COLS - 2;
       }
       break;
     case Direction.SOUTH:
       Studio.sprite[spriteIndex].y += Studio.sprite[spriteIndex].speed;
-      if (Studio.sprite[spriteIndex].y > (Studio.ROWS - 1)) {
-        Studio.sprite[spriteIndex].y = Studio.ROWS - 1;
+      if (Studio.sprite[spriteIndex].y > (Studio.ROWS - 2)) {
+        Studio.sprite[spriteIndex].y = Studio.ROWS - 2;
       }
       break;
     case Direction.WEST:
@@ -4055,10 +4057,9 @@ exports.Direction = {
   WEST: 3
 };
 
-exports.FINISH_COLLIDE_DISTANCE = 0.5;
-exports.SPRITE_COLLIDE_DISTANCE = 0.5;
+exports.FINISH_COLLIDE_DISTANCE = 1.5;
+exports.SPRITE_COLLIDE_DISTANCE = 1.5;
 exports.DEFAULT_SPRITE_SPEED = 0.1;
-exports.Y_TOP_BOUNDARY = -0.2;
 
 /**
  * The types of squares in the maze, which is represented
@@ -4645,13 +4646,17 @@ exports.setBackgroundUnderwater = function(d){return "set underwater background"
 
 exports.setBackgroundTooltip = function(d){return "Sets the background image"};
 
-exports.setSpriteRandom = function(d){return "to a random image"};
-
-exports.setSpriteHardcourt = function(d){return "to a hardcourt image"};
+exports.setSpriteGreen = function(d){return "to a green image"};
 
 exports.setSpriteHidden = function(d){return "to a hidden image"};
 
-exports.setSpriteRetro = function(d){return "to a retro image"};
+exports.setSpriteOrange = function(d){return "to an orange image"};
+
+exports.setSpritePink = function(d){return "to a pink image"};
+
+exports.setSpritePurple = function(d){return "to a purple image"};
+
+exports.setSpriteRandom = function(d){return "to a random image"};
 
 exports.setSpriteTooltip = function(d){return "Sets the character image"};
 
