@@ -96,7 +96,7 @@ SQL
   def admin_gallery
     authorize! :read, :reports
 
-    @activities = GalleryActivity.order(id: :desc).limit(50).collect(&:activity)
+    @gallery_activities = GalleryActivity.order(id: :desc).page(params[:page]).per(32)
   end
 
 
