@@ -73,7 +73,7 @@ If you won't be making modifications to blockly code, you can just skip the syml
     - `bundle exec rake db:migrate`
     - `bundle exec rake seed:all`
 
-8. If you'll be modifying blockly as well (see above), you can use this take task to symlink Dashboard to use your development version of Blockly
+8. <a name="symlink"/>If you'll be modifying blockly as well (see above), you can use this rake task to symlink Dashboard to use your development version of Blockly
     - `bundle exec rake 'blockly:dev[../blockly]'`
 
 ### Starting the Server
