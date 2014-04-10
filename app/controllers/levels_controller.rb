@@ -122,14 +122,14 @@ class LevelsController < ApplicationController
 
   def artist_builder
     authorize! :create, :level
-    @level = Level::BUILDER
+    @level = Level.builder
     @game = @level.game
     @full_width = true
     @artist_builder = true
     @callback = game_levels_path @game
-    @level.x = params[:x]
-    @level.y = params[:y]
-    @level.start_direction = params[:start_direction]
+    @level.x = Integer(params[:x]) rescue nil
+    @level.y = Integer(params[:y]) rescue nil
+    @level.start_direction = Integer(params[:start_direction]) rescue nil
     show
     render :show
   end
