@@ -69,7 +69,7 @@ module.exports = function(app, levels, options) {
 };
 
 }).call(this,typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"./base":2,"./dom":5}],2:[function(require,module,exports){
+},{"./base":2,"./dom":6}],2:[function(require,module,exports){
 /**
  * Blockly Apps: Common code
  *
@@ -353,12 +353,11 @@ BlocklyApps.init = function(config) {
   var options = {
     toolbox: config.level.toolbox
   };
-  if (config.trashcan !== undefined) {
-    options.trashcan = config.trashcan;
-  }
-  if (config.scrollbars !== undefined) {
-    options.scrollbars = config.scrollbars;
-  }
+  ['trashcan', 'scrollbars', 'concreteBlocks'].forEach(function (prop) {
+    if (config[prop] !== undefined) {
+      options[prop] = config[prop];
+    }
+  });
   BlocklyApps.inject(div, options);
 
   if (config.afterInject) {
@@ -862,9 +861,19 @@ var getIdealBlockNumberMsg = function() {
       msg.infinity() : BlocklyApps.IDEAL_BLOCK_NUM;
 };
 
-},{"../locale/ca_es/common":27,"./builder":3,"./dom":5,"./feedback.js":6,"./slider":14,"./templates/buttons.html":16,"./templates/instructions.html":18,"./templates/learn.html":19,"./templates/makeYourOwn.html":20,"./utils":25,"./xml":26}],3:[function(require,module,exports){
+},{"../locale/ca_es/common":28,"./builder":4,"./dom":6,"./feedback.js":7,"./slider":15,"./templates/buttons.html":17,"./templates/instructions.html":19,"./templates/learn.html":20,"./templates/makeYourOwn.html":21,"./utils":26,"./xml":27}],3:[function(require,module,exports){
+exports.createToolbox = function(blocks) {
+  return '<xml id="toolbox" style="display: none;">' + blocks + '</xml>';
+};
+
+exports.blockOfType = function(type) {
+  return '<block type="' + type + '"></block>';
+};
+
+},{}],4:[function(require,module,exports){
 var feedback = require('./feedback.js');
 var dom = require('./dom.js');
+var utils = require('./utils.js');
 var url = require('url');
 // Builds the dom to get more info from the user. After user enters info
 // and click "create level" onAttemptCallback is called to deliver the info
@@ -882,18 +891,16 @@ exports.builderForm = function(onAttemptCallback) {
     var instructions = builderDetails.querySelector('[name="instructions"]').value;
     var name = builderDetails.querySelector('[name="level_name"]').value;
     var query = url.parse(window.location.href, true).query;
-    onAttemptCallback({
+    onAttemptCallback(utils.extend({
       "instructions": instructions,
-      "name": name,
-      "x": query.x,
-      "y": query.y
-    });
+      "name": name
+    }, query));
   });
 
   dialog.show({ backdrop: 'static' });
 };
 
-},{"./dom.js":5,"./feedback.js":6,"./templates/builder.html":15,"url":39}],4:[function(require,module,exports){
+},{"./dom.js":6,"./feedback.js":7,"./templates/builder.html":16,"./utils.js":26,"url":40}],5:[function(require,module,exports){
 var INFINITE_LOOP_TRAP = '  BlocklyApps.checkTimeout();\n';
 var INFINITE_LOOP_TRAP_RE =
     new RegExp(INFINITE_LOOP_TRAP.replace(/\(.*\)/, '\\(.*\\)'), 'g');
@@ -973,7 +980,7 @@ exports.functionFromCode = function(code, options) {
   return new ctor();
 };
 
-},{}],5:[function(require,module,exports){
+},{}],6:[function(require,module,exports){
 exports.addReadyListener = function(callback) {
   if (document.readyState === "complete") {
     setTimeout(callback, 1);
@@ -1047,7 +1054,7 @@ exports.isMobile = function() {
   return reg.test(window.navigator.userAgent);
 };
 
-},{}],6:[function(require,module,exports){
+},{}],7:[function(require,module,exports){
 var trophy = require('./templates/trophy.html');
 var utils = require('./utils');
 var readonly = require('./templates/readonly.html');
@@ -1831,7 +1838,7 @@ var generateXMLForBlocks = function(blocks) {
 };
 
 
-},{"../locale/ca_es/common":27,"./codegen":4,"./dom":5,"./templates/buttons.html":16,"./templates/code.html":17,"./templates/readonly.html":22,"./templates/showCode.html":23,"./templates/trophy.html":24,"./utils":25}],7:[function(require,module,exports){
+},{"../locale/ca_es/common":28,"./codegen":5,"./dom":6,"./templates/buttons.html":17,"./templates/code.html":18,"./templates/readonly.html":23,"./templates/showCode.html":24,"./templates/trophy.html":25,"./utils":26}],8:[function(require,module,exports){
 /**
  * Blockly App: Jigsaw
  *
@@ -1943,6 +1950,7 @@ exports.install = function(blockly, skin) {
 
   generateBlocksForLevel(blockly, skin, {
      image: skin.smiley,
+     HSV: [121, 1.00, 0.98],
      width: 200,
      height: 200,
      numBlocks: 2,
@@ -1951,6 +1959,7 @@ exports.install = function(blockly, skin) {
 
   generateBlocksForLevel(blockly, skin, {
      image: skin.smiley,
+     HSV: [0, 1.00, 0.98],
      width: 300,
      height: 300,
      numBlocks: 3,
@@ -1959,6 +1968,7 @@ exports.install = function(blockly, skin) {
 
   generateBlocksForLevel(blockly, skin, {
      image: skin.artist,
+     HSV: [0, 1.00, 0.98],
      width: 200,
      height: 200,
      numBlocks: 3,
@@ -1967,6 +1977,7 @@ exports.install = function(blockly, skin) {
 
   generateBlocksForLevel(blockly, skin, {
      image: skin.smiley,
+     HSV: [0, 1.00, 0.98],
      width: 400,
      height: 400,
      numBlocks: 5,
@@ -1995,6 +2006,7 @@ function generateBlocksForLevel(blockly, skin, options) {
   var height = options.height;
   var numBlocks = options.numBlocks;
   var level = options.level;
+  var HSV = options.HSV;
 
   var blockHeight = height / numBlocks;
   var titleWidth = width - 20;
@@ -2008,7 +2020,7 @@ function generateBlocksForLevel(blockly, skin, options) {
     blockly.Blocks[blockName] = {
       helpUrl: '',
       init: function () {
-        this.setHSV(0, 1.00, 0.98);
+        this.setHSV.apply(this, HSV);
         this.appendDummyInput()
           .appendTitle(new blockly.FieldImage(skin.blank, titleWidth, titleHeight));
         this.setPreviousStatement(blockNum !== 1);
@@ -2025,7 +2037,7 @@ function generateBlocksForLevel(blockly, skin, options) {
   }
 }
 
-},{"../../locale/ca_es/jigsaw":28,"../dom":5}],8:[function(require,module,exports){
+},{"../../locale/ca_es/jigsaw":29,"../dom":6}],9:[function(require,module,exports){
 module.exports= (function() {
   var t = function anonymous(locals, filters, escape, rethrow) {
 escape = escape || function (html){
@@ -2046,7 +2058,7 @@ return buf.join('');
     return t(locals, require("ejs").filters);
   }
 }());
-},{"../../locale/ca_es/jigsaw":28,"ejs":29}],9:[function(require,module,exports){
+},{"../../locale/ca_es/jigsaw":29,"ejs":30}],10:[function(require,module,exports){
 /**
  * Blockly App: Jigsaw
  *
@@ -2181,6 +2193,7 @@ Jigsaw.init = function(config) {
 
   config.trashcan = false;
   config.scrollbars = false;
+  config.concreteBlocks = true;
 
   config.enableShowCode = false;
 
@@ -2282,17 +2295,15 @@ Jigsaw.onPuzzleComplete = function() {
   });
 };
 
-},{"../base":2,"../dom":5,"../feedback.js":6,"../skins":13,"../templates/page.html":21,"./controls.html":8}],10:[function(require,module,exports){
+},{"../base":2,"../dom":6,"../feedback.js":7,"../skins":14,"../templates/page.html":22,"./controls.html":9}],11:[function(require,module,exports){
 /*jshint multistr: true */
 
-var createToolbox = function(blocks) {
-  return '<xml id="toolbox" style="displastartY: none;">' + blocks + '</xml>';
-};
+var createToolbox = require('../block_utils').createToolbox;
 
 var jigsawBlock = function (type, x, y, child) {
   x = x || 0;
   y = y || 0;
-  return '<block type="' + type + '" deletable="false"' +
+  return '<block type="' + type + '" deletable="true"' +
     ' x="' + x + '"' +
     ' y="' + y + '">' +
     (child ? '<next>' + child + '</next>' : '') +
@@ -2426,7 +2437,7 @@ module.exports = {
   }
 };
 
-},{}],11:[function(require,module,exports){
+},{"../block_utils":3}],12:[function(require,module,exports){
 (function (global){
 var appMain = require('../appMain');
 window.Jigsaw = require('./jigsaw');
@@ -2444,7 +2455,7 @@ window.jigsawMain = function(options) {
 };
 
 }).call(this,typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"../appMain":1,"./blocks":7,"./jigsaw":9,"./levels":10,"./skins":12}],12:[function(require,module,exports){
+},{"../appMain":1,"./blocks":8,"./jigsaw":10,"./levels":11,"./skins":13}],13:[function(require,module,exports){
 /**
  * Load Skin for Jigsaw.
  */
@@ -2474,7 +2485,7 @@ exports.load = function(assetUrl, id) {
   return skin;
 };
 
-},{"../skins":13}],13:[function(require,module,exports){
+},{"../skins":14}],14:[function(require,module,exports){
 // avatar: A 1029x51 set of 21 avatar images.
 
 exports.load = function(assetUrl, id) {
@@ -2497,6 +2508,10 @@ exports.load = function(assetUrl, id) {
     staticAvatar: skinUrl('static_avatar.png'),
     winAvatar: skinUrl('win_avatar.png'),
     failureAvatar: skinUrl('failure_avatar.png'),
+    leftArrow: skinUrl('left.png'),
+    downArrow: skinUrl('down.png'),
+    upArrow: skinUrl('up.png'),
+    rightArrow: skinUrl('right.png'),
     // Sounds
     startSound: [skinUrl('start.mp3'), skinUrl('start.ogg')],
     winSound: [skinUrl('win.mp3'), skinUrl('win.ogg')],
@@ -2505,7 +2520,7 @@ exports.load = function(assetUrl, id) {
   return skin;
 };
 
-},{}],14:[function(require,module,exports){
+},{}],15:[function(require,module,exports){
 /**
  * Blockly Apps: SVG Slider
  *
@@ -2710,7 +2725,7 @@ Slider.bindEvent_ = function(element, name, func) {
 
 module.exports = Slider;
 
-},{}],15:[function(require,module,exports){
+},{}],16:[function(require,module,exports){
 module.exports= (function() {
   var t = function anonymous(locals, filters, escape, rethrow) {
 escape = escape || function (html){
@@ -2731,7 +2746,7 @@ return buf.join('');
     return t(locals, require("ejs").filters);
   }
 }());
-},{"ejs":29}],16:[function(require,module,exports){
+},{"ejs":30}],17:[function(require,module,exports){
 module.exports= (function() {
   var t = function anonymous(locals, filters, escape, rethrow) {
 escape = escape || function (html){
@@ -2752,7 +2767,7 @@ return buf.join('');
     return t(locals, require("ejs").filters);
   }
 }());
-},{"../../locale/ca_es/common":27,"ejs":29}],17:[function(require,module,exports){
+},{"../../locale/ca_es/common":28,"ejs":30}],18:[function(require,module,exports){
 module.exports= (function() {
   var t = function anonymous(locals, filters, escape, rethrow) {
 escape = escape || function (html){
@@ -2773,7 +2788,7 @@ return buf.join('');
     return t(locals, require("ejs").filters);
   }
 }());
-},{"ejs":29}],18:[function(require,module,exports){
+},{"ejs":30}],19:[function(require,module,exports){
 module.exports= (function() {
   var t = function anonymous(locals, filters, escape, rethrow) {
 escape = escape || function (html){
@@ -2794,7 +2809,7 @@ return buf.join('');
     return t(locals, require("ejs").filters);
   }
 }());
-},{"../../locale/ca_es/common":27,"ejs":29}],19:[function(require,module,exports){
+},{"../../locale/ca_es/common":28,"ejs":30}],20:[function(require,module,exports){
 module.exports= (function() {
   var t = function anonymous(locals, filters, escape, rethrow) {
 escape = escape || function (html){
@@ -2817,7 +2832,7 @@ return buf.join('');
     return t(locals, require("ejs").filters);
   }
 }());
-},{"../../locale/ca_es/common":27,"ejs":29}],20:[function(require,module,exports){
+},{"../../locale/ca_es/common":28,"ejs":30}],21:[function(require,module,exports){
 module.exports= (function() {
   var t = function anonymous(locals, filters, escape, rethrow) {
 escape = escape || function (html){
@@ -2838,7 +2853,7 @@ return buf.join('');
     return t(locals, require("ejs").filters);
   }
 }());
-},{"../../locale/ca_es/common":27,"ejs":29}],21:[function(require,module,exports){
+},{"../../locale/ca_es/common":28,"ejs":30}],22:[function(require,module,exports){
 module.exports= (function() {
   var t = function anonymous(locals, filters, escape, rethrow) {
 escape = escape || function (html){
@@ -2860,7 +2875,7 @@ return buf.join('');
     return t(locals, require("ejs").filters);
   }
 }());
-},{"../../locale/ca_es/common":27,"ejs":29}],22:[function(require,module,exports){
+},{"../../locale/ca_es/common":28,"ejs":30}],23:[function(require,module,exports){
 module.exports= (function() {
   var t = function anonymous(locals, filters, escape, rethrow) {
 escape = escape || function (html){
@@ -2882,7 +2897,7 @@ return buf.join('');
     return t(locals, require("ejs").filters);
   }
 }());
-},{"ejs":29}],23:[function(require,module,exports){
+},{"ejs":30}],24:[function(require,module,exports){
 module.exports= (function() {
   var t = function anonymous(locals, filters, escape, rethrow) {
 escape = escape || function (html){
@@ -2903,7 +2918,7 @@ return buf.join('');
     return t(locals, require("ejs").filters);
   }
 }());
-},{"../../locale/ca_es/common":27,"ejs":29}],24:[function(require,module,exports){
+},{"../../locale/ca_es/common":28,"ejs":30}],25:[function(require,module,exports){
 module.exports= (function() {
   var t = function anonymous(locals, filters, escape, rethrow) {
 escape = escape || function (html){
@@ -2924,7 +2939,7 @@ return buf.join('');
     return t(locals, require("ejs").filters);
   }
 }());
-},{"ejs":29}],25:[function(require,module,exports){
+},{"ejs":30}],26:[function(require,module,exports){
 exports.shallowCopy = function(source) {
   var result = {};
   for (var prop in source) {
@@ -2956,7 +2971,7 @@ exports.escapeHtml = function(unsafe) {
     .replace(/'/g, "&#039;");
 };
 
-},{}],26:[function(require,module,exports){
+},{}],27:[function(require,module,exports){
 // Serializes an XML DOM node to a string.
 exports.serialize = function(node) {
   var serializer = new XMLSerializer();
@@ -2984,7 +2999,7 @@ exports.parseElement = function(text) {
   return element;
 };
 
-},{}],27:[function(require,module,exports){
+},{}],28:[function(require,module,exports){
 var MessageFormat = require("messageformat");MessageFormat.locale.ca=function(n){return n===1?"one":"other"}
 exports.blocklyMessage = function(d){return "Blockly"};
 
@@ -3111,7 +3126,7 @@ exports.signup = function(d){return "Sign up for the intro course"};
 exports.hintHeader = function(d){return "Here's a tip:"};
 
 
-},{"messageformat":40}],28:[function(require,module,exports){
+},{"messageformat":41}],29:[function(require,module,exports){
 var MessageFormat = require("messageformat");MessageFormat.locale.ca=function(n){return n===1?"one":"other"}
 exports.continue = function(d){return "Continuar"};
 
@@ -3132,7 +3147,7 @@ exports.shareGame = function(d){return "Share your game:"};
 exports.yes = function(d){return "Sí"};
 
 
-},{"messageformat":40}],29:[function(require,module,exports){
+},{"messageformat":41}],30:[function(require,module,exports){
 
 /*!
  * EJS
@@ -3491,7 +3506,7 @@ if (require.extensions) {
   });
 }
 
-},{"./filters":30,"./utils":31,"fs":32,"path":34}],30:[function(require,module,exports){
+},{"./filters":31,"./utils":32,"fs":33,"path":35}],31:[function(require,module,exports){
 /*!
  * EJS - Filters
  * Copyright(c) 2010 TJ Holowaychuk <tj@vision-media.ca>
@@ -3694,7 +3709,7 @@ exports.json = function(obj){
   return JSON.stringify(obj);
 };
 
-},{}],31:[function(require,module,exports){
+},{}],32:[function(require,module,exports){
 
 /*!
  * EJS
@@ -3720,9 +3735,9 @@ exports.escape = function(html){
 };
  
 
-},{}],32:[function(require,module,exports){
-
 },{}],33:[function(require,module,exports){
+
+},{}],34:[function(require,module,exports){
 // shim for using process in browser
 
 var process = module.exports = {};
@@ -3777,7 +3792,7 @@ process.chdir = function (dir) {
     throw new Error('process.chdir is not supported');
 };
 
-},{}],34:[function(require,module,exports){
+},{}],35:[function(require,module,exports){
 (function (process){
 // Copyright Joyent, Inc. and other Node contributors.
 //
@@ -4005,7 +4020,7 @@ var substr = 'ab'.substr(-1) === 'b'
 ;
 
 }).call(this,require("/home/ubuntu/website-ci/blockly/node_modules/grunt-browserify/node_modules/browserify/node_modules/insert-module-globals/node_modules/process/browser.js"))
-},{"/home/ubuntu/website-ci/blockly/node_modules/grunt-browserify/node_modules/browserify/node_modules/insert-module-globals/node_modules/process/browser.js":33}],35:[function(require,module,exports){
+},{"/home/ubuntu/website-ci/blockly/node_modules/grunt-browserify/node_modules/browserify/node_modules/insert-module-globals/node_modules/process/browser.js":34}],36:[function(require,module,exports){
 (function (global){
 /*! http://mths.be/punycode v1.2.4 by @mathias */
 ;(function(root) {
@@ -4516,7 +4531,7 @@ var substr = 'ab'.substr(-1) === 'b'
 }(this));
 
 }).call(this,typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],36:[function(require,module,exports){
+},{}],37:[function(require,module,exports){
 // Copyright Joyent, Inc. and other Node contributors.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
@@ -4602,7 +4617,7 @@ var isArray = Array.isArray || function (xs) {
   return Object.prototype.toString.call(xs) === '[object Array]';
 };
 
-},{}],37:[function(require,module,exports){
+},{}],38:[function(require,module,exports){
 // Copyright Joyent, Inc. and other Node contributors.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
@@ -4689,13 +4704,13 @@ var objectKeys = Object.keys || function (obj) {
   return res;
 };
 
-},{}],38:[function(require,module,exports){
+},{}],39:[function(require,module,exports){
 'use strict';
 
 exports.decode = exports.parse = require('./decode');
 exports.encode = exports.stringify = require('./encode');
 
-},{"./decode":36,"./encode":37}],39:[function(require,module,exports){
+},{"./decode":37,"./encode":38}],40:[function(require,module,exports){
 /*jshint strict:true node:true es5:true onevar:true laxcomma:true laxbreak:true eqeqeq:true immed:true latedef:true*/
 (function () {
   "use strict";
@@ -5328,7 +5343,7 @@ function parseHost(host) {
 
 }());
 
-},{"punycode":35,"querystring":38}],40:[function(require,module,exports){
+},{"punycode":36,"querystring":39}],41:[function(require,module,exports){
 /**
  * messageformat.js
  *
@@ -6911,4 +6926,4 @@ function parseHost(host) {
 
 })( this );
 
-},{}]},{},[11])
+},{}]},{},[12])
