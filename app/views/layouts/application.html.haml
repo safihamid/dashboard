@@ -2,6 +2,7 @@
 %html{:dir => locale_dir}
   %head
     %title= @page_title ? "#{t(:appname)} - #{@page_title}" : t(:appname)
+    = ::NewRelic::Agent.browser_timing_header rescue ""
     = tag :meta, name: "viewport"
     /[if IE 9]
       %meta{"http-equiv" => "X-UA-Compatible", :content => "IE=Edge"}
