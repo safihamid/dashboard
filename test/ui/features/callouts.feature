@@ -14,7 +14,7 @@ Feature: Callouts
     Given I am on "http://learn.code.org/s/1/level/2?noautoplay=true"
     And I rotate to landscape
     And I press "x-close"
-    And there's an image "assets/x_button.png"
+    And there's an image "assets/x_button"
     And callout "0" is visible
     And callout "1" is visible
     And I close callout "1"

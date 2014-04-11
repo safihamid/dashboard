@@ -315,6 +315,11 @@ BlocklyApps.init = function(config) {
   BlocklyApps.WIN_ICON = config.skin.winAvatar;
   BlocklyApps.FAILURE_ICON = config.skin.failureAvatar;
 
+  if (config.level.instructionsIcon) {
+    BlocklyApps.ICON = config.skin[config.level.instructionsIcon];
+    BlocklyApps.WIN_ICON = config.skin[config.level.instructionsIcon];
+  }
+
   if (config.showInstructionsWrapper) {
     config.showInstructionsWrapper(function() {
       showInstructions(config.level);
@@ -1218,6 +1223,7 @@ exports.getNumEnabledBlocks = function() {
 
 var getFeedbackButtons = function(feedbackType, showPreviousLevelButton) {
   var buttons = document.createElement('div');
+  buttons.id = 'feedbackButtons';
   buttons.innerHTML = require('./templates/buttons.html')({
     data: {
       previousLevel:
@@ -1482,11 +1488,7 @@ var getShowCodeElement = function(options) {
     if (BlocklyApps.enableShowCode) {
       showCodeDiv.appendChild(lines);
       showCodeDiv.appendChild(showCodeLink);
-    } else {
-      lines.innerHTML = '<br>';
-      showCodeDiv.appendChild(lines);
     }
-
     return showCodeDiv;
   }
 };
