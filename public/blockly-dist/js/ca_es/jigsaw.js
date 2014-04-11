@@ -353,12 +353,11 @@ BlocklyApps.init = function(config) {
   var options = {
     toolbox: config.level.toolbox
   };
-  if (config.trashcan !== undefined) {
-    options.trashcan = config.trashcan;
-  }
-  if (config.scrollbars !== undefined) {
-    options.scrollbars = config.scrollbars;
-  }
+  ['trashcan', 'scrollbars', 'concreteBlocks'].forEach(function (prop) {
+    if (config[prop] !== undefined) {
+      options[prop] = config[prop];
+    }
+  });
   BlocklyApps.inject(div, options);
 
   if (config.afterInject) {
@@ -1951,6 +1950,7 @@ exports.install = function(blockly, skin) {
 
   generateBlocksForLevel(blockly, skin, {
      image: skin.smiley,
+     HSV: [121, 1.00, 0.98],
      width: 200,
      height: 200,
      numBlocks: 2,
@@ -1959,6 +1959,7 @@ exports.install = function(blockly, skin) {
 
   generateBlocksForLevel(blockly, skin, {
      image: skin.smiley,
+     HSV: [0, 1.00, 0.98],
      width: 300,
      height: 300,
      numBlocks: 3,
@@ -1967,6 +1968,7 @@ exports.install = function(blockly, skin) {
 
   generateBlocksForLevel(blockly, skin, {
      image: skin.artist,
+     HSV: [0, 1.00, 0.98],
      width: 200,
      height: 200,
      numBlocks: 3,
@@ -1975,6 +1977,7 @@ exports.install = function(blockly, skin) {
 
   generateBlocksForLevel(blockly, skin, {
      image: skin.smiley,
+     HSV: [0, 1.00, 0.98],
      width: 400,
      height: 400,
      numBlocks: 5,
@@ -2003,6 +2006,7 @@ function generateBlocksForLevel(blockly, skin, options) {
   var height = options.height;
   var numBlocks = options.numBlocks;
   var level = options.level;
+  var HSV = options.HSV;
 
   var blockHeight = height / numBlocks;
   var titleWidth = width - 20;
@@ -2016,7 +2020,7 @@ function generateBlocksForLevel(blockly, skin, options) {
     blockly.Blocks[blockName] = {
       helpUrl: '',
       init: function () {
-        this.setHSV(0, 1.00, 0.98);
+        this.setHSV.apply(this, HSV);
         this.appendDummyInput()
           .appendTitle(new blockly.FieldImage(skin.blank, titleWidth, titleHeight));
         this.setPreviousStatement(blockNum !== 1);
@@ -2189,6 +2193,7 @@ Jigsaw.init = function(config) {
 
   config.trashcan = false;
   config.scrollbars = false;
+  config.concreteBlocks = true;
 
   config.enableShowCode = false;
 
@@ -2298,7 +2303,7 @@ var createToolbox = require('../block_utils').createToolbox;
 var jigsawBlock = function (type, x, y, child) {
   x = x || 0;
   y = y || 0;
-  return '<block type="' + type + '" deletable="false"' +
+  return '<block type="' + type + '" deletable="true"' +
     ' x="' + x + '"' +
     ' y="' + y + '">' +
     (child ? '<next>' + child + '</next>' : '') +
