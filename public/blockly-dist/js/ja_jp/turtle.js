@@ -69,7 +69,7 @@ module.exports = function(app, levels, options) {
 };
 
 }).call(this,typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"./base":2,"./dom":5}],2:[function(require,module,exports){
+},{"./base":2,"./dom":6}],2:[function(require,module,exports){
 /**
  * Blockly Apps: Common code
  *
@@ -151,7 +151,7 @@ BlocklyApps.init = function(config) {
 
   BlocklyApps.share = config.share;
   BlocklyApps.noPadding = config.no_padding;
-  
+
   // enableShowCode defaults to true if not defined
   BlocklyApps.enableShowCode = (config.enableShowCode === false) ? false : true;
 
@@ -301,7 +301,7 @@ BlocklyApps.init = function(config) {
 
   BlocklyApps.Dialog = config.Dialog;
 
-  var showCode = document.getElementById('show-code-header');  
+  var showCode = document.getElementById('show-code-header');
   if (showCode) {
     if (BlocklyApps.enableShowCode) {
       dom.addClickTouchEvent(showCode, function() {
@@ -314,6 +314,11 @@ BlocklyApps.init = function(config) {
   BlocklyApps.SMALL_ICON = config.skin.smallStaticAvatar;
   BlocklyApps.WIN_ICON = config.skin.winAvatar;
   BlocklyApps.FAILURE_ICON = config.skin.failureAvatar;
+
+  if (config.level.instructionsIcon) {
+    BlocklyApps.ICON = config.skin[config.level.instructionsIcon];
+    BlocklyApps.WIN_ICON = config.skin[config.level.instructionsIcon];
+  }
 
   if (config.showInstructionsWrapper) {
     config.showInstructionsWrapper(function() {
@@ -353,9 +358,11 @@ BlocklyApps.init = function(config) {
   var options = {
     toolbox: config.level.toolbox
   };
-  if (config.trashcan !== undefined) {
-    options.trashcan = config.trashcan;
-  }
+  ['trashcan', 'scrollbars', 'concreteBlocks'].forEach(function (prop) {
+    if (config[prop] !== undefined) {
+      options[prop] = config[prop];
+    }
+  });
   BlocklyApps.inject(div, options);
 
   if (config.afterInject) {
@@ -610,7 +617,7 @@ BlocklyApps.resizeHeaders = function() {
     showCodeWidth = 0;
     showCodeHeader.style.display = "none";
   }
-  
+
   toolboxHeader.style.width = (categoriesWidth + toolboxWidth) + 'px';
   workspaceHeader.style.width = (workspaceWidth -
                                  toolboxWidth -
@@ -859,9 +866,19 @@ var getIdealBlockNumberMsg = function() {
       msg.infinity() : BlocklyApps.IDEAL_BLOCK_NUM;
 };
 
-},{"../locale/ja_jp/common":33,"./builder":3,"./dom":5,"./feedback.js":6,"./slider":9,"./templates/buttons.html":11,"./templates/instructions.html":13,"./templates/learn.html":14,"./templates/makeYourOwn.html":15,"./utils":31,"./xml":32}],3:[function(require,module,exports){
+},{"../locale/ja_jp/common":34,"./builder":4,"./dom":6,"./feedback.js":7,"./slider":10,"./templates/buttons.html":12,"./templates/instructions.html":14,"./templates/learn.html":15,"./templates/makeYourOwn.html":16,"./utils":32,"./xml":33}],3:[function(require,module,exports){
+exports.createToolbox = function(blocks) {
+  return '<xml id="toolbox" style="display: none;">' + blocks + '</xml>';
+};
+
+exports.blockOfType = function(type) {
+  return '<block type="' + type + '"></block>';
+};
+
+},{}],4:[function(require,module,exports){
 var feedback = require('./feedback.js');
 var dom = require('./dom.js');
+var utils = require('./utils.js');
 var url = require('url');
 // Builds the dom to get more info from the user. After user enters info
 // and click "create level" onAttemptCallback is called to deliver the info
@@ -879,18 +896,16 @@ exports.builderForm = function(onAttemptCallback) {
     var instructions = builderDetails.querySelector('[name="instructions"]').value;
     var name = builderDetails.querySelector('[name="level_name"]').value;
     var query = url.parse(window.location.href, true).query;
-    onAttemptCallback({
+    onAttemptCallback(utils.extend({
       "instructions": instructions,
-      "name": name,
-      "x": query.x,
-      "y": query.y
-    });
+      "name": name
+    }, query));
   });
 
   dialog.show({ backdrop: 'static' });
 };
 
-},{"./dom.js":5,"./feedback.js":6,"./templates/builder.html":10,"url":45}],4:[function(require,module,exports){
+},{"./dom.js":6,"./feedback.js":7,"./templates/builder.html":11,"./utils.js":32,"url":46}],5:[function(require,module,exports){
 var INFINITE_LOOP_TRAP = '  BlocklyApps.checkTimeout();\n';
 var INFINITE_LOOP_TRAP_RE =
     new RegExp(INFINITE_LOOP_TRAP.replace(/\(.*\)/, '\\(.*\\)'), 'g');
@@ -970,7 +985,7 @@ exports.functionFromCode = function(code, options) {
   return new ctor();
 };
 
-},{}],5:[function(require,module,exports){
+},{}],6:[function(require,module,exports){
 exports.addReadyListener = function(callback) {
   if (document.readyState === "complete") {
     setTimeout(callback, 1);
@@ -1044,7 +1059,7 @@ exports.isMobile = function() {
   return reg.test(window.navigator.userAgent);
 };
 
-},{}],6:[function(require,module,exports){
+},{}],7:[function(require,module,exports){
 var trophy = require('./templates/trophy.html');
 var utils = require('./utils');
 var readonly = require('./templates/readonly.html');
@@ -1217,6 +1232,7 @@ exports.getNumEnabledBlocks = function() {
 
 var getFeedbackButtons = function(feedbackType, showPreviousLevelButton) {
   var buttons = document.createElement('div');
+  buttons.id = 'feedbackButtons';
   buttons.innerHTML = require('./templates/buttons.html')({
     data: {
       previousLevel:
@@ -1481,11 +1497,11 @@ var getShowCodeElement = function(options) {
     if (BlocklyApps.enableShowCode) {
       showCodeDiv.appendChild(lines);
       showCodeDiv.appendChild(showCodeLink);
-    } else {
+    } else if (options.showingSharing) {
+      // want a breaking line if this is a sharing dialog
       lines.innerHTML = '<br>';
       showCodeDiv.appendChild(lines);
     }
-
     return showCodeDiv;
   }
 };
@@ -1828,7 +1844,7 @@ var generateXMLForBlocks = function(blocks) {
 };
 
 
-},{"../locale/ja_jp/common":33,"./codegen":4,"./dom":5,"./templates/buttons.html":11,"./templates/code.html":12,"./templates/readonly.html":17,"./templates/showCode.html":18,"./templates/trophy.html":19,"./utils":31}],7:[function(require,module,exports){
+},{"../locale/ja_jp/common":34,"./codegen":5,"./dom":6,"./templates/buttons.html":12,"./templates/code.html":13,"./templates/readonly.html":18,"./templates/showCode.html":19,"./templates/trophy.html":20,"./utils":32}],8:[function(require,module,exports){
 // Functions for checking required blocks.
 
 /**
@@ -1887,7 +1903,7 @@ exports.define = function(name) {
   };
 };
 
-},{}],8:[function(require,module,exports){
+},{}],9:[function(require,module,exports){
 // avatar: A 1029x51 set of 21 avatar images.
 
 exports.load = function(assetUrl, id) {
@@ -1910,6 +1926,10 @@ exports.load = function(assetUrl, id) {
     staticAvatar: skinUrl('static_avatar.png'),
     winAvatar: skinUrl('win_avatar.png'),
     failureAvatar: skinUrl('failure_avatar.png'),
+    leftArrow: skinUrl('left.png'),
+    downArrow: skinUrl('down.png'),
+    upArrow: skinUrl('up.png'),
+    rightArrow: skinUrl('right.png'),
     // Sounds
     startSound: [skinUrl('start.mp3'), skinUrl('start.ogg')],
     winSound: [skinUrl('win.mp3'), skinUrl('win.ogg')],
@@ -1918,7 +1938,7 @@ exports.load = function(assetUrl, id) {
   return skin;
 };
 
-},{}],9:[function(require,module,exports){
+},{}],10:[function(require,module,exports){
 /**
  * Blockly Apps: SVG Slider
  *
@@ -2123,7 +2143,7 @@ Slider.bindEvent_ = function(element, name, func) {
 
 module.exports = Slider;
 
-},{}],10:[function(require,module,exports){
+},{}],11:[function(require,module,exports){
 module.exports= (function() {
   var t = function anonymous(locals, filters, escape, rethrow) {
 escape = escape || function (html){
@@ -2144,7 +2164,7 @@ return buf.join('');
     return t(locals, require("ejs").filters);
   }
 }());
-},{"ejs":35}],11:[function(require,module,exports){
+},{"ejs":36}],12:[function(require,module,exports){
 module.exports= (function() {
   var t = function anonymous(locals, filters, escape, rethrow) {
 escape = escape || function (html){
@@ -2157,7 +2177,7 @@ escape = escape || function (html){
 };
 var buf = [];
 with (locals || {}) { (function(){ 
- buf.push('');1; var msg = require('../../locale/ja_jp/common'); ; buf.push('\n\n');3; if (data.ok) {; buf.push('  <div class="farSide" style="padding: 1ex 3ex 0">\n    <button id="ok-button" class="secondary">\n      ', escape((5,  msg.dialogOK() )), '\n    </button>\n  </div>\n');8; };; buf.push('\n');9; if (data.previousLevel) {; buf.push('  <button id="back-button" class="launch">\n    ', escape((10,  msg.backToPreviousLevel() )), '\n  </button>\n');12; };; buf.push('\n');13; if (data.tryAgain) {; buf.push('  <button id="again-button" class="launch">\n    ', escape((14,  msg.tryAgain() )), '\n  </button>\n');16; };; buf.push('\n');17; if (data.nextLevel) {; buf.push('  <button id="continue-button" class="launch">\n    ', escape((18,  msg.continue() )), '\n  </button>\n');20; };; buf.push('\n');21; if (data.facebookUrl) {; buf.push('  <a href=', escape((21,  data.facebookUrl )), ' target="_blank">\n    <img src=', escape((22,  BlocklyApps.assetUrl("media/facebook_purple.png") )), '>\n  </a>\n');24; };; buf.push('\n');25; if (data.twitterUrl) {; buf.push('  <a href=', escape((25,  data.twitterUrl )), ' target="_blank">\n    <img src=', escape((26,  BlocklyApps.assetUrl("media/twitter_purple.png") )), ' >\n  </a>\n  <br>\n');29; };; buf.push('\n');30; if (data.sharingUrl) {; buf.push('  <input type="text" id="sharing-input" value=', escape((30,  data.sharingUrl )), ' >\n');31; };; buf.push('\n');32; if (data.saveToGalleryUrl) {; buf.push('  <button id="save-to-gallery-button" class="launch">\n    ', escape((33,  msg.saveToGallery() )), '\n  </button>\n');35; };; buf.push(''); })();
+ buf.push('');1; var msg = require('../../locale/ja_jp/common'); ; buf.push('\n\n');3; if (data.ok) {; buf.push('  <div class="farSide" style="padding: 1ex 3ex 0">\n    <button id="ok-button" class="secondary">\n      ', escape((5,  msg.dialogOK() )), '\n    </button>\n  </div>\n');8; };; buf.push('\n');9; if (data.previousLevel) {; buf.push('  <button id="back-button" class="launch">\n    ', escape((10,  msg.backToPreviousLevel() )), '\n  </button>\n');12; };; buf.push('\n');13; if (data.tryAgain) {; buf.push('  <button id="again-button" class="launch">\n    ', escape((14,  msg.tryAgain() )), '\n  </button>\n');16; };; buf.push('\n');17; if (data.nextLevel) {; buf.push('  <button id="continue-button" class="launch">\n    ', escape((18,  msg.continue() )), '\n  </button>\n');20; };; buf.push('\n');21; if (data.facebookUrl) {; buf.push('  <a href=', escape((21,  data.facebookUrl )), ' target="_blank">\n    <img src=', escape((22,  BlocklyApps.assetUrl("media/facebook_purple.png") )), '>\n  </a>\n');24; };; buf.push('\n');25; if (data.twitterUrl) {; buf.push('  <a href=', escape((25,  data.twitterUrl )), ' target="_blank">\n    <img src=', escape((26,  BlocklyApps.assetUrl("media/twitter_purple.png") )), ' >\n  </a>\n  <br>\n');29; };; buf.push('\n');30; if (data.sharingUrl) {; buf.push('  <input type="text" id="sharing-input" value=', escape((30,  data.sharingUrl )), ' readonly>\n');31; };; buf.push('\n');32; if (data.saveToGalleryUrl) {; buf.push('  <button id="save-to-gallery-button" class="launch">\n    ', escape((33,  msg.saveToGallery() )), '\n  </button>\n');35; };; buf.push(''); })();
 } 
 return buf.join('');
 };
@@ -2165,7 +2185,7 @@ return buf.join('');
     return t(locals, require("ejs").filters);
   }
 }());
-},{"../../locale/ja_jp/common":33,"ejs":35}],12:[function(require,module,exports){
+},{"../../locale/ja_jp/common":34,"ejs":36}],13:[function(require,module,exports){
 module.exports= (function() {
   var t = function anonymous(locals, filters, escape, rethrow) {
 escape = escape || function (html){
@@ -2186,7 +2206,7 @@ return buf.join('');
     return t(locals, require("ejs").filters);
   }
 }());
-},{"ejs":35}],13:[function(require,module,exports){
+},{"ejs":36}],14:[function(require,module,exports){
 module.exports= (function() {
   var t = function anonymous(locals, filters, escape, rethrow) {
 escape = escape || function (html){
@@ -2207,7 +2227,7 @@ return buf.join('');
     return t(locals, require("ejs").filters);
   }
 }());
-},{"../../locale/ja_jp/common":33,"ejs":35}],14:[function(require,module,exports){
+},{"../../locale/ja_jp/common":34,"ejs":36}],15:[function(require,module,exports){
 module.exports= (function() {
   var t = function anonymous(locals, filters, escape, rethrow) {
 escape = escape || function (html){
@@ -2230,7 +2250,7 @@ return buf.join('');
     return t(locals, require("ejs").filters);
   }
 }());
-},{"../../locale/ja_jp/common":33,"ejs":35}],15:[function(require,module,exports){
+},{"../../locale/ja_jp/common":34,"ejs":36}],16:[function(require,module,exports){
 module.exports= (function() {
   var t = function anonymous(locals, filters, escape, rethrow) {
 escape = escape || function (html){
@@ -2251,7 +2271,7 @@ return buf.join('');
     return t(locals, require("ejs").filters);
   }
 }());
-},{"../../locale/ja_jp/common":33,"ejs":35}],16:[function(require,module,exports){
+},{"../../locale/ja_jp/common":34,"ejs":36}],17:[function(require,module,exports){
 module.exports= (function() {
   var t = function anonymous(locals, filters, escape, rethrow) {
 escape = escape || function (html){
@@ -2273,7 +2293,7 @@ return buf.join('');
     return t(locals, require("ejs").filters);
   }
 }());
-},{"../../locale/ja_jp/common":33,"ejs":35}],17:[function(require,module,exports){
+},{"../../locale/ja_jp/common":34,"ejs":36}],18:[function(require,module,exports){
 module.exports= (function() {
   var t = function anonymous(locals, filters, escape, rethrow) {
 escape = escape || function (html){
@@ -2295,7 +2315,7 @@ return buf.join('');
     return t(locals, require("ejs").filters);
   }
 }());
-},{"ejs":35}],18:[function(require,module,exports){
+},{"ejs":36}],19:[function(require,module,exports){
 module.exports= (function() {
   var t = function anonymous(locals, filters, escape, rethrow) {
 escape = escape || function (html){
@@ -2316,7 +2336,7 @@ return buf.join('');
     return t(locals, require("ejs").filters);
   }
 }());
-},{"../../locale/ja_jp/common":33,"ejs":35}],19:[function(require,module,exports){
+},{"../../locale/ja_jp/common":34,"ejs":36}],20:[function(require,module,exports){
 module.exports= (function() {
   var t = function anonymous(locals, filters, escape, rethrow) {
 escape = escape || function (html){
@@ -2337,7 +2357,7 @@ return buf.join('');
     return t(locals, require("ejs").filters);
   }
 }());
-},{"ejs":35}],20:[function(require,module,exports){
+},{"ejs":36}],21:[function(require,module,exports){
 /**
  * Blockly Demo: Turtle Graphics
  *
@@ -2688,7 +2708,7 @@ exports.answer = function(page, level) {
   return BlocklyApps.log;
 };
 
-},{"../base":2,"./api":21}],21:[function(require,module,exports){
+},{"../base":2,"./api":22}],22:[function(require,module,exports){
 var BlocklyApps = require('../base');
 
 exports.moveForward = function(distance, id) {
@@ -2697,6 +2717,22 @@ exports.moveForward = function(distance, id) {
 
 exports.moveBackward = function(distance, id) {
   BlocklyApps.log.push(['FD', -distance, id]);
+};
+
+exports.moveUp = function(distance, id) {
+  BlocklyApps.log.push(['MV', distance, 0, id]);
+};
+
+exports.moveDown = function(distance, id) {
+  BlocklyApps.log.push(['MV', distance, 180, id]);
+};
+
+exports.moveLeft = function(distance, id) {
+  BlocklyApps.log.push(['MV', distance, 270, id]);
+};
+
+exports.moveRight = function(distance, id) {
+  BlocklyApps.log.push(['MV', distance, 90, id]);
 };
 
 exports.jumpForward = function(distance, id) {
@@ -2739,7 +2775,7 @@ exports.showTurtle = function(id) {
   BlocklyApps.log.push(['ST', id]);
 };
 
-},{"../base":2}],22:[function(require,module,exports){
+},{"../base":2}],23:[function(require,module,exports){
 /**
  * Blockly Demo: Turtle Graphics
  *
@@ -3181,6 +3217,83 @@ exports.install = function(blockly, skin) {
     }
   };
 
+  blockly.Blocks.simple_move = {
+    DIRECTIONS: {
+      left: {
+        moveFunction: 'moveLeft',
+        image: skin.leftArrow,
+        image_width: 84,
+        image_height: 84
+      },
+      right: {
+        moveFunction: 'moveRight',
+        image: skin.rightArrow,
+        image_width: 84,
+        image_height: 84
+      },
+      up: {
+        moveFunction: 'moveUp',
+        image: skin.upArrow,
+        image_width: 84,
+        image_height: 84
+      },
+      down: {
+        moveFunction: 'moveDown',
+        image: skin.downArrow,
+        image_width: 84,
+        image_height: 84
+      }
+    },
+    generate_block: function(direction) {
+      var direction_config = blockly.Blocks.simple_move.DIRECTIONS[direction];
+
+      return {
+        helpUrl: '',
+        init: function () {
+          this.setHSV(184, 1.00, 0.74);
+          this.appendDummyInput()
+            .appendTitle(new blockly.FieldImage(direction_config.image, direction_config.image_width, direction_config.image_height));
+          this.setPreviousStatement(true);
+          this.setNextStatement(true);
+          this.setTooltip(msg.jumpTooltip());
+        }
+      };
+    }
+  };
+  
+  blockly.Blocks.simple_move_up = blockly.Blocks.simple_move.generate_block('up');
+  blockly.Blocks.simple_move_down = blockly.Blocks.simple_move.generate_block('down');
+  blockly.Blocks.simple_move_left = blockly.Blocks.simple_move.generate_block('left');
+  blockly.Blocks.simple_move_right = blockly.Blocks.simple_move.generate_block('right');
+
+  generator.generate_simple_move = function(direction) {
+    return function() {
+      return 'Turtle.' + blockly.Blocks.simple_move.DIRECTIONS[direction].moveFunction + '(50,' + '\'block_id_' + this.id + '\');\n';
+    };
+  };
+
+  generator.simple_move_up = generator.generate_simple_move('up');
+  generator.simple_move_left = generator.generate_simple_move('left');
+  generator.simple_move_right = generator.generate_simple_move('right');
+  generator.simple_move_down = generator.generate_simple_move('down'); 
+  
+  blockly.Blocks.simple_jump = {
+    helpUrl: '',
+    init: function() {
+      this.setHSV(184, 1.00, 0.74);
+      this.appendDummyInput().appendTitle('JUMP')
+        .appendTitle(new blockly.FieldImage(skin.downArrow, 84, 84));
+      this.setPreviousStatement(true);
+      this.setNextStatement(true);
+      this.setTooltip(msg.jumpTooltip());
+    }
+  };
+
+  generator.simple_jump = function() {
+    return 'Turtle.jumpForward(50,' + '\'block_id_' + this.id + '\');\n';
+  };
+
+
   blockly.Blocks.jump.DIRECTIONS =
       [[msg.jumpForward(), 'jumpForward'],
        [msg.jumpBackward(), 'jumpBackward']];
@@ -3289,6 +3402,26 @@ exports.install = function(blockly, skin) {
     return 'Turtle.penColour(' + colour + ', \'block_id_' +
         this.id + '\');\n';
   };
+  
+  blockly.Blocks.up_big = {
+    helpUrl: '',
+    init: function() {
+      this.setHSV(184, 1.00, 0.74);
+      this.setPreviousStatement(true, null);
+      this.setNextStatement(true, null);
+      this.appendDummyInput()
+        .appendTitle(new blockly.FieldDropdown(this.STATE), 'VISIBILITY');
+      this.setTooltip(msg.turtleVisibilityTooltip());
+    }
+  };
+
+  generator.up_big = function() {
+    // Generate JavaScript for setting the colour.
+    var colour = generator.valueToCode(this, 'COLOUR',
+      generator.ORDER_NONE) || '\'#000000\'';
+    return 'Turtle.penColour(' + colour + ', \'block_id_' +
+      this.id + '\');\n';
+  };
 
   blockly.Blocks.turtle_visibility = {
     // Block for changing turtle visiblity.
@@ -3315,7 +3448,7 @@ exports.install = function(blockly, skin) {
 
 };
 
-},{"../../locale/ja_jp/turtle":34,"./core":24}],23:[function(require,module,exports){
+},{"../../locale/ja_jp/turtle":35,"./core":25}],24:[function(require,module,exports){
 module.exports= (function() {
   var t = function anonymous(locals, filters, escape, rethrow) {
 escape = escape || function (html){
@@ -3336,7 +3469,7 @@ return buf.join('');
     return t(locals, require("ejs").filters);
   }
 }());
-},{"ejs":35}],24:[function(require,module,exports){
+},{"ejs":36}],25:[function(require,module,exports){
 // Create a limited colour palette to avoid overwhelming new users
 // and to make colour checking easier.  These definitions cannot be
 // moved to blocks.js, which is loaded later, since they are used in
@@ -3357,11 +3490,12 @@ exports.Colours = {
   PLUM: '#843179'
 };
 
-},{}],25:[function(require,module,exports){
+},{}],26:[function(require,module,exports){
 var levelBase = require('../level_base');
 var Colours = require('./core').Colours;
 var answer = require('./answers').answer;
 var msg = require('../../locale/ja_jp/turtle');
+var blockUtils = require('../block_utils');
 
 //TODO: Fix hacky level-number-dependent toolbox.
 var toolbox = function(page, level) {
@@ -3399,6 +3533,19 @@ var drawTurn = req.drawTurn;
 var SET_COLOUR_PICKER = req.SET_COLOUR_PICKER;
 var SET_COLOUR_RANDOM = req.SET_COLOUR_RANDOM;
 var defineWithArg = req.defineWithArg;
+
+var blocks = {
+  SIMPLE_MOVE_UP: blockUtils.blockOfType('simple_move_up'),
+  SIMPLE_MOVE_DOWN: blockUtils.blockOfType('simple_move_down'),
+  SIMPLE_MOVE_LEFT: blockUtils.blockOfType('simple_move_left'),
+  SIMPLE_MOVE_RIGHT: blockUtils.blockOfType('simple_move_right'),
+  simple_move_blocks: function() {
+    return this.SIMPLE_MOVE_UP +
+      this.SIMPLE_MOVE_DOWN +
+      this.SIMPLE_MOVE_LEFT +
+      this.SIMPLE_MOVE_RIGHT;
+  }
+};
 
 /**
  * Information about level-specific requirements.
@@ -4137,10 +4284,19 @@ module.exports = {
     startBlocks: '',
     startDirection: 0,
     sliderSpeed: 1.0
+  },
+  'k1_demo': {
+    answer: [],
+    freePlay: false,
+    initialY: 300,
+    toolbox: blockUtils.createToolbox(blocks.simple_move_blocks()),
+    startBlocks: '',
+    startDirection: 0,
+    sliderSpeed: 1.0
   }
 };
 
-},{"../../locale/ja_jp/turtle":34,"../level_base":7,"./answers":20,"./core":24,"./requiredBlocks":27,"./startBlocks.xml":28,"./toolbox.xml":29}],26:[function(require,module,exports){
+},{"../../locale/ja_jp/turtle":35,"../block_utils":3,"../level_base":8,"./answers":21,"./core":25,"./requiredBlocks":28,"./startBlocks.xml":29,"./toolbox.xml":30}],27:[function(require,module,exports){
 var appMain = require('../appMain');
 window.Turtle = require('./turtle');
 var blocks = require('./blocks');
@@ -4153,7 +4309,7 @@ window.turtleMain = function(options) {
   appMain(window.Turtle, levels, options);
 };
 
-},{"../appMain":1,"../skins":8,"./blocks":22,"./levels":25,"./turtle":30}],27:[function(require,module,exports){
+},{"../appMain":1,"../skins":9,"./blocks":23,"./levels":26,"./turtle":31}],28:[function(require,module,exports){
 /**
  * Sets BlocklyApp constants that depend on the page and level.
  * This encapsulates many functions used for BlocklyApps.REQUIRED_BLOCKS.
@@ -4386,7 +4542,7 @@ module.exports = {
   SET_COLOUR_RANDOM: SET_COLOUR_RANDOM,
   defineWithArg: defineWithArg
 };
-},{}],28:[function(require,module,exports){
+},{}],29:[function(require,module,exports){
 module.exports= (function() {
   var t = function anonymous(locals, filters, escape, rethrow) {
 escape = escape || function (html){
@@ -4453,7 +4609,7 @@ return buf.join('');
     return t(locals, require("ejs").filters);
   }
 }());
-},{"../../locale/ja_jp/turtle":34,"ejs":35}],29:[function(require,module,exports){
+},{"../../locale/ja_jp/turtle":35,"ejs":36}],30:[function(require,module,exports){
 module.exports= (function() {
   var t = function anonymous(locals, filters, escape, rethrow) {
 escape = escape || function (html){
@@ -4577,7 +4733,7 @@ return buf.join('');
     return t(locals, require("ejs").filters);
   }
 }());
-},{"../../locale/ja_jp/turtle":34,"ejs":35}],30:[function(require,module,exports){
+},{"../../locale/ja_jp/turtle":35,"ejs":36}],31:[function(require,module,exports){
 /**
  * Blockly Demo: Turtle Graphics
  *
@@ -4829,10 +4985,10 @@ BlocklyApps.reset = function(ignore) {
   Turtle.visible = true;
 
   // For special cases, use a different initial location.
-  if (level.initialX) {
+  if (level.initialX !== undefined) {
     Turtle.x = level.initialX;
   }
-  if (level.initialY) {
+  if (level.initialY !== undefined) {
     Turtle.y = level.initialY;
   }
   // Clear the display.
@@ -4959,39 +5115,19 @@ Turtle.animate = function() {
 Turtle.step = function(command, values) {
   switch (command) {
     case 'FD':  // Forward
-      if (Turtle.penDownValue) {
-        Turtle.ctxScratch.beginPath();
-        Turtle.ctxScratch.moveTo(Turtle.x, Turtle.y);
-      }
-      /* falls through */
+      Turtle.moveForwardAndDraw_(values[0]);
+      break;
     case 'JF':  // Jump forward
+      Turtle.moveForward_(values[0]);
+      break;
+    case 'MV':  // Move
       var distance = values[0];
-      var bump;
-      if (distance) {
-        Turtle.x += distance * Math.sin(2 * Math.PI * Turtle.heading / 360);
-        Turtle.y -= distance * Math.cos(2 * Math.PI * Turtle.heading / 360);
-        bump = 0;
-      } else {
-        // WebKit (unlike Gecko) draws nothing for a zero-length line.
-        bump = 0.1;
-      }
-      if (command == 'FD' && Turtle.penDownValue) {
-        Turtle.ctxScratch.lineTo(Turtle.x, Turtle.y + bump);
-        Turtle.ctxScratch.stroke();
-        if (distance) {
-          var colour = Turtle.ctxScratch.strokeStyle.toLowerCase();
-          if (Turtle.coloursUsed.indexOf(colour) == -1) {
-            Turtle.coloursUsed.push(colour);
-          }
-        }
-      }
+      var heading = values[1];
+      Turtle.setHeading_(heading);
+      Turtle.moveForwardAndDraw_(distance);
       break;
     case 'RT':  // Right Turn
-      Turtle.heading += values[0];
-      Turtle.heading %= 360;
-      if (Turtle.heading < 0) {
-        Turtle.heading += 360;
-      }
+      Turtle.turnByDegrees_(values[0]);
       break;
     case 'DP':  // Draw Print
       Turtle.ctxScratch.save();
@@ -5023,6 +5159,81 @@ Turtle.step = function(command, values) {
       Turtle.visible = true;
       break;
   }
+};
+
+Turtle.startPathIfPenDown_ = function () {
+  if (!Turtle.penDownValue) {
+    return;
+  }
+
+  Turtle.ctxScratch.beginPath();
+  Turtle.ctxScratch.moveTo(Turtle.x, Turtle.y);
+};
+
+Turtle.moveForward_ = function (distance) {
+  Turtle.x += distance * Math.sin(2 * Math.PI * Turtle.heading / 360);
+  Turtle.y -= distance * Math.cos(2 * Math.PI * Turtle.heading / 360);
+};
+
+Turtle.moveByRelativePosition_ = function (x, y) {
+  Turtle.x += x;
+  Turtle.y += y;
+};
+
+Turtle.drawPathToTurtle_ = function (x, y) {
+  Turtle.ctxScratch.lineTo(x, y);
+  Turtle.ctxScratch.stroke();
+};
+
+Turtle.markCurrentColourUsed_ = function () {
+  var colour = Turtle.ctxScratch.strokeStyle.toLowerCase();
+  if (Turtle.coloursUsed.indexOf(colour) == -1) {
+    Turtle.coloursUsed.push(colour);
+  }
+};
+
+Turtle.drawDotAtTurtle_ = function (x, y) {
+  // WebKit (unlike Gecko) draws nothing for a zero-length line, so draw a very short line.
+  var dotLineLength = 0.1;
+  Turtle.ctxScratch.lineTo(x, y + dotLineLength);
+  Turtle.ctxScratch.stroke();
+};
+
+Turtle.drawToTurtleIfPenDown_ = function (distance) {
+  if (!Turtle.penDownValue) {
+    return;
+  }
+
+  var isDot = (distance === 0);
+  if (isDot) {
+    Turtle.drawDotAtTurtle_(Turtle.x, Turtle.y);
+  } else {
+    Turtle.drawPathToTurtle_(Turtle.x, Turtle.y);
+  }
+  Turtle.markCurrentColourUsed_();
+};
+
+Turtle.turnByDegrees_ = function (degreesRight) {
+  Turtle.setHeading_(Turtle.heading + degreesRight);
+};
+
+Turtle.setHeading_ = function (heading) {
+  heading = Turtle.constrainDegrees_(heading);
+  Turtle.heading = heading;
+};
+
+Turtle.constrainDegrees_ = function (degrees) {
+  degrees %= 360;
+  if (degrees < 0) {
+    degrees += 360;
+  }
+  return degrees;
+};
+
+Turtle.moveForwardAndDraw_ = function (distance) {
+  Turtle.startPathIfPenDown_();
+  Turtle.moveForward_(distance);
+  Turtle.drawToTurtleIfPenDown_(distance);
 };
 
 /**
@@ -5275,7 +5486,7 @@ var getFeedbackImage = function() {
       feedbackCanvas.toDataURL("image/png").split(',')[1]);
 };
 
-},{"../../locale/ja_jp/turtle":34,"../base":2,"../codegen":4,"../skins":8,"../templates/page.html":16,"./api":21,"./controls.html":23,"./core":24,"./levels":25}],31:[function(require,module,exports){
+},{"../../locale/ja_jp/turtle":35,"../base":2,"../codegen":5,"../skins":9,"../templates/page.html":17,"./api":22,"./controls.html":24,"./core":25,"./levels":26}],32:[function(require,module,exports){
 exports.shallowCopy = function(source) {
   var result = {};
   for (var prop in source) {
@@ -5307,7 +5518,7 @@ exports.escapeHtml = function(unsafe) {
     .replace(/'/g, "&#039;");
 };
 
-},{}],32:[function(require,module,exports){
+},{}],33:[function(require,module,exports){
 // Serializes an XML DOM node to a string.
 exports.serialize = function(node) {
   var serializer = new XMLSerializer();
@@ -5335,7 +5546,7 @@ exports.parseElement = function(text) {
   return element;
 };
 
-},{}],33:[function(require,module,exports){
+},{}],34:[function(require,module,exports){
 var MessageFormat = require("messageformat");MessageFormat.locale.ja=function(n){return "other"}
 exports.blocklyMessage = function(d){return "ブロックリー"};
 
@@ -5462,7 +5673,7 @@ exports.signup = function(d){return "イントロのコースに申し込む"};
 exports.hintHeader = function(d){return "Here's a tip:"};
 
 
-},{"messageformat":46}],34:[function(require,module,exports){
+},{"messageformat":47}],35:[function(require,module,exports){
 var MessageFormat = require("messageformat");MessageFormat.locale.ja=function(n){return "other"}
 exports.blocksUsed = function(d){return "使われているブロック: %1"};
 
@@ -5559,7 +5770,7 @@ exports.widthTooltip = function(d){return "鉛筆の幅を変更します。"};
 exports.wrongColour = function(d){return "あなたの絵は、間違った色です。このパズル では%1である必要があります。"};
 
 
-},{"messageformat":46}],35:[function(require,module,exports){
+},{"messageformat":47}],36:[function(require,module,exports){
 
 /*!
  * EJS
@@ -5918,7 +6129,7 @@ if (require.extensions) {
   });
 }
 
-},{"./filters":36,"./utils":37,"fs":38,"path":40}],36:[function(require,module,exports){
+},{"./filters":37,"./utils":38,"fs":39,"path":41}],37:[function(require,module,exports){
 /*!
  * EJS - Filters
  * Copyright(c) 2010 TJ Holowaychuk <tj@vision-media.ca>
@@ -6121,7 +6332,7 @@ exports.json = function(obj){
   return JSON.stringify(obj);
 };
 
-},{}],37:[function(require,module,exports){
+},{}],38:[function(require,module,exports){
 
 /*!
  * EJS
@@ -6147,9 +6358,9 @@ exports.escape = function(html){
 };
  
 
-},{}],38:[function(require,module,exports){
-
 },{}],39:[function(require,module,exports){
+
+},{}],40:[function(require,module,exports){
 // shim for using process in browser
 
 var process = module.exports = {};
@@ -6204,7 +6415,7 @@ process.chdir = function (dir) {
     throw new Error('process.chdir is not supported');
 };
 
-},{}],40:[function(require,module,exports){
+},{}],41:[function(require,module,exports){
 (function (process){
 // Copyright Joyent, Inc. and other Node contributors.
 //
@@ -6432,7 +6643,7 @@ var substr = 'ab'.substr(-1) === 'b'
 ;
 
 }).call(this,require("/home/ubuntu/website-ci/blockly/node_modules/grunt-browserify/node_modules/browserify/node_modules/insert-module-globals/node_modules/process/browser.js"))
-},{"/home/ubuntu/website-ci/blockly/node_modules/grunt-browserify/node_modules/browserify/node_modules/insert-module-globals/node_modules/process/browser.js":39}],41:[function(require,module,exports){
+},{"/home/ubuntu/website-ci/blockly/node_modules/grunt-browserify/node_modules/browserify/node_modules/insert-module-globals/node_modules/process/browser.js":40}],42:[function(require,module,exports){
 (function (global){
 /*! http://mths.be/punycode v1.2.4 by @mathias */
 ;(function(root) {
@@ -6943,7 +7154,7 @@ var substr = 'ab'.substr(-1) === 'b'
 }(this));
 
 }).call(this,typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],42:[function(require,module,exports){
+},{}],43:[function(require,module,exports){
 // Copyright Joyent, Inc. and other Node contributors.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
@@ -7029,7 +7240,7 @@ var isArray = Array.isArray || function (xs) {
   return Object.prototype.toString.call(xs) === '[object Array]';
 };
 
-},{}],43:[function(require,module,exports){
+},{}],44:[function(require,module,exports){
 // Copyright Joyent, Inc. and other Node contributors.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
@@ -7116,13 +7327,13 @@ var objectKeys = Object.keys || function (obj) {
   return res;
 };
 
-},{}],44:[function(require,module,exports){
+},{}],45:[function(require,module,exports){
 'use strict';
 
 exports.decode = exports.parse = require('./decode');
 exports.encode = exports.stringify = require('./encode');
 
-},{"./decode":42,"./encode":43}],45:[function(require,module,exports){
+},{"./decode":43,"./encode":44}],46:[function(require,module,exports){
 /*jshint strict:true node:true es5:true onevar:true laxcomma:true laxbreak:true eqeqeq:true immed:true latedef:true*/
 (function () {
   "use strict";
@@ -7755,7 +7966,7 @@ function parseHost(host) {
 
 }());
 
-},{"punycode":41,"querystring":44}],46:[function(require,module,exports){
+},{"punycode":42,"querystring":45}],47:[function(require,module,exports){
 /**
  * messageformat.js
  *
@@ -9338,4 +9549,4 @@ function parseHost(host) {
 
 })( this );
 
-},{}]},{},[26])
+},{}]},{},[27])

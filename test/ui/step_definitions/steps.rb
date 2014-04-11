@@ -98,7 +98,7 @@ And /^output url$/ do
 end
 
 Then /^there's an image "([^"]*)"$/ do |path|
-  exists = @browser.execute_script("return $('img[src$=\"#{path}\"]').length != 0;")
+  exists = @browser.execute_script("return $('img[src*=\"#{path}\"]').length != 0;")
   exists.should eq true
 end
 

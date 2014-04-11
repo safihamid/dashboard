@@ -98,6 +98,7 @@ button.share:focus {
 .studio-speech-bubble {
   fill: white;
   stroke: black;
+  font-size: x-large;
   font-weight: bold;
   stroke-width: 0.5; }
 

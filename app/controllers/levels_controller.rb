@@ -94,7 +94,7 @@ class LevelsController < ApplicationController
 
   def create_artist
     game = Game.find(params[:game_id])
-    @level = Level.create(instructions: params[:instructions], name: params[:name], x: params[:x], y: params[:y], game: game, user: current_user, level_num: 'custom', skin: 'artist')
+    @level = Level.create(instructions: params[:instructions], name: params[:name], x: params[:x], y: params[:y], start_direction: params[:start_direction], game: game, user: current_user, level_num: 'custom', skin: 'artist')
     solution = LevelSource.lookup(@level, params[:program])
     @level.update(solution_level_source: solution)
     render json: { redirect: game_level_url(game, @level) }
@@ -122,14 +122,14 @@ class LevelsController < ApplicationController
 
   def artist_builder
     authorize! :create, :level
-    @level = Level::BUILDER
+    @level = Level.builder
     @game = @level.game
     @full_width = true
     @artist_builder = true
     @callback = game_levels_path @game
-    @level.x = params[:x]
-    @level.y = params[:y]
-    @level.start_direction = params[:start_direction]
+    @level.x = Integer(params[:x]) rescue nil
+    @level.y = Integer(params[:y]) rescue nil
+    @level.start_direction = Integer(params[:start_direction]) rescue nil
     show
     render :show
   end

@@ -151,7 +151,7 @@ BlocklyApps.init = function(config) {
 
   BlocklyApps.share = config.share;
   BlocklyApps.noPadding = config.no_padding;
-  
+
   // enableShowCode defaults to true if not defined
   BlocklyApps.enableShowCode = (config.enableShowCode === false) ? false : true;
 
@@ -301,7 +301,7 @@ BlocklyApps.init = function(config) {
 
   BlocklyApps.Dialog = config.Dialog;
 
-  var showCode = document.getElementById('show-code-header');  
+  var showCode = document.getElementById('show-code-header');
   if (showCode) {
     if (BlocklyApps.enableShowCode) {
       dom.addClickTouchEvent(showCode, function() {
@@ -314,6 +314,11 @@ BlocklyApps.init = function(config) {
   BlocklyApps.SMALL_ICON = config.skin.smallStaticAvatar;
   BlocklyApps.WIN_ICON = config.skin.winAvatar;
   BlocklyApps.FAILURE_ICON = config.skin.failureAvatar;
+
+  if (config.level.instructionsIcon) {
+    BlocklyApps.ICON = config.skin[config.level.instructionsIcon];
+    BlocklyApps.WIN_ICON = config.skin[config.level.instructionsIcon];
+  }
 
   if (config.showInstructionsWrapper) {
     config.showInstructionsWrapper(function() {
@@ -353,9 +358,11 @@ BlocklyApps.init = function(config) {
   var options = {
     toolbox: config.level.toolbox
   };
-  if (config.trashcan !== undefined) {
-    options.trashcan = config.trashcan;
-  }
+  ['trashcan', 'scrollbars', 'concreteBlocks'].forEach(function (prop) {
+    if (config[prop] !== undefined) {
+      options[prop] = config[prop];
+    }
+  });
   BlocklyApps.inject(div, options);
 
   if (config.afterInject) {
@@ -610,7 +617,7 @@ BlocklyApps.resizeHeaders = function() {
     showCodeWidth = 0;
     showCodeHeader.style.display = "none";
   }
-  
+
   toolboxHeader.style.width = (categoriesWidth + toolboxWidth) + 'px';
   workspaceHeader.style.width = (workspaceWidth -
                                  toolboxWidth -
@@ -862,6 +869,7 @@ var getIdealBlockNumberMsg = function() {
 },{"../locale/fr_fr/common":38,"./builder":3,"./dom":5,"./feedback.js":6,"./slider":25,"./templates/buttons.html":27,"./templates/instructions.html":29,"./templates/learn.html":30,"./templates/makeYourOwn.html":31,"./utils":36,"./xml":37}],3:[function(require,module,exports){
 var feedback = require('./feedback.js');
 var dom = require('./dom.js');
+var utils = require('./utils.js');
 var url = require('url');
 // Builds the dom to get more info from the user. After user enters info
 // and click "create level" onAttemptCallback is called to deliver the info
@@ -879,18 +887,16 @@ exports.builderForm = function(onAttemptCallback) {
     var instructions = builderDetails.querySelector('[name="instructions"]').value;
     var name = builderDetails.querySelector('[name="level_name"]').value;
     var query = url.parse(window.location.href, true).query;
-    onAttemptCallback({
+    onAttemptCallback(utils.extend({
       "instructions": instructions,
-      "name": name,
-      "x": query.x,
-      "y": query.y
-    });
+      "name": name
+    }, query));
   });
 
   dialog.show({ backdrop: 'static' });
 };
 
-},{"./dom.js":5,"./feedback.js":6,"./templates/builder.html":26,"url":50}],4:[function(require,module,exports){
+},{"./dom.js":5,"./feedback.js":6,"./templates/builder.html":26,"./utils.js":36,"url":50}],4:[function(require,module,exports){
 var INFINITE_LOOP_TRAP = '  BlocklyApps.checkTimeout();\n';
 var INFINITE_LOOP_TRAP_RE =
     new RegExp(INFINITE_LOOP_TRAP.replace(/\(.*\)/, '\\(.*\\)'), 'g');
@@ -1217,6 +1223,7 @@ exports.getNumEnabledBlocks = function() {
 
 var getFeedbackButtons = function(feedbackType, showPreviousLevelButton) {
   var buttons = document.createElement('div');
+  buttons.id = 'feedbackButtons';
   buttons.innerHTML = require('./templates/buttons.html')({
     data: {
       previousLevel:
@@ -1481,11 +1488,11 @@ var getShowCodeElement = function(options) {
     if (BlocklyApps.enableShowCode) {
       showCodeDiv.appendChild(lines);
       showCodeDiv.appendChild(showCodeLink);
-    } else {
+    } else if (options.showingSharing) {
+      // want a breaking line if this is a sharing dialog
       lines.innerHTML = '<br>';
       showCodeDiv.appendChild(lines);
     }
-
     return showCodeDiv;
   }
 };
@@ -6446,6 +6453,10 @@ exports.load = function(assetUrl, id) {
     staticAvatar: skinUrl('static_avatar.png'),
     winAvatar: skinUrl('win_avatar.png'),
     failureAvatar: skinUrl('failure_avatar.png'),
+    leftArrow: skinUrl('left.png'),
+    downArrow: skinUrl('down.png'),
+    upArrow: skinUrl('up.png'),
+    rightArrow: skinUrl('right.png'),
     // Sounds
     startSound: [skinUrl('start.mp3'), skinUrl('start.ogg')],
     winSound: [skinUrl('win.mp3'), skinUrl('win.ogg')],
@@ -6693,7 +6704,7 @@ escape = escape || function (html){
 };
 var buf = [];
 with (locals || {}) { (function(){ 
- buf.push('');1; var msg = require('../../locale/fr_fr/common'); ; buf.push('\n\n');3; if (data.ok) {; buf.push('  <div class="farSide" style="padding: 1ex 3ex 0">\n    <button id="ok-button" class="secondary">\n      ', escape((5,  msg.dialogOK() )), '\n    </button>\n  </div>\n');8; };; buf.push('\n');9; if (data.previousLevel) {; buf.push('  <button id="back-button" class="launch">\n    ', escape((10,  msg.backToPreviousLevel() )), '\n  </button>\n');12; };; buf.push('\n');13; if (data.tryAgain) {; buf.push('  <button id="again-button" class="launch">\n    ', escape((14,  msg.tryAgain() )), '\n  </button>\n');16; };; buf.push('\n');17; if (data.nextLevel) {; buf.push('  <button id="continue-button" class="launch">\n    ', escape((18,  msg.continue() )), '\n  </button>\n');20; };; buf.push('\n');21; if (data.facebookUrl) {; buf.push('  <a href=', escape((21,  data.facebookUrl )), ' target="_blank">\n    <img src=', escape((22,  BlocklyApps.assetUrl("media/facebook_purple.png") )), '>\n  </a>\n');24; };; buf.push('\n');25; if (data.twitterUrl) {; buf.push('  <a href=', escape((25,  data.twitterUrl )), ' target="_blank">\n    <img src=', escape((26,  BlocklyApps.assetUrl("media/twitter_purple.png") )), ' >\n  </a>\n  <br>\n');29; };; buf.push('\n');30; if (data.sharingUrl) {; buf.push('  <input type="text" id="sharing-input" value=', escape((30,  data.sharingUrl )), ' >\n');31; };; buf.push('\n');32; if (data.saveToGalleryUrl) {; buf.push('  <button id="save-to-gallery-button" class="launch">\n    ', escape((33,  msg.saveToGallery() )), '\n  </button>\n');35; };; buf.push(''); })();
+ buf.push('');1; var msg = require('../../locale/fr_fr/common'); ; buf.push('\n\n');3; if (data.ok) {; buf.push('  <div class="farSide" style="padding: 1ex 3ex 0">\n    <button id="ok-button" class="secondary">\n      ', escape((5,  msg.dialogOK() )), '\n    </button>\n  </div>\n');8; };; buf.push('\n');9; if (data.previousLevel) {; buf.push('  <button id="back-button" class="launch">\n    ', escape((10,  msg.backToPreviousLevel() )), '\n  </button>\n');12; };; buf.push('\n');13; if (data.tryAgain) {; buf.push('  <button id="again-button" class="launch">\n    ', escape((14,  msg.tryAgain() )), '\n  </button>\n');16; };; buf.push('\n');17; if (data.nextLevel) {; buf.push('  <button id="continue-button" class="launch">\n    ', escape((18,  msg.continue() )), '\n  </button>\n');20; };; buf.push('\n');21; if (data.facebookUrl) {; buf.push('  <a href=', escape((21,  data.facebookUrl )), ' target="_blank">\n    <img src=', escape((22,  BlocklyApps.assetUrl("media/facebook_purple.png") )), '>\n  </a>\n');24; };; buf.push('\n');25; if (data.twitterUrl) {; buf.push('  <a href=', escape((25,  data.twitterUrl )), ' target="_blank">\n    <img src=', escape((26,  BlocklyApps.assetUrl("media/twitter_purple.png") )), ' >\n  </a>\n  <br>\n');29; };; buf.push('\n');30; if (data.sharingUrl) {; buf.push('  <input type="text" id="sharing-input" value=', escape((30,  data.sharingUrl )), ' readonly>\n');31; };; buf.push('\n');32; if (data.saveToGalleryUrl) {; buf.push('  <button id="save-to-gallery-button" class="launch">\n    ', escape((33,  msg.saveToGallery() )), '\n  </button>\n');35; };; buf.push(''); })();
 } 
 return buf.join('');
 };
