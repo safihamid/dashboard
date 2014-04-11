@@ -1488,6 +1488,10 @@ var getShowCodeElement = function(options) {
     if (BlocklyApps.enableShowCode) {
       showCodeDiv.appendChild(lines);
       showCodeDiv.appendChild(showCodeLink);
+    } else if (options.showingSharing) {
+      // want a breaking line if this is a sharing dialog
+      lines.innerHTML = '<br>';
+      showCodeDiv.appendChild(lines);
     }
     return showCodeDiv;
   }
