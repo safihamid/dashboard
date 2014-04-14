@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery.ui.all
+//= require video
 //= require_tree .
 // Loads all Bootstrap javascripts
 //= require bootstrap
@@ -125,6 +126,50 @@ function showVideo(options) {
   notesDiv.height(divHeight);
 
   dialog.show();
+
+  setupVideoFallback(options, divHeight);
+}
+
+function setupVideoFallback(videoInfo, playerHeight) {
+  var onYouTubeBlocked = function(callback) {
+    $("<img width=0 height=0>")
+        .on("error", callback)
+        .attr("src", "http://www.youtube.com/favicon.ico?" + Math.random())
+        .css("position", "absolute")
+        .appendTo("body");
+  };
+
+  onYouTubeBlocked(function() {
+    addFallbackVideoPlayer(videoInfo, playerHeight);
+  });
+}
+
+function addFallbackVideoPlayer(videoInfo, playerHeight) {
+  var playerCode =
+      '<video id="video" ' +
+        'width="100%" height="' + playerHeight + '" ' +
+        'data-setup=\'{ "autoplay": true }\' ' +
+        'class="fallback-player video-js vjs-default-skin vjs-big-play-centered" ' +
+        'controls preload="auto" ' +
+        'poster="' + videoInfo.thumbnail + '">' +
+        '<source src="' + videoInfo.download + '" type="video/mp4"/>' +
+      '</video>';
+
+  // Swap current #video with new code
+  $('#video').before(playerCode).remove();
+
+  videojs.options.flash.swf = "<%= asset_path("video-js.swf") %>";
+  videojs("video", {}, function() {
+    if ($('.fallback-player p').is(':visible')) {
+      $('#video').addClass('fallback-video-player-failed');
+      openNotesTab();
+    }
+  });
+}
+
+function openNotesTab() {
+  var notesTabIndex = $('.dash_modal_body a[href="#notes-outer"]').parent().index();
+  $('.ui-tabs').tabs('option', 'active', notesTabIndex);
 }
 
 function embed_thumbnail_image(data) {
