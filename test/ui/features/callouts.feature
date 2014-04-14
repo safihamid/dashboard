@@ -3,26 +3,6 @@ Feature: Callouts
   Background:
     Given I am on "http://learn.code.org/reset_session"
 
-  Scenario: Modal ordering
-    Given I am on "http://learn.code.org/s/1/level/2?noautoplay=true"
-    And I rotate to landscape
-    And callout "0" is visible
-    And ".modal-backdrop" should be in front of "#qtip-0"
-    And I press "x-close"
-
-  Scenario: Closing using "x" button
-    Given I am on "http://learn.code.org/s/1/level/2?noautoplay=true"
-    And I rotate to landscape
-    And I press "x-close"
-    And there's an image "assets/x_button"
-    And callout "0" is visible
-    And callout "1" is visible
-    And I close callout "1"
-    And callout "0" is visible
-    And callout "1" is hidden
-    And I close callout "0"
-    And callout "0" is hidden
-
   Scenario Outline: Callouts having correct content and being dismissable
     Given I am on "<url>"
     And I rotate to landscape
@@ -45,6 +25,26 @@ Feature: Callouts
     | http://learn.code.org/s/1/level/16?noautoplay=true | 0          | The instructions for each puzzle are repeated here                               | #prompt                |
     | http://learn.code.org/hoc/15?noautoplay=true       | 0          | The instructions for each puzzle are repeated here                               | #prompt                |
     | http://learn.code.org/s/1/level/59?noautoplay=true | 0          | You have all the same blocks but they've now been arranged in categories         | .blocklyTreeLabel      |
+
+  Scenario: Modal ordering
+    Given I am on "http://learn.code.org/s/1/level/2?noautoplay=true"
+    And I rotate to landscape
+    And callout "0" is visible
+    And ".modal-backdrop" should be in front of "#qtip-0"
+    And I press "x-close"
+
+  Scenario: Closing using "x" button
+    Given I am on "http://learn.code.org/s/1/level/2?noautoplay=true"
+    And I rotate to landscape
+    And I press "x-close"
+    And there's an image "assets/x_button"
+    And callout "0" is visible
+    And callout "1" is visible
+    And I close callout "1"
+    And callout "0" is visible
+    And callout "1" is hidden
+    And I close callout "0"
+    And callout "0" is hidden
 
   Scenario: Only showing seen callouts once
     Given I am on "http://learn.code.org/s/1/level/2?noautoplay=true"
