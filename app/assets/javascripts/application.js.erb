@@ -146,22 +146,23 @@ function setupVideoFallback(videoInfo, playerHeight) {
 
 function addFallbackVideoPlayer(videoInfo, playerHeight) {
   var playerCode =
-      '<video id="video" ' +
+      '<div><video id="fallbackPlayer"' +
         'width="100%" height="' + playerHeight + '" ' +
         'data-setup=\'{ "autoplay": true }\' ' +
-        'class="fallback-player video-js vjs-default-skin vjs-big-play-centered" ' +
+        'class="video-js vjs-default-skin vjs-big-play-centered" ' +
         'controls preload="auto" ' +
         'poster="' + videoInfo.thumbnail + '">' +
         '<source src="' + videoInfo.download + '" type="video/mp4"/>' +
-      '</video>';
+      '</video></div>';
 
   // Swap current #video with new code
-  $('#video').before(playerCode).remove();
+  replaceWithElement('video', playerCode);
 
   videojs.options.flash.swf = "<%= asset_path("video-js.swf") %>";
-  videojs("video", {}, function() {
-    if ($('.fallback-player p').is(':visible')) {
-      $('#video').addClass('fallback-video-player-failed');
+  videojs("fallbackPlayer", {}, function() {
+    if ($('#fallbackPlayer p').is(':visible')) {
+      console.log("No player available.");
+      $('#fallbackPlayer').addClass('fallback-video-player-failed');
       openNotesTab();
     }
   });
@@ -170,6 +171,25 @@ function addFallbackVideoPlayer(videoInfo, playerHeight) {
 function openNotesTab() {
   var notesTabIndex = $('.dash_modal_body a[href="#notes-outer"]').parent().index();
   $('.ui-tabs').tabs('option', 'active', notesTabIndex);
+}
+
+/**
+ * Replaces element with ID oldID with the HTML at newHTML
+ * Copies over attributes of old element into new one
+ * @param oldID
+ * @param newHTML
+ */
+function replaceWithElement(oldID, newHTML) {
+  var oldElement = $('#' + oldID);
+  var oldAttributes = oldElement.prop("attributes");
+  var newID = oldID;
+
+  oldElement.before($(newHTML).attr('id', newID)).remove();
+
+  var newElement = $('#' + newID);
+  $.each(oldAttributes, function() {
+    newElement.attr(this.name, this.value);
+  });
 }
 
 function embed_thumbnail_image(data) {
