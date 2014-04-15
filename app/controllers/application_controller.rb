@@ -82,10 +82,7 @@ class ApplicationController < ActionController::Base
     if options[:solved?]
       response[:total_lines] = options[:total_lines]
 
-      trophy_updates = options.fetch(:trophy_updates, [])
-      if trophy_updates.length > 0
-        response[:trophy_updates] = trophy_updates
-      end
+      response[:trophy_updates] = options[:trophy_updates] unless options[:trophy_updates].blank?
 
       next_level = script_level.next_level
       # If this is the end of the current script
@@ -121,7 +118,7 @@ class ApplicationController < ActionController::Base
           response[:skin_changing] = { previous: level.skin, new: next_level.level.skin }
         end
       end
-    else
+    else # not solved
       response[:message] = 'try again'
     end
 
