@@ -127,12 +127,12 @@ function showVideo(options) {
 
   dialog.show();
 
-  setupVideoFallback(options, divHeight);
+  setupVideoFallback(options, divHeight, $div.width());
 }
 
-function setupVideoFallback(videoInfo, playerHeight) {
+function setupVideoFallback(videoInfo, playerHeight, playerWidth) {
   onYouTubeBlocked(function() {
-    addFallbackVideoPlayer(videoInfo, playerHeight);
+    addFallbackVideoPlayer(videoInfo, playerHeight, playerWidth);
   });
 }
 
@@ -144,10 +144,10 @@ function onYouTubeBlocked(callback) {
       .appendTo("body");
 }
 
-function addFallbackVideoPlayer(videoInfo, playerHeight) {
+function addFallbackVideoPlayer(videoInfo, playerHeight, playerWidth) {
   var playerCode =
     '<div><video id="fallbackPlayer"' +
-      'width="100%" height="' + playerHeight + '" ' +
+      'width="' + playerWidth + '" height="' + playerHeight + '" ' +
       'data-setup=\'{ "autoplay": true }\' ' +
       'class="video-js vjs-default-skin vjs-big-play-centered" ' +
       'controls preload="auto" ' +
@@ -159,6 +159,8 @@ function addFallbackVideoPlayer(videoInfo, playerHeight) {
   replaceWithElement('video', playerCode);
 
   videojs.options.flash.swf = "<%= asset_path("video-js.swf") %>";
+  videojs.options.techOrder = ["flash", "html5"];
+
   videojs("fallbackPlayer", {}, function() {
     if ($('#fallbackPlayer p').is(':visible')) {
       console.log("No player available.");
