@@ -1,4 +1,4 @@
-Feature: Blocks dragged in groups can have children attach
+Feature: Blocks dragged in groups can have children attach to other blocks
 
 Background:
   Given I am on "http://learn.code.org/s/1/level/40?noautoplay=true"
