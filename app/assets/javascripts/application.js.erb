@@ -131,29 +131,29 @@ function showVideo(options) {
 }
 
 function setupVideoFallback(videoInfo, playerHeight) {
-  var onYouTubeBlocked = function(callback) {
-    $("<img width=0 height=0>")
-        .on("error", callback)
-        .attr("src", "http://www.youtube.com/favicon.ico?" + Math.random())
-        .css("position", "absolute")
-        .appendTo("body");
-  };
-
   onYouTubeBlocked(function() {
     addFallbackVideoPlayer(videoInfo, playerHeight);
   });
 }
 
+function onYouTubeBlocked(callback) {
+  $("<img width=0 height=0>")
+      .on("error", callback)
+      .attr("src", "http://www.youtube.com/favicon.ico?" + Math.random())
+      .css("position", "absolute")
+      .appendTo("body");
+}
+
 function addFallbackVideoPlayer(videoInfo, playerHeight) {
   var playerCode =
-      '<div><video id="fallbackPlayer"' +
-        'width="100%" height="' + playerHeight + '" ' +
-        'data-setup=\'{ "autoplay": true }\' ' +
-        'class="video-js vjs-default-skin vjs-big-play-centered" ' +
-        'controls preload="auto" ' +
-        'poster="' + videoInfo.thumbnail + '">' +
-        '<source src="' + videoInfo.download + '" type="video/mp4"/>' +
-      '</video></div>';
+    '<div><video id="fallbackPlayer"' +
+      'width="100%" height="' + playerHeight + '" ' +
+      'data-setup=\'{ "autoplay": true }\' ' +
+      'class="video-js vjs-default-skin vjs-big-play-centered" ' +
+      'controls preload="auto" ' +
+      'poster="' + videoInfo.thumbnail + '">' +
+      '<source src="' + videoInfo.download + '" type="video/mp4"/>' +
+    '</video></div>';
 
   // Swap current #video with new code
   replaceWithElement('video', playerCode);
