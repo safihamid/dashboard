@@ -31,7 +31,7 @@ If you won't be making modifications to blockly code, you can just skip the syml
 ### Setting up Dashboard
 
 1. `cd dashboard` (this repository's root)
-2. Install ruby build prerequisites (using [rbenv](https://github.com/sstephenson/rbenv#installation)) and MySQL
+2. Install ruby build prerequisites (using rbenv) and MySQL:
     - OSX: Using [Homebrew](http://brew.sh/) to install:
       + Install Homebrew:
         - `ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"`
