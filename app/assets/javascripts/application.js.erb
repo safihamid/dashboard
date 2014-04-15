@@ -145,8 +145,9 @@ function onYouTubeBlocked(callback) {
 }
 
 function addFallbackVideoPlayer(videoInfo, playerHeight, playerWidth) {
+  var fallbackPlayerID = 'fallbackPlayer' + Date.now();
   var playerCode =
-    '<div><video id="fallbackPlayer"' +
+    '<div><video id="'+ fallbackPlayerID +'" ' +
       'width="' + playerWidth + '" height="' + playerHeight + '" ' +
       'data-setup=\'{ "autoplay": true }\' ' +
       'class="video-js vjs-default-skin vjs-big-play-centered" ' +
@@ -161,12 +162,17 @@ function addFallbackVideoPlayer(videoInfo, playerHeight, playerWidth) {
   videojs.options.flash.swf = "<%= asset_path("video-js.swf") %>";
   videojs.options.techOrder = ["flash", "html5"];
 
-  videojs("fallbackPlayer", {}, function() {
-    if ($('#fallbackPlayer p').is(':visible')) {
-      console.log("No player available.");
-      $('#fallbackPlayer').addClass('fallback-video-player-failed');
+  var videoPlayer = videojs(fallbackPlayerID, {}, function() {
+    var $fallbackPlayer = $('#' + fallbackPlayerID);
+    var showingErrorMessage = $fallbackPlayer.find('p').length > 0;
+    if (showingErrorMessage) {
+      $fallbackPlayer.addClass('fallback-video-player-failed');
       openNotesTab();
     }
+    // Properly dispose of video.js player instance when hidden
+    $fallbackPlayer.parents('.modal').one('hidden.bs.modal', function(){
+      videoPlayer.dispose();
+    })
   });
 }
 
@@ -182,15 +188,16 @@ function openNotesTab() {
  * @param newHTML
  */
 function replaceWithElement(oldID, newHTML) {
-  var oldElement = $('#' + oldID);
-  var oldAttributes = oldElement.prop("attributes");
-  var newID = oldID;
+  var $oldElement = $('#' + oldID);
+  var oldAttributes = $oldElement.prop("attributes");
 
-  oldElement.before($(newHTML).attr('id', newID)).remove();
+  var $newElement = $(newHTML);
+  $oldElement.before($newElement);
+  $oldElement.remove();
+  $newElement.attr('id', oldID);
 
-  var newElement = $('#' + newID);
   $.each(oldAttributes, function() {
-    newElement.attr(this.name, this.value);
+    $newElement.attr(this.name, this.value);
   });
 }
 

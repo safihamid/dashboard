@@ -47,4 +47,4 @@ Using [BrowserStack Live](http://www.browserstack.com/start), click to begin loc
 
 ![](http://i.imgur.com/mzocimK.png)
 
-*After* starting the local tunnel, follow the instructions for fake-blocking YouTube in your `/etc/hosts` above as well.
+*After* starting the local tunnel, follow the instructions for fake-blocking YouTube in your `/etc/hosts` above as well. This must be done *after* connecting to BrowserStack to avoid BrowserStack's tunnel host connection checker.
