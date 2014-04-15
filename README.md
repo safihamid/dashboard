@@ -62,7 +62,8 @@ If you won't be making modifications to blockly code, you can just skip the syml
     - `rbenv local 2.0.0-p247`
 
 4. Install required gems (say “Yes” if asked to overwrite system rake)
-    - `gem install bundle rake mailcatcher`
+    - `gem install bundler`
+    - `gem install rake mailcatcher`
     - an `rbenv rehash` may be required to get the new tools into your path
 
 6. Install project gems
