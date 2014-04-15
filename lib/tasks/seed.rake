@@ -59,11 +59,12 @@ namespace :seed do
       Game.create!(id: game_id += 1, name: 'Unplug9', app: 'unplug')
       Game.create!(id: game_id += 1, name: 'Unplug10', app: 'unplug')
       Game.create!(id: game_id += 1, name: 'Unplug11', app: 'unplug')
-      Game.create!(id: game_id += 1, name: 'Multi1', app: 'multi')
       Game.create!(id: game_id += 1, name: 'Bounce', app: 'bounce')
       Game.create!(id: game_id += 1, name: "Custom", app: "turtle")
       Game.create!(id: game_id += 1, name: 'Flappy', app: 'flappy', intro_video: Video.find_by_key('flappy_intro'))
       Game.create!(id: game_id += 1, name: "CustomMaze", app: "maze")
+      Game.create!(id: game_id += 1, name: 'Multi', app: 'multi')
+      Game.create!(id: game_id += 1, name: 'Multi', app: 'multi')
    end
   end
 

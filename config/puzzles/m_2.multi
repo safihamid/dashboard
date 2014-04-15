@@ -1,0 +1,10 @@
+style 'drag'
+question "What color is the sky?"
+question "What's in the ocean?"
+question "What's Brent's last name?"
+question "Where is Brendan from?"
+
+answer 'blue'
+answer 'salt'
+answer 'Van Minnen'
+answer 'Sydney'

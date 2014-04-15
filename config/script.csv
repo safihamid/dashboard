@@ -20,7 +20,8 @@ Maze	Level16	2_16	pvz	if, loop_until
 Maze	Level17	2_17	pvz	if_else, loop_until	 
 Maze	Level18	2_18	pvz	if_else, loop_until	
 Maze	Level19	2_19	pvz	if_else, loop_until	
-Multi1	Hiya	m_1		
+Multi 	Level1	m_1	
+Multi	Level2	m_2	
 Unplug2	Level1	u_2_1		sequence	
 Unplug3	Level1	u_3_1		sequence, function, parameters	
 Artist	Level1	1_1	artist	sequence	

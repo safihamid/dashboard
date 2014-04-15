@@ -2,58 +2,46 @@
   %h2 #{data_t('multi', @game.name)[:title]}
   %p #{data_t('multi', @game.name)[:desc]}
 
-  %div{:style=>'margin-left:20px'}
-    %b My favorite color:
-    %form#voteform{onsubmit: "return doVote()"}
+  =@level.game.name
+  -data = YAML.load(File.read("config/puzzles/" + @level.level_num + ".multi.yml"))
 
-      %input{id: "choice_1", name: "vote", type: "radio", value: "blue"}
-        %label{style: "display:inline", for: "choice_1"} Blue
-      %br
-      %input{id: "choice_2", name: "vote", type: "radio", value: "green"}
-        %label{style: "display:inline", for: "choice_2"} Green
-      %br
-      %input{id: "choice_3", name: "vote", type: "radio", value: "yellow"}
-        %label{style: "display:inline", for: "choice_3"} Yellow
-      %br
-      %input{id: "choice_4", name: "vote", type: "radio", value: "purple"}
-        %label{style: "display:inline", for: "choice_4"} Purple
-      %br
-      %br
-
-    .buttons
-      %a.btn.btn-primary.next-stage
-        Submit
-
-  %br/
-  %br/
-  %br/
-
-  %div{:style=>'margin-left:20px'}
-    %div{:style=>'height:40px'}
-      %b Match the questions with the answers
-    
-    
-    %div{:style=>'width: 220px; float:left'}
-      %ul.sortableq
-        %li What color is the sky?
-        %li What's in the ocean?
-        %li What's Brent's last name?
-        %li Where is Brendan from?
-    %div{:style=>'width: 220px; float:left'}
-      %ul.sortable{:style=>'cursor:default'}
-        %li Sydney
-        %li salt
-        %li blue
-        %li Van Minnen
-
-    %div{:style=>'clear:both'}
-
-    %br/
-
-    %div
+  -if data[:style] == 'radio'
+    %div{:style=>'margin-left:20px'}
+      %b= data[:questions][0][:text]
+      %form#voteform{onsubmit: "return doVote()"}
+        -index = 0
+        -data[:answers].each do |answer|
+          %input{id: "choice_#{index}", name: "vote", type: "radio", value: "#{index}"}
+            %label{style: "display:inline", for: "choice_#{index}"}= answer[:text]
+          %br
+          -index += 1
+        %br
+        %br
       .buttons
         %a.btn.btn-primary.next-stage
           Submit
+    %br/
+    %br/
+    %br/
+
+  -if data[:style] == 'drag'
+    %div{:style=>'margin-left:20px'}
+      %div{:style=>'height:40px'}
+        %b Match the questions with the answers
+      %div{:style=>'width: 220px; float:left'}
+        %ul.sortableq
+          -data[:questions].each do |question|
+            %li= question[:text]
+      %div{:style=>'width: 220px; float:left'}
+        %ul.sortable{:style=>'cursor:default'}
+          -data[:answers].each do |answer|
+            %li= answer[:text]
+      %div{:style=>'clear:both'}
+      %br/
+      %div
+        .buttons
+          %a.btn.btn-primary.next-stage
+            Submit
 
   %div{:style=>'clear:both'}
 
@@ -63,7 +51,6 @@
     $( ".sortable" ).sortable();
     $( ".sortable" ).disableSelection();
   });
-
 
   var clickedNext = false;
   $('a.next-stage').click(function() {

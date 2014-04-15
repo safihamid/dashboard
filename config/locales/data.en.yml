@@ -15,7 +15,7 @@ en:
           desc: 'K-8 Intro to Computer Science Course'
           'Unplug1': 'Stage 1'
           'Maze': 'Stage 2'
-          'Multi1': 'Stage 3'
+          'Multi': 'Stage 3'
           'Unplug2': 'Stage 4'
           'Unplug3': 'Stage 5'
           'Artist': 'Stage 6'
@@ -53,7 +53,7 @@ en:
       name:
         'Unplug1': 'Introduction to Computer Science'
         'Maze': 'The Maze'
-        'Multi1': 'A bunch of multis'
+        'Multi': 'Multiple Choice Stuffs'
         'Unplug2': 'Computational Thinking'
         'Unplug3': 'Graph Paper Programming'
         'Artist': 'The Artist'
