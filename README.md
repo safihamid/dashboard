@@ -30,6 +30,7 @@ If you won't be making modifications to blockly code, you can just skip the syml
 
 ### Setting up Dashboard
 
+1. `git clone https://github.com/code-dot-org/dashboard.git`
 1. `cd dashboard` (this repository's root)
 2. Install ruby build prerequisites (using rbenv) and MySQL:
     - OSX: Using [Homebrew](http://brew.sh/) to install:
