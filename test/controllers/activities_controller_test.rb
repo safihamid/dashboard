@@ -56,7 +56,7 @@ class ActivitiesControllerTest < ActionController::TestCase
     @controller.expects :log_milestone
     @controller.expects :slog
 
-    @controller.expects(:trophy_check)
+    @controller.expects(:trophy_check).with(@user)
 
     assert_difference('LevelSource.count') do
       assert_difference('Activity.count') do # create an activity
@@ -87,7 +87,7 @@ class ActivitiesControllerTest < ActionController::TestCase
     @controller.expects :log_milestone
     @controller.expects :slog
 
-    @controller.expects(:trophy_check) # TODO we don't actually need to check if not passing
+    @controller.expects(:trophy_check).with(@user) # TODO we don't actually need to check if not passing
 
     assert_difference('LevelSource.count') do
       assert_difference('Activity.count') do # create an activity

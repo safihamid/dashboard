@@ -25,21 +25,38 @@ class ScriptLevelsControllerTest < ActionController::TestCase
   test "special routing for scripts" do
     assert_routing({method: "get", path: '/hoc/reset'},
                    {controller: "script_levels", action: "show", script_id: Script::HOC_ID, reset: true})
+    assert_generates('/hoc/reset',
+                     {controller: "script_levels", action: "show", script_id: Script::HOC_ID.to_s, reset: true})
 
     assert_routing({method: "get", path: '/hoc/1'},
                    {controller: "script_levels", action: "show", script_id: Script::HOC_ID, chapter: "1"})
+    assert_generates('/hoc/1',
+                   {controller: "script_levels", action: "show", script_id: Script::HOC_ID.to_s, chapter: "1"})
 
     assert_routing({method: "get", path: '/builder/5'},
+                   {controller: "script_levels", action: "show", script_id: Script::BUILDER_ID, chapter: "5"})
+    assert_generates('/builder/5',
                    {controller: "script_levels", action: "show", script_id: Script::BUILDER_ID, chapter: "5"})
 
     assert_routing({method: "get", path: '/k8intro/5'},
                    {controller: "script_levels", action: "show", script_id: Script::TWENTY_HOUR_ID, chapter: "5"})
+    assert_generates('/k8intro/5',
+                   {controller: "script_levels", action: "show", script_id: Script::TWENTY_HOUR_ID, chapter: "5"})
 
     assert_routing({method: "get", path: '/flappy/5'},
+                   {controller: "script_levels", action: "show", script_id: Script::FLAPPY_ID, chapter: "5"})
+    assert_generates('/flappy/5',
                    {controller: "script_levels", action: "show", script_id: Script::FLAPPY_ID, chapter: "5"})
 
     assert_routing({method: "get", path: '/jigsaw/5'},
                    {controller: "script_levels", action: "show", script_id: Script::JIGSAW_ID, chapter: "5"})
+    assert_generates('/jigsaw/5',
+                   {controller: "script_levels", action: "show", script_id: Script::JIGSAW_ID, chapter: "5"})
+
+
+    # 'normal' script level routing
+    assert_routing({method: "get", path: '/s/1/level/3'},
+                   {controller: "script_levels", action: "show", script_id: Script::TWENTY_HOUR_ID.to_s, id: "3"})
   end
   
   test "should show script level by chapter" do
@@ -68,7 +85,7 @@ class ScriptLevelsControllerTest < ActionController::TestCase
 
   test "show with the reset param should not reset session when logged in" do
     sign_in(create(:user))
-    get :show, script_id: Script::HOC_ID, reset: true # hmm
+    get :show, script_id: Script::HOC_ID, reset: true
 
     assert_redirected_to hoc_chapter_path(chapter: 1)
 
