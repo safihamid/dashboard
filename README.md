@@ -100,8 +100,8 @@ mailcatcher
 
 ### Adding an Admin Account
 
-1. Create a user (be sure to have `mailcatcher` running during signup)
-2. `rails c`
+1. Create a first user which will be your admin (be sure to have `mailcatcher` running during signup)
+2. `bundle exec rails c`
 3. `User.first.update(admin: true)`
 
 ### Windows-specific notes
