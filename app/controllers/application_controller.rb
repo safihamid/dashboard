@@ -163,7 +163,7 @@ class ApplicationController < ActionController::Base
     end
 
     # Set up the background design
-    response[:design] = ExperimentActivity.TYPE_FEEDBACK_DESIGN_WHITE
+    response[:design] = ExperimentActivity::TYPE_FEEDBACK_DESIGN_WHITE
 
     response
   end
