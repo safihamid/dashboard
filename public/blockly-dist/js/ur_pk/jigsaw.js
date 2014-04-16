@@ -2093,7 +2093,7 @@ BlocklyApps.CHECK_FOR_EMPTY_BLOCKS = true;
 BlocklyApps.NUM_REQUIRED_BLOCKS_TO_FLAG = 1;
 
 Blockly.BlockSvg.NOTCH_WIDTH = 50;
-Blockly.SNAP_RADIUS = 60;
+Blockly.SNAP_RADIUS = 90;
 
 var notchHeight = 8;
 var notchWidthA = 6;
