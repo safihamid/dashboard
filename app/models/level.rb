@@ -13,11 +13,7 @@ class Level < ActiveRecord::Base
 
   validates_length_of :name, within: 1..70
 
-  validate :custom_levels_have_unique_names, on: :create
-
-  def custom_levels_have_unique_names
-    errors.add(:name, "is not unique amongst custom levels.") unless Level.where("user_id IS NOT NULL AND name = ?", name).empty?
-  end
+  validates_uniqueness_of :name, conditions: -> { where 'user_id IS NOT NULL' }, on: create
 
   def self.builder
     @@level_builder ||= find_by_name('builder')

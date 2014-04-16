@@ -82,12 +82,14 @@ namespace :seed do
   COL_START_DIRECTION = 'Start_direction'
   COL_SOLUTION = 'Solution'
 
-  task levels: :environment do
-    CSV.read("config/scripts/custom_levels.csv", headers: true).each do |row|
-      level = get_level_by_name(row[COL_NAME]).first_or_create
-      game = Game.where(name: row[COL_GAME]).first
-      solution = LevelSource.lookup(level, row[COL_SOLUTION])
-      level.update(instructions: row[COL_INSTRUCTIONS], skin: row[COL_SKIN], maze: row[COL_MAZE], x: row[COL_X], y: row[COL_Y], start_direction: row[COL_START_DIRECTION], game: game, solution_level_source: solution)
+  task custom_levels: :environment do
+    Level.transaction do
+      CSV.read("config/scripts/custom_levels.csv", headers: true).each do |row|
+        level = get_level_by_name(row[COL_NAME]).first_or_create
+        game = Game.where(name: row[COL_GAME]).first
+        solution = LevelSource.lookup(level, row[COL_SOLUTION])
+        level.update(instructions: row[COL_INSTRUCTIONS], skin: row[COL_SKIN], maze: row[COL_MAZE], x: row[COL_X], y: row[COL_Y], start_direction: row[COL_START_DIRECTION], game: game, solution_level_source: solution)
+      end
     end
   end
 
@@ -101,7 +103,7 @@ namespace :seed do
 
   task scripts: :environment do
     if Deploy.config[:rack_env] != :staging  # Custom levels are created on staging.
-      Rake::Task["seed:levels"].invoke
+      Rake::Task["seed:custom_levels"].invoke
     end
     Script.transaction do
       game_map = Game.all.index_by(&:name)
@@ -131,10 +133,7 @@ namespace :seed do
             game = level.game
           else
             game = game_map[row[COL_GAME].squish]
-            level = Level.find_by_game_id_and_level_num(game.id, row[COL_LEVEL])
-            if (level.nil?)
-              level = Level.create(:game_id => game.id, :level_num => row[COL_LEVEL], :name => row[COL_NAME])
-            end
+            level = Level.where(game: game, level_num: row[COL_LEVEL]).first_or_create
             level.name = row[COL_NAME]
             level.level_url ||= row[COL_URL]
             level.skin = row[COL_SKIN]

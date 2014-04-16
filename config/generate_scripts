@@ -28,7 +28,7 @@ def skin(name)
 end
 
 def level(name)
-  puts "#{$stage}\t#{$concepts.join(',')}\t#{name}\t"
+  puts [$stage, $concepts.join(','), name].join("\t")
 end
 
 # Create locale file for scripts
