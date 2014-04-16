@@ -89,10 +89,7 @@ class ActivitiesController < ApplicationController
     # Store the image only if the image is set, and the image has not been saved
     if params[:image]
       level_source_image = LevelSourceImage.find_or_create_by(:level_source_id => @level_source.id)
-      if level_source_image.image.nil?
-        level_source_image.image = Base64.decode64(params[:image])
-        level_source_image.save!
-      end
+      level_source_image.replace_image_if_better Base64.decode64(params[:image])
     end
 
     if current_user
