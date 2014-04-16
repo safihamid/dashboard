@@ -48,9 +48,6 @@ class ActivitiesControllerTest < ActionController::TestCase
   end
 
   test "logged in milestone" do
-    # TODO actually test experiment instead of just stubbing it out
-    ExperimentActivity.expects(:is_experimenting_feedback_design?).returns(false)
-
     # do all the logging
     @controller.expects :log_milestone
     @controller.expects :slog
@@ -73,15 +70,13 @@ class ActivitiesControllerTest < ActionController::TestCase
                          "total_lines"=>35,
                          "redirect"=>"/s/#{@script.id}/level/#{@script_level_next.id}",
                          "level_source"=>"http://test.host/sh/#{assigns(:level_source).id}",
-                         "save_to_gallery_url"=>"/gallery_activities?gallery_activity%5Bactivity_id%5D=#{assigns(:activity).id}"}
+                         "save_to_gallery_url"=>"/gallery_activities?gallery_activity%5Bactivity_id%5D=#{assigns(:activity).id}",
+                         "design"=>"white_background"}
 
     assert_equal expected_response, JSON.parse(@response.body)
   end
 
   test "logged in milestone not passing" do
-    # TODO actually test experiment instead of just stubbing it out
-    ExperimentActivity.expects(:is_experimenting_feedback_design?).returns(false)
-
     # do all the logging
     @controller.expects :log_milestone
     @controller.expects :slog
@@ -102,16 +97,14 @@ class ActivitiesControllerTest < ActionController::TestCase
 
     expected_response = {"previous_level"=>"/s/1/level/1",
                          "message"=>"try again",
-                         "level_source"=>"http://test.host/sh/#{assigns(:level_source).id}"}
+                         "level_source"=>"http://test.host/sh/#{assigns(:level_source).id}",
+                         "design"=>"white_background"}
 
     assert_equal expected_response, JSON.parse(@response.body)
   end
 
 
   test "logged in milestone with image not passing" do
-    # TODO actually test experiment instead of just stubbing it out
-    ExperimentActivity.expects(:is_experimenting_feedback_design?).returns(false)
-
     # do all the logging
     @controller.expects :log_milestone
     @controller.expects :slog
@@ -136,15 +129,13 @@ class ActivitiesControllerTest < ActionController::TestCase
 
     expected_response = {"previous_level"=>"/s/1/level/1",
                          "message"=>"try again",
-                         "level_source"=>"http://test.host/sh/#{assigns(:level_source).id}"}
+                         "level_source"=>"http://test.host/sh/#{assigns(:level_source).id}",
+                         "design"=>"white_background"}
 
     assert_equal expected_response, JSON.parse(@response.body)
   end
 
   test "logged in milestone with image" do
-    # TODO actually test experiment instead of just stubbing it out
-    ExperimentActivity.expects(:is_experimenting_feedback_design?).returns(false)
-
     # do all the logging
     @controller.expects :log_milestone
     @controller.expects :slog
@@ -171,15 +162,13 @@ class ActivitiesControllerTest < ActionController::TestCase
                          "total_lines"=>35,
                          "redirect"=>"/s/#{@script.id}/level/#{@script_level_next.id}",
                          "level_source"=>"http://test.host/sh/#{assigns(:level_source).id}",
-                         "save_to_gallery_url"=>"/gallery_activities?gallery_activity%5Bactivity_id%5D=#{assigns(:activity).id}"}
+                         "save_to_gallery_url"=>"/gallery_activities?gallery_activity%5Bactivity_id%5D=#{assigns(:activity).id}",
+                         "design"=>"white_background"}
 
     assert_equal expected_response, JSON.parse(@response.body)
   end
 
   test "logged in milestone with existing level source and level source image" do
-    # TODO actually test experiment instead of just stubbing it out
-    ExperimentActivity.expects(:is_experimenting_feedback_design?).returns(false)
-
     # do all the logging
     @controller.expects :log_milestone
     @controller.expects :slog
@@ -333,7 +322,8 @@ class ActivitiesControllerTest < ActionController::TestCase
                          "total_lines"=>35,
                          "redirect"=>"/s/#{@script.id}/level/#{@script_level_next.id}",
                          "level_source"=>"http://test.host/sh/#{assigns(:level_source).id}",
-                         "save_to_gallery_url"=>"/gallery_activities?gallery_activity%5Bactivity_id%5D=#{assigns(:activity).id}"}
+                         "save_to_gallery_url"=>"/gallery_activities?gallery_activity%5Bactivity_id%5D=#{assigns(:activity).id}",
+                         "design"=>"white_background"}
 
     assert_equal expected_response, JSON.parse(@response.body)
   end
@@ -364,15 +354,13 @@ class ActivitiesControllerTest < ActionController::TestCase
     expected_response = {"previous_level"=>"/s/#{@script.id}/level/#{@script_level_prev.id}",
                          "total_lines"=>1,
                          "redirect"=>"/s/#{@script.id}/level/#{@script_level_next.id}",
-                         "level_source"=>"http://test.host/sh/#{assigns(:level_source).id}"}
+                         "level_source"=>"http://test.host/sh/#{assigns(:level_source).id}",
+                         "design"=>"white_background"}
 
     assert_equal expected_response, JSON.parse(@response.body)
   end
 
   test "anonymous milestone increments total lines" do
-    # TODO actually test experiment instead of just stubbing it out
-    ExperimentActivity.expects(:is_experimenting_feedback_design?).returns(false)
-
     sign_out @user
     
     session['lines'] = 10
@@ -397,15 +385,13 @@ class ActivitiesControllerTest < ActionController::TestCase
     expected_response = {"previous_level"=>"/s/#{@script.id}/level/#{@script_level_prev.id}",
                          "total_lines"=>11,
                          "redirect"=>"/s/#{@script.id}/level/#{@script_level_next.id}",
-                         "level_source"=>"http://test.host/sh/#{assigns(:level_source).id}"}
+                         "level_source"=>"http://test.host/sh/#{assigns(:level_source).id}",
+                         "design"=>"white_background"}
 
     assert_equal expected_response, JSON.parse(@response.body)
   end
 
   test "anonymous milestone not passing" do
-    # TODO actually test experiment instead of just stubbing it out
-    ExperimentActivity.expects(:is_experimenting_feedback_design?).returns(false)
-
     sign_out @user
     
     session['lines'] = 10
@@ -426,7 +412,8 @@ class ActivitiesControllerTest < ActionController::TestCase
     assert_response :success
     expected_response = {"previous_level"=>"/s/1/level/1",
                          "message"=>"try again",
-                         "level_source"=>"http://test.host/sh/#{assigns(:level_source).id}"}
+                         "level_source"=>"http://test.host/sh/#{assigns(:level_source).id}",
+                         "design"=>"white_background"}
     assert_equal expected_response, JSON.parse(@response.body)
   end
 
