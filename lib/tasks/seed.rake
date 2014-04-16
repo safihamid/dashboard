@@ -65,7 +65,7 @@ namespace :seed do
       Game.create!(id: game_id += 1, name: "CustomMaze", app: "maze")
       Game.create!(id: game_id += 1, name: "Studio", app: "studio")
       Game.create!(id: game_id += 1, name: "Jigsaw", app: 'jigsaw')
-   end
+    end
   end
 
   COL_GAME = 'Game'
@@ -85,7 +85,8 @@ namespace :seed do
   task custom_levels: :environment do
     Level.transaction do
       CSV.read("config/scripts/custom_levels.csv", headers: true).each do |row|
-        level = get_level_by_name(row[COL_NAME]).first_or_create
+        levels = get_level_by_name(row[COL_NAME])
+        level = levels.first_or_create
         game = Game.where(name: row[COL_GAME]).first
         solution = LevelSource.lookup(level, row[COL_SOLUTION])
         level.update(instructions: row[COL_INSTRUCTIONS], skin: row[COL_SKIN], maze: row[COL_MAZE], x: row[COL_X], y: row[COL_Y], start_direction: row[COL_START_DIRECTION], game: game, solution_level_source: solution)
