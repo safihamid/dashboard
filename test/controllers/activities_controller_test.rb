@@ -15,6 +15,9 @@ class ActivitiesControllerTest < ActionController::TestCase
     @script_level_next = ScriptLevel.find(3)
     @script = @script_level.script
 
+    @blank_image = File.read('test/fixtures/artist_image_blank.png', binmode: true)
+    @good_image = File.read('test/fixtures/artist_image_1.png', binmode: true)
+    @another_good_image = File.read('test/fixtures/artist_image_2.png', binmode: true)
   end
 
   test "should get index" do
@@ -43,10 +46,6 @@ class ActivitiesControllerTest < ActionController::TestCase
 
     assert_redirected_to activity_path(assigns(:activity))
   end
-
-  # TODO total lines tests for logged in and not logged in
-
-  # TODO test saving image
 
   test "logged in milestone" do
     # TODO actually test experiment instead of just stubbing it out
@@ -126,12 +125,14 @@ class ActivitiesControllerTest < ActionController::TestCase
         assert_difference('UserLevel.count') do # create a userlevel
           assert_no_difference('@user.reload.total_lines') do # don't update total lines
             assert_difference('LevelSourceImage.count') do # TODO do we really want to do this...
-              post :milestone, user_id: @user, script_level_id: @script_level, :lines => 20, :attempt => "1", :result => "false", :testResult => "10", :time => "1000", :app => "test", :program => "<hey>", :image => File.read('test/fixtures/artist_image_1.png')
+              post :milestone, user_id: @user, script_level_id: @script_level, :lines => 20, :attempt => "1", :result => "false", :testResult => "10", :time => "1000", :app => "test", :program => "<hey>", image: Base64.encode64(@good_image)
             end
           end
         end
       end
     end
+
+    assert_equal @good_image.size, LevelSourceImage.last.image.size
 
     assert_response :success
 
@@ -158,12 +159,14 @@ class ActivitiesControllerTest < ActionController::TestCase
         assert_difference('UserLevel.count') do # create a userlevel
           assert_difference('@user.reload.total_lines', 20) do # update total lines
             assert_difference('LevelSourceImage.count') do
-              post :milestone, user_id: @user, script_level_id: @script_level, :lines => 20, :attempt => "1", :result => "true", :testResult => "100", :time => "1000", :app => "test", :program => "<hey>", :image => File.read('test/fixtures/artist_image_1.png')
+              post :milestone, user_id: @user, script_level_id: @script_level, :lines => 20, :attempt => "1", :result => "true", :testResult => "100", :time => "1000", :app => "test", :program => "<hey>", :image => Base64.encode64(@good_image)
             end
           end
         end
       end
     end
+
+    assert_equal @good_image.size, LevelSourceImage.last.image.size
 
     assert_response :success
 
@@ -190,8 +193,48 @@ class ActivitiesControllerTest < ActionController::TestCase
     program = "<whatever>"
     
     level_source = LevelSource.lookup(@script_level.level, program) # creates it, doesn't just look it up, despite the name
-    LevelSourceImage.find_or_create_by(level_source_id: level_source.id) do |ls|
-      ls.image = File.read('test/fixtures/artist_image_1.png')
+    level_source_image = LevelSourceImage.find_or_create_by(level_source_id: level_source.id) do |ls|
+      ls.image = @good_image
+    end
+    assert_equal @good_image.size, level_source_image.reload.image.size
+
+    assert_no_difference('LevelSource.count') do
+      assert_difference('Activity.count') do # create an activity
+        assert_difference('UserLevel.count') do # create a userlevel
+          assert_difference('@user.reload.total_lines', 20) do # update total lines
+            assert_no_difference('LevelSourceImage.count') do
+              post :milestone, user_id: @user, script_level_id: @script_level, :lines => 20, :attempt => "1", :result => "true", :testResult => "100", :time => "1000", :app => "test", :program => program, :image => Base64.encode64(@good_image)
+            end
+          end
+        end
+      end
+    end
+
+    assert_equal @good_image.size, level_source_image.reload.image.size
+
+    assert_response :success
+
+    assert_equal level_source, assigns(:level_source)
+
+    expected_response = {"previous_level"=>"/s/#{@script.id}/level/#{@script_level_prev.id}",
+                         "total_lines"=>35,
+                         "redirect"=>"/s/#{@script.id}/level/#{@script_level_next.id}",
+                         "level_source"=>"http://test.host/sh/#{assigns(:level_source).id}",
+                         "save_to_gallery_url"=>"/gallery_activities?gallery_activity%5Bactivity_id%5D=#{assigns(:activity).id}"}
+
+    assert_equal expected_response, JSON.parse(@response.body)
+  end
+
+  test "logged in milestone with existing level source and level source image updates image if old image was blank" do
+    # TODO actually test experiment instead of just stubbing it out
+    ExperimentActivity.expects(:is_experimenting_feedback_design?).returns(false)
+
+
+    program = "<whatever>"
+    
+    level_source = LevelSource.lookup(@script_level.level, program) # creates it, doesn't just look it up, despite the name
+    level_source_image = LevelSourceImage.find_or_create_by(level_source_id: level_source.id) do |ls|
+      ls.image = @blank_image
     end
 
     assert_no_difference('LevelSource.count') do
@@ -199,12 +242,92 @@ class ActivitiesControllerTest < ActionController::TestCase
         assert_difference('UserLevel.count') do # create a userlevel
           assert_difference('@user.reload.total_lines', 20) do # update total lines
             assert_no_difference('LevelSourceImage.count') do
-              post :milestone, user_id: @user, script_level_id: @script_level, :lines => 20, :attempt => "1", :result => "true", :testResult => "100", :time => "1000", :app => "test", :program => program, :image => File.read('test/fixtures/artist_image_1.png')
+              post :milestone, user_id: @user, script_level_id: @script_level, :lines => 20, :attempt => "1", :result => "true", :testResult => "100", :time => "1000", :app => "test", :program => program, :image => Base64.encode64(@good_image)
             end
           end
         end
       end
     end
+
+    assert_equal @good_image.size, level_source_image.reload.image.size
+
+    assert_response :success
+
+    assert_equal level_source, assigns(:level_source)
+
+    expected_response = {"previous_level"=>"/s/#{@script.id}/level/#{@script_level_prev.id}",
+                         "total_lines"=>35,
+                         "redirect"=>"/s/#{@script.id}/level/#{@script_level_next.id}",
+                         "level_source"=>"http://test.host/sh/#{assigns(:level_source).id}",
+                         "save_to_gallery_url"=>"/gallery_activities?gallery_activity%5Bactivity_id%5D=#{assigns(:activity).id}"}
+
+    assert_equal expected_response, JSON.parse(@response.body)
+  end
+
+  test "logged in milestone with existing level source and level source image does not update image if new image is blank" do
+    # TODO actually test experiment instead of just stubbing it out
+    ExperimentActivity.expects(:is_experimenting_feedback_design?).returns(false)
+
+
+    program = "<whatever>"
+    
+    level_source = LevelSource.lookup(@script_level.level, program) # creates it, doesn't just look it up, despite the name
+    level_source_image = LevelSourceImage.find_or_create_by(level_source_id: level_source.id) do |ls|
+      ls.image = @good_image
+    end
+
+    assert_no_difference('LevelSource.count') do
+      assert_difference('Activity.count') do # create an activity
+        assert_difference('UserLevel.count') do # create a userlevel
+          assert_difference('@user.reload.total_lines', 20) do # update total lines
+            assert_no_difference('LevelSourceImage.count') do
+              post :milestone, user_id: @user, script_level_id: @script_level, :lines => 20, :attempt => "1", :result => "true", :testResult => "100", :time => "1000", :app => "test", :program => program, :image => Base64.encode64(@blank_image)
+            end
+          end
+        end
+      end
+    end
+
+    assert_equal @good_image.size, level_source_image.reload.image.size
+
+    assert_response :success
+
+    assert_equal level_source, assigns(:level_source)
+
+    expected_response = {"previous_level"=>"/s/#{@script.id}/level/#{@script_level_prev.id}",
+                         "total_lines"=>35,
+                         "redirect"=>"/s/#{@script.id}/level/#{@script_level_next.id}",
+                         "level_source"=>"http://test.host/sh/#{assigns(:level_source).id}",
+                         "save_to_gallery_url"=>"/gallery_activities?gallery_activity%5Bactivity_id%5D=#{assigns(:activity).id}"}
+
+    assert_equal expected_response, JSON.parse(@response.body)
+  end
+
+  test "logged in milestone with existing level source and level source image does not update image if old image is good" do
+    # TODO actually test experiment instead of just stubbing it out
+    ExperimentActivity.expects(:is_experimenting_feedback_design?).returns(false)
+
+
+    program = "<whatever>"
+    
+    level_source = LevelSource.lookup(@script_level.level, program) # creates it, doesn't just look it up, despite the name
+    level_source_image = LevelSourceImage.find_or_create_by(level_source_id: level_source.id) do |ls|
+      ls.image = @good_image
+    end
+
+    assert_no_difference('LevelSource.count') do
+      assert_difference('Activity.count') do # create an activity
+        assert_difference('UserLevel.count') do # create a userlevel
+          assert_difference('@user.reload.total_lines', 20) do # update total lines
+            assert_no_difference('LevelSourceImage.count') do
+              post :milestone, user_id: @user, script_level_id: @script_level, :lines => 20, :attempt => "1", :result => "true", :testResult => "100", :time => "1000", :app => "test", :program => program, :image => Base64.encode64(@another_good_image)
+            end
+          end
+        end
+      end
+    end
+
+    assert_equal @good_image.size, level_source_image.reload.image.size
 
     assert_response :success
 
@@ -219,6 +342,7 @@ class ActivitiesControllerTest < ActionController::TestCase
 
     assert_equal expected_response, JSON.parse(@response.body)
   end
+
 
   # TODO actually test trophies
 
