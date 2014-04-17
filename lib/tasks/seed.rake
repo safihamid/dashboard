@@ -103,9 +103,7 @@ namespace :seed do
   end
 
   task scripts: :environment do
-    if Deploy.config[:rack_env] != :staging  # Custom levels are created on staging.
-      Rake::Task["seed:custom_levels"].invoke
-    end
+    Rake::Task["seed:custom_levels"].invoke
     Script.transaction do
       game_map = Game.all.index_by(&:name)
       concept_map = Concept.all.index_by(&:name)
