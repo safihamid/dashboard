@@ -1851,7 +1851,67 @@ var generateXMLForBlocks = function(blocks) {
 var msg = require('../../locale/ko_kr/jigsaw');
 var dom = require('../dom');
 
+var patternCache = {
+  queued: [],
+  created: {},
+
+  /**
+   * Stick an item in our queue
+   */
+  addToQueue: function (patternInfo) {
+    this.queued.push(patternInfo);
+  },
+
+  /**
+   * Add all the svg patterns we've queued up.
+   */
+  addQueuedPatterns: function () {
+    if (document.readyState !== "complete") {
+      throw new Error('Should only add queued patterns after fully loaded');
+    }
+    this.queued.forEach(function (pattern) {
+      addPattern(pattern.id, pattern.imagePath, pattern.width, pattern.height,
+        pattern.offsetX, pattern.offsetY);
+    });
+    this.queued = [];
+  },
+
+  /**
+   * Have we already created an svg element for this patternInfo?  Throws if
+   * we ask with a patternInfo that has the same id but different attributes.
+   */
+  wasCreated: function (patternInfo) {
+    var equal = true;
+    var cached = this.created[patternInfo.id];
+    if (!cached) {
+      return false;
+    }
+
+    Object.keys(patternInfo).forEach(function (key) {
+      if (patternInfo[key] !== cached[key]) {
+        equal = false;
+      }
+    });
+    if (!equal) {
+      throw new Error("Can't add attribute of same id with different attributes");
+    }
+    return true;
+  },
+
+  /**
+   * Mark that we've created an svg pattern
+   */
+  markCreated: function (patternInfo) {
+    if (this.created[patternInfo.id]) {
+      throw new Error('Already have cached item with id: ' + patternInfo.id);
+    }
+    this.created[patternInfo.id] = patternInfo;
+  }
+
+};
+
 var patterns = [];
+var createdPatterns = {};
 
 /**
  * Add an svg pattern for the given image. If document is not yet fully loaded,
@@ -1866,25 +1926,26 @@ var patterns = [];
  */
 var addPattern = function (id, imagePath, width, height, offsetX, offsetY) {
   var x, y, pattern, patternImage;
+  var patternInfo = {
+    id: id,
+    imagePath: imagePath,
+    width: width,
+    height: height,
+    offsetX: offsetX,
+    offsetY: offsetY
+  };
 
   if (document.readyState !== "complete") {
-    // queue it up
-    patterns.push({
-      id: id,
-      imagePath: imagePath,
-      width: width,
-      height: height,
-      offsetX: offsetX,
-      offsetY: offsetY
-    });
-  } else {
+    patternCache.addToQueue(patternInfo);
+  } else if (!patternCache.wasCreated(patternInfo)) {
+    // add the pattern
     x = typeof(offsetX) === "function" ? -offsetX() : -offsetX;
     y = typeof(offsetY) === "function" ? -offsetY() : -offsetY;
     pattern = Blockly.createSvgElement('pattern', {
       id: id,
       patternUnits: 'userSpaceOnUse',
       width: "100%",
-      height: "100%",
+      height: height,
       x: x,
       y: y
     }, document.getElementById('blocklySvgDefs'));
@@ -1894,24 +1955,10 @@ var addPattern = function (id, imagePath, width, height, offsetX, offsetY) {
     }, pattern);
     patternImage.setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:href',
       imagePath);
-  }
 
+    patternCache.markCreated(patternInfo);
+  }
   return id;
-};
-
-/**
- * Add all the svg patterns we've queued up.
- */
-var addQueuedPatterns = function () {
-  if (document.readyState !== "complete") {
-    throw new Error('Should only add queued patterns after fully loaded');
-  }
-  for (var i = 0; i < patterns.length; i++) {
-    var pattern = patterns[i];
-    addPattern(pattern.id, pattern.imagePath, pattern.width, pattern.height,
-      pattern.offsetX, pattern.offsetY);
-  }
-  patterns = [];
 };
 
 /**
@@ -1943,7 +1990,7 @@ exports.install = function(blockly, skin) {
   // don't add patterns until ready
   dom.addReadyListener(function() {
     if (document.readyState === "complete") {
-      addQueuedPatterns();
+      patternCache.addQueuedPatterns();
     }
   });
 
@@ -1973,7 +2020,8 @@ exports.install = function(blockly, skin) {
      width: 200,
      height: 200,
      numBlocks: 3,
-     level: 3
+     level: 3,
+     notchedEnds: true
    });
 
   generateBlocksForLevel(blockly, skin, {
@@ -2008,6 +2056,8 @@ function generateBlocksForLevel(blockly, skin, options) {
   var numBlocks = options.numBlocks;
   var level = options.level;
   var HSV = options.HSV;
+  // if true, first/last block will still have previous/next notches
+  var notchedEnds = options.notchedEnds;
 
   var blockHeight = height / numBlocks;
   var titleWidth = width - 20;
@@ -2024,8 +2074,8 @@ function generateBlocksForLevel(blockly, skin, options) {
         this.setHSV.apply(this, HSV);
         this.appendDummyInput()
           .appendTitle(new blockly.FieldImage(skin.blank, titleWidth, titleHeight));
-        this.setPreviousStatement(blockNum !== 1);
-        this.setNextStatement(blockNum !== numBlocks);
+        this.setPreviousStatement(blockNum !== 1 || notchedEnds);
+        this.setNextStatement(blockNum !== numBlocks || notchedEnds);
         this.setFillPattern(
           addPattern(patternName, image, width, height, 0,
             blockHeight * (blockNum - 1)));
