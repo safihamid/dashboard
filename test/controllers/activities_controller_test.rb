@@ -49,6 +49,9 @@ class ActivitiesControllerTest < ActionController::TestCase
   # TODO test saving image
 
   test "logged in milestone" do
+    # TODO actually test experiment instead of just stubbing it out
+    ActivityHint.expects(:is_experimenting_feedback?).returns(false)
+
     # do all the logging
     @controller.expects :log_milestone
     @controller.expects :slog
@@ -78,6 +81,9 @@ class ActivitiesControllerTest < ActionController::TestCase
   end
 
   test "logged in milestone not passing" do
+    # TODO actually test experiment instead of just stubbing it out
+    ActivityHint.expects(:is_experimenting_feedback?).returns(false)
+
     # do all the logging
     @controller.expects :log_milestone
     @controller.expects :slog
@@ -106,6 +112,9 @@ class ActivitiesControllerTest < ActionController::TestCase
 
 
   test "logged in milestone with image not passing" do
+    # TODO actually test experiment instead of just stubbing it out
+    ActivityHint.expects(:is_experimenting_feedback?).returns(false)
+
     # do all the logging
     @controller.expects :log_milestone
     @controller.expects :slog
@@ -135,6 +144,9 @@ class ActivitiesControllerTest < ActionController::TestCase
   end
 
   test "logged in milestone with image" do
+    # TODO actually test experiment instead of just stubbing it out
+    ActivityHint.expects(:is_experimenting_feedback?).returns(false)
+
     # do all the logging
     @controller.expects :log_milestone
     @controller.expects :slog
@@ -166,6 +178,9 @@ class ActivitiesControllerTest < ActionController::TestCase
   end
 
   test "logged in milestone with existing level source and level source image" do
+    # TODO actually test experiment instead of just stubbing it out
+    ActivityHint.expects(:is_experimenting_feedback?).returns(false)
+
     # do all the logging
     @controller.expects :log_milestone
     @controller.expects :slog
@@ -208,6 +223,9 @@ class ActivitiesControllerTest < ActionController::TestCase
   # TODO actually test trophies
 
   test "anonymous milestone" do
+    # TODO actually test experiment instead of just stubbing it out
+    ActivityHint.expects(:is_experimenting_feedback?).returns(false)
+
     sign_out @user
     
     # do all the logging
@@ -237,6 +255,9 @@ class ActivitiesControllerTest < ActionController::TestCase
   end
 
   test "anonymous milestone increments total lines" do
+    # TODO actually test experiment instead of just stubbing it out
+    ActivityHint.expects(:is_experimenting_feedback?).returns(false)
+
     sign_out @user
     
     session['lines'] = 10
@@ -268,6 +289,9 @@ class ActivitiesControllerTest < ActionController::TestCase
   end
 
   test "anonymous milestone not passing" do
+    # TODO actually test experiment instead of just stubbing it out
+    ActivityHint.expects(:is_experimenting_feedback?).returns(false)
+
     sign_out @user
     
     session['lines'] = 10
