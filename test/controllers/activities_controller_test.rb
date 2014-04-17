@@ -220,14 +220,15 @@ class ActivitiesControllerTest < ActionController::TestCase
                          "total_lines"=>35,
                          "redirect"=>"/s/#{@script.id}/level/#{@script_level_next.id}",
                          "level_source"=>"http://test.host/sh/#{assigns(:level_source).id}",
-                         "save_to_gallery_url"=>"/gallery_activities?gallery_activity%5Bactivity_id%5D=#{assigns(:activity).id}"}
+                         "save_to_gallery_url"=>"/gallery_activities?gallery_activity%5Bactivity_id%5D=#{assigns(:activity).id}",
+                         "design"=>"white_background"}
 
     assert_equal expected_response, JSON.parse(@response.body)
   end
 
   test "logged in milestone with existing level source and level source image updates image if old image was blank" do
     # TODO actually test experiment instead of just stubbing it out
-    ExperimentActivity.expects(:is_experimenting_feedback_design?).returns(false)
+    ActivityHint.expects(:is_experimenting_feedback?).returns(false)
 
 
     program = "<whatever>"
@@ -259,14 +260,15 @@ class ActivitiesControllerTest < ActionController::TestCase
                          "total_lines"=>35,
                          "redirect"=>"/s/#{@script.id}/level/#{@script_level_next.id}",
                          "level_source"=>"http://test.host/sh/#{assigns(:level_source).id}",
-                         "save_to_gallery_url"=>"/gallery_activities?gallery_activity%5Bactivity_id%5D=#{assigns(:activity).id}"}
+                         "save_to_gallery_url"=>"/gallery_activities?gallery_activity%5Bactivity_id%5D=#{assigns(:activity).id}",
+                         "design"=>"white_background"}
 
     assert_equal expected_response, JSON.parse(@response.body)
   end
 
   test "logged in milestone with existing level source and level source image does not update image if new image is blank" do
     # TODO actually test experiment instead of just stubbing it out
-    ExperimentActivity.expects(:is_experimenting_feedback_design?).returns(false)
+    ActivityHint.expects(:is_experimenting_feedback?).returns(false)
 
 
     program = "<whatever>"
@@ -298,14 +300,15 @@ class ActivitiesControllerTest < ActionController::TestCase
                          "total_lines"=>35,
                          "redirect"=>"/s/#{@script.id}/level/#{@script_level_next.id}",
                          "level_source"=>"http://test.host/sh/#{assigns(:level_source).id}",
-                         "save_to_gallery_url"=>"/gallery_activities?gallery_activity%5Bactivity_id%5D=#{assigns(:activity).id}"}
+                         "save_to_gallery_url"=>"/gallery_activities?gallery_activity%5Bactivity_id%5D=#{assigns(:activity).id}",
+                         "design"=>"white_background"}
 
     assert_equal expected_response, JSON.parse(@response.body)
   end
 
   test "logged in milestone with existing level source and level source image does not update image if old image is good" do
     # TODO actually test experiment instead of just stubbing it out
-    ExperimentActivity.expects(:is_experimenting_feedback_design?).returns(false)
+    ActivityHint.expects(:is_experimenting_feedback?).returns(false)
 
 
     program = "<whatever>"
