@@ -57,14 +57,10 @@ class ActivitiesControllerTest < ActionController::TestCase
 
     @controller.expects(:trophy_check).with(@user)
 
-    assert_difference('LevelSource.count') do
-      assert_difference('Activity.count') do # create an activity
-        assert_difference('UserLevel.count') do # create a userlevel
-          assert_difference('@user.reload.total_lines', 20) do # update total lines
-            assert_no_difference('GalleryActivity.count') do # no gallery because we didn't ask
-              post :milestone, user_id: @user, script_level_id: @script_level, :lines => 20, :attempt => "1", :result => "true", :testResult => "100", :time => "1000", :app => "test", :program => "<hey>"
-            end
-          end
+    assert_creates(LevelSource, Activity, UserLevel) do
+      assert_does_not_create(GalleryActivity) do
+        assert_difference('@user.reload.total_lines', 20) do # update total lines
+          post :milestone, user_id: @user, script_level_id: @script_level, :lines => 20, :attempt => "1", :result => "true", :testResult => "100", :time => "1000", :app => "test", :program => "<hey>"
         end
       end
     end
@@ -91,15 +87,9 @@ class ActivitiesControllerTest < ActionController::TestCase
 
     @controller.expects(:trophy_check).with(@user)
 
-    assert_difference('LevelSource.count') do
-      assert_difference('Activity.count') do # create an activity
-        assert_difference('UserLevel.count') do # create a userlevel
-          assert_difference('@user.reload.total_lines', 20) do # update total lines
-            assert_difference('GalleryActivity.count') do # create a gallery activity
-              post :milestone, user_id: @user, script_level_id: @script_level, :lines => 20, :attempt => "1", :result => "true", :testResult => "100", :time => "1000", :app => "test", :program => "<hey>", :save_to_gallery => true, image: Base64.encode64(@good_image)
-            end
-          end
-        end
+    assert_creates(LevelSource, Activity, UserLevel, GalleryActivity) do
+      assert_difference('@user.reload.total_lines', 20) do # update total lines
+        post :milestone, user_id: @user, script_level_id: @script_level, :lines => 20, :attempt => "1", :result => "true", :testResult => "100", :time => "1000", :app => "test", :program => "<hey>", :save_to_gallery => true, image: Base64.encode64(@good_image)
       end
     end
 
@@ -129,15 +119,11 @@ class ActivitiesControllerTest < ActionController::TestCase
 
     @controller.expects(:trophy_check).with(@user) # TODO we don't actually need to check if not passing
 
-    assert_difference('LevelSource.count') do
-      assert_difference('Activity.count') do # create an activity
-        assert_difference('UserLevel.count') do # create a userlevel
+    assert_creates(LevelSource, Activity, UserLevel) do
+      assert_does_not_create(GalleryActivity) do
           assert_no_difference('@user.reload.total_lines') do # don't update total lines
-              assert_no_difference('GalleryActivity.count') do # no gallery because we didn't ask
-                post :milestone, user_id: @user, script_level_id: @script_level, :lines => 20, :attempt => "1", :result => "false", :testResult => "10", :time => "1000", :app => "test", :program => "<hey>"
-              end
+            post :milestone, user_id: @user, script_level_id: @script_level, :lines => 20, :attempt => "1", :result => "false", :testResult => "10", :time => "1000", :app => "test", :program => "<hey>"
           end
-        end
       end
     end
 
@@ -161,16 +147,10 @@ class ActivitiesControllerTest < ActionController::TestCase
 
     @controller.expects(:trophy_check) # TODO we don't actually need to check if not passing
 
-    assert_difference('LevelSource.count') do
-      assert_difference('Activity.count') do # create an activity
-        assert_difference('UserLevel.count') do # create a userlevel
-          assert_no_difference('@user.reload.total_lines') do # don't update total lines
-            assert_difference('LevelSourceImage.count') do # TODO do we really want to do this...
-              assert_no_difference('GalleryActivity.count') do # no save because we didn't pass
-                post :milestone, user_id: @user, script_level_id: @script_level, :lines => 20, :attempt => "1", :result => "false", :testResult => "10", :time => "1000", :app => "test", :program => "<hey>", image: Base64.encode64(@good_image), :save_to_gallery => true
-              end
-            end
-          end
+    assert_creates(LevelSource, Activity, UserLevel, LevelSourceImage) do
+      assert_does_not_create(GalleryActivity) do
+        assert_no_difference('@user.reload.total_lines') do # don't update total lines
+          post :milestone, user_id: @user, script_level_id: @script_level, :lines => 20, :attempt => "1", :result => "false", :testResult => "10", :time => "1000", :app => "test", :program => "<hey>", image: Base64.encode64(@good_image), :save_to_gallery => true
         end
       end
     end
@@ -196,16 +176,10 @@ class ActivitiesControllerTest < ActionController::TestCase
 
     @controller.expects(:trophy_check)
 
-    assert_difference('LevelSource.count') do
-      assert_difference('Activity.count') do # create an activity
-        assert_difference('UserLevel.count') do # create a userlevel
-          assert_difference('@user.reload.total_lines', 20) do # update total lines
-            assert_difference('LevelSourceImage.count') do
-              assert_no_difference('GalleryActivity.count') do # no gallery because we didn't ask
-                post :milestone, user_id: @user, script_level_id: @script_level, :lines => 20, :attempt => "1", :result => "true", :testResult => "100", :time => "1000", :app => "test", :program => "<hey>", :image => Base64.encode64(@good_image)
-              end
-            end
-          end
+    assert_creates(LevelSource, Activity, UserLevel, LevelSourceImage) do
+      assert_does_not_create(GalleryActivity) do
+        assert_difference('@user.reload.total_lines', 20) do # update total lines
+          post :milestone, user_id: @user, script_level_id: @script_level, :lines => 20, :attempt => "1", :result => "true", :testResult => "100", :time => "1000", :app => "test", :program => "<hey>", :image => Base64.encode64(@good_image)
         end
       end
     end
@@ -241,16 +215,10 @@ class ActivitiesControllerTest < ActionController::TestCase
     end
     assert_equal @good_image.size, level_source_image.reload.image.size
 
-    assert_no_difference('LevelSource.count') do
-      assert_difference('Activity.count') do # create an activity
-        assert_difference('UserLevel.count') do # create a userlevel
-          assert_difference('@user.reload.total_lines', 20) do # update total lines
-            assert_no_difference('LevelSourceImage.count') do
-              assert_no_difference('GalleryActivity.count') do # no gallery because we didn't ask
-                post :milestone, user_id: @user, script_level_id: @script_level, :lines => 20, :attempt => "1", :result => "true", :testResult => "100", :time => "1000", :app => "test", :program => program, :image => Base64.encode64(@good_image)
-              end
-            end
-          end
+    assert_creates(Activity, UserLevel) do
+      assert_does_not_create(LevelSource, LevelSourceImage, GalleryActivity) do
+        assert_difference('@user.reload.total_lines', 20) do # update total lines
+          post :milestone, user_id: @user, script_level_id: @script_level, :lines => 20, :attempt => "1", :result => "true", :testResult => "100", :time => "1000", :app => "test", :program => program, :image => Base64.encode64(@good_image)
         end
       end
     end
@@ -282,16 +250,10 @@ class ActivitiesControllerTest < ActionController::TestCase
       ls.image = @blank_image
     end
 
-    assert_no_difference('LevelSource.count') do
-      assert_difference('Activity.count') do # create an activity
-        assert_difference('UserLevel.count') do # create a userlevel
-          assert_difference('@user.reload.total_lines', 20) do # update total lines
-            assert_no_difference('LevelSourceImage.count') do
-              assert_no_difference('GalleryActivity.count') do # no gallery because we didn't ask
-                post :milestone, user_id: @user, script_level_id: @script_level, :lines => 20, :attempt => "1", :result => "true", :testResult => "100", :time => "1000", :app => "test", :program => program, :image => Base64.encode64(@good_image)
-              end
-            end
-          end
+    assert_creates(Activity, UserLevel) do
+      assert_does_not_create(LevelSource, LevelSourceImage, GalleryActivity) do
+        assert_difference('@user.reload.total_lines', 20) do # update total lines
+          post :milestone, user_id: @user, script_level_id: @script_level, :lines => 20, :attempt => "1", :result => "true", :testResult => "100", :time => "1000", :app => "test", :program => program, :image => Base64.encode64(@good_image)
         end
       end
     end
@@ -323,16 +285,10 @@ class ActivitiesControllerTest < ActionController::TestCase
       ls.image = @good_image
     end
 
-    assert_no_difference('LevelSource.count') do
-      assert_difference('Activity.count') do # create an activity
-        assert_difference('UserLevel.count') do # create a userlevel
-          assert_difference('@user.reload.total_lines', 20) do # update total lines
-            assert_no_difference('LevelSourceImage.count') do
-              assert_no_difference('GalleryActivity.count') do # no gallery because we didn't ask
-                post :milestone, user_id: @user, script_level_id: @script_level, :lines => 20, :attempt => "1", :result => "true", :testResult => "100", :time => "1000", :app => "test", :program => program, :image => Base64.encode64(@blank_image)
-              end
-            end
-          end
+    assert_creates(Activity, UserLevel) do
+      assert_does_not_create(LevelSource, LevelSourceImage, GalleryActivity) do
+        assert_difference('@user.reload.total_lines', 20) do # update total lines
+          post :milestone, user_id: @user, script_level_id: @script_level, :lines => 20, :attempt => "1", :result => "true", :testResult => "100", :time => "1000", :app => "test", :program => program, :image => Base64.encode64(@blank_image)
         end
       end
     end
@@ -364,16 +320,10 @@ class ActivitiesControllerTest < ActionController::TestCase
       ls.image = @good_image
     end
 
-    assert_no_difference('LevelSource.count') do
-      assert_difference('Activity.count') do # create an activity
-        assert_difference('UserLevel.count') do # create a userlevel
-          assert_difference('@user.reload.total_lines', 20) do # update total lines
-            assert_no_difference('LevelSourceImage.count') do
-              assert_no_difference('GalleryActivity.count') do # no gallery because we didn't ask
-                post :milestone, user_id: @user, script_level_id: @script_level, :lines => 20, :attempt => "1", :result => "true", :testResult => "100", :time => "1000", :app => "test", :program => program, :image => Base64.encode64(@another_good_image)
-              end
-            end
-          end
+    assert_creates(Activity, UserLevel) do
+      assert_does_not_create(LevelSource, LevelSourceImage, GalleryActivity) do
+        assert_difference('@user.reload.total_lines', 20) do # update total lines
+          post :milestone, user_id: @user, script_level_id: @script_level, :lines => 20, :attempt => "1", :result => "true", :testResult => "100", :time => "1000", :app => "test", :program => program, :image => Base64.encode64(@another_good_image)
         end
       end
     end
@@ -405,15 +355,9 @@ class ActivitiesControllerTest < ActionController::TestCase
     
     @controller.expects(:trophy_check).never # no trophy if not logged in
 
-    assert_difference('LevelSource.count') do
-      assert_no_difference('Activity.count') do # only created for users
-        assert_no_difference('UserLevel.count') do # only created for users
-          assert_no_difference('LevelSourceImage.count') do # no image provided
-            assert_no_difference('GalleryActivity.count') do # only for users
-              post :milestone, user_id: 0, script_level_id: @script_level, :lines => "1", :attempt => "1", :result => "true", :testResult => "100", :time => "1000", :app => "test", :program => "<hey>", :save_to_gallery => true
-            end
-          end
-        end
+    assert_creates(LevelSource) do
+      assert_does_not_create(Activity, UserLevel, LevelSourceImage, GalleryActivity) do
+        post :milestone, user_id: 0, script_level_id: @script_level, :lines => "1", :attempt => "1", :result => "true", :testResult => "100", :time => "1000", :app => "test", :program => "<hey>", :save_to_gallery => true
       end
     end
 
@@ -450,15 +394,9 @@ class ActivitiesControllerTest < ActionController::TestCase
 
     @controller.expects(:trophy_check).never # no trophy if not logged in
     
-    assert_difference('LevelSource.count') do
-      assert_no_difference('Activity.count') do # only created for users
-        assert_no_difference('UserLevel.count') do # only created for users
-          assert_no_difference('LevelSourceImage.count') do # no image provided
-            assert_no_difference('GalleryActivity.count') do # only for users
-              post :milestone, user_id: 0, script_level_id: @script_level, :lines => "1", :attempt => "1", :result => "true", :testResult => "100", :time => "1000", :app => "test", :program => "<hey>"
-            end
-          end
-        end
+    assert_creates(LevelSource) do
+      assert_does_not_create(Activity, UserLevel, LevelSourceImage, GalleryActivity) do
+        post :milestone, user_id: 0, script_level_id: @script_level, :lines => "1", :attempt => "1", :result => "true", :testResult => "100", :time => "1000", :app => "test", :program => "<hey>"
       end
     end
 
@@ -491,15 +429,9 @@ class ActivitiesControllerTest < ActionController::TestCase
     @controller.expects :log_milestone
     @controller.expects :slog
     
-    assert_difference('LevelSource.count') do
-      assert_no_difference('Activity.count') do # only created for users
-        assert_no_difference('UserLevel.count') do # only created for users
-          assert_no_difference('LevelSourceImage.count') do # no image provided
-            assert_no_difference('GalleryActivity.count') do # only for users
-              post :milestone, user_id: 0, script_level_id: @script_level, :lines => "100", :attempt => "1", :result => "false", :testResult => "0", :time => "1000", :app => "test", :program => "<hey>"
-            end
-          end
-        end
+    assert_creates(LevelSource) do
+      assert_does_not_create(Activity, UserLevel, LevelSourceImage, GalleryActivity) do
+        post :milestone, user_id: 0, script_level_id: @script_level, :lines => "100", :attempt => "1", :result => "false", :testResult => "0", :time => "1000", :app => "test", :program => "<hey>"
       end
     end
 
@@ -514,6 +446,45 @@ class ActivitiesControllerTest < ActionController::TestCase
     expected_response = {"previous_level"=>"/s/1/level/1",
                          "message"=>"try again",
                          "level_source"=>"http://test.host/sh/#{assigns(:level_source).id}"}
+    assert_equal expected_response, JSON.parse(@response.body)
+  end
+
+  test "anonymous milestone with image saves image but does not save to gallery" do
+    # TODO actually test experiment instead of just stubbing it out
+    ExperimentActivity.expects(:is_experimenting_feedback_design?).returns(false)
+
+    sign_out @user
+    
+    # set up existing session
+    session['progress'] = {1 => 50}
+    session['lines'] = 10
+
+    # do all the logging
+    @controller.expects :log_milestone
+    @controller.expects :slog
+
+    @controller.expects(:trophy_check).never # no trophy if not logged in
+    
+    assert_creates(LevelSource, LevelSourceImage) do
+      assert_does_not_create(Activity, UserLevel, GalleryActivity) do
+        post :milestone, user_id: 0, script_level_id: @script_level, :lines => "1", :attempt => "1", :result => "true", :testResult => "100", :time => "1000", :app => "test", :program => "<hey>", :save_to_gallery => true, image: Base64.encode64(@good_image)
+      end
+    end
+
+    # record activity in session
+    expected_progress = {@script_level_prev.level_id => 50, @script_level.level_id => 100}
+    assert_equal expected_progress, session['progress']
+
+    # record the total lines of code in session
+    assert_equal 11, session['lines']
+    
+    assert_response :success
+
+    expected_response = {"previous_level"=>"/s/#{@script.id}/level/#{@script_level_prev.id}",
+                         "total_lines"=>11,
+                         "redirect"=>"/s/#{@script.id}/level/#{@script_level_next.id}",
+                         "level_source"=>"http://test.host/sh/#{assigns(:level_source).id}"}
+
     assert_equal expected_response, JSON.parse(@response.body)
   end
 
