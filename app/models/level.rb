@@ -13,7 +13,7 @@ class Level < ActiveRecord::Base
 
   validates_length_of :name, within: 1..70
 
-  validates_uniqueness_of :name, conditions: -> { where 'user_id IS NOT NULL' }, on: create
+  validates_uniqueness_of :name, conditions: -> { where.not(user_id: nil) }, on: :create
 
   def self.builder
     @@level_builder ||= find_by_name('builder')
