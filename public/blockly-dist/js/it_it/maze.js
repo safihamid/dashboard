@@ -4531,12 +4531,7 @@ module.exports = {
       {'func': 'turnleft', 'alias': 'Maze.turnLeft();'},
       {'func': 'turnright', 'alias': 'Maze.turnRight();'},
     ],
-    'requiredBlocks': [
-      [{'test': 'moveForward', 'type': 'maze_moveForward'}],
-      [{'test': 'turnLeft',
-       'type': 'maze_turn',
-       'titles': {'DIR': 'turnLeft'}}]
-    ],
+    'requiredBlocks': [],
     'startDirection': Direction.EAST,
     'map': [
       [0, 0, 0, 0, 0, 0, 0, 0],

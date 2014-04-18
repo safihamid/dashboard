@@ -364,7 +364,7 @@ class ActivitiesControllerTest < ActionController::TestCase
     post :milestone, user_id: 0, script_level_id: @script_level, :lines => "1", :attempt => "1", :result => "true", :testResult => "100", :time => "1000", :app => "test", :program => "<hey>"
 
     # record activity in session
-    expected_progress = {2 => 100}
+    expected_progress = {@script_level.level_id => 100}
     assert_equal expected_progress, session["progress"]
 
     # record the total lines of code in session
@@ -398,7 +398,7 @@ class ActivitiesControllerTest < ActionController::TestCase
     post :milestone, user_id: 0, script_level_id: @script_level, :lines => "1", :attempt => "1", :result => "true", :testResult => "100", :time => "1000", :app => "test", :program => "<hey>"
 
     # record activity in session
-    expected_progress = {2 => 100}
+    expected_progress = {@script_level.level_id => 100}
     assert_equal expected_progress, session["progress"]
 
     # record the total lines of code in session
@@ -430,7 +430,7 @@ class ActivitiesControllerTest < ActionController::TestCase
     post :milestone, user_id: 0, script_level_id: @script_level, :lines => "100", :attempt => "1", :result => "false", :testResult => "0", :time => "1000", :app => "test", :program => "<hey>"
 
     # record activity in session
-    expected_progress = {2 => 0}
+    expected_progress = {@script_level.level_id => 0}
     assert_equal expected_progress, session["progress"]
 
     # record the total lines of code in session
