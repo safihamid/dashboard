@@ -152,6 +152,9 @@ BlocklyApps.init = function(config) {
   BlocklyApps.share = config.share;
   BlocklyApps.noPadding = config.no_padding;
 
+  BlocklyApps.IDEAL_BLOCK_NUM = config.level.ideal || Infinity;
+  BlocklyApps.REQUIRED_BLOCKS = config.level.requiredBlocks || [];
+
   // enableShowCode defaults to true if not defined
   BlocklyApps.enableShowCode = (config.enableShowCode === false) ? false : true;
 
@@ -4810,9 +4813,6 @@ Turtle.init = function(config) {
 
   Turtle.AVATAR_HEIGHT = 51;
   Turtle.AVATAR_WIDTH = 70;
-
-  BlocklyApps.IDEAL_BLOCK_NUM = level.ideal || Infinity;
-  BlocklyApps.REQUIRED_BLOCKS = level.requiredBlocks || [];
 
   config.html = page({
     assetUrl: BlocklyApps.assetUrl,
