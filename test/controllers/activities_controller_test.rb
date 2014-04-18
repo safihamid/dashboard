@@ -71,7 +71,7 @@ class ActivitiesControllerTest < ActionController::TestCase
                          "total_lines"=>35,
                          "redirect"=>"/s/#{@script.id}/level/#{@script_level_next.id}",
                          "level_source"=>"http://test.host/sh/#{assigns(:level_source).id}",
-                         "save_to_gallery_url"=>"/gallery_activities?gallery_activity%5Bactivity_id%5D=#{assigns(:activity).id}"}
+                         "save_to_gallery_url"=>"/gallery?gallery_activity%5Bactivity_id%5D=#{assigns(:activity).id}"}
 
     assert_equal expected_response, JSON.parse(@response.body)
   end
@@ -99,7 +99,7 @@ class ActivitiesControllerTest < ActionController::TestCase
                          "total_lines"=>35,
                          "redirect"=>"/s/#{@script.id}/level/#{@script_level_next.id}",
                          "level_source"=>"http://test.host/sh/#{assigns(:level_source).id}",
-                         "save_to_gallery_url"=>"/gallery_activities?gallery_activity%5Bactivity_id%5D=#{assigns(:activity).id}"}
+                         "save_to_gallery_url"=>"/gallery?gallery_activity%5Bactivity_id%5D=#{assigns(:activity).id}"}
 
     assert_equal expected_response, JSON.parse(@response.body)
 
@@ -192,7 +192,7 @@ class ActivitiesControllerTest < ActionController::TestCase
                          "total_lines"=>35,
                          "redirect"=>"/s/#{@script.id}/level/#{@script_level_next.id}",
                          "level_source"=>"http://test.host/sh/#{assigns(:level_source).id}",
-                         "save_to_gallery_url"=>"/gallery_activities?gallery_activity%5Bactivity_id%5D=#{assigns(:activity).id}"}
+                         "save_to_gallery_url"=>"/gallery?gallery_activity%5Bactivity_id%5D=#{assigns(:activity).id}"}
 
     assert_equal expected_response, JSON.parse(@response.body)
   end
@@ -233,7 +233,7 @@ class ActivitiesControllerTest < ActionController::TestCase
                          "total_lines"=>35,
                          "redirect"=>"/s/#{@script.id}/level/#{@script_level_next.id}",
                          "level_source"=>"http://test.host/sh/#{assigns(:level_source).id}",
-                         "save_to_gallery_url"=>"/gallery_activities?gallery_activity%5Bactivity_id%5D=#{assigns(:activity).id}"}
+                         "save_to_gallery_url"=>"/gallery?gallery_activity%5Bactivity_id%5D=#{assigns(:activity).id}"}
 
     assert_equal expected_response, JSON.parse(@response.body)
   end
@@ -268,7 +268,7 @@ class ActivitiesControllerTest < ActionController::TestCase
                          "total_lines"=>35,
                          "redirect"=>"/s/#{@script.id}/level/#{@script_level_next.id}",
                          "level_source"=>"http://test.host/sh/#{assigns(:level_source).id}",
-                         "save_to_gallery_url"=>"/gallery_activities?gallery_activity%5Bactivity_id%5D=#{assigns(:activity).id}"}
+                         "save_to_gallery_url"=>"/gallery?gallery_activity%5Bactivity_id%5D=#{assigns(:activity).id}"}
 
     assert_equal expected_response, JSON.parse(@response.body)
   end
@@ -303,7 +303,7 @@ class ActivitiesControllerTest < ActionController::TestCase
                          "total_lines"=>35,
                          "redirect"=>"/s/#{@script.id}/level/#{@script_level_next.id}",
                          "level_source"=>"http://test.host/sh/#{assigns(:level_source).id}",
-                         "save_to_gallery_url"=>"/gallery_activities?gallery_activity%5Bactivity_id%5D=#{assigns(:activity).id}"}
+                         "save_to_gallery_url"=>"/gallery?gallery_activity%5Bactivity_id%5D=#{assigns(:activity).id}"}
 
     assert_equal expected_response, JSON.parse(@response.body)
   end
@@ -338,7 +338,7 @@ class ActivitiesControllerTest < ActionController::TestCase
                          "total_lines"=>35,
                          "redirect"=>"/s/#{@script.id}/level/#{@script_level_next.id}",
                          "level_source"=>"http://test.host/sh/#{assigns(:level_source).id}",
-                         "save_to_gallery_url"=>"/gallery_activities?gallery_activity%5Bactivity_id%5D=#{assigns(:activity).id}"}
+                         "save_to_gallery_url"=>"/gallery?gallery_activity%5Bactivity_id%5D=#{assigns(:activity).id}"}
 
     assert_equal expected_response, JSON.parse(@response.body)
   end

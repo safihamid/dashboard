@@ -265,4 +265,13 @@ SQL
     
     errors.add(:birthday, I18n.t('activerecord.attributes.user.error.future')) if birthday > Date.today
   end
+
+  def short_name
+    if name.present?
+      name.strip.gsub(/\s.*$/, '') # "first name"
+    else
+      # we always have a username
+      username
+    end
+  end
 end

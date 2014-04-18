@@ -1,9 +1,13 @@
 class GalleryActivitiesController < ApplicationController
-  before_filter :authenticate_user!
+  before_filter :authenticate_user!, except: :index
   load_and_authorize_resource 
   check_authorization
 
   before_action :set_gallery_activity, only: [:destroy]
+
+  def index
+    @gallery_activities = GalleryActivity.order(id: :desc).page(params[:page]).per(25)
+  end
 
   # POST /gallery_activities
   # POST /gallery_activities.json
