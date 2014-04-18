@@ -1850,6 +1850,7 @@ var generateXMLForBlocks = function(blocks) {
 
 var msg = require('../../locale/bn_bd/jigsaw');
 var dom = require('../dom');
+var levels = require('./levels');
 
 var patternCache = {
   queued: [],
@@ -1994,44 +1995,23 @@ exports.install = function(blockly, skin) {
     }
   });
 
+  // could make this settable on the level if I need
+  var HSV = [0, 1.00, 0.98];
+
   var existingBlocks = Object.keys(blockly.Blocks);
 
-  generateBlocksForLevel(blockly, skin, {
-     image: skin.smiley,
-     HSV: [121, 1.00, 0.98],
-     width: 200,
-     height: 200,
-     numBlocks: 2,
-     level: 1
-   });
-
-  generateBlocksForLevel(blockly, skin, {
-     image: skin.smiley,
-     HSV: [0, 1.00, 0.98],
-     width: 300,
-     height: 300,
-     numBlocks: 3,
-     level: 2
-   });
-
-  generateBlocksForLevel(blockly, skin, {
-     image: skin.artist,
-     HSV: [0, 1.00, 0.98],
-     width: 200,
-     height: 200,
-     numBlocks: 3,
-     level: 3,
-     notchedEnds: true
-   });
-
-  generateBlocksForLevel(blockly, skin, {
-     image: skin.smiley,
-     HSV: [0, 1.00, 0.98],
-     width: 400,
-     height: 400,
-     numBlocks: 5,
-     level: 4
-   });
+  Object.keys(levels).forEach(function(key) {
+    var level = levels[key];
+    generateBlocksForLevel(blockly, skin, {
+      image: skin[level.image.name],
+      HSV: HSV,
+      width: level.image.width,
+      height: level.image.height,
+      numBlocks: level.numBlocks,
+      notchedEnds: level.notchedEnds,
+      level: key
+    });
+  });
 
   // Go through all added blocks, and add empty generators for those that
   // weren't already given generators
@@ -2088,7 +2068,7 @@ function generateBlocksForLevel(blockly, skin, options) {
   }
 }
 
-},{"../../locale/bn_bd/jigsaw":29,"../dom":6}],9:[function(require,module,exports){
+},{"../../locale/bn_bd/jigsaw":29,"../dom":6,"./levels":11}],9:[function(require,module,exports){
 module.exports= (function() {
   var t = function anonymous(locals, filters, escape, rethrow) {
 escape = escape || function (html){
@@ -2198,6 +2178,21 @@ var drawMap = function() {
   var belowVisualization = document.getElementById('belowVisualization');
   belowVisualization.style.width = Jigsaw.MAZE_WIDTH + 'px';
   belowVisualization.style.display = 'none';
+
+  // account for toolbox if there
+  var toolboxWidth = -Blockly.mainWorkspace.getMetrics().viewLeft;
+
+  var svg = document.querySelectorAll(".blocklySvg")[0];
+  var image = Blockly.createSvgElement('rect', {
+    fill: "url(#pat_" + level.id + "A)",
+    "fill-opacity": "0.2",
+    width: level.image.width,
+    height: level.image.height,
+    transform: "translate(" + (toolboxWidth + level.ghost.x) + ", " +
+      level.ghost.y + ")"
+  });
+  // we want it to be first, so it's behind everything
+  svg.insertBefore(image, svg.childNodes[0]);
 };
 
 /**
@@ -2409,75 +2404,103 @@ var validateSimplePuzzle = function (options) {
 
 module.exports = {
   '1': {
-    'instructionsIcon': 'smiley',
-    'requiredBlocks': [],
-    'freePlay': false,
-    'goal': {
+    instructionsIcon: 'smiley',
+    image: {
+      name: 'smiley',
+      width: 200,
+      height: 200
+    },
+    ghost: {
+      x: 500,
+      y: 50
+    },
+    numBlocks: 2,
+    requiredBlocks: [],
+    freePlay: false,
+    goal: {
       successCondition: function () {
         return validateSimplePuzzle({level: 1, numBlocks: 2});
       },
     },
-    'scale': {
-      'snapRadius': 2
-    },
-    'startBlocks':
+    startBlocks:
       jigsawBlock('jigsaw_1A', 20, 20) +
       jigsawBlock('jigsaw_1B', 245, 65)
   },
 
   '2': {
-    'instructionsIcon': 'smiley',
-    'requiredBlocks': [],
-    'freePlay': false,
-    'goal': {
+    instructionsIcon: 'smiley',
+    image: {
+      name: 'smiley',
+      width: 300,
+      height: 300,
+    },
+    ghost: {
+      x: 700,
+      y: 50
+    },
+    numBlocks: 3,
+    requiredBlocks: [],
+    freePlay: false,
+    goal: {
       successCondition: function () {
         return validateSimplePuzzle({level: 2, numBlocks: 3});
       },
     },
-    'scale': {
-      'snapRadius': 2
-    },
-    'startBlocks':
+    startBlocks:
       jigsawBlock('jigsaw_2A', 260, 20) +
       jigsawBlock('jigsaw_2B', 120, 190) +
       jigsawBlock('jigsaw_2C', 20, 70)
   },
 
   '3': {
-    'instructionsIcon': 'artist',
-    'requiredBlocks': [],
-    'freePlay': false,
-    'goal': {
+    instructionsIcon: 'artist',
+    image: {
+      name: 'artist',
+      width: 200,
+      height: 200
+    },
+    numBlocks: 3,
+    notchedEnds: true,
+    requiredBlocks: [],
+    freePlay: false,
+    goal: {
       successCondition: function () {
         return validateSimplePuzzle({level: 3, numBlocks: 3});
       },
     },
-    'scale': {
-      'snapRadius': 2
+    ghost: {
+      x: 100,
+      y: 50
     },
-    'toolbox':
+    toolbox:
       createToolbox(
         jigsawBlock('jigsaw_3C') +
         jigsawBlock('jigsaw_3B') +
         jigsawBlock('jigsaw_3A')
       ),
-    'startBlocks': ''
-
+    startBlocks: ''
   },
 
   '4': {
-    'instructionsIcon': 'smiley',
-    'requiredBlocks': [],
-    'freePlay': false,
-    'goal': {
+    instructionsIcon: 'smiley',
+    image: {
+      name: 'smiley',
+      width: 400,
+      height: 400
+    },
+    ghost: {
+      x: 100,
+      y: 50
+    },
+    numBlocks: 5,
+    requiredBlocks: [],
+    freePlay: false,
+    goal: {
       successCondition: function () {
         return validateSimplePuzzle({level: 4, numBlocks: 5});
       },
     },
-    'scale': {
-      'snapRadius': 2
-    },
-    'toolbox':
+    toolbox:
       createToolbox(
         jigsawBlock('jigsaw_4B') +
         jigsawBlock('jigsaw_4A') +
@@ -2485,8 +2508,7 @@ module.exports = {
         jigsawBlock('jigsaw_4C') +
         jigsawBlock('jigsaw_4E')
       ),
-    'startBlocks': ''
-
+    startBlocks: ''
   }
 };
 
