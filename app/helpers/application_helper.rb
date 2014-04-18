@@ -129,4 +129,18 @@ module ApplicationHelper
     [passed, link]
   end
 
+  def show_flashes
+    ret = ""
+    if notice
+      ret += '<p id="notice">' + h(flash.notice) + '</p>'
+      flash.notice = nil
+    end
+
+    if alert
+      ret += '<p id="alert">' + h(flash.alert) + '</p>'
+      flash.alert = nil
+    end
+
+    ret
+  end
 end

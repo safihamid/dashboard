@@ -86,7 +86,7 @@
         = button_to t('home.trynow'), k8intro_chapter_path(ScriptLevel::NEXT), :method => "get", :class=>"btn btn-primary biggerbutton"
       .span10
         %p.smallwhitetext
-          #{t('signup_form.overview')}
+          #{t('home.20hour_overview')}
       .span12
         %p
           =link_to image_tag('signup_header_cropped.jpg'), k8intro_chapter_path(ScriptLevel::NEXT)
@@ -99,7 +99,7 @@
   .row#stats
     .span1
     .span11#rightside
-      = render partial: 'shared/user_stats', locals: { user: current_user, trophies_on_right: true }
+      = render partial: 'shared/user_stats', locals: { user: current_user, trophies_on_right: false }
 
   %br/
   - if current_user && !current_user.teacher?
