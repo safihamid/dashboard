@@ -22,10 +22,7 @@
         = page
     - else
       .container.main{ style: 'padding: 10px;'}
-        - if notice
-          %p#notice= notice
-        - if alert
-          %p#alert= alert
+        = show_flashes.html_safe
 
         = page
     = render partial: 'layouts/footer'

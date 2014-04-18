@@ -132,12 +132,12 @@ module ApplicationHelper
   def show_flashes
     ret = ""
     if notice
-      ret += '<p id="notice">' + h(flash.notice) + '</p>'
+      ret += content_tag(:p, flash.notice, {id: "notice"})
       flash.notice = nil
     end
 
     if alert
-      ret += '<p id="alert">' + h(flash.alert) + '</p>'
+      ret += content_tag(:p, flash.alert, {id: "alert"})
       flash.alert = nil
     end
 
