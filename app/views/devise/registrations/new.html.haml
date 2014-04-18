@@ -1,119 +1,120 @@
 - resource.user_type ||= params[:user].try(:fetch, :user_type) || User::TYPE_STUDENT
 
-.row
-  .span12
-    %h1= resource.student? ? t('signup_form.student_pitch') : t('signup_form.teacher_pitch')
-    - if resource.student?
-      %p
-        = t('signup_form.overview_student')
-      %p
-        = sanitize(t('signup_form.no_signup_message').html_safe, tags: %w(a), attributes: %w(href target))
-
-    - else
-      %p
-        = t('signup_form.overview_teacher').html_safe
-        = link_to t('signup_form.teacher_educator_guide'), 'http://code.org/educate/20hr', :target => '_blank'
-
-      - if eligible_for_prize?
-        %h4= sanitize(t('signup_form.teacher_prize_header').html_safe, tags: %w(a), attributes: %w(href target))
-        = sanitize(t('signup_form.teacher_prize_message').html_safe, tags: %w(a), attributes: %w(href target))
-        %br/
-        = sanitize(t('signup_form.teacher_prize_limits').html_safe, tags: %w(a), attributes: %w(href target))
-
-.row
-  .span8{style: "background-color: #fafafa;"}
-    = form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :style => 'padding:20px;margin-bottom:0px' }) do |f|
-      = devise_error_messages!
-
-      = f.hidden_field :user_type
-      = f.hidden_field :locale, value: locale
-
-      %div{style:"display:inline-block;"}
-        %div{style:"display:inline-block;width:140px;vertical-align:top;padding-top:7px"}
-          = t('activerecord.attributes.user.username')
-        = f.text_field :username, style: "width:220px;vertical-align:top", class: 'input-xlarge', 'data-autocheck-url' => "/signup_check/username"
-        %div{style:"display:inline-block;width:180px;vertical-align:top"}
-          %span#username_message
-      %br/
-
-      %div{style:"display:inline-block;"}
-        %div{style:"display:inline-block;width:140px"}
-          = t('activerecord.attributes.user.name')
-        = f.text_field :name, style: "width:220px", class: 'input-xlarge', autofocus: true
-      %br/
-      %div{style:"display:inline-block;"}
-        %div{style:"display:inline-block;width:140px"}
-          = t('activerecord.attributes.user.email')
-        = f.email_field :email, style: "width:220px", class: 'input-xlarge'
-
-      %br/
-      - if f.object.password_required?
-        %div{style:"display:inline-block;"}
-          %div{style:"display:inline-block;width:140px"}
-            = t('activerecord.attributes.user.password')
-          = f.password_field :password, style: "width:220px", class: 'input-xlarge'
-        %br/
-        %div{style:"display:inline-block;"}
-          %div{style:"display:inline-block;width:140px"}
-            = t('activerecord.attributes.user.password_confirmation')
-          = f.password_field :password_confirmation, style: "width:220px", class: 'input-xlarge'
-        %br/
-        %span#password_message
-
-      - if resource.teacher?
-        -# %h4 Optional information
-        %div{style:"display:inline-block;"}
-          %div{style:"display:inline-block;width:140px"}
-            = t('signup_form.school_name')
-          = f.text_field :school, class: 'input-xlarge', style: "width:220px"
-        %br/
-        = t('signup_form.school_address')
-        %br/
-        = f.text_area :full_address, class: 'input-xxlarge', placeholder: t('signup_form.address_placeholder'), rows: 4
-
+#signup
+  .row
+    .span12
+      %h1= resource.student? ? t('signup_form.student_pitch') : t('signup_form.teacher_pitch')
       - if resource.student?
-        -# %h5 
-          Optional information
-        %div{style:"display:inline-block;"}
-          %div{style:"display:inline-block;width:140px"}
-            = t('signup_form.gender')
-          = f.select :gender, gender_options, {}, { :style => 'width:234px' }
+        %p
+          = t('signup_form.overview_student')
+        %p
+          = sanitize(t('signup_form.no_signup_message').html_safe, tags: %w(a), attributes: %w(href target))
+
+      - else
+        %p
+          = t('signup_form.overview_teacher').html_safe
+          = link_to t('signup_form.teacher_educator_guide'), 'http://code.org/educate/20hr', :target => '_blank'
+
+        - if eligible_for_prize?
+          %h4= sanitize(t('signup_form.teacher_prize_header').html_safe, tags: %w(a), attributes: %w(href target))
+          = sanitize(t('signup_form.teacher_prize_message').html_safe, tags: %w(a), attributes: %w(href target))
+          %br/
+          = sanitize(t('signup_form.teacher_prize_limits').html_safe, tags: %w(a), attributes: %w(href target))
+
+  .row
+    .span8.signupblock
+      = form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :class => 'signupform' }) do |f|
+        = devise_error_messages!
+
+        = f.hidden_field :user_type
+        = f.hidden_field :locale, value: locale
+
+        .itemblock
+          .labelblock#labelusername
+            = t('activerecord.attributes.user.username')
+          = f.text_field :username, class: "fieldblock", class: 'input-xlarge fieldblock usernamefield', 'data-autocheck-url' => "/signup_check/username"
+          #usernamemessage
+            %span#username_message
         %br/
-        %div{style:"display:inline-block;"}
-          %div{style:"display:inline-block;width:140px"}
-            = t('signup_form.birthday')
-          :javascript
-            $(function() {
-              $( "#user_birthday" ).datepicker({
-                changeMonth: true,
-                changeYear: true,
-                yearRange: "-120:+0",
-                dateFormat: "yy-mm-dd"
+
+        .itemblock
+          .labelblock
+            = t('activerecord.attributes.user.name')
+          = f.text_field :name, class: 'input-xlarge fieldblock', autofocus: true
+        %br/
+        .itemblock
+          .labelblock
+            = t('activerecord.attributes.user.email')
+          = f.email_field :email, class: 'input-xlarge fieldblock'
+
+        %br/
+        - if f.object.password_required?
+          .itemblock
+            .labelblock
+              = t('activerecord.attributes.user.password')
+            = f.password_field :password, class: 'input-xlarge fieldblock'
+          %br/
+          .itemblock
+            .labelblock
+              = t('activerecord.attributes.user.password_confirmation')
+            = f.password_field :password_confirmation, class: 'input-xlarge fieldblock'
+          %br/
+          %span#password_message
+
+        - if resource.teacher?
+          -# %h4 Optional information
+          .itemblock
+            .labelblock
+              = t('signup_form.school_name')
+            = f.text_field :school, class: 'input-xlarge', class: 'fieldblock'
+          %br/
+          = t('signup_form.school_address')
+          %br/
+          = f.text_area :full_address, class: 'input-xxlarge', placeholder: t('signup_form.address_placeholder'), rows: 4
+
+        - if resource.student?
+          -# %h5 
+            Optional information
+          .itemblock
+            .labelblock
+              = t('signup_form.gender')
+            = f.select :gender, gender_options
+          %br/
+          .itemblock
+            .labelblock
+              = t('signup_form.birthday')
+            :javascript
+              $(function() {
+                $( "#user_birthday" ).datepicker({
+                  changeMonth: true,
+                  changeYear: true,
+                  yearRange: "-120:+0",
+                  dateFormat: "yy-mm-dd"
+                });
               });
-            });
 
-          = f.text_field(:birthday, id: "user_birthday", style: "width:220px")
+            = f.text_field(:birthday, id: "user_birthday", class: "fieldblock")
 
-      %br/
+        %br/
 
-      = f.submit t('signup_form.submit'), class: "btn btn-primary btn-large"
-      %br/
-      %br/
-      %br/
-      = resource.student? ? t('signup_form.student_terms') : t('signup_form.teacher_terms')
-  
-  .span4
-    %div{ style: 'padding-left: 20px;  border-left: 1px solid black;' }
-      - if !resource.teacher?
-        = link_to t('signup_form.teacher'), new_user_registration_path('user[user_type]' =>  User::TYPE_TEACHER)
+        = f.submit t('signup_form.submit'), class: "btn btn-primary btn-large"
         %br/
         %br/
-      = render "devise/shared/links"
+        %br/
+        = resource.student? ? t('signup_form.student_terms') : t('signup_form.teacher_terms')
+    
+    .span4
+      %div{ style: 'padding-left: 20px;  border-left: 1px solid black;' }
+        - if !resource.teacher?
+          = link_to t('signup_form.teacher'), new_user_registration_path('user[user_type]' =>  User::TYPE_TEACHER)
+          %br/
+          %br/
+        = render "devise/shared/links"
 
-  %div{style: "clear:both"}
-  %br/
-  %br/
-  %br/
+    %div{style: "clear:both"}
+    %br/
+    %br/
+    %br/
 
 :javascript
   $( "#user_username" ).on('input',function(e){

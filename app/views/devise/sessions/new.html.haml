@@ -7,13 +7,13 @@
     = show_flashes.html_safe
 
     = form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
-      %div{style:"display:inline-block;width:600px"}
-        %div{style:"display:inline-block;width:140px"}
+      .itemblock
+        .labelblock
           = t('signin_form.login')
         = f.text_field :login, autofocus: true
       %br/
-      %div{style:"display:inline-block;width:600px"}
-        %div{style:"display:inline-block;width:140px"}
+      .itemblock
+        .labelblock
           = t('signin_form.password')
         = f.password_field :password
       %br/
