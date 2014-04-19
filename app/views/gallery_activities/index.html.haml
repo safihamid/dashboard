@@ -2,6 +2,17 @@
   %h1{style: 'text-align:center;'}
     Students drew these with code!
 
+.row
+  .span2
+  .span8.infobox
+    In the past
+    %b= @days
+    days, students have drawn
+    %b= number_to_human(GalleryActivity.count)
+    pictures by writing their own computer programs.
+    Click on the pictures to see each program in action.
+  .span2
+
 .span{style: 'float:right;'}
   = link_to_next_page @gallery_activities, 'More &rarr;'.html_safe
 

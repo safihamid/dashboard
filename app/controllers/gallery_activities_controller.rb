@@ -7,6 +7,7 @@ class GalleryActivitiesController < ApplicationController
 
   def index
     @gallery_activities = GalleryActivity.order(id: :desc).page(params[:page]).per(25)
+    @days = (Date.today - Date.new(2014, 4, 9)).to_i # days since we turned this feature on
   end
 
   # POST /gallery_activities
