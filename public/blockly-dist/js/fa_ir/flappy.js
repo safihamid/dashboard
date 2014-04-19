@@ -152,6 +152,9 @@ BlocklyApps.init = function(config) {
   BlocklyApps.share = config.share;
   BlocklyApps.noPadding = config.no_padding;
 
+  BlocklyApps.IDEAL_BLOCK_NUM = config.level.ideal || Infinity;
+  BlocklyApps.REQUIRED_BLOCKS = config.level.requiredBlocks || [];
+
   // enableShowCode defaults to true if not defined
   BlocklyApps.enableShowCode = (config.enableShowCode === false) ? false : true;
 
@@ -2549,9 +2552,6 @@ var AVATAR_Y_OFFSET = constants.AVATAR_Y_OFFSET;
 
 var loadLevel = function() {
   // Load maps.
-  BlocklyApps.IDEAL_BLOCK_NUM = level.ideal || Infinity;
-  BlocklyApps.REQUIRED_BLOCKS = level.requiredBlocks;
-
   infoText = (level.infoText === undefined ? true : level.infoText);
   if (!infoText) {
     Flappy.gameState = Flappy.GameStates.ACTIVE;

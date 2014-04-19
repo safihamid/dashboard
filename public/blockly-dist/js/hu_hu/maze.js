@@ -152,6 +152,9 @@ BlocklyApps.init = function(config) {
   BlocklyApps.share = config.share;
   BlocklyApps.noPadding = config.no_padding;
 
+  BlocklyApps.IDEAL_BLOCK_NUM = config.level.ideal || Infinity;
+  BlocklyApps.REQUIRED_BLOCKS = config.level.requiredBlocks || [];
+
   // enableShowCode defaults to true if not defined
   BlocklyApps.enableShowCode = (config.enableShowCode === false) ? false : true;
 
@@ -4525,7 +4528,6 @@ module.exports = {
   },
   'custom': {
     'toolbox': toolbox(3, 4),
-    'ideal': 7,
     'codeFunctions': [
       {'func': 'move', 'alias': 'Maze.moveForward();'},
       {'func': 'turnleft', 'alias': 'Maze.turnLeft();'},
@@ -4643,11 +4645,9 @@ Maze.scale = {
 var loadLevel = function() {
   // Load maps.
   Maze.map = level.maze ? JSON.parse(level.maze) : level.map;
-  BlocklyApps.IDEAL_BLOCK_NUM = level.ideal || Infinity;
   Maze.initialDirtMap = level.initialDirt;
   Maze.finalDirtMap = level.finalDirt;
   Maze.startDirection = level.startDirection;
-  BlocklyApps.REQUIRED_BLOCKS = level.requiredBlocks;
 
   // Override scalars.
   for (var key in level.scale) {
